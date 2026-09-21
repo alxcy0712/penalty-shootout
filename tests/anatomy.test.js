@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {body,strikerPose,goalkeeperPose,holdingPose,neckAngles,HOLD_DURATION} from '../src/anatomy.js';
+import {body,strikerRunupPose,penaltyStyles,penaltyStyle,strikerPose,goalkeeperPose,holdingPose,neckAngles,HOLD_DURATION,keeperWarmupPose} from '../src/anatomy.js';
 const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z);
 function check(p){for(let i=0;i<2;i++)for(const[a,b,length]of[[p.shoulders[i],p.elbows[i],body.upperArm],[p.elbows[i],p.hands[i],body.forearm],[p.hips[i],p.knees[i],body.thigh],[p.knees[i],p.feet[i],body.shin]])assert.ok(Math.abs(distance(a,b)-length)<1e-8);}
 test('anatomical segment lengths remain fixed during shots, dives and recovery',()=>{for(let n=0;n<=600;n++){let t=n/120;check(strikerPose(t,Math.min(1,t/.55),t>.55?t-.55:-1));for(const direction of[-1,0,1])for(const height of[.3,1.2,2.3])check(goalkeeperPose({reach:85,speed:85},direction,t,height));}});
@@ -46,3 +46,52 @@ test('the catch-to-hold transition preserves the original elbow bend at its star
 test('ball tracking stays within neck limits and releases attention behind the player',()=>{for(const facing of[-1,1])for(const x of[-10,0,10])for(const y of[-3,0,3])for(const z of[-10,0,10]){const a=neckAngles({x,y,z},facing);assert.ok(Math.abs(a.yaw)<=.55);assert.ok(Math.abs(a.pitch)<=.5);if(z*facing<-.4)assert.equal(Math.abs(a.yaw)+Math.abs(a.pitch),0);}});
 
 test('approach always has a planted support foot and the new plant never slides',()=>{for(const power of[0,.5,1])for(let n=0;n<=1000;n++){const phase=n/1000,p=strikerPose(0,phase,-1,power);assert.ok(p.feet.some(f=>Math.abs(f.y-.075)<.001),`unsupported at ${phase}`);if(phase>=.62)assert.ok(distance(p.feet[0],{x:-.28,y:.075,z:11.02})<1e-8);else assert.ok(distance(p.feet[1],{x:-.03,y:.075,z:12.05})<1e-8);}});
+
+test('individual runups keep fixed bones and join the striking pose continuously',()=>{
+  for(const style of penaltyStyles){
+    let previous=null;
+    for(let ms=0;ms<=style.duration*1000+500;ms++){
+      const t=ms/1000,p=strikerRunupPose(t,Math.min(1,t/style.duration),t>=style.duration?t-style.duration:-1,.7,2,style);check(p);
+      for(const f of p.feet)assert.ok(f.y>=.074);
+      assert.ok(p.feet.some(f=>Math.abs(f.y-.075)<.001),`${style.name}/${ms}/support`);
+      if(previous)for(const key of ['hip','hands','feet','knees','elbows']){
+        const a=Array.isArray(p[key])?p[key]:[p[key]],b=Array.isArray(previous[key])?previous[key]:[previous[key]];
+        a.forEach((point,i)=>assert.ok(distance(point,b[i])<.03,`${style.name}/${ms}/${key}`));
+      }
+      previous=p;
+    }
+    const contact=strikerRunupPose(0,1,0,.7,2,style);assert.deepEqual(contact,strikerPose(0,1,0,.7,2));
+  }
+  assert.equal(penaltyStyle({number:8}),penaltyStyle(JSON.parse('{"number":8}')));
+  assert.equal(new Set([8,9,10].map(number=>penaltyStyle({number}).name)).size,3);
+});
+test('runup pelvis keeps moving through intermediate footfalls',()=>{
+  for(const style of penaltyStyles)for(let step=1;step<style.steps;step++){
+    const q=step/style.steps,clock=(-.7+Math.sqrt(.49+1.2*q))/.6,t=clock*(style.duration-.55);
+    const pose=at=>strikerRunupPose(at,at/style.duration,-1,.7,0,style);
+    for(const at of[t-.002,t+.001])assert.ok((pose(at).hip.z-pose(at+.001).hip.z)/.001>.15,`${style.name}/${step}`);
+  }
+});
+test('runup joints have continuous velocity at footfalls and the final gather',()=>{
+  const dt=.00001;
+  for(const style of penaltyStyles){
+    const sample=t=>strikerRunupPose(t,t/style.duration,-1,.7,0,style);
+    for(let step=1;step<=style.steps;step++){
+      const q=step/style.steps,clock=(-.7+Math.sqrt(.49+1.2*q))/.6,t=clock*(style.duration-.55);
+      const before=sample(t-dt),at=sample(t),after=sample(t+dt);
+      for(const key of ['hip','knees','hands','feet']){
+        const list=p=>Array.isArray(p[key])?p[key]:[p[key]],a=list(before),b=list(at),c=list(after);
+        for(let i=0;i<a.length;i++){
+          const jump=Math.hypot(...['x','y','z'].map(k=>(c[i][k]-2*b[i][k]+a[i][k])/dt));
+          assert.ok(jump<.05,`${style.name}/${step}/${key}: velocity jump ${jump}`);
+        }
+      }
+    }
+  }
+});
+
+test('lobby warmup keeps feet planted while shifting weight and stretching arms',()=>{
+ const first=keeperWarmupPose(0);let min=Infinity,max=-Infinity;
+ for(let n=0;n<=2400;n++){const pose=keeperWarmupPose(n/100);check(pose);for(let i=0;i<2;i++)assert.ok(distance(pose.feet[i],first.feet[i])<1e-8);min=Math.min(min,pose.hands[0].y);max=Math.max(max,pose.hands[0].y);}
+ assert.ok(max-min>.35);
+});

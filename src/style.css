@@ -4,3 +4,33 @@
 @media(max-height:740px){.home-copy{padding-top:83px}.home h1{font-size:49px;margin:12px 0}.home-copy p{font-size:11px}.home-bottom{padding-bottom:12px}.mode-card{padding:11px}.mode-card>div{margin-bottom:5px}.mode-card strong{font-size:17px}.mode-tag{margin-top:9px;padding-top:7px;font-size:8px}.mode-label{margin-bottom:8px}.stadium-note{padding-bottom:12px}.home-links{padding-top:6px}.start{min-height:46px}.scoreboard{padding:9px 5px;margin:0 17px}.team-symbol{height:25px}.team-symbol .icon{height:24px}.score-team>small{display:none}.role-pill{margin-top:7px}.game{padding-top:71px}.score{font-size:32px}.score-center>small{font-size:9px}.game-bottom{left:14px;right:14px;bottom:6px}.control-panel{padding:11px}.panel-title h2{font-size:14px}.player-strip{padding:7px 11px}.meter{margin-top:10px;height:17px}.meter-labels{margin-bottom:8px}.match-footer{padding-top:2px}.control-panel p{font-size:10px;margin-bottom:9px}#gesture{top:205px;bottom:208px}.finish{padding-top:5px}.trophy{margin:0 0 8px}.trophy .icon{width:35px;height:35px}.finish h1{font-size:24px}.final-score{margin:12px 0}.finish-stats{padding:8px}.history{margin-top:13px}}
 @media(max-height:600px){.home-copy{padding-top:75px}.home h1{font-size:39px;margin:8px 0}.home-copy p{font-size:10px;line-height:1.55}.eyebrow{font-size:9px}.mode-card{padding:9px}.mode-card .icon{width:18px;height:18px}.mode-card strong{font-size:15px}.mode-card small{font-size:10px}.mode-tag{font-size:8px;margin-top:6px;padding-top:6px}.stadium-note{padding-bottom:7px}.home-bottom{padding-left:17px;padding-right:17px}.start{margin-top:9px;min-height:43px}.home-links{font-size:9px}.scoreboard{padding:6px 5px}.score{font-size:29px}.score-team>strong{font-size:10px}.team-symbol{height:22px;margin-bottom:1px}.kick-dots{margin-top:5px}.role-pill{font-size:10px;margin-top:5px}.player-strip{padding:5px 10px}.control-panel{padding:9px}.control-panel p{font-size:10px;line-height:1.4;margin-bottom:7px}.control-panel .primary{min-height:39px}.panel-title{margin-bottom:6px}.meter{margin:8px 8px 6px}.guard-buttons button{min-height:39px}#gesture{top:186px;bottom:190px}.gesture-origin{width:40px;height:40px;left:calc(50% - 20px)}.match-footer .text-btn{min-height:21px}.coin-screen h1{font-size:24px}.coin{width:70px;height:70px;margin-bottom:20px}.coin-actions{margin-top:25px}.calibration-pad{height:130px}.sheet{max-height:94%}.sheet-lead{margin-bottom:12px}.device-tabs{margin-bottom:15px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* Advanced play keeps the pitch open and the controls within thumb reach. */
+.advanced .scoreboard{padding:6px 10px;grid-template-columns:1fr 70px 1fr;background:#0d2528a8;border-radius:12px}
+.advanced .team-symbol,.advanced .score-team>small,.advanced .score-center>small,.advanced .player-strip,.advanced .match-footer{display:none}
+.advanced .score{font-size:27px;line-height:1.1}.advanced .score span{font-size:20px;vertical-align:1px}
+.advanced .kick-dots{margin-top:5px}.advanced .role-pill{margin-top:8px}
+.advanced #gesture{inset:190px 0 145px}.advanced .gesture-origin{bottom:24px}
+.advanced .control-panel{border:1px solid #49645470;border-radius:14px;background:#102a26bb;backdrop-filter:blur(6px);padding:10px 14px}
+.advanced .panel-title h2{font-size:13px}.advanced .control-panel p{font-size:10px;margin-bottom:6px}
+.advanced .gesture-power{margin:8px 0}.advanced .meter-labels{margin-bottom:0}
+.advanced .guard-buttons{grid-template-columns:1fr 58px 1fr}
+.advanced .center-btn{min-width:0}.advanced .waiting-line{margin:10px 0}
+.finish-actions{flex-shrink:0}.finish-actions .two-links{justify-content:center;gap:28px}.finish-actions .text-btn{min-height:44px}
+@media(max-height:600px){.advanced #gesture{top:160px;bottom:135px}.advanced .game-bottom{bottom:6px}}
+
+/* Keep the opposing striker clear of the HUD from behind the goal. */
+.keeper-view .scoreboard{padding:5px 10px;grid-template-columns:1fr 70px 1fr;align-items:center;background:#0d2528a8;border-radius:12px}
+.keeper-view .team-symbol,.keeper-view .score-team>small,.keeper-view .score-center>small{display:none}
+.keeper-view .score-center{padding-top:0}.keeper-view .score{font-size:25px;line-height:1.1}
+.keeper-view .score span{font-size:18px;vertical-align:1px}.keeper-view .kick-dots{margin-top:4px}
+.keeper-view .role-pill{margin-top:6px}
+
+/* Goal-mouth boundaries at ±3.66 m on a ±4.6 m direction scale. */
+.meter.direction{background:linear-gradient(90deg,#a95d48 10.2%,#dab878 10.2%,#9fcdbd66 18%,#9fcdbd66 82%,#dab878 89.8%,#a95d48 89.8%)}
+.meter.direction::before,.meter.direction::after{content:"";position:absolute;top:0;height:100%;width:1px;background:#f6d4a6;left:10.2%}
+.meter.direction::after{left:89.8%}
+
+.reorder-handle{touch-action:none;cursor:grab;font-size:25px;color:#a9caba;flex-shrink:0}.squad-list.reordering{user-select:none;cursor:grabbing}.reordering .reorder-handle{cursor:grabbing}.squad-row.dragging{background:#2d5146;box-shadow:inset 3px 0 var(--mint);border-radius:7px}
+
+.shot-type{display:inline-flex;gap:2px;padding:3px;border:1px solid #49645470;border-radius:9px;background:#0b211e;flex-shrink:0}.shot-type button{min-height:32px;padding:4px 11px;border-radius:6px;background:transparent;color:#a8c1b3;font-size:11px}.shot-type button[aria-pressed="true"]{background:var(--mint);color:#13392c}.control-panel>.shot-type{margin:0 0 10px}.advanced .game-bottom{z-index:3}

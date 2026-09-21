@@ -1,9 +1,10 @@
+import {homeAnimation} from './home-animation.js';
 import {GoalBall} from './ball-motion.js';
 import {batchRigidGroup} from './batching.js';
 import {Player} from './character.js';
-import {strikerPose,holdingPose,HOLD_DURATION} from './anatomy.js';
+import {strikerRunupPose,penaltyStyle,holdingPose,HOLD_DURATION,blendKeeperPose,keeperWarmupPose} from './anatomy.js';
 import * as THREE from 'three';
-import {keeperPose, clamp} from './engine.js';
+import {keeperPose, clamp, GOAL} from './engine.js';
 
 const vec = p => new THREE.Vector3(p.x,p.y,p.z);
 const material = (color, roughness=.8) => new THREE.MeshStandardMaterial({color,roughness});
@@ -44,36 +45,40 @@ export class Stadium {
     this.aim=new THREE.Group();const aimMaterial=new THREE.MeshBasicMaterial({color:'#b9efd7',transparent:true,opacity:.8,depthTest:false});
     this.aim.add(new THREE.Mesh(new THREE.RingGeometry(.15,.18,40),aimMaterial));
     for(const [w,h]of[[.48,.025],[.025,.48]])this.aim.add(new THREE.Mesh(new THREE.PlaneGeometry(w,h),aimMaterial));this.aim.position.set(0,1,.35);this.scene.add(this.aim);
+    this.arcBuffer=new Float32Array(33*3);const arcGeometry=new THREE.BufferGeometry();arcGeometry.setAttribute('position',new THREE.BufferAttribute(this.arcBuffer,3).setUsage(THREE.DynamicDrawUsage));this.arc=new THREE.Line(arcGeometry,new THREE.LineBasicMaterial({color:'#b9efd7',transparent:true,opacity:.65}));this.arc.frustumCulled=false;this.scene.add(this.arc);
+    this.cameraAngle=0;this.cameraFocus=new THREE.Vector3(0,.6,5);
     this.ballShadow=mesh(new THREE.CircleGeometry(.18,24),new THREE.MeshBasicMaterial({color:'#000000',transparent:true,opacity:.24,depthWrite:false}),this.scene);this.ballShadow.rotation.x=-Math.PI/2;
     this.trailBuffer=new Float32Array(21);const trailGeometry=new THREE.BufferGeometry();trailGeometry.setAttribute('position',new THREE.BufferAttribute(this.trailBuffer,3).setUsage(THREE.DynamicDrawUsage));trailGeometry.setDrawRange(0,0);
     this.trail=new THREE.Line(trailGeometry,new THREE.LineBasicMaterial({color:'#d3efe4',transparent:true,opacity:.4}));this.scene.add(this.trail);this.trail.frustumCulled=false;this.trailCount=0;
     const geometrySet=new Set();this.scene.traverse(object=>{if(object.geometry)geometrySet.add(object.geometry.uuid);});this.geometryCount=geometrySet.size;
     if(new URLSearchParams(location.search).has('profile')){
-      this.profile=document.createElement('output');this.profile.id='render-profile';this.profile.style.cssText='position:fixed;bottom:8px;left:8px;z-index:10000;padding:10px;background:#071713;color:#d9ffe6;font:12px monospace;white-space:pre';document.body.appendChild(this.profile);this.profileFrames=[];this.profileCosts=[];this.profileUpdated=0;
+      this.profile=document.createElement('output');this.profile.id='render-profile';this.profile.style.cssText='position:fixed;bottom:8px;left:8px;z-index:10000;pointer-events:none;padding:10px;background:#071713;color:#d9ffe6;font:12px monospace;white-space:pre';document.body.appendChild(this.profile);this.profileFrames=[];this.profileCosts=[];this.profileUpdated=0;
     }
     this.mode='hero';this.netPulse=0;this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(container);this.resize();
   }
   buildField() {
     const pitch=texture((c,w,h)=>{c.fillStyle='#255349';c.fillRect(0,0,w,h);for(let j=0;j<12;j++){c.fillStyle=j%2?'#2a5b4e':'#245247';c.fillRect(0,j*h/12,w,h/12);}let seed=4;for(let i=0;i<20000;i++){seed=(seed*16807)%2147483647;const x=seed%w;seed=(seed*16807)%2147483647;const y=seed%h;c.fillStyle=i%2?'#ffffff08':'#00000009';c.fillRect(x,y,1,2);}},1024);
     pitch.wrapS=pitch.wrapT=THREE.RepeatWrapping;
-    const plane=mesh(new THREE.PlaneGeometry(68,90),new THREE.MeshStandardMaterial({map:pitch,roughness:.96}),this.scene,0,-.014,27);plane.rotation.x=-Math.PI/2;
+    const plane=mesh(new THREE.PlaneGeometry(68,123),new THREE.MeshStandardMaterial({map:pitch,roughness:.96}),this.scene,0,-.014,43.5);plane.rotation.x=-Math.PI/2;
     const white=new THREE.LineBasicMaterial({color:'#9bbab0',transparent:true,opacity:.72});
-    const lines=[[-34,0,34,0],[-20.16,0,-20.16,16.5],[20.16,0,20.16,16.5],[-20.16,16.5,20.16,16.5],[-9.16,0,-9.16,5.5],[9.16,0,9.16,5.5],[-9.16,5.5,9.16,5.5]];
+    const goalLine=mesh(new THREE.PlaneGeometry(68,GOAL.postRadius*2),new THREE.MeshBasicMaterial({color:'#9bbab0',transparent:true,opacity:.72}),this.scene,0,.007,GOAL.postRadius);goalLine.rotation.x=-Math.PI/2;
+    const lines=[[-20.16,0,-20.16,16.5],[20.16,0,20.16,16.5],[-20.16,16.5,20.16,16.5],[-9.16,0,-9.16,5.5],[9.16,0,9.16,5.5],[-9.16,5.5,9.16,5.5]];
     for(const[x,z,a,b]of lines){const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x,.007,z),new THREE.Vector3(a,.007,b)]);this.scene.add(new THREE.Line(g,white));}
     const spot=mesh(new THREE.CircleGeometry(.10,24),material('#c1d6cc'),this.scene,0,.009,11);spot.rotation.x=-Math.PI/2;
     const arc=[];for(let i=0;i<=64;i++){const t=.68+i/64*(Math.PI-1.36);arc.push(new THREE.Vector3(Math.cos(t)*9.15,.008,11+Math.sin(t)*9.15));}this.scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(arc),white));
   }
   buildGoal() {
+    const postX=GOAL.half+GOAL.postRadius,barY=GOAL.height+GOAL.postRadius;
     const mat=material('#d6e2dc',.48);
-    for(const x of[-3.66,3.66])lineBetween(this.scene,{x,y:0,z:0},{x,y:2.44,z:0},mat,.06);
-    lineBetween(this.scene,{x:-3.66,y:2.44,z:0},{x:3.66,y:2.44,z:0},mat,.06);
-    for(const x of[-3.66,3.66]){lineBetween(this.scene,{x,y:2.44,z:0},{x,y:2.1,z:-1.7},mat,.025);lineBetween(this.scene,{x,y:0,z:0},{x,y:0,z:-2},mat,.025);}
-    for(const x of[-3.66,3.66]){lineBetween(this.scene,{x,y:0,z:-2},{x,y:2.1,z:-1.7},mat,.022);mesh(new THREE.BoxGeometry(.15,.045,.3),material('#738f81'),this.scene,x,.018,-2);}
-    lineBetween(this.scene,{x:-3.66,y:2.1,z:-1.7},{x:3.66,y:2.1,z:-1.7},mat,.025);
+    for(const x of[-postX,postX])lineBetween(this.scene,{x,y:0,z:GOAL.postRadius},{x,y:barY,z:GOAL.postRadius},mat,.06);
+    lineBetween(this.scene,{x:-postX,y:barY,z:GOAL.postRadius},{x:postX,y:barY,z:GOAL.postRadius},mat,.06);
+    for(const x of[-postX,postX]){lineBetween(this.scene,{x,y:barY,z:GOAL.postRadius},{x,y:2.1,z:-1.7},mat,.025);lineBetween(this.scene,{x,y:0,z:GOAL.postRadius},{x,y:0,z:-2},mat,.025);}
+    for(const x of[-postX,postX]){lineBetween(this.scene,{x,y:0,z:-2},{x,y:2.1,z:-1.7},mat,.022);mesh(new THREE.BoxGeometry(.15,.045,.3),material('#738f81'),this.scene,x,.018,-2);}
+    lineBetween(this.scene,{x:-postX,y:2.1,z:-1.7},{x:postX,y:2.1,z:-1.7},mat,.025);
     const points=[];const add=(a,b)=>points.push(...a,...b);
-    for(let x=-3.66;x<=3.67;x+=.245){add([x,0,-2],[x,2.1,-1.7]);add([x,2.1,-1.7],[x,2.44,0]);}
-    for(let y=0;y<=2.11;y+=.175)add([-3.66,y,-2+y/2.1*.3],[3.66,y,-2+y/2.1*.3]);
-    for(const x of[-3.66,3.66]){for(let z=-2;z<=0;z+=.22)add([x,0,z],[x,2.44+z*.17,z]);for(let y=.17;y<2.3;y+=.17)add([x,y,0],[x,Math.min(y,2.1),-1.7]);}
+    for(let x=-postX;x<=postX+.01;x+=.245){add([x,0,-2],[x,2.1,-1.7]);add([x,2.1,-1.7],[x,barY,GOAL.postRadius]);}
+    for(let y=0;y<=2.11;y+=.175)add([-postX,y,-2+y/2.1*.3],[postX,y,-2+y/2.1*.3]);
+    for(const x of[-postX,postX]){for(let z=-2;z<=0;z+=.22)add([x,0,z],[x,barY+z*.17,z]);for(let y=.17;y<2.3;y+=.17)add([x,y,0],[x,Math.min(y,2.1),-1.7]);}
     const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(points,3));this.net=new THREE.LineSegments(geo,new THREE.LineBasicMaterial({color:'#c0d2cc',transparent:true,opacity:.32}));this.scene.add(this.net);this.netOriginal=new Float32Array(points);
   }
   buildStands() {
@@ -97,36 +102,60 @@ export class Stadium {
     const {width,height}=this.container.getBoundingClientRect();if(!width||!height)return;
     this.viewWidth=width;this.viewHeight=height;this.needsRender=true;this.renderer.setSize(width,height,false);this.camera.aspect=width/height;this.camera.updateProjectionMatrix();
   }
-  setMode(mode) {if(this.mode!==mode){this.trailCount=0;this.needsRender=true;}this.mode=mode;}
-  update(dt,time,shot=null,runup=0,aim=null,match=null,kickAim=null) {
+  setMode(mode) {if(this.mode!==mode){this.trailCount=0;this.needsRender=true;if(mode==='hero')this.homeTime=0;}this.mode=mode;}
+  update(dt,time,shot=null,runup=0,aim=null,match=null,kickAim=null,alpha=1) {
     if(dt===0&&!this.needsRender){this.profileLast=null;return;}
     const cpuStart=this.profile?performance.now():0;
-    const hero=this.mode==='hero',w=this.viewWidth,h=this.viewHeight,viewKey=`${this.mode}:${w}:${h}`;
+    const hero=this.mode==='hero',w=this.viewWidth,h=this.viewHeight,viewKey=`${this.mode}:${match?.mode}:${w}:${h}`;
     if(this.viewKey!==viewKey){
-      this.viewKey=viewKey;this.camera.fov=hero?45:32;
+      this.viewKey=viewKey;this.camera.fov=hero?45:match?.mode==='advanced'?43:36;
       this.camera.setViewOffset(w,h,0,hero?0:Math.max(0,(710-h)*.28),w,h);
-      this.camera.position.set(...(hero?[4.5,5.4,17.4]:[0,6,30]));
-      this.camera.lookAt(...(hero?[0,.6,3]:[0,.5,6]));
+      this.camera.updateProjectionMatrix();
+    }
+    const angle=match?.turn===1?Math.PI:0;
+    const blend=this.reducedMotion.matches?1:1-Math.exp(-dt*3.6);
+    this.cameraAngle+=(angle-this.cameraAngle)*blend;
+    if(hero)this.homeTime=(this.homeTime??0)+dt;
+    const home=hero?homeAnimation(this.reducedMotion.matches?0:this.homeTime):null;
+    if(home){this.camera.position.copy(home.camera);this.camera.lookAt(home.target.x,home.target.y,home.target.z);}
+    else {
+      const defending=(1-Math.cos(this.cameraAngle))*.5;
+      const advanced=match?.mode==='advanced',attackRadius=advanced?17:25,radius=attackRadius+(10.8-attackRadius)*defending,attackHeight=advanced?4.8:6,attackFocus=advanced?5:6;
+      const fov=(match?.mode==='advanced'?43:36)*(1-defending)+74*defending;if(Math.abs(this.camera.fov-fov)>.01){this.camera.fov=fov;this.camera.updateProjectionMatrix();}
+      this.camera.position.set(Math.sin(this.cameraAngle)*radius,attackHeight+(7.5-attackHeight)*defending,5+Math.cos(this.cameraAngle)*radius);
+      this.cameraFocus.set(0,.7,attackFocus+(2.5-attackFocus)*defending);this.camera.lookAt(this.cameraFocus);
     }
     if(match?.kicker!==undefined && this.colorsKey!==`${match.turn}-${match.kicker}`){this.colorsKey=`${match.turn}-${match.kicker}`;this.striker.setColor(match.teams[match.turn].color,match.teams[match.turn].players[match.kicker].number);this.keeper.setColor(match.turn?'#a9decb':'#e8a172',1);}
-    if(!shot)this.striker.pose(strikerPose(time,runup,-1,kickAim?.power??.7,kickAim?.x??0));
+    const style=penaltyStyle(match?.teams[match.turn]?.players[match.kicker]);
+    this.striker.group.visible=!home||home.strikerVisible;this.ball.visible=!home||home.ballVisible;
+    if(!shot)this.striker.pose(home?home.striker:strikerRunupPose(time,runup,-1,kickAim?.power??.7,kickAim?.x??0,style));
     if(shot){
       if(this.currentShot!==shot){this.currentShot=shot;this.resultElapsed=0;this.trailCount=0;this.aftermath=null;}
       if(shot.result)this.resultElapsed+=dt;
-      let pose=shot.result?shot.poseAt(shot.t+this.resultElapsed):shot.pose;
+      const currentTime=shot.animationTime??shot.t;
+      const animationTime=shot.result?currentTime:(shot.previousAnimationTime??currentTime)+(currentTime-(shot.previousAnimationTime??currentTime))*alpha;
+      let pose=shot.result||currentTime<shot.t-.001?shot.poseAt(animationTime+this.resultElapsed):shot.previousPose?blendKeeperPose(shot.previousPose,shot.pose,alpha,false):shot.pose;
       let held=null;if(shot.caught){held=holdingPose(pose,this.resultElapsed/HOLD_DURATION);pose=held.pose;}
       this.keeper.pose(pose);this.ball.position.copy(shot.ball);
+      if(!shot.result)this.ball.position.set(shot.previous.x+(shot.ball.x-shot.previous.x)*alpha,shot.previous.y+(shot.ball.y-shot.previous.y)*alpha,shot.previous.z+(shot.ball.z-shot.previous.z)*alpha);
       if(shot.result?.goal){
         this.aftermath??=new GoalBall(shot.ball,shot.velocity);const hits=this.aftermath.netHits;this.aftermath.advance(dt);this.ball.position.set(this.aftermath.position.x,this.aftermath.position.y,this.aftermath.position.z);if(this.aftermath.netHits>hits){this.netPulse=clamp(this.aftermath.lastImpactSpeed/22,.15,1);this.netImpact={...this.aftermath.position};this.netAge=0;}
       }
       if(held){const t=clamp(this.resultElapsed/HOLD_DURATION,0,1),blend=t*t*(3-2*t);this.ball.position.set(shot.ball.x+pose.shoulder.x-shot.pose.shoulder.x,shot.ball.y+pose.shoulder.y-shot.pose.shoulder.y,shot.ball.z+pose.shoulder.z-shot.pose.shoulder.z);this.ball.position.lerp(held.center,blend);} 
       if(this.aftermath&&!this.aftermath.sleeping){this.ball.rotation.x+=dt*this.aftermath.velocity.z/.11;this.ball.rotation.z-=dt*this.aftermath.velocity.x/.11;}else if(!shot.result){this.ball.rotation.x-=dt*shot.launchSpeed*2;this.ball.rotation.z+=dt*shot.velocity.x;}
       if(!shot.result){if(this.trailCount===7)this.trailBuffer.copyWithin(0,3);else this.trailCount++;this.ball.position.toArray(this.trailBuffer,(this.trailCount-1)*3);this.trail.geometry.attributes.position.needsUpdate=true;this.trail.geometry.setDrawRange(0,this.trailCount);}
-      this.striker.pose(strikerPose(time,1,shot.t+(shot.result?this.resultElapsed:0),shot.aim.power,shot.aim.x));
-    }else{this.keeper.pose(this.waitingKeeperPose);this.ball.position.set(0,.11,11);this.trail.visible=false;}
+      this.striker.pose(strikerRunupPose(time,1,animationTime+(shot.result?this.resultElapsed:0),shot.aim.power,shot.aim.x,style));
+    }else{this.keeper.pose(home?keeperWarmupPose(home.warmupTime):this.waitingKeeperPose);this.ball.position.copy(home?home.ball:{x:0,y:.11,z:11});if(home)this.ball.rotation.x-=dt*12;this.trail.visible=false;}
     this.keeper.lookAt(this.ball.position,dt);this.striker.lookAt(this.ball.position,dt);
-    this.trail.visible=!!shot&&!shot.result;this.aim.visible=!!aim;
+    this.trail.visible=!!shot&&!shot.result;this.aim.visible=!!aim&&match?.mode!=='advanced';
+    this.arc.visible=!!aim&&match?.mode==='advanced';
+    if(this.arc.visible){
+      const power=aim.power??.5,player=match.teams[match.turn].players[match.kicker],speed=aim.chip?8+7*power*(.65+.35*player.power/99):4.8+27.2*power*(.65+.35*player.power/99),flight=11/speed,lift=aim.chip?1:clamp((power-.22)/.20,0,1),vy=aim.low?0:aim.chip?2.5+4.5*power:clamp(((aim.y??1.2)-.11+4.905*flight*flight)/flight,0,9)*lift,spin=aim.low||aim.chip?0:(aim.curve??0)*(player.curve??76)/99*9*power*lift;
+      for(let i=0;i<=32;i++){const q=i/32*.78,t=q*flight;this.arcBuffer[i*3]=aim.x*q+spin*.5*t*(t-flight);this.arcBuffer[i*3+1]=Math.max(.12,.11+vy*t-4.905*t*t);this.arcBuffer[i*3+2]=11*(1-q);}
+      this.arc.geometry.attributes.position.needsUpdate=true;
+    }
     if(aim)this.aim.position.set(clamp(aim.x,-4.2,4.2),clamp(aim.y??1.2,.2,2.8),.42);
+    this.ballShadow.visible=this.ball.visible;
     this.ballShadow.position.set(this.ball.position.x,.018,this.ball.position.z);this.ballShadow.scale.setScalar(1+this.ball.position.y*.2);
     if(this.netPulse>0){
       this.netAge+=dt;this.netPulse=Math.max(0,this.netPulse-dt*.9);const arr=this.net.geometry.attributes.position.array;
@@ -138,7 +167,7 @@ export class Stadium {
     if(this.profile){
       const stamp=performance.now(),interval=stamp-(this.profileLast??stamp);this.profileLast=stamp;
       if(interval>0&&interval<250){this.profileFrames.push(interval);this.profileCosts.push(stamp-cpuStart);}
-      if(stamp-this.profileUpdated>1000&&this.profileFrames.length){const mean=this.profileFrames.reduce((a,b)=>a+b,0)/this.profileFrames.length,cost=this.profileCosts.reduce((a,b)=>a+b,0)/this.profileCosts.length;this.profileFrames.sort((a,b)=>a-b);const p95=this.profileFrames[Math.ceil(this.profileFrames.length*.95)-1];this.profile.textContent=`FPS ${(1000/mean).toFixed(1)} · CPU 提交 ${cost.toFixed(2)} ms\n帧耗时 均值 ${mean.toFixed(2)} / P95 ${p95.toFixed(2)} ms\n绘制 ${this.renderer.info.render.calls} · 三角形 ${this.renderer.info.render.triangles}\n几何体 ${this.renderer.info.memory.geometries}/${this.geometryCount} · 纹理 ${this.renderer.info.memory.textures}`;this.profileFrames.length=0;this.profileCosts.length=0;this.profileUpdated=stamp;}
+      if(stamp-this.profileUpdated>1000&&this.profileFrames.length){const mean=this.profileFrames.reduce((a,b)=>a+b,0)/this.profileFrames.length,cost=this.profileCosts.reduce((a,b)=>a+b,0)/this.profileCosts.length;this.profileFrames.sort((a,b)=>a-b);const p95=this.profileFrames[Math.ceil(this.profileFrames.length*.95)-1];this.profile.textContent=`${hero?`首页镜头 ${(this.homeTime%20).toFixed(1)} s\n`:''}FPS ${(1000/mean).toFixed(1)} · CPU 提交 ${cost.toFixed(2)} ms\n帧耗时 均值 ${mean.toFixed(2)} / P95 ${p95.toFixed(2)} ms\n绘制 ${this.renderer.info.render.calls} · 三角形 ${this.renderer.info.render.triangles}\n几何体 ${this.renderer.info.memory.geometries}/${this.geometryCount} · 纹理 ${this.renderer.info.memory.textures}`;this.profileFrames.length=0;this.profileCosts.length=0;this.profileUpdated=stamp;}
     }
   }
 }

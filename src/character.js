@@ -18,6 +18,39 @@ function hairCap(){
   for(let j=0;j<rows;j++)for(let i=0;i<segments;i++){const a=j*(segments+1)+i,b=a+segments+1;indices.push(a,a+1,b,b,a+1,b+1);}
   const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));geometry.setIndex(indices);geometry.computeVertexNormals();return geometry;
 }
+// A continuous sleeve of vertices bends around each joint, with no separate joint ball.
+function articulatedLimb(parent,materials,leg=false){
+  const rows=32,sides=16,positions=new Float32Array((rows+1)*(sides+1)*3),indices=[];
+  const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.BufferAttribute(positions,3).setUsage(THREE.DynamicDrawUsage));
+  for(let row=0;row<rows;row++){
+    const start=indices.length;
+    for(let side=0;side<sides;side++){const a=row*(sides+1)+side,b=a+sides+1;indices.push(a,a+1,b,b,a+1,b+1);}
+    const materialIndex=leg?(row<13?1:row>=19?2:0):(row<9?1:0),previous=geometry.groups.at(-1);
+    if(previous?.materialIndex===materialIndex)previous.count+=sides*6;else geometry.addGroup(start,sides*6,materialIndex);
+  }
+  const uv=[];for(let row=0;row<=rows;row++)for(let side=0;side<=sides;side++)uv.push(side/sides,row/rows);geometry.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));
+  geometry.setIndex(indices);const object=mesh(geometry,materials,parent);object.frustumCulled=false;
+  object.userData.leg=leg;return object;
+}
+const limbUpper=new THREE.Vector3(),limbLower=new THREE.Vector3(),limbTangent=new THREE.Vector3(),limbAcross=new THREE.Vector3(),limbNormal=new THREE.Vector3(),limbCenter=new THREE.Vector3();
+function bendLimb(object,root,joint,end){
+  const leg=object.userData.leg,rows=32,sides=16,upper=leg?.43:.29,lower=leg?.43:.27,total=upper+lower,blend=.065;
+  limbUpper.set(joint.x-root.x,joint.y-root.y,joint.z-root.z).normalize();limbLower.set(end.x-joint.x,end.y-joint.y,end.z-joint.z).normalize();
+  const bendPlane=new THREE.Vector3().crossVectors(limbUpper,limbLower).normalize();
+  const profile=leg?[[0,.117],[.24,.111],[.40,.091],[.50,.069],[.59,.064],[.72,.074],[.85,.056],[1,.047]]:[[0,.080],[.23,.077],[.40,.063],[.52,.052],[.68,.053],[.84,.045],[1,.036]];
+  const attr=object.geometry.attributes.position;
+  for(let row=0;row<=rows;row++){
+    const t=row/rows,d=t*total;
+    if(d<upper-blend){limbCenter.set(root.x,root.y,root.z).addScaledVector(limbUpper,d);limbTangent.copy(limbUpper);}
+    else if(d>upper+blend){limbCenter.set(joint.x,joint.y,joint.z).addScaledVector(limbLower,d-upper);limbTangent.copy(limbLower);}
+    else{const q=(d-upper+blend)/(2*blend);limbCenter.set(joint.x,joint.y,joint.z).addScaledVector(limbUpper,-blend*(1-q)**2).addScaledVector(limbLower,blend*q*q);limbTangent.copy(limbUpper).multiplyScalar(1-q).addScaledVector(limbLower,q).normalize();}
+    limbAcross.copy(bendPlane);limbNormal.crossVectors(limbTangent,limbAcross).normalize();
+    let i=1;while(profile[i][0]<t)i++;const [a,r0]=profile[i-1],[b,r1]=profile[i],q=(t-a)/(b-a),radius=r0+(r1-r0)*q*q*(3-2*q);
+    for(let side=0;side<=sides;side++){const angle=side/sides*Math.PI*2,c=Math.cos(angle)*radius,s=Math.sin(angle)*radius*.92;attr.setXYZ(row*(sides+1)+side,limbCenter.x+limbAcross.x*c+limbNormal.x*s,Math.max(-.014,limbCenter.y+limbAcross.y*c+limbNormal.y*s),limbCenter.z+limbAcross.z*c+limbNormal.z*s);}
+  }
+  attr.needsUpdate=true;object.geometry.computeVertexNormals();
+  const normals=object.geometry.attributes.normal;for(let row=0;row<=rows;row++){const a=row*(sides+1),b=a+sides;limbNormal.fromBufferAttribute(normals,a);limbAcross.fromBufferAttribute(normals,b);limbNormal.add(limbAcross).normalize();normals.setXYZ(a,limbNormal.x,limbNormal.y,limbNormal.z);normals.setXYZ(b,limbNormal.x,limbNormal.y,limbNormal.z);}
+}
 let fabricNormal;
 function clothNormal(){
   if(fabricNormal)return fabricNormal;
@@ -40,7 +73,7 @@ export class Player {
     this.skin=mat('#af7857',.65);this.shirt=mat(color);this.shorts=mat('#182b2c');this.sock=mat('#dce7dc');this.boot=mat('#172020',.45);this.trim=mat('#375b52');this.white=mat('#e8ece4');
     for(const cloth of [this.shirt,this.shorts,this.sock]){cloth.normalMap=clothNormal();cloth.normalScale.set(.22,.22);}
     this.trunk=new THREE.Group();this.group.add(this.trunk);
-    this.torso=mesh(loft([[0,.145,.105],[.018,.151,.109],[.045,.148,.106],[.08,.155,.115],[.13,.153,.110],[.20,.163,.112],[.27,.184,.118],[.34,.205,.12],[.40,.210,.111],[.44,.207,.10],[.51,.078,.066]],24,.004),this.shirt,this.trunk);
+    this.torso=mesh(loft([[0,.145,.105],[.018,.151,.109],[.045,.148,.106],[.08,.155,.115],[.13,.153,.110],[.20,.163,.112],[.27,.184,.118],[.34,.205,.12],[.40,.210,.111],[.44,.207,.10],[.475,.188,.092],[.505,.10,.069],[.52,.073,.064]],24,.004),this.shirt,this.trunk);
     this.pelvis=mesh(loft([[-.13,.13,.105],[0,.165,.12],[.06,.148,.108]]),this.shorts,this.trunk);
     ellipsoid(this.trunk,this.skin,0,.53,0,.063,.085,.061);
     const collar=mesh(new THREE.TorusGeometry(.073,.012,8,32),this.trim,this.trunk);collar.rotation.x=Math.PI/2;collar.position.y=.518;
@@ -70,18 +103,10 @@ export class Player {
     ellipsoid(face,nostril,0,-.0665,.082,.024,.001,.0015);
     ellipsoid(face,this.skin,0,-.069,.081,.025,.0025,.002);
     for(const sign of[-1,1])ellipsoid(face,nostril,sign*.009,-.020,.096,.004,.0025,.002);
-    this.limbs=[];this.joints=[];this.hands=[];this.feet=[];this.shoulderCaps=[];
+    this.limbs=[];this.hands=[];this.feet=[];this.shoulderCaps=[];
     for(let i=0;i<2;i++){
-      this.shoulderCaps.push(ellipsoid(this.group,this.shirt,0,0,0,.086,.078,.079));
-      for(const [type,rings,m] of [
-        ['upper',[[0,.058,.061],[.12,.071,.073],[.29,.081,.075]],this.skin],
-        ['fore',[[0,.040,.043],[.09,.052,.052],[.27,.061,.060]],this.skin],
-        ['thigh',[[0,.076,.072],[.18,.105,.094],[.43,.113,.098]],this.skin],
-        ['shin',[[0,.047,.047],[.07,.048,.049],[.16,.061,.063],[.25,.075,.073],[.32,.072,.068],[.39,.061,.060],[.43,.066,.063]],this.sock]]){
-        const o=mesh(loft(rings),m,this.group);this.limbs.push(o);
-        if(type==='upper')mesh(loft([[.145,.079,.080],[.152,.079,.080],[.158,.075,.077],[.19,.079,.079],[.23,.082,.079],[.29,.086,.081]],24,.0025),this.shirt,o);
-        if(type==='thigh')mesh(loft([[.225,.114,.106],[.233,.114,.106],[.24,.110,.102],[.28,.114,.105],[.34,.117,.108],[.39,.119,.107],[.43,.12,.109]],24,.003),this.shorts,o);
-      }
+      this.shoulderCaps.push(ellipsoid(this.group,this.shirt,0,0,0,.075,.061,.070));
+      this.limbs.push(articulatedLimb(this.group,[this.skin,this.shirt]),articulatedLimb(this.group,[this.skin,this.shorts,this.sock],true));
       const h=new THREE.Group();this.group.add(h);this.hands.push(h);const hm=gloves?this.white:this.skin;
       ellipsoid(h,hm,0,.025,0,.044,.057,.024);
       for(let f=0;f<4;f++){
@@ -98,7 +123,6 @@ export class Player {
       ellipsoid(shoe,this.trim,0,-.028,-.045,.070,.022,.143);
       for(let j=0;j<4;j++){const lace=mesh(new THREE.BoxGeometry(.056,.005,.009),this.white,shoe);lace.position.set(0,.045,-.025-j*.017);}
       for(const x of[-.043,.043])for(const z of[-.13,-.065,.045]){const stud=mesh(new THREE.CylinderGeometry(.009,.007,.018,8),this.white,shoe);stud.position.set(x,-.055,z);}
-      for(let j=0;j<2;j++)this.joints.push(ellipsoid(this.group,this.skin,0,0,0,j?.073:.058,j?.073:.058,j?.069:.057));
     }
     const canvas=document.createElement('canvas');canvas.width=256;canvas.height=256;this.numberTexture=new THREE.CanvasTexture(canvas);this.numberTexture.colorSpace=THREE.SRGBColorSpace;
     this.number=mesh(new THREE.PlaneGeometry(.17,.20),new THREE.MeshStandardMaterial({map:this.numberTexture,transparent:true,roughness:.8,depthWrite:false}),this.trunk);this.number.position.set(0,.28,gloves?-.124:.124);if(gloves)this.number.rotation.y=Math.PI;
@@ -115,13 +139,12 @@ export class Player {
     this.head.rotation.x+=(angles.pitch-this.head.rotation.x)*weight;
     this.head.rotation.y+=(angles.yaw-this.head.rotation.y)*weight;
   }
-  segment(o,a,b){set(o.position,b);set(this.tempA,a).sub(o.position).normalize();o.quaternion.setFromUnitVectors(this.yAxis,this.tempA);}
   pose(p){
     set(this.trunk.position,p.hip);const right=set(this.tempA,p.right),up=set(this.tempB,p.up),back=this.tempC.crossVectors(right,up).normalize();this.trunk.quaternion.setFromRotationMatrix(this.tempMatrix.makeBasis(right,up,back));
     for(let i=0;i<2;i++){
-      set(this.shoulderCaps[i].position,p.shoulders[i]);
-      const k=i*4;this.segment(this.limbs[k],p.shoulders[i],p.elbows[i]);this.segment(this.limbs[k+1],p.elbows[i],p.hands[i]);this.segment(this.limbs[k+2],p.hips[i],p.knees[i]);this.segment(this.limbs[k+3],p.knees[i],p.feet[i]);
-      set(this.joints[i*2].position,p.elbows[i]);set(this.joints[i*2+1].position,p.knees[i]);
+      set(this.shoulderCaps[i].position,p.shoulders[i]);this.shoulderCaps[i].position.addScaledVector(p.up,-.026);this.shoulderCaps[i].quaternion.copy(this.trunk.quaternion);
+      bendLimb(this.limbs[i*2],p.shoulders[i],p.elbows[i],p.hands[i]);
+      bendLimb(this.limbs[i*2+1],p.hips[i],p.knees[i],p.feet[i]);
       set(this.hands[i].position,p.hands[i]);set(this.tempA,p.hands[i]).sub(set(this.tempB,p.elbows[i])).normalize();this.hands[i].quaternion.setFromUnitVectors(this.yAxis,this.tempA);
       // Wrist dorsiflexion flattens the palm as it becomes a ground support.
       const support=1-THREE.MathUtils.smoothstep(p.hands[i].y,.10,.24);
