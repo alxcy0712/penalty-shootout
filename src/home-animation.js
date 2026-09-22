@@ -15,7 +15,6 @@ export function homeAnimation(time){
     striker:strikerRunupPose(0,phase,after>=0?after:-1,.7,2.7,penaltyStyles[0]),
     strikerVisible:t>=5&&t<18,ballVisible:t<18,
     ball,
-    // Freeze the warmup during the shot, and retrace it as the camera returns.
-    warmupTime:t<8?8*smooth(t/8):t<14?8:8*(1-smooth((t-14)/6)),
+    warmupTime:time,
   };
 }

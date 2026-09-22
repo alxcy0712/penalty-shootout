@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {body,strikerRunupPose,penaltyStyles,penaltyStyle,strikerPose,goalkeeperPose,holdingPose,neckAngles,HOLD_DURATION,keeperWarmupPose} from '../src/anatomy.js';
+import {body,strikerRunupPose,penaltyStyles,penaltyStyle,strikerPose,goalkeeperPose,holdingPose,neckAngles,HOLD_DURATION,keeperHesitationPose,keeperWarmupPose} from '../src/anatomy.js';
 const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z);
 function check(p){for(let i=0;i<2;i++)for(const[a,b,length]of[[p.shoulders[i],p.elbows[i],body.upperArm],[p.elbows[i],p.hands[i],body.forearm],[p.hips[i],p.knees[i],body.thigh],[p.knees[i],p.feet[i],body.shin]])assert.ok(Math.abs(distance(a,b)-length)<1e-8);}
 test('anatomical segment lengths remain fixed during shots, dives and recovery',()=>{for(let n=0;n<=600;n++){let t=n/120;check(strikerPose(t,Math.min(1,t/.55),t>.55?t-.55:-1));for(const direction of[-1,0,1])for(const height of[.3,1.2,2.3])check(goalkeeperPose({reach:85,speed:85},direction,t,height));}});
@@ -15,6 +15,74 @@ test('no joint teleports at backswing, takeoff or recovery transitions',()=>{
 });
 test('foot travels through contact continuously and responds to shot power',()=>{
   for(const power of[0,.5,1]){const dt=.00001;const before=strikerPose(0,1-dt/.55,-1,power).feet[1],at=strikerPose(0,1,0,power).feet[1],after=strikerPose(0,1,dt,power).feet[1];const inSpeed=(before.z-at.z)/dt,outSpeed=(at.z-after.z)/dt;assert.ok(Math.abs(inSpeed-(5+13*power))<.02);assert.ok(Math.abs(inSpeed-outSpeed)<.02);}
+});
+test('the body follows the kicking foot through impact before settling',()=>{
+  const contact=strikerPose(0,1,0,.7,0),follow=strikerPose(0,1,.2,.7,0),settled=strikerPose(0,1,1.2,.7,0);
+  assert.ok(distance(contact.hands[0],follow.hands[0])>.07);
+  assert.ok(Math.abs(contact.right.z-follow.right.z)>.08);
+  assert.ok(Math.abs(settled.feet[1].y-.075)<.01);
+});
+test('correct high-ball reads fully extend toward the chosen side',()=>{
+  for(const direction of[-1,1]){
+    const pose=goalkeeperPose({speed:85,reach:85},direction,.30,2);
+    const reach=Math.max(...pose.hands.map(hand=>(hand.x-pose.hip.x)*direction));
+    assert.ok(reach>.8,`${direction} reach ${reach}`);
+    assert.ok(pose.hip.x*direction>.8);
+  }
+});
+test('wrong-way recognition produces a readable grounded half-dive and recovery',()=>{
+  for(const direction of[-1,1]){
+    const origin=goalkeeperPose({speed:85,reach:85},direction,.1,1.2);
+    const brace=keeperHesitationPose(origin,direction,.22),recovered=keeperHesitationPose(origin,direction,.95);
+    assert.ok((brace.hip.x-origin.hip.x)*direction>.14);
+    assert.ok(brace.up.x*direction>.2);
+    assert.ok(Math.abs(brace.hands[0].y-brace.hands[1].y)>.06);
+    for(let i=0;i<2;i++)assert.ok(distance(brace.feet[i],origin.feet[i])<1e-8);
+    assert.ok(Math.abs(recovered.up.x)<1e-8);
+  }
+});
+test('the pelvis carries momentum through impact and the swinging foot immediately returns to the turf',()=>{
+  const dt=.00001;
+  for(const power of[0,.5,1])for(const x of[-4.5,0,4.5]){
+    const before=strikerPose(0,1-dt/.55,-1,power,x),at=strikerPose(0,1,0,power,x),after=strikerPose(0,1,dt,power,x);
+    const incoming=(at.hip.z-before.hip.z)/dt,outgoing=(after.hip.z-at.hip.z)/dt;
+    assert.ok(outgoing<-.6);assert.ok(Math.abs(incoming-outgoing)<.005);
+    const apex=3*(.36+.16*power)/(5+13*power);
+    const peak=strikerPose(0,1,apex,power,x).feet[1];
+    for(const elapsed of[.025,.05,.10]){
+      const foot=strikerPose(0,1,apex+elapsed,power,x).feet[1];
+      assert.ok(foot.y<peak.y-.001);assert.ok(distance(foot,peak)>.001);
+    }
+    const settled=strikerPose(0,1,1.2,power,x);assert.ok(Math.abs(settled.feet[1].y-.075)<1e-8);
+  }
+});
+test('wrong-way braking inherits the incoming motion before settling on planted feet',()=>{
+  const dt=.00001;
+  for(const direction of[-1,1]){
+    const stats={speed:85,reach:85},origin=goalkeeperPose(stats,direction,.1,1.2),previous=goalkeeperPose(stats,direction,.099,1.2);
+    const start=keeperHesitationPose(origin,direction,0,previous),next=keeperHesitationPose(origin,direction,dt,previous);
+    for(const key of['hip','up','hands','elbows','knees','feet']){
+      const list=p=>Array.isArray(p[key])?p[key]:[p[key]];
+      list(origin).forEach((point,i)=>{
+        assert.ok(distance(point,list(start)[i])<1e-8);
+        const jump=Math.hypot(...['x','y','z'].map(k=>(list(next)[i][k]-point[k])/dt-(point[k]-list(previous)[i][k])/.001));
+        assert.ok(jump<.04,`${direction}/${key}: velocity jump ${jump}`);
+      });
+    }
+    for(let n=0;n<=95;n++){const pose=keeperHesitationPose(origin,direction,n/100,previous);check(pose);for(let i=0;i<2;i++)assert.ok(distance(pose.feet[i],origin.feet[i])<1e-8);}
+  }
+});
+test('keeper landing absorbs vertical speed continuously',()=>{
+  const dt=.00001,stats={speed:85,reach:85};
+  for(const height of[.3,1.2,2.3])for(const stretch of[0,1]){
+    let previousVelocity=null;
+    for(let t=.40;t<1.15;t+=.001){
+      const before=goalkeeperPose({...stats,stretch},1,t-dt,height),after=goalkeeperPose({...stats,stretch},1,t+dt,height);
+      const velocity=(after.hip.y-before.hip.y)/(2*dt);
+      if(previousVelocity!==null)assert.ok(Math.abs(velocity-previousVelocity)<.15,`landing velocity jumps at ${height}/${stretch}/${t}`);
+      previousVelocity=velocity;
+    }
+  }
 });
 test('left and right shots align the striking foot and preserve impact velocity and support',()=>{
   const dt=.00001;
@@ -86,6 +154,34 @@ test('runup joints have continuous velocity at footfalls and the final gather',(
           assert.ok(jump<.05,`${style.name}/${step}/${key}: velocity jump ${jump}`);
         }
       }
+    }
+  }
+});
+test('runups keep a steady body height and carry the loaded stance into the strike',()=>{
+  const dt=1/240;
+  for(const style of penaltyStyles)for(const offset of[0,4,8]){
+    const end=style.duration-.55,sample=t=>strikerRunupPose(offset+t,t/style.duration,-1,.7,0,style);
+    for(let t=dt;t<end-dt;t+=.001){
+      const before=sample(t-dt).hip,at=sample(t).hip,after=sample(t+dt).hip;
+      assert.ok(at.y>.73,`${style.name}: hip collapses at ${t}`);
+      assert.ok(Math.abs(after.y-before.y)/(2*dt)<.8,`${style.name}: abrupt vertical movement at ${t}`);
+      assert.ok(Math.abs(after.y-2*at.y+before.y)/(dt*dt)<35,`${style.name}: body jolts at ${t}`);
+      if(t>end*.85)assert.ok(at.y<.82,`${style.name}: stands up before the plant`);
+    }
+  }
+});
+test('runup footfalls preserve pelvis acceleration and keep each support foot fixed',()=>{
+  const dt=.0001;
+  for(const style of penaltyStyles){
+    const sample=t=>strikerRunupPose(t,t/style.duration,-1,.7,0,style),time=q=>(-.7+Math.sqrt(.49+1.2*q))/.6*(style.duration-.55);
+    for(let step=1;step<style.steps;step++){
+      const t=time(step/style.steps),a=sample(t-2*dt).hip,b=sample(t-dt).hip,c=sample(t).hip,d=sample(t+dt).hip,e=sample(t+2*dt).hip;
+      const jump=Math.hypot(...['x','y','z'].map(key=>((e[key]-2*d[key]+c[key])-(c[key]-2*b[key]+a[key]))/(dt*dt)));
+      assert.ok(jump<.1,`${style.name}/${step}: acceleration changes abruptly`);
+    }
+    for(let step=0;step<style.steps;step++){
+      const support=1-step%2,foot=sample(time((step+.05)/style.steps)).feet[support];
+      for(let u=.1;u<1;u+=.05)assert.ok(distance(sample(time((step+u)/style.steps)).feet[support],foot)<1e-8,`${style.name}/${step}: support foot slides`);
     }
   }
 });

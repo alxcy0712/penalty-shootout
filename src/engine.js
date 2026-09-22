@@ -143,7 +143,7 @@ export class Shot {
     this.diveDelay=this.launchSpeed>=23||(this.launchSpeed>=15&&Math.abs(ball.x)<.8)?0:Math.max(0,arrival-bestTime);this.diveVelocity=bestSpeed;
   }
   poseAt(time,height=this.reactionHeight??this.target.y){
-    if(this.hesitation)return keeperHesitationPose(this.hesitation.pose,this.hesitation.direction,time-this.hesitation.at);
+    if(this.hesitation)return keeperHesitationPose(this.hesitation.pose,this.hesitation.direction,time-this.hesitation.at,this.hesitation.previous);
     const stats={...this.keeper,speed:this.keeper.speed*this.keeperPressure,reach:this.keeper.reach*this.keeperPressure,diveVelocity:this.diveVelocity,stretch:this.stretch};
     const elapsed=this.diveAt===null?time:time-this.diveAt,delay=this.direction?(this.diveDelay??0):0;
     let targetHeight=clamp(this.direction?(this.diveHeight??height):height,.3,2.3);
@@ -190,7 +190,8 @@ export class Shot {
     const observedX=this.ball.x+this.velocity.x*ballTime-this.keeperOffset.x;
     const recognition=.09+.04*(1-this.keeper.speed/99);
     if(this.direction&&this.t-this.diveAt>=recognition&&elapsed<=.13&&ballTime<.7&&this.velocity.z<-15&&observedX*this.direction<-1.1&&!this.touched){
-      this.hesitation={at:this.t,pose:this.pose,direction:this.direction};
+      const pose=this.poseAt(this.t),previous=this.poseAt(this.t-.001);
+      this.hesitation={at:this.t,pose,previous,direction:this.direction};
       this.keeperVelocity=v();this.footStep=null;
       return;
     }
@@ -239,7 +240,7 @@ export class Shot {
   }
   stepFeet(){
     if(this.footStep){
-      const step=this.footStep,q=clamp((this.t-step.at)/.16,0,1),blend=q*q*(3-2*q);
+      const step=this.footStep,q=clamp((this.t-step.at)/.16,0,1),blend=q*q*q*(q*(q*6-15)+10);
       this.trackingFeet[step.index]=add(step.from,mul(sub(step.to,step.from),blend));
       this.trackingFeet[step.index].y+=.035*Math.sin(Math.PI*q)**2;
       if(q===1)this.footStep=null;

@@ -2,6 +2,7 @@ import {homeAnimation} from './home-animation.js';
 import {GoalBall} from './ball-motion.js';
 import {batchRigidGroup} from './batching.js';
 import {Player} from './character.js';
+import {renderPixelRatio} from './rendering.js';
 import {strikerRunupPose,penaltyStyle,holdingPose,HOLD_DURATION,blendKeeperPose,keeperWarmupPose} from './anatomy.js';
 import * as THREE from 'three';
 import {keeperPose, clamp, GOAL} from './engine.js';
@@ -33,7 +34,7 @@ export class Stadium {
   constructor(container) {
     this.container=container;this.needsRender=true;this.reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');this.scene=new THREE.Scene();this.scene.background=new THREE.Color('#0a1b20');this.scene.fog=new THREE.FogExp2('#0a1b20',.019);
     this.renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.7));this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.12;
+    this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.12;
     container.appendChild(this.renderer.domElement);this.camera=new THREE.PerspectiveCamera(45,1,.1,140);
     this.scene.add(new THREE.HemisphereLight('#b8d9e6','#174533',2.1));
     const sun=new THREE.DirectionalLight('#e9eee1',3);sun.position.set(-8,16,12);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-16,right:16,top:20,bottom:-10,near:1,far:50});sun.shadow.bias=-.0007;this.scene.add(sun);
@@ -100,7 +101,7 @@ export class Stadium {
   }
   resize() {
     const {width,height}=this.container.getBoundingClientRect();if(!width||!height)return;
-    this.viewWidth=width;this.viewHeight=height;this.needsRender=true;this.renderer.setSize(width,height,false);this.camera.aspect=width/height;this.camera.updateProjectionMatrix();
+    this.viewWidth=width;this.viewHeight=height;this.needsRender=true;this.renderer.setPixelRatio(renderPixelRatio(width,height,window.devicePixelRatio));this.renderer.setSize(width,height,false);this.camera.aspect=width/height;this.camera.updateProjectionMatrix();
   }
   setMode(mode) {if(this.mode!==mode){this.trailCount=0;this.needsRender=true;if(mode==='hero')this.homeTime=0;}this.mode=mode;}
   update(dt,time,shot=null,runup=0,aim=null,match=null,kickAim=null,alpha=1) {
@@ -128,7 +129,7 @@ export class Stadium {
     if(match?.kicker!==undefined && this.colorsKey!==`${match.turn}-${match.kicker}`){this.colorsKey=`${match.turn}-${match.kicker}`;this.striker.setColor(match.teams[match.turn].color,match.teams[match.turn].players[match.kicker].number);this.keeper.setColor(match.turn?'#a9decb':'#e8a172',1);}
     const style=penaltyStyle(match?.teams[match.turn]?.players[match.kicker]);
     this.striker.group.visible=!home||home.strikerVisible;this.ball.visible=!home||home.ballVisible;
-    if(!shot)this.striker.pose(home?home.striker:strikerRunupPose(time,runup,-1,kickAim?.power??.7,kickAim?.x??0,style));
+    if(!shot)this.striker.pose(home?home.striker:strikerRunupPose(time,runup,-1,kickAim?.power??.7,kickAim?.x??0,style,kickAim?.chip?'chip':kickAim?.low?'low':'normal'));
     if(shot){
       if(this.currentShot!==shot){this.currentShot=shot;this.resultElapsed=0;this.trailCount=0;this.aftermath=null;}
       if(shot.result)this.resultElapsed+=dt;
@@ -141,10 +142,10 @@ export class Stadium {
       if(shot.result?.goal){
         this.aftermath??=new GoalBall(shot.ball,shot.velocity);const hits=this.aftermath.netHits;this.aftermath.advance(dt);this.ball.position.set(this.aftermath.position.x,this.aftermath.position.y,this.aftermath.position.z);if(this.aftermath.netHits>hits){this.netPulse=clamp(this.aftermath.lastImpactSpeed/22,.15,1);this.netImpact={...this.aftermath.position};this.netAge=0;}
       }
-      if(held){const t=clamp(this.resultElapsed/HOLD_DURATION,0,1),blend=t*t*(3-2*t);this.ball.position.set(shot.ball.x+pose.shoulder.x-shot.pose.shoulder.x,shot.ball.y+pose.shoulder.y-shot.pose.shoulder.y,shot.ball.z+pose.shoulder.z-shot.pose.shoulder.z);this.ball.position.lerp(held.center,blend);} 
+      if(held){this.ball.position.set(shot.ball.x+pose.shoulder.x-shot.pose.shoulder.x,shot.ball.y+pose.shoulder.y-shot.pose.shoulder.y,shot.ball.z+pose.shoulder.z-shot.pose.shoulder.z);this.ball.position.lerp(held.center,held.weight);}
       if(this.aftermath&&!this.aftermath.sleeping){this.ball.rotation.x+=dt*this.aftermath.velocity.z/.11;this.ball.rotation.z-=dt*this.aftermath.velocity.x/.11;}else if(!shot.result){this.ball.rotation.x-=dt*shot.launchSpeed*2;this.ball.rotation.z+=dt*shot.velocity.x;}
       if(!shot.result){if(this.trailCount===7)this.trailBuffer.copyWithin(0,3);else this.trailCount++;this.ball.position.toArray(this.trailBuffer,(this.trailCount-1)*3);this.trail.geometry.attributes.position.needsUpdate=true;this.trail.geometry.setDrawRange(0,this.trailCount);}
-      this.striker.pose(strikerRunupPose(time,1,animationTime+(shot.result?this.resultElapsed:0),shot.aim.power,shot.aim.x,style));
+      this.striker.pose(strikerRunupPose(time,1,animationTime+(shot.result?this.resultElapsed:0),shot.aim.power,shot.aim.x,style,shot.aim.chip?'chip':shot.aim.low?'low':'normal'));
     }else{this.keeper.pose(home?keeperWarmupPose(home.warmupTime):this.waitingKeeperPose);this.ball.position.copy(home?home.ball:{x:0,y:.11,z:11});if(home)this.ball.rotation.x-=dt*12;this.trail.visible=false;}
     this.keeper.lookAt(this.ball.position,dt);this.striker.lookAt(this.ball.position,dt);
     this.trail.visible=!!shot&&!shot.result;this.aim.visible=!!aim&&match?.mode!=='advanced';

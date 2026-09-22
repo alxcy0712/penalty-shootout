@@ -18,10 +18,18 @@ function hairCap(){
   for(let j=0;j<rows;j++)for(let i=0;i<segments;i++){const a=j*(segments+1)+i,b=a+segments+1;indices.push(a,a+1,b,b,a+1,b+1);}
   const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));geometry.setIndex(indices);geometry.computeVertexNormals();return geometry;
 }
+const limbRows=32,limbSides=16;
+const ringCos=Float64Array.from({length:limbSides+1},(_,i)=>Math.cos(i/limbSides*Math.PI*2));
+const ringSin=Float64Array.from({length:limbSides+1},(_,i)=>Math.sin(i/limbSides*Math.PI*2));
+const limbProfiles=[[[0,.068],[.12,.078],[.25,.072],[.40,.063],[.52,.052],[.68,.053],[.84,.045],[1,.036]],[[0,.117],[.24,.111],[.40,.091],[.50,.069],[.59,.064],[.72,.074],[.85,.056],[1,.047]]].map(profile=>Float64Array.from({length:limbRows+1},(_,row)=>{
+  const t=row/limbRows;let i=1;while(profile[i][0]<t)i++;
+  const [a,r0]=profile[i-1],[b,r1]=profile[i],q=(t-a)/(b-a);return r0+(r1-r0)*q*q*(3-2*q);
+}));
 // A continuous sleeve of vertices bends around each joint, with no separate joint ball.
 function articulatedLimb(parent,materials,leg=false){
-  const rows=32,sides=16,positions=new Float32Array((rows+1)*(sides+1)*3),indices=[];
+  const rows=limbRows,sides=limbSides,positions=new Float32Array((rows+1)*(sides+1)*3),indices=[];
   const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.BufferAttribute(positions,3).setUsage(THREE.DynamicDrawUsage));
+  geometry.setAttribute('normal',new THREE.BufferAttribute(new Float32Array(positions.length),3).setUsage(THREE.DynamicDrawUsage));
   for(let row=0;row<rows;row++){
     const start=indices.length;
     for(let side=0;side<sides;side++){const a=row*(sides+1)+side,b=a+sides+1;indices.push(a,a+1,b,b,a+1,b+1);}
@@ -30,26 +38,50 @@ function articulatedLimb(parent,materials,leg=false){
   }
   const uv=[];for(let row=0;row<=rows;row++)for(let side=0;side<=sides;side++)uv.push(side/sides,row/rows);geometry.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));
   geometry.setIndex(indices);const object=mesh(geometry,materials,parent);object.frustumCulled=false;
-  object.userData.leg=leg;return object;
+  object.userData={leg,root:new THREE.Vector3(NaN,0,0),joint:new THREE.Vector3(),end:new THREE.Vector3(),right:new THREE.Vector3(),up:new THREE.Vector3()};return object;
 }
-const limbUpper=new THREE.Vector3(),limbLower=new THREE.Vector3(),limbTangent=new THREE.Vector3(),limbAcross=new THREE.Vector3(),limbNormal=new THREE.Vector3(),limbCenter=new THREE.Vector3();
-function bendLimb(object,root,joint,end){
-  const leg=object.userData.leg,rows=32,sides=16,upper=leg?.43:.29,lower=leg?.43:.27,total=upper+lower,blend=.065;
+const limbUpper=new THREE.Vector3(),limbLower=new THREE.Vector3(),limbTangent=new THREE.Vector3(),limbAcross=new THREE.Vector3(),limbNormal=new THREE.Vector3(),limbCenter=new THREE.Vector3(),bendPlane=new THREE.Vector3();
+// Accumulate face normals directly into reusable buffers, avoiding thousands of
+// BufferAttribute get/set calls and temporary vectors for every animated limb.
+function updateLimbNormals(geometry){
+  const p=geometry.attributes.position.array,n=geometry.attributes.normal.array,index=geometry.index.array;n.fill(0);
+  for(let i=0;i<index.length;i+=3){
+    const a=index[i]*3,b=index[i+1]*3,c=index[i+2]*3;
+    const abx=p[b]-p[a],aby=p[b+1]-p[a+1],abz=p[b+2]-p[a+2],acx=p[c]-p[a],acy=p[c+1]-p[a+1],acz=p[c+2]-p[a+2];
+    const x=aby*acz-abz*acy,y=abz*acx-abx*acz,z=abx*acy-aby*acx;
+    n[a]+=x;n[a+1]+=y;n[a+2]+=z;n[b]+=x;n[b+1]+=y;n[b+2]+=z;n[c]+=x;n[c+1]+=y;n[c+2]+=z;
+  }
+  for(let i=0;i<n.length;i+=3){const scale=1/(Math.sqrt(n[i]*n[i]+n[i+1]*n[i+1]+n[i+2]*n[i+2])||1);n[i]*=scale;n[i+1]*=scale;n[i+2]*=scale;}
+  for(let row=0;row<=limbRows;row++){
+    const a=row*(limbSides+1)*3,b=a+limbSides*3,x=n[a]+n[b],y=n[a+1]+n[b+1],z=n[a+2]+n[b+2],scale=1/(Math.sqrt(x*x+y*y+z*z)||1);
+    n[a]=n[b]=x*scale;n[a+1]=n[b+1]=y*scale;n[a+2]=n[b+2]=z*scale;
+  }
+  geometry.attributes.normal.needsUpdate=true;
+}
+function bendLimb(object,root,joint,end,pose,sign){
+  const previous=object.userData,leg=previous.leg;
+  if(previous.root.equals(root)&&previous.joint.equals(joint)&&previous.end.equals(end)&&(leg||previous.right.equals(pose.right)&&previous.up.equals(pose.up)))return;
+  previous.root.copy(root);previous.joint.copy(joint);previous.end.copy(end);previous.right.copy(pose.right);previous.up.copy(pose.up);
+  const rows=limbRows,sides=limbSides,upper=leg?.43:.29,lower=leg?.43:.27,total=upper+lower;
   limbUpper.set(joint.x-root.x,joint.y-root.y,joint.z-root.z).normalize();limbLower.set(end.x-joint.x,end.y-joint.y,end.z-joint.z).normalize();
-  const bendPlane=new THREE.Vector3().crossVectors(limbUpper,limbLower).normalize();
-  const profile=leg?[[0,.117],[.24,.111],[.40,.091],[.50,.069],[.59,.064],[.72,.074],[.85,.056],[1,.047]]:[[0,.080],[.23,.077],[.40,.063],[.52,.052],[.68,.053],[.84,.045],[1,.036]];
-  const attr=object.geometry.attributes.position;
+  bendPlane.crossVectors(limbUpper,limbLower);const sine=bendPlane.length();bendPlane.normalize();
+  const blend=.065+(leg?.105:.065)*THREE.MathUtils.smoothstep(1-limbUpper.dot(limbLower),.2,1.5);
+  const profile=limbProfiles[leg?1:0],shoulderSupport=leg?0:1-THREE.MathUtils.smoothstep(root.y,.10,.23);
+  const attr=object.geometry.attributes.position,positions=attr.array;
   for(let row=0;row<=rows;row++){
-    const t=row/rows,d=t*total;
+    const t=row/rows,d=t*total;let innerRadius=Infinity;
     if(d<upper-blend){limbCenter.set(root.x,root.y,root.z).addScaledVector(limbUpper,d);limbTangent.copy(limbUpper);}
     else if(d>upper+blend){limbCenter.set(joint.x,joint.y,joint.z).addScaledVector(limbLower,d-upper);limbTangent.copy(limbLower);}
-    else{const q=(d-upper+blend)/(2*blend);limbCenter.set(joint.x,joint.y,joint.z).addScaledVector(limbUpper,-blend*(1-q)**2).addScaledVector(limbLower,blend*q*q);limbTangent.copy(limbUpper).multiplyScalar(1-q).addScaledVector(limbLower,q).normalize();}
+    else{const q=(d-upper+blend)/(2*blend);limbCenter.set(joint.x,joint.y,joint.z).addScaledVector(limbUpper,-blend*(1-q)**2).addScaledVector(limbLower,blend*q*q);limbTangent.copy(limbUpper).multiplyScalar(1-q).addScaledVector(limbLower,q);
+      // Keep the inside of a flexed elbow/knee within the curve's radius so
+      // adjacent rings cannot fold through one another and turn inside out.
+      innerRadius=.72*2*blend*limbTangent.length()**3/Math.max(sine,1e-6);limbTangent.normalize();}
+    if(!leg){const inset=(1-THREE.MathUtils.smoothstep(d,0,.13))*(1-shoulderSupport);limbCenter.addScaledVector(pose.right,-sign*.075*inset).addScaledVector(pose.up,-.022*inset);}
     limbAcross.copy(bendPlane);limbNormal.crossVectors(limbTangent,limbAcross).normalize();
-    let i=1;while(profile[i][0]<t)i++;const [a,r0]=profile[i-1],[b,r1]=profile[i],q=(t-a)/(b-a),radius=r0+(r1-r0)*q*q*(3-2*q);
-    for(let side=0;side<=sides;side++){const angle=side/sides*Math.PI*2,c=Math.cos(angle)*radius,s=Math.sin(angle)*radius*.92;attr.setXYZ(row*(sides+1)+side,limbCenter.x+limbAcross.x*c+limbNormal.x*s,Math.max(-.014,limbCenter.y+limbAcross.y*c+limbNormal.y*s),limbCenter.z+limbAcross.z*c+limbNormal.z*s);}
+    const radius=profile[row]+.046*shoulderSupport*(1-THREE.MathUtils.smoothstep(d,0,.12));
+    for(let side=0;side<=sides;side++){const c=ringCos[side]*radius,s=ringSin[side]*(ringSin[side]<0?Math.min(radius*.92,innerRadius):radius*.92),i=(row*(sides+1)+side)*3;positions[i]=limbCenter.x+limbAcross.x*c+limbNormal.x*s;positions[i+1]=Math.max(-.014,limbCenter.y+limbAcross.y*c+limbNormal.y*s);positions[i+2]=limbCenter.z+limbAcross.z*c+limbNormal.z*s;}
   }
-  attr.needsUpdate=true;object.geometry.computeVertexNormals();
-  const normals=object.geometry.attributes.normal;for(let row=0;row<=rows;row++){const a=row*(sides+1),b=a+sides;limbNormal.fromBufferAttribute(normals,a);limbAcross.fromBufferAttribute(normals,b);limbNormal.add(limbAcross).normalize();normals.setXYZ(a,limbNormal.x,limbNormal.y,limbNormal.z);normals.setXYZ(b,limbNormal.x,limbNormal.y,limbNormal.z);}
+  attr.needsUpdate=true;updateLimbNormals(object.geometry);
 }
 let fabricNormal;
 function clothNormal(){
@@ -103,9 +135,8 @@ export class Player {
     ellipsoid(face,nostril,0,-.0665,.082,.024,.001,.0015);
     ellipsoid(face,this.skin,0,-.069,.081,.025,.0025,.002);
     for(const sign of[-1,1])ellipsoid(face,nostril,sign*.009,-.020,.096,.004,.0025,.002);
-    this.limbs=[];this.hands=[];this.feet=[];this.shoulderCaps=[];
+    this.limbs=[];this.hands=[];this.feet=[];
     for(let i=0;i<2;i++){
-      this.shoulderCaps.push(ellipsoid(this.group,this.shirt,0,0,0,.075,.061,.070));
       this.limbs.push(articulatedLimb(this.group,[this.skin,this.shirt]),articulatedLimb(this.group,[this.skin,this.shorts,this.sock],true));
       const h=new THREE.Group();this.group.add(h);this.hands.push(h);const hm=gloves?this.white:this.skin;
       ellipsoid(h,hm,0,.025,0,.044,.057,.024);
@@ -131,6 +162,13 @@ export class Player {
     this.setColor(color,11);
   }
   setColor(color,number=11){this.shirt.color.set(color);const c=this.numberTexture.image.getContext('2d');c.clearRect(0,0,256,256);c.fillStyle='#19352e';c.font='bold 185px sans-serif';c.textAlign='center';c.fillText(String(number),128,199);this.numberTexture.needsUpdate=true;}
+  // A second inspection angle displays the exact same deformation. Share the
+  // buffers so two views require one pose calculation and one GPU upload.
+  copyPose(source){
+    this.trunk.position.copy(source.trunk.position);this.trunk.quaternion.copy(source.trunk.quaternion);this.head.quaternion.copy(source.head.quaternion);
+    for(let i=0;i<this.limbs.length;i++)if(this.limbs[i].geometry!==source.limbs[i].geometry){this.limbs[i].geometry.dispose();this.limbs[i].geometry=source.limbs[i].geometry;}
+    for(let i=0;i<2;i++)for(const part of['hands','feet']){this[part][i].position.copy(source[part][i].position);this[part][i].quaternion.copy(source[part][i].quaternion);}
+  }
   lookAt(target,dt){
     this.group.updateWorldMatrix(true,false);this.tempMatrix.copy(this.group.matrixWorld).invert();
     const relative=set(this.tempA,target).applyMatrix4(this.tempMatrix).sub(this.trunk.position);
@@ -142,10 +180,16 @@ export class Player {
   pose(p){
     set(this.trunk.position,p.hip);const right=set(this.tempA,p.right),up=set(this.tempB,p.up),back=this.tempC.crossVectors(right,up).normalize();this.trunk.quaternion.setFromRotationMatrix(this.tempMatrix.makeBasis(right,up,back));
     for(let i=0;i<2;i++){
-      set(this.shoulderCaps[i].position,p.shoulders[i]);this.shoulderCaps[i].position.addScaledVector(p.up,-.026);this.shoulderCaps[i].quaternion.copy(this.trunk.quaternion);
-      bendLimb(this.limbs[i*2],p.shoulders[i],p.elbows[i],p.hands[i]);
-      bendLimb(this.limbs[i*2+1],p.hips[i],p.knees[i],p.feet[i]);
+      bendLimb(this.limbs[i*2],p.shoulders[i],p.elbows[i],p.hands[i],p,i?1:-1);
+      bendLimb(this.limbs[i*2+1],p.hips[i],p.knees[i],p.feet[i],p,i?1:-1);
       set(this.hands[i].position,p.hands[i]);set(this.tempA,p.hands[i]).sub(set(this.tempB,p.elbows[i])).normalize();this.hands[i].quaternion.setFromUnitVectors(this.yAxis,this.tempA);
+      if(p.grip){
+        const normal=set(this.tempC,p.grip.center).sub(this.hands[i].position).normalize();
+        const fingers=set(this.tempA,p.up);fingers.addScaledVector(normal,-fingers.dot(normal)).normalize();
+        const across=this.tempB.crossVectors(fingers,normal).normalize();
+        this.tempRotation.setFromRotationMatrix(this.tempMatrix.makeBasis(across,fingers,normal));
+        this.hands[i].quaternion.slerp(this.tempRotation,p.grip.weight);
+      }
       // Wrist dorsiflexion flattens the palm as it becomes a ground support.
       const support=1-THREE.MathUtils.smoothstep(p.hands[i].y,.10,.24);
       if(support>0){const fingers=set(this.tempA,p.forward).setY(0).normalize(),normal=this.yAxis,across=this.tempB.crossVectors(fingers,normal);const planted=this.tempRotation.setFromRotationMatrix(this.tempMatrix.makeBasis(across,fingers,normal));this.hands[i].quaternion.slerp(planted,support);}
