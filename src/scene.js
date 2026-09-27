@@ -41,7 +41,7 @@ export class Stadium {
     const rim=new THREE.DirectionalLight('#87c2dc',1.7);rim.position.set(8,8,-9);this.scene.add(rim);
     this.buildField();this.buildGoal();this.buildStands();
     const architecture=new THREE.Group();for(const object of [...this.scene.children])if(object.isMesh&&!object.isInstancedMesh)architecture.add(object);this.scene.add(architecture);batchRigidGroup(architecture);
-    this.waitingKeeperPose=keeperPose({reach:80,speed:80},0,0,1);this.keeper=new GameCharacter(this.scene,'#e9a068',true);this.striker=new GameCharacter(this.scene,'#b9efd7');
+    this.waitingKeeperPose=keeperPose({reach:80,speed:80},0,0,1);this.keeper=new GameCharacter(this.scene,'#f1c75b',true);this.striker=new GameCharacter(this.scene,'#b9efd7');
     Promise.all([this.striker.ready,this.keeper.ready]).then(()=>{this.needsRender=true;});
     this.ball=mesh(footballGeometry(),new THREE.MeshStandardMaterial({vertexColors:true,roughness:.65,side:THREE.DoubleSide}),this.scene,0,.11,11);
     this.aim=new THREE.Group();const aimMaterial=new THREE.MeshBasicMaterial({color:'#b9efd7',transparent:true,opacity:.8,depthTest:false});
@@ -127,7 +127,7 @@ export class Stadium {
       this.camera.position.set(Math.sin(this.cameraAngle)*radius,attackHeight+(7.5-attackHeight)*defending,5+Math.cos(this.cameraAngle)*radius);
       this.cameraFocus.set(0,.7,attackFocus+(2.5-attackFocus)*defending);this.camera.lookAt(this.cameraFocus);
     }
-    if(match?.kicker!==undefined && this.colorsKey!==`${match.turn}-${match.kicker}`){this.colorsKey=`${match.turn}-${match.kicker}`;this.striker.setColor(match.teams[match.turn].color,match.teams[match.turn].players[match.kicker].number);this.keeper.setColor(match.turn?'#a9decb':'#e8a172',1);}
+    if(match?.kicker!==undefined && this.colorsKey!==`${match.turn}-${match.kicker}`){this.colorsKey=`${match.turn}-${match.kicker}`;this.striker.setColor(match.teams[match.turn].color,match.teams[match.turn].players[match.kicker].number);this.keeper.setColor(match.turn?'#83b8f4':'#f1c75b',1);}
     const style=penaltyStyle(match?.teams[match.turn]?.players[match.kicker]);
     this.striker.group.visible=!home||home.strikerVisible;this.ball.visible=!home||home.ballVisible;
     if(!shot)this.striker.pose(home?home.striker:strikerRunupPose(time,runup,-1,kickAim?.power??.7,kickAim?.x??0,style,kickAim?.chip?'chip':kickAim?.low?'low':'normal'));
@@ -151,7 +151,7 @@ export class Stadium {
       this.striker.pose(strikerRunupPose(time,1,animationTime+(shot.result?this.resultElapsed:0),shot.aim.power,shot.aim.x,style,shot.aim.chip?'chip':shot.aim.low?'low':'normal'));
     }else{this.keeper.pose(home?keeperWarmupPose(home.warmupTime):this.waitingKeeperPose);this.ball.position.copy(home?home.ball:{x:0,y:.11,z:11});if(home)this.ball.rotation.x-=dt*12;this.trail.visible=false;}
     if(!home)this.striker.kick(runup,kickAfter);
-    this.keeper.lookAt(this.ball.position,dt);this.striker.lookAt(this.ball.position,dt);
+    // Keep the authored head pose, as in motion-lab.html.
     this.trail.visible=!!shot&&!shot.result;this.aim.visible=!!aim&&match?.mode!=='advanced';
     this.arc.visible=!!aim&&match?.mode==='advanced';
     if(this.arc.visible){

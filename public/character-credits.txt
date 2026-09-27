@@ -19,5 +19,5 @@ of instructional video and laterality on performance.
 https://doi.org/10.6084/m9.figshare.23507793.v1
 CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
 Adaptations: filtered, aligned, scaled, fixed-length retargeted, baked and compressed.
-No endorsement is implied. Captured dive clips are used in the motion preview;
-the game goalkeeper follows the existing physical rig.
+No endorsement is implied. Captured dive clips remain embedded in the source asset.
+The game and motion-lab goalkeeper share the procedural physical rig.
