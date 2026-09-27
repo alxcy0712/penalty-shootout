@@ -1,0 +1,23 @@
+Character and animation credits
+
+Character: Quaternius, Universal Base Characters — Standard.
+https://quaternius.com/packs/universalbasecharacters.html
+CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/
+Adaptations: proportions, clothing, 22-bone rig, weights and reduced textures.
+
+Striker motion: CMU Graphics Lab motion capture database, subject 10, take 01.
+https://mocap.cs.cmu.edu/
+The data used in this project was obtained from mocap.cs.cmu.edu.
+The database was created with funding from NSF EIA-0196217.
+Research/commercial use permitted; resale of the motion data itself prohibited.
+BVH conversion: Bruce Hahne / cgspeed, via adventuring/mocap.
+Adaptations: cropped, retargeted, support-foot corrected, blended and compressed.
+
+Goalkeeper motion embedded in keeper-prototype.glb: Rafael Monteiro (2023).
+Data Kinematic analysis of soccer goalkeeper’s diving save in penalty effect
+of instructional video and laterality on performance.
+https://doi.org/10.6084/m9.figshare.23507793.v1
+CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+Adaptations: filtered, aligned, scaled, fixed-length retargeted, baked and compressed.
+No endorsement is implied. Captured dive clips are used in the motion preview;
+the game goalkeeper follows the existing physical rig.

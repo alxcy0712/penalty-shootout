@@ -1,0 +1,27 @@
+{
+  "blender": "5.2.2 LTS",
+  "source": "CMU 10_01 via cgspeed Daz-friendly conversion; Quaternius character",
+  "license": "CC0 character; CMU motion data terms (see mocap/cmu-soccer/README.md)",
+  "framesPerSecond": 60,
+  "durationSeconds": 3.5,
+  "contactSeconds": 1.85,
+  "bones": 22,
+  "materials": 6,
+  "textures": 2,
+  "meshes": 6,
+  "triangles": 17518,
+  "glbBytes": 407288,
+  "budgets": {
+    "triangles": 18000,
+    "bones": 24,
+    "materials": 6,
+    "textures": 2,
+    "glbBytes": 450000
+  },
+  "textureSizes": [
+    512,
+    128
+  ],
+  "sourceStartSeconds": 3.15,
+  "kickingSide": "L"
+}

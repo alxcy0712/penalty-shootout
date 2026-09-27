@@ -1,0 +1,63 @@
+{
+  "title": "Data Kinematic analysis of soccer goalkeeper\u2019s diving save in penalty effect of instructional video and laterality on performance",
+  "authors": [
+    {
+      "id": 11984729,
+      "full_name": "Rafael Monteiro",
+      "first_name": "Rafael",
+      "last_name": "Monteiro",
+      "is_active": true,
+      "url_name": "Rafael_Monteiro",
+      "orcid_id": "0000-0002-3208-6369"
+    }
+  ],
+  "doi": "10.6084/m9.figshare.23507793.v1",
+  "url_public_html": "https://figshare.com/articles/dataset/Data_Kinematic_analysis_of_soccer_goalkeeper_s_diving_save_in_penalty_effect_of_instructional_video_and_laterality_on_performance/23507793",
+  "license": {
+    "value": 1,
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "files": [
+    {
+      "id": 41227359,
+      "name": "workingprepos.zip",
+      "size": 193584,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/41227359",
+      "supplied_md5": "834620bc240ca11682a156cf24bd5552",
+      "computed_md5": "834620bc240ca11682a156cf24bd5552",
+      "mimetype": "application/zip"
+    },
+    {
+      "id": 41227362,
+      "name": "workingprocessados.zip",
+      "size": 226297,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/41227362",
+      "supplied_md5": "2c907d5540e6f172d7bcb1c5ee80a94f",
+      "computed_md5": "2c907d5540e6f172d7bcb1c5ee80a94f",
+      "mimetype": "application/zip"
+    },
+    {
+      "id": 41227365,
+      "name": "arquivoscalib.zip",
+      "size": 22541380,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/41227365",
+      "supplied_md5": "7453e7f3996c8606f0e760d031925039",
+      "computed_md5": "7453e7f3996c8606f0e760d031925039",
+      "mimetype": "application/zip"
+    },
+    {
+      "id": 41227368,
+      "name": "working3d.zip",
+      "size": 3704868,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/41227368",
+      "supplied_md5": "3f413fe026bcb9d4861ea7c7f988b6e5",
+      "computed_md5": "3f413fe026bcb9d4861ea7c7f988b6e5",
+      "mimetype": "application/zip"
+    }
+  ]
+}

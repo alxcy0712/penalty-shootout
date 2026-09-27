@@ -1,0 +1,72 @@
+[
+  {
+    "file": "10_01.soccer-kick-ball.bvh",
+    "bytes": 1038219,
+    "sha256": "195d3ab20a3f2bf8315d832301f9989a73b2d06cc834e636c29a442cbdc786f0",
+    "frames": 802,
+    "fps": 120.0000480000192,
+    "durationSeconds": 6.67499733,
+    "joints": 43,
+    "channels": 132
+  },
+  {
+    "file": "10_02.soccer-kick-ball.bvh",
+    "bytes": 766360,
+    "sha256": "efb964524db98ccd8f8e4920b99b51ba7e4545e24f5bd42622d8814e4ea3ed87",
+    "frames": 591,
+    "fps": 120.0000480000192,
+    "durationSeconds": 4.9166647,
+    "joints": 43,
+    "channels": 132
+  },
+  {
+    "file": "10_03.soccer-kick-ball.bvh",
+    "bytes": 474224,
+    "sha256": "295a5051780b7d9837d83e2dc270c2a42aa957e712b1c8633fd4cdd75805d43e",
+    "frames": 363,
+    "fps": 120.0000480000192,
+    "durationSeconds": 3.01666546,
+    "joints": 43,
+    "channels": 132
+  },
+  {
+    "file": "10_04.walk.bvh",
+    "bytes": 714164,
+    "sha256": "203f2d4d0a60e3277b27b2015ff1b3c74eacc5a90870612326e3cbeb64080716",
+    "frames": 550,
+    "fps": 120.0000480000192,
+    "durationSeconds": 4.57499817,
+    "joints": 43,
+    "channels": 132
+  },
+  {
+    "file": "10_05.soccer-kick-ball.bvh",
+    "bytes": 569422,
+    "sha256": "2cba90c0681309efc698fa15a45cdd3e5d4939e7525c65797b60905563dbe17c",
+    "frames": 437,
+    "fps": 120.0000480000192,
+    "durationSeconds": 3.63333188,
+    "joints": 43,
+    "channels": 132
+  },
+  {
+    "file": "10_06.soccer-kick-ball.bvh",
+    "bytes": 743332,
+    "sha256": "e78e81df6fc323e26ca16f35fa1c07b95476115fa4cbea9fd01c7491f97c4e71",
+    "frames": 573,
+    "fps": 120.0000480000192,
+    "durationSeconds": 4.76666476,
+    "joints": 43,
+    "channels": 132
+  },
+  {
+    "file": "11_01.soccer-kick-ball.bvh",
+    "bytes": 775179,
+    "sha256": "27a35ec189870c7b6d2439b426d405df176780a45293bd7900aefd097f3cbfeb",
+    "frames": 598,
+    "fps": 120.0000480000192,
+    "durationSeconds": 4.97499801,
+    "joints": 43,
+    "channels": 132
+  }
+]

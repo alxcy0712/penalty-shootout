@@ -1,7 +1,7 @@
 import {homeAnimation} from './home-animation.js';
 import {GoalBall} from './ball-motion.js';
 import {batchRigidGroup} from './batching.js';
-import {Player} from './character.js';
+import {GameCharacter} from './game-character.js';
 import {renderPixelRatio} from './rendering.js';
 import {strikerRunupPose,penaltyStyle,holdingPose,HOLD_DURATION,blendKeeperPose,keeperWarmupPose} from './anatomy.js';
 import * as THREE from 'three';
@@ -41,7 +41,8 @@ export class Stadium {
     const rim=new THREE.DirectionalLight('#87c2dc',1.7);rim.position.set(8,8,-9);this.scene.add(rim);
     this.buildField();this.buildGoal();this.buildStands();
     const architecture=new THREE.Group();for(const object of [...this.scene.children])if(object.isMesh&&!object.isInstancedMesh)architecture.add(object);this.scene.add(architecture);batchRigidGroup(architecture);
-    this.waitingKeeperPose=keeperPose({reach:80,speed:80},0,0,1);this.keeper=new Player(this.scene,'#e9a068',true);this.striker=new Player(this.scene,'#b9efd7');
+    this.waitingKeeperPose=keeperPose({reach:80,speed:80},0,0,1);this.keeper=new GameCharacter(this.scene,'#e9a068',true);this.striker=new GameCharacter(this.scene,'#b9efd7');
+    Promise.all([this.striker.ready,this.keeper.ready]).then(()=>{this.needsRender=true;});
     this.ball=mesh(footballGeometry(),new THREE.MeshStandardMaterial({vertexColors:true,roughness:.65,side:THREE.DoubleSide}),this.scene,0,.11,11);
     this.aim=new THREE.Group();const aimMaterial=new THREE.MeshBasicMaterial({color:'#b9efd7',transparent:true,opacity:.8,depthTest:false});
     this.aim.add(new THREE.Mesh(new THREE.RingGeometry(.15,.18,40),aimMaterial));
@@ -130,11 +131,13 @@ export class Stadium {
     const style=penaltyStyle(match?.teams[match.turn]?.players[match.kicker]);
     this.striker.group.visible=!home||home.strikerVisible;this.ball.visible=!home||home.ballVisible;
     if(!shot)this.striker.pose(home?home.striker:strikerRunupPose(time,runup,-1,kickAim?.power??.7,kickAim?.x??0,style,kickAim?.chip?'chip':kickAim?.low?'low':'normal'));
+    let kickAfter=null;
     if(shot){
       if(this.currentShot!==shot){this.currentShot=shot;this.resultElapsed=0;this.trailCount=0;this.aftermath=null;}
       if(shot.result)this.resultElapsed+=dt;
       const currentTime=shot.animationTime??shot.t;
       const animationTime=shot.result?currentTime:(shot.previousAnimationTime??currentTime)+(currentTime-(shot.previousAnimationTime??currentTime))*alpha;
+      kickAfter=animationTime+(shot.result?this.resultElapsed:0);
       let pose=shot.result||currentTime<shot.t-.001?shot.poseAt(animationTime+this.resultElapsed):shot.previousPose?blendKeeperPose(shot.previousPose,shot.pose,alpha,false):shot.pose;
       let held=null;if(shot.caught){held=holdingPose(pose,this.resultElapsed/HOLD_DURATION);pose=held.pose;}
       this.keeper.pose(pose);this.ball.position.copy(shot.ball);
@@ -147,6 +150,7 @@ export class Stadium {
       if(!shot.result){if(this.trailCount===7)this.trailBuffer.copyWithin(0,3);else this.trailCount++;this.ball.position.toArray(this.trailBuffer,(this.trailCount-1)*3);this.trail.geometry.attributes.position.needsUpdate=true;this.trail.geometry.setDrawRange(0,this.trailCount);}
       this.striker.pose(strikerRunupPose(time,1,animationTime+(shot.result?this.resultElapsed:0),shot.aim.power,shot.aim.x,style,shot.aim.chip?'chip':shot.aim.low?'low':'normal'));
     }else{this.keeper.pose(home?keeperWarmupPose(home.warmupTime):this.waitingKeeperPose);this.ball.position.copy(home?home.ball:{x:0,y:.11,z:11});if(home)this.ball.rotation.x-=dt*12;this.trail.visible=false;}
+    if(!home)this.striker.kick(runup,kickAfter);
     this.keeper.lookAt(this.ball.position,dt);this.striker.lookAt(this.ball.position,dt);
     this.trail.visible=!!shot&&!shot.result;this.aim.visible=!!aim&&match?.mode!=='advanced';
     this.arc.visible=!!aim&&match?.mode==='advanced';

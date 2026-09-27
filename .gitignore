@@ -2,3 +2,8 @@ node_modules/
 dist/
 .DS_Store
 *.log
+.playwright-cli/
+output/
+__pycache__/
+*.pyc
+*.blend1
