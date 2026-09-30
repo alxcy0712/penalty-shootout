@@ -10,7 +10,7 @@
   "textures": 2,
   "meshes": 6,
   "triangles": 17518,
-  "glbBytes": 407288,
+  "glbBytes": 365520,
   "budgets": {
     "triangles": 18000,
     "bones": 24,

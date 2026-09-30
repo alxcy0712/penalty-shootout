@@ -4,9 +4,17 @@ import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';
 import {Player} from './character.js';
 import {createKeeperSkinPose} from './keeper-skin-pose.js';
 import {createKeeperArmRoll} from './keeper-arm-roll.js';
+import {createStrikerMotion} from './striker-motion.js';
 
 export const KICK_CONTACT=1.85;
-export function gameKickTime(runup,after=null){return after===null?KICK_CONTACT*THREE.MathUtils.clamp(runup,0,1):Math.min(3.5,KICK_CONTACT+Math.max(0,after));}
+export function gameKickTime(runup,after=null,duration=KICK_CONTACT){
+  if(after!==null)return Math.min(3.5,KICK_CONTACT+Math.max(0,after));
+  if(runup>=1)return KICK_CONTACT;
+  const elapsed=duration*THREE.MathUtils.clamp(runup,0,1),approach=duration-.55,captured=KICK_CONTACT-.55;
+  if(elapsed>=approach)return captured+elapsed-approach;
+  const q=elapsed/approach;
+  return captured*q+(approach-captured)*q*q*(q-1);
+}
 
 export class GameCharacter {
   constructor(scene,color,keeper=false){
@@ -20,6 +28,7 @@ export class GameCharacter {
     this.root=gltf.scene;this.group.add(this.root);
     this.root.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;if(o.isSkinnedMesh)o.frustumCulled=false;}});
     this.apply=createKeeperSkinPose(this.root);this.relax=createKeeperArmRoll(this.root);
+    if(!this.keeper)this.strikerMotion=createStrikerMotion(this.root);
     this.mixer=new THREE.AnimationMixer(this.root);
     this.actions=gltf.animations.map(c=>{const a=this.mixer.clipAction(c);a.setLoop(THREE.LoopOnce,1);a.clampWhenFinished=true;a.paused=true;return a;});
     const number=this.fallback.number.clone();number.material=this.fallback.number.material.clone();
@@ -38,17 +47,23 @@ export class GameCharacter {
     this.lastPose=p;
     if(!this.root){this.fallback.pose(p);return;}
     this.mixer.stopAllAction();this.root.position.set(0,0,0);this.root.rotation.set(0,0,0);
+    this.applyPose(p);
+  }
+  applyPose(p){
     let target=p;
     if(!this.keeper){
       target={...p,right:{x:-p.right.x,y:-p.right.y,z:-p.right.z}};
       for(const key of ['shoulders','hips','elbows','hands','knees','feet'])target[key]=[p[key][1],p[key][0]];
+      if(p.feetYaw)target.feetYaw=[p.feetYaw[1],p.feetYaw[0]];
     }
-    this.apply(target);this.relax();
+    this.apply(target);this.relax(this.keeper?target:null);
   }
-  kick(runup,after=null){
+  kick(runup,after=null,duration=KICK_CONTACT){
     if(!this.root)return;
-    this.root.position.set(0,0,11);this.root.rotation.set(0,Math.PI,0);
-    const action=this.actions[0];action.play();action.paused=true;action.time=gameKickTime(runup,after);this.mixer.update(0);
+    const sourceTime=gameKickTime(runup,after,duration),action=this.actions[0];
+    action.play();action.paused=true;action.time=sourceTime;this.mixer.update(0);
+    const pose=this.strikerMotion(this.lastPose,runup,after,duration,sourceTime);
+    this.mixer.stopAllAction();this.applyPose(pose);
   }
   lookAt(target,dt){
     if(!this.root){this.fallback.lookAt(target,dt);return;}

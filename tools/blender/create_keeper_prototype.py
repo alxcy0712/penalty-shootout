@@ -4,6 +4,7 @@ from pathlib import Path
 from mathutils import Matrix, Vector
 sys.path.insert(0,str(Path(__file__).parent))
 import create_striker_prototype as base
+from refine_football_model import refine_character
 clips=json.loads(Path('/tmp/penalty-keeper-poses.json').read_text())
 bpy.ops.wm.open_mainfile(filepath=str(base.OUTPUT/'striker-mocap.blend'))
 rig=next(o for o in bpy.context.scene.objects if o.type=='ARMATURE')
@@ -18,6 +19,7 @@ for obj in objects:
         if weight>.6:face.material_index=glove_index
     kit=next(m for m in obj.data.materials if m.name=='Kit')
     next(n for n in kit.node_tree.nodes if n.type=='BSDF_PRINCIPLED').inputs['Base Color'].default_value=(.7,.29,.08,1)
+refine_character(rig,True)
 
 def v(p):return Vector((p[0],-p[2],p[1]))
 scene=bpy.context.scene; scene.render.fps=120;scene.frame_start=0
@@ -90,5 +92,8 @@ meta=json.loads((base.OUTPUT/'striker-mocap.json').read_text())
 meta.update(source='Monteiro et al. 2024, Figshare 23507793; markerless goalkeeper trials N05D and O05E',license='CC BY 4.0 motion data; CC0 Quaternius model',framesPerSecond=120,
     glbBytes=(base.OUTPUT/'keeper-prototype.glb').stat().st_size,clips=[{'name':'Keeper_'+c['name'],'durationSeconds':(len(c['frames'])-1)/120} for c in clips])
 for key in ['contactSeconds','sourceStartSeconds','kickingSide','durationSeconds']:meta.pop(key,None)
+meta['triangles']=0
+for obj in objects:
+    obj.data.calc_loop_triangles();meta['triangles']+=len(obj.data.loop_triangles)
 (base.OUTPUT/'keeper-prototype.json').write_text(json.dumps(meta,indent=2)+'\n')
 print('KEEPER',json.dumps(meta))

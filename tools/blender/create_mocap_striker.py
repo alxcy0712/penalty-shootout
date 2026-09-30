@@ -7,6 +7,7 @@ import bpy
 from mathutils import Vector, Matrix
 sys.path.insert(0, str(Path(__file__).parent))
 import create_striker_prototype as base
+from refine_football_model import refine_character
 
 DATA=json.loads(Path('/tmp/penalty-cmu-samples.json').read_text())
 OUTPUT=base.OUTPUT
@@ -139,6 +140,7 @@ for layer in animation.layers:
 scene=bpy.context.scene;scene.frame_start=0;scene.frame_end=len(poses)-1;scene.render.fps=FPS
 scene.timeline_markers.clear();scene.timeline_markers.new('BALL CONTACT',frame=round(CONTACT*FPS))
 scene.frame_set(0)
+refine_character(rig)
 bpy.ops.object.select_all(action='DESELECT');rig.select_set(True)
 for o in scene.objects:
     if o.type=='MESH' and any(m.type=='ARMATURE' and m.object==rig for m in o.modifiers):o.select_set(True)

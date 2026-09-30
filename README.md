@@ -42,12 +42,13 @@ AI 在每脚开放操作前决定方向与射门意图。简洁版 AI 扑左、�
 
 唯一动作验收入口为 [motion-lab](http://localhost:5173/motion-lab.html)，正式游戏为 [5173 首页](http://localhost:5173/)。两边共用 `GameCharacter`、同一套蒙皮映射和动作实现：
 
-- 射手：`assets/characters/striker-mocap.glb`，CMU 助跑、射门与随摆，触球对应片段 1.85 秒。
-- 门将：`assets/characters/keeper-prototype.glb`，由 `anatomy.js` 的程序姿态驱动；手、肘、膝和脚与比赛碰撞骨架一致。
+- 射手：`assets/characters/striker-mocap.glb`，CMU 动捕提供上肢反向摆动，IK 驱动三种助跑、落支撑脚、摆腿与收势；常规、低平球和勺子球按力度与方向呈现各自的踢球弧线。触球对应动捕片段 1.85 秒。
+- 门将：`assets/characters/keeper-prototype.glb`，由 `anatomy.js` 的程序姿态驱动；手、肘、膝和脚与比赛碰撞骨架一致。脚踝随腾空侧转，落地手掌撑地，抱球时掌面围向足球。
+- 模型：收窄胸背与上臂，柔化球衣表面，肩袖随抬臂变形；门将保留加厚手套与腕带。每人 22 根骨骼、6 种材质，三角形数维持在 18,000 以内。
 - 球衣区分阵营与位置：我方浅绿、对方珊瑚橙，我方门将蓝、对方门将金黄。
 - 球场保留比赛灯光与镜头；动作检查页提供正面、侧面和逐帧播放。
 
-GLB 加载失败时，`character.js` 提供程序人物备用显示，同时提供球衣号码素材。这是仍在使用的依赖。当前低平球和勺子球共用射手片段，球路按各自物理计算。大幅抬臂时肩部外观、真机性能和横屏布局仍需后续验收。
+GLB 加载失败时，`character.js` 提供程序人物备用显示，同时提供球衣号码素材。这是仍在使用的依赖。游戏、首页与动作检查页共用动作融合；每种助跑的最后 0.55 秒保持落脚和触球节奏，射门后的脚部衔接覆盖助跑计时归零的场景。真机性能和横屏布局仍需后续验收。
 
 ## 项目结构
 
@@ -55,6 +56,7 @@ GLB 加载失败时，`character.js` 提供程序人物备用显示，同时提�
 - `src/engine.js`：比赛规则、球员能力、物理和接触判定。
 - `src/scene.js`：球场、灯光、镜头与人物调度。
 - `src/game-character.js`：正式游戏与动作检查页共用的人物加载和动画。
+- `src/striker-motion.js`：射手动捕上肢与 IK 动作融合、球鞋触球适配。
 - `src/anatomy.js`：固定骨长、IK、门将和射手程序姿态。
 - `src/keeper-skin-pose.js` / `keeper-arm-roll.js`：蒙皮骨骼映射与手臂修正。
 - `assets/characters/`：当前 GLB、Blender 制作文件、必要中间文件和来源许可。

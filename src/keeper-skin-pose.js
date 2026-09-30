@@ -20,10 +20,11 @@ export function createKeeperSkinPose(root) {
   const world = new THREE.Matrix4();
   const desired = new THREE.Matrix4();
   const a = new THREE.Vector3(), b = new THREE.Vector3(), rest = new THREE.Vector3();
+  const normal = new THREE.Vector3(), sole = new THREE.Vector3(), cross = new THREE.Vector3();
   const right = new THREE.Vector3(), up = new THREE.Vector3(), back = new THREE.Vector3();
   const scale = new THREE.Vector3(1, 1, 1);
   const point = (p, distance) => ({x:p.hip.x+p.up.x*distance, y:p.hip.y+p.up.y*distance, z:p.hip.z+p.up.z*distance});
-  function setBone(name, start, end) {
+  function setBone(name, start, end, soleUp=null) {
     const entry = entries.get(name);
     a.copy(start);
     rotation.copy(bodyRotation).multiply(entry.rotation);
@@ -39,6 +40,13 @@ export function createKeeperSkinPose(root) {
       } else {
         swing.setFromUnitVectors(rest, b);
         rotation.premultiply(swing);
+      }
+      if(soleUp){
+        normal.set(0,1,0).applyQuaternion(entry.rotation.clone().invert()).applyQuaternion(rotation);
+        normal.addScaledVector(b,-normal.dot(b)).normalize();
+        sole.copy(soleUp).addScaledVector(b,-soleUp.dot(b)).normalize();
+        const angle=Math.atan2(b.dot(cross.crossVectors(normal,sole)),normal.dot(sole));
+        swing.setFromAxisAngle(b,angle);rotation.premultiply(swing);
       }
     }
     desired.compose(a, rotation, scale);
@@ -68,9 +76,14 @@ export function createKeeperSkinPose(root) {
       setBone(`hand${side}`, pose.hands[i], hand);
       setBone(`thigh${side}`, pose.hips[i], pose.knees[i]);
       setBone(`shin${side}`, pose.knees[i], pose.feet[i]);
-      const toe = {x:pose.feet[i].x, y:pose.feet[i].y-.005, z:pose.feet[i].z+.16};
-      setBone(`foot${side}`, pose.feet[i], toe);
-      setBone(`toe${side}`, toe, {x:toe.x,y:toe.y-.005,z:toe.z+.09});
+      const airborne=THREE.MathUtils.smoothstep(pose.feet[i].y,.085,.19);
+      const pitch=airborne*THREE.MathUtils.clamp(Math.atan2(pose.feet[i].z-pose.knees[i].z,pose.knees[i].y-pose.feet[i].y)*.45,-.65,.65);
+      const yaw=pose.feetYaw?.[i]??0,facing=pose.forward.z<0?-1:1;
+      const direction={x:facing*Math.sin(yaw)*Math.cos(pitch),y:Math.sin(pitch)-.03125,z:facing*Math.cos(yaw)*Math.cos(pitch)};
+      const toe={x:pose.feet[i].x+direction.x*.16,y:pose.feet[i].y+direction.y*.16,z:pose.feet[i].z+direction.z*.16};
+      const soleUp=new THREE.Vector3(0,1,0).lerp(up,airborne*.7).normalize();
+      setBone(`foot${side}`,pose.feet[i],toe,soleUp);
+      setBone(`toe${side}`,toe,{x:toe.x+direction.x*.09,y:toe.y+direction.y*.09,z:toe.z+direction.z*.09},soleUp);
     }
   };
 }

@@ -17,5 +17,8 @@
 - `tools/blender/create_quaternius_striker.py` 与 `striker_body_motion.py`：生成射手所需的中间模型。
 - `node tools/mocap/sample-cmu.mjs`，随后用 Blender 后台执行 `tools/blender/create_mocap_striker.py`：生成当前射手。
 - `node tools/mocap/sample-keeper.mjs`，随后执行 `tools/blender/create_keeper_prototype.py` 和 `repair_keeper_skin.py`：生成并修复当前门将。
+- `tools/blender/refine_football_model.py`：共用的体型、球衣、肩袖权重与手套细化；上述生成脚本自动调用。可用 `blender --background --python tools/blender/refine_football_model.py` 对当前两份 Blend 重新导出，重复运行保持几何体一致。
+
+游戏中的三种助跑、方向与力度适配，以及低平球、勺子球的摆腿由 `src/striker-motion.js` 与 `anatomy.js` 融合生成；Blend 保留来源动捕，动作验收查看共用的浏览器检查页。
 
 采样文件输出到 `/tmp`，Blender 脚本依赖 Blender 自带的 `bpy`。源人物、动作数据及许可保留在 `assets/characters/quaternius-source/` 和 `assets/characters/mocap/`。署名见 `public/character-credits.txt`。已清除被替代的模型成品与自动备份。

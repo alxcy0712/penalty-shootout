@@ -13,6 +13,7 @@ export function homeAnimation(time){
     camera:{x:4.5+focus*1.8+Math.sin(t*Math.PI/10)*.4,y:5.4-focus*2.1,z:17.4+focus*.8},
     target:{x:-focus*1.2,y:.6,z:3+focus*8.5},
     striker:strikerRunupPose(0,phase,after>=0?after:-1,.7,2.7,penaltyStyles[0]),
+    runup:phase,kickAfter:after>=0?after:null,
     strikerVisible:t>=5&&t<18,ballVisible:t<18,
     ball,
     warmupTime:time,
