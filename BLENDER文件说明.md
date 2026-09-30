@@ -19,6 +19,6 @@
 - `node tools/mocap/sample-keeper.mjs`，随后执行 `tools/blender/create_keeper_prototype.py` 和 `repair_keeper_skin.py`：生成并修复当前门将。
 - `tools/blender/refine_football_model.py`：共用的体型、球衣、肩袖权重与手套细化；上述生成脚本自动调用。可用 `blender --background --python tools/blender/refine_football_model.py` 对当前两份 Blend 重新导出，重复运行保持几何体一致。
 
-游戏通过 `src/game-character.js` 直接播放 GLB 中完整的助跑、打门与收势动捕。三种助跑节奏共用该片段，常规、低平球与勺子球的球路由物理引擎计算；建模细化保留原有骨骼动画，动作验收查看共用的浏览器检查页。
+游戏通过 `src/game-character.js` 直接播放 GLB 中完整的助跑、打门与收势动捕。制作脚本将助跑水平位移扩大 1.4 倍，保留固定骨长，并在片段 1.65 秒落支撑脚前平滑回到原动作；触球仍在 1.85 秒。三种助跑节奏共用该片段，常规、低平球与勺子球的球路由物理引擎计算，动作验收查看共用的浏览器检查页。
 
 采样文件输出到 `/tmp`，Blender 脚本依赖 Blender 自带的 `bpy`。源人物、动作数据及许可保留在 `assets/characters/quaternius-source/` 和 `assets/characters/mocap/`。署名见 `public/character-credits.txt`。已清除被替代的模型成品与自动备份。

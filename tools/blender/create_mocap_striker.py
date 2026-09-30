@@ -14,6 +14,7 @@ OUTPUT=base.OUTPUT
 NAME='striker-mocap'
 FPS=60
 CONTACT=1.85
+RUNUP_SCALE=1.4
 SCALE=.0103
 bpy.ops.wm.open_mainfile(filepath=str(OUTPUT/'striker-quaternius.blend'))
 rig=next(o for o in bpy.context.scene.objects if o.type=='ARMATURE')
@@ -53,14 +54,22 @@ def grounded_foot(f,source,side):
     ankle.z+=max(0,.004-lowest)
     return ankle,direction
 
+approach_anchor=grounded_foot(frames[99],'l','R')[0]
 poses=[]
 for frame,f in enumerate(frames):
-    hip=f['hip'].copy(); hip.z+=.055
+    time=frame/FPS
+    stride_scale=1+(RUNUP_SCALE-1)*(1-smooth((time-1.10)/.55))
+    def approach_point(point):
+        expanded=point.copy()
+        expanded.x=approach_anchor.x+(point.x-approach_anchor.x)*stride_scale
+        expanded.y=approach_anchor.y+(point.y-approach_anchor.y)*stride_scale
+        return expanded
+    hip=approach_point(f['hip']); hip.z+=.055
     pelvis=body_rotation(f,True); chest=body_rotation(f)
     feet={}; hips={}; footdirs={}
     for side,source,sign in [('L','r',-1),('R','l',1)]:
         ankle,footdir=grounded_foot(f,source,side)
-        time=frame/FPS
+        ankle=approach_point(ankle)
         if source=='l':
             lock=smooth((time-1.48)/.17)*(1-smooth((time-2.55)/.35))
             anchor,anchor_direction=grounded_foot(frames[99],source,side)
@@ -109,7 +118,7 @@ for frame,f in enumerate(frames):
         hand=wrist+hand_direction*rig.data.bones['hand.'+side].length
         segment('hand.'+side,wrist,hand)
         thigh=hip+hips[side]; ankle=feet[side]
-        knee=Vector(base.solve_joint(thigh,ankle,.43,.43,f[source+'Shin']-(thigh+ankle)*.5))
+        knee=Vector(base.solve_joint(thigh,ankle,.43,.43,approach_point(f[source+'Shin'])-(thigh+ankle)*.5))
         segment('thigh.'+side,thigh,knee); segment('shin.'+side,knee,ankle)
         footdir=footdirs[side]
         toe=ankle+footdir*rig.data.bones['foot.'+side].length
@@ -156,7 +165,7 @@ meta=json.loads((OUTPUT/'striker-quaternius.json').read_text());meta.pop('suppor
 meta.update(source='CMU 10_01 via cgspeed Daz-friendly conversion; Quaternius character',
     license='CC0 character; CMU motion data terms (see mocap/cmu-soccer/README.md)',
     durationSeconds=(len(poses)-1)/FPS,contactSeconds=CONTACT,sourceStartSeconds=DATA['start'],
-    kickingSide='L',glbBytes=(OUTPUT/(NAME+'.glb')).stat().st_size)
+    kickingSide='L',runupDistanceScale=RUNUP_SCALE,glbBytes=(OUTPUT/(NAME+'.glb')).stat().st_size)
 meta['budgets']['glbBytes']=450000
 (OUTPUT/(NAME+'.json')).write_text(json.dumps(meta,indent=2)+'\n')
 print('MOCAP',json.dumps(meta))

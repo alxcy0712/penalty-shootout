@@ -20,7 +20,8 @@ import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';
 import {GameCharacter} from '../src/game-character.js';
 import {createKeeperSkinPose} from '../src/keeper-skin-pose.js';
 import {createKeeperArmRoll} from '../src/keeper-arm-roll.js';
-import {strikerRunupPose,goalkeeperPose,holdingPose} from '../src/anatomy.js';
+import {strikerRunupPose,goalkeeperPose,holdingPose,keeperWarmupPose,keeperPreparation,keeperHesitationPose,blendKeeperPose,HOLD_DURATION} from '../src/anatomy.js';
+import {Shot} from '../src/engine.js';
 
 async function character(asset,keeper){
   const bytes=await readFile(new URL(`../assets/characters/${asset}.glb`,import.meta.url));
@@ -132,6 +133,53 @@ test('low catches blend continuously from the planted palm into the ball grip',a
   }
 });
 
+test('keeper skins stay connected, clear the ground and avoid bone flips through all save phases',async()=>{
+  const c=await character('keeper-prototype',true),bones=[];
+  c.root.traverse(bone=>{if(bone.isBone)bones.push(bone);});
+  const anchors=[['upper_arm','shoulders'],['forearm','elbows'],['hand','hands'],['thigh','hips'],['shin','knees'],['foot','feet']]
+    .flatMap(([name,key])=>['L','R'].map((side,index)=>({bone:bones.findIndex(b=>b.name===name+side),key,index})));
+  const paths=[['warmup',keeperWarmupPose,12]];
+  for(const speed of [50,99])for(const direction of [-1,0,1])for(const height of [.3,1.2,2.3])for(const stretch of [0,1]){
+    const stats={speed,reach:99,stretch},dive=t=>goalkeeperPose(stats,direction,t,height);
+    const ready=keeperPreparation(stats,direction,.8,.8,height),origin=dive(.10),previous=dive(.099);
+    const saves=[
+      ['dive',dive],['hold',t=>holdingPose(dive(t)).pose],['gather',t=>holdingPose(dive(t),t/HOLD_DURATION).pose],
+      ['prepare',t=>t<.8?keeperPreparation(stats,direction,t,.8,height):blendKeeperPose(ready,dive(t-.8),(t-.8)/.13)],
+      ['hesitate',t=>t<.10?dive(t):keeperHesitationPose(origin,direction,t-.10,previous)],
+    ];
+    for(const [path,poseAt] of saves)paths.push([`${speed}/${direction}/${height}/${stretch}/${path}`,poseAt,4]);
+  }
+  const catchStats={accuracy:90,power:90,touch:90,composure:90,speed:80,reach:80,handling:95};
+  for(const seed of [16,18,59,87,95,134]){
+    const shot=new Shot({x:Math.sin(seed)*3.3,power:(seed%10)/10,y:.3+(seed%7)/3},catchStats,catchStats,seed%3-1,seed);
+    for(let frame=0;frame<3600&&!shot.result;frame++)shot.step(1/120);
+    assert.ok(shot.caught,`catch ${seed} reaches the gather`);
+    paths.push([`catch/${seed}`,t=>holdingPose(shot.poseAt(shot.t+t),t/HOLD_DURATION).pose,4]);
+  }
+  for(const [path,poseAt,duration] of paths){
+    let last;
+    for(let frame=0;frame<=duration*120;frame++){
+      const time=frame/120,label=`${path}/${time}`,pose=poseAt(time);
+      c.pose(pose);c.root.updateWorldMatrix(true,true);
+      const current=bones.map(bone=>({position:bone.getWorldPosition(new THREE.Vector3()),rotation:bone.getWorldQuaternion(new THREE.Quaternion())}));
+      for(const [i,bone] of bones.entries()){
+        assert.ok(bone.matrixWorld.elements.every(Number.isFinite),`${label}: ${bone.name} remains finite`);
+        assert.ok(bone.scale.toArray().every(value=>Math.abs(value-1)<1e-5),`${label}: ${bone.name} preserves scale`);
+        if(last){
+          assert.ok(current[i].rotation.angleTo(last[i].rotation)<.65,`${label}: ${bone.name} rotates continuously`);
+          assert.ok(current[i].position.distanceTo(last[i].position)<.14,`${label}: ${bone.name} moves continuously`);
+        }
+      }
+      for(const {bone,key,index} of anchors){
+        const actual=current[bone].position,expected=pose[key][index];
+        assert.ok(Math.hypot(actual.x-expected.x,actual.y-expected.y,actual.z-expected.z)<1e-5,`${label}: ${bones[bone].name} matches the physical joint`);
+      }
+      if(frame%12===0){const {minimum,lowest}=floor(c);assert.ok(minimum>=-.014,`${label}: ${lowest} clears turf (${minimum} m)`);}
+      last=current;
+    }
+  }
+});
+
 test('game goalkeeper skin preserves physical endpoints in both directions',async()=>{
   const c=await character('keeper-prototype',true);
   for(const direction of [-1,1])for(let t=0;t<3.8;t+=.08){
@@ -168,7 +216,7 @@ test('match and motion lab keep the same mesh and local bone pose with team-spec
         const a=game.root.worldToLocal(bone.getWorldPosition(new THREE.Vector3()));
         const b=lab.root.worldToLocal(reference.getWorldPosition(new THREE.Vector3()));
         assert.ok(a.distanceTo(b)<1e-5,`${asset} ${bone.name} matches lab at ${t}`);
-        assert.ok(bone.quaternion.clone().normalize().angleTo(reference.quaternion.clone().normalize())<1e-5);
+        assert.ok(bone.quaternion.clone().normalize().angleTo(reference.quaternion.clone().normalize())<1e-5,`${asset} ${bone.name} matches lab rotation at ${t}`);
       });
     }
   }

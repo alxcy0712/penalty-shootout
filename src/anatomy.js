@@ -168,7 +168,7 @@ export function goalkeeperPose(stats,direction=0,elapsed=0,height=1) {
     return rig(hip,up,[v(-.30,.075,.04),v(.30,.075,.04)],[v(-width,y,.30+.06*low*reach),v(width,y,.30+.06*low*reach)],1);
   }
   const stretch=clip(stats.stretch??0,0,1),push=.13,air=Math.max(0,t-push),high=clip((height-.35)/1.7,0,1),vy=.7+high*(2.1+1.1*stretch);
-  const launchY=.83,landY=.27;
+  const launchY=.83,landY=.30;
   const landing=(vy+Math.sqrt(vy*vy+2*9.81*(launchY-landY)))/9.81;
   const velocity=stats.diveVelocity??(3.2+clip(stats.speed/99,0,1)*1.1+.9*stretch);
   const launchX=.16;
@@ -198,13 +198,18 @@ export function goalkeeperPose(stats,direction=0,elapsed=0,height=1) {
     const target=add(shoulder,v(sign*armReach,clip(height-shoulder.y,-.34,.40)+(i? .08:-.04),.21));
     const root=add(shoulder,mul(right,s*body.shoulderWidth/2));
     const extended=add(root,mul(unit(v(sign,clip(height-root.y,-.8,1.1),.16)),body.upperArm+body.forearm-.01));
-    return lerp(v(s*.35,1.05,.30+forwardTravel),lerp(target,extended,reachCommit),smooth(t/.30));
+    // Carry the ready stance with the torso before committing the reach.
+    const carried=add(add(hip,mul(right,s*.35)),add(mul(unit(up),.22),v(0,0,.2512)));
+    return lerp(carried,lerp(target,extended,reachCommit),smooth(t/.30));
   });
   const feet=[-1,1].map(s=>{
     if(t<push)return v(s*.30,.075,.04);
     const scissor=smooth(air/.18)*(1-smooth((air-landing+.20)/.20)),leading=s===sign;
     const airborne=add(add(hip,mul(unit(up),-.67+(leading?-.07:.15)*scissor)),add(mul(right,s*.16),v(0,.06,.10+s*.07+(leading?0:.14)*scissor)));
-    return lerp(v(s*.30,.075,.04),airborne,smooth(air/.17));
+    if(leading)airborne.y+=(.075-airborne.y)*smooth((air-landing+.20)/.20);
+    // Keep the ankles moving with the pelvis through takeoff, then settle the lower foot.
+    const carried=v(s*.30+hip.x-sign*launchX,.075+hip.y-launchY,.04+forwardTravel-.42*smooth(push/.42));
+    return lerp(carried,airborne,smooth(air/.17));
   });
   // At ground contact use the side of the thigh and forearm as support, feet clear turf.
   feet.forEach(f=>f.y=Math.max(.075,f.y));
@@ -215,7 +220,7 @@ export function goalkeeperPose(stats,direction=0,elapsed=0,height=1) {
     const bodyTuck=smoother((recoveryTime-.30)/.50),rise=smoother((recoveryTime-.70)/.90);
     const baseX=sign*(launchX+velocity*landing+velocity*.16);
     const crouchUp=unit(v(sign*.8,.6,.16));
-    const liftedHip=v(hip.x,.27+.10*bodyTuck+.46*rise,hip.z);
+    const liftedHip=v(hip.x,landY+.10*bodyTuck+(.83-landY-.10)*rise,hip.z);
     const recoveryUp=lerp(lerp(up,crouchUp,bodyTuck),v(0,1,.08),rise);
     const planted=[v(baseX-.28,.075,hip.z),v(baseX+.28,.075,hip.z)];
     const support=[v(baseX+sign*.43,.09,hip.z+.19),v(baseX+sign*.25,.12,hip.z+.28)];
@@ -274,13 +279,14 @@ export function blendKeeperPose(from,to,weight,ease=true){
 // A secured ball is brought into the torso with both hands, keeping arm lengths.
 export function holdingPose(source,blend=1){
   blend=smoother(blend);const p={...source,hands:[],elbows:[]};
-  const center=add(add(p.shoulder,mul(p.up,-.17)),mul(p.forward,.26));center.y=Math.max(.15,center.y);
+  const center=add(add(p.shoulder,mul(p.up,-.17)),mul(p.forward,.26));
+  center.y=Math.max(.11+.115*Math.abs(p.right.y)+.045*Math.max(0,p.up.y),center.y);
   for(let i=0;i<2;i++){
     const sign=i?1:-1,target=add(add(center,mul(p.right,sign*.115)),mul(p.up,-.045));
     const hand=lerp(source.hands[i],target,blend),holdPole=add(p.shoulders[i],add(mul(p.right,sign*.35),mul(p.forward,-.3)));
     const pole=lerp(source.elbows[i],holdPole,blend);
-    // Lift the bend plane clear of the turf while a sideways keeper gathers in.
-    pole.y+=.9*Math.sin(Math.PI*blend)*(1-Math.max(0,p.up.y));
+    // Lift the elbow plane as the shoulder approaches the turf during the gather.
+    pole.y+=.9*Math.sin(Math.PI*blend)*(1-Math.max(0,p.up.y))*(1-smooth((p.shoulders[i].y-.15)/.55));
     const arm=limb(p.shoulders[i],hand,pole,body.upperArm,body.forearm);p.hands.push(arm.end);p.elbows.push(arm.joint);
   }
   p.grip={center,weight:blend};
