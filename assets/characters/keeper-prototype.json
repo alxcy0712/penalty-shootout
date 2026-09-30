@@ -7,8 +7,8 @@
   "materials": 6,
   "textures": 2,
   "meshes": 6,
-  "triangles": 17614,
-  "glbBytes": 398080,
+  "triangles": 15520,
+  "glbBytes": 343768,
   "budgets": {
     "triangles": 18000,
     "bones": 24,

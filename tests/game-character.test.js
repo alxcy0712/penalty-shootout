@@ -123,6 +123,39 @@ test('keeper palms face the secured ball while the wrists retain the collision c
   }
 });
 
+test('keeper jersey surfaces preserve area and edge lengths through the reported arm poses',async()=>{
+  const c=await character('keeper-prototype',true),surfaces=[];
+  c.root.traverse(mesh=>{
+    if(!mesh.isSkinnedMesh||mesh.material.name!=='Kit')return;
+    const vertices=Array.from({length:mesh.geometry.attributes.position.count},(_,i)=>new THREE.Vector3().fromBufferAttribute(mesh.geometry.attributes.position,i));
+    const triangles=[];
+    for(let n=0;n<mesh.geometry.index.count;n+=3){
+      const indices=[0,1,2].map(k=>mesh.geometry.index.getX(n+k)),[a,b,d]=indices.map(i=>vertices[i]);
+      const area=b.clone().sub(a).cross(d.clone().sub(a)).length();
+      assert.ok(area>1e-8,'jersey has usable surface triangles');
+      triangles.push({indices,area,edges:[a.distanceTo(b),b.distanceTo(d),d.distanceTo(a)]});
+    }
+    surfaces.push({mesh,vertices,triangles});
+  });
+  assert.ok(surfaces.reduce((sum,s)=>sum+s.triangles.length,0)>600,'checks torso, both shoulder caps and sleeves');
+  for(const direction of [-1,1])for(const height of [.3,1.2,2.3])for(const time of [0,.13,.25,.51,.90,1.35,1.81,2.22,2.65,3.4]){
+    const source=goalkeeperPose({speed:85,reach:85},direction,time,height);
+    for(const p of [source,holdingPose(source).pose]){
+      c.pose(p);c.root.updateWorldMatrix(true,true);
+      for(const {mesh,vertices,triangles} of surfaces){
+        mesh.skeleton.update();
+        const points=vertices.map((point,i)=>mesh.applyBoneTransform(i,point.clone()).applyMatrix4(mesh.matrixWorld));
+        for(const {indices,area,edges} of triangles){
+          const [a,b,d]=indices.map(i=>points[i]);
+          const ratio=b.clone().sub(a).cross(d.clone().sub(a)).length()/area;
+          assert.ok(Math.abs(ratio-1)<.005,`${direction}/${height}/${time}: shoulder and torso surface stays full`);
+          for(const [i,length] of [a.distanceTo(b),b.distanceTo(d),d.distanceTo(a)].entries())assert.ok(Math.abs(length/edges[i]-1)<.005,'sleeve triangles retain their shape');
+        }
+      }
+    }
+  }
+});
+
 test('low catches blend continuously from the planted palm into the ball grip',async()=>{
   const c=await character('keeper-prototype',true);
   for(const direction of [-1,0,1])for(const time of [.35,.8,1.4,2.2]){
@@ -150,7 +183,7 @@ test('keeper skins stay connected, clear the ground and avoid bone flips through
     for(const [path,poseAt] of saves)paths.push([`${speed}/${direction}/${height}/${stretch}/${path}`,poseAt,4]);
   }
   const catchStats={accuracy:90,power:90,touch:90,composure:90,speed:80,reach:80,handling:95};
-  for(const seed of [16,18,59,87,95,134]){
+  for(const seed of [16,18,134,158,192,215]){
     const shot=new Shot({x:Math.sin(seed)*3.3,power:(seed%10)/10,y:.3+(seed%7)/3},catchStats,catchStats,seed%3-1,seed);
     for(let frame=0;frame<3600&&!shot.result;frame++)shot.step(1/120);
     assert.ok(shot.caught,`catch ${seed} reaches the gather`);
@@ -173,6 +206,11 @@ test('keeper skins stay connected, clear the ground and avoid bone flips through
       for(const {bone,key,index} of anchors){
         const actual=current[bone].position,expected=pose[key][index];
         assert.ok(Math.hypot(actual.x-expected.x,actual.y-expected.y,actual.z-expected.z)<1e-5,`${label}: ${bones[bone].name} matches the physical joint`);
+      }
+      for(const [index,side] of ['L','R'].entries()){
+        const hand=c.root.getObjectByName('hand'+side),fingers=new THREE.Vector3(0,1,0).applyQuaternion(hand.getWorldQuaternion(new THREE.Quaternion()));
+        const forearm=new THREE.Vector3().copy(pose.hands[index]).sub(pose.elbows[index]).normalize();
+        assert.ok(fingers.dot(forearm)>=-1e-5,`${label}: ${side} wrist stays within a right angle`);
       }
       if(frame%12===0){const {minimum,lowest}=floor(c);assert.ok(minimum>=-.014,`${label}: ${lowest} clears turf (${minimum} m)`);}
       last=current;

@@ -104,6 +104,9 @@ def refine_character(rig, keeper=False):
         bpy.context.view_layer.objects.active = objects[0]
         bpy.ops.object.join()
         rig['glove_cuffs'] = 1
+    if keeper:
+        from repair_keeper_skin import repair_jersey
+        repair_jersey(rig)
 
 
 def rebuild():

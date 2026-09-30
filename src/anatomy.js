@@ -33,6 +33,24 @@ export function limb(root,target,pole,a,b) {
   }
   return {joint,end};
 }
+function keeperBendPole(root,target,up,right,side){
+  const cross=(a,b)=>v(a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x);
+  const direction=unit(sub(target,root)),forward=unit(cross(right,up));
+  const reference=add(mul(right,side*.8),mul(up,-.6));
+  // Transport a lateral/downward bend from the forward reach plane. Its
+  // perpendicular stays continuous as the hand passes across the shoulder.
+  const axis=cross(forward,direction),first=cross(axis,reference);
+  const bend=add(reference,add(first,mul(cross(axis,first),1/(1+dot(forward,direction)))));
+  return add(root,bend);
+}
+function keeperArm(root,target,pole,up,right,side){
+  const delta=sub(target,root),raised=smooth((dot(delta,up)+.25)/.50);
+  // Raised arms stay beside the head. Relax adduction as the hands lower into
+  // the chest, keeping the limit continuous and repeated IK solves idempotent.
+  const inward=-.02-.45*(1-raised),across=dot(delta,right)*side;
+  const wanted=add(target,mul(right,side*Math.max(0,inward-across)));
+  return limb(root,wanted,pole??keeperBendPole(root,wanted,up,right,side),body.upperArm,body.forearm);
+}
 function rig(hip,up,feet,hands,facing=-1,roll=0,yaw=0,armTuck=0) {
   up=unit(up);let right=unit(v(up.y,-up.x,0));
   const rotate=p=>v(p.x*Math.cos(yaw)+p.z*Math.sin(yaw),p.y,-p.x*Math.sin(yaw)+p.z*Math.cos(yaw));
@@ -49,7 +67,7 @@ function rig(hip,up,feet,hands,facing=-1,roll=0,yaw=0,armTuck=0) {
     const armPole=add(sr,add(mul(right,sign*(.45-.33*armTuck)),mul(forward,-.35)));
     armPole.y+=.15*(1-smooth((sr.y-.25)/.65));
     armPole.y-=.45*smooth((hands[i].y-sr.y)/.35)*smooth((up.y-.55)/.35);
-    const arm=limb(sr,hands[i],armPole,body.upperArm,body.forearm);
+    const arm=facing>0?keeperArm(sr,hands[i],null,up,right,sign):limb(sr,hands[i],armPole,body.upperArm,body.forearm);
     p.shoulders.push(sr);p.hips.push(hr);p.knees.push(leg.joint);p.feet.push(leg.end);p.elbows.push(arm.joint);p.hands.push(arm.end);
   }
   return p;
@@ -223,11 +241,15 @@ export function goalkeeperPose(stats,direction=0,elapsed=0,height=1) {
     const liftedHip=v(hip.x,landY+.10*bodyTuck+(.83-landY-.10)*rise,hip.z);
     const recoveryUp=lerp(lerp(up,crouchUp,bodyTuck),v(0,1,.08),rise);
     const planted=[v(baseX-.28,.075,hip.z),v(baseX+.28,.075,hip.z)];
-    const support=[v(baseX+sign*.43,.09,hip.z+.19),v(baseX+sign*.25,.12,hip.z+.28)];
-    const resting=[v(baseX-.35,1.05,hip.z+.26),v(baseX+.35,1.05,hip.z+.26)];
+    const torsoUp=unit(recoveryUp),torsoRight=unit(v(torsoUp.y,-torsoUp.x,0));
+    const resting=[-1,1].map(side=>add(liftedHip,add(mul(torsoUp,.22),add(mul(torsoRight,side*.35),v(0,0,.26)))));
+    const support=v(baseX+sign*.26,.10,hip.z+.32),brace=smoother(recoveryTime/.35);
     const handRelease=smoother((recoveryTime-.94)/.66);
     const tuckedFeet=feet.map((f,i)=>{const tuck=smoother(recoveryTime/(i===(sign>0?1:0)?.30:.44)),target=lerp(f,planted[i],tuck);target.z+=.24*Math.sin(Math.PI*tuck);return target;});
-    return rig(liftedHip,recoveryUp,tuckedFeet,hands.map((h,i)=>lerp(lerp(h,support[i],bodyTuck),resting[i],handRelease)),1,sign*angle*(1-bodyTuck));
+    const recoveryHands=hands.map((h,i)=>lerp(h,i===(sign>0?1:0)?lerp(support,resting[i],handRelease):resting[i],brace));
+    // Retract in front of the shoulder before loading the supporting palm.
+    recoveryHands.forEach(h=>h.z+=.14*Math.sin(Math.PI*brace));
+    return rig(liftedHip,recoveryUp,tuckedFeet,recoveryHands,1,sign*angle*(1-bodyTuck));
   }
   return rig(hip,up,feet,hands,1,sign*angle);
 }
@@ -283,11 +305,11 @@ export function holdingPose(source,blend=1){
   center.y=Math.max(.11+.115*Math.abs(p.right.y)+.045*Math.max(0,p.up.y),center.y);
   for(let i=0;i<2;i++){
     const sign=i?1:-1,target=add(add(center,mul(p.right,sign*.115)),mul(p.up,-.045));
-    const hand=lerp(source.hands[i],target,blend),holdPole=add(p.shoulders[i],add(mul(p.right,sign*.35),mul(p.forward,-.3)));
+    const hand=lerp(source.hands[i],target,blend),holdPole=keeperBendPole(p.shoulders[i],target,p.up,p.right,sign);
     const pole=lerp(source.elbows[i],holdPole,blend);
     // Lift the elbow plane as the shoulder approaches the turf during the gather.
     pole.y+=.9*Math.sin(Math.PI*blend)*(1-Math.max(0,p.up.y))*(1-smooth((p.shoulders[i].y-.15)/.55));
-    const arm=limb(p.shoulders[i],hand,pole,body.upperArm,body.forearm);p.hands.push(arm.end);p.elbows.push(arm.joint);
+    const arm=keeperArm(p.shoulders[i],hand,pole,p.up,p.right,sign);p.hands.push(arm.end);p.elbows.push(arm.joint);
   }
   p.grip={center,weight:blend};
   return {pose:p,center,weight:blend};

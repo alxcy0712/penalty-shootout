@@ -25,7 +25,7 @@ export class GameCharacter {
     const number=this.fallback.number.clone();number.material=this.fallback.number.material.clone();
     let skeleton;this.root.traverse(o=>{if(o.isSkinnedMesh)skeleton??=o.skeleton;});
     const index=skeleton.bones.findIndex(b=>b.name==='chest'),inverse=skeleton.boneInverses[index];
-    number.position.set(0,1.345,-.18).applyMatrix4(inverse);number.quaternion.setFromRotationMatrix(inverse);number.rotateY(Math.PI);number.scale.set(.7,.5,1);skeleton.bones[index].add(number);
+    number.position.set(0,1.345,this.keeper?-.121:-.18).applyMatrix4(inverse);number.quaternion.setFromRotationMatrix(inverse);number.rotateY(Math.PI);number.scale.set(.7,.5,1);skeleton.bones[index].add(number);
     this.fallback.group.visible=false;this.setColor(this.color,this.number);
     if(this.lastPose)this.pose(this.lastPose);
     return true;

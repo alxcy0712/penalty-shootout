@@ -20,6 +20,7 @@ for obj in objects:
     kit=next(m for m in obj.data.materials if m.name=='Kit')
     next(n for n in kit.node_tree.nodes if n.type=='BSDF_PRINCIPLED').inputs['Base Color'].default_value=(.7,.29,.08,1)
 refine_character(rig,True)
+objects=[o for o in bpy.context.scene.objects if o.type=='MESH' and any(m.type=='ARMATURE' and m.object==rig for m in o.modifiers)]
 
 def v(p):return Vector((p[0],-p[2],p[1]))
 scene=bpy.context.scene; scene.render.fps=120;scene.frame_start=0

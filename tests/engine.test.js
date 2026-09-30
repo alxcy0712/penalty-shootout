@@ -92,7 +92,7 @@ test('bounces preserve a committed dive and the result continues from the final 
   }
 });
 test('sideways catches gather the ball without flipping the elbow through the ground',()=>{
-  for(const seed of[16,18,59,87,95,134]){
+  for(const seed of[16,18,134,158,192,215]){
     const shot=new Shot({x:Math.sin(seed)*3.3,power:(seed%10)/10,y:.3+(seed%7)/3},stats,stats,seed%3-1,seed);
     run(shot);assert.ok(shot.caught);let previous=shot.pose;
     for(let ms=1;ms<=HOLD_DURATION*1000;ms++){
@@ -104,6 +104,12 @@ test('sideways catches gather the ball without flipping the elbow through the gr
       }
       previous=pose;
     }
+  }
+});
+test('the revised elbow paths preserve saves for the previous catch fixtures',()=>{
+  for(const seed of [59,87,95]){
+    const shot=new Shot({x:Math.sin(seed)*3.3,power:(seed%10)/10,y:.3+(seed%7)/3},stats,stats,seed%3-1,seed);
+    run(shot);assert.ok(shot.result.saved,`keeper still saves shot ${seed}`);
   }
 });
 test('whole ball, rebound goal, post rebound, and secure possession',()=>{

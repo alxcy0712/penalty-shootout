@@ -7,6 +7,20 @@ test('anatomical segment lengths remain fixed during shots, dives and recovery',
 test('planted striking foot stays on turf from contact through follow-through',()=>{const origin=strikerPose(0,1,0).feet[0];for(let n=0;n<100;n++){const foot=strikerPose(0,1,n/120).feet[0];assert.ok(distance(origin,foot)<1e-8);assert.ok(Math.abs(foot.y-.075)<1e-8);}});
 test('keeper airborne pelvis accelerates under gravity',()=>{const stats={reach:85,speed:85},dt=.001;for(const t of[.20,.25,.30]){const a=goalkeeperPose(stats,1,t-dt,2).hip,b=goalkeeperPose(stats,1,t,2).hip,c=goalkeeperPose(stats,1,t+dt,2).hip;assert.ok(Math.abs((a.y-2*b.y+c.y)/(dt*dt)+9.81)<1e-5);}});
 test('dive and get-up keep joint centres above the playing surface',()=>{for(const d of[-1,1])for(const h of[.3,1.2,2.3])for(let n=0;n<=600;n++){const p=goalkeeperPose({reach:99,speed:99},d,n/120,h);for(const key of['hands','feet','knees','elbows'])for(const point of p[key])assert.ok(point.y>=.065,`${key} crossed turf`);}});
+test('keeper arms clear the head through takeoff, flight, gathering and get-up',()=>{
+  const clearance=(p,a,b)=>{
+    const delta={x:b.x-a.x,y:b.y-a.y,z:b.z-a.z},toHead={x:p.head.x-a.x,y:p.head.y-a.y,z:p.head.z-a.z};
+    const t=Math.max(0,Math.min(1,(delta.x*toHead.x+delta.y*toHead.y+delta.z*toHead.z)/(delta.x**2+delta.y**2+delta.z**2)));
+    return Math.hypot(toHead.x-t*delta.x,toHead.y-t*delta.y,toHead.z-t*delta.z);
+  };
+  for(const speed of [50,99])for(const stretch of [0,1])for(const direction of [-1,0,1])for(const height of [.3,1.2,2.3])for(let frame=0;frame<=480;frame++){
+    const t=frame/120,source=goalkeeperPose({speed,reach:99,stretch},direction,t,height);
+    for(const p of [source,holdingPose(source).pose,holdingPose(source,t/HOLD_DURATION).pose])for(let i=0;i<2;i++){
+      assert.ok(clearance(p,p.shoulders[i],p.elbows[i])>.18,'upper arm and sleeve clear the head');
+      assert.ok(clearance(p,p.elbows[i],p.hands[i])>.155,'forearm clears the head');
+    }
+  }
+});
 test('kicking contact is continuous and boot toe reaches the ball',()=>{const a=strikerPose(0,1,-1),b=strikerPose(0,1,0);assert.ok(distance(a.feet[1],b.feet[1])<.01);assert.ok(distance({x:b.feet[1].x,y:b.feet[1].y,z:b.feet[1].z-.14},{x:0,y:.11,z:11})<.02);});
 test('no joint teleports at backswing, takeoff or recovery transitions',()=>{
   const evaluate=[t=>strikerPose(t,Math.min(t/.55,1),t>=.55?t-.55:-1)];
