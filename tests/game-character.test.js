@@ -3,14 +3,12 @@ import assert from 'node:assert/strict';
 import {gameKickTime,KICK_CONTACT} from '../src/game-character.js';
 import {penaltyStyles} from '../src/anatomy.js';
 
-test('all existing runup durations align mocap contact with ball release',()=>{
+test('all runup durations keep a steady mocap tempo and align contact with ball release',()=>{
   for(const style of penaltyStyles){
-    assert.equal(gameKickTime(style.duration/style.duration,null,style.duration),KICK_CONTACT);
+    assert.equal(gameKickTime(style.duration/style.duration),KICK_CONTACT);
     assert.equal(gameKickTime(1,0),KICK_CONTACT);
-    assert.ok(Math.abs(gameKickTime((style.duration-.0001)/style.duration,null,style.duration)-gameKickTime(1,0))<.001);
-    const gather=style.duration-.55,dt=.00001;
-    const speed=(gameKickTime((gather+dt)/style.duration,null,style.duration)-gameKickTime((gather-dt)/style.duration,null,style.duration))/(2*dt);
-    assert.ok(Math.abs(speed-1)<.001,'captured counter-swing joins the plant at native speed');
+    assert.ok(Math.abs(gameKickTime((style.duration-.0001)/style.duration)-gameKickTime(1,0))<.001);
+    for(const phase of [.1,.3,.5,.7,.9])assert.ok(Math.abs(gameKickTime(phase)-KICK_CONTACT*phase)<1e-12,'runup retains uniform capture playback');
   }
   assert.equal(gameKickTime(0),0);assert.equal(gameKickTime(1,10),3.5);
 });
@@ -22,8 +20,7 @@ import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';
 import {GameCharacter} from '../src/game-character.js';
 import {createKeeperSkinPose} from '../src/keeper-skin-pose.js';
 import {createKeeperArmRoll} from '../src/keeper-arm-roll.js';
-import {createStrikerMotion} from '../src/striker-motion.js';
-import {strikerRunupPose,goalkeeperPose,holdingPose,body} from '../src/anatomy.js';
+import {strikerRunupPose,goalkeeperPose,holdingPose} from '../src/anatomy.js';
 
 async function character(asset,keeper){
   const bytes=await readFile(new URL(`../assets/characters/${asset}.glb`,import.meta.url));
@@ -34,7 +31,7 @@ async function character(asset,keeper){
   const gltf=await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');
   const c=Object.create(GameCharacter.prototype);c.root=gltf.scene;c.keeper=keeper;
   c.mixer=new THREE.AnimationMixer(c.root);c.actions=gltf.animations.map(clip=>c.mixer.clipAction(clip).setLoop(THREE.LoopOnce,1));
-  c.apply=createKeeperSkinPose(c.root);c.relax=createKeeperArmRoll(c.root);if(!keeper)c.strikerMotion=createStrikerMotion(c.root);return c;
+  c.apply=createKeeperSkinPose(c.root);c.relax=createKeeperArmRoll(c.root);return c;
 }
 
 test('game mocap reaches the actual penalty ball and repeated pose/gaze stays stable',async()=>{
@@ -52,7 +49,7 @@ test('game mocap reaches the actual penalty ball and repeated pose/gaze stays st
 function strike(c,time,style,power=.7,x=0,type='normal'){
   const after=time>=style.duration?time-style.duration:null,runup=after===null?time/style.duration:0;
   c.pose(strikerRunupPose(0,after===null?runup:1,after??-1,power,x,style,type));
-  c.kick(runup,after,style.duration);c.root.updateWorldMatrix(true,true);
+  c.kick(runup,after);c.root.updateWorldMatrix(true,true);
 }
 const joint=(c,name)=>c.root.getObjectByName(name).getWorldPosition(new THREE.Vector3());
 function floor(c){
@@ -68,29 +65,32 @@ function floor(c){
   return {minimum,lowest};
 }
 
-test('rendered strikes retain support, shot-specific arcs and continuity when game runup resets at release',async()=>{
-  const c=await character('striker-mocap',false),ball=new THREE.Vector3(0,.11,11),arcs={};
-  for(const style of penaltyStyles)for(const power of [.2,.7,1])for(const x of [-3.5,0,3.5])for(const type of ['normal','low','chip']){
-    const dt=.0001;
-    strike(c,style.duration-dt,style,power,x,type);const before=joint(c,'footL');
-    strike(c,style.duration,style,power,x,type);const at=joint(c,'footL'),support=joint(c,'footR');
-    const tip=c.root.getObjectByName('footL').localToWorld(new THREE.Vector3(0,.23,0));
-    assert.ok(Math.abs(tip.distanceTo(ball)-.11)<.02,`${style.name}/${power}/${x}/${type}: toe meets the near ball surface`);
-    strike(c,style.duration+dt,style,power,x,type);const after=joint(c,'footL');
-    assert.ok(at.distanceTo(before)<.005&&after.distanceTo(at)<.005,'ball release retains the striking ankle');
-    assert.ok(before.clone().add(after).addScaledVector(at,-2).length()/dt<.05,'incoming and outgoing foot velocity join');
-    for(const elapsed of [.04,.10,.22,.45,.70]){
-      strike(c,style.duration+elapsed,style,power,x,type);
-      assert.ok(joint(c,'footR').distanceTo(support)<1e-6,'support foot remains fixed through follow-through');
-      for(const side of ['L','R'])for(const [a,b,length] of [['upper_arm','forearm',body.upperArm],['forearm','hand',body.forearm],['thigh','shin',body.thigh],['shin','foot',body.shin]])
-        assert.ok(Math.abs(joint(c,a+side).distanceTo(joint(c,b+side))-length)<1e-5,'adapted limbs retain their lengths');
-      if(style===penaltyStyles[0]&&power===.7&&x===0&&elapsed===.10)arcs[type]=joint(c,'footL');
-    }
+test('rendered runup, strike and recovery retain every bone of the full CMU capture',async()=>{
+  const c=await character('striker-mocap',false),reference=await character('striker-mocap',false);
+  reference.root.position.set(0,0,11);reference.root.rotation.y=Math.PI;
+  for(const style of penaltyStyles)for(const type of ['normal','low','chip'])for(const sourceTime of [0,.18,.43,.65,1.1,1.47,1.7,1.85,2,2.4,2.85,3.3,3.5]){
+    const time=sourceTime<KICK_CONTACT?style.duration*sourceTime/KICK_CONTACT:style.duration+sourceTime-KICK_CONTACT;
+    strike(c,time,style,.7,3.5,type);
+    const action=reference.actions[0];action.play();action.paused=true;action.time=sourceTime;reference.mixer.update(0);
+    reference.root.updateWorldMatrix(true,true);
+    c.root.traverse(bone=>{
+      if(!bone.isBone)return;
+      const captured=reference.root.getObjectByName(bone.name);
+      assert.ok(bone.getWorldPosition(new THREE.Vector3()).distanceTo(captured.getWorldPosition(new THREE.Vector3()))<1e-5,`${style.name}/${type}/${sourceTime}: ${bone.name} retains captured position`);
+      assert.ok(bone.quaternion.clone().normalize().angleTo(captured.quaternion.clone().normalize())<1e-5,`${bone.name} retains captured rotation`);
+    });
   }
-  assert.ok(arcs.normal.y-arcs.low.y>.1,'low drives keep a lower follow-through');
-  assert.ok(arcs.chip.z-arcs.normal.z>.15,'chips finish with a shorter swing');
-  const starts=penaltyStyles.map(style=>{strike(c,0,style);return joint(c,'pelvis');});
-  assert.ok(starts[0].distanceTo(starts[1])>.2&&starts[0].distanceTo(starts[2])>.1,'runup styles retain distinct approaches');
+});
+
+test('full-body mocap stays continuous when game runup resets at ball release',async()=>{
+  const c=await character('striker-mocap',false),bones=[];
+  c.root.traverse(bone=>{if(bone.isBone)bones.push(bone.name);});
+  for(const style of penaltyStyles)for(const power of [.2,.7,1])for(const x of [-3.5,0,3.5])for(const type of ['normal','low','chip']){
+    strike(c,style.duration-.0001,style,power,x,type);const before=bones.map(name=>joint(c,name));
+    strike(c,style.duration,style,power,x,type);const at=bones.map(name=>joint(c,name));
+    strike(c,style.duration+.0001,style,power,x,type);
+    for(const [i,name] of bones.entries())assert.ok(at[i].distanceTo(before[i])<.005&&joint(c,name).distanceTo(at[i])<.005,`${name} stays continuous through release`);
+  }
 });
 
 test('actual match skins clear the turf across approach, strikes, dives, landings and held-ball recovery',async()=>{
