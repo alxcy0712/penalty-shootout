@@ -1,0 +1,203 @@
+{
+  "runtimeCommit": "29cde8257c15361b69962da932143148a3c79f3f",
+  "test": {
+    "total": 158,
+    "passed": 158,
+    "failed": 0,
+    "skipped": 0
+  },
+  "build": {
+    "passed": true,
+    "warning": "rendering chunk 1.133 MB / 306.7 KB gzip; mobile GPU not measured"
+  },
+  "collision": {
+    "cases": 135,
+    "contacts": 58,
+    "caught": 36,
+    "unsettled": 0,
+    "maxContactGap": 3.383755039530756e-05,
+    "minContactGap": -7.900500270607846e-06,
+    "maxPostGap": 0.00503237162224994,
+    "minPostGap": -0.0029064672425933163
+  },
+  "gather": {
+    "paths": 40,
+    "hz": 240,
+    "skinHz": 60,
+    "duration": 2.8,
+    "minSurfaceGap": -4.557093260526557e-07,
+    "maxPalmGap": 5.259530408419089e-07,
+    "maxBallStep": 0.04410251988019622,
+    "maxMicroStep": 0.00011028522185514552
+  },
+  "ground": {
+    "recipes": 28,
+    "hz": 60,
+    "minimumY": -0.0019236151973104354,
+    "groundPlane": -0.014
+  },
+  "striker": {
+    "recipes": 27,
+    "contactSeconds": 1.8467,
+    "maxSurfaceError": 5.120703183263131e-05,
+    "maxSupportDrift": 0.0005296589389825078,
+    "minimumY": -0.0006291632657270813
+  },
+  "selfIntersections": {
+    "dive": {
+      "poses": 300,
+      "sourceStable": true,
+      "categories": {
+        "forearmTorso": {
+          "pairs": 0,
+          "maxSeparation": 0
+        },
+        "calfTorso": {
+          "pairs": 0,
+          "maxSeparation": 0
+        },
+        "upperAndSupportTorso": {
+          "pairs": 0,
+          "maxSeparation": 0
+        },
+        "innerElbow": {
+          "pairs": 0,
+          "maxSeparation": 0
+        },
+        "oppositeFootCalf": {
+          "pairs": 0,
+          "maxSeparation": 0
+        }
+      }
+    },
+    "gather": {
+      "poses": 112,
+      "sourceStable": true,
+      "categories": {
+        "forearmTorso": {
+          "pairs": 0,
+          "maxSeparation": 0
+        },
+        "calfTorso": {
+          "pairs": 0,
+          "maxSeparation": 0
+        },
+        "upperAndSupportTorso": {
+          "pairs": 204,
+          "maxSeparation": 0.0038845296630277693
+        },
+        "innerElbow": {
+          "pairs": 19,
+          "maxSeparation": 0.0016270825831857794
+        },
+        "oppositeFootCalf": {
+          "pairs": 0,
+          "maxSeparation": 0
+        }
+      }
+    },
+    "center": {
+      "poses": 51,
+      "sourceStable": true,
+      "categories": {
+        "forearmTorso": {
+          "pairs": 0,
+          "maxSeparation": 0
+        },
+        "calfTorso": {
+          "pairs": 0,
+          "maxSeparation": 0
+        },
+        "upperAndSupportTorso": {
+          "pairs": 420,
+          "maxSeparation": 0.003522897915335249
+        },
+        "innerElbow": {
+          "pairs": 0,
+          "maxSeparation": 0
+        },
+        "oppositeFootCalf": {
+          "pairs": 0,
+          "maxSeparation": 0
+        }
+      }
+    }
+  },
+  "performance": {
+    "sourceHashes": {
+      "anatomy.js": "5308215bd90295d8d566a73eb853293a2bf6fd5fc44459fce7cec22ffd439c3a",
+      "engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+      "keeper-contact.js": "7f8f3a0c3ff4656be4ef4cfa6ae86a865f186078a3250aa86e40d4a7d8e04fc7",
+      "keeper-contact-data.js": "3660df8f58ef6d0a939fc3fd417203132ddbbe82dea031d4350951672cb25c17"
+    },
+    "scope": "135 identical seed-42 shots. Before/after share the current anatomy, isolating engine/contact changes. Milliseconds, Node cloud CPU; browser/mobile performance remains device dependent.",
+    "runs": 3,
+    "summary": {
+      "before": {
+        "totalMsMedian": 288.060162,
+        "nearP95MsMedian": 0.02858299999979863,
+        "nearP99MsMedian": 0.11511300000006486,
+        "nearMaxMsAllRuns": 2.907574000000068,
+        "constructP95MsMedian": 1.285233000000062,
+        "constructMaxMsAllRuns": 2.9649409999999534,
+        "outcome": {
+          "cases": 135,
+          "touched": 58,
+          "saved": 56,
+          "caught": 33,
+          "goals": 79,
+          "reboundGoals": 2
+        }
+      },
+      "after": {
+        "totalMsMedian": 590.579407,
+        "nearP95MsMedian": 0.5974490000000969,
+        "nearP99MsMedian": 1.0246819999999843,
+        "nearMaxMsAllRuns": 2.833423000000039,
+        "constructP95MsMedian": 1.6366029999999228,
+        "constructMaxMsAllRuns": 2.956247000000076,
+        "outcome": {
+          "cases": 135,
+          "touched": 58,
+          "saved": 52,
+          "caught": 36,
+          "goals": 83,
+          "reboundGoals": 6
+        }
+      }
+    }
+  },
+  "visual": {
+    "sequences": 13,
+    "fps": 12,
+    "views": 3,
+    "format": "Blender renders of actual CPU-skinned production mesh",
+    "knownClothContacts": "Local shoulder/axilla ~3.9 mm, one inner elbow ~1.6 mm; reviewed without visible black seam, thin sheet or arm-through-torso. Not full cloth simulation."
+  },
+  "unverified": [
+    "Browser WebGL final shading/textures and portrait/landscape layout",
+    "Real-device touch, mobile GPU performance and resource failure/context recovery"
+  ],
+  "sourceSha256": {
+    "src/anatomy.js": "5308215bd90295d8d566a73eb853293a2bf6fd5fc44459fce7cec22ffd439c3a",
+    "src/ball-motion.js": "0da53653fd2f80ec6ebd4297e95a18aa3216163822ba27ec9c11bb5c04c0cc2a",
+    "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "src/character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+    "src/engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+    "src/game-character.js": "d81b7b804c8eccc2abed2bcdfdf5fb38d28a25f0e0b5b6c44aca1a45d47989d1",
+    "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "src/keeper-arm-roll.js": "1c4ead6fa33655945b0cd84af97285898311ed5fced5d1686059018b0c9d4a30",
+    "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "src/keeper-contact-data.js": "3660df8f58ef6d0a939fc3fd417203132ddbbe82dea031d4350951672cb25c17",
+    "src/keeper-contact.js": "7f8f3a0c3ff4656be4ef4cfa6ae86a865f186078a3250aa86e40d4a7d8e04fc7",
+    "src/keeper-hand-contact.js": "65e1370bb0feafa2c345fe1f05b31379a2af272f788477507672fe5871146d03",
+    "src/keeper-skin-pose.js": "709dd044993b1417812c4f7a6d8a4470bb84899a131f645026b12ff3e3899916",
+    "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "src/main.js": "60c2ca2729e6855ee0c3403be3c5a17ee4e485cbbaa4e12d2baec1a17a23d6cd",
+    "src/motion-lab-runtime.js": "5a19f0388ca8d427e9644f75ac03817106b26abc3de20ecff2b860d75f47a4dd",
+    "src/motion-lab-state.js": "554c4c25b3a986f904890cf928da64b33d74499840928ebfb3e3d5be2f75d506",
+    "src/rendering.js": "1e9d1e7a8e24517ad7c075271dcbce4aa981a5ff1bfdf04082c8e00688763171",
+    "src/scene.js": "ec7bbd74c7c25656b2c2a57d09037db099906d40938b9376fb3c08f462ded723",
+    "src/striker-kick-style.js": "b83c0dce17bd2b1bf7ecc02ac49638e6df6de40ab4d25df1b875bd816aeb1098"
+  }
+}

@@ -21,3 +21,9 @@ CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
 Adaptations: filtered, aligned, scaled, fixed-length retargeted, baked and compressed.
 No endorsement is implied. Captured dive clips remain embedded in the source asset.
 The game and motion-lab goalkeeper share the procedural physical rig.
+
+Runtime refinements (2026): target-relative orientation, low/chip follow-through
+IK and trailing-step completion are procedural adaptations of the existing CMU
+clip, not new motion-capture recordings. Goalkeeper shoulder support bones,
+ground-contact wrist correction and recovery poses are procedural. Original
+source assets, licenses and attribution remain unchanged.

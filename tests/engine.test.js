@@ -1,5 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {Match, Shot, Random, createTeams, winnerOf, gestureInput, directionMeter, powerMeter} from '../src/engine.js';
 import {holdingPose,HOLD_DURATION} from '../src/anatomy.js';
 const team=(goals,kicks)=>({goals,kicks:Array(kicks).fill({})});
@@ -91,10 +92,12 @@ test('bounces preserve a committed dive and the result continues from the final 
     assert.deepEqual(restored.poseAt(restored.t),shot.pose,`restored result pose changed for seed ${seed}`);
   }
 });
-test('sideways catches gather the ball without flipping the elbow through the ground',()=>{
-  for(const seed of[16,18,59,87,95,134]){
-    const shot=new Shot({x:Math.sin(seed)*3.3,power:(seed%10)/10,y:.3+(seed%7)/3},stats,stats,seed%3-1,seed);
-    run(shot);assert.ok(shot.caught);let previous=shot.pose;
+test('historical side-catch trajectories gather without flipping the elbow through the ground',()=>{
+  // Collision geometry is allowed to turn an old catch into a true near miss.
+  // Freeze its sampled contact trajectory so that cannot erase this pose regression.
+  const {fixtures}=JSON.parse(readFileSync(new URL('./fixtures/keeper-holding-contact.json',import.meta.url)));
+  for(const {seed,shot:raw} of fixtures){
+    const shot=Shot.restore(raw);let previous=shot.poseAt(shot.t);
     for(let ms=1;ms<=HOLD_DURATION*1000;ms++){
       const pose=holdingPose(shot.poseAt(shot.t+ms/1000),ms/1000/HOLD_DURATION).pose;
       for(let i=0;i<2;i++){
@@ -102,6 +105,18 @@ test('sideways catches gather the ball without flipping the elbow through the gr
         assert.ok(Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z)<.022,`catch ${seed} flips at ${ms} ms`);
         assert.ok(b.y>=.075-1e-8);
       }
+      previous=pose;
+    }
+  }
+});
+test('real surface catches gather smoothly on both sides at low and high targets',()=>{
+  const keeper={...stats,speed:95,reach:95};
+  for(const [direction,height,x,seed]of[[-1,.3,2,3],[-1,2.1,1.5,2],[1,.3,2,3],[1,2.1,1.5,1]]){
+    const shot=new Shot({x:direction*x,y:height,power:.55},keeper,keeper,direction,seed);
+    run(shot);assert.ok(shot.caught,`physical catch ${direction}/${height}`);let previous=shot.pose;
+    for(let ms=1;ms<=HOLD_DURATION*1000;ms++){
+      const pose=holdingPose(shot.poseAt(shot.t+ms/1000),ms/1000/HOLD_DURATION).pose;
+      for(let i=0;i<2;i++){const a=previous.elbows[i],b=pose.elbows[i];assert.ok(Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z)<.022,'surface catch transitions without an elbow flip');assert.ok(b.y>=.075-1e-8);}
       previous=pose;
     }
   }

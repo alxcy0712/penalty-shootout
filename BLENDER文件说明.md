@@ -19,3 +19,7 @@
 - `node tools/mocap/sample-keeper.mjs`，随后执行 `tools/blender/create_keeper_prototype.py` 和 `repair_keeper_skin.py`：生成并修复当前门将。
 
 采样文件输出到 `/tmp`，Blender 脚本依赖 Blender 自带的 `bpy`。源人物、动作数据及许可保留在 `assets/characters/quaternius-source/` 和 `assets/characters/mocap/`。署名见 `public/character-credits.txt`。已清除被替代的模型成品与自动备份。
+
+## 运行时变形与制作文件的边界
+
+本分支没有重新标注或替换动作来源。GLB/Blend 仍保存原有 22 骨制作骨架和捕获片段；游戏会在门将实例上添加两个肩部变形辅助骨，并在运行时完成撑地腕角、恢复姿态和射手随摆/落步修饰。单独打开 Blender 源文件不会显示这些 JavaScript 修正。动作最终验收以共享 `GameCharacter` 为准，相关回归在 `tests/character-motion-quality.test.js` 和 `tests/keeper-shoulder.test.js`。

@@ -1,0 +1,4190 @@
+{
+  "description": "Measured pre-fix non-neighbouring calf/boot crossings on actual keeper GLB; baseline cab300c plus intermediate sequential-step shoe crossing. Raw triangle indices preserve independent repro.",
+  "crossings": [
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.686207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 610,
+          "vertices": [
+            291,
+            298,
+            301
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.686207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 203,
+          "vertices": [
+            32,
+            92,
+            100
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 733,
+          "vertices": [
+            410,
+            374,
+            297
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.686207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 203,
+          "vertices": [
+            32,
+            92,
+            100
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 565,
+          "vertices": [
+            2685,
+            410,
+            297
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.686207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 143,
+          "vertices": [
+            206,
+            65,
+            188
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1268,
+          "vertices": [
+            2262,
+            647,
+            658
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.686207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 202,
+          "vertices": [
+            32,
+            7,
+            92
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 567,
+          "vertices": [
+            2702,
+            297,
+            2703
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.736207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 608,
+          "vertices": [
+            289,
+            301,
+            299
+          ],
+          "region": "shinL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.736207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 607,
+          "vertices": [
+            289,
+            291,
+            301
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.736207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1572,
+          "vertices": [
+            1011,
+            1029,
+            1012
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2376,
+          "vertices": [
+            1417,
+            1435,
+            1418
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.736207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.736207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2198,
+          "vertices": [
+            1328,
+            1346,
+            1329
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1894,
+          "vertices": [
+            1174,
+            1192,
+            1175
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.836207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 608,
+          "vertices": [
+            289,
+            301,
+            299
+          ],
+          "region": "shinL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.836207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 607,
+          "vertices": [
+            289,
+            291,
+            301
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.836207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1572,
+          "vertices": [
+            1011,
+            1029,
+            1012
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2376,
+          "vertices": [
+            1417,
+            1435,
+            1418
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.836207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 0.836207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2198,
+          "vertices": [
+            1328,
+            1346,
+            1329
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1894,
+          "vertices": [
+            1174,
+            1192,
+            1175
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 607,
+          "vertices": [
+            289,
+            291,
+            301
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1572,
+          "vertices": [
+            1011,
+            1029,
+            1012
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2376,
+          "vertices": [
+            1417,
+            1435,
+            1418
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 367,
+          "vertices": [
+            92,
+            178,
+            184
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 732,
+          "vertices": [
+            410,
+            418,
+            374
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 0.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2197,
+          "vertices": [
+            1328,
+            1345,
+            1346
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1895,
+          "vertices": [
+            1175,
+            1192,
+            1193
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.831024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 610,
+          "vertices": [
+            291,
+            298,
+            301
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.831024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 203,
+          "vertices": [
+            32,
+            92,
+            100
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 733,
+          "vertices": [
+            410,
+            374,
+            297
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.831024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 203,
+          "vertices": [
+            32,
+            92,
+            100
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 565,
+          "vertices": [
+            2685,
+            410,
+            297
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.831024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 143,
+          "vertices": [
+            206,
+            65,
+            188
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1268,
+          "vertices": [
+            2262,
+            647,
+            658
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.831024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 202,
+          "vertices": [
+            32,
+            7,
+            92
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 567,
+          "vertices": [
+            2702,
+            297,
+            2703
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.881024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 608,
+          "vertices": [
+            289,
+            301,
+            299
+          ],
+          "region": "shinL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.881024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 607,
+          "vertices": [
+            289,
+            291,
+            301
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.881024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1572,
+          "vertices": [
+            1011,
+            1029,
+            1012
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2376,
+          "vertices": [
+            1417,
+            1435,
+            1418
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.881024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.881024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2198,
+          "vertices": [
+            1328,
+            1346,
+            1329
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1894,
+          "vertices": [
+            1174,
+            1192,
+            1175
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.981024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 608,
+          "vertices": [
+            289,
+            301,
+            299
+          ],
+          "region": "shinL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.981024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 607,
+          "vertices": [
+            289,
+            291,
+            301
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.981024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1572,
+          "vertices": [
+            1011,
+            1029,
+            1012
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2376,
+          "vertices": [
+            1417,
+            1435,
+            1418
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.981024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 0.981024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2198,
+          "vertices": [
+            1328,
+            1346,
+            1329
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1894,
+          "vertices": [
+            1174,
+            1192,
+            1175
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 608,
+          "vertices": [
+            289,
+            301,
+            299
+          ],
+          "region": "shinL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 607,
+          "vertices": [
+            289,
+            291,
+            301
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1572,
+          "vertices": [
+            1011,
+            1029,
+            1012
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2376,
+          "vertices": [
+            1417,
+            1435,
+            1418
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 1.2,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2198,
+          "vertices": [
+            1328,
+            1346,
+            1329
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1894,
+          "vertices": [
+            1174,
+            1192,
+            1175
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 0.999589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 610,
+          "vertices": [
+            291,
+            298,
+            301
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 0.999589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 203,
+          "vertices": [
+            32,
+            92,
+            100
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 733,
+          "vertices": [
+            410,
+            374,
+            297
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 0.999589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 203,
+          "vertices": [
+            32,
+            92,
+            100
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 565,
+          "vertices": [
+            2685,
+            410,
+            297
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 0.999589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 143,
+          "vertices": [
+            206,
+            65,
+            188
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1268,
+          "vertices": [
+            2262,
+            647,
+            658
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 0.999589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 202,
+          "vertices": [
+            32,
+            7,
+            92
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 567,
+          "vertices": [
+            2702,
+            297,
+            2703
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 610,
+          "vertices": [
+            291,
+            298,
+            301
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 203,
+          "vertices": [
+            32,
+            92,
+            100
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 733,
+          "vertices": [
+            410,
+            374,
+            297
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 203,
+          "vertices": [
+            32,
+            92,
+            100
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 565,
+          "vertices": [
+            2685,
+            410,
+            297
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 202,
+          "vertices": [
+            32,
+            7,
+            92
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 567,
+          "vertices": [
+            2702,
+            297,
+            2703
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1498,
+          "vertices": [
+            974,
+            992,
+            975
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2305,
+          "vertices": [
+            1382,
+            1399,
+            1400
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.049589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 608,
+          "vertices": [
+            289,
+            301,
+            299
+          ],
+          "region": "shinL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.049589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 607,
+          "vertices": [
+            289,
+            291,
+            301
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.049589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1572,
+          "vertices": [
+            1011,
+            1029,
+            1012
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2376,
+          "vertices": [
+            1417,
+            1435,
+            1418
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.049589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.049589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2198,
+          "vertices": [
+            1328,
+            1346,
+            1329
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1894,
+          "vertices": [
+            1174,
+            1192,
+            1175
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.149589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 608,
+          "vertices": [
+            289,
+            301,
+            299
+          ],
+          "region": "shinL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.149589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 192,
+          "vertices": [
+            188,
+            65,
+            102
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 607,
+          "vertices": [
+            289,
+            291,
+            301
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.149589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1572,
+          "vertices": [
+            1011,
+            1029,
+            1012
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2376,
+          "vertices": [
+            1417,
+            1435,
+            1418
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.149589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.149589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2198,
+          "vertices": [
+            1328,
+            1346,
+            1329
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1894,
+          "vertices": [
+            1174,
+            1192,
+            1175
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 818,
+          "vertices": [
+            2831,
+            2815,
+            410
+          ],
+          "region": "shinL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 747,
+          "vertices": [
+            280,
+            374,
+            275
+          ],
+          "region": "shinR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 599,
+          "vertices": [
+            376,
+            290,
+            374
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 733,
+          "vertices": [
+            410,
+            374,
+            297
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 599,
+          "vertices": [
+            376,
+            290,
+            374
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 732,
+          "vertices": [
+            410,
+            418,
+            374
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 599,
+          "vertices": [
+            376,
+            290,
+            374
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 800,
+          "vertices": [
+            2814,
+            418,
+            410
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 4491,
+          "vertices": [
+            293,
+            2815,
+            2831
+          ],
+          "region": "shinL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 747,
+          "vertices": [
+            280,
+            374,
+            275
+          ],
+          "region": "shinR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.686207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 5102,
+          "vertices": [
+            290,
+            2857,
+            2858
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1509,
+          "vertices": [
+            665,
+            660,
+            759
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.686207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2377,
+          "vertices": [
+            1418,
+            1435,
+            1436
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1570,
+          "vertices": [
+            1010,
+            1028,
+            1011
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.686207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2273,
+          "vertices": [
+            1366,
+            1383,
+            1384
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1459,
+          "vertices": [
+            955,
+            972,
+            973
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.686207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1459,
+          "vertices": [
+            955,
+            972,
+            973
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2308,
+          "vertices": [
+            1383,
+            1401,
+            1384
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.686207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1855,
+          "vertices": [
+            1155,
+            1172,
+            1173
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2704,
+          "vertices": [
+            1583,
+            1601,
+            1584
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.736207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.736207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 406,
+          "vertices": [
+            28,
+            190,
+            30
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1644,
+          "vertices": [
+            1047,
+            1065,
+            1048
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.736207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2270,
+          "vertices": [
+            1364,
+            1382,
+            1365
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2004,
+          "vertices": [
+            1229,
+            1247,
+            1230
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.736207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 577,
+          "vertices": [
+            347,
+            282,
+            348
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1361,
+          "vertices": [
+            759,
+            675,
+            761
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.736207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1423,
+          "vertices": [
+            937,
+            954,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2274,
+          "vertices": [
+            1366,
+            1384,
+            1367
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.836207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.836207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 406,
+          "vertices": [
+            28,
+            190,
+            30
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1644,
+          "vertices": [
+            1047,
+            1065,
+            1048
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.836207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2270,
+          "vertices": [
+            1364,
+            1382,
+            1365
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2004,
+          "vertices": [
+            1229,
+            1247,
+            1230
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.836207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 577,
+          "vertices": [
+            347,
+            282,
+            348
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1361,
+          "vertices": [
+            759,
+            675,
+            761
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 0.836207
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1423,
+          "vertices": [
+            937,
+            954,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2274,
+          "vertices": [
+            1366,
+            1384,
+            1367
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2232,
+          "vertices": [
+            1345,
+            1363,
+            1346
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1933,
+          "vertices": [
+            1194,
+            1211,
+            1212
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 406,
+          "vertices": [
+            28,
+            190,
+            30
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1644,
+          "vertices": [
+            1047,
+            1065,
+            1048
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2233,
+          "vertices": [
+            1346,
+            1363,
+            1364
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1428,
+          "vertices": [
+            939,
+            957,
+            940
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 0.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 577,
+          "vertices": [
+            347,
+            282,
+            348
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1361,
+          "vertices": [
+            759,
+            675,
+            761
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.831024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 5102,
+          "vertices": [
+            290,
+            2857,
+            2858
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1509,
+          "vertices": [
+            665,
+            660,
+            759
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.831024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2377,
+          "vertices": [
+            1418,
+            1435,
+            1436
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1570,
+          "vertices": [
+            1010,
+            1028,
+            1011
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.831024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2273,
+          "vertices": [
+            1366,
+            1383,
+            1384
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1459,
+          "vertices": [
+            955,
+            972,
+            973
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.831024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1459,
+          "vertices": [
+            955,
+            972,
+            973
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2308,
+          "vertices": [
+            1383,
+            1401,
+            1384
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.831024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1855,
+          "vertices": [
+            1155,
+            1172,
+            1173
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2704,
+          "vertices": [
+            1583,
+            1601,
+            1584
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.881024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.881024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 406,
+          "vertices": [
+            28,
+            190,
+            30
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1644,
+          "vertices": [
+            1047,
+            1065,
+            1048
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.881024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2270,
+          "vertices": [
+            1364,
+            1382,
+            1365
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2004,
+          "vertices": [
+            1229,
+            1247,
+            1230
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.881024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 577,
+          "vertices": [
+            347,
+            282,
+            348
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1361,
+          "vertices": [
+            759,
+            675,
+            761
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.881024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1423,
+          "vertices": [
+            937,
+            954,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2274,
+          "vertices": [
+            1366,
+            1384,
+            1367
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.981024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.981024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 406,
+          "vertices": [
+            28,
+            190,
+            30
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1644,
+          "vertices": [
+            1047,
+            1065,
+            1048
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.981024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2270,
+          "vertices": [
+            1364,
+            1382,
+            1365
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2004,
+          "vertices": [
+            1229,
+            1247,
+            1230
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.981024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 577,
+          "vertices": [
+            347,
+            282,
+            348
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1361,
+          "vertices": [
+            759,
+            675,
+            761
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 0.981024
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1423,
+          "vertices": [
+            937,
+            954,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2274,
+          "vertices": [
+            1366,
+            1384,
+            1367
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 406,
+          "vertices": [
+            28,
+            190,
+            30
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1644,
+          "vertices": [
+            1047,
+            1065,
+            1048
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2270,
+          "vertices": [
+            1364,
+            1382,
+            1365
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2004,
+          "vertices": [
+            1229,
+            1247,
+            1230
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 577,
+          "vertices": [
+            347,
+            282,
+            348
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1361,
+          "vertices": [
+            759,
+            675,
+            761
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 1.2,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1423,
+          "vertices": [
+            937,
+            954,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2274,
+          "vertices": [
+            1366,
+            1384,
+            1367
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 0.999589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 5102,
+          "vertices": [
+            290,
+            2857,
+            2858
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1509,
+          "vertices": [
+            665,
+            660,
+            759
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 0.999589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2377,
+          "vertices": [
+            1418,
+            1435,
+            1436
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1570,
+          "vertices": [
+            1010,
+            1028,
+            1011
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 0.999589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2273,
+          "vertices": [
+            1366,
+            1383,
+            1384
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1459,
+          "vertices": [
+            955,
+            972,
+            973
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 0.999589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1459,
+          "vertices": [
+            955,
+            972,
+            973
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2308,
+          "vertices": [
+            1383,
+            1401,
+            1384
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 0.999589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1855,
+          "vertices": [
+            1155,
+            1172,
+            1173
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2704,
+          "vertices": [
+            1583,
+            1601,
+            1584
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2377,
+          "vertices": [
+            1418,
+            1435,
+            1436
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1570,
+          "vertices": [
+            1010,
+            1028,
+            1011
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 5102,
+          "vertices": [
+            290,
+            2857,
+            2858
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1509,
+          "vertices": [
+            665,
+            660,
+            759
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1459,
+          "vertices": [
+            955,
+            972,
+            973
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2308,
+          "vertices": [
+            1383,
+            1401,
+            1384
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1855,
+          "vertices": [
+            1155,
+            1172,
+            1173
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2704,
+          "vertices": [
+            1583,
+            1601,
+            1584
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1535,
+          "vertices": [
+            993,
+            1010,
+            1011
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2376,
+          "vertices": [
+            1417,
+            1435,
+            1418
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.049589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.049589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 406,
+          "vertices": [
+            28,
+            190,
+            30
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1644,
+          "vertices": [
+            1047,
+            1065,
+            1048
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.049589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2270,
+          "vertices": [
+            1364,
+            1382,
+            1365
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2004,
+          "vertices": [
+            1229,
+            1247,
+            1230
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.049589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 577,
+          "vertices": [
+            347,
+            282,
+            348
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1361,
+          "vertices": [
+            759,
+            675,
+            761
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.049589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1423,
+          "vertices": [
+            937,
+            954,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2274,
+          "vertices": [
+            1366,
+            1384,
+            1367
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.149589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2275,
+          "vertices": [
+            1367,
+            1384,
+            1385
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1458,
+          "vertices": [
+            954,
+            972,
+            955
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.149589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_3",
+          "material": "Socks",
+          "face": 406,
+          "vertices": [
+            28,
+            190,
+            30
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1644,
+          "vertices": [
+            1047,
+            1065,
+            1048
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.149589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2270,
+          "vertices": [
+            1364,
+            1382,
+            1365
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2004,
+          "vertices": [
+            1229,
+            1247,
+            1230
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.149589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 577,
+          "vertices": [
+            347,
+            282,
+            348
+          ],
+          "region": "shinR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004",
+          "material": "Skin.001",
+          "face": 1361,
+          "vertices": [
+            759,
+            675,
+            761
+          ],
+          "region": "shinL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.149589
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1423,
+          "vertices": [
+            937,
+            954,
+            955
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2274,
+          "vertices": [
+            1366,
+            1384,
+            1367
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1889,
+          "vertices": [
+            1154,
+            1189,
+            1172
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2311,
+          "vertices": [
+            1385,
+            1402,
+            1403
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2308,
+          "vertices": [
+            1383,
+            1401,
+            1384
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1819,
+          "vertices": [
+            1121,
+            1154,
+            1155
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2347,
+          "vertices": [
+            1403,
+            1420,
+            1421
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1925,
+          "vertices": [
+            1172,
+            1207,
+            1190
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2375,
+          "vertices": [
+            1417,
+            1434,
+            1435
+          ],
+          "region": "footR"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1968,
+          "vertices": [
+            1211,
+            1229,
+            1212
+          ],
+          "region": "footL"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": -1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1932,
+          "vertices": [
+            1193,
+            1211,
+            1194
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2339,
+          "vertices": [
+            1399,
+            1416,
+            1417
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1595,
+          "vertices": [
+            1023,
+            1040,
+            1041
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2771,
+          "vertices": [
+            1617,
+            1634,
+            1635
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1530,
+          "vertices": [
+            990,
+            1008,
+            991
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2692,
+          "vertices": [
+            1577,
+            1595,
+            1578
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1523,
+          "vertices": [
+            987,
+            1004,
+            1005
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2664,
+          "vertices": [
+            1563,
+            1581,
+            1564
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1601,
+          "vertices": [
+            1008,
+            1043,
+            1026
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2764,
+          "vertices": [
+            1613,
+            1631,
+            1614
+          ],
+          "region": "footR"
+        }
+      ]
+    },
+    {
+      "pose": {
+        "d": 1,
+        "h": 2.3,
+        "t": 1.4
+      },
+      "faces": [
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 1566,
+          "vertices": [
+            1008,
+            1026,
+            1009
+          ],
+          "region": "footL"
+        },
+        {
+          "mesh": "Sphere005_Retopology004_4",
+          "material": "Boots",
+          "face": 2764,
+          "vertices": [
+            1613,
+            1631,
+            1614
+          ],
+          "region": "footR"
+        }
+      ]
+    }
+  ]
+}

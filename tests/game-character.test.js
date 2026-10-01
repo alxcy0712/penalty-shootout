@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {gameKickTime,KICK_CONTACT} from '../src/game-character.js';
+import {skinSurfaceDistance} from './helpers/load-character.js';
 import {penaltyStyles} from '../src/anatomy.js';
 
 test('all existing runup durations align mocap contact with ball release',()=>{
@@ -39,7 +40,7 @@ test('game mocap reaches the actual penalty ball and repeated pose/gaze stays st
   for(let i=0;i<100;i++){
     c.pose(strikerRunupPose(0,1,0,.7,0));c.kick(1,0);c.lookAt(ball,1/60);
     const point=c.root.getObjectByName('footL').localToWorld(new THREE.Vector3(0,.23,0));
-    assert.ok(Math.abs(point.distanceTo(ball)-.11)<.02,'shoe meets game ball');
+    assert.ok(Math.abs(skinSurfaceDistance(c.root,ball,'Boots')-.11)<.002,'actual shoe surface meets game ball within 2 mm');
     if(previous)assert.ok(point.distanceTo(previous)<1e-6,'mixer resets do not move the contact');previous=point;
     assert.ok(c.root.getObjectByName('head').quaternion.toArray().every(Number.isFinite));
   }
@@ -81,7 +82,7 @@ test('match and motion lab keep the same mesh and local bone pose with team-spec
         const a=game.root.worldToLocal(bone.getWorldPosition(new THREE.Vector3()));
         const b=lab.root.worldToLocal(reference.getWorldPosition(new THREE.Vector3()));
         assert.ok(a.distanceTo(b)<1e-5,`${asset} ${bone.name} matches lab at ${t}`);
-        assert.ok(bone.quaternion.clone().normalize().angleTo(reference.quaternion.clone().normalize())<1e-5);
+        assert.ok(bone.quaternion.clone().normalize().angleTo(reference.quaternion.clone().normalize())<1e-5,`${asset} ${bone.name} rotation matches lab at ${t}: ${bone.quaternion.clone().normalize().angleTo(reference.quaternion.clone().normalize())}`);
       });
     }
   }

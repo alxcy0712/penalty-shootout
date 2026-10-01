@@ -2,6 +2,7 @@ import {homeAnimation} from './home-animation.js';
 import {GoalBall} from './ball-motion.js';
 import {batchRigidGroup} from './batching.js';
 import {GameCharacter} from './game-character.js';
+import {keeperGather} from './keeper-contact.js';
 import {renderPixelRatio} from './rendering.js';
 import {strikerRunupPose,penaltyStyle,holdingPose,HOLD_DURATION,blendKeeperPose,keeperWarmupPose} from './anatomy.js';
 import * as THREE from 'three';
@@ -130,7 +131,7 @@ export class Stadium {
     if(match?.kicker!==undefined && this.colorsKey!==`${match.turn}-${match.kicker}`){this.colorsKey=`${match.turn}-${match.kicker}`;this.striker.setColor(match.teams[match.turn].color,match.teams[match.turn].players[match.kicker].number);this.keeper.setColor(match.turn?'#83b8f4':'#f1c75b',1);}
     const style=penaltyStyle(match?.teams[match.turn]?.players[match.kicker]);
     this.striker.group.visible=!home||home.strikerVisible;this.ball.visible=!home||home.ballVisible;
-    if(!shot)this.striker.pose(home?home.striker:strikerRunupPose(time,runup,-1,kickAim?.power??.7,kickAim?.x??0,style,kickAim?.chip?'chip':kickAim?.low?'low':'normal'));
+    let strikerPose=home?home.striker:!shot?strikerRunupPose(time,runup,-1,kickAim?.power??.7,kickAim?.x??0,style,kickAim?.chip?'chip':kickAim?.low?'low':'normal'):null;
     let kickAfter=null;
     if(shot){
       if(this.currentShot!==shot){this.currentShot=shot;this.resultElapsed=0;this.trailCount=0;this.aftermath=null;}
@@ -139,18 +140,19 @@ export class Stadium {
       const animationTime=shot.result?currentTime:(shot.previousAnimationTime??currentTime)+(currentTime-(shot.previousAnimationTime??currentTime))*alpha;
       kickAfter=animationTime+(shot.result?this.resultElapsed:0);
       let pose=shot.result||currentTime<shot.t-.001?shot.poseAt(animationTime+this.resultElapsed):shot.previousPose?blendKeeperPose(shot.previousPose,shot.pose,alpha,false):shot.pose;
-      let held=null;if(shot.caught){held=holdingPose(pose,this.resultElapsed/HOLD_DURATION);pose=held.pose;}
+      let held=null;if(shot.caught){held=keeperGather(shot.pose,pose,shot.ball,shot.contactPart,this.resultElapsed/HOLD_DURATION);pose=held.pose;}
       this.keeper.pose(pose);this.ball.position.copy(shot.ball);
       if(!shot.result)this.ball.position.set(shot.previous.x+(shot.ball.x-shot.previous.x)*alpha,shot.previous.y+(shot.ball.y-shot.previous.y)*alpha,shot.previous.z+(shot.ball.z-shot.previous.z)*alpha);
       if(shot.result?.goal){
         this.aftermath??=new GoalBall(shot.ball,shot.velocity);const hits=this.aftermath.netHits;this.aftermath.advance(dt);this.ball.position.set(this.aftermath.position.x,this.aftermath.position.y,this.aftermath.position.z);if(this.aftermath.netHits>hits){this.netPulse=clamp(this.aftermath.lastImpactSpeed/22,.15,1);this.netImpact={...this.aftermath.position};this.netAge=0;}
       }
-      if(held){this.ball.position.set(shot.ball.x+pose.shoulder.x-shot.pose.shoulder.x,shot.ball.y+pose.shoulder.y-shot.pose.shoulder.y,shot.ball.z+pose.shoulder.z-shot.pose.shoulder.z);this.ball.position.lerp(held.center,held.weight);}
+      if(held)this.ball.position.copy(held.ball);
       if(this.aftermath&&!this.aftermath.sleeping){this.ball.rotation.x+=dt*this.aftermath.velocity.z/.11;this.ball.rotation.z-=dt*this.aftermath.velocity.x/.11;}else if(!shot.result){this.ball.rotation.x-=dt*shot.launchSpeed*2;this.ball.rotation.z+=dt*shot.velocity.x;}
       if(!shot.result){if(this.trailCount===7)this.trailBuffer.copyWithin(0,3);else this.trailCount++;this.ball.position.toArray(this.trailBuffer,(this.trailCount-1)*3);this.trail.geometry.attributes.position.needsUpdate=true;this.trail.geometry.setDrawRange(0,this.trailCount);}
-      this.striker.pose(strikerRunupPose(time,1,animationTime+(shot.result?this.resultElapsed:0),shot.aim.power,shot.aim.x,style,shot.aim.chip?'chip':shot.aim.low?'low':'normal'));
+      strikerPose=strikerRunupPose(time,1,animationTime+(shot.result?this.resultElapsed:0),shot.aim.power,shot.aim.x,style,shot.aim.chip?'chip':shot.aim.low?'low':'normal');
     }else{this.keeper.pose(home?keeperWarmupPose(home.warmupTime):this.waitingKeeperPose);this.ball.position.copy(home?home.ball:{x:0,y:.11,z:11});if(home)this.ball.rotation.x-=dt*12;this.trail.visible=false;}
-    if(!home)this.striker.kick(runup,kickAfter);
+    if(home)this.striker.pose(strikerPose);
+    else {const aim=shot?.aim??kickAim??{};this.striker.kick(runup,kickAfter,{pose:strikerPose,power:aim.power??.7,targetX:aim.x??0,shotType:aim.chip?'chip':aim.low?'low':'normal'});}
     // Keep the authored head pose, as in motion-lab.html.
     this.trail.visible=!!shot&&!shot.result;this.aim.visible=!!aim&&match?.mode!=='advanced';
     this.arc.visible=!!aim&&match?.mode==='advanced';

@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {updateKeeperShoulderSupport} from './keeper-skin-pose.js';
 
 // Keep the shoulder's body-relative orientation and carry its roll through the
 // elbow. Rebuilding shoulder roll from the elbow plane flips the upper-arm skin
@@ -28,5 +29,6 @@ export function createKeeperArmRoll(root) {
       hand.quaternion.copy(wristRoll);
       hand.updateWorldMatrix(false,true);
     }
+    updateKeeperShoulderSupport(root);
   };
 }
