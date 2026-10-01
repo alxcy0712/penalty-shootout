@@ -70,3 +70,8 @@ test('camera fit keeps full body and outstretched arms within narrow and wide vi
     assert.equal(frameDistance(width, height, depth, aspect, 35, 2), distance / 2);
   }
 });
+
+test('separately captured compact approach uses its own support and contact events',()=>{
+  const info=motionInfo('runup3',KICK_CONTACT,penaltyStyles.map(s=>s.duration),HOLD_DURATION,penaltyStyles);
+  assert.equal(info.contact,1.125);assert.equal(info.markers.find(m=>m.label==='支撑脚落定').time,1);
+});

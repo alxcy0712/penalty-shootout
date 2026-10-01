@@ -15,6 +15,10 @@ for side,angle in enumerate(angles):
  for item in meta['meshes']:
   mesh=bpy.data.meshes.new(item['name']);vertices=data[0,item['offset']:item['offset']+item['count']*3].reshape(-1,3);mesh.from_pydata(vertices,[],[face[::-1] for face in item['faces']]);mesh.update();obj=bpy.data.objects.new(item['name'],mesh);bpy.context.collection.objects.link(obj);obj.rotation_euler.z=angle;obj.location.x=offset;objects.append((obj,item))
   material=bpy.data.materials.new(item['material']);material.diffuse_color=(*item['color'],1);material.use_nodes=True;material.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value=(*item['color'],1);material.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value=.8;mesh.materials.append(material)
+  if item.get('vertexColors'):
+   attr=mesh.color_attributes.new(name='GearColors',type='FLOAT_COLOR',domain='POINT')
+   for i,color in enumerate(item['vertexColors']):attr.data[i].color=color
+   colors=material.node_tree.nodes.new('ShaderNodeVertexColor');colors.layer_name='GearColors';mix=material.node_tree.nodes.new('ShaderNodeMixRGB');mix.blend_type='MULTIPLY';mix.inputs[0].default_value=1;mix.inputs[2].default_value=(*item['color'],1);material.node_tree.links.new(colors.outputs['Color'],mix.inputs[1]);material.node_tree.links.new(mix.outputs['Color'],material.node_tree.nodes['Principled BSDF'].inputs['Base Color'])
   for face in mesh.polygons:face.use_smooth=True
  for x in [float(all_points[:,0].min()),float(all_points[:,0].max())]:
   for y in [float(all_points[:,1].min()),float(all_points[:,1].max())]:

@@ -109,18 +109,27 @@ const supportPosition = new THREE.Vector3(), supportScale = new THREE.Vector3(1,
 
 // Also called after clip-based arm correction so the optional helpers never
 // retain a stale procedural pose when the same rig is used for a replay.
+// Compose within the character hierarchy, excluding any display/root transform.
+// Helpers are deformation-only bones parented directly to root; doing their
+// work in this space prevents heading/nonuniform display-scale covariance.
+function shoulderRootMatrix(bone,root,out){
+  out.identity();for(let current=bone;current&&current!==root;current=current.parent){current.updateMatrix();out.premultiply(current.matrix);}return out;
+}
+function shoulderRootRotation(bone,root,out){
+  out.identity();for(let current=bone;current&&current!==root;current=current.parent)out.premultiply(current.quaternion);return out.normalize();
+}
+const shoulderChestRotation=new THREE.Quaternion(),shoulderBodyUp=new THREE.Vector3(),shoulderArmAxis=new THREE.Vector3();
 export function updateKeeperShoulderSupport(root) {
   for (const {bone, arm, clavicle, rest} of shoulderSupports.get(root) ?? []) {
-    supportWorld.multiplyMatrices(clavicle.matrixWorld, rest);
-    supportWorld.decompose(supportPosition, supportRotation, supportScale);
-    arm.getWorldQuaternion(armRotation); arm.getWorldPosition(supportPosition);
-    const chest=root.getObjectByName('chest'),bodyUp=new THREE.Vector3(0,1,0).applyQuaternion(chest.getWorldQuaternion(new THREE.Quaternion()));
-    const elevation=new THREE.Vector3(0,1,0).applyQuaternion(armRotation).dot(bodyUp);
-    supportRotation.slerp(armRotation, keeperShoulderFraction(elevation));
-    supportWorld.compose(supportPosition, supportRotation, supportScale);
-    supportLocal.copy(bone.parent.matrixWorld).invert().multiply(supportWorld);
-    supportLocal.decompose(bone.position, bone.quaternion, bone.scale);
-    bone.updateMatrixWorld(true);
+    shoulderRootMatrix(clavicle,root,supportWorld).multiply(rest);
+    supportWorld.decompose(supportPosition,supportRotation,supportScale);supportRotation.normalize();
+    shoulderRootRotation(arm,root,armRotation);
+    supportPosition.setFromMatrixPosition(shoulderRootMatrix(arm,root,supportLocal));
+    const chest=root.getObjectByName('chest');
+    shoulderRootRotation(chest,root,shoulderChestRotation);shoulderBodyUp.set(0,1,0).applyQuaternion(shoulderChestRotation);
+    const elevation=shoulderArmAxis.set(0,1,0).applyQuaternion(armRotation).dot(shoulderBodyUp);
+    supportRotation.slerp(armRotation,keeperShoulderFraction(elevation)).normalize();
+    bone.position.copy(supportPosition);bone.quaternion.copy(supportRotation);bone.scale.copy(supportScale);bone.updateMatrixWorld(true);
   }
 }
 

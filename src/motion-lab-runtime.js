@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { GameCharacter, KICK_CONTACT } from './game-character.js';
-import { strikerRunupPose, penaltyStyles, goalkeeperPose, holdingPose, HOLD_DURATION, keeperHesitationPose, keeperWarmupPose, keeperPreparation, blendKeeperPose, limb, body } from './anatomy.js';
+import { strikerRunupPose, penaltyStyles, goalkeeperPose, holdingPose, HOLD_DURATION, keeperHesitationPose, keeperWarmupPose, keeperRunupPreparation, keeperPreparation, blendKeeperPose, limb, body } from './anatomy.js';
 import { Shot } from './engine.js';
 import { keeperGather } from './keeper-contact.js';
 import { renderPixelRatio } from './rendering.js';
@@ -130,14 +130,14 @@ function togglePlayback() {
   state.playing = !state.playing; syncPlayback(); requestFrame();
 }
 function configureMotion() {
-  info = motionInfo(select.value, KICK_CONTACT, penaltyStyles.map(style => style.duration), HOLD_DURATION);
+  info = motionInfo(select.value, KICK_CONTACT, penaltyStyles.map(style => style.duration), HOLD_DURATION, penaltyStyles);
   state.time = 0; state.duration = info.duration; last = null; slider.max = info.duration;
   byId('shot-settings').hidden = !info.striker;
-  byId('keeper-settings').hidden = info.striker;
+  byId('keeper-settings').hidden = info.striker || select.value.startsWith('capture');
   byId('source-label').textContent = info.striker
-    ? 'CMU 射门动捕 · 与比赛共用 GameCharacter'
-    : '游戏程序姿态 · 蒙皮骨骼与碰撞骨架一致';
-  byId('render-caption').textContent = info.striker ? '射手 · CMU 动捕 + 游戏动作参数' : '门将 · 游戏程序动作 + 物理骨架';
+    ? select.value==='runup3' ? pairs.kick.some(player=>player.variantReady===false) ? '第二片段加载失败 · 暂用基础动作' : 'CMU 10_03 独立真实采集 · 同一模型、独立触球事件' : 'CMU 10_01 动捕与衍生节奏 · 与比赛共用 GameCharacter'
+    : select.value.startsWith('capture') ? 'Monteiro 真实无标记动捕 · 原片段对照，非比赛碰撞回放' : select.value==='set' ? '参考真实动捕的预备垫步 · 与比赛共用姿态' : '游戏程序姿态 · 蒙皮骨骼与碰撞骨架一致';
+  byId('render-caption').textContent = info.striker ? '射手 · CMU 动捕 + 游戏动作参数' : select.value.startsWith('capture') ? '原始采集片段经重定向 · 不含完整落地/起身，不显示虚构足球' : '门将 · 游戏程序动作 + 物理骨架';
   byId('contact-jump').hidden = !info.striker;
   byId('phase-jumps').replaceChildren(); byId('timeline-markers').replaceChildren();
   for (const marker of info.markers) {
@@ -259,8 +259,10 @@ function frame(now) {
   frameRequest = 0; advance(now); syncPlayback();
   const t = state.time, direction = Number(keeperDirection.value), power = Number(shotPower.value);
   let phaseText, p, kickContact = KICK_CONTACT, ballPosition = { x: 0, y: .11, z: 0 };
-    if(select.value==='kick'||select.value.startsWith('runup')){const style=penaltyStyles[Number(select.value.slice(-1))],contact=style?.duration??KICK_CONTACT;kickContact=contact;phaseText=t<contact-.55?'助跑':t<contact-.21?'落支撑脚':t<contact?'摆腿触球':t<contact+.22?'顺势随摆':t<contact+.85?'落脚收势':'完成';ballPosition=shotBall(t-contact);p=style?strikerRunupPose(t,Math.min(1,t/style.duration),t>=style.duration?t-style.duration:-1,power,+shotDirection.value,style,shotType.value):strikerRunupPose(t,Math.min(1,t/contact),t>=contact?t-contact:-1,power,+shotDirection.value,penaltyStyles[0],shotType.value);}
+    if(select.value==='kick'||select.value.startsWith('runup')){const style=penaltyStyles[Number(select.value.slice(-1))],contact=style?.duration??KICK_CONTACT,plant=style?.capture?.supportPlantSeconds??contact-.1967;kickContact=contact;phaseText=t<contact-.35?'助跑':t<plant?'落支撑脚':t<contact?'摆腿触球':t<contact+.22?'顺势随摆':t<contact+.85?'落脚收势':'完成';ballPosition=shotBall(t-contact);p=style?strikerRunupPose(t,Math.min(1,t/style.duration),t>=style.duration?t-style.duration:-1,power,+shotDirection.value,style,shotType.value):strikerRunupPose(t,Math.min(1,t/contact),t>=contact?t-contact:-1,power,+shotDirection.value,penaltyStyles[0],shotType.value);}
   else {phaseText=select.value==='hesitate'?(t<.10?'判断启动':t<.32?'错边刹住 · 半扑':t<.65?'重心倾斜':t<1?'站稳恢复':'完成'):(t<.13?'压低重心 · 蹬地':t<.55?'展体伸臂':t<1?'落地缓冲':'收势起身');if(['dive','stretch','low','center','center-low','hold'].includes(select.value))p=goalkeeperPose({speed:85,reach:85,stretch:select.value==='stretch'?1:0},select.value.startsWith('center')?0:direction,t,select.value==='center-low'?.3:select.value==='low'?.35:select.value==='center'?1.65:2);
+    if(select.value==='set'){p=keeperRunupPreparation({speed:85,reach:85},Math.min(1,t/1.8),direction);phaseText=t<1.8?'预备垫步 · 重心转移 · 站稳定势':'准备接扑';}
+    if(select.value.startsWith('capture')){p=goalkeeperPose({speed:85,reach:85},0,0,1);phaseText='真实采集对照 · 无足球/完整恢复';}
     if(select.value==='warmup'){p=keeperWarmupPose(t);phaseText='呼吸 · 重心转移 · 交错伸臂';}
     if(select.value.startsWith('center'))phaseText=t<.1?'预备反应':select.value==='center-low'?'下蹲迎球 · 双手封堵':'抬手迎球 · 屈膝缓冲';
     if(select.value==='recover'){p=goalkeeperPose({speed:85,reach:85},direction,t+.85,2);phaseText=t<.5?'侧卧缓冲':t<.95?'先落支撑脚':t<1.6?'撑地转身 · 重心上移':'收手站稳';}
@@ -273,7 +275,12 @@ function frame(now) {
   for (const player of pairs[type]) {
     if (type === 'kick') player.kick(Math.min(1, t / kickContact), t >= kickContact ? t - kickContact : null, {
       power, targetX: Number(shotDirection.value), shotType: shotType.value, pose: p,
+      style: select.value.startsWith('runup') ? penaltyStyles[Number(select.value.slice(-1))] : undefined,
     });
+    else if(select.value.startsWith('capture')){
+      player.capture(t,Number(select.value.slice(-1)));
+      if(player.root){const center=player.root.worldToLocal(player.root.getObjectByName('pelvis').getWorldPosition(new THREE.Vector3()));player.root.position.x=-center.x;player.root.position.z=-center.z;}
+    }
     else player.pose(p);
     player.labBall.visible = ballControl.checked && (type === 'kick' || ['hold', 'gather', 'tracking'].includes(select.value));
     player.labBall.position.set(ballPosition.x, ballPosition.y, ballPosition.z);
@@ -340,7 +347,8 @@ window.addEventListener('pagehide', event => {
 });
 Promise.all(Object.values(pairs).flat().map(player => player.ready)).then(loaded => {
   if (disposed) return;
-  byId('asset-status').textContent = loaded.every(Boolean) ? '● 蒙皮模型已就绪' : '部分资源加载失败 · 程序模型备用';
+  byId('asset-status').textContent = !loaded.every(Boolean) ? '部分资源加载失败 · 程序模型备用' : pairs.kick.some(player=>player.variantReady===false) ? '第二射门片段不可用 · 基础模型就绪' : '● 蒙皮模型与动作已就绪';
+  if(select.value==='runup3'&&pairs.kick.some(player=>player.variantReady===false))byId('source-label').textContent='第二片段加载失败 · 暂用基础动作';
   for (const player of Object.values(pairs).flat()) { createSkeleton(player); player.labWireframe = undefined; }
   requestFrame();
 });

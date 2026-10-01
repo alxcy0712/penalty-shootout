@@ -20,15 +20,17 @@
         <select id="motion-action">
           <optgroup label="射手 · CMU 动捕">
             <option value="kick">动捕射门完整动作</option>
-            <option value="runup0">助跑节奏 1 · 游戏动捕</option>
-            <option value="runup1">助跑节奏 2 · 游戏动捕</option>
-            <option value="runup2">助跑节奏 3 · 游戏动捕</option>
+            <option value="runup0">短步直线 · CMU 10_01 衍生</option>
+            <option value="runup1">渐进加速 · CMU 10_01 衍生</option>
+            <option value="runup2">早段碎步 · CMU 10_01 衍生</option>
+            <option value="runup3">紧凑一步 · CMU 10_03 独立采集</option>
           </optgroup>
           <optgroup label="门将 · 游戏程序姿态">
             <option value="dive">判断正确 · 舒展扑救</option>
             <option value="hesitate">判断错误 · 倾斜半扑</option>
             <option value="stretch">死角伸展扑救</option>
             <option value="low">低球侧扑</option>
+            <option value="set">主罚前预备垫步 · 比赛同款</option>
             <option value="prepare">侧移预备与蹬地</option>
             <option value="tracking">移动追球与封堵</option>
             <option value="recover">落地收腿与起身</option>
@@ -37,6 +39,10 @@
             <option value="center">中路抬手</option>
             <option value="center-low">中路下蹲接球</option>
             <option value="gather">收球过渡回放</option>
+          </optgroup>
+          <optgroup label="门将 · 真实采集对照（不含完整恢复）">
+            <option value="capture0">Monteiro N05D · 左扑原片段</option>
+            <option value="capture1">Monteiro O05E · 右扑原片段</option>
           </optgroup>
         </select>
         <p id="source-label" class="source-note">CMU 射门动捕 · 与比赛共用 GameCharacter</p>

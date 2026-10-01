@@ -1,0 +1,103 @@
+{
+  "take": "10_03",
+  "source": "assets/characters/mocap/cmu-soccer/10_03.soccer-kick-ball.bvh",
+  "sourceSha256": "ca203656908b10de2452deede4b194cc7188b15d3f3edf76cc8a5a320dafe305",
+  "sourceStartSeconds": 0.05,
+  "sourceEndSeconds": 2.55,
+  "durationSeconds": 2.5,
+  "contactSeconds": 1.125,
+  "approachStartSeconds": 0,
+  "supportPlantSeconds": 1,
+  "supportReleaseSeconds": 1.29,
+  "kickingSide": "L",
+  "supportSide": "R",
+  "framesPerSecond": 120,
+  "clipName": "CMU_10_03_Kick",
+  "sourceKind": "real CMU take, retargeted to existing 22-bone rig",
+  "adaptations": [
+    "fixed-length IK retarget",
+    "chest-referenced arm roll frame",
+    "support-foot lock",
+    "shoe-floor correction",
+    "offline rotation-minimizing foot frame with gentle captured-pelvis correction",
+    "contact-space translation",
+    "measured true shoe surface contact alignment"
+  ],
+  "license": "CMU motion terms; cgspeed/Bruce Hahne Daz-friendly converted skeleton; no standalone resale; see mocap/cmu-soccer/README.md",
+  "asset": "cmu-10_03-kick.glb",
+  "bytes": 91676,
+  "sha256": "19d2dc23fbc6df84ebb6a4e706a0701f0c16b17daa4ce3b6366dac108e8bdeeb",
+  "bindMatrixMaxError": 2.384185791015625e-07,
+  "ballPosition": [
+    0,
+    0.11,
+    0
+  ],
+  "contactCalibration": {
+    "method": "selected low swing event; translate whole captured root horizontally until real kicking-boot triangles touch radius 0.11 ball",
+    "translation": [
+      -0.007244314625126859,
+      0,
+      -0.02159116171732114
+    ],
+    "surfaceError": 0,
+    "capturedBallTrack": false
+  },
+  "productionAssetSha256": "6f8e7edba2644c3e42976d1f9cc6b76bb3015f7856aba94755cba03b392e2a24",
+  "pipeline": {
+    "sample": "tools/mocap/sample-cmu-variants.mjs",
+    "retarget": "tools/blender/create_mocap_variants.py",
+    "blender": "4.3-compatible reconstruction of original bind rig; source 5.x Blend remains untouched"
+  },
+  "sourceInventoryNote": {
+    "recordedLegacySha256": "ca203656908b10de2452deede4b194cc7188b15d3f3edf76cc8a5a320dafe305",
+    "actualRepositorySha256": "ca203656908b10de2452deede4b194cc7188b15d3f3edf76cc8a5a320dafe305",
+    "actualRepositoryBytes": 473955,
+    "explanation": "The legacy inventory differed from the supplied BVH; the integrator has corrected the current inventory. The unchanged BVH matches the same path in e8ce600; no assumption is made about the historical mismatch.",
+    "currentInventorySha256": "ca203656908b10de2452deede4b194cc7188b15d3f3edf76cc8a5a320dafe305",
+    "currentInventoryMatches": true
+  },
+  "startsInMotion": true,
+  "preparationHint": "This real take begins mid-approach after the conversion initialization frame; freeze a prepared pose or crossfade into the start rather than looping this clip as idle.",
+  "validation": {
+    "sourceMesh": "Original calibration striker-mocap.glb at e8ce600 (SHA-256 6f8e7edba2644c3e42976d1f9cc6b76bb3015f7856aba94755cba03b392e2a24)",
+    "sampleRateHz": 240,
+    "skinSampleRateHz": 60,
+    "minimumSkinY": 0.003419076376270702,
+    "maximumJointStep": 0.05523763346686881,
+    "maximumJointRotationStepRadians": 0.1179249004207574,
+    "maximumBoneLengthError": 3.542419568791644e-07,
+    "supportFootDrift": 0.0003310234683707703,
+    "actualBootContactError": 1.1213499295781304e-09,
+    "finalFeetGrounded": true,
+    "tests": "tests/cmu-variant.test.js (3 passed)"
+  },
+  "productionAssetNote": "Calibration-model SHA used to produce this unchanged animation-only clip. It identifies the original striker asset at e8ce600; later compatible models are listed separately in validatedOnModels.",
+  "validatedOnModels": [
+    {
+      "label": "refined v17",
+      "asset": "assets/characters/striker-mocap.glb",
+      "sha256": "e0b3eb06d09d80135827c5f5e7e58ab26778a5dc0b8c3333be48a704603bfc3d",
+      "clipSha256": "19d2dc23fbc6df84ebb6a4e706a0701f0c16b17daa4ce3b6366dac108e8bdeeb",
+      "checkedDate": "2026-10-01",
+      "scope": "Raw unchanged clip and actual skinned model; runtime arm/shoulder corrections are validated separately",
+      "sampleRateHz": 240,
+      "skinSampleRateHz": 60,
+      "minimumSkinY": -0.001313638311063646,
+      "minimumSkinAt": {
+        "timeSeconds": 1.05,
+        "material": "Boots",
+        "vertex": 1990
+      },
+      "grassPlaneY": -0.014,
+      "existingFloorGateY": -0.005,
+      "supportFootDrift": 0.0003310234683707703,
+      "actualBootContactError": 1.1213499295781304e-09,
+      "maximumJointStep": 0.05523763346686881,
+      "maximumJointRotationStepRadians": 0.1179249004207574,
+      "finalFeetGrounded": true,
+      "tests": "tests/cmu-variant.test.js (3 passed)",
+      "rebakeNote": "Rebuilding against this model changes sole-clearance correction and produces a separate candidate with SHA-256 25290e81fd225e6d6b7228b153841b75d0e64ba9607e70561720dfd97cf32c89. It does not replace the delivered clip or its original calibration hash."
+    }
+  ]
+}

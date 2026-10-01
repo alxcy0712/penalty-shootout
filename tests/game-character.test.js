@@ -31,7 +31,7 @@ async function character(asset,keeper){
   const gltf=await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');
   const c=Object.create(GameCharacter.prototype);c.root=gltf.scene;c.keeper=keeper;
   c.mixer=new THREE.AnimationMixer(c.root);c.actions=gltf.animations.map(clip=>c.mixer.clipAction(clip).setLoop(THREE.LoopOnce,1));
-  c.apply=createKeeperSkinPose(c.root);c.relax=createKeeperArmRoll(c.root);return c;
+  c.apply=createKeeperSkinPose(c.root,{shoulderSupport:true});c.relax=createKeeperArmRoll(c.root);return c;
 }
 
 test('game mocap reaches the actual penalty ball and repeated pose/gaze stays stable',async()=>{

@@ -15,8 +15,9 @@ export async function loadCharacter(keeper=false) {
   const gltf=await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');
   const actor=Object.create(GameCharacter.prototype);actor.root=gltf.scene;actor.keeper=keeper;
   actor.mixer=new THREE.AnimationMixer(actor.root);
+  if(!keeper){const bytes=await readFile(new URL('../../assets/characters/mocap-variants/cmu-10_03-kick.glb',import.meta.url));const extra=await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');gltf.animations.push(...extra.animations);}
   actor.actions=gltf.animations.map(clip=>{const action=actor.mixer.clipAction(clip).setLoop(THREE.LoopOnce,1);action.clampWhenFinished=true;return action;});
-  actor.apply=createKeeperSkinPose(actor.root,{shoulderSupport:keeper});actor.relax=createKeeperArmRoll(actor.root);
+  actor.apply=createKeeperSkinPose(actor.root,{shoulderSupport:true});actor.relax=createKeeperArmRoll(actor.root);
   return actor;
 }
 

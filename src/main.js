@@ -1,5 +1,6 @@
 import './style.css';
 import {penaltyStyle} from './anatomy.js';
+import {committedKickAim} from './shot-input-state.js';
 import {Match, Shot, Random, clamp, gestureInput, directionMeter, powerMeter} from './engine.js';
 import {Stadium} from './scene.js';
 
@@ -223,10 +224,11 @@ function frame(now){
   const realDt=Math.max(0,(now-frameTime)/1000||.016),dt=Math.min(.25,realDt);frameTime=now;if(!paused)elapsed+=dt;
   if(!paused&&active()){
     let flightDt=dt;
+    const startedInRunup=state.phase==='runup';
     if(['aim','power','guard'].includes(state.phase))state.turnTime+=realDt;
-    if(state.phase==='aim'&&state.match.mode==='advanced'&&state.turnTime>=10){pointer=null;launch({x:0,power:0,timeout:true});toast('操作超时，自动轻射中路');}
+    if(state.phase==='aim'&&state.match.mode==='advanced'&&state.turnTime>=10&&!pointer){launch({x:0,power:0,timeout:true});toast('操作超时，自动轻射中路');}
     if(state.phase==='guard'&&state.turnTime>=3){flightDt=Math.min(dt,state.turnTime-3);state.aim=state.match.aiAim;release();}
-    if(state.phase==='runup'){state.runup+=realDt;if(state.runup>=runupDuration()){flightDt=Math.min(dt,state.runup-runupDuration());release();}}
+    if(state.phase==='runup'){state.runup+=startedInRunup?realDt:0;if(state.runup>=runupDuration()){flightDt=Math.min(dt,state.runup-runupDuration());release();}}
     if(state.phase==='flight'){
       const rate=state.shot.playbackRate();accumulator+=flightDt*rate;while(accumulator>=1/120&&!state.shot.result){state.shot.step(1/120,rate);accumulator-=1/120;}
       if(state.shot.result){accumulator=0;state.match.record(state.shot.result);sound(state.shot.result.goal?'goal':'save');transition('result');}
@@ -243,7 +245,7 @@ function frame(now){
   let aim=null;
   if(state.phase==='aim')aim=state.match?.mode==='simple'?{x:directionValue(),y:1.2}:state.aim;
   if(state.phase==='power')aim={x:state.lockedX,y:state.lowShot?.11:.28+powerValue()*2,low:!!state.lowShot,chip:!!state.chipShot,power:powerValue()};
-  stage?.update(paused?0:dt,elapsed,state.shot,state.phase==='runup'?state.runup/runupDuration():state.phase==='guard'?clamp((state.turnTime-(3-runupDuration()))/runupDuration(),0,1):0,aim,state.match&&state.phase!=='home'?state.match:null,state.phase==='guard'?state.match.aiAim:state.aim,clamp(accumulator*120,0,1));
+  stage?.update(paused?0:dt,elapsed,state.shot,state.phase==='runup'?state.runup/runupDuration():state.phase==='guard'?clamp((state.turnTime-(3-runupDuration()))/runupDuration(),0,1):0,aim,state.match&&state.phase!=='home'?state.match:null,committedKickAim(state),clamp(accumulator*120,0,1));
   requestAnimationFrame(frame);
 }
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&active()&&!paused){pointer=null;showPause();}});

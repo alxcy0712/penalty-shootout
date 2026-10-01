@@ -20,18 +20,23 @@ export function stepFrame(time, direction, duration, count = 1) {
   return clamp(next / INSPECTION_FPS, 0, duration);
 }
 
-export function motionInfo(action, contact, runupDurations, holdDuration) {
+export function motionInfo(action, contact, runupDurations, holdDuration, styles = []) {
   const striker = action === 'kick' || action.startsWith('runup');
   const impact = action.startsWith('runup') ? runupDurations[Number(action.slice(-1))] : contact;
-  const duration = action === 'warmup' ? 12 : action === 'tracking' ? 6 : 4;
+  const style = action.startsWith('runup') ? styles[Number(action.slice(-1))] : null;
+  const plant = style?.capture?.supportPlantSeconds ?? impact - .1967;
+  const duration = action==='capture0'?1.0666667:action==='capture1'?.975:action === 'warmup' ? 12 : action === 'tracking' ? 6 : 4;
   let markers;
   if (striker) markers = [
     { time: 0, label: '开始' },
-    { time: impact - .55, label: '落支撑脚' },
+    { time: impact - .35, label: '最后调整' },
+    { time: plant, label: '支撑脚落定' },
     { time: impact, label: '触球', contact: true },
     { time: impact + .22, label: '随摆' },
     { time: impact + .85, label: '收势' },
   ];
+  else if (action.startsWith('capture')) markers = [{time:0,label:'片段开始'},{time:duration/2,label:'采集中段'},{time:duration,label:'采集结束'}];
+  else if (action === 'set') markers = [{time:0,label:'待命'},{time:.55,label:'同侧垫步'},{time:1.05,label:'重心加载'},{time:1.8,label:'站稳接扑'}];
   else if (action === 'warmup') markers = [
     { time: 0, label: '开始' }, { time: 3, label: '热身 3 秒' },
     { time: 6, label: '热身 6 秒' }, { time: 9, label: '热身 9 秒' },

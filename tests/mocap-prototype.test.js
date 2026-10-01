@@ -102,7 +102,8 @@ test('mocap support foot remains planted through contact and follow-through', ()
   assert.ok(drift<.005, `support foot drift ${drift} m`);
   assert.ok(bytes.length<=metadata.budgets.glbBytes);
   assert.equal(bones.length,22);
-  assert.equal(triangleCount,17518);
+  assert.equal(triangleCount,metadata.triangles);
+  assert.ok(triangleCount<=metadata.budgets.triangles);
 });
 
 test('idle arms hang below the hips and wrists follow the forearms through the transition', () => {

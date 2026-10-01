@@ -91,7 +91,7 @@ test('shoulder support stays within 24 bones and does not mutate shared asset ge
   createKeeperSkinPose(first, {shoulderSupport:true});
   assert.equal(meshes(first)[0].skeleton.bones.length, 24, 'setup is idempotent');
   createKeeperSkinPose(other);
-  assert.equal(meshes(other)[0].skeleton.bones.length, 22, 'striker/default path retains authored skin');
+  assert.equal(meshes(other)[0].skeleton.bones.length, 22, 'explicit support opt-out retains authored skin');
 });
 
 test('front, overhead and cross-body reaches do not flip the shoulder or helper frame', () => {

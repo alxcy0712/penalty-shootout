@@ -1,0 +1,84 @@
+{
+  "hashes": {
+    "src/anatomy.js": "4ec899ae69e3037544aa92676c82afe2a237ed7d62b9b13d33bcb7f708e10fdb",
+    "src/ball-motion.js": "0da53653fd2f80ec6ebd4297e95a18aa3216163822ba27ec9c11bb5c04c0cc2a",
+    "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "src/character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+    "src/engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+    "src/game-character.js": "e3fd45acf2ed405e7a558dd6eebb69fb8480725dafe487cebe1ceafe11d984a7",
+    "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "src/keeper-arm-roll.js": "1c4ead6fa33655945b0cd84af97285898311ed5fced5d1686059018b0c9d4a30",
+    "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "src/keeper-contact-data.js": "2b840084e6f89096bbbd90965d26c6e1d8448b8268bc049e643ed6fd5eb6ec73",
+    "src/keeper-contact.js": "7f8f3a0c3ff4656be4ef4cfa6ae86a865f186078a3250aa86e40d4a7d8e04fc7",
+    "src/keeper-hand-contact.js": "65e1370bb0feafa2c345fe1f05b31379a2af272f788477507672fe5871146d03",
+    "src/keeper-skin-pose.js": "48f551b769cbc5cca6d41e20bac84e2cd99eaf38ce140a06334e193bfb242ef4",
+    "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "src/main.js": "eda22fbe41a2ab245a518f920c8e5d77c6535bd9e7c8c93c6d1c1134ca35d8c9",
+    "src/motion-lab-runtime.js": "7f15599d5709cb286eb497c68664decba4ec966726e721f450cf5a7e41b902bc",
+    "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+    "src/rendering.js": "1e9d1e7a8e24517ad7c075271dcbce4aa981a5ff1bfdf04082c8e00688763171",
+    "src/scene.js": "4bcb99fd6a4d47e884ebeeb1b1d4595c03e6cde2c13e35770648ecba26bbd2df",
+    "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "src/striker-kick-style.js": "b83c0dce17bd2b1bf7ecc02ac49638e6df6de40ab4d25df1b875bd816aeb1098",
+    "src/striker-runup-style.js": "dd766bc0e8b71ea8685440069a70047464ef399f84722f1f53cdda673da75dbb",
+    "assets/characters/striker-mocap.glb": "e0b3eb06d09d80135827c5f5e7e58ab26778a5dc0b8c3333be48a704603bfc3d",
+    "assets/characters/mocap-variants/cmu-10_03-kick.glb": "19d2dc23fbc6df84ebb6a4e706a0701f0c16b17daa4ce3b6366dac108e8bdeeb",
+    "tools/qa/load-review-character.mjs": "7b997a6086d3b240f6389a4a33cc19e729c7fffcd15850e5390931e6cab72a90",
+    "tools/qa/audit-striker-clearance.mjs": "fabdc38dad8e356524d5d7435d63df2b3de9365e8ac81761d2eba3462069092f"
+  },
+  "actualModelSha256": "e0b3eb06d09d80135827c5f5e7e58ab26778a5dc0b8c3333be48a704603bfc3d",
+  "fps": 100,
+  "sources": [
+    "10_01",
+    "10_03"
+  ],
+  "samples": 182,
+  "summary": {
+    "10_01": {
+      "samples": 121,
+      "categories": {
+        "forearm": {
+          "beforeCount": 2493,
+          "afterCount": 0,
+          "beforeMax": 0.007734399807187264,
+          "afterMax": 0,
+          "maxAddedSeparation": 0,
+          "maxPerFrameIncrease": 0
+        },
+        "upper": {
+          "beforeCount": 10331,
+          "afterCount": 8664,
+          "beforeMax": 0.011945811541746953,
+          "afterMax": 0.011945811541746953,
+          "maxAddedSeparation": 0.010127554010010087,
+          "maxPerFrameIncrease": 0.00153607492460206
+        }
+      }
+    },
+    "10_03": {
+      "samples": 61,
+      "categories": {
+        "forearm": {
+          "beforeCount": 935,
+          "afterCount": 0,
+          "beforeMax": 0.007341504770559504,
+          "afterMax": 0,
+          "maxAddedSeparation": 0,
+          "maxPerFrameIncrease": 0
+        },
+        "upper": {
+          "beforeCount": 7642,
+          "afterCount": 7301,
+          "beforeMax": 0.012047857971795847,
+          "afterMax": 0.012047857971795847,
+          "maxAddedSeparation": 0.009900454181226759,
+          "maxPerFrameIncrease": 0.000801423112686217
+        }
+      }
+    }
+  },
+  "method": "Paired raw/corrected CPU-skinned triangle audit with final root-local shoulder helpers refreshed after correction. Forearm includes either forearm versus spine/chest; upper includes upper_arm and shoulder_support versus spine/chest. Strict transverse crossings exclude shared-vertex and one-ring neighbours; finite-triangle SAT separation is not whole-body penetration depth. Internal garment intersections remain and are reported explicitly."
+}

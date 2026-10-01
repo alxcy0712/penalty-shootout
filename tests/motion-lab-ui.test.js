@@ -41,6 +41,7 @@ async function setup() {
       this.fallback = { head: new Three.Group() }; this.group.add(this.fallback.head);
       this.ready = Promise.resolve(true); actors.push(this);
     }
+    capture(time,index) { this.lastCapture={time,index}; }
     pose(pose) { this.lastPose = pose; this.poseCalls = (this.poseCalls ?? 0) + 1; }
     kick(runup, after, options) { this.lastKick = { runup, after, options }; this.lastPose = options.pose; }
   }
@@ -67,7 +68,7 @@ test('inspector has labelled controls, all existing actions, and no absolute pag
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(ids).size, ids.length, 'unique control IDs');
   for (const match of html.matchAll(/<select id="([^"]+)"/g)) assert.ok(html.includes(`for="${match[1]}"`), `${match[1]} is labelled`);
-  for (const action of ['kick', 'runup0', 'runup1', 'runup2', 'dive', 'hesitate', 'stretch', 'low', 'prepare', 'tracking', 'recover', 'hold', 'warmup', 'center', 'center-low', 'gather']) assert.ok(html.includes(`value="${action}"`));
+  for (const action of ['kick', 'runup0', 'runup1', 'runup2', 'runup3', 'dive', 'hesitate', 'stretch', 'low', 'prepare', 'tracking', 'recover', 'hold', 'warmup', 'center', 'center-low', 'gather', 'set', 'capture0', 'capture1']) assert.ok(html.includes(`value="${action}"`));
   assert.ok(source.includes("from './game-character.js'"));
   assert.ok(source.includes('shotType: shotType.value, pose: p'));
   const css = await readFile(new URL('../src/motion-lab-inspector.css', import.meta.url), 'utf8');
@@ -95,7 +96,7 @@ test('play, pause, contact, frame navigation, replay end, and loop work through 
 });
 test('all action endpoints, keeper directions, shot types, and shared kick options render in the controller', async () => {
   const ui = await setup();
-  for (const action of ['kick', 'runup0', 'runup1', 'runup2', 'dive', 'hesitate', 'stretch', 'low', 'prepare', 'tracking', 'recover', 'hold', 'warmup', 'center', 'center-low', 'gather']) {
+  for (const action of ['kick', 'runup0', 'runup1', 'runup2', 'runup3', 'dive', 'hesitate', 'stretch', 'low', 'prepare', 'tracking', 'recover', 'hold', 'warmup', 'center', 'center-low', 'gather', 'set', 'capture0', 'capture1']) {
     ui.change('motion-action', action); ui.render();
     assert.equal(ui.get('contact-jump').hidden, !action.startsWith('runup') && action !== 'kick');
     for (const direction of [-1, 1]) {

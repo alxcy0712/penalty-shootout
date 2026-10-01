@@ -4,7 +4,7 @@ import {batchRigidGroup} from './batching.js';
 import {GameCharacter} from './game-character.js';
 import {keeperGather} from './keeper-contact.js';
 import {renderPixelRatio} from './rendering.js';
-import {strikerRunupPose,penaltyStyle,holdingPose,HOLD_DURATION,blendKeeperPose,keeperWarmupPose} from './anatomy.js';
+import {strikerRunupPose,penaltyStyle,holdingPose,HOLD_DURATION,blendKeeperPose,keeperWarmupPose,keeperRunupPreparation} from './anatomy.js';
 import * as THREE from 'three';
 import {keeperPose, clamp, GOAL} from './engine.js';
 
@@ -150,9 +150,9 @@ export class Stadium {
       if(this.aftermath&&!this.aftermath.sleeping){this.ball.rotation.x+=dt*this.aftermath.velocity.z/.11;this.ball.rotation.z-=dt*this.aftermath.velocity.x/.11;}else if(!shot.result){this.ball.rotation.x-=dt*shot.launchSpeed*2;this.ball.rotation.z+=dt*shot.velocity.x;}
       if(!shot.result){if(this.trailCount===7)this.trailBuffer.copyWithin(0,3);else this.trailCount++;this.ball.position.toArray(this.trailBuffer,(this.trailCount-1)*3);this.trail.geometry.attributes.position.needsUpdate=true;this.trail.geometry.setDrawRange(0,this.trailCount);}
       strikerPose=strikerRunupPose(time,1,animationTime+(shot.result?this.resultElapsed:0),shot.aim.power,shot.aim.x,style,shot.aim.chip?'chip':shot.aim.low?'low':'normal');
-    }else{this.keeper.pose(home?keeperWarmupPose(home.warmupTime):this.waitingKeeperPose);this.ball.position.copy(home?home.ball:{x:0,y:.11,z:11});if(home)this.ball.rotation.x-=dt*12;this.trail.visible=false;}
+    }else{this.keeper.pose(home?keeperWarmupPose(home.warmupTime):runup>0?keeperRunupPreparation(match?.teams[1-match.turn]?.players[0]??{reach:80,speed:80},runup,(match?.kicker??0)%2?1:-1):this.waitingKeeperPose);this.ball.position.copy(home?home.ball:{x:0,y:.11,z:11});if(home)this.ball.rotation.x-=dt*12;this.trail.visible=false;}
     if(home)this.striker.pose(strikerPose);
-    else {const aim=shot?.aim??kickAim??{};this.striker.kick(runup,kickAfter,{pose:strikerPose,power:aim.power??.7,targetX:aim.x??0,shotType:aim.chip?'chip':aim.low?'low':'normal'});}
+    else {const aim=shot?.aim??kickAim??{};this.striker.kick(runup,kickAfter,{pose:strikerPose,power:aim.power??.7,targetX:aim.x??0,shotType:aim.chip?'chip':aim.low?'low':'normal',style});}
     // Keep the authored head pose, as in motion-lab.html.
     this.trail.visible=!!shot&&!shot.result;this.aim.visible=!!aim&&match?.mode!=='advanced';
     this.arc.visible=!!aim&&match?.mode==='advanced';

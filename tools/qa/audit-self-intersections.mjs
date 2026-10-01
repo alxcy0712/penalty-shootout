@@ -6,7 +6,7 @@ const THREE=await import(new URL('node_modules/three/build/three.module.js',repo
 const {loadCharacter}=await import(new URL('tests/helpers/load-character.js',repoURL));
 const {Shot}=await import(new URL('src/engine.js',repoURL));
 const {keeperGather}=await import(new URL('src/keeper-contact.js',repoURL));
-const {goalkeeperPose,keeperWarmupPose,holdingPose}=await import(new URL('src/anatomy.js',repoURL));
+const {goalkeeperPose,keeperWarmupPose,holdingPose,keeperRunupPreparation}=await import(new URL('src/anatomy.js',repoURL));
 import {readFile,writeFile,readdir,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 const files=[...(await readdir(new URL('src/',repoURL))).filter(f=>f.endsWith('.js')&&!f.startsWith('.')).sort().map(f=>'src/'+f),'assets/characters/keeper-prototype.glb','tests/helpers/load-character.js','tools/qa/audit-self-intersections.mjs'];
@@ -61,7 +61,8 @@ if(process.env.MOTION==='gather'){
     for(let f=0;f<3600&&!shot.result;f++)shot.step(1/120);if(!shot.caught)throw Error('Gather recipe no longer catches');
     for(const t of times)records.push(sample({motion:'gather',d,h,x,seed,t},keeperGather(shot.pose,shot.poseAt(shot.t+t),shot.ball,shot.contactPart,t/.44).pose));
   }
-}else for(const d of (process.env.DIRECTIONS?.split(',').map(Number)??[-1,1]))for(const h of (process.env.HEIGHTS?.split(',').map(Number)??[.3,1.2,2.3]))for(const t of timesForHeight(h))records.push(sample({d,h,t},goalkeeperPose(stats,d,t,h)));
+}else if(process.env.MOTION==='set'){for(const d of[-1,1])for(const t of times)records.push(sample({motion:'set',d,t},keeperRunupPreparation(stats,t,d)));}
+else for(const d of (process.env.DIRECTIONS?.split(',').map(Number)??[-1,1]))for(const h of (process.env.HEIGHTS?.split(',').map(Number)??[.3,1.2,2.3]))for(const t of timesForHeight(h))records.push(sample({d,h,t},goalkeeperPose(stats,d,t,h)));
 const baselinePairs=new Set(records.slice(0,2).flatMap(r=>r.hits.map(h=>h.pair.join(':'))));for(const r of records){r.newHits=r.hits.filter(h=>!baselinePairs.has(h.pair.join(':')));r.newNonLocal=r.newHits.filter(h=>!h.isLocal).length;}
 const hashesAfter=Object.fromEntries(await Promise.all(files.map(async f=>[f,createHash('sha256').update(await readFile(new URL(f,repoURL))).digest('hex')])));
 for(const r of records){

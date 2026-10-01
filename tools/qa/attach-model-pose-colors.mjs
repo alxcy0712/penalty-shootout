@@ -1,0 +1,6 @@
+// Preserve actual model vertex colors in the offline CPU-pose geometry review.
+// node tools/qa/attach-model-pose-colors.mjs candidate-decoded.glb POSE_DIR...
+import fs from 'node:fs/promises';import path from 'node:path';
+const [file,...dirs]=process.argv.slice(2),b=await fs.readFile(file),n=b.readUInt32LE(12),j=JSON.parse(b.subarray(20,20+n)),bin=b.subarray(n+28),colors=new Map();
+for(const p of j.meshes.flatMap(m=>m.primitives)){if(p.attributes.COLOR_0===undefined)continue;const a=j.accessors[p.attributes.COLOR_0],v=j.bufferViews[a.bufferView];if(v.extensions?.EXT_meshopt_compression)throw Error('Use decoded candidate GLB');colors.set(j.materials[p.material].name,Array.from({length:a.count},(_,i)=>Array.from({length:4},(_,k)=>bin.readFloatLE((v.byteOffset??0)+(a.byteOffset??0)+i*(v.byteStride??16)+k*4))));}
+for(const dir of dirs){const file=path.join(dir,'poses.json'),meta=JSON.parse(await fs.readFile(file));for(const mesh of meta.meshes){const data=colors.get(mesh.material);if(!data)continue;if(data.length!==mesh.count)throw Error('Vertex topology mismatch '+mesh.material);mesh.vertexColors=data;}meta.note+=' Model vertex colors retained; same game blue kit used for comparison.';await fs.writeFile(file,JSON.stringify(meta,null,2));}

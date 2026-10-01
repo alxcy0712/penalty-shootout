@@ -1,3 +1,4 @@
+import {COMPACT_KICK} from './striker-captures.js';
 // Metres, right-handed coordinates. Both rendering and collisions consume this rig.
 export const body = { thigh:.43, shin:.43, upperArm:.29, forearm:.27, torso:.49, shoulderWidth:.39, hipWidth:.25 };
 export const HOLD_DURATION=.44;
@@ -72,9 +73,11 @@ export const penaltyStyles=[
   {name:'短步直线',duration:1.55,distance:1.15,side:0,steps:4},
   {name:'斜向助跑',duration:1.75,distance:1.35,side:.4,steps:4},
   {name:'碎步调整',duration:1.8,distance:1.3,side:.15,steps:6},
+  {name:'紧凑一步 · 独立动捕',duration:COMPACT_KICK.contactSeconds,distance:.32,side:0,steps:2,capture:COMPACT_KICK},
 ];
 export function penaltyStyle(player){return penaltyStyles[(player?.number??0)%penaltyStyles.length];}
 export function strikerRunupPose(time,phase,after,power,targetX,style=penaltyStyles[0],shotType='normal'){
+  const compact=!!style.capture;
   const elapsed=clip(phase,0,1)*style.duration,approach=style.duration-.55;
   if(after>=0||elapsed>=approach)return strikerPose(time,clip((elapsed-approach)/.55,0,1),after,power,targetX,.7,shotType);
   const clock=elapsed/approach,q=.7*clock+.3*clock*clock,step=Math.min(style.steps-1,Math.floor(q*style.steps)),u=q*style.steps-step;
@@ -88,7 +91,7 @@ export function strikerRunupPose(time,phase,after,power,targetX,style=penaltySty
     if(step%2!==i)return from;
     const to=add(foot,offset(Math.min(1,(step+1)/(style.steps-1))));
     const ease=u*u*u*(u*(u*6-15)+10);
-    const result=lerp(from,to,ease);result.y+=Math.pow(Math.sin(Math.PI*u),3)*.09;return result;
+    const result=lerp(from,to,ease);result.y+=Math.pow(Math.sin(Math.PI*u),3)*(compact?.055:.09);return result;
   });
   // Both feet finish at the original gather stance; alternate fixed supports.
   const centerAt=n=>mul(add(planted(0,n),planted(1,n)),.5);
@@ -98,11 +101,11 @@ export function strikerRunupPose(time,phase,after,power,targetX,style=penaltySty
   const incoming=step===0?v():mul(sub(to,centerAt(step-1)),.5);
   const outgoing=step===style.steps-1?v(0,0,-.7*approach/(style.steps*1.3)):mul(sub(centerAt(step+2),from),.5);
   const center=add(lerp(from,to,smoother(u)),add(mul(incoming,u-6*u**3+8*u**4-3*u**5),mul(outgoing,-4*u**3+7*u**4-3*u**5)));
-  const activity=Math.pow(Math.sin(Math.PI*q),2),stride=Math.sin(q*style.steps*Math.PI)*activity,sway=.025*stride;
+  const activity=Math.pow(Math.sin(Math.PI*q),2),stride=Math.sin(q*style.steps*Math.PI)*activity,sway=(compact?.012:.025)*stride;
   // Load the legs before the stride extends. Carry a slight crouch into the
   // plant instead of standing upright between the runup and the strike.
   const load=smoother(q/.25)*(1-smoother((q-.75)/.25));
-  const hip=v(center.x-.035+sway,.85-.09*load-.05*smoother((q-.65)/.35)-.008*Math.pow(Math.sin(Math.PI*u),2)*activity+Math.sin(time*1.8)*.008,center.z+.015);
+  const hip=v(center.x-.035+sway,(compact?.81:.85)-(compact?.025:.09)*load-(compact?.01:.05)*smoother((q-.65)/.35)-(compact?.004:.008)*Math.pow(Math.sin(Math.PI*u),2)*activity+Math.sin(time*1.8)*.008,center.z+.015);
   for(let i=0;i<2;i++){
     const horizontal=Math.hypot(feet[i].x-hip.x-(i?1:-1)*body.hipWidth/2,feet[i].z-hip.z);
     const ceiling=feet[i].y+Math.sqrt(Math.max(.1,Math.pow(.84-.035*activity,2)-horizontal*horizontal));
@@ -277,6 +280,28 @@ export function goalkeeperPose(stats,direction=0,elapsed=0,height=1) {
     return rig(liftedHip,recoveryUp,tuckedFeet,hands.map((h,i)=>lerp(lerp(h,support[i],bodyTuck),resting[i],handRelease)),1,sign*angle*(1-bodyTuck));
   }
   return rig(hip,up,feet,hands,1,sign*angle);
+}
+
+// Source-informed pre-shot set step, not a replay of an entire capture.
+// Monteiro N05D/O05E show a same-side forward step, opposite-leg loading and
+// arm preparation before takeoff. Keep this neutral (no target knowledge),
+// and arrive at the exact physical initial pose before the ball is released.
+export function keeperRunupPreparation(stats,phase,leadSide=-1) {
+  const q=clip(phase,0,1),base=goalkeeperPose(stats,0,0,1);
+  if(q===0||q===1)return base;
+  const lead=leadSide<0?0:1;
+  const steps=[{foot:lead,z:.08},{foot:1-lead,z:.05},{foot:lead,z:0},{foot:1-lead,z:0}];
+  const start=.08,span=.82/steps.length,clock=clip((q-start)/span,0,steps.length),step=Math.min(steps.length-1,Math.floor(clock)),u=clock-step;
+  const feet=[v(-.30,.075,.04),v(.30,.075,.04)];
+  for(let i=0;i<step;i++)feet[steps[i].foot].z=.04+steps[i].z;
+  if(q>=start&&clock<steps.length){const move=steps[step],foot=feet[move.foot];foot.z+=(.04+move.z-foot.z)*smoother(u);foot.y+=.038*Math.sin(Math.PI*u)**3;}
+  else if(clock>=steps.length)for(const foot of feet)foot.z=.04;
+  const load=Math.sin(Math.PI*clip((q-.04)/.90,0,1))**2;
+  const transfer=Math.sin(2*Math.PI*clip((q-.08)/.82,0,1))*load;
+  const hip=v(.035*(leadSide<0?-1:1)*transfer,.83-.043*load,.04+.032*load);
+  const up=v(-.045*(leadSide<0?-1:1)*transfer,1,.08+.055*load);
+  const hands=[-1,1].map(side=>v(side*(.35+.018*load)+hip.x*.45,1.05-.025*load,.30+.045*load));
+  return rig(hip,up,feet,hands,1);
 }
 
 // A wrong-footed keeper brakes while the feet are still supporting the body.
