@@ -1,0 +1,241 @@
+{
+  "scope": "CPU scene candidates before camera/shadow frustum culling; initial visibility includes aim, arc and trail. Not renderer.info, GPU timings or mobile FPS. Transparent double-sided extra passes not modeled.",
+  "sceneRef": "working-tree",
+  "sceneSha256": "2396a6553e98285ce9b7c0885d77bc6a374c3901093c6d35dc4c45255bfa26d8",
+  "counts": {
+    "meshCandidates": 30,
+    "lineCandidates": 4,
+    "spriteCandidates": 2,
+    "meshTriangles": 63606,
+    "shadowMeshCandidates": 20,
+    "shadowMeshTriangles": 36786
+  },
+  "omittedJerseyNumbers": {
+    "mainCandidates": 2,
+    "shadowCandidates": 2,
+    "mainTriangles": 4,
+    "shadowTriangles": 4
+  },
+  "totals": {
+    "mainCandidates": 38,
+    "shadowCandidates": 22,
+    "mainMeshTriangles": 63610,
+    "shadowMeshTriangles": 36790
+  },
+  "uniqueMaterialsExcludingNumbers": 34,
+  "generatedTextures": [
+    {
+      "width": 1024,
+      "height": 1024,
+      "mipmaps": true,
+      "logicalRGBABytes": 5592404
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "mipmaps": true,
+      "logicalRGBABytes": 349524
+    },
+    {
+      "width": 64,
+      "height": 64,
+      "mipmaps": true,
+      "logicalRGBABytes": 21844
+    }
+  ],
+  "generatedTextureLogicalBytes": 5963772,
+  "textureScope": "Generated scene CanvasTextures only; excludes GLB maps, number maps, hidden fallback resources, shadow/depth targets and driver/MSAA allocations. RGBA8 logical mip size, not measured GPU memory.",
+  "rows": [
+    {
+      "name": "Mesh",
+      "material": "MeshStandardMaterial",
+      "triangles": 5280,
+      "castShadow": false
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshStandardMaterial",
+      "triangles": 21120,
+      "castShadow": false
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshStandardMaterial",
+      "triangles": 2,
+      "castShadow": false
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshBasicMaterial",
+      "triangles": 142,
+      "castShadow": false
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshStandardMaterial",
+      "triangles": 24,
+      "castShadow": false
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshStandardMaterial",
+      "triangles": 400,
+      "castShadow": true
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshStandardMaterial",
+      "triangles": 24,
+      "castShadow": true
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshStandardMaterial",
+      "triangles": 116,
+      "castShadow": true
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshStandardMaterial",
+      "triangles": 24,
+      "castShadow": true
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshStandardMaterial",
+      "triangles": 12,
+      "castShadow": true
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshStandardMaterial",
+      "triangles": 84,
+      "castShadow": true
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshStandardMaterial",
+      "triangles": 24,
+      "castShadow": true
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshBasicMaterial",
+      "triangles": 144,
+      "castShadow": false
+    },
+    {
+      "name": "Sphere005_Retopology004",
+      "material": "Skin.001",
+      "triangles": 5001,
+      "castShadow": true
+    },
+    {
+      "name": "Sphere005_Retopology004_1",
+      "material": "Kit",
+      "triangles": 2959,
+      "castShadow": true
+    },
+    {
+      "name": "Sphere005_Retopology004_2",
+      "material": "Shorts",
+      "triangles": 1084,
+      "castShadow": true
+    },
+    {
+      "name": "Sphere005_Retopology004_3",
+      "material": "Socks",
+      "triangles": 4902,
+      "castShadow": true
+    },
+    {
+      "name": "Sphere005_Retopology004_4",
+      "material": "Boots",
+      "triangles": 3262,
+      "castShadow": true
+    },
+    {
+      "name": "Sphere005_Retopology004_5",
+      "material": "Eyes",
+      "triangles": 768,
+      "castShadow": true
+    },
+    {
+      "name": "Sphere005_Retopology004",
+      "material": "Skin.001",
+      "triangles": 8491,
+      "castShadow": true
+    },
+    {
+      "name": "Sphere005_Retopology004_1",
+      "material": "Kit",
+      "triangles": 2959,
+      "castShadow": true
+    },
+    {
+      "name": "Sphere005_Retopology004_2",
+      "material": "Shorts",
+      "triangles": 1084,
+      "castShadow": true
+    },
+    {
+      "name": "Sphere005_Retopology004_3",
+      "material": "Socks",
+      "triangles": 1412,
+      "castShadow": true
+    },
+    {
+      "name": "Sphere005_Retopology004_4",
+      "material": "Boots",
+      "triangles": 3232,
+      "castShadow": true
+    },
+    {
+      "name": "Sphere005_Retopology004_5",
+      "material": "Eyes",
+      "triangles": 768,
+      "castShadow": true
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshStandardMaterial",
+      "triangles": 180,
+      "castShadow": true
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshBasicMaterial",
+      "triangles": 80,
+      "castShadow": false
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshBasicMaterial",
+      "triangles": 2,
+      "castShadow": false
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshBasicMaterial",
+      "triangles": 2,
+      "castShadow": false
+    },
+    {
+      "name": "Mesh",
+      "material": "MeshBasicMaterial",
+      "triangles": 24,
+      "castShadow": false
+    }
+  ],
+  "rigidArchitecture": {
+    "triangles": 996,
+    "sha256": "efb7da8417d16d5f67079a7835ee8a40fee1347d493fb52070a065b0bc810387",
+    "scope": "Triangle multiset with winding, world positions/normals, UV/colors at1e-5 precision and material parameters; excludes UUID, batching boundaries, cast/receive shadow flags; Canvas image dimensions only, not rendered texels"
+  },
+  "gates": {
+    "mainCandidates": true,
+    "shadowCandidates": true,
+    "triangles": true,
+    "generatedTextureBytes": true
+  }
+}

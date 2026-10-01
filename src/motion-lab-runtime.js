@@ -3,7 +3,7 @@ import { GameCharacter, KICK_CONTACT } from './game-character.js';
 import { strikerRunupPose, penaltyStyles, goalkeeperPose, holdingPose, HOLD_DURATION, keeperHesitationPose, keeperWarmupPose, keeperRunupPreparation, keeperPreparation, blendKeeperPose, limb, body } from './anatomy.js';
 import { Shot } from './engine.js';
 import { keeperGather } from './keeper-contact.js';
-import { renderPixelRatio } from './rendering.js';
+import { renderPixelRatio, resizeDrawingBuffer } from './rendering.js';
 import { INSPECTION_FPS, advancePlayback, stepFrame, motionInfo, viewportLayout, frameDistance, clamp } from './motion-lab-state.js';
 
 const byId = id => document.getElementById(id);
@@ -158,8 +158,7 @@ function configureMotion() {
 function resize() {
   stageWidth = Math.max(1, Math.round(stage.clientWidth));
   stageHeight = Math.max(1, Math.round(stage.clientHeight));
-  renderer?.setPixelRatio(renderPixelRatio(stageWidth, stageHeight, window.devicePixelRatio));
-  renderer?.setSize(stageWidth, stageHeight, false);
+  if(renderer)resizeDrawingBuffer(renderer,stageWidth,stageHeight,renderPixelRatio(stageWidth,stageHeight,window.devicePixelRatio));
   updateViewLabels(); requestFrame();
 }
 function updateViewLabels() {

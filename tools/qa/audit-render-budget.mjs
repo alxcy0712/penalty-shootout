@@ -31,7 +31,7 @@ globalThis.AuditCharacter=class{
 };
 globalThis.AuditRenderer=class{
   constructor(){this.shadowMap={};this.domElement={};this.info={};}
-  setPixelRatio(){} setSize(){}
+  setPixelRatio(){} setSize(){} setDrawingBufferSize(){}
 };
 const context=new Proxy({createRadialGradient(){return{addColorStop(){}};}},{get:(target,key)=>target[key]??(()=>{})});
 globalThis.document={createElement:()=>({getContext:()=>context})};
@@ -97,7 +97,7 @@ architecture.traverse(object=>{
 });
 report.rigidArchitecture={triangles:rigidTriangles.length,sha256:createHash('sha256').update(rigidTriangles.sort().join('\n')).digest('hex'),scope:'Triangle multiset with winding, world positions/normals, UV/colors at1e-5 precision and material parameters; excludes UUID, batching boundaries, cast/receive shadow flags; Canvas image dimensions only, not rendered texels'};
 if(args.includes('--check')){
-  report.gates={mainCandidates:totals.mainCandidates<=45,shadowCandidates:totals.shadowCandidates<=22,triangles:totals.mainMeshTriangles<=63470,generatedTextureBytes:report.generatedTextureLogicalBytes<=5964000};
+  report.gates={mainCandidates:totals.mainCandidates<=38,shadowCandidates:totals.shadowCandidates<=22,triangles:totals.mainMeshTriangles<=63610,generatedTextureBytes:report.generatedTextureLogicalBytes<=5964000};
   if(Object.values(report.gates).some(pass=>!pass))process.exitCode=1;
 }
 console.log(JSON.stringify(report,null,2));

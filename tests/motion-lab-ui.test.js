@@ -8,7 +8,7 @@ import * as controls from '../src/motion-lab-state.js';
 import { KICK_CONTACT } from '../src/game-character.js';
 import { Shot } from '../src/engine.js';
 import { keeperGather } from '../src/keeper-contact.js';
-import { renderPixelRatio } from '../src/rendering.js';
+import { renderPixelRatio, resizeDrawingBuffer } from '../src/rendering.js';
 
 const html = await readFile(new URL('../motion-lab.html', import.meta.url), 'utf8');
 const source = await readFile(new URL('../src/motion-lab-runtime.js', import.meta.url), 'utf8');
@@ -47,11 +47,11 @@ async function setup() {
   }
   class Renderer {
     constructor() { this.domElement = new Element('canvas'); }
-    setScissorTest() {} setPixelRatio() {} setSize() {} setScissor() {} dispose() {}
+    setScissorTest() {} setPixelRatio() {} setSize() {} setDrawingBufferSize() {} setScissor() {} dispose() {}
     setViewport(x, y, width, height) { this.viewport = { x, y, width, height }; }
     render(scene, camera) { renders.push({ viewport: this.viewport, aspect: camera.aspect, position: camera.position.clone() }); }
   }
-  const context = { ...anatomy, ...controls, THREE: { ...Three, WebGLRenderer: Renderer }, GameCharacter: Character, keeperGather, KICK_CONTACT, Shot, renderPixelRatio,
+  const context = { ...anatomy, ...controls, THREE: { ...Three, WebGLRenderer: Renderer }, GameCharacter: Character, keeperGather, KICK_CONTACT, Shot, renderPixelRatio, resizeDrawingBuffer,
     document, window, console, structuredClone, ResizeObserver: class { observe() {} disconnect() {} },
     performance: { now: () => clock }, requestAnimationFrame: callback => { frames.set(++frameId, callback); return frameId; }, cancelAnimationFrame: id => frames.delete(id) };
   vm.runInNewContext(source.replace(/^import .*;\n/gm, ''), context, { filename: 'motion-lab-runtime.js' });

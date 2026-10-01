@@ -5,7 +5,8 @@ import {GoalNetMotion} from './net-motion.js';
 import {batchRigidGroup} from './batching.js';
 import {GameCharacter} from './game-character.js';
 import {keeperGather} from './keeper-contact.js';
-import {renderPixelRatio} from './rendering.js';
+import {renderPixelRatio,configurePitchFiltering,resizeDrawingBuffer} from './rendering.js';
+import {pitchMarkingGeometry} from './pitch-markings.js';
 import {strikerRunupPose,penaltyStyle,holdingPose,HOLD_DURATION,blendKeeperPose,keeperWarmupPose,keeperRunupPreparation} from './anatomy.js';
 import * as THREE from 'three';
 import {keeperPose, clamp, GOAL} from './engine.js';
@@ -57,21 +58,20 @@ export class Stadium {
     this.trail=new THREE.Line(trailGeometry,new THREE.LineBasicMaterial({color:'#d3efe4',transparent:true,opacity:.4}));this.scene.add(this.trail);this.trail.frustumCulled=false;this.trailCount=0;
     const geometrySet=new Set();this.scene.traverse(object=>{if(object.geometry)geometrySet.add(object.geometry.uuid);});this.geometryCount=geometrySet.size;
     if(new URLSearchParams(location.search).has('profile')){
-      this.renderer.info.autoReset=false;
+      this.renderer.info.autoReset=false;this.profileAntialias=this.renderer.getContextAttributes?.()?.antialias??null;
       this.profile=document.createElement('output');this.profile.id='render-profile';this.profile.style.cssText='position:fixed;bottom:8px;left:8px;z-index:10000;pointer-events:none;padding:10px;background:#071713;color:#d9ffe6;font:12px monospace;white-space:pre';document.body.appendChild(this.profile);this.profileFrames=[];this.profileCosts=[];this.profileUpdated=0;
     }
-    this.mode='hero';this.netTime=0;this.onNetImpact=impact=>this.netMotion.impact(impact,this.goalNetStartedAt+impact.time);this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(container);this.resize();
+    this.mode='hero';this.netTime=0;this.onNetImpact=impact=>this.netMotion.impact(impact,this.goalNetStartedAt+impact.time);this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(container);window.addEventListener?.('resize',()=>this.resize());this.resize();
   }
   buildField() {
     const pitch=texture((c,w,h)=>{c.fillStyle='#255349';c.fillRect(0,0,w,h);for(let j=0;j<12;j++){c.fillStyle=j%2?'#2a5b4e':'#245247';c.fillRect(0,j*h/12,w,h/12);}let seed=4;for(let i=0;i<20000;i++){seed=(seed*16807)%2147483647;const x=seed%w;seed=(seed*16807)%2147483647;const y=seed%h;c.fillStyle=i%2?'#ffffff08':'#00000009';c.fillRect(x,y,1,2);}},1024);
-    pitch.wrapS=pitch.wrapT=THREE.RepeatWrapping;
+    pitch.wrapS=pitch.wrapT=THREE.RepeatWrapping;configurePitchFiltering(pitch,this.renderer);
     const plane=mesh(new THREE.PlaneGeometry(68,123),new THREE.MeshStandardMaterial({map:pitch,roughness:.96}),this.scene,0,-.014,43.5);plane.rotation.x=-Math.PI/2;plane.castShadow=false;
-    const white=new THREE.LineBasicMaterial({color:'#9bbab0',transparent:true,opacity:.72});
-    const goalLine=mesh(new THREE.PlaneGeometry(68,GOAL.postRadius*2),new THREE.MeshBasicMaterial({color:'#9bbab0',transparent:true,opacity:.72}),this.scene,0,.007,GOAL.postRadius);goalLine.rotation.x=-Math.PI/2;goalLine.castShadow=false;
-    const lines=[[-20.16,0,-20.16,16.5],[20.16,0,20.16,16.5],[-20.16,16.5,20.16,16.5],[-9.16,0,-9.16,5.5],[9.16,0,9.16,5.5],[-9.16,5.5,9.16,5.5]];
-    for(const[x,z,a,b]of lines){const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x,.007,z),new THREE.Vector3(a,.007,b)]);this.scene.add(new THREE.Line(g,white));}
+    const white=new THREE.MeshBasicMaterial({color:'#9bbab0',transparent:true,opacity:.72});
+    const goalLine=mesh(new THREE.PlaneGeometry(68,GOAL.postRadius*2),white,this.scene,0,.007,GOAL.postRadius);goalLine.rotation.x=-Math.PI/2;goalLine.castShadow=false;
+    mesh(pitchMarkingGeometry(),white,this.scene).castShadow=false;
     const spot=mesh(new THREE.CircleGeometry(.10,24),material('#c1d6cc'),this.scene,0,.009,11);spot.rotation.x=-Math.PI/2;spot.castShadow=false;
-    const arc=[];for(let i=0;i<=64;i++){const t=.68+i/64*(Math.PI-1.36);arc.push(new THREE.Vector3(Math.cos(t)*9.15,.008,11+Math.sin(t)*9.15));}this.scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(arc),white));
+
   }
   buildGoal() {
     const postX=GOAL.half+GOAL.postRadius,barY=GOAL.height+GOAL.postRadius;
@@ -106,7 +106,7 @@ export class Stadium {
   }
   resize() {
     const {width,height}=this.container.getBoundingClientRect();if(!width||!height)return;
-    this.viewWidth=width;this.viewHeight=height;this.needsRender=true;this.renderer.setPixelRatio(renderPixelRatio(width,height,window.devicePixelRatio));this.renderer.setSize(width,height,false);this.camera.aspect=width/height;this.camera.updateProjectionMatrix();
+    this.viewWidth=width;this.viewHeight=height;this.needsRender=true;this.currentPixelRatio=renderPixelRatio(width,height,window.devicePixelRatio);resizeDrawingBuffer(this.renderer,width,height,this.currentPixelRatio);this.camera.aspect=width/height;this.camera.updateProjectionMatrix();
   }
   setMode(mode) {if(this.mode!==mode){this.resetNet();this.trailCount=0;this.needsRender=true;if(mode==='hero')this.homeTime=0;}this.mode=mode;}
   resetNet(){if(this.netMotion.reset(this.net.geometry.attributes.position.array))this.net.geometry.attributes.position.needsUpdate=true;}
@@ -176,7 +176,7 @@ export class Stadium {
     if(this.profile){
       const stamp=performance.now(),interval=stamp-(this.profileLast??stamp);this.profileLast=stamp;
       if(interval>0&&interval<250){this.profileFrames.push(interval);this.profileCosts.push(stamp-cpuStart);}
-      if(stamp-this.profileUpdated>1000&&this.profileFrames.length){const mean=this.profileFrames.reduce((a,b)=>a+b,0)/this.profileFrames.length,cost=this.profileCosts.reduce((a,b)=>a+b,0)/this.profileCosts.length;this.profileFrames.sort((a,b)=>a-b);const p95=this.profileFrames[Math.ceil(this.profileFrames.length*.95)-1];this.profile.textContent=`${hero?`首页镜头 ${(this.homeTime%20).toFixed(1)} s\n`:''}FPS ${(1000/mean).toFixed(1)} · CPU 提交 ${cost.toFixed(2)} ms\n帧耗时 均值 ${mean.toFixed(2)} / P95 ${p95.toFixed(2)} ms\n绘制含阴影 ${this.renderer.info.render.calls} · 三角形 ${this.renderer.info.render.triangles}\n几何体 ${this.renderer.info.memory.geometries}/${this.geometryCount} · 纹理 ${this.renderer.info.memory.textures}`;this.profileFrames.length=0;this.profileCosts.length=0;this.profileUpdated=stamp;}
+      if(stamp-this.profileUpdated>1000&&this.profileFrames.length){const mean=this.profileFrames.reduce((a,b)=>a+b,0)/this.profileFrames.length,cost=this.profileCosts.reduce((a,b)=>a+b,0)/this.profileCosts.length;this.profileFrames.sort((a,b)=>a-b);const p95=this.profileFrames[Math.ceil(this.profileFrames.length*.95)-1];this.profile.textContent=`${hero?`首页镜头 ${(this.homeTime%20).toFixed(1)} s\n`:''}画布 ${this.renderer.domElement.width}×${this.renderer.domElement.height} · DPR ${this.currentPixelRatio.toFixed(2)} · MSAA ${this.profileAntialias===null?'未知':this.profileAntialias?'开启':'未启用'}\nFPS ${(1000/mean).toFixed(1)} · CPU 提交 ${cost.toFixed(2)} ms\n帧耗时 均值 ${mean.toFixed(2)} / P95 ${p95.toFixed(2)} ms\n绘制含阴影 ${this.renderer.info.render.calls} · 三角形 ${this.renderer.info.render.triangles}\n几何体 ${this.renderer.info.memory.geometries}/${this.geometryCount} · 纹理 ${this.renderer.info.memory.textures}`;this.profileFrames.length=0;this.profileCosts.length=0;this.profileUpdated=stamp;}
     }
   }
 }

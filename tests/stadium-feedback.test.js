@@ -5,7 +5,7 @@ import * as THREE from 'three';
 const renders=[];
 class Renderer{
  constructor(){this.shadowMap={};this.domElement={};this.info={autoReset:true,render:{calls:0,triangles:0},memory:{geometries:0,textures:0},reset(){renders.push('reset');this.render.calls=0;}};}
- setPixelRatio(){}setSize(){}
+ setPixelRatio(){}setSize(){}setDrawingBufferSize(){}
  render(){renders.push('render');this.info.render.calls+=5;}
 }
 class Character{constructor(scene){this.group=new THREE.Group();scene.add(this.group);this.ready=Promise.resolve();}pose(){}kick(){}setColor(){}}
