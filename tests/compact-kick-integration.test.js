@@ -16,12 +16,13 @@ test('compact game clock agrees with the independently calibrated capture metada
 });
 test('switching real sources restores prior overlays and isolates source-specific clearance',async()=>{
   const actor=await loadCharacter(),source=await loadCharacter(),index=source.actions.findIndex(a=>a.getClip().name===COMPACT_KICK.clipName);
-  for(const t of[0,.3,.8,1,1.125,1.18,1.4,1.5,2,2.5]){
+  for(const t of[0,.016,.075,.133,.3,.8,1,1.125,1.18,1.4,1.5,2,2.5]){
     actor.kick(1,.30,{style:penaltyStyles[2],shotType:'chip'});
     actor.kick(Math.min(1,t/style.duration),t>=style.duration?t-style.duration:null,{style,targetX:5,power:.2,shotType:'chip'});
-    source.capture(t,index);
+    const sourceTime=gameKickTime(Math.min(1,t/style.duration),t>=style.duration?t-style.duration:null,style);
+    source.capture(sourceTime,index);
     assert.equal(actor.currentKickAction.getClip().name,COMPACT_KICK.clipName);
-    const corrected=strikerArmProtractionAngle(t,COMPACT_KICK.clipName)!==0;
+    const corrected=strikerArmProtractionAngle(sourceTime,COMPACT_KICK.clipName)!==0;
     actor.root.traverse(b=>{if(!b.isBone)return;const ref=source.root.getObjectByName(b.name);
       if(!(corrected&&b.name==='shoulder_supportR'))assert.ok(b.position.distanceTo(ref.position)<1e-8,'all captured local positions remain unchanged');
       if(!(corrected&&['clavicleR','upper_armR','shoulder_supportR'].includes(b.name)))b.quaternion.toArray().forEach((v,i)=>assert.ok(Math.abs(v-ref.quaternion.toArray()[i])<1e-8,'new capture must not inherit10_01 follow-through or cadence'));

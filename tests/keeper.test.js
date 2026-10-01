@@ -59,7 +59,7 @@ test('tracking, takeoff and recovery remain continuous and obey movement speed l
       assert.ok(Math.abs(shot.keeperVelocity.x)<=1.4+1.6*stats.speed/99+1e-8);
       for(const part of['hands','elbows','knees','feet'])for(let i=0;i<2;i++){
         assert.ok(distance(pose[part][i],previous[part][i])<.022,`${part} discontinuity: power ${power}, x ${x}, dir ${direction}, ${ms} ms`);
-        assert.ok(pose[part][i].y>=.065);
+        const braced=part==='hands'&&(pose.torso?.[i?'braceR':'braceL']??0)>.5;assert.ok(pose[part][i].y>=(braced?.03:.065));
       }
       previous=pose;
     }
@@ -81,7 +81,7 @@ test('different keeper abilities settle mixed-height, curved and corner shots wi
     const keeper={...stats,speed:ability,reach:ability},shot=new Shot({x,power,y,curve:.5},{...stats,curve:90},keeper,direction,42);
     for(let n=0;n<3600&&!shot.result;n++){
       shot.step(1/120);
-      for(const part of['hands','feet','knees','elbows'])for(const p of shot.pose[part]){assert.ok(Number.isFinite(p.x+p.y+p.z));assert.ok(p.y>=.065);}
+      for(const part of['hands','feet','knees','elbows'])shot.pose[part].forEach((p,index)=>{assert.ok(Number.isFinite(p.x+p.y+p.z));const braced=part==='hands'&&(shot.pose.torso?.[index?'braceR':'braceL']??0)>.5;assert.ok(p.y>=(braced?.03:.065));});
     }
     assert.ok(shot.result);
   }
@@ -128,7 +128,7 @@ test('hesitation is continuous through braking, the pause and standing recovery'
       const pose=shot.poseAt(start+ms/1000);
       for(const part of['hands','elbows','knees','feet'])for(let i=0;i<2;i++){
         assert.ok(distance(pose[part][i],previous[part][i])<.022);
-        assert.ok(pose[part][i].y>=.065);
+        const braced=part==='hands'&&(pose.torso?.[i?'braceR':'braceL']??0)>.5;assert.ok(pose[part][i].y>=(braced?.03:.065));
       }
       for(let i=0;i<2;i++)for(const[a,b,length]of[[pose.shoulders[i],pose.elbows[i],body.upperArm],[pose.elbows[i],pose.hands[i],body.forearm],[pose.hips[i],pose.knees[i],body.thigh],[pose.knees[i],pose.feet[i],body.shin]])assert.ok(Math.abs(distance(a,b)-length)<1e-8);
       previous=pose;

@@ -20,7 +20,7 @@ test('run-up clocks are positive C2 cadence curves with exact release and an unc
     let before=runupClipTime(0,style);
     for(let frame=1;frame<=1800;frame++){
       const now=runupClipTime(frame/1800,style),speed=(now-before)/(duration/1800);
-      assert.ok(speed>.025&&speed<1.01,`never freeze or reverse ${style.name}: ${speed}`);before=now;
+      assert.ok(speed>0&&speed<1.01,`zero-slope onset must move forward immediately, without reversal ${style.name}: ${speed}`);before=now;
     }
     const time=t=>runupClipTime(t/duration,style),h=1e-5;
     for(const [q] of profile.pace.slice(1)){

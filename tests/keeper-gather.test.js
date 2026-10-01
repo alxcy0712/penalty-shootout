@@ -12,7 +12,7 @@ const captures=[[-1,.3,-2,3],[1,.3,2,3],[-1,2.1,-1.5,2],[1,2.1,1.5,1]].map(([dir
 // Slow central scoops and the fast wrong-footed catch exercise paths not covered
 // by the four wide-dive recipes. Their physical speed is checked by continuity,
 // rather than mislabelling smooth travel as a branch discontinuity.
-const additionalCaptures=[[-1.5,.2,.12,0],[1.5,.2,.12,0],[-1.5,1.2,.5,0]].map(([x,y,power,direction])=>{
+const additionalCaptures=[[-1.5,.2,.12,0],[1.5,.2,.12,0],[-1.5,1.2,.5,0],[1.5,1.2,.5,0],[-3.3,1.2,.5,-1],[3.3,1.2,.5,1]].map(([x,y,power,direction])=>{
   const ability={...stats,speed:85,reach:85},shot=new Shot({x,y,power},ability,ability,direction,42);
   for(let i=0;i<3600&&!shot.result;i++)shot.step(1/120);assert.ok(shot.caught);return shot;
 });
@@ -85,4 +85,35 @@ test('the secured ball clears the full visible body throughout landing and get-u
     }
   }
   assert.ok(worst>=.105,`ball penetrates visible body: clearance ${worst-.11} at ${at}`);
+});
+
+test('wide held saves keep rigid forearm skin outside the actual central shirt during gather and rise',async()=>{
+  const actor=await loadCharacter(true),meshes=[],faces=[];
+  actor.root.traverse(mesh=>{if(mesh.isSkinnedMesh)meshes.push(mesh);});
+  for(const [mi,mesh]of meshes.entries()){
+    const {skinIndex,skinWeight}=mesh.geometry.attributes,index=mesh.geometry.index;
+    const weight=(vertex,predicate)=>{let sum=0;for(let k=0;k<4;k++)if(predicate(mesh.skeleton.bones[skinIndex.getComponent(vertex,k)].name))sum+=skinWeight.getComponent(vertex,k);return sum;};
+    for(let f=0;f<index.count;f+=3){
+      const ids=[index.getX(f),index.getX(f+1),index.getX(f+2)];
+      const torso=mesh.material.name==='Kit'&&ids.every(v=>weight(v,n=>['pelvis','spine','chest'].includes(n))>.9);
+      const forearm=['L','R'].some(side=>ids.every(v=>weight(v,n=>n==='forearm'+side)>.999));
+      if(torso||forearm)faces.push({mi,ids,torso,forearm,face:f/3});
+    }
+  }
+  assert.ok(faces.filter(f=>f.torso).length>100&&faces.filter(f=>f.forearm).length>100,'test samples the production shirt and rigid forearm surfaces');
+  const crossing=(a,b)=>{
+    const da=a.p.map(p=>b.n.dot(p.clone().sub(b.p[0]))),db=b.p.map(p=>a.n.dot(p.clone().sub(a.p[0])));
+    if(Math.min(...da)>=-1e-8||Math.max(...da)<=1e-8||Math.min(...db)>=-1e-8||Math.max(...db)<=1e-8)return false;
+    const direction=new THREE.Vector3().crossVectors(a.n,b.n);if(direction.lengthSq()<1e-12)return false;direction.normalize();
+    const interval=(p,d)=>{const hits=[];for(let i=0;i<3;i++){const j=(i+1)%3;if(Math.abs(d[i])<1e-10)hits.push(direction.dot(p[i]));else if(d[i]*d[j]<0)hits.push(direction.dot(p[i].clone().lerp(p[j],d[i]/(d[i]-d[j]))));}return [Math.min(...hits),Math.max(...hits)];};
+    const x=interval(a.p,da),y=interval(b.p,db);return Math.min(x[1],y[1])-Math.max(x[0],y[0])>1e-5;
+  };
+  const wide=additionalCaptures.filter(s=>Math.abs(s.aim.x)===3.3);assert.equal(wide.length,2,'both authored mirrored shots are exercised');
+  for(const shot of wide)for(const time of [.25,.3,.4,.5,.6,1,1.05,1.1,7/6,1.3]){
+    const result=sample(shot,time);actor.pose(result.pose);actor.root.updateMatrixWorld(true);
+    const vertices=meshes.map(mesh=>{mesh.skeleton.update();const position=mesh.geometry.attributes.position;return Array.from({length:position.count},(_,i)=>mesh.applyBoneTransform(i,new THREE.Vector3().fromBufferAttribute(position,i)).applyMatrix4(mesh.matrixWorld));});
+    const posed=faces.map(f=>{const p=f.ids.map(i=>vertices[f.mi][i]),triangle=new THREE.Triangle(...p);return {...f,p,n:triangle.getNormal(new THREE.Vector3()),box:new THREE.Box3().setFromPoints(p)};});
+    const shirt=posed.filter(f=>f.torso),arms=posed.filter(f=>f.forearm);
+    for(const a of arms)for(const b of shirt)if(a.box.intersectsBox(b.box))assert.equal(crossing(a,b),false,`protected forearm/shirt crossing ${shot.target.x}/${time}: ${a.face}/${b.face}`);
+  }
 });

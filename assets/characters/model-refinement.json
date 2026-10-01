@@ -40,10 +40,12 @@
       "encodingMaxNormalComponentError": 0.00048828125,
       "glbBytes": 441536,
       "sourceBytes": 396944,
-      "triangles": 17976,
+      "triangles": 17954,
       "bones": 22,
       "maxSkinInfluences": 4,
-      "sha256": "af13951cda7f7655e98eed9fa5cdb0b903b73379f9e7260f5d8e67089fafbf19"
+      "sha256": "29b228bb40af114dd6cb427312102bd772fd1951c8754a27d87d718377e5e31a",
+      "previousSha256": "af13951cda7f7655e98eed9fa5cdb0b903b73379f9e7260f5d8e67089fafbf19",
+      "bytes": 449080
     },
     "striker-mocap": {
       "source": "striker-mocap.glb",
@@ -83,10 +85,14 @@
       "encodingMaxNormalComponentError": 0.00048828125,
       "glbBytes": 441568,
       "sourceBytes": 407288,
-      "triangles": 17946,
+      "triangles": 17924,
       "bones": 22,
       "maxSkinInfluences": 4,
-      "sha256": "e0b3eb06d09d80135827c5f5e7e58ab26778a5dc0b8c3333be48a704603bfc3d"
+      "sha256": "aad3a3782a1e806b8fd596e6b9eeb62e47ebe4d729bb421d0ec4631a6fb76996",
+      "previousSha256": "e0b3eb06d09d80135827c5f5e7e58ab26778a5dc0b8c3333be48a704603bfc3d",
+      "bytes": 446308
     }
-  }
+  },
+  "latestRefinement": "body-cloth-refinement.json",
+  "historicalGeometryStatisticsNote": "Earlier displacement statistics describe v17; current asset identities and detailed body/cloth follow-up are in body-cloth-refinement.json."
 }

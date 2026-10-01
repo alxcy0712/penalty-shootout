@@ -120,11 +120,13 @@ test('gathering remains continuous across capture times before, during and after
   for(const direction of [-1,0,1])for(const height of [.3,1.2,2.3])for(const capture of [.15,.3,.45,.6,.8,1.1]){
     let previous=goalkeeperPose({speed:85,reach:85},direction,capture,height);
     for(let ms=1;ms<=440;ms++){
-      const pose=holdingPose(goalkeeperPose({speed:85,reach:85},direction,capture+ms/1000,height),ms/440).pose;
+      const source=goalkeeperPose({speed:85,reach:85},direction,capture+ms/1000,height),pose=holdingPose(source,ms/440).pose;
       for(let i=0;i<2;i++){
         const a=new THREE.Vector3().copy(previous.elbows[i]),b=new THREE.Vector3().copy(pose.elbows[i]);
         assert.ok(a.distanceTo(b)<.022,'a gathering elbow must not switch IK branches');
-        assert.ok(pose.elbows[i].y>=.075-1e-8&&pose.hands[i].y>=.075-1e-8);
+        const sourceFloor=(source.torso?.[i?'braceR':'braceL']??0)>.5?Math.min(.075,Math.max(.03,source.hands[i].y)):.075;
+        const wristFloor=sourceFloor+(.075-sourceFloor)*pose.grip.weight;
+        assert.ok(pose.elbows[i].y>=.075-1e-8&&pose.hands[i].y>=wristFloor-1e-8,'only the tagged bracing wrist may lift continuously from its lower support height');
         assert.ok(Math.abs(b.distanceTo(new THREE.Vector3().copy(pose.shoulders[i]))-.29)<1e-8);
         assert.ok(Math.abs(b.distanceTo(new THREE.Vector3().copy(pose.hands[i]))-.27)<1e-8);
       }

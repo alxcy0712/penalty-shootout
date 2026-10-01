@@ -1,3 +1,5 @@
+> Latest body/garment and supported keeper pass: [2026-10-01 body and motion validation](validation/BODY_MOTION_2026-10-01.md) — 240 tests, 40-capture full-skin/continuity gate, exact budget and CPU/loading tradeoffs.
+
 > Latest conservative clarity pass: [2026-10-01 image clarity](validation/IMAGE_CLARITY_2026-10-01.md) — 222 tests, unchanged DPR budget, bounded pitch filtering and physical-width paint.
 
 > Latest low-cost presentation pass: [2026-10-01 validation](validation/LOW_COST_FIDELITY_2026-10-01.md) — 218 tests, source-normal net feedback, softer ball grounding, unchanged geometry and reduced structural draw candidates.

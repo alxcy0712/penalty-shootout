@@ -6,6 +6,23 @@ const integral=x=>x**4*(2.5-3*x+x*x);
 export const RUNUP_CONTACT=1.8467;
 export const RUNUP_STRIKE_DURATION=.35;
 
+export const RUNUP_ONSET_WINDOW=.2;
+const ONSET_RAMP=.02,ONSET_TAIL=RUNUP_ONSET_WINDOW/3;
+const ONSET_PEAK=(RUNUP_ONSET_WINDOW-ONSET_TAIL/2)/(RUNUP_ONSET_WINDOW-(ONSET_RAMP+ONSET_TAIL)/2);
+
+// Frozen preparation enters a moving capture with zero clock velocity and
+// acceleration. Integrate a smooth pace rise, then a bounded 1.064x catch-up;
+// by .2 s the original clock is exact, well before every final plant/strike.
+// This is time-only: no joint blending, new capture, foot lock or history state.
+export function runupOnsetTime(elapsed){
+  if(elapsed<=0)return 0;
+  if(elapsed>=RUNUP_ONSET_WINDOW)return elapsed;
+  if(elapsed<ONSET_RAMP)return ONSET_RAMP*ONSET_PEAK*integral(elapsed/ONSET_RAMP);
+  const settle=RUNUP_ONSET_WINDOW-ONSET_TAIL;
+  if(elapsed<settle)return ONSET_PEAK*(elapsed-ONSET_RAMP/2);
+  return ONSET_PEAK*(elapsed-ONSET_RAMP/2)+ONSET_TAIL*(1-ONSET_PEAK)*integral((elapsed-settle)/ONSET_TAIL);
+}
+
 // These are runtime adaptations of the same CMU performance, not new captures.
 // Trim its long waiting pose; vary cadence and rigid approach heading. The
 // final plant/strike runs at source speed and never pauses for a late feint.
@@ -23,7 +40,7 @@ export function runupProfile(style){
 export function runupClipTime(phase,style){
   if(phase>=1)return RUNUP_CONTACT;
   const profile=runupProfile(style),duration=clamp(style?.duration??1.55,.8,3);
-  const elapsed=clamp(phase,0,1)*duration,approach=duration-RUNUP_STRIKE_DURATION;
+  const elapsed=runupOnsetTime(clamp(phase,0,1)*duration),approach=duration-RUNUP_STRIKE_DURATION;
   const end=RUNUP_CONTACT-RUNUP_STRIKE_DURATION;
   if(elapsed>=approach)return end+(elapsed-approach);
   // Integrate strictly positive, C2 pace transitions. The endpoint is solved

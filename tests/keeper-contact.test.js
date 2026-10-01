@@ -24,6 +24,7 @@ test('generated collision surfaces are tied to the shipped keeper asset',async()
   const bytes=await readFile(new URL('../assets/characters/keeper-prototype.glb',import.meta.url));
   assert.equal(createHash('sha256').update(bytes).digest('hex'),keeperContactData.source.sha256,'regenerate collision surfaces after changing the skin');
   const skinPose=await readFile(new URL('../src/keeper-skin-pose.js',import.meta.url));assert.equal(createHash('sha256').update(skinPose).digest('hex'),keeperContactData.source.skinPoseSha256,'regenerate collision surfaces after changing runtime shoulder weights');
+  const torso=await readFile(new URL('../src/keeper-torso.js',import.meta.url));assert.equal(createHash('sha256').update(torso).digest('hex'),keeperContactData.source.keeperTorsoSha256,'regenerate collision surfaces after changing shared torso frames');
   const weights=await readFile(new URL('../src/keeper-skin-weights.js',import.meta.url));assert.equal(createHash('sha256').update(weights).digest('hex'),keeperContactData.source.skinWeightsSha256,'regenerate collision surfaces after smoothing weights');
 });
 

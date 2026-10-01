@@ -14,7 +14,7 @@ bytes.fill(32,20,20+jsonLength);bytes.write(JSON.stringify(json),20);await Mesho
 const gltf=await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');
 createKeeperSkinPose(gltf.scene,{shoulderSupport:true});
 const skinPoseSha256=createHash('sha256').update(await readFile(new URL('../src/keeper-skin-pose.js',import.meta.url))).digest('hex');
-const names=['hand','forearm','upper_arm','thigh','shin','foot'],groups={torso:[],head:[],...Object.fromEntries(names.flatMap(name=>['L','R'].map(side=>[name+side,[]])))},binds={},surfaces={handL:[],handR:[]},patch={vertices:[],weights:[],indices:[]},inverseBinds={};
+const names=['hand','forearm','upper_arm','thigh','shin','foot'],groups={torso:[],head:[],...Object.fromEntries(names.flatMap(name=>['L','R'].map(side=>[name+side,[]])))},binds={},surfaces={handL:[],handR:[]},patch={vertices:[],weights:[],indices:[]},torsoPatch={vertices:[],weights:[],indices:[]},torsoPoints=[],inverseBinds={};
 gltf.scene.traverse(mesh=>{
   if(!mesh.isSkinnedMesh)return;
   const {position,skinIndex,skinWeight}=mesh.geometry.attributes;
@@ -27,7 +27,7 @@ gltf.scene.traverse(mesh=>{
     // weighted triangles in the dynamic patch below.
     // Other limbs use dominant-bone hulls; the rigid glove also retains exact
     // triangles below, so the thumb notch is never filled by its convex hull.
-    if((weights.pelvis??0)+(weights.spine??0)+(weights.chest??0)+(weights.neck??0)>.98 && point.y<1.49)groups.torso.push(point.clone().sub(new THREE.Vector3(0,.92,0)));
+    if((weights.pelvis??0)+(weights.spine??0)+(weights.chest??0)+(weights.neck??0)>.98 && point.y<1.49){const local=point.clone().sub(new THREE.Vector3(0,.92,0));groups.torso.push(local);torsoPoints.push({point:local,weights:Object.entries(weights).filter(([,w])=>w>1e-8)});}
     for(const name of Object.keys(groups).filter(n=>n!=='torso'))if((weights[name]??0)>((name.startsWith('hand')||name.startsWith('upper_arm')||name.startsWith('forearm'))?.98:.5)){const index=mesh.skeleton.bones.findIndex(b=>b.name===name),local=point.clone().applyMatrix4(mesh.skeleton.boneInverses[index]);if(name.startsWith('upper_arm')&&local.y<.015)continue;groups[name].push(local);}
   }
   const patchVertex=new Map(),indices=mesh.geometry.index;
@@ -35,6 +35,13 @@ gltf.scene.traverse(mesh=>{
   for(let face=0;face<indices.count;face+=3){
     const ids=[indices.getX(face),indices.getX(face+1),indices.getX(face+2)];if(!ids.some(i=>isDeforming(vertexWeights[i])))continue;
     for(const index of ids){let id=patchVertex.get(index);if(id===undefined){id=patch.vertices.length;patchVertex.set(index,id);patch.vertices.push(points[index].toArray());patch.weights.push(Object.entries(vertexWeights[index]).filter(([,w])=>w>1e-8));}patch.indices.push(id);}
+  }
+  // Keep the central torso separate from the large shoulder/elbow patch.
+  // It is evaluated only after the inexpensive weighted hull finds a hit.
+  const torsoVertex=new Map(),isTorso=i=>points[i].y<1.49&&['pelvis','spine','chest','neck'].reduce((sum,name)=>sum+(vertexWeights[i][name]??0),0)>.98;
+  for(let face=0;face<indices.count;face+=3){
+    const ids=[indices.getX(face),indices.getX(face+1),indices.getX(face+2)];if(!ids.some(isTorso))continue;
+    for(const index of ids){let id=torsoVertex.get(index);if(id===undefined){id=torsoPatch.vertices.length;torsoVertex.set(index,id);torsoPatch.vertices.push(points[index].toArray());torsoPatch.weights.push(Object.entries(vertexWeights[index]).filter(([,w])=>w>1e-8));}torsoPatch.indices.push(id);}
   }
   for(const side of ['L','R']){const name=`hand${side}`,boneIndex=mesh.skeleton.bones.findIndex(b=>b.name===name),inverse=mesh.skeleton.boneInverses[boneIndex],indices=mesh.geometry.index;
     for(let face=0;face<indices.count;face+=3){const triangle=[];let accepted=true;for(let corner=0;corner<3;corner++){const index=indices.getX(face+corner);let weight=0;for(let k=0;k<4;k++)if(skinIndex.getComponent(index,k)===boneIndex)weight+=skinWeight.getComponent(index,k);if(weight<.98){accepted=false;break;}triangle.push(new THREE.Vector3().fromBufferAttribute(position,index).applyMatrix4(mesh.bindMatrix).applyMatrix4(inverse));}if(accepted)surfaces[name].push(...triangle);}
@@ -44,12 +51,17 @@ const hulls={};for(const [name,points] of Object.entries(groups)){
   const geometry=new ConvexGeometry(points),p=geometry.attributes.position,vertices=[],indices=[],seen=new Map();
   for(let i=0;i<p.count;i++){const v=[p.getX(i),p.getY(i),p.getZ(i)].map(x=>+x.toFixed(6)),key=v.join(',');let index=seen.get(key);if(index===undefined){index=vertices.length;seen.set(key,index);vertices.push(v);}indices.push(index);}
   hulls[name]={vertices,indices};
+  if(name==='torso')hulls[name].weights=vertices.map(vertex=>{
+    const point=new THREE.Vector3().fromArray(vertex);let best=null,distance=Infinity;
+    for(const source of torsoPoints){const d=source.point.distanceToSquared(point);if(d<distance){distance=d;best=source;}}
+    if(distance>1e-10)throw new Error('Torso hull vertex lost its source skin weights');
+    return best.weights.map(([name,weight])=>[name,+weight.toFixed(8)]);
+  });
   if(surfaces[name]){const vertices=[],indices=[],seen=new Map();for(const point of surfaces[name]){const v=point.toArray().map(x=>+x.toFixed(6)),key=v.join(',');let index=seen.get(key);if(index===undefined){index=vertices.length;seen.set(key,index);vertices.push(v);}indices.push(index);}hulls[name].surface={vertices,indices};}
   console.log(name,points.length,vertices.length,indices.length/3);
 }
 // Micrometre coordinates and eight-digit weights keep the generated download
 // compact; the precision is substantially below the millimetre contact gates.
-patch.vertices=patch.vertices.map(p=>p.map(n=>+n.toFixed(6)));
-patch.weights=patch.weights.map(list=>list.map(([name,w])=>[name,+w.toFixed(8)]));
+for(const surface of [patch,torsoPatch]){surface.vertices=surface.vertices.map(p=>p.map(n=>+n.toFixed(6)));surface.weights=surface.weights.map(list=>list.map(([name,w])=>[name,+w.toFixed(8)]));}
 for(const [name,matrix] of Object.entries(inverseBinds))inverseBinds[name]=matrix.map(n=>+n.toFixed(9));
-await writeFile(new URL('../src/keeper-contact-data.js',import.meta.url),'// Generated by tools/generate-keeper-contact.mjs from keeper-prototype.glb.\nexport const keeperContactData='+JSON.stringify({source:{asset:'keeper-prototype.glb',sha256,skinPoseSha256,skinWeightsSha256:createHash('sha256').update(await readFile(new URL('../src/keeper-skin-weights.js',import.meta.url))).digest('hex')},hulls,binds,patch:{...patch,inverseBinds}})+';\n');
+await writeFile(new URL('../src/keeper-contact-data.js',import.meta.url),'// Generated by tools/generate-keeper-contact.mjs from keeper-prototype.glb.\nexport const keeperContactData='+JSON.stringify({source:{asset:'keeper-prototype.glb',sha256,skinPoseSha256,keeperTorsoSha256:createHash('sha256').update(await readFile(new URL('../src/keeper-torso.js',import.meta.url))).digest('hex'),skinWeightsSha256:createHash('sha256').update(await readFile(new URL('../src/keeper-skin-weights.js',import.meta.url))).digest('hex')},hulls,binds,patch:{...patch,inverseBinds},torsoPatch})+';\n');

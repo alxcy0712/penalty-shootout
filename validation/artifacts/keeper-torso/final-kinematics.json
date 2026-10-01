@@ -1,0 +1,269 @@
+{
+  "beforeContactSha256": "f1955eb6f4d6ec2e075cef7ffef26b6a79ba0860766ad1d3e8ca36e81033ad45",
+  "afterContactSha256": "1c8ccc440c07643b455f1c0300fe5b17ec243c37f2b0584b1d34e47f9f2f260a",
+  "anatomySha256": "40a841de7cd387afa12ecab537bd686b6923f742421307037db7b0940a711a8a",
+  "hz": 240,
+  "method": "Both kernels evaluated against the same final anatomy and physical captures. World and hip-relative speeds are interval distances / dt; angular change is upper-arm direction, per frame. Instantaneous estimates use symmetric 10us finite differences at the peak interval midpoint.",
+  "results": [
+    {
+      "recipe": {
+        "x": -3.3,
+        "y": 1.2,
+        "power": 0.5,
+        "d": -1,
+        "seed": 42,
+        "speed": 85,
+        "reach": 85
+      },
+      "captureTime": 0.5750000000000004,
+      "part": "handR",
+      "window": [
+        1,
+        1.4
+      ],
+      "before": {
+        "world": {
+          "speed": 16.787208945623465,
+          "time": 1.1625,
+          "j": 0
+        },
+        "hipRelative": {
+          "speed": 16.820705468312294,
+          "time": 1.1625,
+          "j": 0
+        },
+        "upperArm": {
+          "radians": 0.2448197434003092,
+          "degrees": 14.027138038313508,
+          "time": 1.1625,
+          "j": 0
+        },
+        "instantaneousAtPeakInterval": {
+          "time": 1.1604166666666667,
+          "j": 0,
+          "worldSpeed": 17.025785545094383,
+          "hipRelativeSpeed": 17.059492864993135
+        }
+      },
+      "after": {
+        "world": {
+          "speed": 3.5359247994328267,
+          "time": 1.1625,
+          "j": 0
+        },
+        "hipRelative": {
+          "speed": 3.5637342329245634,
+          "time": 1.1625,
+          "j": 0
+        },
+        "upperArm": {
+          "radians": 0.05588114343946029,
+          "degrees": 3.2017536734462433,
+          "time": 1.1583333333333334,
+          "j": 0
+        },
+        "instantaneousAtPeakInterval": {
+          "time": 1.1604166666666667,
+          "j": 0,
+          "worldSpeed": 3.5374498962392456,
+          "hipRelativeSpeed": 3.565194960535518
+        }
+      }
+    },
+    {
+      "recipe": {
+        "x": 3.3,
+        "y": 1.2,
+        "power": 0.5,
+        "d": 1,
+        "seed": 42,
+        "speed": 85,
+        "reach": 85
+      },
+      "captureTime": 0.5750000000000004,
+      "part": "handL",
+      "window": [
+        1,
+        1.4
+      ],
+      "before": {
+        "world": {
+          "speed": 16.64045640386303,
+          "time": 1.1666666666666667,
+          "j": 1
+        },
+        "hipRelative": {
+          "speed": 16.692594783363564,
+          "time": 1.1666666666666667,
+          "j": 1
+        },
+        "upperArm": {
+          "radians": 0.2437931122606807,
+          "degrees": 13.968316406896088,
+          "time": 1.1666666666666667,
+          "j": 1
+        },
+        "instantaneousAtPeakInterval": {
+          "time": 1.1645833333333333,
+          "j": 1,
+          "worldSpeed": 16.87028126263369,
+          "hipRelativeSpeed": 16.923105959484474
+        }
+      },
+      "after": {
+        "world": {
+          "speed": 3.5776707042440856,
+          "time": 1.1625,
+          "j": 1
+        },
+        "hipRelative": {
+          "speed": 3.622197409124627,
+          "time": 1.1625,
+          "j": 1
+        },
+        "upperArm": {
+          "radians": 0.05666269025662298,
+          "degrees": 3.2465330075615486,
+          "time": 1.1625,
+          "j": 1
+        },
+        "instantaneousAtPeakInterval": {
+          "time": 1.1604166666666667,
+          "j": 1,
+          "worldSpeed": 3.582633110712818,
+          "hipRelativeSpeed": 3.6271330639080626
+        }
+      }
+    },
+    {
+      "recipe": {
+        "x": -1.5,
+        "y": 1.2,
+        "power": 0.5,
+        "d": 0,
+        "seed": 42,
+        "speed": 85,
+        "reach": 85
+      },
+      "captureTime": 0.5750000000000004,
+      "part": "handL",
+      "window": [
+        0.13,
+        0.25
+      ],
+      "before": {
+        "world": {
+          "speed": 8.703432930635458,
+          "time": 0.175,
+          "j": 0
+        },
+        "hipRelative": {
+          "speed": 8.685471618847753,
+          "time": 0.175,
+          "j": 0
+        },
+        "upperArm": {
+          "radians": 0.10093030959187706,
+          "degrees": 5.782880764563326,
+          "time": 0.225,
+          "j": 0
+        },
+        "instantaneousAtPeakInterval": {
+          "time": 0.17291666666666666,
+          "j": 0,
+          "worldSpeed": 8.670803622293194,
+          "hipRelativeSpeed": 8.632949124637156
+        }
+      },
+      "after": {
+        "world": {
+          "speed": 8.703432930635458,
+          "time": 0.175,
+          "j": 0
+        },
+        "hipRelative": {
+          "speed": 8.685471618847753,
+          "time": 0.175,
+          "j": 0
+        },
+        "upperArm": {
+          "radians": 0.10093030959187706,
+          "degrees": 5.782880764563326,
+          "time": 0.225,
+          "j": 0
+        },
+        "instantaneousAtPeakInterval": {
+          "time": 0.17291666666666666,
+          "j": 0,
+          "worldSpeed": 8.670803622293194,
+          "hipRelativeSpeed": 8.632949124637156
+        }
+      }
+    },
+    {
+      "recipe": {
+        "x": 1.5,
+        "y": 1.2,
+        "power": 0.5,
+        "d": 0,
+        "seed": 42,
+        "speed": 85,
+        "reach": 85
+      },
+      "captureTime": 0.5833333333333337,
+      "part": "handR",
+      "window": [
+        0.13,
+        0.25
+      ],
+      "before": {
+        "world": {
+          "speed": 26.499625801617363,
+          "time": 0.20833333333333334,
+          "j": 1
+        },
+        "hipRelative": {
+          "speed": 28.922718086482046,
+          "time": 0.20833333333333334,
+          "j": 1
+        },
+        "upperArm": {
+          "radians": 0.407585753780065,
+          "degrees": 23.352943481256066,
+          "time": 0.20833333333333334,
+          "j": 1
+        },
+        "instantaneousAtPeakInterval": {
+          "time": 0.20625000000000002,
+          "j": 1,
+          "worldSpeed": 29.03346027385961,
+          "hipRelativeSpeed": 31.09233720332387
+        }
+      },
+      "after": {
+        "world": {
+          "speed": 8.780321390421042,
+          "time": 0.175,
+          "j": 0
+        },
+        "hipRelative": {
+          "speed": 8.357573534409745,
+          "time": 0.21666666666666667,
+          "j": 1
+        },
+        "upperArm": {
+          "radians": 0.10972393209901601,
+          "degrees": 6.286718220853638,
+          "time": 0.21666666666666667,
+          "j": 1
+        },
+        "instantaneousAtPeakInterval": {
+          "time": 0.21458333333333335,
+          "j": 1,
+          "worldSpeed": 6.225887114987129,
+          "hipRelativeSpeed": 8.371394532481522
+        }
+      }
+    }
+  ]
+}

@@ -8,13 +8,13 @@ import {createKeeperArmRoll} from './keeper-arm-roll.js';
 import {createKeeperHandContact} from './keeper-hand-contact.js';
 import {createStrikerKickStyle} from './striker-kick-style.js';
 import {createStrikerArmClearance} from './striker-arm-clearance.js';
-import {RUNUP_CONTACT,runupClipTime,createStrikerRunupStyle} from './striker-runup-style.js';
+import {RUNUP_CONTACT,runupClipTime,runupOnsetTime,createStrikerRunupStyle} from './striker-runup-style.js';
 
 // The source annotation rounds contact to 1.85 s. The fitted visible boot
 // reaches the 11 cm ball at 1.8467 s; align release to the actual skin.
 export const KICK_CONTACT=RUNUP_CONTACT;
 export function gameKickTime(runup,after=null,style=null){
-  if(style?.capture){const clip=style.capture;return after===null?clip.contactSeconds*THREE.MathUtils.clamp(runup,0,1):Math.min(clip.durationSeconds,clip.contactSeconds+Math.max(0,after));}
+  if(style?.capture){const clip=style.capture;return after===null?runupOnsetTime(clip.contactSeconds*THREE.MathUtils.clamp(runup,0,1)):Math.min(clip.durationSeconds,clip.contactSeconds+Math.max(0,after));}
   return after===null?(style?runupClipTime(runup,style):KICK_CONTACT*THREE.MathUtils.clamp(runup,0,1)):Math.min(3.5,KICK_CONTACT+Math.max(0,after));}
 
 const assets=new Map();

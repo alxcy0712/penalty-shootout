@@ -53,13 +53,15 @@ test('central blocks plant both feet, load the legs and converge on the ball hei
 
 test('get-up transfers weight continuously while the first planted foot supports the rise',()=>{
  const stats={speed:85,reach:85},height=1.2,vy=.7+(height-.35)/1.7*2.1;
- const start=.13+(vy+Math.sqrt(vy*vy+2*9.81*(.83-.27)))/9.81+.45;
+ // Follow the authored landing height and support-first recovery clock.
+ const start=.13+(vy+Math.sqrt(vy*vy+2*9.81*(.83-.305)))/9.81+.28;
  for(const direction of[-1,1]){
   for(let t=.45;t<=1.45;t+=.01){
    const a=goalkeeperPose(stats,direction,start+t,height),b=goalkeeperPose(stats,direction,start+t+.001,height);
    assert.ok((b.hip.y-a.hip.y)/.001>.015,`rise pauses at ${t}`);
    assert.ok(a.feet.some(foot=>Math.abs(foot.y-.075)<1e-8));
   }
+  assert.ok(Math.abs(goalkeeperPose(stats,direction,start+1.75,height).hip.y-.83)<1e-9,'rise ends in the authored standing height rather than drifting forever');
  }
 });
 

@@ -46,3 +46,10 @@ with root-local helper evaluation and source-specific arm clearance. The
 10_01 shoulder-flexion and 10_03 clavicle-protraction corrections are runtime
 adaptations, not new recorded capture. Modeled collars, garment hems, glove
 cuffs and cleat studs remain derivatives of the attributed CC0 character.
+
+Body/clothing refinement uses offline Blender shoulder smoothing and a separated
+football-shorts hem on the same attributed CC0 mesh. Existing source capture
+tracks, bind transforms, textures, palm and boot surfaces are preserved.
+The 20 ms striker source-clock onset is an authored timing adaptation of the
+same two CMU takes. Articulated keeper absorption, support-hand placement and
+get-up are authored procedural adaptations, not an additional captured take.

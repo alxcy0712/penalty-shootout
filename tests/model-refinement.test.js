@@ -18,8 +18,8 @@ test('refined production meshes retain explicit mobile asset budgets and reprodu
 
 test('compressed editable Blender files decode to the exact validated source bytes',async()=>{
   const originals={
-    'keeper-prototype':'745e472568ec12e08d06d5efab74472846b9325d37a176061f4aa801603ba62a',
-    'striker-mocap':'c49271d3e519e5e2069f34e06f31195d747b75d92a5590599e55f4f356a50eed',
+    'keeper-prototype':'d5ecc71615d8b1883f298f48d5323a3e954609645c81546bc07b48ca1aa7945d',
+    'striker-mocap':'35bdc95c2de220872548f3fa0c5c09c60932b1834df301bc9ee1e080515f5d20',
   };
   for(const [name,sha] of Object.entries(originals)){
     const packed=await readFile(new URL(name+'.blend',root));

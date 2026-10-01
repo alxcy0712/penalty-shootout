@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {keeperTorsoFrames} from './keeper-torso.js';
 import {smoothedKeeperWeights} from './keeper-skin-weights.js';
 
 const shoulderSupports = new WeakMap();
@@ -147,7 +148,7 @@ export function createKeeperSkinPose(root, {shoulderSupport = false} = {}) {
     });
   });
   const basis = new THREE.Matrix4();
-  const bodyRotation = new THREE.Quaternion();
+  const bodyRotation = new THREE.Quaternion(), chestRotation = new THREE.Quaternion(), torsoRotation = new THREE.Quaternion();
   const swing = new THREE.Quaternion();
   const rotation = new THREE.Quaternion();
   const local = new THREE.Matrix4();
@@ -157,11 +158,11 @@ export function createKeeperSkinPose(root, {shoulderSupport = false} = {}) {
   const armReference = new THREE.Vector3();
   const right = new THREE.Vector3(), up = new THREE.Vector3(), back = new THREE.Vector3();
   const scale = new THREE.Vector3(1, 1, 1);
-  const point = (p, distance) => ({x:p.hip.x+p.up.x*distance, y:p.hip.y+p.up.y*distance, z:p.hip.z+p.up.z*distance});
-  function setBone(name, start, end) {
+  function frameRotation(frame,out){return out.setFromRotationMatrix(basis.makeBasis(right.copy(frame.right),up.copy(frame.up),back.copy(frame.back)));}
+  function setBone(name, start, end, reference = bodyRotation) {
     const entry = entries.get(name);
     a.copy(start);
-    rotation.copy(bodyRotation).multiply(entry.rotation);
+    rotation.copy(reference).multiply(entry.rotation);
     if (end) {
       b.copy(end).sub(a).normalize();
       rest.set(0, 1, 0).applyQuaternion(rotation);
@@ -171,7 +172,7 @@ export function createKeeperSkinPose(root, {shoulderSupport = false} = {}) {
         // flips overhead. Even blending those references makes a fast cross-body
         // reach spin the sleeve/wrist. The only remaining singularity is a
         // straight-backward arm, outside the keeper's anatomical reach space.
-        armReference.copy(back);
+        armReference.set(0,0,1).applyQuaternion(chestRotation);
         swing.setFromUnitVectors(rest,armReference);rotation.premultiply(swing);
         swing.setFromUnitVectors(armReference,b);rotation.premultiply(swing);
       } else {
@@ -187,23 +188,16 @@ export function createKeeperSkinPose(root, {shoulderSupport = false} = {}) {
   }
   return pose => {
     root.updateWorldMatrix(true, true);
-    right.copy(pose.right).normalize();
-    up.copy(pose.up).normalize();
-    back.crossVectors(right, up).normalize();
-    right.crossVectors(up, back).normalize();
-    bodyRotation.setFromRotationMatrix(basis.makeBasis(right, up, back));
-    setBone('pelvis', pose.hip);
-    setBone('spine', point(pose, .19));
-    setBone('chest', point(pose, .43));
-    setBone('neck', point(pose, .51));
-    setBone('head', point(pose, .63));
+    const frames=keeperTorsoFrames(pose);
+    frameRotation(frames.pelvis,bodyRotation);frameRotation(frames.chest,chestRotation);
+    for(const name of ['pelvis','spine','chest','neck','head'])setBone(name,frames[name].position,null,frameRotation(frames[name],torsoRotation));
     for (let i = 0; i < 2; i++) {
       const side = i ? 'R' : 'L';
-      setBone(`clavicle${side}`, pose.shoulder, pose.shoulders[i]);
-      setBone(`upper_arm${side}`, pose.shoulders[i], pose.elbows[i]);
-      setBone(`forearm${side}`, pose.elbows[i], pose.hands[i]);
+      setBone(`clavicle${side}`, pose.shoulder, pose.shoulders[i], chestRotation);
+      setBone(`upper_arm${side}`, pose.shoulders[i], pose.elbows[i], chestRotation);
+      setBone(`forearm${side}`, pose.elbows[i], pose.hands[i], chestRotation);
       const hand = {x:2*pose.hands[i].x-pose.elbows[i].x, y:2*pose.hands[i].y-pose.elbows[i].y, z:2*pose.hands[i].z-pose.elbows[i].z};
-      setBone(`hand${side}`, pose.hands[i], hand);
+      setBone(`hand${side}`, pose.hands[i], hand, chestRotation);
       setBone(`thigh${side}`, pose.hips[i], pose.knees[i]);
       setBone(`shin${side}`, pose.knees[i], pose.feet[i]);
       const toe = {x:pose.feet[i].x, y:pose.feet[i].y-.005, z:pose.feet[i].z+.16};

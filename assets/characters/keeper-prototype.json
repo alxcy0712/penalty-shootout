@@ -7,8 +7,8 @@
   "materials": 6,
   "textures": 2,
   "meshes": 6,
-  "triangles": 17976,
-  "glbBytes": 441536,
+  "triangles": 17954,
+  "glbBytes": 449080,
   "budgets": {
     "triangles": 18000,
     "bones": 24,
@@ -31,5 +31,6 @@
     }
   ],
   "originalAuthoringBlender": "5.2.2 LTS",
-  "refinementRecord": "model-refinement.json"
+  "refinementRecord": "model-refinement.json",
+  "bodyClothRefinement": "body-cloth-refinement.json"
 }
