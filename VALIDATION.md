@@ -1,3 +1,5 @@
+> Latest low-cost presentation pass: [2026-10-01 validation](validation/LOW_COST_FIDELITY_2026-10-01.md) — 218 tests, source-normal net feedback, softer ball grounding, unchanged geometry and reduced structural draw candidates.
+
 > 最新触控、双捕获与细化模型验收见 [本轮记录](validation/REFINEMENT_2026-10-01.md)。下方保留旧冻结版本的历史证据，不代表最新版的全部结果。
 
 # 人物、动作与接触验收

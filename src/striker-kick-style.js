@@ -19,7 +19,7 @@ export function createStrikerKickStyle(root) {
   if(!pelvis||legs.some(leg=>!leg.thigh||!leg.shin||!leg.foot))return ()=>{};
   const axis=new THREE.Vector3(),pole=new THREE.Vector3(),nextKnee=new THREE.Vector3(),oldDirection=new THREE.Vector3(),newDirection=new THREE.Vector3();
   const target=new THREE.Vector3(),pelvisPoint=new THREE.Vector3();
-  const parentRotation=new THREE.Quaternion(),swing=new THREE.Quaternion(),temporaryRotation=new THREE.Quaternion();
+  const parentRotation=new THREE.Quaternion(),swing=new THREE.Quaternion(),temporaryRotation=new THREE.Quaternion(),pelvisRotation=new THREE.Quaternion();
   const relativeMatrix=new THREE.Matrix4(),worldPoint=new THREE.Vector3();
   const rootMatrix=(bone,out)=>{out.identity();for(let current=bone;current&&current!==root;current=current.parent){current.updateMatrix();out.premultiply(current.matrix);}return out;};
   const position=(bone,out)=>out.setFromMatrixPosition(rootMatrix(bone,relativeMatrix));
@@ -48,13 +48,14 @@ export function createStrikerKickStyle(root) {
     const offset=kickStyleOffset(after,options),settle=after===null?0:smooth((after-1.15)/.50);
     if(Math.abs(offset.y)+Math.abs(offset.z)+settle<1e-9)return;
     for(const state of saved){state.position.copy(state.bone.position);state.quaternion.copy(state.bone.quaternion);state.scale.copy(state.bone.scale);}modified=true;
-    root.updateWorldMatrix(true,true);
+    // This overlay composes root-local transforms only. GameCharacter flushes
+    // world matrices once after the mixer and all overlays have finished.
     for(const leg of legs){position(leg.thigh,leg.hip);position(leg.shin,leg.knee);position(leg.foot,leg.ankle);rotation(leg.thigh,leg.thighRotation);rotation(leg.shin,leg.shinRotation);rotation(leg.foot,leg.footRotation);}
     if(settle){
       // The captured crop ends during the trailing step. Finish that step rather
       // than leaving a boot suspended forever when the source clip clamps.
       const drop=.085*settle;position(pelvis,pelvisPoint);pelvisPoint.y-=drop;
-      const pelvisRotation=rotation(pelvis,new THREE.Quaternion());set(pelvis,pelvisPoint,pelvisRotation);
+      rotation(pelvis,pelvisRotation);set(pelvis,pelvisPoint,pelvisRotation);
       for(const [i,leg] of legs.entries()){
         target.copy(leg.ankle);if(i===1){
           target.y=THREE.MathUtils.lerp(target.y,.075,settle);
@@ -70,6 +71,6 @@ export function createStrikerKickStyle(root) {
   };
   // AnimationMixer skips unchanged property values on a repeated timestamp.
   // Restore the clip pose so a paused frame cannot accumulate the overlay.
-  apply.restore=()=>{if(!modified)return;for(const state of saved){state.bone.position.copy(state.position);state.bone.quaternion.copy(state.quaternion);state.bone.scale.copy(state.scale);}root.updateWorldMatrix(true,true);modified=false;};
+  apply.restore=()=>{if(!modified)return;for(const state of saved){state.bone.position.copy(state.position);state.bone.quaternion.copy(state.quaternion);state.bone.scale.copy(state.scale);}modified=false;};
   return apply;
 }
