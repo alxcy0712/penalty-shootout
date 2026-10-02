@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {Vector3} from 'three';
+import {Vector3,Quaternion} from 'three';
 import {Shot} from '../src/engine.js';
 import {HOLD_DURATION} from '../src/anatomy.js';
 import {keeperGather} from '../src/keeper-contact.js';
@@ -49,7 +49,7 @@ test('mirrored central catches absorb the elbow tuck without moving its speed pe
   }
 });
 
-test('elbow absorption preserves the original capture, secured poses and ball/wrist attachment',()=>{
+test('wrist and recovery refinement preserve capture and the calibrated palm attachment',()=>{
   for(const {record,shot}of captures){
     assert.equal(shot.t,record.captureTime);
     assert.equal(shot.animationTime,record.animationTime);
@@ -57,14 +57,38 @@ test('elbow absorption preserves the original capture, secured poses and ball/wr
     const start=sample(shot,0);
     assert.deepEqual(start.pose,shot.pose,'no source-pose jump at capture');
     assert.deepEqual(start.ball,shot.ball,'capture starts at the real physical contact');
-    for(const {t,result}of record.fixedPoses)sameFrozen(sample(shot,t),result,`unchanged source/secure pose at ${t}s`);
+    for(const {t,result}of record.fixedPoses){
+      const actual=sample(shot,t);
+      if(actual.pose.grip?.ball){
+        assert.deepEqual(actual.pose.grip.ball,actual.ball);assert.equal(actual.pose.grip.captureBlend,t/HOLD_DURATION);
+      }
+      if(!t)sameFrozen(actual,result,'exact original capture');
+      else {
+        assert.equal(actual.weight,result.weight,'grasp phase retains its original timing');
+        // The requested recovery changes the torso/boots, and palm pitch moves
+        // wrists around the sphere. Preserve the old calibration in each hand's
+        // own frame rather than freezing the obsolete world-space choreography.
+        for(let arm=0;arm<2;arm++){
+          const local=value=>new Vector3().subVectors(value.ball,value.pose.hands[arm]).applyQuaternion(new Quaternion().fromArray(value.pose.grip.handRotations[arm]).invert());
+          assert.ok(local(actual).distanceTo(local(result))<1e-10,`secured palm calibration at ${t}s`);
+        }
+      }
+    }
     for(const {t,ball,hands,handRotations}of record.attachment){
       const actual=sample(shot,t);
       sameFrozen(actual.ball,ball,`unchanged ball at ${t}s`);
-      sameFrozen(actual.pose.hands,hands,`unchanged wrists at ${t}s`);
-      sameFrozen(actual.pose.grip.handRotations,handRotations,`unchanged glove attachment at ${t}s`);
+      if(t<.6*HOLD_DURATION){
+        sameFrozen(actual.pose.hands,hands,`unchanged early wrists at ${t}s`);
+        sameFrozen(actual.pose.grip.handRotations,handRotations,`unchanged early palm frame at ${t}s`);
+      }
+      for(let arm=0;arm<2;arm++){
+        const oldRotation=new Quaternion().fromArray(handRotations[arm]),rotation=new Quaternion().fromArray(actual.pose.grip.handRotations[arm]);
+        const beforeOffset=new Vector3().subVectors(ball,hands[arm]).applyQuaternion(oldRotation.clone().invert()),afterOffset=new Vector3().subVectors(actual.ball,actual.pose.hands[arm]).applyQuaternion(rotation.clone().invert());
+        assert.ok(beforeOffset.distanceTo(afterOffset)<1e-12,`exact rigid palm/sphere offset at ${t}s`);
+        assert.ok(oldRotation.angleTo(rotation)<=.610001,`bounded palm pitch at ${t}s`);
+      }
     }
-    for(let frame=0;frame<=106;frame++){
+    for(let frame=0;frame<=672;frame++){
       const pose=sample(shot,frame/240).pose;
       for(let arm=0;arm<2;arm++){
         assert.ok(Math.abs(distance(pose.shoulders[arm],pose.elbows[arm])-.29)<1e-10);

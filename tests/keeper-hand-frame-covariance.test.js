@@ -1,0 +1,9 @@
+import test from 'node:test';import assert from 'node:assert/strict';import*as T from'three';import{loadCharacter}from'./helpers/load-character.js';import{goalkeeperPose,holdingPose}from'../src/anatomy.js';
+test('palm and forearm skin remain covariant when a rotated nonuniform display parent is present during posing',async()=>{
+const actors=await Promise.all([loadCharacter(true),loadCharacter(true)]),parent=new T.Group();parent.position.set(2,.4,-3);parent.rotation.set(.13,.7,-.09);parent.scale.set(1.7,.6,1.2);parent.add(actors[1].root);
+
+const meshes=actors.map(a=>{let m=[];a.root.traverse(o=>{if(o.isSkinnedMesh)m.push(o)});return m}),stats={speed:85,reach:85};let n=0,max=0,worst;
+for(const direction of[-1,0,1])for(const time of[0,.5,1.3,2.1])for(const held of[false,true]){let p=goalkeeperPose(stats,direction,time,1.2);if(held)p=holdingPose(p).pose;for(const a of actors){a.pose(p);a.root.updateMatrixWorld(true)}const inverse=actors[1].root.matrixWorld.clone().invert();for(let mi=0;mi<meshes[0].length;mi++){let a=meshes[0][mi],b=meshes[1][mi];a.skeleton.update();b.skeleton.update();for(let i=0;i<a.geometry.attributes.position.count;i++){let w=0;for(let k=0;k<4;k++)if(/^(hand|forearm)/.test(a.skeleton.bones[a.geometry.attributes.skinIndex.getComponent(i,k)].name))w+=a.geometry.attributes.skinWeight.getComponent(i,k);if(w<.98)continue;let x=new T.Vector3().fromBufferAttribute(a.geometry.attributes.position,i);a.applyBoneTransform(i,x).applyMatrix4(a.matrixWorld);let y=new T.Vector3().fromBufferAttribute(b.geometry.attributes.position,i);b.applyBoneTransform(i,y).applyMatrix4(b.matrixWorld).applyMatrix4(inverse);let d=x.distanceTo(y);n++;if(d>max){max=d;worst={direction,time,held,mi,i}}}}
+}assert.ok(n>60000,'all hand and forearm vertices sampled across free and held poses');
+assert.ok(max<1e-6,`Float32 skin palette error ${max} at ${JSON.stringify(worst)}`);
+});

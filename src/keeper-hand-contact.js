@@ -1,20 +1,33 @@
 import * as THREE from 'three';
-import {keeperHandRotation} from './keeper-contact.js';
+import {keeperHandRotation,keeperArmRotation} from './keeper-contact.js';
 
-// The same bind-surface-aware hand orientation is used for rendering and ball
-// collision. Only wrist rotation changes; the physical wrist stays fixed.
+// Compose within the character hierarchy. Decomposing world matrices would
+// mix display-parent nonuniform scale/shear into the physical palm frame.
+function rootRotation(bone,root,out){
+  out.identity();for(let current=bone;current&&current!==root;current=current.parent)out.premultiply(current.quaternion);return out.normalize();
+}
+
+// Rendering and ball collision share these root-local arm and palm frames.
+// The supplied physical wrist is retained while settled forearm roll changes.
 export function createKeeperHandContact(root) {
   const hands=['L','R'].map(side=>root.getObjectByName(`hand${side}`));
-  const rootRotation=new THREE.Quaternion(),parentRotation=new THREE.Quaternion();
+  const parentRotation=new THREE.Quaternion(),wrist=new THREE.Vector3(),inverseForearm=new THREE.Matrix4();
   // Only the authoritative pose pipeline may skip this hierarchy refresh.
   return (pose,worldCurrent=false)=>{
     if(!pose)return;
-    if(!worldCurrent)root.updateWorldMatrix(true,true);root.getWorldQuaternion(rootRotation);
+    if(!worldCurrent)root.updateWorldMatrix(true,true);
     for(let i=0;i<2;i++){
       const hand=hands[i];if(!hand)continue;
-      hand.parent.getWorldQuaternion(parentRotation).invert();
-      hand.quaternion.copy(parentRotation).multiply(rootRotation).multiply(keeperHandRotation(pose,i));
-      hand.updateWorldMatrix(false,true);
+      const forearm=hand.parent,settled=pose.grip?.weight>0;
+      if(settled){
+        // Preserve the wrist in its upper-arm parent's coordinates; no world
+        // decomposition or extra full-hierarchy refresh is needed.
+        wrist.copy(hand.position).applyMatrix4(forearm.matrix);
+        forearm.quaternion.copy(rootRotation(forearm.parent,root,parentRotation).invert()).multiply(keeperArmRotation(pose,i,true));
+        forearm.updateMatrix();hand.position.copy(wrist.applyMatrix4(inverseForearm.copy(forearm.matrix).invert()));
+      }
+      hand.quaternion.copy(rootRotation(forearm,root,parentRotation).invert()).multiply(keeperHandRotation(pose,i));
+      if(settled)forearm.updateWorldMatrix(false,true);else hand.updateWorldMatrix(false,true);
     }
   };
 }

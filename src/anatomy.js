@@ -290,7 +290,10 @@ export function goalkeeperPose(stats,direction=0,elapsed=0,height=1) {
     const baseX=sign*(launchX+velocity*landing+velocity*.16);
     const crouchUp=unit(v(sign*.8,.6,.16));
     const supportTransfer=.10*smoother(recoveryTime/.30)*(1-smoother((recoveryTime-.70)/.30));
-    const liftedHip=v(hip.x+sign*supportTransfer,landY+.10*bodyTuck+(.83-landY-.10)*rise,hip.z+.22*rise);
+    // Load the newly planted boots before extending the knees: the pelvis
+    // travels toward their depth while the chest stays folded over support.
+    const loadOverBoots=smoother((recoveryTime-.55)/.68);
+    const liftedHip=v(hip.x+sign*supportTransfer,landY+.10*bodyTuck+(.83-landY-.10)*rise,hip.z+.22*loadOverBoots);
     const recoveryUp=lerp(lerp(up,crouchUp,bodyTuck),v(0,1,.08),rise);
     // Bring the ankles around the front of the torso, never through the
     // still-horizontal chest, then transfer the hip over those fixed supports.
@@ -302,19 +305,25 @@ export function goalkeeperPose(stats,direction=0,elapsed=0,height=1) {
     const recoveryShoulder=add(liftedHip,mul(recoveryAxis,body.torso));
     const support=[-1,1].map(side=>side===sign?v(baseX+sign*.49,.035,hip.z+.38):
       add(add(recoveryShoulder,mul(recoveryRight,side*.24)),v(0,-.24,.40)));
-    const resting=[v(baseX-.35,1.05,hip.z+.26),v(baseX+.35,1.05,hip.z+.26)];
-    const handRelease=smoother((recoveryTime-.84)/.76);
+    // The pelvis advances as the boots take load. Keep the set hands in front
+    // of that moving body; anchoring them at landing depth pulls the elbows
+    // behind the ribs and gives the final rise a rigid, winged silhouette.
+    const resting=[v(baseX-.35,1.05,liftedHip.z+.26),v(baseX+.35,1.05,liftedHip.z+.26)];
+    const handRelease=smoother((recoveryTime-.84)/.76),freeHandRelease=smoother((recoveryTime-.66)/.94);
+    torso.soleL=smoother((recoveryTime-(sign<0?.30:.70))/.30);
+    torso.soleR=smoother((recoveryTime-(sign>0?.30:.70))/.30);
     const tuckedFeet=feet.map((foot,i)=>{
       const lower=i===(sign>0?1:0);
       const tuck=smoother(lower?recoveryTime/.30:(recoveryTime-.28)/.42);
       const target=lerp(foot,planted[i],tuck);
+      target.y-=.0095*smoother((torso[i?'soleR':'soleL']-.45)/.55);
       target.z+=(lower?.24:.38)*Math.sin(Math.PI*tuck);
       // Let the supporting boot pass underneath before the upper boot plants.
       if(!lower)target.y+=.12*smoother(recoveryTime/.10)*(1-smoother((recoveryTime-.20)/.18));
       return target;
     });
-    const release=1-rise;torso.curl*=release*(1-.6*bodyTuck);torso.twist*=release;torso.sideBend*=1-bodyTuck;torso.headCurl=-torso.curl/3;torso.armRelax*=release;torso.braceL*=1-handRelease;torso.braceR*=1-handRelease;
-    return rig(liftedHip,recoveryUp,tuckedFeet,hands.map((h,i)=>lerp(lerp(h,support[i],bodyTuck),resting[i],handRelease)),1,sign*angle*(1-bodyTuck),0,0,torso);
+    const release=1-rise,drive=smoother((recoveryTime-.55)/.3)*(1-smoother((recoveryTime-1.0)/.60));torso.curl=torso.curl*release*(1-.6*bodyTuck)+.075*drive;torso.twist*=release;torso.sideBend*=1-bodyTuck;torso.headCurl=-torso.curl/3-.045*drive;torso.armRelax*=release;torso.braceL*=1-handRelease;torso.braceR*=1-handRelease;
+    return rig(liftedHip,recoveryUp,tuckedFeet,hands.map((h,i)=>lerp(lerp(h,support[i],bodyTuck),resting[i],(i?1:-1)===sign?handRelease:freeHandRelease)),1,sign*angle*(1-bodyTuck),0,0,torso);
   }
   return rig(hip,up,feet,hands,1,sign*angle,0,0,torso);
 }
@@ -395,6 +404,7 @@ export function blendKeeperPose(from,to,weight,ease=true){
   if(weight<=0)return from;if(weight>=1)return to;
   const t=ease?smooth(weight):weight;
   const torso=from.torso||to.torso?Object.fromEntries(['curl','twist','sideBend','headCurl','armRelax','braceL','braceR'].map(key=>[key,(from.torso?.[key]??0)+((to.torso?.[key]??0)-(from.torso?.[key]??0))*t])):null;
+  if(torso)for(const key of ['soleL','soleR'])if(from.torso?.[key]!==undefined||to.torso?.[key]!==undefined)torso[key]=(from.torso?.[key]??0)+((to.torso?.[key]??0)-(from.torso?.[key]??0))*t;
   return rig(lerp(from.hip,to.hip,t),lerp(from.up,to.up,t),from.feet.map((p,i)=>lerp(p,to.feet[i],t)),from.hands.map((p,i)=>lerp(p,to.hands[i],t)),1,from.roll+(to.roll-from.roll)*t,0,0,torso);
 }
 

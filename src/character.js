@@ -198,7 +198,8 @@ export class Player {
       // Wrist dorsiflexion flattens the palm as it becomes a ground support.
       const support=1-THREE.MathUtils.smoothstep(p.hands[i].y,.10,.24);
       if(support>0){const fingers=set(this.tempA,p.forward).setY(0).normalize(),normal=this.yAxis,across=this.tempB.crossVectors(fingers,normal);const planted=this.tempRotation.setFromRotationMatrix(this.tempMatrix.makeBasis(across,fingers,normal));this.hands[i].quaternion.slerp(planted,support);}
-      set(this.feet[i].position,p.feet[i]);const tilt=THREE.MathUtils.smoothstep(p.feet[i].y,.085,.19)*THREE.MathUtils.clamp(Math.atan2(p.feet[i].z-p.knees[i].z,p.knees[i].y-p.feet[i].y)*.45,-.65,.65);this.feet[i].rotation.set(tilt,p.feetYaw?.[i]??(this.gloves?Math.PI:0),-(p.roll||0)*.7);
+      const sole=THREE.MathUtils.clamp(p.torso?.[i?'soleR':'soleL']??0,0,1);
+      set(this.feet[i].position,p.feet[i]);const tilt=THREE.MathUtils.smoothstep(p.feet[i].y,.085,.19)*THREE.MathUtils.clamp(Math.atan2(p.feet[i].z-p.knees[i].z,p.knees[i].y-p.feet[i].y)*.45,-.65,.65);this.feet[i].rotation.set(tilt,p.feetYaw?.[i]??(this.gloves?Math.PI:0),-(p.roll||0)*.7*(1-sole));
       const soleOffset=supportedSoleOffset(p.feet[i].y,this.feet[i].quaternion,.025*(1-THREE.MathUtils.smoothstep(Math.abs(p.roll||0),0,.35)));this.tempA.set(0,-soleOffset,0).applyQuaternion(this.feet[i].quaternion);this.feet[i].position.add(this.tempA);
     }
   }

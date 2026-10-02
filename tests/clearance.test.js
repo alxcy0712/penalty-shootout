@@ -50,7 +50,11 @@ test('post-save visual recovery stays continuous while the distant ball runs ahe
   for(let ms=1;ms<=3500;ms++){
     const pose=shot.poseAt(shot.animationTime+ms/1000);
     for(const part of['hands','elbows','knees','feet'])for(let i=0;i<2;i++){
-      const p=pose[part][i],q=previous[part][i];assert.ok(Math.hypot(p.x-q.x,p.y-q.y,p.z-q.z)<.022);assert.ok(p.y>=.065);
+      const p=pose[part][i],q=previous[part][i];assert.ok(Math.hypot(p.x-q.x,p.y-q.y,p.z-q.z)<.022);
+      // Match the existing keeper support rule: a tagged palm brace has a
+      // lower wrist centre, while actual glove/turf checks remain separate.
+      const braced=part==='hands'&&(pose.torso?.[i?'braceR':'braceL']??0)>.5;
+      assert.ok(p.y>=(braced?.03:.065));
     }
     previous=pose;
   }

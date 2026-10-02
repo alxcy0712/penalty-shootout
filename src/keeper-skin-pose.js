@@ -148,6 +148,7 @@ export function createKeeperSkinPose(root, {shoulderSupport = false} = {}) {
     });
   });
   const basis = new THREE.Matrix4();
+  const soleRotation = new THREE.Quaternion(), uprightRotation = new THREE.Quaternion();
   const bodyRotation = new THREE.Quaternion(), chestRotation = new THREE.Quaternion(), torsoRotation = new THREE.Quaternion();
   const swing = new THREE.Quaternion();
   const rotation = new THREE.Quaternion();
@@ -201,8 +202,9 @@ export function createKeeperSkinPose(root, {shoulderSupport = false} = {}) {
       setBone(`thigh${side}`, pose.hips[i], pose.knees[i]);
       setBone(`shin${side}`, pose.knees[i], pose.feet[i]);
       const toe = {x:pose.feet[i].x, y:pose.feet[i].y-.005, z:pose.feet[i].z+.16};
-      setBone(`foot${side}`, pose.feet[i], toe);
-      setBone(`toe${side}`, toe, {x:toe.x,y:toe.y-.005,z:toe.z+.09});
+      soleRotation.copy(bodyRotation).slerp(uprightRotation,pose.torso?.[i?'soleR':'soleL']??0);
+      setBone(`foot${side}`, pose.feet[i], toe,soleRotation);
+      setBone(`toe${side}`, toe, {x:toe.x,y:toe.y-.005,z:toe.z+.09},soleRotation);
     }
     updateKeeperShoulderSupport(root);
   };

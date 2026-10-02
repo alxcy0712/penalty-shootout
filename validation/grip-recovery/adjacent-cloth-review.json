@@ -1,0 +1,361 @@
+{
+  "status": "exact paired visual review complete; final acceptance owned by parent",
+  "recipe": {
+    "aim": {
+      "x": 0.3,
+      "y": 0.18,
+      "power": 0.52
+    },
+    "stats": {
+      "accuracy": 90,
+      "power": 90,
+      "touch": 90,
+      "composure": 90,
+      "speed": 99,
+      "reach": 99,
+      "handling": 95
+    },
+    "direction": 0,
+    "seed": 101,
+    "id": "6d1260d096edae91",
+    "origins": [
+      {
+        "cohort": "fresh216",
+        "index": 56
+      }
+    ],
+    "expectedCaught": true
+  },
+  "timeAfterCapture": 0.225,
+  "capture": {
+    "t": 1.3166666666666644,
+    "animationTime": 1.3166666666666644,
+    "direction": -1,
+    "contactPart": "handL",
+    "caught": true,
+    "result": {
+      "goal": false,
+      "saved": true,
+      "post": true,
+      "reason": "\u95e8\u5c06\u7a33\u7a33\u62b1\u4f4f\u4e86\u7403",
+      "power": 0.5156050207038894,
+      "speed": 66,
+      "target": {
+        "x": 0.31748509766592276,
+        "y": 0.18500269413170017
+      }
+    }
+  },
+  "baselineVerification": {
+    "baselineCommit": "f2db0191fa438ff111593831cd4613f696ed2a96",
+    "mismatches": []
+  },
+  "sourceHashes": {
+    "before": {
+      "src/anatomy.js": "a74e5b65d96305fd4e081b2677ad1b475bd9718ce7f3daea6355d67f9e67af2d",
+      "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+      "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+      "src/character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+      "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+      "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+      "src/game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+      "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+      "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+      "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+      "src/keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c",
+      "src/keeper-contact.js": "6dd93bdfee091168b6bb85c263b58578fbb1fbec031374361fd415c2b454007a",
+      "src/keeper-hand-contact.js": "ba5ddf77b02b82c37d1117941ad126b0c57eb3270525454403c8c8e1ded1eb6b",
+      "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+      "src/keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+      "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+      "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+      "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+      "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+      "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+      "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+      "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+      "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+      "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+      "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+      "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+      "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+      "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+      "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+      "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+      "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+      "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644"
+    },
+    "after": {
+      "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+      "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+      "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+      "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+      "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+      "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+      "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+      "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+      "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+      "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+      "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+      "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+      "src/keeper-finger-grip.js": "75abbe4c1b87c805c0e366fd95b051b416ed2ba587780a9782aaa656cd825dec",
+      "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+      "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+      "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+      "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+      "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+      "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+      "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+      "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+      "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+      "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+      "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+      "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+      "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+      "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+      "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+      "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+      "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+      "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+      "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+      "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644"
+    }
+  },
+  "currentSourceMatchesFinalUnion": true,
+  "exactPair": {
+    "mesh": "Sphere005_Retopology004_1",
+    "material": "Kit",
+    "faces": [
+      1847,
+      1048
+    ],
+    "vertices": [
+      [
+        964,
+        930,
+        965
+      ],
+      [
+        699,
+        678,
+        616
+      ]
+    ],
+    "before": {
+      "length": 0.014558081750183582,
+      "finiteTriangleSeparation": 0.010631174803586552,
+      "depth": 0.010631174803586552,
+      "center": [
+        -3.088321313322125,
+        0.16482892627660842,
+        0.5478281998262953
+      ],
+      "normalDot": 0.30111329117858177
+    },
+    "after": {
+      "length": 0.015037623944663903,
+      "finiteTriangleSeparation": 0.010970835602884255,
+      "depth": 0.010970835602884144,
+      "center": [
+        -3.0884178689205073,
+        0.16497849844800647,
+        0.5482408378904234
+      ],
+      "normalDot": 0.2968237765427132
+    }
+  },
+  "delta": {
+    "satDelta": 0.000339660799297703,
+    "lengthDelta": 0.0004795421944803202,
+    "poseNumericDeltas": [],
+    "triangles": [
+      {
+        "face": 1847,
+        "vertices": [
+          964,
+          930,
+          965
+        ],
+        "vertexDisplacements": [
+          0.0006687421110809562,
+          0.0003642791524630942,
+          0.0009126919471987352
+        ]
+      },
+      {
+        "face": 1048,
+        "vertices": [
+          699,
+          678,
+          616
+        ],
+        "vertexDisplacements": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "meshMaxVertexDisplacement": {
+      "Skin.001": 0.010137794377413686,
+      "Kit": 0.0032605749234289514,
+      "Shorts": 0.0,
+      "Socks": 0.002717712723842391,
+      "Boots": 0.0028524015452471435,
+      "Eyes": 0.0
+    }
+  },
+  "cameras": {
+    "sameCameraPerPair": true,
+    "coordinates": "world x, world z, world y",
+    "target": [
+      -3.088369369506836,
+      0.5480345487594604,
+      0.16490371525287628
+    ],
+    "ortho_scale": 0.8,
+    "resolution": [
+      800,
+      680
+    ],
+    "samples": 16,
+    "simplifiedMaterials": true,
+    "highlightFaces": {
+      "Kit upper_armL": 1847,
+      "Kit spine": 1048
+    },
+    "views": {
+      "front": {
+        "location": [
+          -3.088369369506836,
+          2.54803466796875,
+          1.4149037599563599
+        ],
+        "rotation": [
+          1.0121970176696777,
+          7.413436975411969e-08,
+          3.141592502593994
+        ]
+      },
+      "rear": {
+        "location": [
+          -3.088369369506836,
+          -1.4519654512405396,
+          1.4149037599563599
+        ],
+        "rotation": [
+          1.0121970176696777,
+          -0.0,
+          0.0
+        ]
+      },
+      "upper-oblique": {
+        "location": [
+          -4.688369274139404,
+          1.4480345249176025,
+          2.6649036407470703
+        ],
+        "rotation": [
+          0.6333785057067871,
+          -7.52728723796281e-08,
+          -2.083185911178589
+        ]
+      }
+    }
+  },
+  "review": {
+    "finding": "No newly visible body break in matched front, rear or upper-oblique views. Existing cuff edge and cloth crease remain visible in both versions. The measured triangles are occluded inside the fold from all three cameras.",
+    "scope": "One exact post-capture pose with production skinned geometry and simplified offline materials; not browser/mobile rendering, continuous motion or whole-body penetration evidence.",
+    "highlightNote": "Solid materials assigned to exact faces are occluded. Diagnostic sheet adds explicitly labelled projected outlines through occluders."
+  },
+  "files": {
+    "after-front-clean.png": {
+      "sha256": "2e7b04e7891191a71f65f93d9285b342c56941baacb1a2bad7f549eb6572d90c",
+      "bytes": 1055228
+    },
+    "after-front-highlight.png": {
+      "sha256": "e5635578e27fbeb77b82a04939cbf2ec186aa824048818ad47268ff15fd14799",
+      "bytes": 1055190
+    },
+    "after-rear-clean.png": {
+      "sha256": "7d6063335752fe90dc9a2fc3a80d9dc132f97cf5a1c3d40854b4bdea04fa2d5b",
+      "bytes": 971762
+    },
+    "after-rear-highlight.png": {
+      "sha256": "66877db9132038f9c762535d83de2b74517cecf8361505abbb3c3f4f91e3a85f",
+      "bytes": 971724
+    },
+    "after-upper-oblique-clean.png": {
+      "sha256": "b18de4db9c99acf60201c08fa0ad177526a1ff7ceb73a6ba5ef78be6dd5c50c7",
+      "bytes": 1028076
+    },
+    "after-upper-oblique-highlight.png": {
+      "sha256": "fcfba4f094aac60aea93b931ad99cb82cfbd60903aa1e96419572744e4f4aebd",
+      "bytes": 1028113
+    },
+    "baseline-verification.json": {
+      "sha256": "740fead0e5c618f01fa54f04b691b50cf5faa85393a0ea4a3e212a34b48110e1",
+      "bytes": 86
+    },
+    "before-front-clean.png": {
+      "sha256": "6874bce0c012c0f72f9bbb9a5dda3aefc4357f766fa73ee9704d7ce5da9ff783",
+      "bytes": 1054061
+    },
+    "before-front-highlight.png": {
+      "sha256": "f91cdd23a769ea44429f36a2a3d706d2a9799dd615ec99f7d59a802a45389876",
+      "bytes": 1054083
+    },
+    "before-rear-clean.png": {
+      "sha256": "1d9625bfb9d779b1c4aa0fdfd60900130114198d2ee5ef879cae35980c4224de",
+      "bytes": 971943
+    },
+    "before-rear-highlight.png": {
+      "sha256": "fa849d9e1848706d3c11b51ac3d548b76075b658c5cb434c069118a26dc94cf5",
+      "bytes": 971994
+    },
+    "before-upper-oblique-clean.png": {
+      "sha256": "658bc207b297d0389f5b4073f369d52134179406c67d9ec869254fedc50ebfb1",
+      "bytes": 1027604
+    },
+    "before-upper-oblique-highlight.png": {
+      "sha256": "da331f2058bf30cc715ef70ccd7a92dd3def00bab76cb9323c1485344f53d8e8",
+      "bytes": 1027631
+    },
+    "cameras.json": {
+      "sha256": "fb0c1215a589b727a08c4c05a1bc883c23f561477504f19220fcc04effed755a",
+      "bytes": 1089
+    },
+    "inspect-pair.mjs": {
+      "sha256": "030263d8a07479bbb678e329feb17928cd17ec668bff6c72118391417bb19dfc",
+      "bytes": 4885
+    },
+    "pair-delta.json": {
+      "sha256": "da5cddd9cd6bea4d14b46340c84bfa58f17a6abdce4eb3c4f398ca576f480a17",
+      "bytes": 750
+    },
+    "paired-clean-sheet.png": {
+      "sha256": "6aa443a3df93c579a9282c29025979b46a71c8fb92fd695001af45c3e3e5b1ac",
+      "bytes": 5649831
+    },
+    "paired-highlight-sheet.png": {
+      "sha256": "fa2e88d5ed4dd34a2998e20d359125833e841aaaf184a77d592d172fd054bc15",
+      "bytes": 5651151
+    },
+    "render-pair.py": {
+      "sha256": "58b87471b4d6e361e11db4ab1fe6576235910d35f9376c2f2801976b8edfdd6f",
+      "bytes": 4308
+    },
+    "render.log": {
+      "sha256": "fe2c766005bd45b6cc5d856c51182d119946db5f44c99f2cfecb81178cd13ff8",
+      "bytes": 71330
+    },
+    "before/exact.json": {
+      "sha256": "f0a35967a32a4106711e6e288c31824306cb52c39c27e8b6b6c910096ec8061d",
+      "bytes": 2458986
+    },
+    "after/exact.json": {
+      "sha256": "9f5499911ee02e788e9e8ccc32f33ed9d595d6d6d4ef697f713ecd8b9778f05e",
+      "bytes": 2459209
+    }
+  }
+}

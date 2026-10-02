@@ -5,6 +5,11 @@ import {keeperShoulderFraction} from './keeper-skin-pose.js';
 import {keeperTorsoFrames,hasKeeperTorsoArticulation} from './keeper-torso.js';
 
 const axis=new Vector3(0,1,0),basis=new Matrix4();
+const uprightFootReference=new Quaternion();
+function footReference(pose,index,body){
+  const weight=pose.torso?.[index?'soleR':'soleL']??0;
+  return weight?body.clone().slerp(uprightFootReference,weight):body;
+}
 const binds=Object.fromEntries(Object.entries(keeperContactData.binds).map(([name,q])=>[name,new Quaternion().fromArray(q)]));
 const wristRoll=['L','R'].map(side=>{const q=binds[`forearm${side}`].clone().invert().multiply(binds[`hand${side}`]);return new Quaternion(0,q.y,0,q.w).normalize();});
 const gloveCorners=['L','R'].map(side=>keeperContactData.hulls[`hand${side}`].vertices.map(p=>new Vector3().fromArray(p)));
@@ -17,7 +22,7 @@ export function keeperBodyRotation(pose,part='pelvis',torso=null){
 // Match the skin's chest-front shoulder frame and the wrist roll carried through
 // its elbow. Pure pose input keeps replays, collision and random-access scrubbing
 // deterministic; there is no history-dependent smoothing or hidden contact pad.
-export function keeperArmRotation(pose,index,forearm=false,torso=null){
+function keeperArmBaseRotation(pose,index,forearm=false,torso=null){
   const body=keeperBodyRotation(pose,'chest',torso),side=index?'R':'L',back=new Vector3(0,0,1).applyQuaternion(body);
   const upper=body.clone().multiply(binds[`upper_arm${side}`]);
   const rest=axis.clone().applyQuaternion(upper),direction=new Vector3().subVectors(pose.elbows[index],pose.shoulders[index]).normalize();
@@ -27,6 +32,19 @@ export function keeperArmRotation(pose,index,forearm=false,torso=null){
   const end=new Vector3().subVectors(pose.hands[index],pose.elbows[index]).normalize();
   const local=end.applyQuaternion(upper.clone().invert());
   return upper.multiply(new Quaternion().setFromUnitVectors(axis,local)).normalize();
+}
+export function keeperArmRotation(pose,index,forearm=false,torso=null){
+  const original=keeperArmBaseRotation(pose,index,forearm,torso);
+  const weight=MathUtils.clamp(pose.grip?.weight??0,0,1);
+  if(!forearm||!weight)return original;
+  // Share a small part of the secured palm's twist with the existing forearm.
+  // This preserves every physical joint and palm frame while easing the cuff's
+  // concentrated torsion. Live and capture-zero frames retain the source roll.
+  const relative=original.clone().invert().multiply(keeperHandRotation(pose,index,torso)).multiply(wristRoll[index].clone().invert());
+  // A regularized sine avoids the +/-pi branch of a twist-angle extraction and
+  // fades safely at the 180-degree swing singularity. Maximum is 0.6 rad.
+  const sine=2*relative.y*relative.w/(relative.y*relative.y+relative.w*relative.w+.03);
+  return original.multiply(new Quaternion().setFromAxisAngle(axis,.60*sine*weight));
 }
 export function keeperShoulderSupportRotation(pose,index,torso=null){
   const side=index?'R':'L',body=keeperBodyRotation(pose,'chest',torso);
@@ -38,7 +56,7 @@ export function keeperShoulderSupportRotation(pose,index,torso=null){
 export function keeperHandRotation(pose,index,torso=null){
   if(pose.grip?.handRotations)return new Quaternion().fromArray(pose.grip.handRotations[index]);
   torso??=hasKeeperTorsoArticulation(pose)?keeperTorsoFrames(pose):null;
-  const original=keeperArmRotation(pose,index,true,torso).multiply(wristRoll[index]).normalize();
+  const original=keeperArmBaseRotation(pose,index,true,torso).multiply(wristRoll[index]).normalize();
   const forearm=axis.clone().applyQuaternion(original);
   const separation=new Vector3().subVectors(pose.hands[1],pose.hands[0]),distance=separation.length();
   // Close central catches need open, parallel fingers, rather than continuing
@@ -73,7 +91,11 @@ export function keeperHandRotation(pose,index,torso=null){
     let low=-Math.PI/2,high=Math.PI/2;
     if(minimum(pitched(high))>=floor)low=high;
     else for(let i=0;i<16;i++){const mid=(low+high)/2;if(minimum(pitched(mid))<floor)high=mid;else low=mid;}
-    braceTarget=pitched(low);
+    // During unloading, project toward a lifted horizontal palm. Using a
+    // target exactly on the floor can leave two disconnected feasible ends
+    // of the quaternion arc and snap when the original first clears turf.
+    // A settled low brace retains its original floor-constrained pitch.
+    braceTarget=pitched(Math.min(low,0));
     // Separate the palm-facing turn from the wrist pitch. Directly slerping
     // to steep downward fingers crosses a 180-degree arc as the arm releases.
     original.slerp(flat,brace).multiply(new Quaternion().setFromAxisAngle(pitchAxis,low*brace));
@@ -180,7 +202,8 @@ function contactFrames(pose,body,torso=keeperTorsoFrames(pose)){
     frames[`forearm${side}`]={position:pose.elbows[i],rotation:keeperArmRotation(pose,i,true,torso)};
     frames[`hand${side}`]={position:pose.hands[i],rotation:keeperHandRotation(pose,i,torso)};
     const toe={x:pose.feet[i].x,y:pose.feet[i].y-.005,z:pose.feet[i].z+.16};
-    for(const [name,start,end] of [['thigh',pose.hips[i],pose.knees[i]],['shin',pose.knees[i],pose.feet[i]],['foot',pose.feet[i],toe],['toe',toe,{x:toe.x,y:toe.y-.005,z:toe.z+.09}]])frames[name+side]={position:start,rotation:segmentRotation(body,name+side,start,end)};
+    const footBody=footReference(pose,i,body);
+    for(const [name,start,end] of [['thigh',pose.hips[i],pose.knees[i]],['shin',pose.knees[i],pose.feet[i]],['foot',pose.feet[i],toe],['toe',toe,{x:toe.x,y:toe.y-.005,z:toe.z+.09}]])frames[name+side]={position:start,rotation:segmentRotation(name==='foot'||name==='toe'?footBody:body,name+side,start,end)};
   }
   return frames;
 }
@@ -246,7 +269,7 @@ export function keeperSurfaceContacts(pose,start,end,radius,includeQuality=true)
     parts.push({name:`upper_arm${side}`,position:pose.shoulders[i],rotation:keeperArmRotation(pose,i,false,torso),type:'body'});
 
     parts.push({name:`forearm${side}`,position:pose.elbows[i],rotation:keeperArmRotation(pose,i,true,torso),type:'body'});
-    for(const [name,a,b] of [['thigh',pose.hips[i],pose.knees[i]],['shin',pose.knees[i],pose.feet[i]],['foot',pose.feet[i],{x:pose.feet[i].x,y:pose.feet[i].y-.005,z:pose.feet[i].z+.16}]])parts.push({name:name+side,position:a,rotation:segmentRotation(body,name+side,a,b),type:'body'});
+    for(const [name,a,b] of [['thigh',pose.hips[i],pose.knees[i]],['shin',pose.knees[i],pose.feet[i]],['foot',pose.feet[i],{x:pose.feet[i].x,y:pose.feet[i].y-.005,z:pose.feet[i].z+.16}]])parts.push({name:name+side,position:a,rotation:segmentRotation(name==='foot'?footReference(pose,i,body):body,name+side,a,b),type:'body'});
   }
   for(const part of parts){
     const position=new Vector3().copy(part.position),inverse=part.rotation.clone().invert(),a=new Vector3().copy(start).sub(position).applyQuaternion(inverse),b=new Vector3().copy(end).sub(position).applyQuaternion(inverse);
@@ -555,6 +578,28 @@ export function keeperGather(sourcePose,currentPose,capturePoint,contactPart,ble
     const early=i===index?lowerCatch:1,settle=elbowSettle===1||!early?elbowSettle:elbowSettle+(1-elbowSettle)*constraintSettle*early*graspTorsoProximity(pose,i,torso);
     pose.elbows[i]=graspFeasibleElbow(pose,i,ball,settle,torso);
   }
-  pose.grip={...pose.grip,handRotations:rotations.map(q=>q.toArray())};
+  // Experimental palm pitch: rigidly rotate each palm around the fixed sphere,
+  // retaining its exact calibrated skin/sphere distances, then resolve its elbow.
+  const pitchPhase=MathUtils.smoothstep(blend,.6,1.4);
+  if(pitchPhase)for(let i=0;i<2;i++){
+    const hand=vectorCopy(pose.hands[i]),elbow=vectorCopy(pose.elbows[i]),root=vectorCopy(pose.shoulders[i]);
+    const fingers=axis.clone().applyQuaternion(rotations[i]),forearm=hand.clone().sub(elbow).normalize();
+    const bend=Math.acos(MathUtils.clamp(fingers.dot(forearm),-1,1)),lever=hand.clone().sub(ball),distance=root.distanceTo(hand);
+    const turnAxis=new Vector3().crossVectors(fingers,forearm),axisLength=turnAxis.length();
+    if(axisLength<1e-7)continue;turnAxis.multiplyScalar(1/axisLength);
+    // Match limb()'s exact reach interval before rotating around the sphere;
+    // otherwise its clamped elbow could disagree with the retained wrist.
+    const maxReach=keeperBody.upperArm+keeperBody.forearm-.008,minReach=Math.abs(keeperBody.upperArm-keeperBody.forearm)+.025;
+    const budget=Math.max(0,Math.min(.61,.65*(maxReach-distance)/lever.length(),.65*(distance-minReach)/lever.length(),.65*(hand.y-.075)/lever.length(),.5*(elbow.y-.075)/lever.length()));
+    const angle=budget*pitchPhase*MathUtils.smoothstep(bend,.8,1.3);
+    const turn=new Quaternion().setFromAxisAngle(turnAxis,angle);
+    const wrist=lever.applyQuaternion(turn).add(ball),joint=limb(root,wrist,elbow,keeperBody.upperArm,keeperBody.forearm).joint;
+    pose.hands[i]={x:wrist.x,y:wrist.y,z:wrist.z};pose.elbows[i]=joint;rotations[i].premultiply(turn);
+
+  }
+  // The final reach-limited sphere can differ from the authored hold centre.
+  // Skin-only finger closure needs this exact sphere, without changing either
+  // calibrated palm attachment or the physical wrist/elbow solution.
+  pose.grip={...pose.grip,handRotations:rotations.map(q=>q.toArray()),ball:{x:ball.x,y:ball.y,z:ball.z},captureBlend:blend};
   return {...held,pose,ball:{x:ball.x,y:ball.y,z:ball.z}};
 }

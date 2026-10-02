@@ -7,6 +7,7 @@ import {Player} from './character.js';
 import {createKeeperSkinPose,updateKeeperShoulderSupport} from './keeper-skin-pose.js';
 import {createKeeperArmRoll} from './keeper-arm-roll.js';
 import {createKeeperHandContact} from './keeper-hand-contact.js';
+import {createKeeperFingerGrip} from './keeper-finger-grip.js';
 import {createStrikerKickStyle} from './striker-kick-style.js';
 import {createStrikerArmClearance} from './striker-arm-clearance.js';
 import {RUNUP_CONTACT,runupClipTime,runupOnsetTime,createStrikerRunupStyle} from './striker-runup-style.js';
@@ -55,6 +56,8 @@ export class GameCharacter {
     this.group.add(this.root);
     this.root.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;if(o.isSkinnedMesh)o.frustumCulled=false;}});
     this.apply=createKeeperSkinPose(this.root,{shoulderSupport:true});this.relax=createKeeperArmRoll(this.root);
+    // Prepare glove guards with the asset, rather than on the first catch.
+    if(this.keeper)this.fingerGrip=createKeeperFingerGrip(this.root);
     if(!this.keeper)this.kickStyle=createStrikerKickStyle(this.root);
     this.mixer=new THREE.AnimationMixer(this.root);
     this.actions=[...gltf.animations,...extra].map(c=>{const a=this.mixer.clipAction(c);a.setLoop(THREE.LoopOnce,1);a.clampWhenFinished=true;a.paused=true;return a;});
@@ -83,9 +86,13 @@ export class GameCharacter {
       for(const key of ['shoulders','hips','elbows','hands','knees','feet'])target[key]=[p[key][1],p[key][0]];
     }
     this.apply(target);this.relax(true);
-    if(this.keeper){this.handContact??=createKeeperHandContact(this.root);this.handContact(target,true);}
+    if(this.keeper){
+      this.handContact??=createKeeperHandContact(this.root);this.handContact(target,true);
+      this.fingerGrip??=createKeeperFingerGrip(this.root);this.fingerGrip(target);
+    }
   }
   kick(runup,after=null,options={}){
+    this.fingerGrip?.(null);
     const previousMode=this.lastMode;this.lastMode='kick';this.lastKick=[runup,after,options];
     if(options.pose)this.lastPose=options.pose;
     if(!this.root){if(this.lastPose)this.fallback.pose(this.lastPose);return;}
@@ -114,6 +121,7 @@ export class GameCharacter {
     this.root.updateMatrixWorld(true);updateKeeperShoulderSupport(this.root);
   }
   capture(time,index=0){
+    this.fingerGrip?.(null);
     this.lastMode='capture';this.lastCapture=[time,index];this.gazeBase=null;
     if(!this.root||!this.actions?.[index]){if(this.lastPose)this.fallback?.pose(this.lastPose);return false;}
     this.armClearance?.restore?.();this.kickStyle?.restore?.();this.runupStyle?.restore?.();this.mixer.stopAllAction();

@@ -1,0 +1,264 @@
+{
+  "generatedAt": "2026-10-02T14:49:39.106Z",
+  "scope": "Cloud Node CPU: real loaded keeper GameCharacter.pose on identical precomputed final-revision inputs. Free-pose construction is timed separately using each revision. Warm alternating paired batches. Excludes gathering, physics, skin readback, GPU, upload time, draw calls, browser/phone performance and thermal behavior; separate medians must not be summed into a frame-rate claim.",
+  "baseline": {
+    "path": "/workspace/scratch/da56d19312e0/penalty-grip-baseline",
+    "commit": "f2db0191fa438ff111593831cd4613f696ed2a96"
+  },
+  "sourceHashes": {
+    "before": {
+      "src/anatomy.js": "a74e5b65d96305fd4e081b2677ad1b475bd9718ce7f3daea6355d67f9e67af2d",
+      "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+      "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+      "src/character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+      "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+      "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+      "src/game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+      "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+      "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+      "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+      "src/keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c",
+      "src/keeper-contact.js": "6dd93bdfee091168b6bb85c263b58578fbb1fbec031374361fd415c2b454007a",
+      "src/keeper-hand-contact.js": "ba5ddf77b02b82c37d1117941ad126b0c57eb3270525454403c8c8e1ded1eb6b",
+      "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+      "src/keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+      "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+      "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+      "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+      "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+      "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+      "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+      "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+      "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+      "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+      "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+      "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+      "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+      "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+      "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+      "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+      "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644",
+      "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772"
+    },
+    "after": {
+      "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+      "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+      "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+      "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+      "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+      "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+      "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+      "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+      "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+      "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+      "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+      "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+      "src/keeper-finger-grip.js": "75abbe4c1b87c805c0e366fd95b051b416ed2ba587780a9782aaa656cd825dec",
+      "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+      "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+      "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+      "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+      "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+      "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+      "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+      "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+      "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+      "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+      "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+      "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+      "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+      "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+      "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+      "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+      "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+      "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+      "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644",
+      "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772"
+    }
+  },
+  "benchmarkSha256": "26d9236577747230619f82bd6d9f6924109a6572af628c99055e6ab117faf1fc",
+  "manifest": {
+    "sha256": "5949a1c7f718e096868039d0037c3d064a130ae15bcd4deb244c453902ffa6ec",
+    "shots": 645,
+    "captures": 205
+  },
+  "rounds": 5,
+  "inputHashes": {
+    "free": "b8a284b4db57e4aff64515c1c76a5e2eddad32fa1adcf644c43f1049be261171",
+    "held": "5f4fe29e505b8e14403e3598a03b935fb737bdf4accd78a75c57b3a0d51b5f15"
+  },
+  "samples": {
+    "free": 1089,
+    "held": 3075
+  },
+  "timing": {
+    "free": {
+      "runs": {
+        "before": [
+          {
+            "totalMs": 34.172240000000784,
+            "poses": 1089,
+            "p50Ms": 0.025849000000562228,
+            "p99Ms": 0.08438699999987875
+          },
+          {
+            "totalMs": 38.10681300000033,
+            "poses": 1089,
+            "p50Ms": 0.03355100000044331,
+            "p99Ms": 0.09265899999991234
+          },
+          {
+            "totalMs": 30.059261000000333,
+            "poses": 1089,
+            "p50Ms": 0.023836000000301283,
+            "p99Ms": 0.09176800000022922
+          },
+          {
+            "totalMs": 30.48997899999995,
+            "poses": 1089,
+            "p50Ms": 0.02375599999959377,
+            "p99Ms": 0.08067200000004959
+          },
+          {
+            "totalMs": 31.11266499999965,
+            "poses": 1089,
+            "p50Ms": 0.023704999999608845,
+            "p99Ms": 0.09902899999997317
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 34.71521800000028,
+            "poses": 1089,
+            "p50Ms": 0.025899000000208616,
+            "p99Ms": 0.0901159999993979
+          },
+          {
+            "totalMs": 33.498507000000245,
+            "poses": 1089,
+            "p50Ms": 0.026128999999855296,
+            "p99Ms": 0.07266900000013266
+          },
+          {
+            "totalMs": 29.52201100000002,
+            "poses": 1089,
+            "p50Ms": 0.023656000000300992,
+            "p99Ms": 0.0801499999997759
+          },
+          {
+            "totalMs": 29.16953100000046,
+            "poses": 1089,
+            "p50Ms": 0.02344600000014907,
+            "p99Ms": 0.062334000000191736
+          },
+          {
+            "totalMs": 29.245145000000775,
+            "poses": 1089,
+            "p50Ms": 0.023435999999492196,
+            "p99Ms": 0.08207399999992049
+          }
+        ]
+      },
+      "medianBatchMs": {
+        "before": 31.11266499999965,
+        "after": 29.52201100000002
+      }
+    },
+    "held": {
+      "runs": {
+        "before": [
+          {
+            "totalMs": 68.20679399999972,
+            "poses": 3075,
+            "p50Ms": 0.020160000000032596,
+            "p99Ms": 0.055623999999625084
+          },
+          {
+            "totalMs": 69.38288400000056,
+            "poses": 3075,
+            "p50Ms": 0.02009100000032049,
+            "p99Ms": 0.06460700000025099
+          },
+          {
+            "totalMs": 71.73335099999986,
+            "poses": 3075,
+            "p50Ms": 0.02005000000099244,
+            "p99Ms": 0.05541300000004412
+          },
+          {
+            "totalMs": 69.27711500000078,
+            "poses": 3075,
+            "p50Ms": 0.020080999998754123,
+            "p99Ms": 0.053711000000475906
+          },
+          {
+            "totalMs": 65.83066700000018,
+            "poses": 3075,
+            "p50Ms": 0.02006999999866821,
+            "p99Ms": 0.04359599999952479
+          }
+        ],
+        "after": [
+          {
+            "totalMs": 129.44105499999932,
+            "poses": 3075,
+            "p50Ms": 0.033740999999281485,
+            "p99Ms": 0.1287640000000465
+          },
+          {
+            "totalMs": 130.57052399999975,
+            "poses": 3075,
+            "p50Ms": 0.03339999999934662,
+            "p99Ms": 0.12336599999980535
+          },
+          {
+            "totalMs": 124.89467100000002,
+            "poses": 3075,
+            "p50Ms": 0.033320000000458094,
+            "p99Ms": 0.09423200000128418
+          },
+          {
+            "totalMs": 129.48267699999997,
+            "poses": 3075,
+            "p50Ms": 0.033400000000256114,
+            "p99Ms": 0.13039600000047358
+          },
+          {
+            "totalMs": 121.53118900000118,
+            "poses": 3075,
+            "p50Ms": 0.03331099999923026,
+            "p99Ms": 0.09869799999978568
+          }
+        ]
+      },
+      "medianBatchMs": {
+        "before": 69.27711500000078,
+        "after": 129.44105499999932
+      }
+    }
+  },
+  "poseGeneration": {
+    "samples": 1089,
+    "warmupBatchesPerRevision": 8,
+    "runs": {
+      "before": [
+        5.918808000000354,
+        5.5609890000014275,
+        4.983490000000529,
+        5.459396000000197,
+        4.850260000001072
+      ],
+      "after": [
+        4.840324000000692,
+        4.770189000000755,
+        4.892853999999716,
+        6.036694999998872,
+        5.1653540000006615
+      ]
+    },
+    "medianBatchMs": {
+      "before": 5.459396000000197,
+      "after": 4.892853999999716
+    }
+  }
+}

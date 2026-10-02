@@ -1,3 +1,5 @@
+> Latest grip and recovery refinement: [2026-10-02 validation](validation/GRIP_RECOVERY_2026-10-02.md) — 379 tests, unchanged 645-shot / 205-catch acceptance, cupped fingers, coupled wrist refinement, staged boot support, and measured CPU/upload tradeoffs.
+
 > Latest ten additional rounds: [2026-10-02 ten-round audit](validation/TEN_ROUNDS_2026-10-02.md) — 369 tests, 645 shots / 205 catches, corrected frame-contact ordering and endpoint entry, exact-output reduction of handling-quality work, and explicit CPU/visual limits.
 
 > Latest five-round validation: [2026-10-02 sequential audit](validation/FIVE_ROUNDS_2026-10-02.md) — 332 tests, uniform 525-shot/184-catch acceptance, rebound contact and interrupted mobile-input repairs, with measured CPU tradeoffs.
