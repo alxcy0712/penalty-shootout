@@ -1,0 +1,44 @@
+{
+  "baseline": "aeb5e884",
+  "before": {
+    "sceneSha256": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "totals": {
+      "mainCandidates": 38,
+      "shadowCandidates": 22,
+      "mainMeshTriangles": 63566,
+      "shadowMeshTriangles": 36746
+    },
+    "generatedTextureLogicalBytes": 5963772,
+    "rigidArchitecture": {
+      "triangles": 996,
+      "sha256": "efb7da8417d16d5f67079a7835ee8a40fee1347d493fb52070a065b0bc810387",
+      "scope": "Triangle multiset with winding, world positions/normals, UV/colors at1e-5 precision and material parameters; excludes UUID, batching boundaries, cast/receive shadow flags; Canvas image dimensions only, not rendered texels"
+    },
+    "scope": "CPU scene candidates before camera/shadow frustum culling; initial visibility includes aim, arc and trail. Not renderer.info, GPU timings or mobile FPS. Transparent double-sided extra passes not modeled.",
+    "textureScope": "Generated scene CanvasTextures only; excludes GLB maps, number maps, hidden fallback resources, shadow/depth targets and driver/MSAA allocations. RGBA8 logical mip size, not measured GPU memory."
+  },
+  "after": {
+    "sceneSha256": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "totals": {
+      "mainCandidates": 38,
+      "shadowCandidates": 22,
+      "mainMeshTriangles": 63566,
+      "shadowMeshTriangles": 36746
+    },
+    "generatedTextureLogicalBytes": 5963772,
+    "rigidArchitecture": {
+      "triangles": 996,
+      "sha256": "efb7da8417d16d5f67079a7835ee8a40fee1347d493fb52070a065b0bc810387",
+      "scope": "Triangle multiset with winding, world positions/normals, UV/colors at1e-5 precision and material parameters; excludes UUID, batching boundaries, cast/receive shadow flags; Canvas image dimensions only, not rendered texels"
+    },
+    "gates": {
+      "mainCandidates": true,
+      "shadowCandidates": true,
+      "triangles": true,
+      "generatedTextureBytes": true
+    },
+    "scope": "CPU scene candidates before camera/shadow frustum culling; initial visibility includes aim, arc and trail. Not renderer.info, GPU timings or mobile FPS. Transparent double-sided extra passes not modeled.",
+    "textureScope": "Generated scene CanvasTextures only; excludes GLB maps, number maps, hidden fallback resources, shadow/depth targets and driver/MSAA allocations. RGBA8 logical mip size, not measured GPU memory."
+  },
+  "unchanged": true
+}

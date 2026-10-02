@@ -1,0 +1,50 @@
+{
+  "round": 4,
+  "status": "passed",
+  "closedAt": "2026-10-02T11:33:35.558689+00:00",
+  "scope": "Mobile drag/release and interrupted match lifecycle; real main handlers, Match, Shot and Stadium in VM with controlled DOM, storage, RAF and renderer stubs; loaded striker bones for drag checks",
+  "repairs": [
+    "visibilitychange rebases frameTime so RAF suspension cannot consume a Ready turn before its first returning frame",
+    "pointercancel and lostpointercapture only cancel the owning pointer ID and element"
+  ],
+  "disprovedHypothesis": "Active hidden -> visible -> Close before first RAF was already safe because closeModal rebases the clock",
+  "tests": {
+    "total": 62,
+    "passed": 62,
+    "failed": 0,
+    "newLifecycle": 29,
+    "existingCameraInputResultRunup": 33
+  },
+  "cadences": {
+    "regularHz": [
+      30,
+      60,
+      120
+    ],
+    "irregularSeconds": [
+      0.008333333333333333,
+      0.041,
+      0.016666666666666666,
+      0.083,
+      0.012,
+      0.027
+    ]
+  },
+  "coverage": [
+    "Ready and Close can precede first returning RAF after 600 seconds hidden, for simple/advanced and attack/defense",
+    "All loaded striker bone matrices remain stationary during drag; first active release frame moves, duplicates cannot relaunch",
+    "Unrelated and retired cancel/capture events cannot clear a new active touch",
+    "Held advanced timeout waits until release; untouched timeout, AI timer and full visible stalled-frame time remain intact",
+    "Per-glove rebound maps, physical state and accumulator preserved through pause/hidden/home; exact deterministic replay reaches opposite-hand catch and records once",
+    "Repeated Next/Home/restore/rematch reset presentation and scores without stale shot state",
+    "Blur clears unfinished pointer; pagehide save restores exact shot and independent glove map in a fresh application harness"
+  ],
+  "limitations": [
+    "No WebGL/browser/real-phone/GPU validation",
+    "No full-suite or benchmark run; parent owns Round 5"
+  ],
+  "command": "node --test --test-reporter=tap tests/mobile-lifecycle-round.test.js tests/round-camera-handover.test.js tests/shot-input-state.test.js tests/result-clock-handover.test.js tests/runup-onset.test.js",
+  "hashFile": "/tmp/penalty-five-rounds/round-4/source-hashes.txt",
+  "testLog": "/tmp/penalty-five-rounds/round-4/focused-tests.tap",
+  "baselineReproduction": "/tmp/penalty-five-rounds/round-4/baseline-reproduction.json"
+}

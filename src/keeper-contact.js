@@ -416,6 +416,13 @@ function graspElbow(root,wrist,elbow,ball,weight,settled){
   return limb(root,wrist,pole,keeperBody.upperArm,keeperBody.forearm).joint;
 }
 
+// Use the same tapered forearm envelope as the circle constraint below.
+// This scalar broad phase avoids an extra solve when the sphere is distant.
+function graspBallProximity(pose,index,ball){
+  const a=pose.elbows[index],b=pose.hands[index],dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z,px=ball.x-a.x,py=ball.y-a.y,pz=ball.z-a.z;
+  const along=MathUtils.clamp((px*dx+py*dy+pz*dz)/(dx*dx+dy*dy+dz*dz),0,1),distance=Math.hypot(px-along*dx,py-along*dy,pz-along*dz),clearance=distance-(.173-.045*along);
+  return 1-MathUtils.smoothstep(clearance,0,.03);
+}
 // The trailing forearm starts settling before it reaches the shirt. Segment
 // distance to the shared pelvis/chest axis supplies a bounded capsule envelope:
 // fully active at 23 cm, inactive beyond 30 cm. Distant reaching arms keep their
@@ -430,7 +437,7 @@ function graspTorsoProximity(pose,index,torso){
 // angular arcs against torso support, turf and ball clearance simultaneously;
 // then choose the nearest circular arc with an inward-rounded boundary. This is
 // a constant-size analytic solve, not iterative body/ball pushes or mesh scans.
-function graspFeasibleElbow(pose,index,ball,settled,torso){
+function graspFeasibleElbow(pose,index,ball,settled,torso,ballOnly=false){
   if(settled<=0)return pose.elbows[index];
   const root=vectorCopy(pose.shoulders[index]),wrist=vectorCopy(pose.hands[index]),original=vectorCopy(pose.elbows[index]),direction=wrist.clone().sub(root),length=direction.length();direction.multiplyScalar(1/length);
   const reach=(keeperBody.upperArm**2-keeperBody.forearm**2+length*length)/(2*length),radius=Math.sqrt(Math.max(0,keeperBody.upperArm**2-reach*reach)),center=root.clone().addScaledVector(direction,reach);
@@ -444,7 +451,7 @@ function graspFeasibleElbow(pose,index,ball,settled,torso){
   // radius grows another .045 toward the .063 elbow. Squared distance along
   // this cone reduces to one linear bound on the elbow-circle point.
   const relative=vectorCopy(ball).sub(wrist),base=.128,taper=.045,remaining=relative.lengthSq()-base*base,axisSquare=keeperBody.forearm**2-taper*taper,maximum=(remaining<=axisSquare?Math.sqrt(Math.max(0,remaining*axisSquare)):(remaining+axisSquare)/2)-base*taper;
-  const constraints=[[normal,frontOffset],[new Vector3(0,1,0),.075],[relative.clone().negate(),-maximum-relative.dot(wrist)]];
+  const constraints=[...(!ballOnly?[[normal,frontOffset]]:[]),[new Vector3(0,1,0),.075],[relative.clone().negate(),-maximum-relative.dot(wrist)]];
   let arcs=[[-Math.PI,Math.PI]];
   for(const [normal,offset]of constraints){const a=radius*normal.dot(u),b=radius*normal.dot(v),h=Math.hypot(a,b),threshold=offset-normal.dot(center);if(h<1e-10){if(threshold>0)arcs=[];continue;}const ratio=threshold/h;if(ratio<=-1)continue;if(ratio>1){arcs=[];break;}const phase=Math.atan2(b,a),half=Math.acos(MathUtils.clamp(ratio,-1,1)),next=[];for(const [low,high]of arcs)for(let turn=-1;turn<=1;turn++){const lo=Math.max(low,phase-half+turn*2*Math.PI),hi=Math.min(high,phase+half+turn*2*Math.PI);if(hi>=lo)next.push([lo,hi]);}arcs=next;}
   // An overconstrained input keeps the original fixed-length branch. Dedicated
@@ -453,7 +460,9 @@ function graspFeasibleElbow(pose,index,ball,settled,torso){
   if(!arcs.length)return pose.elbows[index];
   const raw=Math.atan2(bend.dot(v),bend.dot(u)),preferred=raw;
   let best,score=Infinity;for(const arc of arcs)for(let wrap=-1;wrap<=1;wrap++){const shifted=arc.map(a=>a+wrap*2*Math.PI),projected=MathUtils.clamp(preferred,...shifted),distance=Math.abs(projected-preferred);if(distance<score){score=distance;best=shifted;}}
-  const [lo,hi]=best,width=Math.min(.06,(hi-lo)/4);let goal=preferred;
+  // The early ball pass must not round or move an already feasible elbow.
+  if(ballOnly&&score===0)return pose.elbows[index];
+  const [lo,hi]=best,width=ballOnly?0:Math.min(.06,(hi-lo)/4);let goal=preferred;
   const softMax=(x,b)=>{const delta=Math.abs(x-b);return Math.max(x,b)+(width&&delta<width?(width-delta)**2/(4*width):0);};
   goal=softMax(goal,lo);goal=-softMax(-goal,-hi);
   const turn=Math.atan2(Math.sin(goal-raw),Math.cos(goal-raw)),angle=raw+turn*settled;
@@ -470,6 +479,10 @@ export function keeperGather(sourcePose,currentPose,capturePoint,contactPart,ble
   // Finish the physical catch first; settle the supporting forearms over the
   // following gather-length interval, and only once landing absorption begins.
   const elbowSettle=MathUtils.smoothstep(blend,1,2)*(currentPose.torso?.armRelax??0);
+  // An elevated lower grasp must clear the free arm's bracing path while
+  // side-lying. Low reaching elbows retain their grounded branch. Body tilt,
+  // catching side and source upper-arm elevation all fade continuously.
+  const lowerCatch=(1-MathUtils.smoothstep(sourcePose.up.y,.02,.10))*MathUtils.smoothstep((sourcePose.shoulder.y-sourcePose.shoulders[index].y)/(keeperBody.shoulderWidth/2),.5,.9)*MathUtils.smoothstep((sourcePose.elbows[index].y-sourcePose.shoulders[index].y)/keeperBody.upperArm,.1,.3);
   // Lift the whole grasp toward the upper chest while side-lying legs tuck.
   // It is a bounded pose-space target, not a ball-only projection: both wrist
   // IK solves below follow this centre and preserve the original glove contact.
@@ -487,6 +500,13 @@ export function keeperGather(sourcePose,currentPose,capturePoint,contactPart,ble
   const rotations=[0,1].map(i=>rawQ[i].clone().slerp(keeperHandRotation(completeHold,i,currentTorso),weight));
   const sourceOffset=vectorCopy(capturePoint).sub(sourcePose.hands[index]).applyQuaternion(sourceQ[index].clone().invert());
   const rawBall=sourceOffset.clone().applyQuaternion(rawQ[index]).add(currentPose.hands[index]);
+  // Carry the contact in the chest frame until the secured target takes over.
+  // Following the free wrist here drags the ball toward turf, splitting the
+  // elbow's floor/ball/torso feasible arcs into disconnected components.
+  if(lowerCatch&&weight<1){
+    const turn=keeperBodyRotation(currentPose,'chest',currentTorso).multiply(keeperBodyRotation(sourcePose,'chest',sourceTorso).invert());
+    const carried=vectorCopy(capturePoint).sub(sourcePose.shoulder).applyQuaternion(turn).add(currentPose.shoulder);rawBall.lerp(carried,lowerCatch);
+  }
   const ball=rawBall.clone().lerp(vectorCopy(held.center),weight);
   ball.y=Math.max(.11,ball.y);
   // At full settlement the ray is the fixed calibrated palm ray. Reuse the
@@ -506,12 +526,16 @@ export function keeperGather(sourcePose,currentPose,capturePoint,contactPart,ble
   const otherWrist=ball.clone().sub(otherOffset.applyQuaternion(rotations[other]));
   const otherArm=graspArm(pose.shoulders[other],otherWrist,referenceHands[other],referenceElbows[other],sourcePose,currentPose,other,weight);
   pose.hands[other]=otherArm.end;pose.elbows[other]=graspElbow(pose.shoulders[other],otherArm.end,otherArm.joint,ball,weight,elbowSettle);
-  // The catching arm keeps its incoming arc until secure. The trailing arm
-  // can settle sooner as it approaches the torso; all envelopes vanish at the
-  // exact source capture. Only elbows move here: wrists and ball stay coupled.
+  // The trailing arm and a side-lying lower catch can settle as they approach
+  // the torso. All envelopes vanish at exact capture. Only elbows move here;
+  // the ball and wrists have already been solved as one coupled grasp.
   const constraintSettle=MathUtils.smoothstep(blend,0,.6),torso=currentTorso;
   for(let i=0;i<2;i++){
-    const settle=i===index?elbowSettle:elbowSettle+(1-elbowSettle)*constraintSettle*graspTorsoProximity(pose,i,torso);
+    // The secured grasp keeps its existing fast path. During transfer, solve
+    // ball/floor first; any later torso settlement still includes all three.
+    const sphere=weight<1?constraintSettle*graspBallProximity(pose,i,ball):0;
+    if(sphere)pose.elbows[i]=graspFeasibleElbow(pose,i,ball,sphere,torso,true);
+    const early=i===index?lowerCatch:1,settle=elbowSettle===1||!early?elbowSettle:elbowSettle+(1-elbowSettle)*constraintSettle*early*graspTorsoProximity(pose,i,torso);
     pose.elbows[i]=graspFeasibleElbow(pose,i,ball,settle,torso);
   }
   pose.grip={...pose.grip,handRotations:rotations.map(q=>q.toArray())};

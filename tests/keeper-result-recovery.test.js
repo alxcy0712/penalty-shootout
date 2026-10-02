@@ -9,12 +9,15 @@ import {keeperGather} from '../src/keeper-contact.js';
 import {loadCharacter,skinMinimum,skinSurfaceDistance} from './helpers/load-character.js';
 
 const stats={accuracy:90,power:90,touch:90,composure:90,curve:90,speed:85,reach:85,handling:99};
-// Complete live pose/physics trajectories recorded from aeaa978, including the
-// capture instant and compressed clearance clock. No result animation is hashed.
+// Complete live pose/physics trajectories, including capture and compressed
+// clearance clocks. The two uncaught seed3 paths were deliberately re-pinned
+// after the2026-10-02 committed-stride fix: only the live stance changes; their
+// outcomes and finish times remain exact. Other hashes retain aeaa978 values.
+// No result animation is hashed; see validation/FIVE_ROUNDS_2026-10-02.md.
 const recipes=[
   [0,.2,.5,0,42,'5600c40e05f53f44c476d7612d852d425dc07d1a4b5c3fb1383eccae196ff9e1'],
-  [-.7,2.25,.6,0,3,'ff98b0c04c0c0aebeee656507e148cfd45e4687da92aa114643765dca9cc54c2'],
-  [-.7,1,.6,0,3,'61aa226ad5fb62f13dce6ef54fd0f65e6050e900d085c93dc617421c2d9f9a83'],
+  [-.7,2.25,.6,0,3,'7973b73a79d022f79633fb514a93aafc0408f66897d79d5e712b0736b6a7146a'],
+  [-.7,1,.6,0,3,'61d770b595fc15b00a101e94809cb3b30903eee99d089a0034fb8b634471b470'],
   [2,.3,.55,1,3,'a920e5249559f6360624453334a2fd204a7944cc741990204a06a89e1bcfd932']
 ];
 function simulate(recipe,ability=stats){

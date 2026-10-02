@@ -1,3 +1,5 @@
+> Latest five-round validation: [2026-10-02 sequential audit](validation/FIVE_ROUNDS_2026-10-02.md) — 332 tests, uniform 525-shot/184-catch acceptance, rebound contact and interrupted mobile-input repairs, with measured CPU tradeoffs.
+
 > Latest next-round camera pass: [2026-10-02 round handover](validation/ROUND_HANDOVER_2026-10-02.md) — 282 tests, immediate stable role cuts, interruption-safe resets and bounded static portrait framing across all four ready styles.
 
 > Latest match recovery: [2026-10-02 central result validation](validation/MATCH_RECOVERY_2026-10-02.md) — 263 tests, exact first-result handover, supported central get-up, 40 held paths plus 51 central catch/miss paths, and measured CPU/load tradeoffs.

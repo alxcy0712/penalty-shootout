@@ -2,8 +2,11 @@
 // recovery plus120Hz observed risk windows. --central-results instead checks
 // central catches/misses at10Hz plus explicit phase-boundary probes.
 // Sphere clearance remains separate.
-if(process.argv.includes('--help')){console.log('ARTIFACT_DIR=/tmp/held-body BASE_HZ=10 DENSE_HZ=120 node tools/qa/audit-held-body.mjs [--check] [--central-results]\nChecks protected forearm/torso, calf/torso, opposite lower-leg crossings and5mm skin floor. Reports adjacent shoulder/elbow folds separately.');process.exit(0);}
-const auditStarted=performance.now(),resultsMode=process.argv.includes('--central-results');
+if(process.argv.includes('--help')){console.log('ARTIFACT_DIR=/tmp/held-body BASE_HZ=10 DENSE_HZ=120 node tools/qa/audit-held-body.mjs [--check] [--central-results [--include-lateral] | --fixtures JSON]\nChecks protected forearm/torso, calf/torso, opposite lower-leg crossings and5mm skin floor. Reports adjacent shoulder/elbow folds separately.');process.exit(0);}
+import {readAuditFixtures} from './read-audit-fixtures.mjs';
+const explicitFixtures=await readAuditFixtures();
+if(explicitFixtures&&process.argv.includes('--central-results'))throw Error('Explicit fixtures are for held paths; canonical central results remain separate');
+const auditStarted=performance.now(),resultsMode=process.argv.includes('--central-results'),includeLateral=process.argv.includes('--include-lateral');
 import {pathToFileURL} from 'node:url';
 const repoURL=new URL('../../',import.meta.url),outURL=pathToFileURL((process.env.ARTIFACT_DIR??process.cwd()+'/validation/artifacts')+'/');
 await mkdir(outURL,{recursive:true});
@@ -14,7 +17,7 @@ const {keeperGather}=await import(new URL('src/keeper-contact.js',repoURL));
 const {goalkeeperPose,keeperWarmupPose,holdingPose,keeperRunupPreparation,HOLD_DURATION}=await import(new URL('src/anatomy.js',repoURL));
 import {readFile,writeFile,readdir,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-const files=[...(await readdir(new URL('src/',repoURL))).filter(f=>f.endsWith('.js')&&!f.startsWith('.')).sort().map(f=>'src/'+f),'assets/characters/keeper-prototype.glb','tests/helpers/load-character.js','tools/qa/audit-held-body.mjs'];
+const files=[...(await readdir(new URL('src/',repoURL))).filter(f=>f.endsWith('.js')&&!f.startsWith('.')).sort().map(f=>'src/'+f),'assets/characters/keeper-prototype.glb','tests/helpers/load-character.js','tools/qa/audit-held-body.mjs','tools/qa/read-audit-fixtures.mjs'];
 const hashes=Object.fromEntries(await Promise.all(files.map(async f=>[f,createHash('sha256').update(await readFile(new URL(f,repoURL))).digest('hex')])));
 const stats={speed:Number(process.env.STAT??85),reach:Number(process.env.STAT??85)};
 const c=await loadCharacter(true), meshes=[]; c.root.traverse(m=>{if(m.isSkinnedMesh)meshes.push(m)});c.root.updateMatrixWorld(true);
@@ -69,14 +72,15 @@ if(resultsMode){
  for(const x of[-.7,0,.7])for(const y of[.2,1,2.25])for(const power of[.4,.6,.8])for(const seed of[1,3])fixtures.push({aim:{x,y,power},direction:0,seed,stats:{...attrs,handling:99}});
 }else for(const x of[-3.3,-1.5,0,1.5,3.3])for(const y of[.2,1.2,2.2])for(const power of[.12,.5,.9])for(const direction of[-1,0,1])fixtures.push({aim:{x,y,power},direction,seed:42,stats:attrs});
 if(!resultsMode)for(const[d,h,x,seed]of[[-1,.3,2,3],[-1,2.1,1.5,2],[1,.3,2,3],[1,2.1,1.5,1]])fixtures.push({aim:{x:d*x,y:h,power:.55},direction:d,seed,stats:{...attrs,speed:95,reach:95}});
-const captures=[],excluded=[];
+if(explicitFixtures)fixtures.splice(0,fixtures.length,...explicitFixtures.fixtures);
+const captures=[],excluded=[],cohortChanges=[];
 for(const [caseIndex,recipe]of fixtures.entries()){
- const shot=new Shot(recipe.aim,recipe.stats,recipe.stats,recipe.direction,recipe.seed);while(!shot.result&&shot.t<30)shot.step(1/120);if(resultsMode){if(!shot.result)throw Error('Unfinished central fixture');if(shot.direction||shot.hesitation||shot.recoveryOrigin){excluded.push({caseIndex,recipe,reason:'Existing side-dive, hesitation or recovery path',direction:shot.direction});continue;}}else if(!shot.caught)continue;
+ const shot=new Shot(recipe.aim,recipe.stats,recipe.stats,recipe.direction,recipe.seed);while(!shot.result&&shot.t<30)shot.step(1/120);if(typeof recipe.expectedCaught==='boolean'&&!!shot.caught!==recipe.expectedCaught)cohortChanges.push({id:recipe.id,caseIndex,expected:recipe.expectedCaught,actual:!!shot.caught});if(resultsMode){if(!shot.result)throw Error('Unfinished central fixture');if(!includeLateral&&(shot.direction||shot.hesitation||shot.recoveryOrigin)){excluded.push({caseIndex,recipe,reason:'Existing side-dive, hesitation or recovery path',direction:shot.direction});continue;}}else if(!shot.caught)continue;
  const {x,y:h,power}=recipe.aim,d=recipe.direction,wide=Math.abs(x)===3.3&&h===1.2&&power===.5&&d===Math.sign(x),central=Math.abs(x)===1.5&&h===1.2&&power===.5&&d===0;
  const times=new Set(Array.from({length:Math.round(duration*baseHz)+1},(_,i)=>Math.round(i/baseHz*1e9)/1e9));
  if(resultsMode)for(const edge of [.12,.30,.44,.48,.62,.80])for(const epsilon of [-.00001,0,.00001])times.add(edge+epsilon);
- const denseWindows=wide?[[.2,.7],[.95,1.4]]:central?[[.12,.25]]:[];for(const[lo,hi]of denseWindows)for(let i=Math.ceil(lo*denseHz);i<=Math.floor(hi*denseHz);i++)times.add(Math.round(i/denseHz*1e9)/1e9);
- const sorted=[...times].sort((a,b)=>a-b);captures.push({caseIndex,recipe,caught:!!shot.caught,result:shot.result,captureTime:shot.t,animationTime:shot.animationTime,contactPart:shot.contactPart,samples:sorted.length,denseWindows});
+ const denseWindows=explicitFixtures?(explicitFixtures.denseWindows??[[.12,.7],[.95,1.4]]):wide?[[.2,.7],[.95,1.4]]:central?[[.12,.25]]:[];for(const[lo,hi]of denseWindows)for(let i=Math.ceil(lo*denseHz);i<=Math.floor(hi*denseHz);i++)times.add(Math.round(i/denseHz*1e9)/1e9);
+ const sorted=[...times].sort((a,b)=>a-b);captures.push({caseIndex,recipe,requestedDirection:recipe.direction,actualDirection:shot.direction,caught:!!shot.caught,result:shot.result,captureTime:shot.t,animationTime:shot.animationTime,contactPart:shot.contactPart,samples:sorted.length,denseWindows});
  for(const t of sorted){const current=shot.poseAt((shot.animationTime??shot.t)+t),pose=shot.caught?keeperGather(shot.pose,current,shot.ball,shot.contactPart,t/HOLD_DURATION).pose:current;records.push(sample({caseIndex,motion:shot.caught?'gather':'result',d,h,x,power,seed:recipe.seed,speed:recipe.stats.speed,reach:recipe.stats.reach,t},pose));}
 }
 const baselinePairs=new Set(records.slice(0,2).flatMap(r=>r.hits.map(h=>h.pair.join(':'))));for(const r of records){r.newHits=r.hits.filter(h=>!baselinePairs.has(h.pair.join(':')));r.newNonLocal=r.newHits.filter(h=>!h.isLocal).length;}
@@ -91,13 +95,16 @@ for(const r of records){
  const mask={};for(const h of r.torsoForearmHits)for(const f of h.faces){mask[f.mesh]??=new Set();mask[f.mesh].add(f.face)}const highlighted=[];for(const m of r.geometry){const marked=mask[m.name]??new Set();highlighted.push({...m,faces:m.faces.filter((_,i)=>!marked.has(i))});if(marked.size)highlighted.push({...m,name:m.name+'_crossing',material:'CROSSING_HIGHLIGHT',color:[1,.005,.005],faces:m.faces.filter((_,i)=>marked.has(i))});}await writeFile(new URL(prefix+'-highlight.json',outURL),JSON.stringify(highlighted));delete r.geometry;}
  if(!process.env.FULL_DETAILS){r.torsoForearmHits=r.torsoForearmHits.sort((a,b)=>b.depth-a.depth).slice(0,10);r.topHits=r.newHits.filter(h=>!h.isLocal&&!h.faces.every(f=>f.region==='head'||f.region.startsWith('foot')||f.region.startsWith('shin'))).sort((a,b)=>b.length-a.length).slice(0,20);delete r.newHits;delete r.hits;}
 }
- await writeFile(new URL((process.env.OUT??'held-body-audit')+'.json',outURL),JSON.stringify({coverage:{mode:resultsMode?'central-results':'held',candidateFixtures:fixtures.length,excluded,captures,samples:records.length-2,baseHz,denseHz,duration,protectedPairFilter:true},runtimeMs:performance.now()-auditStarted,stats,hashes,hashesAfter,method:(resultsMode?'Central catch/miss paths at10Hz plus explicit phase boundaries +/-10 microseconds. ':'Held paths at10Hz plus120Hz explicitly recorded risk windows. ')+'Protected role pairs only, with all-skinned-vertex floor measurements; sampled evidence, not a continuous proof. Strict transverse triangle/triangle crossings after exact Three SkinnedMesh.applyBoneTransform; bind-position weld at 1um excludes shared-vertex/seam neighbours; isLocal marks one extra topology edge; coplanar/tangent contacts excluded. Depth is infinite-plane straddle, not a lower bound on penetration. finiteTriangleSeparation is minimum translation to separate the finite convex triangle pair using 11-axis SAT, not whole-body penetration.',records},null,2));
+ await writeFile(new URL((process.env.OUT??'held-body-audit')+'.json',outURL),JSON.stringify({coverage:{includeLateral,mode:resultsMode?'central-results':'held',candidateFixtures:fixtures.length,excluded,captures,samples:records.length-2,baseHz,denseHz,duration,protectedPairFilter:true},runtimeMs:performance.now()-auditStarted,stats,hashes,hashesAfter,method:(resultsMode?'Central catch/miss paths at10Hz plus explicit phase boundaries +/-10 microseconds. ':'Held paths at10Hz plus120Hz explicitly recorded risk windows. ')+'Protected role pairs only, with all-skinned-vertex floor measurements; sampled evidence, not a continuous proof. Strict transverse triangle/triangle crossings after exact Three SkinnedMesh.applyBoneTransform; bind-position weld at 1um excludes shared-vertex/seam neighbours; isLocal marks one extra topology edge; coplanar/tangent contacts excluded. Depth is infinite-plane straddle, not a lower bound on penetration. finiteTriangleSeparation is minimum translation to separate the finite convex triangle pair using 11-axis SAT, not whole-body penetration.',records},null,2));
 
 if(JSON.stringify(hashes)!==JSON.stringify(hashesAfter))throw Error("Source changed during triangle audit; rerun on a frozen checkout");
 
-const gated=['forearmTorso','calfTorso','oppositeFootCalf'],failures=[];
-if(!resultsMode&&captures.length!==40)failures.push({reason:'Canonical caught cohort changed',expected:40,actual:captures.length});
-if(resultsMode&&captures.length!==51)failures.push({reason:'Central result cohort changed',expected:51,actual:captures.length});
+const gated=['forearmTorso','calfTorso','oppositeFootCalf'],failures=cohortChanges.map(change=>({reason:'Pinned catch outcome changed',...change}));
+// The139 canonical shots retain all40 physically valid catches.
+const expectedCaptures=explicitFixtures?.expectedCaptures??40;
+if(!resultsMode&&captures.length!==expectedCaptures)failures.push({reason:'Caught cohort changed',expected:expectedCaptures,actual:captures.length});
+const expectedResults=includeLateral?54:52;
+if(resultsMode&&captures.length!==expectedResults)failures.push({reason:'Central result cohort changed',expected:expectedResults,actual:captures.length});
 for(const r of records){if(r.skinMinimum<-.005)failures.push({label:r.label,reason:'Skin below5mm floor tolerance',skinMinimum:r.skinMinimum});for(const key of gated)if(r.categories[key].count)failures.push({label:r.label,category:key,...r.categories[key]});}
-const summary={mode:resultsMode?'central-results':'held',candidateFixtures:fixtures.length,excluded,captures:captures.length,samples:records.length-2,baseHz,denseHz,runtimeMs:performance.now()-auditStarted,floorMinimum:Math.min(...records.map(r=>r.skinMinimum)),protected:Object.fromEntries(gated.map(k=>[k,{count:records.reduce((n,r)=>n+r.categories[k].count,0),maxSeparation:Math.max(...records.map(r=>r.categories[k].maxSeparation))}])),adjacent:Object.fromEntries(['upperAndSupportTorso','innerElbow'].map(k=>[k,{count:records.reduce((n,r)=>n+r.categories[k].count,0),maxSeparation:Math.max(...records.map(r=>r.categories[k].maxSeparation))}])),failures};
+const summary={includeLateral,explicitFixtures:explicitFixtures&&{path:explicitFixtures.path,sha256:explicitFixtures.sha256,expectedCaptures},mode:resultsMode?'central-results':'held',candidateFixtures:fixtures.length,excluded,captures:captures.length,samples:records.length-2,baseHz,denseHz,runtimeMs:performance.now()-auditStarted,floorMinimum:Math.min(...records.map(r=>r.skinMinimum)),protected:Object.fromEntries(gated.map(k=>[k,{count:records.reduce((n,r)=>n+r.categories[k].count,0),maxSeparation:Math.max(...records.map(r=>r.categories[k].maxSeparation))}])),adjacent:Object.fromEntries(['upperAndSupportTorso','innerElbow'].map(k=>[k,{count:records.reduce((n,r)=>n+r.categories[k].count,0),maxSeparation:Math.max(...records.map(r=>r.categories[k].maxSeparation))}])),failures};
 await writeFile(new URL('held-body-summary.json',outURL),JSON.stringify(summary,null,2));console.log('HELD_BODY_SUMMARY',JSON.stringify({...summary,failures:failures.length}));if(process.argv.includes('--check')&&failures.length)process.exitCode=1;

@@ -16,7 +16,12 @@ const additionalCaptures=[[-1.5,.2,.12,0],[1.5,.2,.12,0],[-1.5,1.2,.5,0],[1.5,1.
   const ability={...stats,speed:85,reach:85},shot=new Shot({x,y,power},ability,ability,direction,42);
   for(let i=0;i<3600&&!shot.result;i++)shot.step(1/120);assert.ok(shot.caught);return shot;
 });
-const allCaptures=[...captures,...additionalCaptures];
+// An upright low catch used to pass the palm checks while the catching
+// forearm entered the sphere during transfer. Keep it in the full-skin gate.
+const forearmStats={...stats,speed:85,reach:85,handling:99},forearmCapture=new Shot({x:-.7,y:.2,power:.6},forearmStats,forearmStats,0,1);
+for(let frame=0;frame<3600&&!forearmCapture.result;frame++)forearmCapture.step(1/120);
+assert.ok(forearmCapture.caught,'the forearm regression must start from a real physical catch');
+const allCaptures=[...captures,...additionalCaptures,forearmCapture];
 const sample=(shot,time)=>keeperGather(shot.pose,shot.poseAt(shot.t+time),shot.ball,shot.contactPart,time/.44);
 const vector=p=>new THREE.Vector3().copy(p);
 function clearance(point,pose,index){const local=vector(point).sub(pose.hands[index]).applyQuaternion(keeperHandRotation(pose,index).invert()),near=new THREE.Vector3();let distance=Infinity;for(const tri of surfaces[index]){tri.closestPointToPoint(local,near);distance=Math.min(distance,near.distanceTo(local));}return distance-.11;}
@@ -66,6 +71,23 @@ test('coupled grasp matches the actual skinned hand transforms and keeps the com
     }
     if(frame%3===0)assert.ok(skinMinimum(actor.root)>-.005);
   }
+});
+
+test('an upright catching forearm engages sphere clearance without changing limb lengths or snapping',()=>{
+  let previous,maxStep=0;
+  for(let frame=0;frame<=672;frame++){
+    const result=sample(forearmCapture,frame/240);
+    for(let arm=0;arm<2;arm++){
+      const {shoulders,elbows,hands}=result.pose;
+      assert.ok(Math.abs(vector(shoulders[arm]).distanceTo(vector(elbows[arm]))-.29)<1e-10);
+      assert.ok(Math.abs(vector(elbows[arm]).distanceTo(vector(hands[arm]))-.27)<1e-10);
+      if(previous)maxStep=Math.max(maxStep,vector(elbows[arm]).distanceTo(vector(previous.pose.elbows[arm])));
+    }
+    previous=result;
+  }
+  assert.ok(maxStep<.04,`forearm clearance produced an elbow jump of ${maxStep}`);
+  const times=[.2,.25,4/15,.3,.44],expected=times.map(t=>sample(forearmCapture,t));
+  for(let i=times.length-1;i>=0;i--)assert.deepEqual(sample(forearmCapture,times[i]),expected[i]);
 });
 
 test('the secured ball clears the full visible body throughout landing and get-up',async()=>{

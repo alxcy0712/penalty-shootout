@@ -215,7 +215,7 @@ function bindGesture(el,calibrate){
     if(state.turnTime>=10){launch({x:0,power:0,timeout:true});toast('操作超时，自动轻射中路');return;}
     if(input)launch(input);else toast('向上划动一段距离，再松手射门');
   });
-  const cancel=()=>{if(pointer?.el===el){pointer=null;$('#gesture-line path')?.setAttribute('d','');state.aim=null;}};
+  const cancel=e=>{if(pointer?.id===e.pointerId&&pointer.el===el){pointer=null;$('#gesture-line path')?.setAttribute('d','');state.aim=null;}};
   el.addEventListener('pointercancel',cancel);el.addEventListener('lostpointercapture',cancel);
 }
 function runupDuration(){return penaltyStyle(state.match?.teams[state.match.turn]?.players[state.match.kicker]).duration;}
@@ -248,7 +248,7 @@ function frame(now){
   stage?.update(paused?0:dt,elapsed,state.shot,state.phase==='runup'?state.runup/runupDuration():state.phase==='guard'?clamp((state.turnTime-(3-runupDuration()))/runupDuration(),0,1):0,aim,state.match&&state.phase!=='home'?state.match:null,committedKickAim(state),clamp(accumulator*120,0,1));
   requestAnimationFrame(frame);
 }
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&active()&&!paused){pointer=null;showPause();}});
+document.addEventListener('visibilitychange',()=>{frameTime=performance.now();if(document.hidden&&active()&&!paused){pointer=null;showPause();}});
 window.addEventListener('blur',()=>{if(active()&&!paused){pointer=null;showPause();}});
 window.addEventListener('pagehide',save);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(modal)closeModal();else showPause();}if(e.key==='Tab'&&modal){const focusable=[...$('#modal-root').querySelectorAll('button:not(:disabled),input')];if(!focusable.length)return;const first=focusable[0],last=focusable.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
