@@ -1,0 +1,44 @@
+{
+  "left-low-wide": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 720,
+        "height": 540,
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "duration": "2.875000",
+        "nb_frames": "69"
+      }
+    ]
+  },
+  "right-low-wide": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 720,
+        "height": 540,
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "duration": "2.875000",
+        "nb_frames": "69"
+      }
+    ]
+  },
+  "central-low": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 720,
+        "height": 540,
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "duration": "2.875000",
+        "nb_frames": "69"
+      }
+    ]
+  }
+}

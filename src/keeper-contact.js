@@ -221,7 +221,22 @@ function possiblePatchContact(pose,start,end,radius){
   return !(Math.max(start.x,end.x)<patchBounds.min.x||Math.min(start.x,end.x)>patchBounds.max.x||Math.max(start.y,end.y)<patchBounds.min.y||Math.min(start.y,end.y)>patchBounds.max.y||Math.max(start.z,end.z)<patchBounds.min.z||Math.min(start.z,end.z)>patchBounds.max.z);
 }
 
-export function keeperSurfaceContacts(pose,start,end,radius){
+// Deferred quality owns the local endpoints/time of its rigid glove query.
+// The static glove surface stays valid through later poses and other queries.
+const deferredHandQuality=new WeakMap();
+export function keeperContactQuality(contact){
+  const sample=deferredHandQuality.get(contact);
+  if(sample){
+    const {a,b,time,radius,hull}=sample;let minimum=radius;
+    for(let i=0;i<=4;i++)minimum=Math.min(minimum,hullDistance(a.clone().lerp(b,time+(1-time)*i/4),hull));
+    contact.quality=1-minimum/radius;deferredHandQuality.delete(contact);
+  }
+  return contact.quality;
+}
+
+// The public default stays eager; internal geometry-only and deferred queries
+// retain every hit while avoiding handling work their consumer may not use.
+export function keeperSurfaceContacts(pose,start,end,radius,includeQuality=true){
   const body=keeperBodyRotation(pose),articulated=hasKeeperTorsoArticulation(pose),torso=articulated?keeperTorsoFrames(pose):null,head=torso?.head;
   const parts=[{name:'head',position:head?.position??new Vector3().copy(pose.hip).addScaledVector(pose.up,.63),rotation:articulated?keeperBodyRotation(pose,'head',torso):body,type:'body'}],contacts=[];
   if(!articulated)parts.unshift({name:'torso',position:pose.hip,rotation:body,type:'body'});
@@ -243,9 +258,11 @@ export function keeperSurfaceContacts(pose,start,end,radius){
     // during this physics interval, now measured against the actual glove.
     // Surface entry alone is always R away and would make every catch a graze.
     let minimum=radius;
-    if(part.type==='hand')for(let sample=0;sample<=4;sample++)minimum=Math.min(minimum,hullDistance(a.clone().lerp(b,hit.time+(1-hit.time)*sample/4),hull.exact??hull));
+    if(includeQuality&&includeQuality!=='deferred'&&part.type==='hand')for(let sample=0;sample<=4;sample++)minimum=Math.min(minimum,hullDistance(a.clone().lerp(b,hit.time+(1-hit.time)*sample/4),hull.exact??hull));
     hit.p.applyQuaternion(part.rotation).add(position);hit.q.applyQuaternion(part.rotation).add(position);
-    contacts.push({hit,r:0,type:part.type,part:part.name,quality:1-minimum/radius});
+    const contact={hit,r:0,type:part.type,part:part.name,quality:1-minimum/radius};
+    if(includeQuality==='deferred'&&part.type==='hand')deferredHandQuality.set(contact,{a,b,time:hit.time,radius,hull:hull.exact??hull});
+    contacts.push(contact);
   }
   if(patchSurface&&possiblePatchContact(pose,start,end,radius)){
     const hit=sweepHull(new Vector3().copy(start),new Vector3().copy(end),radius,deformContactPatch(pose,body,articulated&&torsoPose===pose?torsoFrames:null));

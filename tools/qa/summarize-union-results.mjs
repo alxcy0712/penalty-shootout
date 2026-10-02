@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
 const root=fileURLToPath(new URL('../../',import.meta.url)),directory=resolve(process.argv[2]??'/tmp/penalty-union'),destination=resolve(process.argv[3]??'/tmp/penalty-union-summary.json');
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex'),json=async path=>JSON.parse(await readFile(path));
-const union=await json(resolve(directory,'union-report.json')),manifest=resolve(root,'validation/five-rounds/union-fixtures.json'),manifestBytes=await readFile(manifest),fixtures=JSON.parse(manifestBytes);
+const union=await json(resolve(directory,'union-report.json')),manifest=resolve(process.argv[4]??resolve(root,'validation/five-rounds/union-fixtures.json')),manifestBytes=await readFile(manifest),fixtures=JSON.parse(manifestBytes);
 assert.equal(digest(manifestBytes),union.manifestSha256);assert.deepEqual(union.failures,[]);
 const testedFiles={},receipts=[],records=[],trajectoryRecords=[];let bodySamples=0;
 async function verifyHashes(map){for(const [file,hash]of Object.entries(map)){assert.equal(digest(await readFile(resolve(root,file))),hash,`receipt differs from current ${file}`);if(testedFiles[file])assert.equal(testedFiles[file],hash);testedFiles[file]=hash;}}

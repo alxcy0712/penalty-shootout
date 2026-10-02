@@ -1,0 +1,363 @@
+{
+  "status": "passed",
+  "startedAt": "2026-10-02T12:15:37.679Z",
+  "completedAt": "2026-10-02T12:15:52.855Z",
+  "manifestSha256": "04202db770def9622d696b6e2b32fbcb810dd5d15f3f564ea2d17f4653f372d5",
+  "shots": 72,
+  "captures": 8,
+  "cohorts": [
+    {
+      "label": "ten-round-3",
+      "shots": 72
+    }
+  ],
+  "testedFiles": {
+    "src/anatomy.js": "a74e5b65d96305fd4e081b2677ad1b475bd9718ce7f3daea6355d67f9e67af2d",
+    "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+    "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "src/character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+    "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+    "src/engine.js": "4c7874b44cc81208f8c7684f6c11ee92953c567964e929473a3f9765fbabde81",
+    "src/game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+    "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+    "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "src/keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c",
+    "src/keeper-contact.js": "eb688db73553a3c4d9d15b117aaf7824a3667ae631a58fa9be9826675497c55c",
+    "src/keeper-hand-contact.js": "ba5ddf77b02b82c37d1117941ad126b0c57eb3270525454403c8c8e1ded1eb6b",
+    "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+    "src/keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+    "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+    "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+    "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+    "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+    "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+    "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+    "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644",
+    "tools/qa/audit-held-body.mjs": "e0ec8d2d82b977671b77880018c3dc279a2252c64a5cef780a8f5b1181deeb55",
+    "tools/qa/read-audit-fixtures.mjs": "f6d47fcac1325d43931195b03c76d157d20a29358d7147c9aaaadd9bd4464c17",
+    "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+    "tools/qa/audit-character.mjs": "2476e4fee80bd806c0136f1a7b6f5b85c89953e169c7ffd0ec8d87a4001a74f1"
+  },
+  "counts": {
+    "bodyPoses": 1424,
+    "jointSamples": 5384,
+    "skinSphereSamples": 1352,
+    "trajectoryPoses": 794
+  },
+  "protectedCounts": {
+    "forearmTorso": 0,
+    "calfTorso": 0,
+    "oppositeFootCalf": 0
+  },
+  "minimumSkin": -0.0019219374034763204,
+  "minimumSphereGap": -4.480466643252967e-7,
+  "minimumTrajectoryGap": -6.181283990214226e-8,
+  "maximumResolutionsPerStep": 2,
+  "adjacentMaxima": {
+    "upperAndSupportTorso": 0.00461371320324333,
+    "innerElbow": 0.0036687041262946085
+  },
+  "worst": {
+    "ballStep": {
+      "id": "6b321514f9374d1e",
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 84,
+          "reach": 77,
+          "handling": 99
+        },
+        "id": "6b321514f9374d1e",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 12
+          }
+        ]
+      },
+      "metric": {
+        "distance": 0.020003969206624086,
+        "after": 0.008333333333333333,
+        "previous": {
+          "x": -3.1179063496505597,
+          "y": 0.27190709391851764,
+          "z": 0.7725782506051228
+        },
+        "current": {
+          "x": -3.1369390193958595,
+          "y": 0.26821973041970526,
+          "z": 0.7775097429566873
+        }
+      }
+    },
+    "elbowStep": {
+      "id": "6b321514f9374d1e",
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 84,
+          "reach": 77,
+          "handling": 99
+        },
+        "id": "6b321514f9374d1e",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 12
+          }
+        ]
+      },
+      "metric": {
+        "distance": 0.02672830224451139,
+        "after": 0.004166666666666667,
+        "index": 1
+      }
+    },
+    "handStep": {
+      "id": "4ab276a037a37cc5",
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 63,
+          "reach": 56,
+          "handling": 99
+        },
+        "id": "4ab276a037a37cc5",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 0
+          }
+        ]
+      },
+      "metric": {
+        "angle": 0.034717453902495546,
+        "after": 0.23333333333333334,
+        "hand": 0
+      }
+    },
+    "ballMicro": {
+      "id": "6b321514f9374d1e",
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 84,
+          "reach": 77,
+          "handling": 99
+        },
+        "id": "6b321514f9374d1e",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 12
+          }
+        ]
+      },
+      "metric": {
+        "distance": 0.00005002955037787129,
+        "after": 0.004854166666666666
+      }
+    },
+    "elbowMicro": {
+      "id": "6b321514f9374d1e",
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 84,
+          "reach": 77,
+          "handling": 99
+        },
+        "id": "6b321514f9374d1e",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 12
+          }
+        ]
+      },
+      "metric": {
+        "distance": 0.00006748596905769857,
+        "after": 0.000010416666666666666
+      }
+    },
+    "handMicro": {
+      "id": "4ab276a037a37cc5",
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 63,
+          "reach": 56,
+          "handling": 99
+        },
+        "id": "4ab276a037a37cc5",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 0
+          }
+        ]
+      },
+      "metric": {
+        "angle": 0.0000868468566058683,
+        "after": 0.23316666666666666
+      }
+    }
+  },
+  "scope": "All actual catches, regardless of central/lateral classification, use240Hz joint continuity,60Hz whole-skin sphere/floor and the same dense triangle-crossing windows. Every union shot also gets120Hz near-body displayed trajectory checks. Offline CPU geometry, not WebGL or device proof.",
+  "limits": "Sampled sphere/skin distance, selected nonadjacent triangle categories and worst-interval refinement. Adjacent cloth/joint folds are separately recorded. No global continuous-geometry, force-balance, WebGL or mobile-performance proof.",
+  "receipts": [
+    {
+      "shard": 0,
+      "shots": 18,
+      "captures": 2,
+      "files": {
+        "body": {
+          "path": "/tmp/penalty-ten-rounds/round-3/gates/shard-0/body/held-body-audit.json",
+          "sha256": "3273bfafb7b4b63adc3145b9571c188ee56ec175090166bdd8596ef4bc871a17"
+        },
+        "hold": {
+          "path": "/tmp/penalty-ten-rounds/round-3/gates/shard-0/hold/actual-holding-240hz.json",
+          "sha256": "a0effc1a6d240b425ba7594a77b9983b2080c3197d3ca72f09046cc60ec0dbee"
+        },
+        "trajectory": {
+          "path": "/tmp/penalty-ten-rounds/round-3/gates/shard-0/trajectory/near-keeper-trajectory.json",
+          "sha256": "c8782ef7cb0d7c286761047a3ce9d00b2609bc9efd1f0b6ba9f5e42f8d743b6a"
+        }
+      }
+    },
+    {
+      "shard": 1,
+      "shots": 18,
+      "captures": 2,
+      "files": {
+        "body": {
+          "path": "/tmp/penalty-ten-rounds/round-3/gates/shard-1/body/held-body-audit.json",
+          "sha256": "c022261aa4179b606670294d1dc5acdb531ae9ebd4874d5a990ce0e65c8b67dc"
+        },
+        "hold": {
+          "path": "/tmp/penalty-ten-rounds/round-3/gates/shard-1/hold/actual-holding-240hz.json",
+          "sha256": "8dcb20335a5e462dd159191cd5dc5c4dd019c66598728174decb6486a645a919"
+        },
+        "trajectory": {
+          "path": "/tmp/penalty-ten-rounds/round-3/gates/shard-1/trajectory/near-keeper-trajectory.json",
+          "sha256": "f567289c8baa111ad351321e664bfbb8b578cb5985f8c4ebc29c1fef5bd6af65"
+        }
+      }
+    },
+    {
+      "shard": 2,
+      "shots": 18,
+      "captures": 2,
+      "files": {
+        "body": {
+          "path": "/tmp/penalty-ten-rounds/round-3/gates/shard-2/body/held-body-audit.json",
+          "sha256": "b51abaa7d30df969a03a80f175364438a12a07b15f11203c6dfe50f65b6fcf99"
+        },
+        "hold": {
+          "path": "/tmp/penalty-ten-rounds/round-3/gates/shard-2/hold/actual-holding-240hz.json",
+          "sha256": "eb3aa49bc36c79cd794c77f40d8c1cf6a8f19106909dcd6ebf8e68015b052710"
+        },
+        "trajectory": {
+          "path": "/tmp/penalty-ten-rounds/round-3/gates/shard-2/trajectory/near-keeper-trajectory.json",
+          "sha256": "edc87b084ad37bdfefa7e426e7f9467e1f3a2dc69bdb85cdd59071817805069c"
+        }
+      }
+    },
+    {
+      "shard": 3,
+      "shots": 18,
+      "captures": 2,
+      "files": {
+        "body": {
+          "path": "/tmp/penalty-ten-rounds/round-3/gates/shard-3/body/held-body-audit.json",
+          "sha256": "e25360c7ada5685fee73e564157e6558e6de56a525879cff45438d56f45e134f"
+        },
+        "hold": {
+          "path": "/tmp/penalty-ten-rounds/round-3/gates/shard-3/hold/actual-holding-240hz.json",
+          "sha256": "8f5ed902acd57a6c3bce3d037e3ebbdf24819078cb20b8d643aebfdf7ca94b13"
+        },
+        "trajectory": {
+          "path": "/tmp/penalty-ten-rounds/round-3/gates/shard-3/trajectory/near-keeper-trajectory.json",
+          "sha256": "ba20f3d493dfe7eec86f02ffd173f2ebc1ed4bdac9dff6e78413259822001608"
+        }
+      }
+    }
+  ]
+}

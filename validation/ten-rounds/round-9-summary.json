@@ -1,0 +1,224 @@
+{
+  "round": 9,
+  "status": "Scoped quality-work optimization complete; full Round 10 aggregate gates belong to parent",
+  "baseline": "a9b5be0a57c5bc1a8a512caf140ad7e5c043a560",
+  "scope": "Skip unused handling-quality work only; no pose/transform cache, geometry changes or tolerance changes",
+  "files": {
+    "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+    "src/keeper-contact.js": "6dd93bdfee091168b6bb85c263b58578fbb1fbec031374361fd415c2b454007a",
+    "tests/contact-quality-work.test.js": "82d4ca8a721ea1d77d5bee5a0862fad35b5b11df3efc7c812b0fcaecb7d36359",
+    "tools/qa/verify-contact-quality.mjs": "fb94c57edcf988096ca6b8067bdfd68b84846f4fe5cd31eff664d979af8ba977"
+  },
+  "fixedFixture": {
+    "path": "validation/ten-rounds/union-fixtures.json",
+    "sha256": "5949a1c7f718e096868039d0037c3d064a130ae15bcd4deb244c453902ffa6ec",
+    "expectedCaptures": 205
+  },
+  "outcome": {
+    "shots": 645,
+    "steps": 152036,
+    "caught": 205,
+    "touched": 417,
+    "goals": 240,
+    "reboundGoals": 12,
+    "unfinished": 0
+  },
+  "comparedStates": 291137,
+  "traceSha256": "8f639a3c4383d0bcbf40081d1d71b1241e8f3b752caed494b157dba1c05bf176",
+  "restores": {
+    "cases": 645,
+    "steps": 137757,
+    "legacyCases": 18,
+    "sharedCases": 18
+  },
+  "queries": {
+    "poses": 36,
+    "defaultQueries": 432,
+    "geometryQueries": 432,
+    "repeatQueries": 432
+  },
+  "physicalWork": {
+    "before": {
+      "queries": 17596,
+      "geometryOnlyQueries": 0,
+      "deferredQueries": 0,
+      "handHits": 815,
+      "qualityScans": 4075,
+      "qualityFaceVisits": 6540375
+    },
+    "after": {
+      "queries": 17596,
+      "geometryOnlyQueries": 33,
+      "deferredQueries": 17563,
+      "handHits": 815,
+      "qualityScans": 2260,
+      "qualityFaceVisits": 3627300
+    }
+  },
+  "minimalPhysicalWork": {
+    "before": {
+      "queries": 17596,
+      "geometryOnlyQueries": 0,
+      "deferredQueries": 0,
+      "handHits": 815,
+      "qualityScans": 4075,
+      "qualityFaceVisits": 6540375
+    },
+    "after": {
+      "queries": 17596,
+      "geometryOnlyQueries": 33,
+      "deferredQueries": 0,
+      "handHits": 815,
+      "qualityScans": 3940,
+      "qualityFaceVisits": 6323700
+    }
+  },
+  "savings": {
+    "surfaceQueries": 0,
+    "qualityScans": 1815,
+    "qualityFaceVisits": 2913075,
+    "qualityScanPercent": 44.5398773006135
+  },
+  "focusedTests": {
+    "passed": 26,
+    "failed": 0,
+    "skipped": 0,
+    "newQualityTests": 5
+  },
+  "timings": {
+    "causalCanonical": {
+      "baseline": "a9b5be0a57c5bc1a8a512caf140ad7e5c043a560",
+      "rounds": 5,
+      "before": {
+        "medianTotalMs": 937.229374999999,
+        "medianNearKeeperP99Ms": 1.2974130000002333,
+        "minTotalMs": 867.6473639999986,
+        "maxTotalMs": 986.6982279999993,
+        "outcome": {
+          "shots": 135,
+          "steps": 22084,
+          "caught": 36,
+          "touched": 58,
+          "goals": 78,
+          "reboundGoals": 1,
+          "unfinished": 0
+        }
+      },
+      "after": {
+        "medianTotalMs": 885.9588949999998,
+        "medianNearKeeperP99Ms": 1.1874969999998939,
+        "minTotalMs": 874.5290609999993,
+        "maxTotalMs": 996.1786670000001,
+        "outcome": {
+          "shots": 135,
+          "steps": 22084,
+          "caught": 36,
+          "touched": 58,
+          "goals": 78,
+          "reboundGoals": 1,
+          "unfinished": 0
+        }
+      },
+      "medianTotalPercentChange": -5.470430330888776,
+      "medianNearP99PercentChange": -8.47193607589254,
+      "pairedTotalPercentChanges": [
+        -1.0131284747812108,
+        -2.0261192766629077,
+        1.8686222269633124,
+        -6.291678277796264,
+        0.7931444600113746
+      ]
+    },
+    "causalUnion": {
+      "baseline": "a9b5be0a57c5bc1a8a512caf140ad7e5c043a560",
+      "rounds": 5,
+      "before": {
+        "medianTotalMs": 5150.521528000005,
+        "medianNearKeeperP99Ms": 1.1722940000036033,
+        "minTotalMs": 4866.561500000003,
+        "maxTotalMs": 5421.223705000004,
+        "outcome": {
+          "shots": 645,
+          "steps": 152036,
+          "caught": 205,
+          "touched": 417,
+          "goals": 240,
+          "reboundGoals": 12,
+          "unfinished": 0
+        }
+      },
+      "after": {
+        "medianTotalMs": 5158.259781000001,
+        "medianNearKeeperP99Ms": 1.1003949999976612,
+        "minTotalMs": 5073.772081000001,
+        "maxTotalMs": 5507.411889000003,
+        "outcome": {
+          "shots": 645,
+          "steps": 152036,
+          "caught": 205,
+          "touched": 417,
+          "goals": 240,
+          "reboundGoals": 12,
+          "unfinished": 0
+        }
+      },
+      "medianTotalPercentChange": 0.15024212515040158,
+      "medianNearP99PercentChange": -6.133188432741365,
+      "pairedTotalPercentChanges": [
+        -0.35962559003238637,
+        -3.1557783063065337,
+        6.929208218232263,
+        5.99392982088065,
+        0.044854817515682655
+      ]
+    },
+    "publishedUnion": {
+      "baseline": "2caec2cfa693bb7f8d88271a2bff792fbe213159",
+      "rounds": 5,
+      "before": {
+        "medianTotalMs": 5234.426665999999,
+        "medianNearKeeperP99Ms": 1.2305919999998878,
+        "minTotalMs": 5157.695526000003,
+        "maxTotalMs": 5699.391694999998,
+        "outcome": {
+          "shots": 645,
+          "steps": 152036,
+          "caught": 205,
+          "touched": 417,
+          "goals": 240,
+          "reboundGoals": 12,
+          "unfinished": 0
+        }
+      },
+      "after": {
+        "medianTotalMs": 5016.866322000002,
+        "medianNearKeeperP99Ms": 1.0856239999993704,
+        "minTotalMs": 4795.920735,
+        "maxTotalMs": 5242.816320999998,
+        "outcome": {
+          "shots": 645,
+          "steps": 152036,
+          "caught": 205,
+          "touched": 417,
+          "goals": 240,
+          "reboundGoals": 12,
+          "unfinished": 0
+        }
+      },
+      "medianTotalPercentChange": -4.156335696001856,
+      "medianNearP99PercentChange": -11.78034636992038,
+      "pairedTotalPercentChanges": [
+        -8.010949210606944,
+        -12.737524766415476,
+        -5.8796626801890355,
+        -3.1789335259600815,
+        -3.5889312237429083
+      ]
+    }
+  },
+  "limitations": [
+    "Causal union total timing is unchanged within overlapping observed ranges; do not claim a broad physics speedup.",
+    "Published-baseline comparison measures all accepted changes since 2caec2c and does not isolate Round 9.",
+    "Cloud Node CPU evidence does not measure browser rendering, GPU, sustained phone FPS, heat or battery."
+  ]
+}

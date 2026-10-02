@@ -1,0 +1,39 @@
+{
+  "baseline": "2caec2cfa693bb7f8d88271a2bff792fbe213159",
+  "sameTotals": true,
+  "totals": {
+    "mainCandidates": 38,
+    "shadowCandidates": 22,
+    "mainMeshTriangles": 63566,
+    "shadowMeshTriangles": 36746
+  },
+  "generatedTextureLogicalBytes": 5963772,
+  "rigidArchitecture": {
+    "triangles": 996,
+    "sha256": "efb7da8417d16d5f67079a7835ee8a40fee1347d493fb52070a065b0bc810387",
+    "scope": "Triangle multiset with winding, world positions/normals, UV/colors at1e-5 precision and material parameters; excludes UUID, batching boundaries, cast/receive shadow flags; Canvas image dimensions only, not rendered texels"
+  },
+  "scope": "CPU scene candidates before camera/shadow frustum culling; initial visibility includes aim, arc and trail. Not renderer.info, GPU timings or mobile FPS. Transparent double-sided extra passes not modeled.",
+  "textureScope": "Generated scene CanvasTextures only; excludes GLB maps, number maps, hidden fallback resources, shadow/depth targets and driver/MSAA allocations. RGBA8 logical mip size, not measured GPU memory.",
+  "gates": {
+    "mainCandidates": true,
+    "shadowCandidates": true,
+    "triangles": true,
+    "generatedTextureBytes": true
+  },
+  "sceneSha256": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+  "assets": {
+    "assets/characters/keeper-prototype.glb": {
+      "bytes": 449480,
+      "sha256": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772"
+    },
+    "assets/characters/striker-mocap.glb": {
+      "bytes": 446784,
+      "sha256": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f"
+    },
+    "assets/characters/mocap-variants/cmu-10_03-kick.glb": {
+      "bytes": 91676,
+      "sha256": "19d2dc23fbc6df84ebb6a4e706a0701f0c16b17daa4ce3b6366dac108e8bdeeb"
+    }
+  }
+}

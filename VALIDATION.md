@@ -1,3 +1,5 @@
+> Latest ten additional rounds: [2026-10-02 ten-round audit](validation/TEN_ROUNDS_2026-10-02.md) — 369 tests, 645 shots / 205 catches, corrected frame-contact ordering and endpoint entry, exact-output reduction of handling-quality work, and explicit CPU/visual limits.
+
 > Latest five-round validation: [2026-10-02 sequential audit](validation/FIVE_ROUNDS_2026-10-02.md) — 332 tests, uniform 525-shot/184-catch acceptance, rebound contact and interrupted mobile-input repairs, with measured CPU tradeoffs.
 
 > Latest next-round camera pass: [2026-10-02 round handover](validation/ROUND_HANDOVER_2026-10-02.md) — 282 tests, immediate stable role cuts, interruption-safe resets and bounded static portrait framing across all four ready styles.

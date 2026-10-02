@@ -1,0 +1,1896 @@
+{
+  "baseline": "2caec2cfa693bb7f8d88271a2bff792fbe213159",
+  "scope": "Additional full deterministic cohort, all shots and derived catches retained",
+  "cohorts": [
+    {
+      "label": "ten-round-3",
+      "shots": 72
+    }
+  ],
+  "denseWindows": [
+    [
+      0,
+      0.9
+    ],
+    [
+      0.95,
+      1.4
+    ]
+  ],
+  "expectedCaptures": 8,
+  "engineSha256": "4c7874b44cc81208f8c7684f6c11ee92953c567964e929473a3f9765fbabde81",
+  "fixtures": [
+    {
+      "aim": {
+        "x": -3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 63,
+        "reach": 56,
+        "handling": 99
+      },
+      "id": "4ab276a037a37cc5",
+      "expectedCaught": true,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 63,
+        "reach": 63,
+        "handling": 90
+      },
+      "id": "101a9dcfd4994c84",
+      "expectedCaught": true,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 63,
+        "reach": 56,
+        "handling": 99
+      },
+      "id": "a2d00c8011fbc22a",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 63,
+        "reach": 63,
+        "handling": 90
+      },
+      "id": "bc594d51be6c2793",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 63,
+        "reach": 56,
+        "handling": 99
+      },
+      "id": "478086aba84640de",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 63,
+        "reach": 63,
+        "handling": 90
+      },
+      "id": "049b7d5270cb51d1",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 5
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 67,
+        "reach": 60,
+        "handling": 99
+      },
+      "id": "9534f683f4e24412",
+      "expectedCaught": true,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 6
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 67,
+        "reach": 67,
+        "handling": 90
+      },
+      "id": "2225b8def512dc40",
+      "expectedCaught": true,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 7
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 67,
+        "reach": 60,
+        "handling": 99
+      },
+      "id": "4a00c9c5e4f9edd1",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 8
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 67,
+        "reach": 67,
+        "handling": 90
+      },
+      "id": "e8f98124566ceeac",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 9
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 67,
+        "reach": 60,
+        "handling": 99
+      },
+      "id": "05366c849d8372ff",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 10
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 67,
+        "reach": 67,
+        "handling": 90
+      },
+      "id": "c9171c0d1386df6c",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 11
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 84,
+        "reach": 77,
+        "handling": 99
+      },
+      "id": "6b321514f9374d1e",
+      "expectedCaught": true,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 12
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 84,
+        "reach": 84,
+        "handling": 90
+      },
+      "id": "1faf072bd65d4941",
+      "expectedCaught": true,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 13
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 84,
+        "reach": 77,
+        "handling": 99
+      },
+      "id": "34e3e8291f29e1a3",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 14
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 84,
+        "reach": 84,
+        "handling": 90
+      },
+      "id": "927adcf0d49fdc4c",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 15
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 84,
+        "reach": 77,
+        "handling": 99
+      },
+      "id": "f6aad9a439870544",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 16
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 84,
+        "reach": 84,
+        "handling": 90
+      },
+      "id": "3bb401e65281445b",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 17
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 86,
+        "reach": 79,
+        "handling": 99
+      },
+      "id": "8d6b8440311c4976",
+      "expectedCaught": true,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 18
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 86,
+        "reach": 86,
+        "handling": 90
+      },
+      "id": "428d421e0b485e92",
+      "expectedCaught": true,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 19
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 86,
+        "reach": 79,
+        "handling": 99
+      },
+      "id": "7a70080a70ee36a2",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 20
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 86,
+        "reach": 86,
+        "handling": 90
+      },
+      "id": "be435cc58ebe37d0",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 21
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 86,
+        "reach": 79,
+        "handling": 99
+      },
+      "id": "4bb0cd1cfeb840f4",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 22
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 86,
+        "reach": 86,
+        "handling": 90
+      },
+      "id": "46148e48e8a0e796",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 23
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 98,
+        "reach": 91,
+        "handling": 99
+      },
+      "id": "e2bb967f076850ed",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 24
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 98,
+        "reach": 98,
+        "handling": 90
+      },
+      "id": "160ef40072e34f77",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 25
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 98,
+        "reach": 91,
+        "handling": 99
+      },
+      "id": "2e16c06c4b43a8d7",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 26
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 98,
+        "reach": 98,
+        "handling": 90
+      },
+      "id": "69c5ff9d247b456a",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 27
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 98,
+        "reach": 91,
+        "handling": 99
+      },
+      "id": "4a2316929bcb47d0",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 28
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 98,
+        "reach": 98,
+        "handling": 90
+      },
+      "id": "992c2ee9d8c37530",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 29
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 99,
+        "reach": 92,
+        "handling": 99
+      },
+      "id": "3eaa49abd358620f",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 30
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 99,
+        "reach": 99,
+        "handling": 90
+      },
+      "id": "055a2dcfda87c063",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 31
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 99,
+        "reach": 92,
+        "handling": 99
+      },
+      "id": "23a5d9d55aa1ccab",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 32
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": -1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 99,
+        "reach": 99,
+        "handling": 90
+      },
+      "id": "b4f048123876c0dd",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 33
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 99,
+        "reach": 92,
+        "handling": 99
+      },
+      "id": "3106e1062390be14",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 34
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": -1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 99,
+        "reach": 99,
+        "handling": 90
+      },
+      "id": "87095f763a157918",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 35
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 63,
+        "reach": 56,
+        "handling": 99
+      },
+      "id": "d642eb3741815825",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 36
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 63,
+        "reach": 63,
+        "handling": 90
+      },
+      "id": "23b488660f21405b",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 37
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 63,
+        "reach": 56,
+        "handling": 99
+      },
+      "id": "1056dadeb04e0d53",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 38
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 63,
+        "reach": 63,
+        "handling": 90
+      },
+      "id": "ec634ad52a134a5b",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 39
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 63,
+        "reach": 56,
+        "handling": 99
+      },
+      "id": "441884c58882dfcc",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 40
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 63,
+        "reach": 63,
+        "handling": 90
+      },
+      "id": "f6751dab21241327",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 41
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 67,
+        "reach": 60,
+        "handling": 99
+      },
+      "id": "e6a11a63133a0878",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 42
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 67,
+        "reach": 67,
+        "handling": 90
+      },
+      "id": "a5bfb1a569b9109d",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 43
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 67,
+        "reach": 60,
+        "handling": 99
+      },
+      "id": "6ca209b0751bd8f9",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 44
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 67,
+        "reach": 67,
+        "handling": 90
+      },
+      "id": "24bc15d913dbba19",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 45
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 67,
+        "reach": 60,
+        "handling": 99
+      },
+      "id": "cb6bcb3d88cbe867",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 46
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 67,
+        "reach": 67,
+        "handling": 90
+      },
+      "id": "79d89f62e2151208",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 47
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 84,
+        "reach": 77,
+        "handling": 99
+      },
+      "id": "1b5b5a8ac6232ec8",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 48
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 84,
+        "reach": 84,
+        "handling": 90
+      },
+      "id": "7ed85074526e2e46",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 49
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 84,
+        "reach": 77,
+        "handling": 99
+      },
+      "id": "749ce5737f916d0c",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 50
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 84,
+        "reach": 84,
+        "handling": 90
+      },
+      "id": "10380bf92bedfbb4",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 51
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 84,
+        "reach": 77,
+        "handling": 99
+      },
+      "id": "cd0389965182f466",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 52
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 84,
+        "reach": 84,
+        "handling": 90
+      },
+      "id": "f5b8079b6ce8c2ae",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 53
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 86,
+        "reach": 79,
+        "handling": 99
+      },
+      "id": "70ba42b381e404d5",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 54
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 86,
+        "reach": 86,
+        "handling": 90
+      },
+      "id": "dc4c127692770084",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 55
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 86,
+        "reach": 79,
+        "handling": 99
+      },
+      "id": "385e7a3864fe0d3d",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 56
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 86,
+        "reach": 86,
+        "handling": 90
+      },
+      "id": "c7866a78d53f0c83",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 57
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 86,
+        "reach": 79,
+        "handling": 99
+      },
+      "id": "8bcb1352c79881b6",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 58
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 86,
+        "reach": 86,
+        "handling": 90
+      },
+      "id": "6aa5ff90946dc570",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 59
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 98,
+        "reach": 91,
+        "handling": 99
+      },
+      "id": "aed508fbc6b315c0",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 60
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 98,
+        "reach": 98,
+        "handling": 90
+      },
+      "id": "edb90d5d2c3bf95b",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 61
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 98,
+        "reach": 91,
+        "handling": 99
+      },
+      "id": "ef046177db1cd6a8",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 62
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 98,
+        "reach": 98,
+        "handling": 90
+      },
+      "id": "224713c660431b0f",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 63
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 98,
+        "reach": 91,
+        "handling": 99
+      },
+      "id": "15e62936981bd810",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 64
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 98,
+        "reach": 98,
+        "handling": 90
+      },
+      "id": "7c2496c1cf4943cb",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 65
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 99,
+        "reach": 92,
+        "handling": 99
+      },
+      "id": "0db70648adb1107c",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 66
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 3.29,
+        "y": 0.19,
+        "power": 0.535
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 99,
+        "reach": 99,
+        "handling": 90
+      },
+      "id": "c97836d40ca670e1",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 67
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 99,
+        "reach": 92,
+        "handling": 99
+      },
+      "id": "d08334e2e5d43089",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 68
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 1.21,
+        "power": 0.51
+      },
+      "direction": 1,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 99,
+        "reach": 99,
+        "handling": 90
+      },
+      "id": "91bb09445099afa3",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 69
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 99,
+        "reach": 92,
+        "handling": 99
+      },
+      "id": "0ef3686c8db9dece",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 70
+        }
+      ]
+    },
+    {
+      "aim": {
+        "x": 1.48,
+        "y": 2.21,
+        "power": 0.51
+      },
+      "direction": 0,
+      "seed": 2029,
+      "stats": {
+        "accuracy": 90,
+        "power": 90,
+        "touch": 90,
+        "composure": 90,
+        "speed": 99,
+        "reach": 99,
+        "handling": 90
+      },
+      "id": "a84279a93f8e195f",
+      "expectedCaught": false,
+      "origins": [
+        {
+          "cohort": "ten-round-3",
+          "index": 71
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "round": 7,
+  "status": "passed",
+  "verified_at_utc": "2026-10-02T12:38:16.431810+00:00",
+  "node": "v24.19.0",
+  "command": "node --test tests/ten-round-input.test.js tests/mobile-lifecycle-round.test.js tests/round-camera-handover.test.js tests/shot-input-state.test.js",
+  "tests": 67,
+  "pass": 67,
+  "fail": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "todo": 0,
+  "duration_ms": 1176.762302,
+  "coverage_counts": {
+    "new_round_7_input": 14,
+    "existing_mobile_lifecycle": 29,
+    "existing_round_camera_handover": 17,
+    "existing_shot_input": 7
+  },
+  "new_coverage": [
+    "Defender multi-pointer and touch/mouse/pen ownership, direction reversal and committed-dive isolation",
+    "Portrait/landscape layout changes during a held touch retain a stationary attacker and a single commit",
+    "Hidden pause rejects extra input, excludes hidden time and accepts a fresh touch after the old release",
+    "Home and mode change replace gesture elements; retired same-ID handlers cannot affect the next scene"
+  ],
+  "source_sha256": {
+    "src/engine.js": "2ce704fd45474941dba496425fd6c1b73d9210a6df620f4c3356680d1943d131",
+    "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+    "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "tests/helpers/main-harness.js": "c359c50e45fa1f694ba65f32b5c62e534a36273f0b678ecda3a215b779905537",
+    "tests/ten-round-input.test.js": "323fa9733ead926ee76854c2984656645134bc2af7069788a18784e84ede824a",
+    "tests/mobile-lifecycle-round.test.js": "52ed64b89ebe3a5399eecf73ae1858cc3eec3bcadacc647922a5465037f52799",
+    "tests/round-camera-handover.test.js": "bc67a9220698d1ba14de8abb874370e34f657049f1c5f24b4c5f18fe8cffc8b5",
+    "tests/shot-input-state.test.js": "76a8a60eed351b4cee99bd434af93f2ee429fe3e66383911dcda6334b8d9c7bb"
+  },
+  "log_sha256": "53c4aae2e6a3658cc6c20a886bfc8bbc4d7ae0a442657fadf73009f9db65dd45",
+  "runtime_or_shared_harness_edits": false,
+  "test_edits_during_run": false,
+  "round_8_executed": false,
+  "limits": [
+    "Node integration tests use real application handlers, Match/Shot and Stadium with controlled DOM, storage, RAF and renderer stubs",
+    "Layout bounds simulate orientation changes; no real browser/phone rotation, GPU or touchscreen claim",
+    "Retired pointer events target a replaced element; no impossible same-element recycled-pointer ordering is assumed"
+  ]
+}

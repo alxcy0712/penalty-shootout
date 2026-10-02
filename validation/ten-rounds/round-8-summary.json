@@ -1,0 +1,153 @@
+{
+  "round": 8,
+  "status": "passed",
+  "verified_at_utc": "2026-10-02T12:40:35.784274+00:00",
+  "node": "v24.19.0",
+  "command": "node --test tests/ten-round-match-restore.test.js",
+  "tests": 12,
+  "pass": 12,
+  "fail": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "todo": 0,
+  "duration_ms": 9181.694771,
+  "main_stress_matrix": [
+    {
+      "mode": "simple",
+      "schedule": "30 Hz",
+      "complete_matches": 6,
+      "resolved_shots": 49,
+      "home_save_restore_cycles": 150
+    },
+    {
+      "mode": "simple",
+      "schedule": "60 Hz",
+      "complete_matches": 6,
+      "resolved_shots": 49,
+      "home_save_restore_cycles": 150
+    },
+    {
+      "mode": "simple",
+      "schedule": "120 Hz",
+      "complete_matches": 6,
+      "resolved_shots": 49,
+      "home_save_restore_cycles": 150
+    },
+    {
+      "mode": "simple",
+      "schedule": "irregular RAF",
+      "complete_matches": 6,
+      "resolved_shots": 49,
+      "home_save_restore_cycles": 150
+    },
+    {
+      "mode": "advanced",
+      "schedule": "30 Hz",
+      "complete_matches": 6,
+      "resolved_shots": 50,
+      "home_save_restore_cycles": 141
+    },
+    {
+      "mode": "advanced",
+      "schedule": "60 Hz",
+      "complete_matches": 6,
+      "resolved_shots": 50,
+      "home_save_restore_cycles": 141
+    },
+    {
+      "mode": "advanced",
+      "schedule": "120 Hz",
+      "complete_matches": 6,
+      "resolved_shots": 50,
+      "home_save_restore_cycles": 141
+    },
+    {
+      "mode": "advanced",
+      "schedule": "irregular RAF",
+      "complete_matches": 6,
+      "resolved_shots": 50,
+      "home_save_restore_cycles": 141
+    }
+  ],
+  "main_stress_totals": {
+    "complete_matches": 48,
+    "resolved_shots": 396,
+    "home_save_restore_cycles": 1164
+  },
+  "independent_application_branches": [
+    {
+      "mode": "simple",
+      "completedMatches": 2,
+      "shots": [
+        10,
+        10
+      ],
+      "freshRestores": 2
+    },
+    {
+      "mode": "advanced",
+      "completedMatches": 2,
+      "shots": [
+        9,
+        9
+      ],
+      "freshRestores": 2
+    }
+  ],
+  "all_primary_test_totals": {
+    "completed_match_paths": 52,
+    "resolved_shot_outcomes": 434,
+    "home_save_restore_cycles": 1164,
+    "fresh_application_restores": 4,
+    "all_restore_operations": 1168,
+    "source_applications_left_at_midflight": 2
+  },
+  "counting_note": "The four branch paths continue two mid-flight source saves through complete final matches. The two source applications remain at their frozen mid-flight checkpoint. Supplementary counting reran only those two tests in an instrumented temporary copy; its repeated outcomes are not added again to primary totals.",
+  "supplementary_count_run": {
+    "command": "node --test --test-name-pattern='two fresh applications' /tmp/penalty-ten-rounds/round-8/count-independent-branches.mjs",
+    "pass": 2,
+    "fail": 0,
+    "duration_ms": 882.133124,
+    "change": "Temporary copy rewrites import URLs and adds one diagnostic line; assertions unchanged, both repository test files remain byte-identical to their green versions."
+  },
+  "restored_phases": [
+    "ready",
+    "aim",
+    "power (simple mode)",
+    "guard",
+    "runup",
+    "flight",
+    "result",
+    "finish"
+  ],
+  "determinism": "Identical seeded control sequence compared across 30/60/120 Hz and irregular RAF: physical outcomes, terminal match state, score/history and RNG; numeric tolerance 1e-7, exact structure and nonnumeric values.",
+  "isolation": [
+    "Archived prior rematch scores and histories remain unchanged",
+    "Source and sibling applications remain unchanged while another restored application plays to completion",
+    "Repeated result/Next input cannot append a duplicate score or evolve the settled physical shot",
+    "New round and rematch reset observable Stadium shot, trail, ball, camera role and striker phase"
+  ],
+  "source_sha256": {
+    "src/engine.js": "2ce704fd45474941dba496425fd6c1b73d9210a6df620f4c3356680d1943d131",
+    "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+    "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "src/anatomy.js": "a74e5b65d96305fd4e081b2677ad1b475bd9718ce7f3daea6355d67f9e67af2d",
+    "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "tests/helpers/main-harness.js": "c359c50e45fa1f694ba65f32b5c62e534a36273f0b678ecda3a215b779905537",
+    "tests/ten-round-match-restore.test.js": "1c3402b34434808c46f27c7456332315a204a92e55b711d341fa979bfd0f2b8c",
+    "tests/ten-round-input.test.js": "323fa9733ead926ee76854c2984656645134bc2af7069788a18784e84ede824a"
+  },
+  "artifact_sha256": {
+    "test-output.log": "ecfc53266ae4f529a8bef5d1a92215a0de5791b071eb99e1f6ad77e32763af98",
+    "branch-count-output.log": "629c6b9d84ee9f00cc5b53126e0a573d23c2dfa6ee1428744b3195ac2652cb4e",
+    "count-independent-branches.mjs": "f6641974fa46f38a1a562ad8c025972a8e6b025b00b02fca3d78ea6befba8a3b"
+  },
+  "runtime_or_shared_harness_edits": false,
+  "test_edits_during_round": false,
+  "repairs_needed": false,
+  "limits": [
+    "Node integration with real Match/Shot, main handlers/frame loop and Stadium; controlled DOM/storage/RAF/renderer stubs",
+    "No browser or phone GPU/touchscreen claim",
+    "Cross-RAF comparison covers physical outcomes and gameplay state, not frame-dependent presentation clocks"
+  ]
+}

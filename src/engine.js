@@ -1,4 +1,4 @@
-import {keeperSurfaceContacts,keeperPalmCenter} from './keeper-contact.js';
+import {keeperSurfaceContacts,keeperPalmCenter,keeperContactQuality} from './keeper-contact.js';
 import {goalkeeperPose,blendKeeperPose,keeperPreparation,placeKeeperPose,keeperHesitationPose} from './anatomy.js';
 import {keeperResultRecovery} from './keeper-result-recovery.js';
 export const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
@@ -84,7 +84,10 @@ function sweptDistance(p0,p1,a,b,radius=0) {
     if(len(sub(p,nearest(p,a,b))) < len(sub(q,nearest(q,a,b)))) hi=t2; else lo=t1;
   }
   let time=(lo+hi)/2,p=add(p0,mul(sub(p1,p0),time)),q=nearest(p,a,b);
-  const distance=len(sub(p,q));
+  let distance=len(sub(p,q));
+  // The ternary interior sample does not include either endpoint. A short
+  // segment can first enter a post in its final fraction; retain that contact.
+  for(const [endpoint,t]of [[p0,0],[p1,1]]){const nearestPoint=nearest(endpoint,a,b),d=len(sub(endpoint,nearestPoint));if(d<distance){distance=d;time=t;p=endpoint;q=nearestPoint;}}
   if(radius && distance<radius){
     // Find first surface entry, before the ball crosses the capsule axis.
     let start=0,end=time;
@@ -101,11 +104,11 @@ function sweptDistance(p0,p1,a,b,radius=0) {
 function keeperFloorEscape(pose,center,radius,padding=.005){
   const points=[pose.hip,pose.shoulder,pose.head??pose.shoulder,...pose.hands,...pose.elbows,...pose.knees,...pose.feet];
   const extent=Math.max(...points.flatMap(p=>[Math.abs(p.x-center.x),Math.abs(p.z-center.z)]))+radius+.30;
-  if(!keeperSurfaceContacts(pose,center,center,radius).length)return {point:center};
+  if(!keeperSurfaceContacts(pose,center,center,radius,false).length)return {point:center};
   let best=null,distance=Infinity;
   for(const axis of ['x','z'])for(const side of [-1,1]){
     const start={...center,[axis]:center[axis]+side*extent};let first=null;
-    for(const contact of keeperSurfaceContacts(pose,start,center,radius))if(!first||contact.hit.time<first.hit.time)first=contact;
+    for(const contact of keeperSurfaceContacts(pose,start,center,radius,false))if(!first||contact.hit.time<first.hit.time)first=contact;
     if(!first)continue;
     if(first.hit.time<=0)continue;
     const point={...first.hit.p,[axis]:first.hit.p[axis]+side*padding},offset=sub(point,center),squared=dot(offset,offset);
@@ -296,20 +299,12 @@ export class Shot {
       if(this.velocity.y<-.8) { this.velocity.y*=-.33; this.velocity.x*=.78; this.velocity.z*=.78; }
       else { this.velocity.y=0; const friction=Math.max(0,1-.8*dt/(Math.hypot(this.velocity.x,this.velocity.z)||1)); this.velocity.x*=friction;this.velocity.z*=friction; }
     }
-    if(this.t>this.postUntil && Math.min(Math.abs(this.ball.z),Math.abs(this.previous.z))<.5) {
-      const x=GOAL.half+GOAL.postRadius,y=GOAL.height+GOAL.postRadius,z=GOAL.postRadius;
-      const posts=[[v(-x,0,z),v(-x,y,z)],[v(x,0,z),v(x,y,z)],[v(-x,y,z),v(x,y,z)]];
-      for(const [a,b] of posts) {
-        const hit=sweptDistance(this.previous,this.ball,a,b,GOAL.radius+GOAL.postRadius);
-        if(hit.distance<GOAL.radius+GOAL.postRadius) { this.reflect(hit,GOAL.radius+GOAL.postRadius,.72); this.post=true; this.postUntil=this.t+.04; break; }
-      }
-    }
     const crossing=this.previous.z>=-GOAL.radius&&this.ball.z<-GOAL.radius?(-GOAL.radius-this.previous.z)/(this.ball.z-this.previous.z):Infinity;
     let crossingPoint=Number.isFinite(crossing)?add(this.previous,mul(sub(this.ball,this.previous),crossing)):null;
     // Include every limb: a recovering boot may extend ahead of both palms.
     // The shipped extremities extend less than .25 m beyond these rig points.
     const p=this.pose,keeperFront=Math.max(p.hip.z,p.shoulder.z,p.head?.z??p.shoulder.z,p.hips[0].z,p.hips[1].z,p.shoulders[0].z,p.shoulders[1].z,p.hands[0].z,p.hands[1].z,p.elbows[0].z,p.elbows[1].z,p.knees[0].z,p.knees[1].z,p.feet[0].z,p.feet[1].z)+GOAL.radius+.25;
-    if(Math.min(this.ball.z,this.previous.z)<keeperFront && Math.max(this.ball.z,this.previous.z)>-.4) {
+    if((Math.min(this.ball.z,this.previous.z)<keeperFront && Math.max(this.ball.z,this.previous.z)>-.4)||Math.min(Math.abs(this.ball.z),Math.abs(this.previous.z))<.5) {
       // Resolve calibrated skin surfaces in time order. A capsule extending
       // beyond a wrist/elbow can otherwise block a ball before the glove does.
       let sweepStart=this.previous;
@@ -321,11 +316,23 @@ export class Shot {
         // Keep the last actual segment for goal-mouth edge classification.
         crossingPoint=Number.isFinite(currentCrossing)?add(sweepStart,mul(sub(this.ball,sweepStart),currentCrossing)):null;
         let contact=null;
-        for(const surface of keeperSurfaceContacts(p,sweepStart,this.ball,GOAL.radius))if(surface.hit.time<currentCrossing&&(!contact||surface.hit.time<contact.hit.time))contact=surface;
+        if(Math.min(this.ball.z,sweepStart.z)<keeperFront&&Math.max(this.ball.z,sweepStart.z)>-.4)
+          for(const surface of keeperSurfaceContacts(p,sweepStart,this.ball,GOAL.radius,'deferred'))if(surface.hit.time<currentCrossing&&(!contact||surface.hit.time<contact.hit.time))contact=surface;
+        // Posts and keeper share one timeline: a later frame impact cannot
+        // reflect the velocity before a nearer glove or body surface is hit.
+        if(this.t>this.postUntil&&Math.min(Math.abs(this.ball.z),Math.abs(sweepStart.z))<.5){
+          const x=GOAL.half+GOAL.postRadius,y=GOAL.height+GOAL.postRadius,z=GOAL.postRadius;
+          for(const [a,b]of [[v(-x,0,z),v(-x,y,z)],[v(x,0,z),v(x,y,z)],[v(-x,y,z),v(x,y,z)]]){
+            const hit=sweptDistance(sweepStart,this.ball,a,b,GOAL.radius+GOAL.postRadius);
+            if(hit.distance<GOAL.radius+GOAL.postRadius&&hit.time<currentCrossing&&(!contact||hit.time<contact.hit.time))contact={hit,type:'post'};
+          }
+        }
         if(contact){
           crossingPoint=null;
           const {hit,r,type}=contact;
-          {
+          if(type==='post'){
+            this.reflect(hit,GOAL.radius+GOAL.postRadius,.72);this.post=true;this.postUntil=this.t+.04;
+          }else{
             // A parry's handling cooldown must never make the keeper transparent:
             // the rebound can meet the same glove, the other palm or a leg before
             // it expires. Resolve the earliest surface every step; only suppress
@@ -333,7 +340,7 @@ export class Shot {
             const canHandle=this.t>(this.handlingUntil[contact.part]??0);
             this.contactPart=contact.part;this.touched=true; this.contactUntil=this.t+.09;
             if(type==='hand'&&canHandle)this.handlingUntil[contact.part]=this.contactUntil;
-            const quality=clamp(contact.quality,.05,1);
+            const quality=clamp(type==='hand'&&canHandle?keeperContactQuality(contact):contact.quality,.05,1);
             const secure=(this.keeper.handling/100)*(.64+.36*quality)*(1-Math.max(0,this.launchSpeed-23)*.013)*this.keeperPressure;
             let capture=type==='hand'&&canHandle&&this.rng.next()<secure,capturePoint=hit.p;
             if(capture&&capturePoint.y<GOAL.radius-1e-9){
@@ -344,7 +351,7 @@ export class Shot {
             }
             // A time-zero correction from one moving palm can enter another
             // surface. Possession starts only after the shared sphere is clear.
-            if(capture&&hit.time===0)capture=!keeperSurfaceContacts(p,capturePoint,capturePoint,GOAL.radius).some(surface=>Math.hypot(surface.hit.p.x-capturePoint.x,surface.hit.p.y-capturePoint.y,surface.hit.p.z-capturePoint.z)>1e-6);
+            if(capture&&hit.time===0)capture=!keeperSurfaceContacts(p,capturePoint,capturePoint,GOAL.radius,false).some(surface=>Math.hypot(surface.hit.p.x-capturePoint.x,surface.hit.p.y-capturePoint.y,surface.hit.p.z-capturePoint.z)>1e-6);
             if(capture){this.caught=true;this.ball={...capturePoint,y:Math.max(GOAL.radius,capturePoint.y)};this.velocity=v();this.finish(false,'门将稳稳抱住了球');}
             else this.reflect(hit,r+.11, type==='hand'?.34:.5);
           }
