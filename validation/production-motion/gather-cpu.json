@@ -1,0 +1,1032 @@
+{
+  "baseline": "2314f3c",
+  "generatedAt": "2026-10-02T07:04:37.785Z",
+  "sourceHashes": {
+    "anatomy.js": "40a841de7cd387afa12ecab537bd686b6923f742421307037db7b0940a711a8a",
+    "engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+    "keeper-contact.js": "fb920605a23bad79cacbe7c1a9cd4e156268bd43ed63124d0580d818bed07c02",
+    "keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c",
+    "keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492"
+  },
+  "scope": "Milliseconds on this Node/cloud CPU only. Both gather kernels consume identical precomputed current-revision physical capture/current poses. Includes analytic glove ray, hand rotation and elbow constraints; excludes pose generation, asset loading, renderer, GPU and device measurements. Equivalence reports any intentional choreography differences too. Interleaved warmed rounds.",
+  "captures": [
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.3,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5750000000000004,
+      "animationTime": 0.5750000000000004,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5750000000000004,
+      "animationTime": 0.5750000000000004,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.5
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5833333333333337,
+      "animationTime": 0.5833333333333337,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.9
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.366666666666667,
+      "animationTime": 0.366666666666667,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.591666666666667,
+      "animationTime": 0.591666666666667,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.9
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.37500000000000033,
+      "animationTime": 0.37500000000000033,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5833333333333337,
+      "animationTime": 0.5833333333333337,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 3.3,
+          "y": 0.2,
+          "power": 0.5
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5666666666666671,
+      "animationTime": 0.5666666666666671,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 3.3,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5750000000000004,
+      "animationTime": 0.5750000000000004,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -2,
+          "y": 0.3,
+          "power": 0.55
+        },
+        "direction": -1,
+        "seed": 3,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5250000000000006,
+      "animationTime": 0.5250000000000006,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.1,
+          "power": 0.55
+        },
+        "direction": -1,
+        "seed": 2,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5333333333333339,
+      "animationTime": 0.5333333333333339,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 2,
+          "y": 0.3,
+          "power": 0.55
+        },
+        "direction": 1,
+        "seed": 3,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5333333333333339,
+      "animationTime": 0.5333333333333339,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.1,
+          "power": 0.55
+        },
+        "direction": 1,
+        "seed": 1,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5416666666666672,
+      "animationTime": 0.5416666666666672,
+      "contactPart": "handR"
+    }
+  ],
+  "equivalence": {
+    "samples": 6760,
+    "exact": 3229,
+    "maxAbsoluteScalarDelta": 0.06623240329807967,
+    "path": ".pose.elbows.0.x",
+    "worst": {
+      "caseIndex": 7,
+      "t": 0.25
+    },
+    "randomAccess": true
+  },
+  "timing": {
+    "all": {
+      "samples": 6760,
+      "rounds": 7,
+      "runs": {
+        "before": [
+          1281.5126810000002,
+          1276.1897600000002,
+          1278.0173909999994,
+          1302.2105790000005,
+          1317.0035960000005,
+          1371.3802319999995,
+          1397.618489999999
+        ],
+        "after": [
+          394.9040850000001,
+          389.4924209999999,
+          389.4100269999999,
+          397.21504300000015,
+          398.5635120000006,
+          395.61449600000014,
+          412.86320500000147
+        ]
+      },
+      "medianMs": {
+        "before": 1302.2105790000005,
+        "after": 395.61449600000014
+      }
+    },
+    "transition": {
+      "samples": 1040,
+      "rounds": 7,
+      "runs": {
+        "before": [
+          284.2256129999987,
+          285.73958100000164,
+          286.15378500000224,
+          284.09532899999977,
+          282.10123699999895,
+          283.7422770000012,
+          293.68286100000114
+        ],
+        "after": [
+          290.8487700000005,
+          281.029053000002,
+          271.46855399999913,
+          272.1165609999989,
+          271.669629,
+          277.76007299999765,
+          283.37017600000036
+        ]
+      },
+      "medianMs": {
+        "before": 284.2256129999987,
+        "after": 277.76007299999765
+      }
+    },
+    "secured": {
+      "samples": 5680,
+      "rounds": 7,
+      "runs": {
+        "before": [
+          1076.1340899999996,
+          1135.2894430000015,
+          1102.9110599999985,
+          1038.9185030000008,
+          1019.4625329999981,
+          1062.381053000001,
+          1045.8406439999999
+        ],
+        "after": [
+          133.1566899999998,
+          128.6905979999974,
+          129.9725670000007,
+          120.89393399999972,
+          117.13831299999947,
+          122.03326000000015,
+          128.51139800000237
+        ]
+      },
+      "medianMs": {
+        "before": 1062.381053000001,
+        "after": 128.51139800000237
+      }
+    }
+  }
+}

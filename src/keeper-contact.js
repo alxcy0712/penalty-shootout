@@ -36,8 +36,8 @@ export function keeperShoulderSupportRotation(pose,index,torso=null){
   return clavicle.multiply(rest).slerp(arm,keeperShoulderFraction(elevation)).normalize();
 }
 export function keeperHandRotation(pose,index,torso=null){
-  torso??=hasKeeperTorsoArticulation(pose)?keeperTorsoFrames(pose):null;
   if(pose.grip?.handRotations)return new Quaternion().fromArray(pose.grip.handRotations[index]);
+  torso??=hasKeeperTorsoArticulation(pose)?keeperTorsoFrames(pose):null;
   const original=keeperArmRotation(pose,index,true,torso).multiply(wristRoll[index]).normalize();
   const forearm=axis.clone().applyQuaternion(original);
   const separation=new Vector3().subVectors(pose.hands[1],pose.hands[0]),distance=separation.length();
@@ -372,7 +372,12 @@ function graspArm(root,target,referenceHand,referenceElbow,sourcePose,currentPos
   // Collapse the downward angular seam through the upper arc before releasing
   // the source-side anchor. atan2 alone would jump by 2π at that seam.
   const desired=Math.atan2(bend.dot(side),bend.dot(upward))*(1-MathUtils.smoothstep(-bend.dot(upward),.65,.98));
-  const signedAngle=MathUtils.lerp(sign*magnitude,desired,release),branch=Math.sign(signedAngle)||sign;
+  // During capture, reserve up to .3 rad around the downward bend seam so the
+  // elbow absorbs the turn instead of reaching that pole and reversing. The
+  // rounded margin vanishes at the exact source frame and fully secured hold.
+  const swingLimit=Math.PI-.3*4*weight*(1-weight),softness=.12*4*weight*(1-weight),gap=magnitude-swingLimit;
+  const absorbed=Math.min(magnitude,swingLimit)-(softness&&Math.abs(gap)<softness?(softness-Math.abs(gap))**2/(4*softness):0);
+  const signedAngle=MathUtils.lerp(sign*absorbed,desired,release),branch=Math.sign(signedAngle)||sign;
   let angle=Math.abs(signedAngle);
   const width=.06*weight;
   if(width&&Math.abs(angle-limit)<width)angle-=((angle-limit+width)**2)/(4*width);else angle=Math.min(angle,limit);
@@ -476,15 +481,19 @@ export function keeperGather(sourcePose,currentPose,capturePoint,contactPart,ble
   // was already present at capture as a fixed local offset, then blend it into
   // the held palms; subsequent free-recovery brace weights cannot rotate a ball.
   const unbraced=p=>({...p,torso:{...p.torso,braceL:0,braceR:0}}),sourceFree=unbraced(sourcePose),currentFree=unbraced(currentPose);
-  const sourceQ=[0,1].map(i=>keeperHandRotation(sourcePose,i));
-  const rawQ=[0,1].map(i=>keeperHandRotation(currentFree,i).multiply(keeperHandRotation(sourceFree,i).invert().multiply(sourceQ[i])));
-  const rotations=[0,1].map(i=>rawQ[i].clone().slerp(keeperHandRotation(holdingPose(currentPose).pose,i),weight));
+  const sourceTorso=keeperTorsoFrames(sourcePose),currentTorso=keeperTorsoFrames(currentPose),completeHold=holdingPose(currentPose).pose;
+  const sourceQ=[0,1].map(i=>keeperHandRotation(sourcePose,i,sourceTorso));
+  const rawQ=[0,1].map(i=>keeperHandRotation(currentFree,i,currentTorso).multiply(keeperHandRotation(sourceFree,i,sourceTorso).invert().multiply(sourceQ[i])));
+  const rotations=[0,1].map(i=>rawQ[i].clone().slerp(keeperHandRotation(completeHold,i,currentTorso),weight));
   const sourceOffset=vectorCopy(capturePoint).sub(sourcePose.hands[index]).applyQuaternion(sourceQ[index].clone().invert());
   const rawBall=sourceOffset.clone().applyQuaternion(rawQ[index]).add(currentPose.hands[index]);
   const ball=rawBall.clone().lerp(vectorCopy(held.center),weight);
   ball.y=Math.max(.11,ball.y);
+  // At full settlement the ray is the fixed calibrated palm ray. Reuse the
+  // module-local offset, rebuilt whenever this contact-data module is loaded.
+  // Transition frames still evaluate their actual ray against the glove skin.
   const finalOffsets=heldPalmOffsets;
-  const activeDirection=unitArc(sourceOffset,finalOffsets[index],weight),activeOffset=gloveRayOffset(activeDirection,index);
+  const activeDirection=unitArc(sourceOffset,finalOffsets[index],weight),activeOffset=weight===1?finalOffsets[index]:gloveRayOffset(activeDirection,index);
   const wrist=ball.clone().sub(activeOffset.clone().applyQuaternion(rotations[index]));
   const activeArm=graspArm(pose.shoulders[index],wrist,referenceHands[index],referenceElbows[index],sourcePose,currentPose,index,weight);
   pose.hands[index]=activeArm.end;pose.elbows[index]=activeArm.joint;
@@ -492,7 +501,7 @@ export function keeperGather(sourcePose,currentPose,capturePoint,contactPart,ble
   ball.add(vectorCopy(activeArm.end).sub(wrist));
   pose.elbows[index]=graspElbow(pose.shoulders[index],pose.hands[index],pose.elbows[index],ball,weight,elbowSettle);
   const rawOtherOffset=rawBall.clone().sub(currentPose.hands[other]).applyQuaternion(rawQ[other].clone().invert());
-  const otherDirection=unitArc(rawOtherOffset,finalOffsets[other],weight),minimum=gloveRayOffset(otherDirection,other),length=MathUtils.lerp(rawOtherOffset.length(),minimum.length(),weight);
+  const otherDirection=unitArc(rawOtherOffset,finalOffsets[other],weight),minimum=weight===1?finalOffsets[other]:gloveRayOffset(otherDirection,other),length=MathUtils.lerp(rawOtherOffset.length(),minimum.length(),weight);
   const otherOffset=otherDirection.multiplyScalar(Math.max(minimum.length(),length));
   const otherWrist=ball.clone().sub(otherOffset.applyQuaternion(rotations[other]));
   const otherArm=graspArm(pose.shoulders[other],otherWrist,referenceHands[other],referenceElbows[other],sourcePose,currentPose,other,weight);
@@ -500,7 +509,7 @@ export function keeperGather(sourcePose,currentPose,capturePoint,contactPart,ble
   // The catching arm keeps its incoming arc until secure. The trailing arm
   // can settle sooner as it approaches the torso; all envelopes vanish at the
   // exact source capture. Only elbows move here: wrists and ball stay coupled.
-  const constraintSettle=MathUtils.smoothstep(blend,0,.6),torso=keeperTorsoFrames(pose);
+  const constraintSettle=MathUtils.smoothstep(blend,0,.6),torso=currentTorso;
   for(let i=0;i<2;i++){
     const settle=i===index?elbowSettle:elbowSettle+(1-elbowSettle)*constraintSettle*graspTorsoProximity(pose,i,torso);
     pose.elbows[i]=graspFeasibleElbow(pose,i,ball,settle,torso);

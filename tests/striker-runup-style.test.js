@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import {penaltyStyles as allPenaltyStyles} from '../src/anatomy.js';
 const penaltyStyles=allPenaltyStyles.filter(style=>!style.capture);
-import {gameKickTime,KICK_CONTACT} from '../src/game-character.js';
+import {gameKickTime,gameKickAfterTime,KICK_CONTACT} from '../src/game-character.js';
 import {runupClipTime,runupProfile,runupHeading,RUNUP_STRIKE_DURATION} from '../src/striker-runup-style.js';
 import {loadCharacter,skinMinimum,skinSurfaceDistance} from './helpers/load-character.js';
 
@@ -124,10 +124,12 @@ test('raw capture mode restores overlays and new sources do not inherit CMU 10_0
   names.forEach(name=>assert.ok(point(actor,name).distanceTo(point(reference,name))<1e-6,'unknown capture cannot accidentally use style crop or path'));
 });
 
-test('preset headings preserve the existing shot-type and finishing deformation exactly',async()=>{
+test('preset headings preserve shot-type and finishing deformation at the same source timestamp',async()=>{
   const source=await loadCharacter(),actor=await loadCharacter();
   for(const style of penaltyStyles)for(const targetX of [-5,5])for(const shotType of ['normal','low','chip'])for(const power of [.2,1])for(const after of [0,.08,.2,.6,1.3,1.7]){
-    const options={targetX,shotType,power};sample(source,1,after,options);sample(actor,1,after,{...options,style});
+    // Styled finishes now decelerate their source clock; compare the native
+    // control at that same timestamp, retaining the exact joint thresholds.
+    const options={targetX,shotType,power};sample(source,1,gameKickAfterTime(after,style),options);sample(actor,1,after,{...options,style});
     actor.root.traverse(bone=>{
       if(!bone.isBone)return;const reference=source.root.getObjectByName(bone.name);
       assert.ok(bone.position.distanceTo(reference.position)<1e-9,'rigid heading cannot alter existing follow-through IK');

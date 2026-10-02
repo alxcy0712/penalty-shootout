@@ -8,7 +8,7 @@
   "textures": 2,
   "meshes": 6,
   "triangles": 17954,
-  "glbBytes": 449080,
+  "glbBytes": 449480,
   "budgets": {
     "triangles": 18000,
     "bones": 24,
@@ -32,5 +32,6 @@
   ],
   "originalAuthoringBlender": "5.2.2 LTS",
   "refinementRecord": "model-refinement.json",
-  "bodyClothRefinement": "body-cloth-refinement.json"
+  "bodyClothRefinement": "body-cloth-refinement.json",
+  "productionRefinement": "../../validation/summary-production-models-2026-10-02.json"
 }

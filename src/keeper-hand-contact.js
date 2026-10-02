@@ -6,9 +6,10 @@ import {keeperHandRotation} from './keeper-contact.js';
 export function createKeeperHandContact(root) {
   const hands=['L','R'].map(side=>root.getObjectByName(`hand${side}`));
   const rootRotation=new THREE.Quaternion(),parentRotation=new THREE.Quaternion();
-  return pose=>{
+  // Only the authoritative pose pipeline may skip this hierarchy refresh.
+  return (pose,worldCurrent=false)=>{
     if(!pose)return;
-    root.updateWorldMatrix(true,true);root.getWorldQuaternion(rootRotation);
+    if(!worldCurrent)root.updateWorldMatrix(true,true);root.getWorldQuaternion(rootRotation);
     for(let i=0;i<2;i++){
       const hand=hands[i];if(!hand)continue;
       hand.parent.getWorldQuaternion(parentRotation).invert();

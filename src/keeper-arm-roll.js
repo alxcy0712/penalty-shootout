@@ -17,8 +17,10 @@ export function createKeeperArmRoll(root) {
   });
   const axis=new THREE.Vector3(0,1,0),direction=new THREE.Vector3();
   const wrist=new THREE.Vector3();
-  return () => {
-    root.updateWorldMatrix(true,true);
+  // GameCharacter may reuse the hierarchy just refreshed by its skin pose.
+  // Standalone callers retain the original self-refreshing behavior.
+  return (worldCurrent=false) => {
+    if(!worldCurrent)root.updateWorldMatrix(true,true);
     for(const {forearm,hand,wristRoll} of arms){
       hand.getWorldPosition(wrist);
       direction.copy(axis).applyQuaternion(forearm.quaternion).normalize();

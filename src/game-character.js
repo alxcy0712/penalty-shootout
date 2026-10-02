@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {recoveryAfterTime} from './striker-recovery-clock.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';
 import {clone as cloneSkeleton} from 'three/addons/utils/SkeletonUtils.js';
@@ -13,7 +14,14 @@ import {RUNUP_CONTACT,runupClipTime,runupOnsetTime,createStrikerRunupStyle} from
 // The source annotation rounds contact to 1.85 s. The fitted visible boot
 // reaches the 11 cm ball at 1.8467 s; align release to the actual skin.
 export const KICK_CONTACT=RUNUP_CONTACT;
+// Keep the same source clock for the mixer and its calibrated finish overlay.
+// Raw/native playback retains its original timing for capture inspection.
+export function gameKickAfterTime(after,style=null){
+  if(after===null||!style)return after;
+  return recoveryAfterTime(after,style.capture?.contactSeconds??KICK_CONTACT,style.capture?.durationSeconds??3.5);
+}
 export function gameKickTime(runup,after=null,style=null){
+  after=gameKickAfterTime(after,style);
   if(style?.capture){const clip=style.capture;return after===null?runupOnsetTime(clip.contactSeconds*THREE.MathUtils.clamp(runup,0,1)):Math.min(clip.durationSeconds,clip.contactSeconds+Math.max(0,after));}
   return after===null?(style?runupClipTime(runup,style):KICK_CONTACT*THREE.MathUtils.clamp(runup,0,1)):Math.min(3.5,KICK_CONTACT+Math.max(0,after));}
 
@@ -74,8 +82,8 @@ export class GameCharacter {
       target={...p,right:{x:-p.right.x,y:-p.right.y,z:-p.right.z}};
       for(const key of ['shoulders','hips','elbows','hands','knees','feet'])target[key]=[p[key][1],p[key][0]];
     }
-    this.apply(target);this.relax();
-    if(this.keeper){this.handContact??=createKeeperHandContact(this.root);this.handContact(target);}
+    this.apply(target);this.relax(true);
+    if(this.keeper){this.handContact??=createKeeperHandContact(this.root);this.handContact(target,true);}
   }
   kick(runup,after=null,options={}){
     const previousMode=this.lastMode;this.lastMode='kick';this.lastKick=[runup,after,options];
@@ -101,7 +109,7 @@ export class GameCharacter {
     action.play();action.paused=true;action.time=gameKickTime(runup,after,isCompact?options.style:sourceStyle);this.mixer.update(0);
     this.runupStyle??=createStrikerRunupStyle(this.root);this.runupStyle(runup,after,{...options,style:sourceStyle});
     if(isCompact)this.root.rotation.set(0,Math.PI+(captured.heading??0),0);
-    if(legacy){this.kickStyle??=createStrikerKickStyle(this.root);this.kickStyle(after,options);}
+    if(legacy){this.kickStyle??=createStrikerKickStyle(this.root);this.kickStyle(gameKickAfterTime(after,sourceStyle),options);}
     this.armClearance??=createStrikerArmClearance(this.root);this.armClearance(action.time,action.getClip().name);
     this.root.updateMatrixWorld(true);updateKeeperShoulderSupport(this.root);
   }

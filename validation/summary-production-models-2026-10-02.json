@@ -1,0 +1,734 @@
+{
+  "date": "2026-10-02",
+  "baselineCommit": "2314f3c8c94b5f213d3c5fbf397a0dc529b19428",
+  "scope": "Offline Blender geometry only. Runtime source frozen to baseline for model comparison; final merged runtime validation belongs to integration.",
+  "models": {
+    "keeper-prototype": {
+      "sourceSha256": "29b228bb40af114dd6cb427312102bd772fd1951c8754a27d87d718377e5e31a",
+      "role": "keeper",
+      "authoringScriptSha256": "f64012df1465c1a9f92120cf8caa7c5ec54bdf6fab266a520de4d3bdf0d44615",
+      "encodingMaxPositionErrorMm": 0.00762939453125,
+      "encodingMaxNormalComponentError": 0.0004881620407104492,
+      "bytes": 449480,
+      "triangles": 17954,
+      "sha256": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+      "editable": {
+        "asset": "keeper-prototype",
+        "uncompressedBytes": 4388484,
+        "compressedBytes": 1076959,
+        "uncompressedSha256": "65b3c9c0e85f78b6cba27744f41608e3f0988f6b0aac1ec8b14e8f34ea6d643b",
+        "compressedSha256": "ae8adec66ee628808bca1e1fab188966916f8284d6ee82561a975c6f8467069c",
+        "lossless": true
+      },
+      "editableReopened": true,
+      "inventory": {
+        "meshes": [
+          {
+            "name": "Icosphere",
+            "vertices": 42,
+            "triangles": 80,
+            "materials": [],
+            "hideRender": false,
+            "positionSha256": "7b28c5b79939603f9fa66939b096c621fbcfe90108e701f09828d857b5f3cdab",
+            "weightsSha256": "3676a365cf6c08430f69bc5abcf1e8430728bce2c4fd44e576a818a7cbc49b30",
+            "maxInfluences": 0,
+            "armatureModifiers": []
+          },
+          {
+            "name": "SuperHero_Male",
+            "vertices": 11040,
+            "triangles": 17954,
+            "materials": [
+              "Skin.001",
+              "Kit",
+              "Shorts",
+              "Socks",
+              "Boots",
+              "Eyes"
+            ],
+            "hideRender": false,
+            "positionSha256": "7145949aac12892c178965c5dc75127e4e19a233fdbfccf39eb39fff92b273be",
+            "weightsSha256": "46aeec92fa3dd02317b4c34f341b4a62d0d065ba266302d4576f25911fbe94bf",
+            "maxInfluences": 4,
+            "armatureModifiers": [
+              "StrikerRig"
+            ]
+          }
+        ],
+        "rigs": [
+          {
+            "name": "StrikerRig",
+            "bones": 22,
+            "restSha256": "267ff4b1ea7169d0ce51e463a46aa7e45cdb4ef47a547246e515c2d04374a442"
+          }
+        ],
+        "actions": [
+          {
+            "name": "Keeper_N05D_StrikerRig",
+            "curves": 220,
+            "keyframes": 7806,
+            "curvesSha256": "3123721e8e981244dba1e05985d2f271157f429fa2c1520d1f183e056c5bb41f"
+          },
+          {
+            "name": "Keeper_O05E_StrikerRig",
+            "curves": 220,
+            "keyframes": 7168,
+            "curvesSha256": "d9588ee5905bf70010c361ccb31b17fdf9ac85d2696a18c0f103233263eb217c"
+          }
+        ],
+        "triangles": 17954,
+        "unboundHelperTriangles": 80
+      },
+      "binaryDifferential": {
+        "sourcePath": "assets/characters/keeper-prototype.glb",
+        "candidatePath": "/workspace/scratch/da56d19312e0/model-production-v19/candidate1/keeper-prototype.glb",
+        "errors": [],
+        "originalNodesUnchanged": true,
+        "animationAndBindAccessors": 133,
+        "unchangedTextures": 2,
+        "maxProtectedDeviationMm": 0,
+        "maxOriginalWeightDeviation": 0,
+        "maxNormalizationError": 1.3201497495174408e-07,
+        "maxInfluences": 4,
+        "byMaterial": {
+          "Skin.001": {
+            "originalVertices": 3037,
+            "candidateVertices": 3037,
+            "changedOriginalVertices": 481,
+            "maxDisplacementMm": 11.131853974220059,
+            "protectedOriginalVertices": 124
+          },
+          "Kit": {
+            "originalVertices": 1828,
+            "candidateVertices": 1828,
+            "changedOriginalVertices": 318,
+            "maxDisplacementMm": 4.006733001905264,
+            "protectedOriginalVertices": 0
+          },
+          "Shorts": {
+            "originalVertices": 830,
+            "candidateVertices": 830,
+            "changedOriginalVertices": 0,
+            "maxDisplacementMm": 0,
+            "protectedOriginalVertices": 0
+          },
+          "Socks": {
+            "originalVertices": 3051,
+            "candidateVertices": 3051,
+            "changedOriginalVertices": 0,
+            "maxDisplacementMm": 0,
+            "protectedOriginalVertices": 2527
+          },
+          "Boots": {
+            "originalVertices": 2050,
+            "candidateVertices": 2050,
+            "changedOriginalVertices": 0,
+            "maxDisplacementMm": 0,
+            "protectedOriginalVertices": 902
+          },
+          "Eyes": {
+            "originalVertices": 556,
+            "candidateVertices": 556,
+            "changedOriginalVertices": 0,
+            "maxDisplacementMm": 0,
+            "protectedOriginalVertices": 0
+          }
+        }
+      }
+    },
+    "striker-mocap": {
+      "sourceSha256": "aad3a3782a1e806b8fd596e6b9eeb62e47ebe4d729bb421d0ec4631a6fb76996",
+      "role": "striker",
+      "authoringScriptSha256": "f64012df1465c1a9f92120cf8caa7c5ec54bdf6fab266a520de4d3bdf0d44615",
+      "encodingMaxPositionErrorMm": 0.00762939453125,
+      "encodingMaxNormalComponentError": 0.0004881620407104492,
+      "bytes": 446784,
+      "triangles": 17924,
+      "sha256": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+      "editable": {
+        "asset": "striker-mocap",
+        "uncompressedBytes": 6117048,
+        "compressedBytes": 1387325,
+        "uncompressedSha256": "9dc59fdcfb8897709d14e8c19d55d787dab802c54c814c1f04ba0c9f05aa2d08",
+        "compressedSha256": "f57b13726e2c074718b635902870813a7af759267b2876316c8973afd0929ebc",
+        "lossless": true
+      },
+      "editableReopened": true,
+      "inventory": {
+        "meshes": [
+          {
+            "name": "Icosphere",
+            "vertices": 42,
+            "triangles": 80,
+            "materials": [],
+            "hideRender": false,
+            "positionSha256": "7b28c5b79939603f9fa66939b096c621fbcfe90108e701f09828d857b5f3cdab",
+            "weightsSha256": "3676a365cf6c08430f69bc5abcf1e8430728bce2c4fd44e576a818a7cbc49b30",
+            "maxInfluences": 0,
+            "armatureModifiers": []
+          },
+          {
+            "name": "SuperHero_Male",
+            "vertices": 10974,
+            "triangles": 17924,
+            "materials": [
+              "Skin.001",
+              "Kit",
+              "Shorts",
+              "Socks",
+              "Boots",
+              "Eyes"
+            ],
+            "hideRender": false,
+            "positionSha256": "f2da52462223097f504673b719729f6c4ed8d347e473caf12ce599535e4fd2e2",
+            "weightsSha256": "b0ca3e572c03475ffa0fd6ac6b56e22bfe291ae18a8b986260983879fe6d1f0a",
+            "maxInfluences": 4,
+            "armatureModifiers": [
+              "StrikerRig"
+            ]
+          }
+        ],
+        "rigs": [
+          {
+            "name": "StrikerRig",
+            "bones": 22,
+            "restSha256": "267ff4b1ea7169d0ce51e463a46aa7e45cdb4ef47a547246e515c2d04374a442"
+          }
+        ],
+        "actions": [
+          {
+            "name": "CMU_10_01_Runup_Kick_Recovery_StrikerRig",
+            "curves": 220,
+            "keyframes": 14443,
+            "curvesSha256": "37d6ca3cc9df6c39a61095d33854869686540ae8a9b4da57a3f46b510f2c0330"
+          },
+          {
+            "name": "Striker_Idle_Runup_Kick_Recovery_StrikerRig",
+            "curves": 220,
+            "keyframes": 24608,
+            "curvesSha256": "6c29d9cec2305321127668ebc266e6aef424992d64fe8cf8d67584848833c137"
+          }
+        ],
+        "triangles": 17924,
+        "unboundHelperTriangles": 80
+      },
+      "binaryDifferential": {
+        "sourcePath": "assets/characters/striker-mocap.glb",
+        "candidatePath": "/workspace/scratch/da56d19312e0/model-production-v19/candidate1/striker-mocap.glb",
+        "errors": [],
+        "originalNodesUnchanged": true,
+        "animationAndBindAccessors": 124,
+        "unchangedTextures": 2,
+        "maxProtectedDeviationMm": 0,
+        "maxOriginalWeightDeviation": 0,
+        "maxNormalizationError": 1.3201497495174408e-07,
+        "maxInfluences": 4,
+        "byMaterial": {
+          "Skin.001": {
+            "originalVertices": 5220,
+            "candidateVertices": 5220,
+            "changedOriginalVertices": 481,
+            "maxDisplacementMm": 11.131853974220059,
+            "protectedOriginalVertices": 2307
+          },
+          "Kit": {
+            "originalVertices": 1828,
+            "candidateVertices": 1828,
+            "changedOriginalVertices": 296,
+            "maxDisplacementMm": 4.007415280539793,
+            "protectedOriginalVertices": 0
+          },
+          "Shorts": {
+            "originalVertices": 830,
+            "candidateVertices": 830,
+            "changedOriginalVertices": 0,
+            "maxDisplacementMm": 0,
+            "protectedOriginalVertices": 0
+          },
+          "Socks": {
+            "originalVertices": 832,
+            "candidateVertices": 832,
+            "changedOriginalVertices": 0,
+            "maxDisplacementMm": 0,
+            "protectedOriginalVertices": 308
+          },
+          "Boots": {
+            "originalVertices": 2020,
+            "candidateVertices": 2020,
+            "changedOriginalVertices": 0,
+            "maxDisplacementMm": 0,
+            "protectedOriginalVertices": 872
+          },
+          "Eyes": {
+            "originalVertices": 556,
+            "candidateVertices": 556,
+            "changedOriginalVertices": 0,
+            "maxDisplacementMm": 0,
+            "protectedOriginalVertices": 0
+          }
+        }
+      }
+    }
+  },
+  "freeSave": {
+    "baseline": {
+      "poses": 194,
+      "categories": {
+        "forearmTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "calfTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "upperAndSupportTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "innerElbow": {
+          "pairs": 141,
+          "maxFiniteTriangleSeparationMm": 2.8514811695514175
+        },
+        "oppositeFootCalf": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        }
+      }
+    },
+    "candidate1": {
+      "poses": 194,
+      "categories": {
+        "forearmTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "calfTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "upperAndSupportTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "innerElbow": {
+          "pairs": 38,
+          "maxFiniteTriangleSeparationMm": 1.0975842870626362
+        },
+        "oppositeFootCalf": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        }
+      }
+    }
+  },
+  "capturedKicks": {
+    "baseline": {
+      "poses": 71,
+      "categories": {
+        "oppositeThigh": {
+          "pairs": 602,
+          "maxFiniteTriangleSeparationMm": 10.148880641368985
+        },
+        "sameThighFold": {
+          "pairs": 213,
+          "maxFiniteTriangleSeparationMm": 4.050857586204604
+        },
+        "kneeFold": {
+          "pairs": 60,
+          "maxFiniteTriangleSeparationMm": 4.401048009587072
+        },
+        "oppositeLowerLeg": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "calfTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "forearmTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        }
+      }
+    },
+    "candidate1": {
+      "poses": 71,
+      "categories": {
+        "oppositeThigh": {
+          "pairs": 602,
+          "maxFiniteTriangleSeparationMm": 10.148880641368985
+        },
+        "sameThighFold": {
+          "pairs": 213,
+          "maxFiniteTriangleSeparationMm": 4.050857586204604
+        },
+        "kneeFold": {
+          "pairs": 60,
+          "maxFiniteTriangleSeparationMm": 4.401048009587072
+        },
+        "oppositeLowerLeg": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "calfTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "forearmTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        }
+      }
+    }
+  },
+  "denseCaptureWindows": {
+    "long": {
+      "gameStart": 1.5,
+      "gameEnd": 2.7,
+      "hz": 100,
+      "poses": 121,
+      "categories": {
+        "oppositeThigh": {
+          "pairs": 3662,
+          "maxFiniteTriangleSeparationMm": 10.067116417401323
+        },
+        "sameThighFold": {
+          "pairs": 400,
+          "maxFiniteTriangleSeparationMm": 5.605638396461998
+        },
+        "kneeFold": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "oppositeLowerLeg": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "calfTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "forearmTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        }
+      }
+    },
+    "compact": {
+      "gameStart": 1.2,
+      "gameEnd": 1.8,
+      "hz": 100,
+      "poses": 61,
+      "categories": {
+        "oppositeThigh": {
+          "pairs": 1626,
+          "maxFiniteTriangleSeparationMm": 12.406933481223348
+        },
+        "sameThighFold": {
+          "pairs": 45,
+          "maxFiniteTriangleSeparationMm": 2.0122128175144027
+        },
+        "kneeFold": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "oppositeLowerLeg": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "calfTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "forearmTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        }
+      }
+    }
+  },
+  "heldBody": {
+    "baseline": {
+      "captures": 40,
+      "samples": 1400,
+      "baseHz": 10,
+      "denseHz": 120,
+      "runtimeMs": 32663.908283999997,
+      "floorMinimum": -0.0019239528366559733,
+      "protected": {
+        "forearmTorso": {
+          "count": 0,
+          "maxSeparation": 0
+        },
+        "calfTorso": {
+          "count": 0,
+          "maxSeparation": 0
+        },
+        "oppositeFootCalf": {
+          "count": 0,
+          "maxSeparation": 0
+        }
+      },
+      "adjacent": {
+        "upperAndSupportTorso": {
+          "count": 8150,
+          "maxSeparation": 0.006216955693480686
+        },
+        "innerElbow": {
+          "count": 307,
+          "maxSeparation": 0.0031654720398609504
+        }
+      },
+      "failures": []
+    },
+    "candidate1": {
+      "captures": 40,
+      "samples": 1400,
+      "baseHz": 10,
+      "denseHz": 120,
+      "runtimeMs": 38024.045870999995,
+      "floorMinimum": -0.0019239528366559733,
+      "protected": {
+        "forearmTorso": {
+          "count": 0,
+          "maxSeparation": 0
+        },
+        "calfTorso": {
+          "count": 0,
+          "maxSeparation": 0
+        },
+        "oppositeFootCalf": {
+          "count": 0,
+          "maxSeparation": 0
+        }
+      },
+      "adjacent": {
+        "upperAndSupportTorso": {
+          "count": 8152,
+          "maxSeparation": 0.006216948400624311
+        },
+        "innerElbow": {
+          "count": 68,
+          "maxSeparation": 0.0014614011703322771
+        }
+      },
+      "failures": []
+    }
+  },
+  "canonicalHold": {
+    "cases": 40,
+    "poseHz": 240,
+    "geometryHz": 60,
+    "duration": 2.8,
+    "gate": {
+      "cases": 40,
+      "bodyFloorTolerance": 0.005,
+      "gloveTolerance": 0.002,
+      "failures": []
+    },
+    "worstSkinBallGapMm": -0.000457453591840018,
+    "worstSkinFloorMm": -1.924012419518617
+  },
+  "matrix": {
+    "snapshotSha256": "750d9a0bb7fff00e4e84417bf09251dee8bcbb85f954bd0ab6c00b6aebeb102a",
+    "sourceSha256": {
+      "src/anatomy.js": "40a841de7cd387afa12ecab537bd686b6923f742421307037db7b0940a711a8a",
+      "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+      "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+      "src/character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+      "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+      "src/engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+      "src/game-character.js": "43d8456e06f3374cda695f392afcd4f415ca17b742b2c5e72e4c3ce4875cbe22",
+      "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+      "src/keeper-arm-roll.js": "1c4ead6fa33655945b0cd84af97285898311ed5fced5d1686059018b0c9d4a30",
+      "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+      "src/keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c",
+      "src/keeper-contact.js": "1c8ccc440c07643b455f1c0300fe5b17ec243c37f2b0584b1d34e47f9f2f260a",
+      "src/keeper-hand-contact.js": "65e1370bb0feafa2c345fe1f05b31379a2af272f788477507672fe5871146d03",
+      "src/keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+      "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+      "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+      "src/main.js": "eda22fbe41a2ab245a518f920c8e5d77c6535bd9e7c8c93c6d1c1134ca35d8c9",
+      "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+      "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+      "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+      "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+      "src/rendering.js": "d640860ddbd5faae96c1b3c6c34e486f5c9e1a7bf1327bf35f422de76ab785ec",
+      "src/scene.js": "2396a6553e98285ce9b7c0885d77bc6a374c3901093c6d35dc4c45255bfa26d8",
+      "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+      "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+      "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+      "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+      "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+      "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+      "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+      "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644",
+      "tools/qa/audit-character.mjs": "06c3444e91bd40325e0526f0f63d24fb3b447780d012a4213df3f3fb7df5708d"
+    },
+    "note": "CPU test of frozen production source/GLB, not browser or device performance.",
+    "cases": 135,
+    "contacts": 58,
+    "caught": 36,
+    "unsettled": 0,
+    "maxContactGap": 0.00011150216943750513,
+    "minContactGap": -6.035332895962253e-06,
+    "maxPostGap": 0.005092984781804366,
+    "minPostGap": -2.772763306319037e-07
+  },
+  "contactCacheBytes": {
+    "baseline": 569735,
+    "candidate": 569909
+  },
+  "knownLimits": [
+    "Existing adjacent shoulder folds remain; held shoulder pair count 8150 to 8152, worst finite-triangle SAT essentially unchanged at 6.217 mm.",
+    "Existing knee and opposing-thigh source folds are unchanged.",
+    "Sampled geometric gates are not continuous-time collision or physical balance proof.",
+    "Offline CPU render is not browser/WebGL or real-device GPU evidence.",
+    "An 80-triangle Icosphere bone-display helper exists in the glTF_not_exported Blender collection and is excluded from rigged model triangle totals; runtime GLB contains only the production mesh."
+  ],
+  "media": {
+    "compact-kick-model-comparison.mp4": {
+      "sha256": "8890d4ec551a874bb6b9d34a1880d4d20fe54af57ed5f4634c0e06f8b74386d0",
+      "bytes": 1433218
+    },
+    "high-save-model-comparison.mp4": {
+      "sha256": "75b0d60bf9670bec275ede744db3ea2078d12696374176beaff074fbadf34524",
+      "bytes": 1795249
+    },
+    "long-kick-model-comparison.mp4": {
+      "sha256": "3573c857ecf040097f063bc62500b367d9d0f03b3bc21e53f742256dcf03d143",
+      "bytes": 1880784
+    },
+    "baseline/full.png": {
+      "sha256": "711e9ec4f02765677a080da4bfbc6c5acfd4845e1fa3e188e7061899d65ab936",
+      "bytes": 3239149
+    },
+    "candidate1/full.png": {
+      "sha256": "1d1ab10fa269ba925e03046a9626465f4b0936a86bfaabd0671508dc7815506c",
+      "bytes": 3235527
+    },
+    "media/baseline/elbow-fold/frames/frame-0000.png": {
+      "sha256": "4fb4efa443111d9a2000a96f773736c307c841734566e233ecec0c3c4b2c5323",
+      "bytes": 770096
+    },
+    "media/candidate1/elbow-fold/frames/frame-0000.png": {
+      "sha256": "ec8d097e43de82277b828afbffce57152c5f4727b1a58c944ee4354c1cc25021",
+      "bytes": 772938
+    },
+    "media/high-save-pose-sheet.png": {
+      "sha256": "478c04c45f25f749e93964ad8fc10462ebf6625d46cb01748d1d681607de5a60",
+      "bytes": 3083972
+    },
+    "media/long-kick-pose-sheet.png": {
+      "sha256": "c2e3b0b404148733bc1a7ac8ece4fdc48d68f732fbf131e1d58d7d44bf13755d",
+      "bytes": 3208287
+    },
+    "media/compact-kick-pose-sheet.png": {
+      "sha256": "4a5f6dd92b33bb6072e0765b8e727ddbc66c89c19368df2c5435bdf37220d5ab",
+      "bytes": 3039519
+    }
+  },
+  "authoringFiles": {
+    "tools/blender/pack_production_model_edit.mjs": "f64012df1465c1a9f92120cf8caa7c5ec54bdf6fab266a520de4d3bdf0d44615",
+    "tools/blender/sculpt_production_limbs.py": "9790a4ea13c3913749e5ae5d00428394c6b36b17bbb76a6e629884237fb6ad1d",
+    "tools/blender/verify_production_model.py": "532d8ed511734405016624389f0448017afd97c668fc3ab5c40205500e913d23"
+  },
+  "evidenceHashes": {
+    "audits/baseline/triangle-self-intersection-audit.json": "c92d7ab8b032493beb3859896626b45b5868724fa9105972c9c64b466c5de897",
+    "audits/candidate1/triangle-self-intersection-audit.json": "424f14c9a7d407d0371ba23fe5ca4c3ed56c8adf067cc25ad205d49776f832ce",
+    "audits/baseline/capture-mesh-audit.json": "cc56d38c6b74d449c4e77d3ace6dd43635b682d34a90ff7be33f11290e09be43",
+    "audits/candidate1/capture-mesh-audit.json": "fe6deb89a4a8f44c7c210efac5e5bf7b10ab8853d8546ee732120dee6047bdc4",
+    "audits/baseline/held-body/held-body-summary.json": "a93bffea548920d24ca944e763bec94eb332552d62461ddfbb80ae690cb50701",
+    "audits/candidate1/held-body/held-body-summary.json": "1ea8c1912e5c3d5973e103429f3c9ecc1a9460fd38f05630ea9fa900e9cb09a9",
+    "audits/candidate1/hold/actual-holding-240hz.json": "6f413d1d21b9ca20945362eae9b7003d4f88a1e69f35ef1b7efe88483cbf65ce",
+    "audits/candidate1/matrix/collision-matrix.json": "4b0bf554c7421ef3b6c23e5efe413efaaae6d10be76b812057d2dd070258167a"
+  },
+  "mergedRuntimeCheck": {
+    "runtimeSha256": {
+      "src/keeper-contact.js": "fb920605a23bad79cacbe7c1a9cd4e156268bd43ed63124d0580d818bed07c02",
+      "src/game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+      "src/keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c"
+    },
+    "capturedPoses": 71,
+    "capturedCategories": {
+      "oppositeThigh": {
+        "pairs": 602,
+        "maxFiniteTriangleSeparationMm": 10.148880641368985
+      },
+      "sameThighFold": {
+        "pairs": 213,
+        "maxFiniteTriangleSeparationMm": 4.050857586204604
+      },
+      "kneeFold": {
+        "pairs": 60,
+        "maxFiniteTriangleSeparationMm": 4.401048009587072
+      },
+      "oppositeLowerLeg": {
+        "pairs": 0,
+        "maxFiniteTriangleSeparationMm": 0
+      },
+      "calfTorso": {
+        "pairs": 0,
+        "maxFiniteTriangleSeparationMm": 0
+      },
+      "forearmTorso": {
+        "pairs": 0,
+        "maxFiniteTriangleSeparationMm": 0
+      }
+    },
+    "sameGeometryAsRendered": [
+      {
+        "pose": "high-save",
+        "byteEqual": true,
+        "sha256": "7571d666e7162dd7142e1e015b37b023b826d6fa9e9c737e3d8ee66831580b71"
+      },
+      {
+        "pose": "elbow-fold",
+        "byteEqual": true,
+        "sha256": "a6545c9a292b34ed9887e88679d5535afb3a9e4e7026aab9892f125f76be4e95"
+      }
+    ],
+    "compactExtendedFinish": {
+      "gameSamples": [
+        2.5,
+        2.55,
+        2.6,
+        2.65,
+        2.7,
+        2.75,
+        2.8,
+        2.9,
+        3
+      ],
+      "categories": {
+        "oppositeThigh": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "sameThighFold": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "kneeFold": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "oppositeLowerLeg": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "calfTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        },
+        "forearmTorso": {
+          "pairs": 0,
+          "maxFiniteTriangleSeparationMm": 0
+        }
+      }
+    },
+    "mediaManifest": "production-model-media-2026-10-02.json",
+    "mediaManifestSha256": "6f9520642e779d7c56a2afa5e1aeacb5e9490bb432e4dc7874249a5f1c4d112b"
+  }
+}

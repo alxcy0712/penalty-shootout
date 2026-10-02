@@ -53,3 +53,9 @@ tracks, bind transforms, textures, palm and boot surfaces are preserved.
 The 20 ms striker source-clock onset is an authored timing adaptation of the
 same two CMU takes. Articulated keeper absorption, support-hand placement and
 get-up are authored procedural adaptations, not an additional captured take.
+
+2026-10-02 offline limb fairing preserves the existing CC0 model topology,
+weights, original bindings, protected palm/boot surfaces and captured tracks.
+Styled kick finishes now decelerate the final recorded quarter-second without
+changing the contact event or final pose. Early keeper elbow absorption remains
+an authored procedural adaptation; it is not a new motion-capture performance.
