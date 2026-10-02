@@ -5,7 +5,7 @@ import {GoalNetMotion} from './net-motion.js';
 import {batchRigidGroup} from './batching.js';
 import {GameCharacter} from './game-character.js';
 import {keeperGather} from './keeper-contact.js';
-import {renderPixelRatio,configurePitchFiltering,resizeDrawingBuffer} from './rendering.js';
+import {renderPixelRatio,configurePitchFiltering,resizeDrawingBuffer,advancedAttackRadius} from './rendering.js';
 import {pitchMarkingGeometry} from './pitch-markings.js';
 import {strikerRunupPose,penaltyStyle,holdingPose,HOLD_DURATION,blendKeeperPose,keeperWarmupPose,keeperRunupPreparation} from './anatomy.js';
 import * as THREE from 'three';
@@ -108,28 +108,37 @@ export class Stadium {
     const {width,height}=this.container.getBoundingClientRect();if(!width||!height)return;
     this.viewWidth=width;this.viewHeight=height;this.needsRender=true;this.currentPixelRatio=renderPixelRatio(width,height,window.devicePixelRatio);resizeDrawingBuffer(this.renderer,width,height,this.currentPixelRatio);this.camera.aspect=width/height;this.camera.updateProjectionMatrix();
   }
-  setMode(mode) {if(this.mode!==mode){this.resetNet();this.trailCount=0;this.needsRender=true;if(mode==='hero')this.homeTime=0;}this.mode=mode;}
+  setMode(mode) {if(this.mode!==mode){this.resetPresentation();this.needsRender=true;if(mode==='hero'){this.homeTime=0;this.presentedMatch=null;}}this.mode=mode;}
+  resetPresentation(){this.currentShot=null;this.currentResult=null;this.resultElapsed=0;this.aftermath=null;this.trailCount=0;this.resetNet();}
   resetNet(){if(this.netMotion.reset(this.net.geometry.attributes.position.array))this.net.geometry.attributes.position.needsUpdate=true;}
   update(dt,time,shot=null,runup=0,aim=null,match=null,kickAim=null,alpha=1) {
+    const cpuStart=this.profile?performance.now():0,hero=this.mode==='hero';
+    // Next replaces the participants immediately. Treat that as a broadcast
+    // cut, not a continuous orbit around actors that have already reset.
+    // Observe identity before the paused-frame shortcut: Next then Pause may
+    // happen between animation frames, but the new ready view must still draw.
+    if(!hero&&match&&(this.presentedMatch!==match||this.presentedSerial!==match.serial||this.presentedTurn!==match.turn)){
+      this.presentedMatch=match;this.presentedSerial=match.serial;this.presentedTurn=match.turn;
+      this.resetPresentation();this.colorsKey=null;this.needsRender=true;
+    }
+    if(hero)this.presentedMatch=null;
     if(dt===0&&!this.needsRender){this.profileLast=null;return;}
-    const cpuStart=this.profile?performance.now():0;this.netTime+=Math.max(0,dt);
-    const hero=this.mode==='hero',w=this.viewWidth,h=this.viewHeight,viewKey=`${this.mode}:${match?.mode}:${w}:${h}`;
+    this.netTime+=Math.max(0,dt);
+    const w=this.viewWidth,h=this.viewHeight,viewKey=`${this.mode}:${match?.mode}:${w}:${h}`;
     if(this.viewKey!==viewKey){
       this.viewKey=viewKey;this.camera.fov=hero?45:match?.mode==='advanced'?43:36;
       this.camera.setViewOffset(w,h,0,hero?0:Math.max(0,(710-h)*.28),w,h);
       this.camera.updateProjectionMatrix();
     }
-    const angle=match?.turn===1?Math.PI:0;
-    const blend=this.reducedMotion.matches?1:1-Math.exp(-dt*3.6);
-    this.cameraAngle+=(angle-this.cameraAngle)*blend;
+    this.cameraAngle=match?.turn===1?Math.PI:0;
     if(hero)this.homeTime=(this.homeTime??0)+dt;
     const home=hero?homeAnimation(this.reducedMotion.matches?0:this.homeTime):null;
     if(home){this.camera.position.copy(home.camera);this.camera.lookAt(home.target.x,home.target.y,home.target.z);}
     else {
-      const defending=(1-Math.cos(this.cameraAngle))*.5;
-      const advanced=match?.mode==='advanced',attackRadius=advanced?17:25,radius=attackRadius+(10.8-attackRadius)*defending,attackHeight=advanced?4.8:6,attackFocus=advanced?5:6;
+      const defending=match?.turn===1?1:0;
+      const advanced=match?.mode==='advanced',attackRadius=advanced?advancedAttackRadius(w,h):25,radius=attackRadius+(10.8-attackRadius)*defending,attackHeight=advanced?4.8:6,attackFocus=advanced?5:6;
       const fov=(match?.mode==='advanced'?43:36)*(1-defending)+74*defending;if(Math.abs(this.camera.fov-fov)>.01){this.camera.fov=fov;this.camera.updateProjectionMatrix();}
-      this.camera.position.set(Math.sin(this.cameraAngle)*radius,attackHeight+(7.5-attackHeight)*defending,5+Math.cos(this.cameraAngle)*radius);
+      this.camera.position.set(0,attackHeight+(7.5-attackHeight)*defending,5+(defending?-radius:radius));
       this.cameraFocus.set(0,.7,attackFocus+(2.5-attackFocus)*defending);this.camera.lookAt(this.cameraFocus);
     }
     if(match?.kicker!==undefined && this.colorsKey!==`${match.turn}-${match.kicker}`){this.colorsKey=`${match.turn}-${match.kicker}`;this.striker.setColor(match.teams[match.turn].color,match.teams[match.turn].players[match.kicker].number);this.keeper.setColor(match.turn?'#83b8f4':'#f1c75b',1);}

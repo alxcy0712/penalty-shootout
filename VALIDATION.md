@@ -1,3 +1,5 @@
+> Latest next-round camera pass: [2026-10-02 round handover](validation/ROUND_HANDOVER_2026-10-02.md) — 282 tests, immediate stable role cuts, interruption-safe resets and bounded static portrait framing across all four ready styles.
+
 > Latest match recovery: [2026-10-02 central result validation](validation/MATCH_RECOVERY_2026-10-02.md) — 263 tests, exact first-result handover, supported central get-up, 40 held paths plus 51 central catch/miss paths, and measured CPU/load tradeoffs.
 
 > Latest production motion/limb refinement: [2026-10-02 validation](validation/PRODUCTION_MOTION_2026-10-02.md) — 251 tests, combined 40-capture/1,400-pose gates, gradual captured finishes and measured gather CPU reuse.

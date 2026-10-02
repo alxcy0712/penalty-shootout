@@ -22,3 +22,10 @@ export function resizeDrawingBuffer(renderer,width,height,pixelRatio){
   renderer.setDrawingBufferSize(width,height,pixelRatio);
   drawingBuffers.set(renderer,{width,height,pixelRatio});return true;
 }
+
+// Static framing for the complete compact run-up ready pose on narrow phones.
+// Offline production-skin probes retain a 12px horizontal margin for the actor,
+// ball and goal at320x700,390x844 and320x900. FOV/aim stay fixed; landscape keeps17m.
+export function advancedAttackRadius(width,height){
+  return Math.min(25,Math.max(17,7+5.75*height/Math.max(1,width-24)));
+}
