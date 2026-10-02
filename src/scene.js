@@ -138,8 +138,10 @@ export class Stadium {
     let strikerPose=home?home.striker:!shot?strikerRunupPose(time,runup,-1,kickAim?.power??.7,kickAim?.x??0,style,kickAim?.chip?'chip':kickAim?.low?'low':'normal'):null;
     let kickAfter=null;
     if(shot){
-      if(this.currentShot!==shot){this.resetNet();this.currentShot=shot;this.resultElapsed=0;this.trailCount=0;this.aftermath=null;}
-      if(shot.result)this.resultElapsed+=dt;
+      if(this.currentShot!==shot){this.resetNet();this.currentShot=shot;this.currentResult=null;this.resultElapsed=0;this.trailCount=0;this.aftermath=null;}
+      // Physics already advanced to contact on the first result frame. Start
+      // here exactly; adding this frame again skips the capture/gather seam.
+      if(shot.result){if(this.currentResult===shot.result)this.resultElapsed+=dt;else this.currentResult=shot.result;}
       const currentTime=shot.animationTime??shot.t;
       const animationTime=shot.result?currentTime:(shot.previousAnimationTime??currentTime)+(currentTime-(shot.previousAnimationTime??currentTime))*alpha;
       kickAfter=animationTime+(shot.result?this.resultElapsed:0);

@@ -1,3 +1,5 @@
+> Latest match recovery: [2026-10-02 central result validation](validation/MATCH_RECOVERY_2026-10-02.md) — 263 tests, exact first-result handover, supported central get-up, 40 held paths plus 51 central catch/miss paths, and measured CPU/load tradeoffs.
+
 > Latest production motion/limb refinement: [2026-10-02 validation](validation/PRODUCTION_MOTION_2026-10-02.md) — 251 tests, combined 40-capture/1,400-pose gates, gradual captured finishes and measured gather CPU reuse.
 
 > Latest body/garment and supported keeper pass: [2026-10-01 body and motion validation](validation/BODY_MOTION_2026-10-01.md) — 240 tests, 40-capture full-skin/continuity gate, exact budget and CPU/loading tradeoffs.

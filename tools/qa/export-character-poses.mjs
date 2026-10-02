@@ -20,8 +20,9 @@ if(process.argv.includes('--help')){
 Arguments are --name value pairs:
   --out DIR                 output poses.json + poses.bin
   --actor keeper|striker     default keeper
-  --motion dive|warmup|hold|gather|set (keeper), kick (striker)
-  --time SECONDS             first frame (gather: time after a real catch)
+  --motion dive|warmup|hold|gather|result|set (keeper), kick (striker)
+  --time SECONDS             first frame (gather/result: time after the event)
+  --center 0|1               preserve world x (0), or center keeper (default1)
   --duration SECONDS --fps N export a sequence; defaults 0 / 24
   --direction -1|0|1 --height METRES --speed N --reach N
   --target X --power 0..1 --type normal|low|chip --seed N
@@ -32,19 +33,22 @@ Example: --motion gather --direction 1 --height .3 --duration .8 --fps 120 --out
 }
 const args={};for(let i=2;i<process.argv.length;i+=2){if(!process.argv[i].startsWith('--')||process.argv[i+1]===undefined)throw Error('Arguments must be --name value pairs');args[process.argv[i].slice(2)]=process.argv[i+1];}
 const root=fileURLToPath(new URL('../../',import.meta.url)),out=resolve(args.out??'validation/artifacts/pose-review');await mkdir(out,{recursive:true});
-const keeper=(args.actor??'keeper')==='keeper',motion=args.motion??(keeper?'dive':'kick'),gather=motion==='gather';
+const keeper=(args.actor??'keeper')==='keeper',motion=args.motion??(keeper?'dive':'kick'),gather=motion==='gather',resultMotion=motion==='result';
 const fps=Number(args.fps??24),start=Number(args.time??0),duration=Number(args.duration??0),direction=Number(args.direction??-1),height=Number(args.height??1.2),speed=Number(args.speed??(gather?95:85)),reach=Number(args.reach??(gather?95:85)),power=Number(args.power??(gather?.55:.7)),targetX=Number(args.target??(gather?direction*(height>1.2?1.5:2):0)),shotType=args.type??'normal',seed=Number(args.seed??(gather?(height>1.2?(direction<0?2:1):3):42));
-const showBall=args.ball===undefined?(!keeper||motion==='hold'||gather):args.ball==='true';
-if(!['keeper','striker'].includes(args.actor??'keeper')||!(keeper?['dive','warmup','hold','gather','set']:['kick']).includes(motion)||![fps,start,duration,direction,height,speed,reach,power,targetX,seed].every(Number.isFinite)||fps<=0||duration<0||![-1,0,1].includes(direction))throw Error('Invalid actor, motion, direction or numeric arguments');
+let showBall=args.ball===undefined?(!keeper||motion==='hold'||gather):args.ball==='true';
+if(!['keeper','striker'].includes(args.actor??'keeper')||!(keeper?['dive','warmup','hold','gather','result','set']:['kick']).includes(motion)||![fps,start,duration,direction,height,speed,reach,power,targetX,seed].every(Number.isFinite)||fps<=0||duration<0||![-1,0,1].includes(direction))throw Error('Invalid actor, motion, direction or numeric arguments');
 const style=args.style===undefined?undefined:penaltyStyles[Number(args.style)];
 if(args.style!==undefined&&!style)throw Error('Invalid run-up style');
+if(args.center!==undefined&&!['0','1'].includes(args.center))throw Error('Center must be0 or1');
 const kickContact=style?.duration??KICK_CONTACT;
 const stats={accuracy:90,power:90,touch:90,composure:90,speed,reach,handling:95};
 let capture=null,ballFrames=null;
-if(gather){
+if(gather||resultMotion){
   capture=new Shot({x:targetX,y:height,power},stats,stats,direction,seed);
   for(let i=0;i<3600&&!capture.result;i++)capture.step(1/120);
-  if(!capture.caught)throw Error('This recipe did not produce a catch; choose a caught seed/target instead of fabricating a gather');
+  if(!capture.result)throw Error('This recipe did not finish within the export window');
+  if(resultMotion&&capture.caught&&args.ball===undefined)showBall=true;
+  if(gather&&!capture.caught)throw Error('This recipe did not produce a catch; choose a caught seed/target instead of fabricating a gather');
 }else if(!keeper&&showBall){
   const shot=new Shot({x:targetX,power,low:shotType==='low',chip:shotType==='chip'},stats,stats,0,seed);ballFrames=[{...shot.ball}];
   for(let i=0;i<720&&!shot.result;i++){shot.step(1/120);ballFrames.push({...shot.ball});}
@@ -60,18 +64,19 @@ const actor=Object.create(GameCharacter.prototype);actor.root=gltf.scene;actor.k
 const meshes=[];actor.root.traverse(m=>{if(m.isSkinnedMesh)meshes.push(m)});
 const sphere=showBall?new THREE.SphereGeometry(.11,20,12):null;
 if(sphere){const ball=new THREE.Mesh(sphere,new THREE.MeshStandardMaterial({color:'#f0f2e9'}));ball.name='MatchBall';ball.material.name='Ball';meshes.push(ball);}
-const frameCount=duration?Math.round(duration*fps)+1:1,meta={format:'penalty-character-cpu-skin-v1',createdAt:new Date().toISOString(),note:'Offline CPU-skinned geometry with simplified materials; not a browser screenshot or real-device test. Keeper translation is centered as in motion-lab.',recipe:{actor:keeper?'keeper':'striker',motion,start,duration,fps,direction,height,speed,reach,power,targetX,shotType,seed,showBall,style:args.style??null,kickContact},frames:frameCount,fps,components:0,meshes:[],sha256:{}};
-if(capture)meta.capture={time:capture.t,point:capture.ball,contactPart:capture.contactPart,seed};
-meta.ballCenters=[];
+const frameCount=duration?Math.round(duration*fps)+1:1,meta={format:'penalty-character-cpu-skin-v1',createdAt:new Date().toISOString(),note:'Offline CPU-skinned geometry with simplified materials; not a browser screenshot or real-device test. Keeper x translation is '+(Number(args.center??1)?'centered as in motion-lab':'preserved in world space')+'.',recipe:{actor:keeper?'keeper':'striker',motion,start,duration,fps,direction,height,speed,reach,power,targetX,shotType,seed,showBall,style:args.style??null,kickContact},frames:frameCount,fps,components:0,meshes:[],sha256:{}};
+if(capture)meta.capture={time:capture.t,animationTime:capture.animationTime,point:capture.ball,contactPart:capture.contactPart,seed,result:capture.result,caught:capture.caught,direction:capture.direction,trackingFeet:capture.trackingFeet,footStep:capture.footStep};
+meta.ballCenters=[];meta.joints=[];
 for(const m of meshes){const faces=[];for(let i=0;i<m.geometry.index.count;i+=3)faces.push([m.geometry.index.getX(i),m.geometry.index.getX(i+1),m.geometry.index.getX(i+2)]);meta.meshes.push({name:m.name,role:m.isSkinnedMesh?'character':'ball',material:m.material.name,color:m.material.color.toArray(),vertexColors:m.geometry.attributes.color?Array.from({length:m.geometry.attributes.color.count},(_,i)=>{const a=m.geometry.attributes.color;return[a.getX(i),a.getY(i),a.getZ(i),a.itemSize===4?a.getW(i):1];}):undefined,count:m.geometry.attributes.position.count,offset:meta.components,faces});meta.components+=m.geometry.attributes.position.count*3;}
 for(const file of[asset,...(!keeper?['assets/characters/mocap-variants/cmu-10_03-kick.glb']:[]),...(await readdir(join(root,'src'))).filter(name=>name.endsWith('.js')).sort().map(name=>'src/'+name),'tools/qa/export-character-poses.mjs','tools/qa/render-character-poses.py'])meta.sha256[file]=createHash('sha256').update(await readFile(join(root,file))).digest('hex');
 const binary=join(out,'poses.bin');await writeFile(binary,'');const frame=new Float32Array(meta.components),point=new THREE.Vector3();
 for(let f=0;f<frameCount;f++){
   const time=start+f/fps;let pose,shiftX=0,shiftZ=0,ball=null;
   if(keeper){
-    if(gather){const held=keeperGather(capture.pose,capture.poseAt(capture.t+time),capture.ball,capture.contactPart,time/HOLD_DURATION);pose=held.pose;ball=held.ball;}
+    if(resultMotion){const raw=capture.poseAt((capture.animationTime??capture.t)+time);if(capture.caught){const held=keeperGather(capture.pose,raw,capture.ball,capture.contactPart,time/HOLD_DURATION);pose=held.pose;ball=held.ball;}else{pose=raw;ball=capture.ball;}}
+    else if(gather){const held=keeperGather(capture.pose,capture.poseAt(capture.t+time),capture.ball,capture.contactPart,time/HOLD_DURATION);pose=held.pose;ball=held.ball;}
     else{pose=motion==='warmup'?keeperWarmupPose(time):motion==='set'?keeperRunupPreparation({speed,reach},Math.min(1,time/1.8),direction):goalkeeperPose({speed,reach,stretch:Number(args.stretch??0)},direction,time,height);if(motion==='hold'){const held=holdingPose(pose);pose=held.pose;ball=held.center;}}
-    actor.pose(pose);shiftX=pose.hip.x;
+    actor.pose(pose);shiftX=Number(args.center??1)?pose.hip.x:0;meta.joints.push(pose);
   }else{
     actor.kick(Math.min(1,time/kickContact),time>=kickContact?time-kickContact:null,{power,targetX,shotType,style});shiftZ=11;
     if(ballFrames){const at=Math.max(0,time-kickContact)*120,index=Math.min(Math.floor(at),ballFrames.length-1),a=ballFrames[index],b=ballFrames[Math.min(index+1,ballFrames.length-1)],mix=at-Math.floor(at);ball={x:a.x+(b.x-a.x)*mix,y:a.y+(b.y-a.y)*mix,z:a.z+(b.z-a.z)*mix};}

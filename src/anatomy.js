@@ -364,6 +364,18 @@ export function placeKeeperPose(pose,offset,feet=null,velocity=null){
   return rig(hip,up,feet??pose.feet.map(p=>add(p,offset)),pose.hands.map((p,i)=>add(add(p,offset),v(0,0,(i?1:-1)*.025*stride*standing))),1,pose.roll,0,0,pose.torso);
 }
 
+// Re-solve an already posed keeper over explicit supports without repeating
+// the live tracking stride dip/swing encoded in the captured pose.
+export function supportedKeeperPose(pose,hip,feet){
+  const offset=sub(hip,pose.hip);
+  const supported=rig(hip,pose.up,feet,pose.hands.map(hand=>add(hand,offset)),1,pose.roll,0,0,pose.torso);
+  // Only the legs change support. Preserve the exact captured upper-body
+  // transforms; re-solving already constrained wrist targets shifts elbows.
+  for(const key of ['shoulder','head'])supported[key]=add(pose[key],offset);
+  for(const key of ['shoulders','hands','elbows'])supported[key]=pose[key].map(point=>add(point,offset));
+  return supported;
+}
+
 // A short side-step loads the legs while a slow ball is still approaching.
 export function keeperPreparation(stats,direction,elapsed,delay,height=1){
   const base=goalkeeperPose(stats,direction,0,height),strength=smooth(delay/.3);

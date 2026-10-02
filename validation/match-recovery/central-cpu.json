@@ -1,0 +1,530 @@
+{
+  "baseline": "aeaa978",
+  "createdAt": "2026-10-02T08:09:49.606Z",
+  "scope": "Interleaved warmed Node/cloud CPU, actual 51 central results sampled at60Hz for4s. Includes pose construction and secured gathering; excludes skin/render/GPU/device. Separate cohort medians need not sum.",
+  "sourceHashes": {
+    "anatomy.js": "a74e5b65d96305fd4e081b2677ad1b475bd9718ce7f3daea6355d67f9e67af2d",
+    "ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+    "batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+    "contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+    "engine.js": "3d2247d5c58b229e979337e0241e2b53386219cab6b0c90e24334ad0edf796a5",
+    "game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+    "home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+    "keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c",
+    "keeper-contact.js": "fb920605a23bad79cacbe7c1a9cd4e156268bd43ed63124d0580d818bed07c02",
+    "keeper-hand-contact.js": "ba5ddf77b02b82c37d1117941ad126b0c57eb3270525454403c8c8e1ded1eb6b",
+    "keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+    "keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+    "keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "main.js": "eda22fbe41a2ab245a518f920c8e5d77c6535bd9e7c8c93c6d1c1134ca35d8c9",
+    "motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+    "motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+    "net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+    "pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+    "rendering.js": "d640860ddbd5faae96c1b3c6c34e486f5c9e1a7bf1327bf35f422de76ab785ec",
+    "scene.js": "93eaaa45b3480a0aa6373bd2a90ad1e2df3a746a5487220fe858088d2f428119",
+    "shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222"
+  },
+  "cases": [
+    {
+      "x": -0.7,
+      "y": 0.2,
+      "power": 0.4,
+      "seed": 1,
+      "caught": true
+    },
+    {
+      "x": -0.7,
+      "y": 0.2,
+      "power": 0.4,
+      "seed": 3,
+      "caught": true
+    },
+    {
+      "x": -0.7,
+      "y": 0.2,
+      "power": 0.6,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": -0.7,
+      "y": 0.2,
+      "power": 0.8,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": -0.7,
+      "y": 0.2,
+      "power": 0.8,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": -0.7,
+      "y": 1,
+      "power": 0.4,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": -0.7,
+      "y": 1,
+      "power": 0.4,
+      "seed": 3,
+      "caught": true
+    },
+    {
+      "x": -0.7,
+      "y": 1,
+      "power": 0.6,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": -0.7,
+      "y": 1,
+      "power": 0.6,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": -0.7,
+      "y": 1,
+      "power": 0.8,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": -0.7,
+      "y": 1,
+      "power": 0.8,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": -0.7,
+      "y": 2.25,
+      "power": 0.4,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": -0.7,
+      "y": 2.25,
+      "power": 0.4,
+      "seed": 3,
+      "caught": true
+    },
+    {
+      "x": -0.7,
+      "y": 2.25,
+      "power": 0.6,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": -0.7,
+      "y": 2.25,
+      "power": 0.6,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": -0.7,
+      "y": 2.25,
+      "power": 0.8,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": -0.7,
+      "y": 2.25,
+      "power": 0.8,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": 0,
+      "y": 0.2,
+      "power": 0.4,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": 0,
+      "y": 0.2,
+      "power": 0.4,
+      "seed": 3,
+      "caught": true
+    },
+    {
+      "x": 0,
+      "y": 0.2,
+      "power": 0.6,
+      "seed": 1,
+      "caught": true
+    },
+    {
+      "x": 0,
+      "y": 0.2,
+      "power": 0.6,
+      "seed": 3,
+      "caught": true
+    },
+    {
+      "x": 0,
+      "y": 0.2,
+      "power": 0.8,
+      "seed": 3,
+      "caught": true
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "power": 0.4,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "power": 0.4,
+      "seed": 3,
+      "caught": true
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "power": 0.6,
+      "seed": 1,
+      "caught": true
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "power": 0.6,
+      "seed": 3,
+      "caught": true
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "power": 0.8,
+      "seed": 1,
+      "caught": true
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "power": 0.8,
+      "seed": 3,
+      "caught": true
+    },
+    {
+      "x": 0,
+      "y": 2.25,
+      "power": 0.4,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": 0,
+      "y": 2.25,
+      "power": 0.4,
+      "seed": 3,
+      "caught": true
+    },
+    {
+      "x": 0,
+      "y": 2.25,
+      "power": 0.6,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": 0,
+      "y": 2.25,
+      "power": 0.6,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": 0,
+      "y": 2.25,
+      "power": 0.8,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": 0,
+      "y": 2.25,
+      "power": 0.8,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 0.2,
+      "power": 0.4,
+      "seed": 1,
+      "caught": true
+    },
+    {
+      "x": 0.7,
+      "y": 0.2,
+      "power": 0.4,
+      "seed": 3,
+      "caught": true
+    },
+    {
+      "x": 0.7,
+      "y": 0.2,
+      "power": 0.6,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 0.2,
+      "power": 0.6,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 0.2,
+      "power": 0.8,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 0.2,
+      "power": 0.8,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 1,
+      "power": 0.4,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 1,
+      "power": 0.4,
+      "seed": 3,
+      "caught": true
+    },
+    {
+      "x": 0.7,
+      "y": 1,
+      "power": 0.6,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 1,
+      "power": 0.8,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 1,
+      "power": 0.8,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 2.25,
+      "power": 0.4,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 2.25,
+      "power": 0.4,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 2.25,
+      "power": 0.6,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 2.25,
+      "power": 0.6,
+      "seed": 3,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 2.25,
+      "power": 0.8,
+      "seed": 1,
+      "caught": false
+    },
+    {
+      "x": 0.7,
+      "y": 2.25,
+      "power": 0.8,
+      "seed": 3,
+      "caught": false
+    }
+  ],
+  "excluded": [
+    {
+      "x": -0.7,
+      "y": 0.2,
+      "power": 0.6,
+      "seed": 1
+    },
+    {
+      "x": 0,
+      "y": 0.2,
+      "power": 0.8,
+      "seed": 1
+    },
+    {
+      "x": 0.7,
+      "y": 1,
+      "power": 0.6,
+      "seed": 1
+    }
+  ],
+  "timing": {
+    "all": {
+      "samples": 12291,
+      "rounds": 5,
+      "runs": {
+        "before": [
+          262.677451,
+          256.31995300000017,
+          260.38466100000005,
+          255.71085700000003,
+          264.1076029999999
+        ],
+        "after": [
+          248.7164009999999,
+          239.63264100000015,
+          244.1922730000001,
+          253.28175200000032,
+          249.02847999999994
+        ]
+      },
+      "medianMs": {
+        "before": 260.38466100000005,
+        "after": 248.7164009999999
+      },
+      "microsecondsPerSample": {
+        "before": 21.18498584329998,
+        "after": 20.235652184525254
+      }
+    },
+    "capture": {
+      "samples": 1377,
+      "rounds": 5,
+      "runs": {
+        "before": [
+          124.036341,
+          125.98268999999982,
+          134.60528599999998,
+          139.56461500000023,
+          131.2239870000003
+        ],
+        "after": [
+          123.80951999999934,
+          124.67920400000003,
+          124.7964750000001,
+          133.09342200000083,
+          138.61873600000035
+        ]
+      },
+      "medianMs": {
+        "before": 131.2239870000003,
+        "after": 124.7964750000001
+      },
+      "microsecondsPerSample": {
+        "before": 95.29701307189565,
+        "after": 90.62924836601314
+      }
+    },
+    "moving": {
+      "samples": 4743,
+      "rounds": 5,
+      "runs": {
+        "before": [
+          59.9907290000001,
+          65.41964899999948,
+          62.73456899999928,
+          63.97195600000032,
+          59.98290799999995
+        ],
+        "after": [
+          64.07032900000013,
+          62.48925899999995,
+          61.77284099999997,
+          65.03704500000003,
+          62.30653400000028
+        ]
+      },
+      "medianMs": {
+        "before": 62.73456899999928,
+        "after": 62.48925899999995
+      },
+      "microsecondsPerSample": {
+        "before": 13.226769765970753,
+        "after": 13.175049335863367
+      }
+    },
+    "settled": {
+      "samples": 6171,
+      "rounds": 5,
+      "runs": {
+        "before": [
+          77.57196799999929,
+          76.7485689999994,
+          77.4817009999997,
+          76.6158289999994,
+          76.38758599999983
+        ],
+        "after": [
+          59.10905199999979,
+          59.63394200000039,
+          59.950009000000136,
+          60.413494999999784,
+          61.16197299999931
+        ]
+      },
+      "medianMs": {
+        "before": 76.7485689999994,
+        "after": 59.950009000000136
+      },
+      "microsecondsPerSample": {
+        "before": 12.436974396370022,
+        "after": 9.714796467347291
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import {keeperSurfaceContacts,keeperPalmCenter} from './keeper-contact.js';
 import {goalkeeperPose,blendKeeperPose,keeperPreparation,placeKeeperPose,keeperHesitationPose} from './anatomy.js';
+import {keeperResultRecovery} from './keeper-result-recovery.js';
 export const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
 export const GOAL = { half: 3.66, height: 2.44, distance: 11, radius: .11, postRadius: .06 };
 export class Random {
@@ -145,6 +146,8 @@ export class Shot {
   }
   poseAt(time,height=this.reactionHeight??this.target.y){
     if(this.hesitation)return keeperHesitationPose(this.hesitation.pose,this.hesitation.direction,time-this.hesitation.at,this.hesitation.previous);
+    if(this.result&&!this.direction&&!this.recoveryOrigin&&this.pose?.shoulders)
+      return keeperResultRecovery(this.pose,time-(this.animationTime??this.t),this.caught);
     const stats={...this.keeper,speed:this.keeper.speed*this.keeperPressure,reach:this.keeper.reach*this.keeperPressure,diveVelocity:this.diveVelocity,stretch:this.stretch};
     const elapsed=this.diveAt===null?time:time-this.diveAt,delay=this.direction?(this.diveDelay??0):0;
     let targetHeight=clamp(this.direction?(this.diveHeight??height):height,.3,2.3);
