@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "e1dcc3a",
+  "auditDateUtc": "2026-10-03",
+  "scope": "Read-only code and controlled-event probes. No browser, screenshot, real touch device, or GPU benchmark was used.",
+  "runtime": "Node ESM stdin, importing src/engine.js and tests/helpers/main-harness.js",
+  "tests": {
+    "command": "node --test tests/ten-round-input.test.js tests/mobile-lifecycle-round.test.js",
+    "passed": 43,
+    "failed": 0,
+    "durationMs": 1040.174467,
+    "limitation": "DOM, storage, RAF and renderer are controlled test doubles; these are not device or accessibility tests."
+  },
+  "probes": [
+    {
+      "id": "calibration_reference_height_mismatch",
+      "classification": "Verified formula mismatch; game layout heights are derived from CSS, not measured in a browser.",
+      "source": ["src/main.js:205-209", "src/engine.js:416-425", "src/style.css:2", "src/style.css:13"],
+      "input": {
+        "points": [{"x":195,"y":150,"t":0},{"x":195,"y":30,"t":200}],
+        "upwardCssPixels": 120,
+        "initialThreshold": 2,
+        "calibrationWidth": 348,
+        "calibrationHeight": 185,
+        "adjustable": true,
+        "autoCalibration": "round(clamp(gestureInput(points,348,185,2,true).distance / 0.85,0.5,4) * 10) / 10",
+        "gameLayoutAssumptions": [
+          {"viewportWidth":390,"viewportHeight":844,"gestureHeight":509,"derivation":"844 - 190 - 145"},
+          {"viewportWidth":390,"viewportHeight":700,"gestureHeight":365,"derivation":"700 - 190 - 145"}
+        ]
+      },
+      "output": {
+        "calibratedThreshold": 1.9,
+        "calibrationPower": 0.8534850640113798,
+        "game390x844Power": 0.3102057698273188,
+        "game390x700Power": 0.43258832011535686
+      }
+    },
+    {
+      "id": "held_pointer_past_deadline",
+      "classification": "Verified intentional behavior, explicitly covered by the existing held-timeout test. The finding is the mismatch with unconditional automatic-timeout copy, not a new regression.",
+      "source": ["src/main.js:215", "src/main.js:229", "src/main.js:125", "tests/mobile-lifecycle-round.test.js:105-115"],
+      "input": ["mainHarness()", "click('ready')", "gesture.emit('pointerdown')", "60 iterations of tick(0.25)", "gesture.emit('pointerup',{clientX:195,clientY:30})"],
+      "outputBeforeRelease": {"phase":"aim","turnTime":15,"shot":null},
+      "outputAfterRelease": {"phase":"runup","aim":{"x":0,"power":0,"timeout":true}}
+    },
+    {
+      "id": "layout_shift_without_finger_movement",
+      "classification": "Verified with existing mainHarness and changed element bounds. Real-device trigger frequency and actual rotation layout shifts were not measured.",
+      "source": ["src/main.js:191", "src/main.js:195", "src/main.js:203", "tests/ten-round-input.test.js:54-69"],
+      "input": {
+        "sequence": ["mainHarness()", "click('ready')", "pointerdown", "change getBoundingClientRect", "pointerup"],
+        "pointerDown": {"clientX":195,"clientY":260,"timeStamp":0},
+        "initialRect": {"left":0,"top":0,"width":390,"height":300},
+        "changedRect": {"left":0,"top":80,"width":390,"height":300},
+        "pointerUp": {"clientX":195,"clientY":260,"timeStamp":100},
+        "actualFingerScreenDisplacement": {"x":0,"y":0}
+      },
+      "output": {
+        "phase":"runup",
+        "aim":{"distance":0.6296296296296297,"curve":0,"x":0,"y":1.1061333333333332,"power":0.3148148148148148,"speed":2.051282051282051,"low":false,"chip":false}
+      }
+    },
+    {
+      "id": "new_match_replaces_only_save",
+      "classification": "Verified product behavior. Risk depends on whether the player intended to replace the unfinished match.",
+      "source": ["src/main.js:10", "src/main.js:40", "src/main.js:135-140", "src/main.js:156"],
+      "input": ["mainHarness()", "click('ready')", "tick(0.25)", "emitWindow('pagehide')", "click('home')", "click('new')"],
+      "output":{"oldSavedSeed":73,"newSavedSeed":100,"phase":"lineup"}
+    },
+    {
+      "id": "failed_save_success_copy",
+      "classification": "Verified application feedback defect under a controlled storage-write exception.",
+      "source": ["src/main.js:22", "src/main.js:126", "src/main.js:177", "src/style.css:10"],
+      "input": ["mainHarness()", "capture sheet(title,body,type)", "replace localStorage.setItem with a function that throws Error('QuotaExceededError')", "click('pause')"],
+      "output":{"storageOk":false,"pauseText":"比赛已暂停，你的进度已经保留。"}
+    }
+  ]
+}

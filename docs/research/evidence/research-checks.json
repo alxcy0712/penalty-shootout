@@ -1,0 +1,30 @@
+{
+  "baselineCommit": "e1dcc3a06ac6513a9cc55be58004e29f2ee107df",
+  "branch": "research/product-quality-roadmap-2026-10-03",
+  "scope": "Research documents and safe reproducibility probes only; no gameplay, model, dependency, runtime test, build config, or deployment changes.",
+  "freshChecks": {
+    "build": "passed; Vite 7.3.6, 2.49 s, existing large-chunk warning",
+    "staticBudget": "passed",
+    "productFocusedTests": 43,
+    "assetFocusedTests": 6,
+    "productReproductionProbes": 5,
+    "blenderVersion": "4.3.2",
+    "blenderSourceFilesUnchanged": true,
+    "fullSuiteThisTask": "not rerun; previously394/394 receipt applies to identical runtime/test/assets, not changed master Blender tools"
+  },
+  "files": {
+    "docs/research/PRODUCT_QUALITY_ROADMAP_2026-10-03.md": "199167df348db7dabafbcef3c3d8f154440cbbf6b365c2ecd7c43000f57def2f",
+    "docs/research/animation-assets-audit.md": "0920b0dbdd637e9fe23e8f6d24367803a27cf09cea223942d46f09a7dcc05a19",
+    "docs/research/engineering-performance-audit.md": "930a4168e682aa01da41b0b33b2c4f97485ebf9d5bb897cf29dd9ba997a299c8",
+    "docs/research/evidence/asset-pipeline-probe-run.json": "9e4df0dd66527f3cbf1766330fedeff13e5d840b056de6ac9cbf3635029786b4",
+    "docs/research/evidence/asset-pipeline-probe-run.txt": "3156f3214f864faf2c837ff5a1d454710c6a83e63a9acf12460eba3f7a136027",
+    "docs/research/evidence/asset-pipeline-probes.json": "08deb1823ce813bb4ccdde34f097ecf17f60c25f419f1bd115339dec771d3387",
+    "docs/research/evidence/baseline.json": "787c710ddcd22d9e6a3c3d26eb986aa4893c2eeaaabd17c402b164695f40fccc",
+    "docs/research/evidence/probe_asset_pipeline.py": "a340ce3ee1806eae23dd3260ed27a62aea5f549ccd9808b32ffd59c5ed4b248a",
+    "docs/research/evidence/product-probes.json": "f70e4bf1c363f2cee549017ea3fd4bd00b7f5ed1f960b57f7ecbb0f2687965f9",
+    "docs/research/evidence/render-budget.json": "49c16e609615f882fd116a12881c45ae01b2bb79c4c8b0ccbc435aa6828e466e",
+    "docs/research/evidence/reproduce-product-probes.mjs": "cd5d073d9cb23b78b5aebc5a94c92700dbfabd07d2d8ded0ddc0aeef1cfa72e9",
+    "docs/research/product-mobile-audit.md": "18cb767a14d87af8397afe2917d6ccf5c4475c9880464601ead193fb202a12a3"
+  },
+  "historicalEvidence": "Prior local Blender images explicitly marked historical; no current-device or current-WebGL screenshots claimed."
+}

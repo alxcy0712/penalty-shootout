@@ -1,0 +1,115 @@
+{
+  "scope": "Read assets; inspect APIs; apply refine_character only in unsaved memory",
+  "blender": "4.3.2",
+  "beforeHashes": {
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+    "assets/characters/keeper-prototype.blend": "ae8adec66ee628808bca1e1fab188966916f8284d6ee82561a975c6f8467069c",
+    "assets/characters/striker-mocap.blend": "f57b13726e2c074718b635902870813a7af759267b2876316c8973afd0929ebc",
+    "tools/blender/refine_football_model.py": "d563cdc30eb054892a4c1578863b89d4424b22629467a627918916dfcedf75ef",
+    "tools/blender/repair_keeper_skin.py": "a380788697d4ff53d0b9057bf50fd75e985776e8c36ee76e94598b71dce7e160"
+  },
+  "before": {
+    "bones": [
+      "root",
+      "pelvis",
+      "spine",
+      "chest",
+      "clavicle.L",
+      "upper_arm.L",
+      "forearm.L",
+      "hand.L",
+      "clavicle.R",
+      "upper_arm.R",
+      "forearm.R",
+      "hand.R",
+      "neck",
+      "head",
+      "thigh.L",
+      "shin.L",
+      "foot.L",
+      "toe.L",
+      "thigh.R",
+      "shin.R",
+      "foot.R",
+      "toe.R"
+    ],
+    "rigProperties": [],
+    "meshes": [
+      {
+        "name": "SuperHero_Male",
+        "vertices": 11040,
+        "polygons": 17954,
+        "triangles": 17954,
+        "materials": [
+          "Skin.001",
+          "Kit",
+          "Shorts",
+          "Socks",
+          "Boots",
+          "Eyes"
+        ],
+        "meshProperties": [],
+        "objectProperties": []
+      }
+    ]
+  },
+  "capabilities": {
+    "actionLayers": false,
+    "actionSlots": false,
+    "meshoptExportProperty": false,
+    "meshoptModule": false
+  },
+  "afterInMemory": {
+    "rigProperties": [
+      "glove_cuffs"
+    ],
+    "meshes": [
+      {
+        "name": "SuperHero_Male",
+        "vertices": 9284,
+        "polygons": 15043,
+        "triangles": 15091,
+        "materials": [
+          "Skin.001",
+          "Kit",
+          "Shorts",
+          "Socks",
+          "Boots",
+          "Eyes"
+        ],
+        "meshProperties": [
+          "football_refinement",
+          "cloth_smoothing",
+          "keeper_refinement",
+          "keeper_sleeve_weights"
+        ],
+        "objectProperties": []
+      },
+      {
+        "name": "KeeperJersey",
+        "vertices": 384,
+        "polygons": 314,
+        "triangles": 668,
+        "materials": [
+          "Kit"
+        ],
+        "meshProperties": [],
+        "objectProperties": [
+          "keeper_jersey"
+        ]
+      }
+    ]
+  },
+  "afterHashes": {
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+    "assets/characters/keeper-prototype.blend": "ae8adec66ee628808bca1e1fab188966916f8284d6ee82561a975c6f8467069c",
+    "assets/characters/striker-mocap.blend": "f57b13726e2c074718b635902870813a7af759267b2876316c8973afd0929ebc",
+    "tools/blender/refine_football_model.py": "d563cdc30eb054892a4c1578863b89d4424b22629467a627918916dfcedf75ef",
+    "tools/blender/repair_keeper_skin.py": "a380788697d4ff53d0b9057bf50fd75e985776e8c36ee76e94598b71dce7e160"
+  },
+  "filesUnchanged": true,
+  "totalTrianglesBefore": 17954,
+  "totalTrianglesAfterInMemory": 15759
+}

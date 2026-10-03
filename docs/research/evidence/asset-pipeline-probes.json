@@ -1,0 +1,137 @@
+{
+  "baselineCommit": "e1dcc3a06ac6513a9cc55be58004e29f2ee107df",
+  "observedAtUtc": "2026-10-03",
+  "scope": "Read-only asset inventory and Blender capabilities; one in-memory refine_character call. No .blend save, GLB export, full rebuild invocation, runtime edits or production asset changes.",
+  "inputs": {
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+    "assets/characters/keeper-prototype.blend": "ae8adec66ee628808bca1e1fab188966916f8284d6ee82561a975c6f8467069c"
+  },
+  "probes": [
+    {
+      "name": "Read delivered Blender scene without saving",
+      "workingDirectory": "repository root",
+      "command": "blender -b assets/characters/keeper-prototype.blend --python-expr \"import bpy,json; rig=next(o for o in bpy.context.scene.objects if o.type=='ARMATURE'); print('AUDIT_READ_ONLY',json.dumps({'blender':bpy.app.version_string,'bones':[b.name for b in rig.data.bones],'rigProperties':list(rig.keys()),'meshes':[{'name':o.name,'materials':[m.name for m in o.data.materials], 'meshProperties':list(o.data.keys()),'objectProperties':list(o.keys())} for o in bpy.context.scene.objects if o.type=='MESH']}))\"",
+      "observedOutput": {
+        "blender": "4.3.2",
+        "bones": [
+          "root",
+          "pelvis",
+          "spine",
+          "chest",
+          "clavicle.L",
+          "upper_arm.L",
+          "forearm.L",
+          "hand.L",
+          "clavicle.R",
+          "upper_arm.R",
+          "forearm.R",
+          "hand.R",
+          "neck",
+          "head",
+          "thigh.L",
+          "shin.L",
+          "foot.L",
+          "toe.L",
+          "thigh.R",
+          "shin.R",
+          "foot.R",
+          "toe.R"
+        ],
+        "rigProperties": [],
+        "meshes": [
+          {
+            "name": "SuperHero_Male",
+            "materials": [
+              "Skin.001",
+              "Kit",
+              "Shorts",
+              "Socks",
+              "Boots",
+              "Eyes"
+            ],
+            "meshProperties": [],
+            "objectProperties": []
+          },
+          {
+            "name": "Icosphere",
+            "materials": [],
+            "meshProperties": [],
+            "objectProperties": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "Apply new refinement only to an unsaved in-memory scene",
+      "workingDirectory": "repository root",
+      "command": "blender -b assets/characters/keeper-prototype.blend --python-expr \"import bpy,json,sys; sys.path.insert(0,'tools/blender'); import refine_football_model as m; rig=next(o for o in bpy.context.scene.objects if o.type=='ARMATURE'); objs=[o for o in bpy.context.scene.objects if o.type=='MESH' and any(x.type=='ARMATURE' and x.object==rig for x in o.modifiers)]; before={o.name:[v.co.copy() for v in o.data.vertices] for o in objs}; beforeCounts=[(o.name,len(o.data.vertices),len(o.data.polygons)) for o in objs]; m.refine_character(rig,True); objs2=[o for o in bpy.context.scene.objects if o.type=='MESH' and any(x.type=='ARMATURE' and x.object==rig for x in o.modifiers)]; [o.data.calc_loop_triangles() for o in objs2]; print('AUDIT_IN_MEMORY_ONLY',json.dumps({'before':beforeCounts,'after':[(o.name,len(o.data.vertices),len(o.data.polygons),len(o.data.loop_triangles)) for o in objs2],'triangles':sum(len(o.data.loop_triangles) for o in objs2),'rigProperties':list(rig.keys())}));\"",
+      "observedOutput": {
+        "before": [
+          [
+            "SuperHero_Male",
+            11040,
+            17954
+          ]
+        ],
+        "after": [
+          [
+            "SuperHero_Male",
+            9284,
+            15043,
+            15091
+          ],
+          [
+            "KeeperJersey",
+            384,
+            314,
+            668
+          ]
+        ],
+        "triangles": 15759,
+        "rigProperties": [
+          "glove_cuffs"
+        ]
+      },
+      "tupleDefinitions": {
+        "before": [
+          "objectName",
+          "vertexCount",
+          "polygonCount"
+        ],
+        "after": [
+          "objectName",
+          "vertexCount",
+          "polygonCount",
+          "triangleCount"
+        ]
+      },
+      "limit": "This measures structural change only. It does not assert visual improvement or failure, exported file size, runtime compatibility, or the quality of the new jersey."
+    },
+    {
+      "name": "Inspect installed Blender interfaces without running a build",
+      "workingDirectory": "repository root",
+      "command": "blender -b assets/characters/keeper-prototype.blend --python-expr \"import bpy,importlib.util,json; action=next(iter(bpy.data.actions)); props=bpy.ops.export_scene.gltf.get_rna_type().properties.keys(); print('AUDIT_CAPABILITIES',json.dumps({'version':bpy.app.version_string,'actionLayers':hasattr(action,'layers'),'actionSlots':hasattr(action,'slots'),'meshoptExportProperty':'export_meshopt_compression_enable' in props,'meshoptModule':importlib.util.find_spec('io_scene_gltf2.io.exp.meshopt') is not None,'fullFileNoSave':True}))\"",
+      "observedOutput": {
+        "version": "4.3.2",
+        "actionLayers": false,
+        "actionSlots": false,
+        "meshoptExportProperty": false,
+        "meshoptModule": false,
+        "fullFileNoSave": true
+      }
+    }
+  ],
+  "targetedChecks": {
+    "command": "node --test tests/model-refinement.test.js tests/mocap-inventory.test.js tests/cmu-variant.test.js",
+    "tests": 6,
+    "pass": 6,
+    "fail": 0,
+    "scope": "Current shipped asset identity and budgets, exact compressed Blender bytes, source BVH identity, compact clip source and bind rig, boot/support/final stance and continuity."
+  },
+  "conclusion": {
+    "proven": "Current assets remain valid under the selected checks. Their editable scene lacks refinement custom flags; the new helper materially changes it in memory. Installed Blender lacks interfaces used by the new/modified build scripts.",
+    "inferredFromOrder": "refine_football_model.py saves the production .blend at line 126 before importing the unavailable meshopt module at line 127. A direct full rebuild on this environment risks partial overwrite before failure.",
+    "notExecuted": "No complete rebuild, no save_as_mainfile, no export_scene.gltf and no collision-cache regeneration."
+  }
+}
