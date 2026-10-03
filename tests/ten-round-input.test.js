@@ -51,22 +51,22 @@ for(const [label,schedule] of Object.entries(schedules)){
     assert.equal(context.state.shot,shot);assert.deepEqual(json(shot),before,'retired guard handlers do not change a committed dive');
   });
 
-  test(`${label}: portrait and landscape bounds can change during a held touch without committing`,()=>{
-    const h=mainHarness(),{context,s}=h;h.click('ready');const el=hold(h),owner=context.pointer;
+  test(`${label}: portrait and landscape layout changes cancel a held touch and allow a fresh one`,()=>{
+    const h=mainHarness(),{context,s}=h;h.click('ready');const el=hold(h);
     for(const [index,[width,height,left,top]] of [[844,390,32,15],[320,900,8,30],[390,844,0,0]].entries()){
       h.resize(width,height);
       const rect={left,top,width:Math.min(width,500),height:Math.min(height,300)};
       el.getBoundingClientRect=()=>rect;
-      el.emit('pointermove',{pointerId:7,clientX:left+rect.width*.64,clientY:top+rect.height*.32,timeStamp:h.now+20});
+      el.emit('pointermove',{pointerId:7,clientX:195,clientY:260,timeStamp:h.now+20});
       h.tick(schedule[index%schedule.length]);
-      assert.equal(context.pointer,owner);assert.equal(context.state.phase,'aim');
+      assert.equal(context.pointer,null);assert.equal(context.state.phase,'aim');
       assert.equal(context.state.shot,null);assert.equal(s.currentShot,null);assert.equal(s.drawnKick.runup,0);
-      assert.ok(context.state.aim);assert.ok(Number.isFinite(context.state.aim.x));
-      assert.ok(context.state.aim.power>=0&&context.state.aim.power<=1);
+      assert.equal(context.state.aim,null);assert.equal(h.element('#power-fill').style.width,'0%');
       assert.equal(s.camera.aspect,width/height);assert.deepEqual(s.bufferSize,[width,height,1]);
       assert.ok(s.camera.projectionMatrix.elements.every(Number.isFinite));
     }
-    release(h,el);assert.equal(context.state.phase,'runup');assert.equal(context.pointer,null);
+    release(h,el);assert.equal(context.state.phase,'aim','stale release cannot shoot');
+    hold(h,8);release(h,el,8);assert.equal(context.state.phase,'runup');assert.equal(context.pointer,null);
     const committed=json(context.state.aim);
     el.emit('pointerup',{pointerId:7,clientX:10,clientY:10});
     h.tick(schedule[0]);assert.ok(s.drawnKick.runup>0);assert.deepEqual(json(context.state.aim),committed);
@@ -100,7 +100,7 @@ for(const mode of ['simple','advanced'])test(`held touch → Home → ${mode} ga
   h.click('home');h.tick();assert.equal(context.pointer,null);assert.equal(s.mode,'hero');
   // Preference storage is outside this harness. Keep the real mode action and
   // render while replacing only its unrelated storage side effect.
-  context.storeSettings=()=>{};h.click('mode',{mode});h.click('new');
+  context.storeSettings=()=>{};h.click('mode',{mode});h.click('new');h.click('confirm-new');
   if(mode==='advanced')h.click('coin');
   h.click('first',{first:'0'});h.click('ready');h.tick();
   const current=h.gesture;assert.notEqual(current,retired);assert.equal(context.state.match.mode,mode);

@@ -1,0 +1,164 @@
+{
+  "baselineCommit": "40d1d72e35f9c297d0350afde61ba8eb7cf45902",
+  "scope": "A1 inputs/persistence/safe candidate workflow only",
+  "finalTests": {
+    "tests": 502,
+    "passed": 502,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "durationMs": 144722.514648
+  },
+  "firstAggregate": {
+    "tests": 458,
+    "passed": 448,
+    "failed": 10,
+    "cause": "Home resumed shared Match/Shot identity; original archive-isolation assertions retained and integration repaired"
+  },
+  "build": {
+    "passed": true,
+    "seconds": 1.87,
+    "gameKB": 69.7,
+    "gameGzipKB": 26.16,
+    "baselineGameKB": 53.91,
+    "baselineGameGzipKB": 20.79,
+    "sharedRenderingKB": 1277.42,
+    "sharedRenderingGzipKB": 352.87,
+    "existingChunkWarning": true,
+    "sharedContent": "identical body, changed export aliases; byte length equal but bundle hash differs"
+  },
+  "physics": {
+    "shots": 669,
+    "catches": 223,
+    "goals": 240,
+    "steps": 156308,
+    "completeTerminalJsonEqual": true
+  },
+  "sourceHashes": {
+    "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+    "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+    "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "src/calibration.js": "97a2f58b91505ea8883ca1051e1defa7cd124c2063a5e6aec172d3d086bab729",
+    "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+    "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+    "src/engine.js": "6dd7c2a974c616c65331fd634fd7aeb06119b0ced1f800087daba029dd82c1ed",
+    "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+    "src/gesture-session.js": "d8285ae58e37035fb74c496394a2c6234e7c8b1915a8ed103f9392124785dbdb",
+    "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+    "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+    "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+    "src/keeper-finger-grip.js": "64d8528fc10df5f4490b10817bb461efc54565f30c18ccad5acda0e7ff63a450",
+    "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+    "src/keeper-result-recovery.js": "825707fadd77f7fed8046e68e43f946c96795b9cf72f6baf6cde4f3c82c6bae1",
+    "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+    "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "src/main.js": "2e74c6be031fde76d5ca9b2d9e2d2bee51a23f2315080eca6ed94a7f65725ed8",
+    "src/motion-lab-inspector.css": "7d043b7715bdb9bc7b7ce5dd8dbef3f5186396ea8e177b1ee48e416862df1dcf",
+    "src/motion-lab-runtime.js": "34a17af03ba240a95cc8b17adaff37e4fb7711049e59867d2bb50585c202da67",
+    "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+    "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+    "src/persistence.js": "d799c79959212a4559bbb8d92cc52175136e58a494bb21bbe3d530572131a6d1",
+    "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+    "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+    "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+    "src/style.css": "6b83cd7dcfc94d3f6731da8fcca0ea08663d6cc5f795ca9cfa5e11d4773667e3",
+    "src/tokens.css": "8f28acae99aababdc79ee2c0665b9101cbc71b7b06f39a3eb387533d9985ec03"
+  },
+  "assetHashes": {
+    "assets/characters/keeper-prototype.blend": "ae8adec66ee628808bca1e1fab188966916f8284d6ee82561a975c6f8467069c",
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "assets/characters/striker-mocap.blend": "f57b13726e2c074718b635902870813a7af759267b2876316c8973afd0929ebc",
+    "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+    "assets/characters/striker-quaternius.blend": "331634241ad99964932cc2f41aa6e1d0c613f675db8f12ab88717a69bcadce34"
+  },
+  "evidence": {
+    "/workspace/scratch/da56d19312e0/foundation-a1-evidence/full-tests.log": "44a0eb44a6959caa4e4fef7a8d73c3abfaa405e380fb4f27e7ba99be20a620a0",
+    "/workspace/scratch/da56d19312e0/foundation-a1-evidence/full-tests-before-review-fixes.log": "9f7e5155129c47e29f723666ac478520d753ea3a450cfcfef5f7d73a21666f1c",
+    "/workspace/scratch/da56d19312e0/foundation-a1-evidence/full-tests-before-assignment-hardening.log": "d2289f84a5e3f1710b060a14022edbcb335f0f8a63bafcc29b8c07f443d60095",
+    "/workspace/scratch/da56d19312e0/foundation-a1-evidence/build.log": "56bc14cfdb6b3261f20eb3c650ae3f4ef6a6f6258ab64e5bc9ce2645412a0a0c",
+    "/workspace/scratch/da56d19312e0/foundation-a1-evidence/physics-contract.json": "788a78c1615d8e878cc89304d5ece4a902635351b7d72979c3b24e765dc216d5",
+    "/workspace/scratch/da56d19312e0/foundation-a1-evidence/model-check-final.json": "e3553dd0be40b8023f34e33338df03cda05210c86f9042c56efd37467f20372a",
+    "/workspace/scratch/da56d19312e0/foundation-a1-evidence/stale-model-check.log": "ceb6e2d2464a7f3597533eb546b9aee354554f614f0b9accac31c907328c25ea",
+    "/workspace/scratch/da56d19312e0/penalty-foundation-a1/validation/foundation-a1/persistence-schema-coverage.json": "3357a37ad2072fa11b457a2b0ab4305a686db879b1f7a13236abdaaa2f8a99b4"
+  },
+  "limits": [
+    "No actual-browser/mobile-device verification",
+    "Changed model imports cannot be promoted; generating/deep/visual adapters deferred",
+    "Recoverable file transaction, not power-loss or cross-file atomicity guarantee",
+    "Legacy create_* scripts remain unsupported; two unsafe direct rebuilds disabled",
+    "Serialized-session restores are independent; latest serialization failure may retain explicit live fallback"
+  ],
+  "schemaCoverage": {
+    "shots": 669,
+    "snapshots": 6202,
+    "shotFields": 44,
+    "exactRestoration": true
+  },
+  "changedCodeHashes": {
+    "src/calibration.js": "97a2f58b91505ea8883ca1051e1defa7cd124c2063a5e6aec172d3d086bab729",
+    "src/gesture-session.js": "d8285ae58e37035fb74c496394a2c6234e7c8b1915a8ed103f9392124785dbdb",
+    "src/main.js": "2e74c6be031fde76d5ca9b2d9e2d2bee51a23f2315080eca6ed94a7f65725ed8",
+    "src/persistence.js": "d799c79959212a4559bbb8d92cc52175136e58a494bb21bbe3d530572131a6d1",
+    "src/style.css": "6b83cd7dcfc94d3f6731da8fcca0ea08663d6cc5f795ca9cfa5e11d4773667e3",
+    "tests/calibration.test.js": "43709e3214499c1c3f7004d71c62ee1e064a62713d9bd05b3c9d4c5785679c8a",
+    "tests/helpers/main-harness.js": "d1ad147b72960096f565cd20663fae62666bfdd062c94b647f505f0351459b70",
+    "tests/input-foundation-main.test.js": "456ed9dd7eb2a9ed1f34e644a00095e0dc37c18d7deddbad69d8d15f18b93ffb",
+    "tests/mobile-lifecycle-round.test.js": "364877659ff1e13b7055b76a4d0272279d83cf6b959ede7f332c4e811b6921b0",
+    "tests/model-build.test.js": "6ff73b6041de32070c67bfdc0e4aba503104df11628eafeb5b90b507eecb0ed9",
+    "tests/persistence-main.test.js": "5fb013ad475f36582134182f5a5408f5fa84a7e91091e967545dee25959ee4fa",
+    "tests/persistence.test.js": "535dee415d0dd1a9dadb412aba160b5ce50373d7a21cb082e86433a56fec2938",
+    "tests/shot-input-state.test.js": "6065d4b66c83bd24797064f332dd8dbd3e2ec52169b2b5a5f88bfbe5373dc7b0",
+    "tests/ten-round-input.test.js": "7a73cdb7a691d993b029ee230cdb1c0d01c803113f167471bd2f729361d36ecd",
+    "tools/blender/refine_football_model.py": "eb3706945ec6063cc8cb569286b399fd1fcb54fe36810f47e0d7db5e88fc3cff",
+    "tools/blender/repair_keeper_skin.py": "b7b7aa6e3b7df16daaa1aa0f4535e923790d4e1a9e2ed8ef6875b8a40fcf0c63",
+    "tools/model-build/README.md": "4f9defbb89aac389b5e82b0712e908136d44e9639de40217f2a80845189bae24",
+    "tools/model-build/blender_capabilities.py": "0348574d9ca29da76eea329e135ae9152d2202322720148dac520afc7d295287",
+    "tools/model-build/candidate.mjs": "1f7fa3f4bc6d3d4672850db9852eb7652802db1b8e254709a3951e548cb46608",
+    "tools/model-build/cli.mjs": "8b522f5ed98e9e27e6e7a899a67ee02b9e7f1856a46dde8f92bcc0e00fd27310",
+    "tools/model-build/files.mjs": "09d372b582579741768ebe6824be5c9b45a7e09944a96aa5e83739dcb0de90af",
+    "tools/model-build/model-build.test.mjs": "c79b28b7f3aa1fb938b2ec99e1fcc89d962aadd69dd84e6bffbc95c4e6f96599",
+    "tools/model-build/structure.mjs": "66d60b11d58a875b9c8c86992f5e1a1f01fb26f090fd1e70ad3f0a536a07aba8",
+    "tools/model-build/transaction.mjs": "0aee3489bdf5c8fc408ec1c963f39b9ccfe7a5f41c9a406472da9c3e0f7805fa",
+    "tools/qa/audit-a1-physics-contract.mjs": "bf3bb34015d43c7ac749696f5d4f5747eb331fb3cb4974d0d546d8a5c513fdda",
+    "tools/qa/audit-persistence-schema.mjs": "1e6a841ac8cc70a88633fc959eed45766bf9c43042e5142433423079595789f6"
+  },
+  "independentEarlierRevision": {
+    "tests": 474,
+    "passed": 474,
+    "failed": 0,
+    "scope": "Independent review/full run before final assignment-key hardening; retained as historical evidence, superseded by independentFinalRevision",
+    "logs": {
+      "/workspace/scratch/da56d19312e0/a1-root-tests.log": "42118f239baa8c8360b93d4891b8adf209adb537919b939d0e1b6f784887dfb0",
+      "/workspace/scratch/da56d19312e0/a1-root-build.log": "e5e04a63fa53c97bfae9799fa2a46ff4c10edc42b4c1b5fb7f03cd6366fe73ff"
+    }
+  },
+  "independentFinalRevision": {
+    "testedCommit": "70efcef1b38f7fd91253789e2b746f3776a41781",
+    "testedTree": "aef046b88db09f74805e784521a13f381d3a611e",
+    "tests": 502,
+    "passed": 502,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 145292.886184,
+    "build": {
+      "passed": true,
+      "durationSeconds": 1.93,
+      "retainedWarning": "Existing chunks larger than 500 kB warning"
+    },
+    "scope": "Independent final full suite and build after assignment-key hardening; subsequent receipt commit changes documentation only",
+    "logs": {
+      "/workspace/scratch/da56d19312e0/a1-root-final-tests.log": "5eee7f9de01345e054f88250cb4743bffa7756a2d6f01485c1e826c24d4f4b28",
+      "/workspace/scratch/da56d19312e0/a1-root-final-build.log": "d49a0497d8d1052563cfdad17d0f55ca7f621b5e4050c501c3b7d66de9187e43"
+    }
+  }
+}

@@ -6,14 +6,25 @@ import {Stadium} from '../../src/scene.js';
 import {Match,Shot,clamp,gestureInput,directionMeter,powerMeter,keeperPose} from '../../src/engine.js';
 import {penaltyStyle} from '../../src/anatomy.js';
 import {committedKickAim} from '../../src/shot-input-state.js';
+import * as calibrationApi from '../../src/calibration.js';
+import * as gestureSessionApi from '../../src/gesture-session.js';
+import * as persistenceApi from '../../src/persistence.js';
 
 const main=await readFile(new URL('../../src/main.js',import.meta.url),'utf8');
-const oneLine=name=>main.match(new RegExp(`function ${name}[^\\n]+`))[0];
-const actions=main.slice(main.indexOf('function newMatch('),main.indexOf("document.addEventListener('visibilitychange'"));
+// Run the actual top-level application function, supporting both the original
+// one-line wrappers and readable multiline bodies without duplicating logic.
+const mainFunction=name=>{
+  const start=main.indexOf(`function ${name}(`),lineEnd=main.indexOf('\n',start);
+  assert.ok(start>=0,`Missing application function ${name}`);
+  const firstLine=main.slice(start,lineEnd);
+  return firstLine.endsWith('{')?main.slice(start,main.indexOf('\n}',lineEnd)+2):firstLine;
+};
+const actions=main.slice(main.indexOf('function resumeCandidate('),main.indexOf("document.addEventListener('visibilitychange'"));
+const calibration=main.slice(main.indexOf('function showCalibration('),main.indexOf('function showPlayer('));
 const visibility=main.split('\n').find(line=>line.startsWith("document.addEventListener('visibilitychange'"));
 
 class Element {
-  listeners={};style={};captures=new Set();classList={toggle(){}};
+  listeners={};style={};dataset={};captures=new Set();classList={toggle(){}};
   addEventListener(type,callback){this.listeners[type]=callback;}
   getBoundingClientRect(){return {left:0,top:0,width:390,height:300};}
   setPointerCapture(id){this.captures.add(id);}
@@ -25,7 +36,7 @@ class Element {
 
 // Preserve the actual application actions, frame loop, Match and Stadium.
 // Replace only DOM/renderer plumbing and character mesh uploads.
-export function mainHarness(mode='advanced',turn=0){
+export function mainHarness(mode='advanced',turn=0,options={}){
   const object=()=>new THREE.Object3D();
   const geometry=size=>new THREE.BufferGeometry().setAttribute('position',new THREE.BufferAttribute(new Float32Array(size),3));
   const s=Object.assign(Object.create(Stadium.prototype),{
@@ -42,24 +53,28 @@ export function mainHarness(mode='advanced',turn=0){
     waitingKeeperPose:keeperPose({reach:80,speed:80},0,0,1),
   });
   const m=new Match(mode,73);m.start(turn);
-  const listeners={},windowListeners={},ui=new Map(),storage=new Map();let clock=0,seed=100;
+  const listeners={},windowListeners={},ui=new Map(),storage=new Map(options.storage),toasts=[];let clock=0,seed=100;
+  const rawPreferences=options.preferences??{mode,touch:2,mouse:2,pen:2};
   const context={state:{phase:'ready',match:m,shot:null,turnTime:0,runup:0,dir:0,aim:null},
-    paused:false,pointer:null,settings:{mode,touch:2,mouse:2},activeDevice:'touch',autoCalibrate:false,calibration:[],
-    frameTime:0,elapsed:0,accumulator:0,saveClock:0,modal:null,modalTrigger:null,STORAGE:'match',storageOk:true,
+    paused:false,pointer:null,settings:calibrationApi.normalizePreferences(rawPreferences),activeDevice:'touch',calibration:null,pendingNewMatch:null,pageResumeState:null,
+    preferencesLocked:calibrationApi.preferencesRequireNewerVersion(rawPreferences),
+    frameTime:0,elapsed:0,accumulator:0,saveClock:0,modal:null,modalTrigger:null,STORAGE:'match',PREF:'preferences',storageOk:true,
+    ...calibrationApi,...gestureSessionApi,...persistenceApi,
     Match,Shot,clamp,gestureInput,directionMeter,powerMeter,penaltyStyle,committedKickAim,stage:s,
     document:{hidden:false,addEventListener(type,callback){listeners[type]=callback;},querySelectorAll(){return[];}},
-    performance:{now:()=>clock},requestAnimationFrame(){},sound(){},toast(){},icon:()=>'',seed:()=>seed++,
+    performance:{now:()=>clock},requestAnimationFrame(){},sound(){},toast(text){toasts.push(text);},icon:()=>'',seed:()=>seed++,
     active:()=>['aim','power','guard','runup','flight'].includes(context.state.phase),
     $:selector=>{if(['#indicator','#timer'].includes(selector))return null;if(!ui.has(selector))ui.set(selector,new Element());return ui.get(selector);},
     localStorage:{getItem:key=>storage.get(key)??null,setItem(key,value){storage.set(key,value);},removeItem(key){storage.delete(key);}},
     window:{addEventListener(type,callback){windowListeners[type]=callback;}},
-    sheet(title,body,type){context.modal=type;},
+    sheet(title,body,type){context.modal=type;context.sheetTitle=title;context.sheetContent=body;},
     render(){s.setMode(context.state.phase==='home'?'hero':'game');ui.set('#gesture',new Element());context.bindGesture(ui.get('#gesture'),false);},
   };
+  context.persistence=persistenceApi.createPersistence({getStorage:()=>context.localStorage,matchKey:'match',preferencesKey:'preferences'});
   vm.createContext(context);
-  vm.runInContext(['read','save','clearSave','transition','closeModal','showPause','shotInput'].map(oneLine).join('\n')+'\n'+actions+'\n'+visibility+'\n'+main.split('\n').filter(line=>line.startsWith("window.addEventListener('blur'")||line.startsWith("window.addEventListener('pagehide'")).join('\n'),context);
+  vm.runInContext(['read','save','storeSettings','clearSave','matchSaveMessage','updatePersistenceFeedback','transition','closeModal','showPause','shotInput','updateCalibrationReachability'].map(mainFunction).join('\n')+'\n'+calibration+'\n'+actions+'\n'+visibility+'\n'+main.split('\n').filter(line=>line.startsWith("window.addEventListener('blur'")||line.startsWith("window.addEventListener('pagehide'")||line.startsWith("window.addEventListener('resize'")).join('\n'),context);
   context.render();
-  return {context,s,
+  return {context,s,toasts,storage,element:selector=>context.$(selector),
     click(action,data={}){const button={disabled:false,dataset:{action,...data}};listeners.click({target:{closest:()=>button}});},
     get gesture(){return ui.get('#gesture');},
     tick(dt=1/60){clock+=dt*1000;context.frame(clock);},

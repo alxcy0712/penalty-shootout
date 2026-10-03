@@ -1,5 +1,7 @@
 # 产品闭环、移动输入与可访问性代码审查
 
+> 历史研究基线：本文记录的是 e1dcc3a 的修复前行为。A1实施后的现状与验收请看 [开发指南](../A1_DEVELOPER_GUIDE.md) 和 [架构决策](../architecture/ADR_A1_FOUNDATION.md)；不要把旧缺陷复现脚本当成当前发布测试。
+
 审查基线：`e1dcc3a`，2026-10-03。范围为正式游戏 `index.html`、`src/main.js`、`src/engine.js`、`src/style.css`、相关场景代码及回归测试。未修改运行时代码、资源或部署。
 
 本轮五组探针的输入、精确输出与限制：[product-probes.json](evidence/product-probes.json)。

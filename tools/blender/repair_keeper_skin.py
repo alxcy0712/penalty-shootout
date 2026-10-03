@@ -70,37 +70,18 @@ def repair_jersey(rig):
 
 
 def rebuild():
-    asset=Path(__file__).resolve().parents[2]/'assets/characters/keeper-prototype'
-    bpy.context.preferences.filepaths.save_version=0
-    bpy.ops.wm.open_mainfile(filepath=str(asset.with_suffix('.blend')))
-    rig=next(o for o in bpy.context.scene.objects if o.type=='ARMATURE')
-    repair_jersey(rig)
-    bpy.ops.object.select_all(action='DESELECT');rig.select_set(True)
-    objects=[o for o in bpy.context.scene.objects if o.type=='MESH'
-             and any(m.type=='ARMATURE' and m.object==rig for m in o.modifiers)]
-    scene=bpy.context.scene;active=rig.animation_data.action
-    for action in bpy.data.actions:
-        rig.animation_data.action=action;rig.animation_data.action_slot=action.slots[0]
-        for frame in range(math.floor(action.frame_range[0]),math.ceil(action.frame_range[1])+1):
-            scene.frame_set(frame);depsgraph=bpy.context.evaluated_depsgraph_get()
-            lowest=min((obj.matrix_world@v.co).z for obj in objects for v in obj.evaluated_get(depsgraph).data.vertices)
-            if lowest<.002:
-                root=rig.pose.bones['root'];root.matrix=Matrix.Translation(Vector((0,0,.002-lowest)))@root.matrix
-                root.keyframe_insert(data_path='location',frame=frame,group='root')
-    rig.animation_data.action=active;scene.frame_set(0)
-    for obj in objects:obj.select_set(True)
-    bpy.context.view_layer.objects.active=rig
-    bpy.ops.wm.save_as_mainfile(filepath=str(asset.with_suffix('.blend')))
-    from io_scene_gltf2.io.exp import meshopt
-    meshopt.QUAT_FILTER_BITS=16
-    bpy.ops.export_scene.gltf(filepath=str(asset.with_suffix('.glb')),export_format='GLB',use_selection=True,
-        export_animations=True,export_animation_mode='ACTIONS',export_frame_range=False,export_skins=True,
-        export_force_sampling=True,export_optimize_animation_size=True,export_meshopt_compression_enable=True,
-        export_image_format='JPEG',export_image_quality=85,export_lights=False,export_cameras=False)
-    meta=json.loads(asset.with_suffix('.json').read_text());meta['glbBytes']=asset.with_suffix('.glb').stat().st_size
-    for obj in objects:obj.data.calc_loop_triangles()
-    meta['triangles']=sum(len(obj.data.loop_triangles) for obj in objects)
-    asset.with_suffix('.json').write_text(json.dumps(meta,indent=2)+'\n')
+    """Disabled until a candidate adapter proves original authoring inputs.
+
+    Published editable reconstructions are already refined. Keep this guard
+    before opening production sources, editing animation, saving or exporting.
+    The in-memory repair_jersey helper remains available for isolated research.
+    """
+    raise RuntimeError(
+        'Legacy in-place keeper repair is disabled before any source write. '
+        'Published .blend files are GLB-derived editable reconstructions, not '
+        'proven authoring inputs. Use tools/model-build/cli.mjs '
+        'snapshot/import/check for isolated candidates. A generating adapter '
+        'is not enabled.')
 
 
 if __name__=='__main__':rebuild()

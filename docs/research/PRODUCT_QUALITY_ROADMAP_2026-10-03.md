@@ -1,5 +1,7 @@
 # 《十一码之夜》成品质量研究与可行性路线
 
+> 历史研究基线：本文记录的是 e1dcc3a 的修复前行为。A1实施后的现状与验收请看 [开发指南](../A1_DEVELOPER_GUIDE.md) 和 [架构决策](../architecture/ADR_A1_FOUNDATION.md)；不要把旧缺陷复现脚本当成当前发布测试。
+
 研究日期：2026-10-03。研究分支：`research/product-quality-roadmap-2026-10-03`。
 
 ## 结论先说

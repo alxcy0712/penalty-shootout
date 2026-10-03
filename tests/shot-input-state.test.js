@@ -6,6 +6,8 @@ import {committedKickAim} from '../src/shot-input-state.js';
 import {gestureInput,clamp} from '../src/engine.js';
 import {penaltyStyle} from '../src/anatomy.js';
 import {loadCharacter} from './helpers/load-character.js';
+import * as calibrationApi from '../src/calibration.js';
+import * as gestureSessionApi from '../src/gesture-session.js';
 
 const source=await readFile(new URL('../src/main.js',import.meta.url),'utf8');
 class Element {
@@ -21,12 +23,13 @@ class Element {
 function harness(){
   const el=new Element(),ui=new Element(),frames=[];
   const context={state:{phase:'aim',match:{mode:'advanced',turn:0,kicker:0,teams:[{players:[{number:11}]}]},turnTime:0,runup:0,aim:null},
-    paused:false,pointer:null,settings:{touch:2},activeDevice:'touch',autoCalibrate:false,calibration:[],frameTime:0,elapsed:0,accumulator:0,saveClock:0,
+    paused:false,pointer:null,settings:calibrationApi.normalizePreferences({touch:2}),activeDevice:'touch',calibration:null,frameTime:0,elapsed:0,accumulator:0,saveClock:0,
+    ...calibrationApi,...gestureSessionApi,
     committedKickAim,gestureInput,clamp,penaltyStyle,document:{hidden:false},requestAnimationFrame(){},active:()=>true,save(){},toast(){},
     $:selector=>['#indicator','#timer'].includes(selector)?null:ui,
     stage:{update(...args){frames.push(args);}},transition:phase=>{context.state.phase=phase;},release(){throw Error('Unexpected release');}};
   vm.createContext(context);
-  vm.runInContext(source.match(/function shotInput[^\n]+/)[0]+'\n'+source.match(/function launch[^\n]+/)[0]+'\n'+source.slice(source.indexOf('function bindGesture('),source.indexOf("document.addEventListener('visibilitychange'")),context);
+  vm.runInContext(source.match(/function shotInput[^\n]+/)[0]+'\n'+source.match(/function launch[^\n]+/)[0]+'\n'+source.slice(source.indexOf('function cancelGesture('),source.indexOf("document.addEventListener('visibilitychange'")),context);
   context.bindGesture(el,false);
   return {el,context,frames,tick(time){context.frame(time);return frames.at(-1);}};
 }

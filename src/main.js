@@ -3,30 +3,52 @@ import {penaltyStyle} from './anatomy.js';
 import {committedKickAim} from './shot-input-state.js';
 import {Match, Shot, Random, clamp, gestureInput, directionMeter, powerMeter} from './engine.js';
 import {Stadium} from './scene.js';
+import {DEVICES, MIN_FULL_TRAVEL_PX, MAX_FULL_TRAVEL_PX, inputDevice, defaultCalibration, normalizePreferences, preferencesRequireNewerVersion, deviceCalibration, needsRecalibration, calibrationDraft, calibratedProfile, calibratedGestureInput, validCalibrationTravel, cssTravelPower} from './calibration.js';
+import {createGestureSession, appendGesturePoint} from './gesture-session.js';
+import {createPersistence, serializeMatchSave, inspectMatchSave, restoreMatchSave} from './persistence.js';
 
 const icons={ball:'<circle cx="12" cy="12" r="9"/><path d="m12 7 4 3-1.5 4.5h-5L8 10zM12 3v4m8 1-4 2m2 9-3.5-4.5M6 19l3.5-4.5M4 8l4 2"/>',arrow:'<path d="M4 12h15m-6-6 6 6-6 6"/>',back:'<path d="m14 6-6 6 6 6"/>',close:'<path d="m6 6 12 12M6 18 18 6"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="m9 3-1 3-3 1-2 3 2 2-1 3 3 2 2 3h4l1-3 3-1 2-3-2-2 1-3-3-2-2-3z"/>',help:'<circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 1 1 4 3c-1 0-1 1-1 2m0 2v1"/>',pause:'<path d="M9 5v14M15 5v14"/>',sound:'<path d="m4 9 5 0 5-4v14l-5-4H4zM17 8q6 4 0 8"/>',mute:'<path d="m4 9 5 0 5-4v14l-5-4H4zM17 9l5 6m0-6-5 6"/>',shield:'<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6z"/><path d="m8 12 3 3 5-6"/>',hand:'<path d="M8 12V5a2 2 0 0 1 4 0v6-4a2 2 0 0 1 4 0v5-2a2 2 0 0 1 4 0v5c0 5-4 7-7 6L6 17l-3-4q0-3 3-1l2 2"/>',cup:'<path d="M7 3h10v7a5 5 0 0 1-10 0zM7 5H3v3q0 5 5 5m9-8h4v3q0 5-5 5M12 15v5m-5 1h10"/>',up:'<path d="m6 14 6-6 6 6"/>',down:'<path d="m6 10 6 6 6-6"/>',check:'<path d="m5 12 4 4L19 6"/>'};
 const icon=(name,cls='')=>`<svg class="icon ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]||icons.ball}</svg>`;
 const $=s=>document.querySelector(s);
 const STORAGE='penalty-night-v1', PREF='penalty-preferences-v1';
 let storageOk=true;
-function read(key){try{return JSON.parse(localStorage.getItem(key));}catch{return null;}}
-const settings={mode:'simple',sound:true,mouse:2,touch:2,pen:2,...(read(PREF)||{})};
+const persistence=createPersistence({getStorage:()=>localStorage,matchKey:STORAGE,preferencesKey:PREF});
+function read(key){return (key===PREF?persistence.preferences:persistence.match).read().value??null;}
+const storedPreferences=persistence.preferences.read();
+const preferencesLocked=preferencesRequireNewerVersion(storedPreferences.value);
+const settings=normalizePreferences(storedPreferences.value);
 let state={phase:'home',match:null,shot:null,turnTime:0,lockedX:0,dir:0,runup:0,aim:null};
-let paused=false, modal=null, stage, renderError=null, frameTime=0, elapsed=0, accumulator=0, saveClock=0, pointer=null, activeDevice='ontouchstart' in window?'touch':'mouse', calibration=[], autoCalibrate=false;
+let paused=false, modal=null, stage, renderError=null, frameTime=0, elapsed=0, accumulator=0, saveClock=0, pointer=null, activeDevice='ontouchstart' in window?'touch':'mouse', calibration=null, pendingNewMatch=null, pageResumeState=null;
 let audioCtx=null,modalTrigger=null;
 function sound(kind){
   if(!settings.sound)return;
   try{audioCtx??=new (window.AudioContext||window.webkitAudioContext)();audioCtx.resume();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(audioCtx.destination);const t=audioCtx.currentTime;o.type=kind==='kick'?'triangle':'sine';o.frequency.setValueAtTime(kind==='goal'?520:kind==='kick'?130:kind==='save'?220:380,t);o.frequency.exponentialRampToValueAtTime(kind==='goal'?1040:70,t+.16);g.gain.setValueAtTime(.07,t);g.gain.exponentialRampToValueAtTime(.001,t+.22);o.start(t);o.stop(t+.23);}catch{}
 }
-function storeSettings(){try{localStorage.setItem(PREF,JSON.stringify(settings));}catch{storageOk=false;}}
-function save(){if(!state.match||state.phase==='home')return;try{localStorage.setItem(STORAGE,JSON.stringify({version:1,state}));}catch{storageOk=false;}}
-function clearSave(){try{localStorage.removeItem(STORAGE);}catch{}}
+function storeSettings(){const result=preferencesLocked?{ok:false,status:'unsupported'}:persistence.preferences.write(settings);updatePersistenceFeedback();return result;}
+function save(){if(!state.match||state.phase==='home')return {ok:false,status:'skipped'};const result=persistence.match.write(state,serializeMatchSave);storageOk=result.ok;updatePersistenceFeedback();return result;}
+function clearSave(){return persistence.match.remove();}
+function matchSaveMessage(result){return result?.ok?'进度已保存，可以稍后继续。':'进度仅在本页保留，关闭或刷新页面可能丢失。';}
+function updatePersistenceFeedback(){
+  const el=$('#persistence-status');
+  if(!el)return;
+  const match=persistence.match.status,preferences=persistence.preferences.status;
+  const readFailed=channel=>channel.write?.ok!==true&&['corrupt','read-failed','unavailable'].includes(channel.read?.status);
+  let text='',status='ok';
+  if(match.write?.ok===false){text='进度仅在本页，关闭可能丢失';status='write-failed';}
+  else if(preferencesLocked){text='设置格式不受支持，本页试调不覆盖';status='unsupported';}
+  else if(preferences.write?.ok===false){text='设置未保存，关闭可能丢失';status='write-failed';}
+  else if(readFailed(match)){text='进度读取失败，原存档未删除';status='read-failed';}
+  else if(readFailed(preferences)){text='设置读取失败，本页使用默认手感';status='read-failed';}
+  if(el.textContent!==text)el.textContent=text;
+  el.hidden=!text;
+  el.dataset.state=status;
+}
 function toast(text){$('#toast').textContent=text;$('#toast').classList.add('visible');clearTimeout(toast.timer);toast.timer=setTimeout(()=>{$('#toast').classList.remove('visible');$('#toast').textContent='';},2600);}
 const active=()=>['aim','power','guard','runup','flight'].includes(state.phase);
 function transition(phase){state.phase=phase;pointer=null;render();save();}
 function seed(){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0];}
 
-$('#app').innerHTML=`<div class="desktop-hint"><span class="tiny-line"></span> 十一码之夜 <span class="tiny-line"></span></div><div class="phone"><div id="stadium" aria-label="原创三维足球场"></div><div class="vignette"></div><header id="header"></header><div id="screen"></div><div id="modal-root"></div><div id="toast" role="status"></div></div><p class="desktop-note">鼠标按住拖动，即可模拟手指滑动</p>`;
+$('#app').innerHTML=`<div class="desktop-hint"><span class="tiny-line"></span> 十一码之夜 <span class="tiny-line"></span></div><div class="phone"><div id="stadium" aria-label="原创三维足球场"></div><div class="vignette"></div><header id="header"></header><div id="persistence-status" role="status" hidden></div><div id="screen"></div><div id="modal-root"></div><div id="toast" role="status"></div></div><p class="desktop-note">鼠标按住拖动，即可模拟手指滑动</p>`;
 try{stage=new Stadium($('#stadium'));}catch(err){renderError=err;$('#stadium').innerHTML='<div class="graphics-error">图形加载失败<br><small>请启用浏览器硬件加速后重试</small><button class="secondary" data-action="reload">重试加载</button></div>';}
 
 function header(){
@@ -35,9 +57,12 @@ function header(){
 }
 function render(){
   header();stage?.setMode(state.phase==='home'?'hero':'game');
+  updatePersistenceFeedback();
   const s=$('#screen');
   if(state.phase==='home'){
-    s.innerHTML=`<section class="home"><div class="home-copy"><div class="eyebrow"><span></span> 今夜，站上罚球点</div><h1>十一<span>码之夜</span></h1><p>一脚定局。<br>把胜负，交给你的下一次选择。</p></div><div class="home-bottom"><div class="stadium-note"><span class="live-dot"></span> 雾港球场 <span>夜场 · 微雨</span></div><div class="mode-label">选择你的比赛方式 <span>01 / 02</span></div><div class="mode-grid"><button class="mode-card ${settings.mode==='simple'?'selected':''}" data-action="mode" data-mode="simple" aria-pressed="${settings.mode==='simple'}"><div>${icon('ball')}<span class="mode-radio"></span></div><strong>简洁版</strong><small>两次点击，一脚决胜</small><span class="mode-tag">轻松上手 · 射门不限时</span></button><button class="mode-card ${settings.mode==='advanced'?'selected':''}" data-action="mode" data-mode="advanced" aria-pressed="${settings.mode==='advanced'}"><div>${icon('hand')}<span class="mode-radio"></span></div><strong>高级版</strong><small>指尖划动，掌控球路</small><span class="mode-tag">原创球队 · 球员能力</span></button></div><button class="primary start" data-action="new" ${renderError?'disabled':''}>走上球场 ${icon('arrow')}</button><div class="home-links"><button class="text-btn" data-action="calibration">${icon('gear')} 力度校准</button>${read(STORAGE)?'<button class="text-btn" data-action="resume-save">继续上次比赛 →</button>':'<span>五轮决胜 · 攻守交替</span>'}</div></div></section>`;
+    const resume=resumeCandidate(),canResume=resume.kind==='resumable',finished=resume.kind==='finished';
+    updatePersistenceFeedback();
+    s.innerHTML=`<section class="home"><div class="home-copy"><div class="eyebrow"><span></span> 今夜，站上罚球点</div><h1>十一<span>码之夜</span></h1><p>一脚定局。<br>把胜负，交给你的下一次选择。</p></div><div class="home-bottom"><div class="stadium-note"><span class="live-dot"></span> 雾港球场 <span>夜场 · 微雨</span></div><div class="mode-label">选择你的比赛方式 <span>01 / 02</span></div><div class="mode-grid"><button class="mode-card ${settings.mode==='simple'?'selected':''}" data-action="mode" data-mode="simple" aria-pressed="${settings.mode==='simple'}"><div>${icon('ball')}<span class="mode-radio"></span></div><strong>简洁版</strong><small>两次点击，一脚决胜</small><span class="mode-tag">轻松上手 · 射门不限时</span></button><button class="mode-card ${settings.mode==='advanced'?'selected':''}" data-action="mode" data-mode="advanced" aria-pressed="${settings.mode==='advanced'}"><div>${icon('hand')}<span class="mode-radio"></span></div><strong>高级版</strong><small>指尖划动，掌控球路</small><span class="mode-tag">原创球队 · 球员能力</span></button></div><button class="primary start" data-action="${canResume?'resume-save':'new'}" ${renderError?'disabled':''}>${canResume?'继续比赛':'走上球场'} ${icon('arrow')}</button>${needsRecalibration(settings)?'<p class="calibration-reminder">旧力度设置仍在使用，建议重新校准以适应不同屏幕。</p>':''}<div class="home-links"><button class="text-btn" data-action="calibration">${icon('gear')} 力度校准</button>${canResume?'<button class="text-btn" data-action="new">开始新比赛</button>':finished?'<button class="text-btn" data-action="resume-save">查看上场赛果 →</button>':resume.value?'<button class="text-btn" data-action="resume-save">尝试恢复旧进度 →</button>':'<span>五轮决胜 · 攻守交替</span>'}</div></div></section>`;
     return;
   }
   if(state.phase==='lineup'){
@@ -52,14 +77,24 @@ function render(){
   s.innerHTML=`<section class="game ${m.mode==='advanced'?'advanced':''} ${own?'':'keeper-view'}"><div class="scoreboard"><div class="score-team"><span class="team-symbol mint">${icon('shield')}</span><strong>雾港弧光</strong><small>你的球队</small>${kickDots(m.teams[0])}</div><div class="score-center"><div class="round-label">${m.serial>10?'突然死亡':'常规五轮'}</div><div class="score">${m.teams[0].goals}<span>:</span>${m.teams[1].goals}</div><small>第 ${Math.floor((m.serial-1)/2)+1} 轮</small></div><div class="score-team"><span class="team-symbol peach">${icon('shield')}</span><strong>暮原流星</strong><small>对手球队</small>${kickDots(m.teams[1])}</div></div><div class="role-pill ${own?'':'defending'}">${icon(own?'ball':'hand')} ${own?'你来射门':'你来守门'}<span id="timer">${state.phase==='ready'?'准备':own?(m.mode==='simple'?'不限时':'10.0 秒'):'3.0 秒'}</span></div><div id="gesture" aria-label="${own?'向上划动射门':'向左或向右划动扑救'}"><svg id="gesture-line" aria-hidden="true"><path/></svg><div class="gesture-origin">${icon(own?'ball':'hand')}</div></div><div id="floating-result" aria-live="polite"></div><div class="game-bottom"><button class="player-strip" data-action="player" data-team="${m.turn}" data-player="${m.kicker}"><span class="jersey">${p.number.toString().padStart(2,'0')}</span><span><strong>${p.name}</strong><small>${p.position} · 本轮主罚</small></span>${m.mode==='advanced'?`<div class="mini-stats"><span>准度<b>${p.accuracy}</b></span><span>脚力<b>${p.power}</b></span></div>`:`<span class="small-note">${own?'你的下一脚':'保持专注'}</span>`}</button><div class="control-panel" id="controls">${controls()}</div><div class="match-footer"><button class="text-btn" data-action="roster">${icon('shield')} 球队</button><span id="status-note">${storageOk?'每一脚，都有可能':'进度仅保留在当前页面'}</span><button class="text-btn" data-action="rules">规则 ${icon('help')}</button></div></div></section>`;
   $('#gesture').classList.toggle('enabled',m.mode==='advanced'&&['aim','guard','flight'].includes(state.phase)&&(!own||state.phase==='aim'));
   bindGesture($('#gesture'),false);
+  updateCalibrationReachability();
   if(state.phase==='result')resultOverlay();
 }
 function kickDots(team){const shown=team.kicks.length>5?team.kicks.slice(-5):team.kicks;return `<div class="kick-dots" aria-label="${team.goals} 球，已罚 ${team.kicks.length} 次">${Array.from({length:5},(_,i)=>`<span class="dot ${shown[i]?(shown[i].goal?'hit':'miss'):''}">${shown[i]?(shown[i].goal?'✓':'×'):''}</span>`).join('')}</div>`;}
 function shotTypeChoice(){return `<div class="shot-type" role="group" aria-label="射门方式"><button data-action="shot-type" data-low="false" aria-pressed="${!state.lowShot&&!state.chipShot}">常规</button><button data-action="shot-type" data-low="true" aria-pressed="${!!state.lowShot}">低平</button><button data-action="shot-type" data-low="chip" aria-pressed="${!!state.chipShot}">勺子</button></div>`;}
-function shotInput(points,r){const input=gestureInput(points,r.width,r.height,settings[activeDevice]||2,true);return input?{...input,low:!!state.lowShot,chip:!!state.chipShot}:null;}
+function shotInput(points,r,profile=deviceCalibration(settings,activeDevice)){const input=calibratedGestureInput(points,r,profile);return input?{...input,low:!!state.lowShot,chip:!!state.chipShot}:null;}
+function updateCalibrationReachability(){
+  const el=$('#calibration-reachability');
+  if(!el||state.phase!=='ready'||state.match?.mode!=='advanced'||state.match.turn!==0)return;
+  const profile=deviceCalibration(settings,activeDevice);
+  const height=$('#gesture')?.getBoundingClientRect().height;
+  const warn=profile.unit==='css-px'&&Number.isFinite(height)&&height>0&&profile.fullTravelPx>height;
+  el.hidden=!warn;
+  el.innerHTML=warn?`<p class="fine-print">当前满力度距离 ${profile.fullTravelPx.toFixed(1)} 像素，超过操作区域高度 ${height.toFixed(0)} 像素，建议先校准。</p><button class="text-btn" data-action="calibration">调整此设备力度 →</button>`:'';
+}
 function controls(){
   const {phase,match:m}=state,own=m.turn===0;
-  if(phase==='ready')return `<div class="panel-title"><h2>${own?'把握你的这一脚':'读懂对手的下一脚'}</h2><span class="step">${own?'进攻':'防守'}</span></div><p>${own?(m.mode==='simple'?'先锁定方向，再选择力度。慢慢来。':'向上拖动调力度，回拉减力，弯划踢出弧线。'):'提前预判方向，门将根据来球时间起扑。'}</p>${own?shotTypeChoice():''}<button class="primary" data-action="ready">准备好了 ${icon('arrow')}</button>`;
+  if(phase==='ready')return `<div class="panel-title"><h2>${own?'把握你的这一脚':'读懂对手的下一脚'}</h2><span class="step">${own?'进攻':'防守'}</span></div><p>${own?(m.mode==='simple'?'先锁定方向，再选择力度。慢慢来。':'向上拖动调力度，回拉减力，弯划踢出弧线。'):'提前预判方向，门将根据来球时间起扑。'}</p>${own?shotTypeChoice():''}<div id="calibration-reachability" hidden></div><button class="primary" data-action="ready">准备好了 ${icon('arrow')}</button>`;
   if(phase==='aim'&&m.mode==='simple')return `<div class="panel-title"><h2>选择射门方向</h2><span class="step">01 / 02</span></div><div class="meter direction"><span class="meter-center"></span><i id="indicator"></i></div><div class="meter-labels"><span>打偏 · 左路</span><span>中路</span><span>右路 · 打偏</span></div><button class="primary" data-action="lock">锁定方向 ${icon('arrow')}</button>`;
   if(phase==='power')return `<div class="panel-title"><h2>控制出脚力度</h2>${shotTypeChoice()}</div><div class="meter power"><i id="indicator"></i></div><div class="meter-labels"><span>轻推</span><span>稳健</span><span>满力 · 打飞风险</span></div><button class="primary" data-action="shoot">射门 ${icon('ball')}</button>`;
   if(phase==='aim')return `<div class="panel-title"><h2>向上划动，完成射门</h2>${shotTypeChoice()}</div><p>${state.chipShot?'力度越大，挑得越高；回拉降低弧顶。':state.lowShot?'贴地出球；拖远加力，回拉减力。':'拖远加力，回拉减力；弯划搓出弧线。'}</p><div class="gesture-power"><span id="power-fill"></span></div><div class="meter-labels"><span>轻推</span><strong id="power-value">等待你的手势</strong><span>大力</span></div>`;
@@ -121,23 +156,89 @@ function sheet(title,body,type='info'){
   $('#header').inert=true;$('#screen').inert=true;
   modal=type;const root=$('#modal-root');root.innerHTML=`<div class="modal-backdrop"><section class="sheet" role="dialog" aria-modal="true" aria-label="${title}"><div class="sheet-header"><h2>${title}</h2><button class="icon-btn" data-action="close" aria-label="关闭">${icon('close')}</button></div><div class="sheet-content">${body}</div></section></div>`;root.querySelector('button')?.focus();
 }
-function closeModal(){frameTime=performance.now();paused=false;modal=null;$('#modal-root').innerHTML='';$('#header').inert=false;$('#screen').inert=false;pointer=null;autoCalibrate=false;if(modalTrigger?.isConnected)modalTrigger.focus({preventScroll:true});modalTrigger=null;}
+function closeModal(){frameTime=performance.now();paused=false;modal=null;$('#modal-root').innerHTML='';$('#header').inert=false;$('#screen').inert=false;cancelGesture();calibration=null;pendingNewMatch=null;if(modalTrigger?.isConnected)modalTrigger.focus({preventScroll:true});modalTrigger=null;}
 function showRules(){if(active()){paused=true;}sheet('比赛规则',`<div class="rule-intro">五轮之间，攻守交替。<br>每一次选择都算数。</div><div class="rule"><b>01</b><p><strong>五轮决胜</strong>双方交替主罚，无法追平时提前结束。五轮平局后进入突然死亡，同轮一进一失决定胜负。</p></div><div class="rule"><b>02</b><p><strong>全员轮换</strong>11 人各罚一次后才能重复，包括门将。每脚仅一次射门，门框及门将反弹仍继续判定。</p></div><div class="rule"><b>03</b><p><strong>两种操作</strong>简洁版先选方向、再选力度，射门不限时。高级版滑动射门，10 秒超时自动中路轻射。</p></div><div class="rule"><b>04</b><p><strong>提前预判</strong>AI 在 3 秒后出脚。可提前选扑救方向，根据球速起扑；未预选可以在球飞行中作出一次侧扑。</p></div><p class="fine-print">操作时限、AI 节奏和专职门将限制为本游戏设定。模拟合法点球流程，全部球队及人物均为原创虚构。</p>`,active()?'pause':'info');}
-function showPause(){if(state.phase==='home')return;paused=true;save();sheet('中场片刻',`<p class="sheet-lead">比赛已暂停，你的进度已经保留。</p><button class="primary full" data-action="close">继续比赛 ${icon('arrow')}</button>${['ready','result','lineup','coin','finish'].includes(state.phase)?'<button class="secondary full" data-action="calibration">力度校准</button>':''}<button class="secondary full" data-action="rules">比赛规则</button><button class="text-btn full" data-action="exit-confirm">返回首页</button>`,'pause');}
-function showCalibration(){
+function showPause(){if(state.phase==='home')return;paused=true;cancelGesture('',false);const result=save();sheet('中场片刻',`<p class="sheet-lead">比赛已暂停。${matchSaveMessage(result)}</p><button class="primary full" data-action="close">继续比赛 ${icon('arrow')}</button>${['ready','result','lineup','coin','finish'].includes(state.phase)?'<button class="secondary full" data-action="calibration">力度校准</button>':''}<button class="secondary full" data-action="rules">比赛规则</button><button class="text-btn full" data-action="exit-confirm">返回首页</button>`,'pause');}
+function showCalibration(device=activeDevice){
   if(active()){toast('请在回合间隙调整力度');return;}
-  const device=activeDevice==='touch'?'touch':activeDevice==='pen'?'pen':'mouse';
-  sheet('找到你的出脚手感',`<p class="sheet-lead">轻轻划，还是用力划。让力度跟上你的习惯。</p><div class="device-tabs"><button data-action="device" data-device="mouse" class="${device==='mouse'?'active':''}">鼠标</button><button data-action="device" data-device="touch" class="${device==='touch'?'active':''}">触屏</button></div><label class="setting-label" for="threshold">满力度拖动距离 <strong id="threshold-label">${settings[device].toFixed(1)} × 基准距离</strong></label><input id="threshold" type="range" min="0.5" max="4" step="0.1" value="${settings[device]}"><div class="meter-labels"><span>轻划也有力</span><span>更大控制空间</span></div><div id="calibration-pad" class="calibration-pad"><span>${icon('hand')}</span><strong id="calibration-message">从这里向上划动</strong><small>按住鼠标左键拖动，也可以试滑</small><div class="gesture-power"><span id="calibration-fill"></span></div></div><div class="calibration-controls"><button class="secondary" data-action="auto-calibrate">三次校准</button><button class="secondary" data-action="reset-calibrate">恢复默认</button></div><p id="calibration-note" class="fine-print">比赛中按住拖动可反复调整力度；此设置改变拖动灵敏度，球员脚力决定球速。</p><button class="primary full" data-action="save-calibrate">保存设置 ${icon('check')}</button>`,'calibration');
+  cancelGesture();calibration=calibrationDraft(settings,device);
+  renderCalibration();
+}
+function renderCalibration(){
+  const {device,profile,legacy}=calibration,labels={mouse:'鼠标',touch:'触屏',pen:'触控笔'};
+  sheet('找到你的出脚手感',`<p class="sheet-lead">同样的上划距离，在校准和比赛中得到相同力度。</p>${preferencesLocked?'<p class="calibration-reminder">当前版本无法识别这些设置，当前试调仅在本页生效，原设置不会覆盖。</p>':''}${legacy?'<p class="calibration-reminder">此设备仍使用旧版、随区域高度变化的设置。下方是新版试用值，点击保存才会替换旧设置。</p>':''}<div class="device-tabs">${DEVICES.map(name=>`<button data-action="device" data-device="${name}" class="${device===name?'active':''}" aria-pressed="${device===name}">${labels[name]}</button>`).join('')}</div><label class="setting-label" for="threshold">${labels[device]}满力度上划距离 <strong id="threshold-label">${profile.fullTravelPx.toFixed(1)} 像素</strong></label><input id="threshold" type="range" min="${MIN_FULL_TRAVEL_PX}" max="${MAX_FULL_TRAVEL_PX}" step="1" value="${profile.fullTravelPx}"><div class="meter-labels"><span>轻划也有力</span><span>更大控制空间</span></div><div id="calibration-pad" class="calibration-pad"><span>${icon('hand')}</span><strong id="calibration-message">从这里向上划动</strong><small>请使用${labels[device]}试滑；回拉可减力</small><div class="gesture-power"><span id="calibration-fill"></span></div></div><div class="calibration-controls"><button class="secondary" data-action="auto-calibrate">三次校准</button><button class="secondary" data-action="reset-calibrate">恢复默认</button></div><p id="calibration-note" class="fine-print">前 12 像素 为起步区。只保存当前设备；切换设备或关闭会放弃未保存的试调。</p><button class="primary full" data-action="save-calibrate">保存${labels[device]}设置 ${icon('check')}</button>`,'calibration');
   bindGesture($('#calibration-pad'),true);
-  $('#threshold').addEventListener('input',e=>{settings[activeDevice]=Number(e.target.value);$('#threshold-label').textContent=`${Number(e.target.value).toFixed(1)} × 基准距离`;});
+  $('#threshold').addEventListener('input',e=>{
+    if(!calibration)return;
+    const value=Number(e.target.value);
+    if(!Number.isFinite(value))return;
+    cancelGesture();
+    calibration.profile={version:1,unit:'css-px',fullTravelPx:clamp(value,MIN_FULL_TRAVEL_PX,MAX_FULL_TRAVEL_PX)};
+    calibration.samples=[];
+    calibration.automatic=false;
+    $('#threshold-label').textContent=`${calibration.profile.fullTravelPx.toFixed(1)} 像素`;
+  });
 }
 function showPlayer(team,index){const p=state.match.teams[team].players[index];if(active())paused=true;sheet(`${p.name} · ${p.position}`,`<div class="player-heading"><span class="jersey large">${p.number}</span><p>${state.match.teams[team].name}<small>原创球员 · ${penaltyStyle(p).name} · ${p.position==='门将'?'守门及主罚资格':'主罚资格'}</small></p></div>${[['射门精确度','accuracy'],['脚力','power'],['触球稳定性','touch'],...(state.match.mode==='advanced'?[['弧线能力','curve']]:[]),['心理承受能力','composure'],...(index===0?[['扑救速度','speed'],['扑救范围','reach'],['接球稳健性','handling']]:[])].map(([label,key])=>`<div class="attribute"><label>${label}<strong>${p[key]}</strong></label><div><span style="width:${p[key]}%"></span></div></div>`).join('')}<p class="fine-print">精确度控制落点误差，脚力影响球速，大力射门更依赖稳定性与综合能力，弧线能力影响旋转幅度。门将稳健性影响触球后的抱稳表现。</p>`,active()?'pause':'info');}
-function newMatch(rematch=false){
-  const old=state.match;closeModal();paused=false;
+function resumeCandidate(){
+  const session=persistence.match.readSession();
+  const latestWasUnserializable=pageResumeState&&persistence.match.status.write?.status==='serialize-failed';
+  const result=latestWasUnserializable?{value:{version:1,state:pageResumeState},status:'loaded'}
+    :session.status==='loaded'?session:persistence.match.read();
+  return {value:result.value,kind:inspectMatchSave(result.value).status,readStatus:result.status};
+}
+function resumeMatch(){
+  const saved=resumeCandidate(),previous=state,previousPage=pageResumeState,previousMode=settings.mode;
+  let restored=restoreMatchSave(saved.value,{
+    restoreMatch:raw=>Match.restore(raw),restoreShot:raw=>Shot.restore(raw),
+  });
+  // Disk failure still has a serializable session snapshot and restores fresh
+  // Match/Shot instances. Only an unserializable latest live state needs this
+  // same-page fallback; it cannot promise isolation or survive a page reload.
+  if(!restored.ok&&pageResumeState&&persistence.match.status.write?.status==='serialize-failed'){
+    restored={ok:true,state:pageResumeState};
+  }
+  if(restored.ok){
+    try{
+      state=restored.state;
+      settings.mode=state.match.mode;
+      render();
+      pageResumeState=null;
+      if(active())showPause();
+      return;
+    }catch{
+      state=previous;
+      pageResumeState=previousPage;
+      settings.mode=previousMode;
+      render();
+    }
+  }
+  const message=['unavailable','read-failed'].includes(saved.readStatus)
+    ?'暂时无法读取进度，请稍后重试':'旧进度暂时无法恢复，原存档未删除';
+  toast(message);
+  updatePersistenceFeedback();
+}
+function newMatch(rematch=false,confirmed=false){
+  if(!confirmed){
+    const existing=resumeCandidate();
+    if(existing.readStatus!=='missing'&&existing.kind!=='finished'){
+      pendingNewMatch={rematch};
+      const warning=existing.kind==='resumable'
+        ?'新比赛会替换当前续玩进度。':'无法确认原进度，新比赛可能替换已存数据。';
+      sheet('开始新的比赛？',`<p class="sheet-lead">${warning}取消后原进度保持不变。</p><button class="primary full" data-action="confirm-new">替换进度，开始新比赛</button><button class="secondary full" data-action="close">取消</button>`,'replace-save');
+      return;
+    }
+  }
+  const old=state.match;
+  closeModal();
+  paused=false;
+  pageResumeState=null;
   const match=new Match(settings.mode,seed());
-  if(rematch&&old){match.teams=old.teams.map(t=>({...t,goals:0,kicks:[]}));}
+  if(rematch&&old)match.teams=old.teams.map(t=>({...t,goals:0,kicks:[]}));
   match.aiFirst=match.rng.int(0,1);
-  state={phase:settings.mode==='advanced'&&!rematch?'lineup':'coin',match,shot:null,turnTime:0,lockedX:0,dir:0,runup:0,aim:null};render();save();
+  state={phase:settings.mode==='advanced'&&!rematch?'lineup':'coin',match,shot:null,turnTime:0,lockedX:0,dir:0,runup:0,aim:null};
+  render();
+  save();
 }
 function beginTurn(){state.lowShot=false;state.chipShot=false;state.turnTime=0;state.dir=0;state.runup=0;state.shot=null;state.aim=null;transition('ready');}
 function launch(aim){if(state.phase==='runup'||state.phase==='flight'||state.phase==='result')return;state.aim=aim;state.runup=0;transition('runup');}
@@ -154,6 +255,7 @@ document.addEventListener('click',e=>{
   if(['new','ready','first','shoot','lock','next'].includes(a))sound('tap');
   if(a==='mode'){settings.mode=b.dataset.mode;storeSettings();render();$(`[data-action="mode"][data-mode="${settings.mode}"]`).focus({preventScroll:true});}
   if(a==='new')newMatch();
+  if(a==='confirm-new'&&pendingNewMatch&&modal==='replace-save')newMatch(pendingNewMatch.rematch,true);
   if(a==='rematch')newMatch(true);
   if(a==='coin')transition('coin');
   if(a==='first'){state.match.start(Number(b.dataset.first));beginTurn();}
@@ -170,53 +272,158 @@ document.addEventListener('click',e=>{
   if(a==='player')showPlayer(Number(b.dataset.team),Number(b.dataset.player));
   if(a==='roster'){if(active())paused=true;sheet('双方球队',`<h3>雾港弧光 · 主罚顺序</h3>${rosterRows(0)}<h3>暮原流星 · 主罚顺序</h3>${rosterRows(1)}`,active()?'pause':'info');}
   if(a==='calibration'){showCalibration();}
-  if(a==='device'){activeDevice=b.dataset.device;autoCalibrate=false;showCalibration();}
-  if(a==='auto-calibrate'){calibration=[];autoCalibrate=true;$('#calibration-note').textContent='请用舒适、有力的手势试滑 3 次（0/3）。';}
-  if(a==='reset-calibrate'){settings[activeDevice]=2;showCalibration();}
-  if(a==='save-calibrate'){storeSettings();paused=false;closeModal();toast(storageOk?'力度设置已保存':'本次设置仅在当前页面保留');}
-  if(a==='exit-confirm')sheet('结束这次比赛？','<p class="sheet-lead">返回首页会保留当前进度，可以稍后继续。</p><button class="primary full" data-action="home">返回首页</button><button class="secondary full" data-action="close">继续比赛</button>','pause');
-  if(a==='home'){save();closeModal();paused=false;state.phase='home';state.shot=null;render();}
-  if(a==='resume-save'){const saved=read(STORAGE);try{if(saved?.version!==1)throw Error();state=saved.state;state.match=Match.restore(state.match);if(state.shot)state.shot=Shot.restore(state.shot);settings.mode=state.match.mode;render();if(active())showPause();}catch{clearSave();state.phase='home';render();toast('旧进度无法恢复，请开始新比赛');}}
+  if(a==='device'&&calibration){showCalibration(b.dataset.device);toast('已切换设备，未保存的试调已放弃');}
+  if(a==='auto-calibrate'&&calibration){cancelGesture();calibration.samples=[];calibration.automatic=true;$('#calibration-note').textContent='请用舒适、有力的手势试滑 3 次（0/3）。';}
+  if(a==='reset-calibrate'&&calibration){cancelGesture();calibration.profile=defaultCalibration();calibration.samples=[];calibration.automatic=false;renderCalibration();}
+  if(a==='save-calibrate'&&calibration){settings.devices[calibration.device]={...calibration.profile};const result=storeSettings();closeModal();render();toast(result.ok?'此设备的力度设置已保存':'此设备的设置仅在本页生效，关闭或刷新可能丢失');}
+  if(a==='exit-confirm'){const result=save();sheet('返回首页？',`<p class="sheet-lead">${matchSaveMessage(result)}</p><button class="primary full" data-action="home">返回首页</button><button class="secondary full" data-action="close">继续比赛</button>`,'pause');}
+  if(a==='home'){save();closeModal();paused=false;if(state.phase!=='home'){pageResumeState=state;state={...state,phase:'home',shot:null};}render();}
+  if(a==='resume-save')resumeMatch();
   if(a==='reload')location.reload();
 });
 function directionValue(){return directionMeter(state.turnTime);}
 function powerValue(){return powerMeter(state.turnTime);}
+function cancelGesture(message='',clearPreview=true){
+  const owned=pointer;
+  if(!owned)return;
+  pointer=null;
+  if(owned.el.hasPointerCapture(owned.id))owned.el.releasePointerCapture(owned.id);
+  if(owned.calibrate){
+    const fill=$('#calibration-fill');
+    if(fill)fill.style.width='0%';
+    if(message)$('#calibration-message').textContent=message;
+  }else if(clearPreview&&state.phase==='aim'){
+    state.aim=null;
+    $('#gesture-line path')?.setAttribute('d','');
+    const fill=$('#power-fill'),label=$('#power-value');
+    if(fill)fill.style.width='0%';
+    if(label)label.textContent=message||'等待你的手势';
+  }
+  if(message)toast(message);
+}
+function showCalibrationInput(input){
+  $('#calibration-fill').style.width=`${(input?.power||0)*100}%`;
+  $('#calibration-message').textContent=input
+    ?`${input.travelPx.toFixed(0)} 像素 · 力度 ${Math.round(input.power*100)}%`
+    :'请向上划动一小段距离';
+}
+function recordCalibrationStroke(data,input){
+  if(!calibration)return;
+  showCalibrationInput(input);
+  if(!input||!calibration.automatic)return;
+  // Physics permits a short diagonal if its total distance is long enough.
+  // Calibration requires at least 18px of upward travel, independently.
+  if(!validCalibrationTravel(input.travelPx)){
+    $('#calibration-note').textContent=`请向上划动至少 18 像素。有效试滑 ${calibration.samples.length}/3`;
+    return;
+  }
+  const samples=[...calibration.samples,input.travelPx];
+  if(samples.length<3){
+    calibration.samples=samples;
+    $('#calibration-note').textContent=`有效试滑 ${samples.length}/3`;
+    return;
+  }
+  const profile=calibratedProfile(samples);
+  if(!profile){
+    $('#calibration-note').textContent='这次试滑未能生成有效设置，请重新划动。原设置保持不变。';
+    return;
+  }
+  calibration.samples=samples;
+  calibration.profile=profile;
+  calibration.automatic=false;
+  $('#threshold').value=calibration.profile.fullTravelPx;
+  $('#threshold-label').textContent=`${calibration.profile.fullTravelPx.toFixed(1)} 像素`;
+  showCalibrationInput(calibratedGestureInput(data.points,data.r,calibration.profile));
+  const median=[...calibration.samples].sort((a,b)=>a-b)[1];
+  const percent=Math.round(cssTravelPower(median,calibration.profile)*100);
+  $('#calibration-note').textContent=percent===85
+    ?'校准完成，舒适的有力划动约对应 85% 力度。点击保存仅应用到此设备。'
+    :`已达可调范围，这组手势约对应 ${percent}% 力度。建议用更舒适的距离重新试滑，或保存此设置。`;
+}
 function bindGesture(el,calibrate){
   if(!el)return;
   el.addEventListener('pointerdown',e=>{
     if((e.pointerType==='mouse'&&e.button!==0)||pointer)return;
+    if(calibrate&&(!calibration||modal!=='calibration'))return;
     if(!calibrate&&(paused||state.match?.mode!=='advanced'||!['aim','guard','flight'].includes(state.phase)))return;
     if(!calibrate&&state.phase==='flight'&&state.match.turn===0)return;
-    if(!calibrate)activeDevice=e.pointerType||'mouse';
-    const r=el.getBoundingClientRect();pointer={id:e.pointerId,points:[{x:e.clientX-r.left,y:e.clientY-r.top,t:e.timeStamp}],r,el,calibrate};el.setPointerCapture(e.pointerId);e.preventDefault();
+    const device=inputDevice(e.pointerType);
+    if(calibrate&&device!==calibration.device){
+      toast('请使用当前选中的设备，或切换设备标签');
+      return;
+    }
+    if(!calibrate)activeDevice=device;
+    pointer=createGestureSession(e,el.getBoundingClientRect(),{
+      el,calibrate,device,profile:calibrate?calibration.profile:deviceCalibration(settings,device),
+    });
+    if(!pointer)return;
+    el.setPointerCapture(e.pointerId);
+    e.preventDefault();
   });
   el.addEventListener('pointermove',e=>{
     if(pointer?.id!==e.pointerId||pointer.el!==el)return;
-    const r=el.getBoundingClientRect();pointer.points.push({x:e.clientX-r.left,y:e.clientY-r.top,t:e.timeStamp});
-    if(calibrate)return;
-    if(state.match.turn===1){const delta=e.clientX-r.left-pointer.points[0].x;if(Math.abs(delta)>18){const dir=delta<0?1:-1;if(state.dir!==dir)chooseDive(dir);pointer.guardSelected=true;}return;}
-    const line=$('#gesture-line path');if(line)line.setAttribute('d','');
-    if(state.match.turn===0){const input=shotInput(pointer.points,r);state.aim=input;if(input){$('#power-fill').style.width=`${input.power*100}%`;$('#power-value').textContent=`力度 ${Math.round(input.power*100)}% · ${input.chip?'勺子点球':input.low?'低平球':Math.abs(input.curve)>.15?'弧线':'直射'}`;}else{$('#power-fill').style.width='0%';$('#power-value').textContent='向上拖动';}}
+    if(!appendGesturePoint(pointer,e,el.getBoundingClientRect())){
+      cancelGesture('画面尺寸或位置已改变，请重新划动');
+      return;
+    }
+    const data=pointer;
+    if(calibrate){
+      showCalibrationInput(calibratedGestureInput(data.points,data.r,data.profile));
+      return;
+    }
+    if(state.match.turn===1){
+      const delta=data.points.at(-1).x-data.points[0].x;
+      if(Math.abs(delta)>18){
+        const dir=delta<0?1:-1;
+        if(state.dir!==dir)chooseDive(dir);
+        data.guardSelected=true;
+      }
+      return;
+    }
+    $('#gesture-line path')?.setAttribute('d','');
+    const input=shotInput(data.points,data.r,data.profile);
+    state.aim=input;
+    if(input){
+      $('#power-fill').style.width=`${input.power*100}%`;
+      $('#power-value').textContent=`力度 ${Math.round(input.power*100)}% · ${input.chip?'勺子点球':input.low?'低平球':Math.abs(input.curve)>.15?'弧线':'直射'}`;
+    }else{
+      $('#power-fill').style.width='0%';
+      $('#power-value').textContent='向上拖动';
+    }
   });
   el.addEventListener('pointerup',e=>{
     if(pointer?.id!==e.pointerId||pointer.el!==el)return;
-    const data=pointer;pointer=null;const r=el.getBoundingClientRect();data.points.push({x:e.clientX-r.left,y:e.clientY-r.top,t:e.timeStamp});
-    if(el.hasPointerCapture(e.pointerId))el.releasePointerCapture(e.pointerId);
-    const input=calibrate?gestureInput(data.points,r.width,r.height,settings[activeDevice]||2,true):shotInput(data.points,r);
-    if(calibrate){
-      if(!input){$('#calibration-message').textContent='请向上划动一小段距离';return;}
-      $('#calibration-fill').style.width=`${input.power*100}%`;$('#calibration-message').textContent=`${input.distance.toFixed(2)} × 基准距离 · 力度 ${Math.round(input.power*100)}%`;
-      if(autoCalibrate){calibration.push(input.distance);$('#calibration-note').textContent=`有效试滑 ${calibration.length}/3`;if(calibration.length===3){const median=calibration.sort((a,b)=>a-b)[1];settings[activeDevice]=Math.round(clamp(median/.85,.5,4)*10)/10;autoCalibrate=false;$('#threshold').value=settings[activeDevice];$('#threshold-label').textContent=`${settings[activeDevice].toFixed(1)} × 基准距离`;$('#calibration-note').textContent='校准完成，舒适的有力划动约对应 85% 力度。点击保存即可。';}}return;
+    if(!appendGesturePoint(pointer,e,el.getBoundingClientRect())){
+      cancelGesture('画面尺寸或位置已改变，请重新划动');
+      return;
     }
+    const data=pointer;
+    pointer=null;
+    if(el.hasPointerCapture(e.pointerId))el.releasePointerCapture(e.pointerId);
+    const input=calibrate?calibratedGestureInput(data.points,data.r,data.profile)
+      :shotInput(data.points,data.r,data.profile);
+    if(calibrate){recordCalibrationStroke(data,input);return;}
     $('#gesture-line path')?.setAttribute('d','');
     if(paused)return;
-    if(state.match.turn===1){const delta=data.points.at(-1).x-data.points[0].x;if(!data.guardSelected&&Math.abs(delta)>18)chooseDive(delta<0?1:-1);return;}
+    if(state.match.turn===1){
+      const delta=data.points.at(-1).x-data.points[0].x;
+      if(!data.guardSelected&&Math.abs(delta)>18)chooseDive(delta<0?1:-1);
+      return;
+    }
     if(state.phase!=='aim')return;
-    if(state.turnTime>=10){launch({x:0,power:0,timeout:true});toast('操作超时，自动轻射中路');return;}
-    if(input)launch(input);else toast('向上划动一段距离，再松手射门');
+    if(state.turnTime>=10){
+      launch({x:0,power:0,timeout:true});
+      toast('操作超时，自动轻射中路');
+      return;
+    }
+    if(input)launch(input);
+    else toast('向上划动一段距离，再松手射门');
   });
-  const cancel=e=>{if(pointer?.id===e.pointerId&&pointer.el===el){pointer=null;$('#gesture-line path')?.setAttribute('d','');state.aim=null;}};
-  el.addEventListener('pointercancel',cancel);el.addEventListener('lostpointercapture',cancel);
+  const cancel=e=>{
+    if(pointer?.id===e.pointerId&&pointer.el===el)cancelGesture();
+  };
+  el.addEventListener('pointercancel',cancel);
+  el.addEventListener('lostpointercapture',cancel);
 }
 function runupDuration(){return penaltyStyle(state.match?.teams[state.match.turn]?.players[state.match.kicker]).duration;}
 function frame(now){
@@ -248,9 +455,15 @@ function frame(now){
   stage?.update(paused?0:dt,elapsed,state.shot,state.phase==='runup'?state.runup/runupDuration():state.phase==='guard'?clamp((state.turnTime-(3-runupDuration()))/runupDuration(),0,1):0,aim,state.match&&state.phase!=='home'?state.match:null,committedKickAim(state),clamp(accumulator*120,0,1));
   requestAnimationFrame(frame);
 }
-document.addEventListener('visibilitychange',()=>{frameTime=performance.now();if(document.hidden&&active()&&!paused){pointer=null;showPause();}});
-window.addEventListener('blur',()=>{if(active()&&!paused){pointer=null;showPause();}});
+function pauseForInterruption(){
+  if(active()&&!paused){showPause();return;}
+  cancelGesture(pointer?.calibrate?'试滑已中断，请重新划动':'');
+}
+document.addEventListener('visibilitychange',()=>{frameTime=performance.now();if(document.hidden)pauseForInterruption();});
+window.addEventListener('blur',pauseForInterruption);
 window.addEventListener('pagehide',save);
+window.addEventListener('resize',()=>{cancelGesture('画面尺寸或位置已改变，请重新划动');updateCalibrationReachability();});
+window.visualViewport?.addEventListener('resize',()=>cancelGesture('画面尺寸或位置已改变，请重新划动'));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(modal)closeModal();else showPause();}if(e.key==='Tab'&&modal){const focusable=[...$('#modal-root').querySelectorAll('button:not(:disabled),input')];if(!focusable.length)return;const first=focusable[0],last=focusable.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
 if(new URLSearchParams(location.search).has('debug'))window.penaltyDebug={get state(){return state;},get settings(){return settings;},Match,Shot};
 render();requestAnimationFrame(frame);

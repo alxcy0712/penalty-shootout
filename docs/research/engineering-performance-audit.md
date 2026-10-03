@@ -1,5 +1,7 @@
 # 工程、性能与验证边界审查
 
+> 历史研究基线：本文记录的是 e1dcc3a 的修复前行为。A1实施后的现状与验收请看 [开发指南](../A1_DEVELOPER_GUIDE.md) 和 [架构决策](../architecture/ADR_A1_FOUNDATION.md)；不要把旧缺陷复现脚本当成当前发布测试。
+
 基线：2026-10-03 实时获取的 `master`，提交 `e1dcc3a06ac6513a9cc55be58004e29f2ee107df`。这是研究记录，不包含运行时代码修改。
 
 ## 先区分已经做到的事
@@ -10,19 +12,19 @@
 
 ## 1. 严重卡顿在当前调试统计中会被丢弃【代码已证实】
 
-[`scene.js:187–190`](../../src/scene.js#L187) 只记录 `0 < interval < 250` 的帧间隔。因此前台 300 ms 卡顿不会进入均值/P95；显示出来的数值可能比真实体验好。它已经正确将阴影绘制包含在计数里，也明确叫“CPU 提交”，这些正确部分应保留。
+[`scene.js:187–190`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/src/scene.js#L187) 只记录 `0 < interval < 250` 的帧间隔。因此前台 300 ms 卡顿不会进入均值/P95；显示出来的数值可能比真实体验好。它已经正确将阴影绘制包含在计数里，也明确叫“CPU 提交”，这些正确部分应保留。
 
 可行方案：保留原始前台帧间隔，另计 >50、>100、>250 ms 长帧次数与最大值；后台、暂停、主动单帧刷新按事件单独分类，不能靠阈值把坏样本删掉。FPS、CPU 提交、GPU 查询和资源计数分开。验收应注入一帧 300 ms 前台停顿，确认被统计；后台恢复间隔则按明确的可见性记录排除。低风险、小改动，只在调试/采样窗口启用，不必加常驻高频 DOM。
 
 ## 2. 主游戏缺少应用层图形上下文中断策略【代码已证实；实际发生率未知】
 
-[`main.js:30`](../../src/main.js#L30) 处理构造失败，但没有主游戏的 context-lost 暂停/提示/恢复流程。检查页已有对应处理：[`motion-lab-runtime.js:40–45`](../../src/motion-lab-runtime.js#L40)。主循环依然会推进计时、球与比分：[`main.js:222–249`](../../src/main.js#L222)。Three.js 自身具有 renderer 恢复处理，因此这里不是“显卡上下文绝对无法恢复”，而是画面不可用期间比赛状态如何处理尚未定义。
+[`main.js:30`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/src/main.js#L30) 处理构造失败，但没有主游戏的 context-lost 暂停/提示/恢复流程。检查页已有对应处理：[`motion-lab-runtime.js:40–45`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/src/motion-lab-runtime.js#L40)。主循环依然会推进计时、球与比分：[`main.js:222–249`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/src/main.js#L222)。Three.js 自身具有 renderer 恢复处理，因此这里不是“显卡上下文绝对无法恢复”，而是画面不可用期间比赛状态如何处理尚未定义。
 
 建议复用“暂停原因”而非临时布尔开关：用户暂停、后台和图形中断分别记录；上下文恢复不应自动取消用户暂停。用 `WEBGL_lose_context` 在首页、瞄准、飞行、结果各阶段测试；要求中断期间不悄悄改变比分、不会重复出脚，恢复后同一状态可继续，永久无法恢复则提供明确重载路径。需要真实浏览器验收，Node renderer stub 无法证明。
 
 ## 3. 加载失败有备用模型，但缺少用户可见的资源状态和受控重试【代码已证实】
 
-[`game-character.js:29–47`](../../src/game-character.js#L29) 有共享加载 Promise 和失败缓存删除，是合理基础。不过主游戏资源失败主要写 console；它没有检查页 [`motion-lab-runtime.js:369–372`](../../src/motion-lab-runtime.js#L369) 那样的状态说明。备用程序人物与详细蒙皮碰撞并非同一可见表面，降级期间的公平性/可理解性需要专门验收。当前射手用 `Promise.all` 同时等待基础模型和可选第二段动作，可选动作若一直悬而未决，基础模型也不会提前呈现。此处是可复现的依赖结构，不是已测量的线上超时率。
+[`game-character.js:29–47`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/src/game-character.js#L29) 有共享加载 Promise 和失败缓存删除，是合理基础。不过主游戏资源失败主要写 console；它没有检查页 [`motion-lab-runtime.js:369–372`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/src/motion-lab-runtime.js#L369) 那样的状态说明。备用程序人物与详细蒙皮碰撞并非同一可见表面，降级期间的公平性/可理解性需要专门验收。当前射手用 `Promise.all` 同时等待基础模型和可选第二段动作，可选动作若一直悬而未决，基础模型也不会提前呈现。此处是可复现的依赖结构，不是已测量的线上超时率。
 
 可使用官方 [LoadingManager](https://threejs.org/docs/pages/LoadingManager.html) 的开始/进度/错误/完成回调组织状态，但需核对本项目固定 Three r180 实际支持的 API。可选路线：先明确“可以立即玩备用模型”还是“关键模型就绪后开始”，显示轻量状态和手动重试；可选动作独立加载，准备阶段选择可用片段，出脚后不换动作源；一次重试只更新对应实例，防止旧 Promise 回写新比赛。用断网、404、慢响应、截断 GLB、第二片段失败测试；既保留现有加载完成恢复最新姿态的优势，也验证对局不跳回准备状态。
 
@@ -30,33 +32,33 @@
 
 本次构建共享 rendering 为 1,277.42 kB（Vite 报告 gzip 352.87 kB），game 为 53.91 kB / gzip 20.79 kB；三个 GLB 共 987,940 字节。不能把仓库的全部 14 MB 素材算作首屏网络负担，也不能把压缩 GLB 字节当作 GPU 内存。传输压缩和缓存头取决于未来托管配置，本次没有线上瀑布图。
 
-[`keeper-contact.js:3`](../../src/keeper-contact.js#L3) 静态导入 569,909 字节生成接触 JS；初始化还构造向量、四元数等对象。这是值得剖析的解析/内存来源，但未经分段 CPU/heap 测量，不能断言它是首要瓶颈。
+[`keeper-contact.js:3`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/src/keeper-contact.js#L3) 静态导入 569,909 字节生成接触 JS；初始化还构造向量、四元数等对象。这是值得剖析的解析/内存来源，但未经分段 CPU/heap 测量，不能断言它是首要瓶颈。
 
 先测再选：在冷缓存下记录请求、解码/初始化和首个可交互帧；对 meshopt 解码、接触数据构造、着色器首次编译分别打点。若解析占比确实高，再比较二进制接触表/TypedArray 或按阶段加载。二进制化须保持原数值和完整 Shot 输出相等；不能无依据缩成低精度浮点。代码拆分主要改变加载时机，不保证总字节或首球更快；需在用户按开始前预热必要依赖。
 
 ## 5. 移动画质预算合理，但缺少真实设备的性能档案【代码事实与未测边界】
 
-[`rendering.js:3–11`](../../src/rendering.js#L3) 限制 DPR 1.7、总像素 300 万，并只给球场最多 2× 各向异性；[`scene.js:40–45`](../../src/scene.js#L40) 请求 MSAA，使用一盏 1024 阴影灯和另外两种不投影照明。无需为了“像大作”默认加高分辨率、更多实时灯或后处理。
+[`rendering.js:3–11`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/src/rendering.js#L3) 限制 DPR 1.7、总像素 300 万，并只给球场最多 2× 各向异性；[`scene.js:40–45`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/src/scene.js#L40) 请求 MSAA，使用一盏 1024 阴影灯和另外两种不投影照明。无需为了“像大作”默认加高分辨率、更多实时灯或后处理。
 
-本次预算为 38 主绘制候选、22 阴影候选、63,566 主网格三角形；[`audit-render-budget.mjs:98–100`](../../tools/qa/audit-render-budget.mjs#L98) 明确这是 CPU 场景统计，不含真实视锥裁剪、GPU shader/带宽时间。近期云端 held 视觉阶段约 40 µs/姿态、最坏改变姿态上传跨度 50,376 字节也不能直接换算手机 FPS。
+本次预算为 38 主绘制候选、22 阴影候选、63,566 主网格三角形；[`audit-render-budget.mjs:98–100`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/tools/qa/audit-render-budget.mjs#L98) 明确这是 CPU 场景统计，不含真实视锥裁剪、GPU shader/带宽时间。近期云端 held 视觉阶段约 40 µs/姿态、最坏改变姿态上传跨度 50,376 字节也不能直接换算手机 FPS。
 
 优先建立低/中/高档真机矩阵：至少覆盖 iOS Safari 和 Android Chrome，固定视口、亮度、温度条件，关闭远程调试投屏，冷启动与连续对局分别测。60 FPS 可作为目标，30 FPS 作为候选低档策略，但应由产品明确选定，不能现在承诺。以 P95/P99 长帧、输入到可见反馈延迟、10 分钟热衰减和恢复稳定性决定档位。自适应分辨率应有滞回、只在安全阶段切换，不能在按住瞄准时抖动。
 
 ## 6. 资源生命周期需要契约，但尚无证据证明当前存在主游戏泄漏【推断风险】
 
-`GameCharacter` 保留源资源缓存、独立材质和每实例手部几何；主 `Stadium` 没有统一 dispose API。主游戏当前只创建一个 Stadium，因此不能把“缺少销毁函数”直接写成已发生的泄漏。检查页已有 pagehide 后遍历去重释放：[`motion-lab-runtime.js:350–367`](../../src/motion-lab-runtime.js#L350)。
+`GameCharacter` 保留源资源缓存、独立材质和每实例手部几何；主 `Stadium` 没有统一 dispose API。主游戏当前只创建一个 Stadium，因此不能把“缺少销毁函数”直接写成已发生的泄漏。检查页已有 pagehide 后遍历去重释放：[`motion-lab-runtime.js:350–367`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/src/motion-lab-runtime.js#L350)。
 
 在未来 SPA 页面切换、重复挂载或多人预览前，必须明确源共享资源、实例资源、监听器、ResizeObserver、mixer 和 WebGLRenderer 的所有权；可先做 50 次挂载/卸载测试，热身后资源计数应回归稳定区间。当前用户能触发的首页/下一局应先测计数是否持续增长；不要为了臆测泄漏盲目释放共享材质或解码缓存。
 
 ## 7. 验收入口的默认值落后于最新基线【代码已证实】
 
-[`run-union-gates.mjs:12–16`](../../tools/qa/run-union-gates.mjs#L12) 默认仍选早期 five-rounds 的 525 球清单、输出 `/tmp/penalty-union`、四分片并发；最新交付实际用显式参数跑 669 球并串行限制内存。`package.json` 只有普通 test/build，没有一条权威的完整 release 验收命令。新维护者直接执行默认 QA，可能得到“通过”，却没有覆盖最新案例；在 RAM-backed `/tmp` 上还会放大内存压力。此前 SIGKILL 原因不能仅凭退出码定性为内核 OOM，本次也没有声称发生 OOM。
+[`run-union-gates.mjs:12–16`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/tools/qa/run-union-gates.mjs#L12) 默认仍选早期 five-rounds 的 525 球清单、输出 `/tmp/penalty-union`、四分片并发；最新交付实际用显式参数跑 669 球并串行限制内存。`package.json` 只有普通 test/build，没有一条权威的完整 release 验收命令。新维护者直接执行默认 QA，可能得到“通过”，却没有覆盖最新案例；在 RAM-backed `/tmp` 上还会放大内存压力。此前 SIGKILL 原因不能仅凭退出码定性为内核 OOM，本次也没有声称发生 OOM。
 
 优先方案是一个版本化 release 清单：固定当前 manifest、脚本/模型/hash、输出目录和默认串行并发；快测与重测分层，所有输出都汇总到同一索引。显式修改几何导致真实结果改变时应审查并更新基准，不能为了守住历史抓球数而修坏物理，也不能默默重写期望。验收入口须报告完整 shots/catches 数和 fixture 摘要，缺失重测阶段则失败。
 
 ## 8. 已有测试深，但缺自动门禁和真实浏览器层【已证实仓库事实】
 
-仓库无 `.github` 工作流；无法据此断言 GitHub 外部完全没有检查服务，但仓库本身未定义自动验收。75 个 tests 文件、79 个 tools 文件积累了很好的回归知识，却没有统一 CI 分层入口。主 harness 明确替换 DOM、renderer、材质上传：[`tests/helpers/main-harness.js:26–55`](../../tests/helpers/main-harness.js#L26)。它能验证事件顺序，不能证明布局、触摸系统手势、GPU、音频自动播放或真实持久化行为。
+仓库无 `.github` 工作流；无法据此断言 GitHub 外部完全没有检查服务，但仓库本身未定义自动验收。75 个 tests 文件、79 个 tools 文件积累了很好的回归知识，却没有统一 CI 分层入口。主 harness 明确替换 DOM、renderer、材质上传：[`tests/helpers/main-harness.js:26–55`](https://github.com/alxcy0712/penalty-shootout/blob/e1dcc3a06ac6513a9cc55be58004e29f2ee107df/tests/helpers/main-harness.js#L26)。它能验证事件顺序，不能证明布局、触摸系统手势、GPU、音频自动播放或真实持久化行为。
 
 建议：每次修改跑规则/输入/构建与低成本资产契约；模型/碰撞变更再跑完整皮肤/轨迹验收；定期扩展独立 seed 与边界属性，并保留最小失败用例。加少量真实浏览器端到端：冷加载→校准→射门→接球→暂停→恢复→下一轮→刷新，外加网络和 context-loss 故障注入。视觉 golden 只对固定浏览器/渲染配置做阈值比较，不能要求跨 GPU 像素完全相同。
 

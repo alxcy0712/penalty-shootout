@@ -1,3 +1,5 @@
+> 最新A1基础施工：[2026-10-03输入/存档/候选工具验收](validation/FOUNDATION_A1_2026-10-03.md) — 502项测试，统一校准、手势坐标生命周期、真实保存反馈与受限安全候选工作流；正式物理/模型未改。
+
 > Latest ten model/motion rounds: [2026-10-03 ledger](validation/MODEL_MOTION_TEN_ROUNDS_2026-10-03.md) — 394 tests, uniform 669-shot / 223-catch acceptance, bounded thumb cup, cancelled-dive recovery and inspector metadata repairs, with measured CPU and retained visual limits.
 
 > Latest grip and recovery refinement: [2026-10-02 validation](validation/GRIP_RECOVERY_2026-10-02.md) — 379 tests, unchanged 645-shot / 205-catch acceptance, cupped fingers, coupled wrist refinement, staged boot support, and measured CPU/upload tradeoffs.

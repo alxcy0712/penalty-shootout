@@ -159,7 +159,7 @@ for(const [label,schedule] of Object.entries(schedules)){
       assert.equal(s.cameraAngle,context.state.match.turn?Math.PI:0);
     }
     const old=context.state.match,rosters=json(old.teams.map(team=>team.players));
-    h.click('rematch');h.click('rematch');h.click('first',{first:'0'});h.tick(schedule[0]);
+    h.click('rematch');h.click('rematch');h.click('confirm-new');h.click('first',{first:'0'});h.tick(schedule[0]);
     assert.notEqual(context.state.match,old);assert.equal(context.state.phase,'ready');assert.equal(context.state.match.serial,1);
     assert.deepEqual(json(context.state.match.teams.map(team=>team.players)),rosters);
     assert.deepEqual(json(context.state.match.teams.map(team=>team.kicks.length)),[0,0]);

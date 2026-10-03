@@ -34,3 +34,9 @@
 .reorder-handle{touch-action:none;cursor:grab;font-size:25px;color:#a9caba;flex-shrink:0}.squad-list.reordering{user-select:none;cursor:grabbing}.reordering .reorder-handle{cursor:grabbing}.squad-row.dragging{background:#2d5146;box-shadow:inset 3px 0 var(--mint);border-radius:7px}
 
 .shot-type{display:inline-flex;gap:2px;padding:3px;border:1px solid #49645470;border-radius:9px;background:#0b211e;flex-shrink:0}.shot-type button{min-height:32px;padding:4px 11px;border-radius:6px;background:transparent;color:#a8c1b3;font-size:11px}.shot-type button[aria-pressed="true"]{background:var(--mint);color:#13392c}.control-panel>.shot-type{margin:0 0 10px}.advanced .game-bottom{z-index:3}
+
+/* A1 persistence feedback sits in the existing header gap, never in the
+   gesture layout. Detailed recovery guidance stays in the relevant dialog. */
+#persistence-status{position:absolute;top:calc(56px + env(safe-area-inset-top,0px));left:20px;right:20px;z-index:6;font-size:11px;line-height:16px;color:#ffe1a3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none;text-align:center}
+#persistence-status[hidden],#persistence-status:empty{display:none}
+.calibration-reminder{padding:10px 12px;border:1px solid #baa36b66;border-radius:8px;background:#493f242e;color:#ffe1a3;font-size:12px;line-height:1.6}

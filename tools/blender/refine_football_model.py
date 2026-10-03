@@ -1,7 +1,5 @@
 """Refine the shared football body and keeper gloves without changing the rig."""
-import json
 import math
-from pathlib import Path
 
 import bpy
 import bmesh
@@ -110,34 +108,18 @@ def refine_character(rig, keeper=False):
 
 
 def rebuild():
-    assets = Path(__file__).resolve().parents[2] / 'assets' / 'characters'
-    bpy.context.preferences.filepaths.save_version = 0
-    for name in ['striker-mocap', 'keeper-prototype']:
-        bpy.ops.wm.open_mainfile(filepath=str(assets / (name + '.blend')))
-        rig = next(o for o in bpy.context.scene.objects if o.type == 'ARMATURE')
-        refine_character(rig, name.startswith('keeper'))
-        bpy.ops.object.select_all(action='DESELECT')
-        rig.select_set(True)
-        objects = [o for o in bpy.context.scene.objects if o.type == 'MESH'
-                   and any(m.type == 'ARMATURE' and m.object == rig for m in o.modifiers)]
-        for obj in objects:
-            obj.select_set(True)
-        bpy.context.view_layer.objects.active = rig
-        bpy.ops.wm.save_as_mainfile(filepath=str(assets / (name + '.blend')))
-        from io_scene_gltf2.io.exp import meshopt
-        meshopt.QUAT_FILTER_BITS = 16
-        bpy.ops.export_scene.gltf(filepath=str(assets / (name + '.glb')), export_format='GLB', use_selection=True,
-            export_animations=True, export_animation_mode='ACTIONS', export_frame_range=False, export_skins=True,
-            export_force_sampling=True, export_optimize_animation_size=True, export_meshopt_compression_enable=True,
-            export_image_format='JPEG', export_image_quality=85, export_lights=False, export_cameras=False)
-        triangles = 0
-        for obj in objects:
-            obj.data.calc_loop_triangles()
-            triangles += len(obj.data.loop_triangles)
-        meta = json.loads((assets / (name + '.json')).read_text())
-        meta.update(triangles=triangles, glbBytes=(assets / (name + '.glb')).stat().st_size)
-        (assets / (name + '.json')).write_text(json.dumps(meta, indent=2) + '\n')
-        print('REFINED', name, triangles, meta['glbBytes'])
+    """Disabled: published .blend files are GLB-derived editable reconstructions.
+
+    Their missing authoring markers cannot establish that refinement is safe to
+    repeat. No version check makes these inputs original authoring sources.
+    Keep this guard before preferences, file opens, geometry edits, or writes.
+    A future generating adapter must prove source hashes and exporter APIs first.
+    """
+    raise RuntimeError(
+        'Legacy in-place rebuild is disabled before any source write. Published '
+        '.blend files are GLB-derived editable reconstructions, not proven '
+        'authoring inputs. Use tools/model-build/cli.mjs snapshot/import/check '
+        'for isolated candidates. A generating adapter is not enabled.')
 
 
 if __name__ == '__main__':
