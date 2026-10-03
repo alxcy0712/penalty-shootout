@@ -1,0 +1,15 @@
+{
+  "affectedCatchCount": 14,
+  "affectedSamples": 25,
+  "firstTime": 0,
+  "lastTime": 0.116666667,
+  "regionPairs": {
+    "handL:handR": 260
+  },
+  "allBaselinePairsNonlocal": true,
+  "maximumTransverseSegmentMetres": 0.004863443266808654,
+  "maximumFiniteTriangleSATSeparationMetres": 0.002309032259451671,
+  "changedExistingMeasurements": 0,
+  "sourceHashesUnchanged": true,
+  "fixtureSha256": "69ac2f1c4dc587dbaef9217533e0af973d5f5bd6d806173e3feb777ea2e1fbe1"
+}

@@ -9,6 +9,7 @@ import { KICK_CONTACT } from '../src/game-character.js';
 import { Shot } from '../src/engine.js';
 import { keeperGather } from '../src/keeper-contact.js';
 import { renderPixelRatio, resizeDrawingBuffer } from '../src/rendering.js';
+import {loadCharacter,skinSurfaceDistance} from './helpers/load-character.js';
 
 const html = await readFile(new URL('../motion-lab.html', import.meta.url), 'utf8');
 const source = await readFile(new URL('../src/motion-lab-runtime.js', import.meta.url), 'utf8');
@@ -61,7 +62,7 @@ async function setup() {
     assert.ok(entry, 'a render was requested'); frames.delete(entry[0]); entry[1](time);
   };
   render();
-  return { elements, document, window, actors, renders, frames, render, get: id => elements.get(id), change(id, value) { const element = elements.get(id); element.value = value; element.emit('change'); }, click(id) { elements.get(id).emit('click'); }, scrub(time) { elements.get('timeline').value = time; elements.get('timeline').emit('input'); }, key(key, options = {}) { const event = { key, code: key === ' ' ? 'Space' : key, target: elements.get('render-stage'), preventDefault() { this.prevented = true; }, ...options }; document.emit('keydown', event); return event; } };
+  return { context, elements, document, window, actors, renders, frames, render, get: id => elements.get(id), change(id, value) { const element = elements.get(id); element.value = value; element.emit('change'); }, click(id) { elements.get(id).emit('click'); }, scrub(time) { elements.get('timeline').value = time; elements.get('timeline').emit('input'); }, key(key, options = {}) { const event = { key, code: key === ' ' ? 'Space' : key, target: elements.get('render-stage'), preventDefault() { this.prevented = true; }, ...options }; document.emit('keydown', event); return event; } };
 }
 
 test('inspector has labelled controls, all existing actions, and no absolute page header', async () => {
@@ -131,4 +132,42 @@ test('hidden tabs and back-forward cache resume without consuming background tim
   assert.equal(Number(ui.get('timeline').value), before);
   ui.window.emit('pagehide', { persisted: true }); assert.equal(ui.frames.size, 0);
   ui.window.emit('pageshow'); ui.render(200000); assert.equal(Number(ui.get('timeline').value), before);
+});
+
+
+test('centred gather preserves the solved ball frame used by real finger and thumb bounds',async()=>{
+ const h=await setup(),actor=await loadCharacter(true);h.change('motion-action','gather');
+ for(const time of[.704,1,2.1,.8,1]){
+  h.scrub(time);h.render();const player=h.actors.find(a=>a.keeper),p=player.lastPose,ball=player.labBall.position;
+  for(const axis of['x','y','z'])assert.ok(Math.abs(p.grip.ball[axis]-ball[axis])<1e-12,'solved grip metadata shares displayed ball frame');
+  actor.pose(p);assert.ok(actor.fingerGrip.diagnostics().every(d=>Math.abs(d.amount-1)<1e-12&&Math.abs(d.thumbAmount-1)<1e-12),JSON.stringify({time,closure:actor.fingerGrip.diagnostics()}));
+  assert.ok(skinSurfaceDistance(actor.root,ball,'Socks')>=.11-.000002,'actual recentered glove clears the shown sphere');
+ }
+});
+
+test('tracking retains capture calibration through settled results and reverse scrubbing',async()=>{
+ const h=await setup(),actor=await loadCharacter(true);h.change('motion-action','tracking');
+ for(const direction of[-1,0,1]){h.change('keeper-direction',direction);let expected;
+  for(const time of[5,2.2,0,5]){h.scrub(time);h.render();if(time===0)continue;const player=h.actors.find(a=>a.keeper),p=player.lastPose,ball=player.labBall.position;
+   assert.ok(p.grip?.handRotations&&p.grip.captureBlend>1.6&&p.grip.ball,'tracking must retain actual solved grasp data');
+   for(const axis of['x','y','z'])assert.ok(Math.abs(p.grip.ball[axis]-ball[axis])<1e-12);
+   actor.pose(p);assert.ok(actor.fingerGrip.diagnostics().every(d=>Math.abs(d.amount-1)<1e-12&&Math.abs(d.thumbAmount-1)<1e-12),JSON.stringify({time,closure:actor.fingerGrip.diagnostics()}));
+   assert.ok(skinSurfaceDistance(actor.root,ball,'Socks')>=.11-.000002);
+   if(time===5){const snapshot=JSON.stringify(p);if(expected)assert.equal(snapshot,expected);else expected=snapshot;}
+  }
+ }
+});
+
+
+test('inspector centering copies positional metadata once and cannot mutate cached source coordinates',async()=>{
+ const h=await setup(),source=anatomy.goalkeeperPose({speed:85,reach:85},0,.2,.3),ball={x:2.3,y:.7,z:.4};
+ source.hip.x=1.7;source.grip={center:ball,ball,captureBlend:2,handRotations:[[0,0,0,1],[0,0,0,1]]};
+ const saved=JSON.stringify(source),savedBall=JSON.stringify(ball);
+ const freeze=value=>{if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}};freeze(source);freeze(ball);
+ for(let i=0;i<3;i++){const shown=h.context.centerKeeperPresentation(source,ball,true);
+  assert.equal(shown.pose.hip.x,0);assert.ok(Math.abs(shown.ball.x-.6)<1e-12);
+  assert.equal(shown.pose.grip.center.x,shown.ball.x);assert.equal(shown.pose.grip.ball.x,shown.ball.x);
+  assert.equal(JSON.stringify(shown.pose.grip.handRotations),JSON.stringify(source.grip.handRotations));
+ }
+ assert.equal(JSON.stringify(source),saved);assert.equal(JSON.stringify(ball),savedBall);
 });

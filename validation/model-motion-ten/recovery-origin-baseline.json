@@ -1,0 +1,5211 @@
+{
+  "baselineCommit": "42f54ba3a48647cd0a529e612b0c6f3fb3d0e6c1",
+  "baselineSourceHashes": {
+    "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+    "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+    "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+    "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+    "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772"
+  },
+  "fixtureSha256": "5949a1c7f718e096868039d0037c3d064a130ae15bcd4deb244c453902ffa6ec",
+  "scope": "76 originally affected union cases plus every one of 24 new slow-shot recipes; all physical outcome and live trajectory pins remain unchanged.",
+  "records": [
+    {
+      "id": "81add4ff03156b93",
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "81add4ff03156b93",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 27
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "7b3be73343f9c1e1baf03b78c6fec928683a22fde6d106aa934590f7a2d73d3e",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "fe9d883489a8469e9f99a29913fb8be4af14997cde7f3180d1637a912da24f1d",
+      "presentedSourcePoseSha256": "fe9d883489a8469e9f99a29913fb8be4af14997cde7f3180d1637a912da24f1d",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": -1.4665795970585747,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "23afc06db8420b97",
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "23afc06db8420b97",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 29
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "e0f90c05da035bf668ea291882c92db36ebadcd6334cae1be552f6751474a964",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "d53f14fa7b4758761b9ce424dcbe50bc74f7dd3c9125f4cb08abaf95e746e857",
+      "presentedSourcePoseSha256": "d53f14fa7b4758761b9ce424dcbe50bc74f7dd3c9125f4cb08abaf95e746e857",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": -1.4665795970585747,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "67c211e050883fa1",
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "67c211e050883fa1",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 36
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "fdbc59c66aaed1d485895ad941fd5bb0729cd432c9392590f2905628ea4212ea",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "fe9d883489a8469e9f99a29913fb8be4af14997cde7f3180d1637a912da24f1d",
+      "presentedSourcePoseSha256": "fe9d883489a8469e9f99a29913fb8be4af14997cde7f3180d1637a912da24f1d",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": -1.4665795970585747,
+          "y": 1.2119762385583992
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "2e719b1718e6bf68",
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "2e719b1718e6bf68",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 38
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "783b9925c7ce2cbcadbeb17dbc692ba54e248beef7372168890093a8027674e9",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "d53f14fa7b4758761b9ce424dcbe50bc74f7dd3c9125f4cb08abaf95e746e857",
+      "presentedSourcePoseSha256": "d53f14fa7b4758761b9ce424dcbe50bc74f7dd3c9125f4cb08abaf95e746e857",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": -1.4665795970585747,
+          "y": 1.2119762385583992
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "a3abda1dddc48bcb",
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "a3abda1dddc48bcb",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 45
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "a3f7f14101911459d98d188c5d8711c681ec80528d03603d196eefba1c58058c",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "fe9d883489a8469e9f99a29913fb8be4af14997cde7f3180d1637a912da24f1d",
+      "presentedSourcePoseSha256": "fe9d883489a8469e9f99a29913fb8be4af14997cde7f3180d1637a912da24f1d",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": -1.4665795970585747,
+          "y": 2.211976238558399
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "2daabadeadc1fb82",
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "2daabadeadc1fb82",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 47
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "515744ee09c64128d05468e071eddffa638b60cb299968a638f76e20edde8972",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "d53f14fa7b4758761b9ce424dcbe50bc74f7dd3c9125f4cb08abaf95e746e857",
+      "presentedSourcePoseSha256": "d53f14fa7b4758761b9ce424dcbe50bc74f7dd3c9125f4cb08abaf95e746e857",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": -1.4665795970585747,
+          "y": 2.211976238558399
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "7044422678976841",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "7044422678976841",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 54
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "668aedbcb81469756a3e92dbf7c0533a0255738e681c6a31e660f5c9ed8df2eb",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "a4de1162de2793ed91c7f73c6f020254841a4b54a3c585e40170093412d2be39",
+      "presentedSourcePoseSha256": "a4de1162de2793ed91c7f73c6f020254841a4b54a3c585e40170093412d2be39",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "a0f774305e42befe",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "a0f774305e42befe",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 56
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "ac065c87861b4a2a28bf2ff7591aa8e65084fc79f57a4d0f7162a4b7ec4fcb3f",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "0a984556bad6accdfc58304f9e978d39479c70d913a1e25c8c7eea3cc90a6846",
+      "presentedSourcePoseSha256": "0a984556bad6accdfc58304f9e978d39479c70d913a1e25c8c7eea3cc90a6846",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "5205591176eb4058",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "5205591176eb4058",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 63
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "850e669989f3f13ab6778021149579dbde70682b6a0eb757411d955607ea0ef1",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "a4de1162de2793ed91c7f73c6f020254841a4b54a3c585e40170093412d2be39",
+      "presentedSourcePoseSha256": "a4de1162de2793ed91c7f73c6f020254841a4b54a3c585e40170093412d2be39",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 1.2119762385583992
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "e1766dabf6982ad0",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "e1766dabf6982ad0",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 65
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "73d70b236c6e71a75c1dfe8e9c3999a8410ebadd795e60767a76dda5b8e46b33",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "0a984556bad6accdfc58304f9e978d39479c70d913a1e25c8c7eea3cc90a6846",
+      "presentedSourcePoseSha256": "0a984556bad6accdfc58304f9e978d39479c70d913a1e25c8c7eea3cc90a6846",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 1.2119762385583992
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "9999e786b8cd06d6",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "9999e786b8cd06d6",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 72
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "0e935086d6549684675b590a52ca234426a86f75d05c7337dab762440492b9a2",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "a4de1162de2793ed91c7f73c6f020254841a4b54a3c585e40170093412d2be39",
+      "presentedSourcePoseSha256": "a4de1162de2793ed91c7f73c6f020254841a4b54a3c585e40170093412d2be39",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 2.211976238558399
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "3a55f9c192ae7265",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "3a55f9c192ae7265",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 74
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "a641951a68d004e954f73f8cc9426083e2dff75aa46f3e027de76207cb948600",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "0a984556bad6accdfc58304f9e978d39479c70d913a1e25c8c7eea3cc90a6846",
+      "presentedSourcePoseSha256": "0a984556bad6accdfc58304f9e978d39479c70d913a1e25c8c7eea3cc90a6846",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 2.211976238558399
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "582706506dbf23b9",
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "582706506dbf23b9",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 81
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "5ab48c210d5f490cb5aea106ef111d9facbc03ea28f2c7886b75c7b94fee8b1e",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "26480ec65b223929bff63555ab6a852d4bc27d89b484ecaac3763816d20b2b60",
+      "presentedSourcePoseSha256": "26480ec65b223929bff63555ab6a852d4bc27d89b484ecaac3763816d20b2b60",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 1.5334204029414253,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "60879e808fe1c641",
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "60879e808fe1c641",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 83
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "9ff049542cbc17c3348486a1b9692b64c5563447d1f959627d178fd95a51fc7d",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "24a846389c5df76285f175a8a1e21415dadfffe65ca9f5f14e1f0561b05f7b3b",
+      "presentedSourcePoseSha256": "24a846389c5df76285f175a8a1e21415dadfffe65ca9f5f14e1f0561b05f7b3b",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 1.5334204029414253,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "4a53f940dc9c14e5",
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "4a53f940dc9c14e5",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 90
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "76146d29a570c6e6feb0c2b4198a1d154e47bf385185dede5d3bdaeab5a0c387",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "26480ec65b223929bff63555ab6a852d4bc27d89b484ecaac3763816d20b2b60",
+      "presentedSourcePoseSha256": "26480ec65b223929bff63555ab6a852d4bc27d89b484ecaac3763816d20b2b60",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 1.5334204029414253,
+          "y": 1.2119762385583992
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "4a9bdbeab9d855d0",
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "4a9bdbeab9d855d0",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 92
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "b8998031e2dd11b1c09b7b53c9661af3c532dc0cbea7caf7c3920f7ba3df2554",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "24a846389c5df76285f175a8a1e21415dadfffe65ca9f5f14e1f0561b05f7b3b",
+      "presentedSourcePoseSha256": "24a846389c5df76285f175a8a1e21415dadfffe65ca9f5f14e1f0561b05f7b3b",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 1.5334204029414253,
+          "y": 1.2119762385583992
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "2598526d3a39ec83",
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "2598526d3a39ec83",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 99
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "2e5548bb4e144c7a5cb1f82c8c41dd080e6755002d592bf4b59aeacb2b5de09a",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "26480ec65b223929bff63555ab6a852d4bc27d89b484ecaac3763816d20b2b60",
+      "presentedSourcePoseSha256": "26480ec65b223929bff63555ab6a852d4bc27d89b484ecaac3763816d20b2b60",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 1.5334204029414253,
+          "y": 2.211976238558399
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "ad0952927ce5917b",
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "ad0952927ce5917b",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 101
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "64a6d4488594ff48285182c0adf6da8a6ef8cb14ad58a4ad5efeb893b46c7996",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "24a846389c5df76285f175a8a1e21415dadfffe65ca9f5f14e1f0561b05f7b3b",
+      "presentedSourcePoseSha256": "24a846389c5df76285f175a8a1e21415dadfffe65ca9f5f14e1f0561b05f7b3b",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 1.5334204029414253,
+          "y": 2.211976238558399
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "bacae84b7af9d845",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "bacae84b7af9d845",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 19
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "466a1ec304f01ec35fb489c7639de4f00b457414e6b4740e4160c04356133a8a",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "40e106a0fea2bbf46278bad21a2948b397b7b676752e0f3b7c9c470470b02e8d",
+      "presentedSourcePoseSha256": "40e106a0fea2bbf46278bad21a2948b397b7b676752e0f3b7c9c470470b02e8d",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": -1.3825149023340773,
+          "y": 0.18500269413170017
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "67b1a70f67b0b97c",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "67b1a70f67b0b97c",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 25
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "b6337e3ed675d7908ce6db24556c96a5a0029966936e9377c6da4d52685b5a74",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "40e106a0fea2bbf46278bad21a2948b397b7b676752e0f3b7c9c470470b02e8d",
+      "presentedSourcePoseSha256": "40e106a0fea2bbf46278bad21a2948b397b7b676752e0f3b7c9c470470b02e8d",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": -1.3825149023340773,
+          "y": 1.1650026941317
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "bf8cb97d69ea96bc",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "bf8cb97d69ea96bc",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 31
+          },
+          {
+            "cohort": "low-neighbors72",
+            "index": 13
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "19192716bd0ff65a55d7a589aa0e18b36e0b4bc527b06c7fc011d8b4c7035617",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "40e106a0fea2bbf46278bad21a2948b397b7b676752e0f3b7c9c470470b02e8d",
+      "presentedSourcePoseSha256": "40e106a0fea2bbf46278bad21a2948b397b7b676752e0f3b7c9c470470b02e8d",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": -1.3825149023340773,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "4f27810d5a154291",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "4f27810d5a154291",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 37
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "71cbe9f77f2b60933c06c6d90c27b06e467544673acaf08c37710fee2faf245d",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "5b79f6834bc8614b2967cf65f6a72bd1039ea55ca4d040da611367735845905a",
+      "presentedSourcePoseSha256": "5b79f6834bc8614b2967cf65f6a72bd1039ea55ca4d040da611367735845905a",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": -0.2825149023340772,
+          "y": 0.18500269413170017
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "88d204798faf05ba",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "88d204798faf05ba",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 43
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "c1aa1ec9158a87890dca6e837c247ca759409dcc4f77df27232b8e2cd57e3890",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "5b79f6834bc8614b2967cf65f6a72bd1039ea55ca4d040da611367735845905a",
+      "presentedSourcePoseSha256": "5b79f6834bc8614b2967cf65f6a72bd1039ea55ca4d040da611367735845905a",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": -0.2825149023340772,
+          "y": 1.1650026941317
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "72f6bc19cf037f49",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "72f6bc19cf037f49",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 49
+          },
+          {
+            "cohort": "low-neighbors72",
+            "index": 31
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "445e6280ed95bc38f7a766aa05a8afa7ad4a81dfd7b211191eaca808822d1058",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "5b79f6834bc8614b2967cf65f6a72bd1039ea55ca4d040da611367735845905a",
+      "presentedSourcePoseSha256": "5b79f6834bc8614b2967cf65f6a72bd1039ea55ca4d040da611367735845905a",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": -0.2825149023340772,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "e46a60c4f5c51b54",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "e46a60c4f5c51b54",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 55
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "ec6b1ecc027da3efc2cee7a74fdd531a87d0f0abf72ecf06ed2e0a8388706e8b",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "6d5064f0d27eaea1ff074f40d7e3e38837c01f39ca6f4e76dd609adadabfcf81",
+      "presentedSourcePoseSha256": "6d5064f0d27eaea1ff074f40d7e3e38837c01f39ca6f4e76dd609adadabfcf81",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": 0.31748509766592276,
+          "y": 0.18500269413170017
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "47151fb4e591e4b2",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "47151fb4e591e4b2",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 61
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "3f42ae2a18f4daf3a596e0a57f287e7067f3e7e8705e68463341338ff7bd61b6",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "6d5064f0d27eaea1ff074f40d7e3e38837c01f39ca6f4e76dd609adadabfcf81",
+      "presentedSourcePoseSha256": "6d5064f0d27eaea1ff074f40d7e3e38837c01f39ca6f4e76dd609adadabfcf81",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": 0.31748509766592276,
+          "y": 1.1650026941317
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "249ebf3270952723",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "249ebf3270952723",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 67
+          },
+          {
+            "cohort": "low-neighbors72",
+            "index": 49
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "a4af22bf1dc0099052b9b80df3bb73bf2ab04edfbd9c49ff90d90bc72a60a062",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "6d5064f0d27eaea1ff074f40d7e3e38837c01f39ca6f4e76dd609adadabfcf81",
+      "presentedSourcePoseSha256": "6d5064f0d27eaea1ff074f40d7e3e38837c01f39ca6f4e76dd609adadabfcf81",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": 0.31748509766592276,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "2c8228fd6cf2fda2",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "2c8228fd6cf2fda2",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 73
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "4bd736785f5c8b4f7fd6a268af9665b0bae648ebe4bb2144caf2618354425357",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "2af6d64e1a3802f19350f3cd2a5ca7f1188f896d535382970c42e36d9ba37179",
+      "presentedSourcePoseSha256": "2af6d64e1a3802f19350f3cd2a5ca7f1188f896d535382970c42e36d9ba37179",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": 1.4174850976659226,
+          "y": 0.18500269413170017
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "06589b32fee665b5",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "06589b32fee665b5",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 79
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "3f57b52fa161b898a81ed0968d6efe898aee24364da4c9176aa8b7a9318b3402",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "2af6d64e1a3802f19350f3cd2a5ca7f1188f896d535382970c42e36d9ba37179",
+      "presentedSourcePoseSha256": "2af6d64e1a3802f19350f3cd2a5ca7f1188f896d535382970c42e36d9ba37179",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": 1.4174850976659226,
+          "y": 1.1650026941317
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "6f13c7d169448e3e",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "6f13c7d169448e3e",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 85
+          },
+          {
+            "cohort": "low-neighbors72",
+            "index": 67
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "07f352847955018516cfd21cfa849eb9f461e92d213c0c8118424b065fdfba10",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "2af6d64e1a3802f19350f3cd2a5ca7f1188f896d535382970c42e36d9ba37179",
+      "presentedSourcePoseSha256": "2af6d64e1a3802f19350f3cd2a5ca7f1188f896d535382970c42e36d9ba37179",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": 1.4174850976659226,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "1ee430f1c0d59ed9",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "1ee430f1c0d59ed9",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 127
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "100f8177f5b0265f6ad73ae472738358df7386030e8ef34d66963fb3c29e71cb",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "de992152a4b609353c604c2d1a3b6dd6cedadd5c7b4f01ddccbb04e9bad11985",
+      "presentedSourcePoseSha256": "de992152a4b609353c604c2d1a3b6dd6cedadd5c7b4f01ddccbb04e9bad11985",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14944185673808852,
+        "speed": 31,
+        "target": {
+          "x": -1.4214500662110248,
+          "y": 0.17786238928659345
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "53b941d5376981d8",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "53b941d5376981d8",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 133
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "0b84a21dc6a76d4189331c8380701048b7ee2cd4f2c12c2b972ad9dbde28873b",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "de992152a4b609353c604c2d1a3b6dd6cedadd5c7b4f01ddccbb04e9bad11985",
+      "presentedSourcePoseSha256": "de992152a4b609353c604c2d1a3b6dd6cedadd5c7b4f01ddccbb04e9bad11985",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14944185673808852,
+        "speed": 31,
+        "target": {
+          "x": -1.4214500662110248,
+          "y": 1.1578623892865934
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "45e64b8eb2767ab1",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "45e64b8eb2767ab1",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 139
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "9b59c29fb0205cabe8c78a5f6920cf9eec190707115b49dbd083d013f9ac07b5",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "de992152a4b609353c604c2d1a3b6dd6cedadd5c7b4f01ddccbb04e9bad11985",
+      "presentedSourcePoseSha256": "de992152a4b609353c604c2d1a3b6dd6cedadd5c7b4f01ddccbb04e9bad11985",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14944185673808852,
+        "speed": 31,
+        "target": {
+          "x": -1.4214500662110248,
+          "y": 2.237862389286594
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "a5f5f95a067b8522",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "a5f5f95a067b8522",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 145
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "af329fda58c396ac9c9b31a3508852909688b82e56ce9386c58f92e020afa54e",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "f6a1d208be15048c90e20b96caccf82bac2545b8a45883280f6886991b05f5d3",
+      "presentedSourcePoseSha256": "f6a1d208be15048c90e20b96caccf82bac2545b8a45883280f6886991b05f5d3",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14944185673808852,
+        "speed": 31,
+        "target": {
+          "x": -0.32145006621102484,
+          "y": 0.17786238928659345
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "006e134584f1c0b7",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "006e134584f1c0b7",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 151
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "059ff8fb106f3694bfe68a611092bfa054595984fb8099feca6ba5615dbdfdff",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "f6a1d208be15048c90e20b96caccf82bac2545b8a45883280f6886991b05f5d3",
+      "presentedSourcePoseSha256": "f6a1d208be15048c90e20b96caccf82bac2545b8a45883280f6886991b05f5d3",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14944185673808852,
+        "speed": 31,
+        "target": {
+          "x": -0.32145006621102484,
+          "y": 1.1578623892865934
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "0b99b8c3d7c3acd4",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "0b99b8c3d7c3acd4",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 157
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "f0ade0607a776eaeb19ead7bfc403bd81253f725e200bf8a707344da07ff4efc",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "f6a1d208be15048c90e20b96caccf82bac2545b8a45883280f6886991b05f5d3",
+      "presentedSourcePoseSha256": "f6a1d208be15048c90e20b96caccf82bac2545b8a45883280f6886991b05f5d3",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14944185673808852,
+        "speed": 31,
+        "target": {
+          "x": -0.32145006621102484,
+          "y": 2.237862389286594
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "7b2614b4dc542b54",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "7b2614b4dc542b54",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 163
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "125e0df3e48a2ecb1c25495b97375697b5ea8d965b1ebdc838c72b9e43034539",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "00222de83d5ae4b6ae63a0d4f9b1bc271e6ebfa68f0f95d47b41589d0ad469e6",
+      "presentedSourcePoseSha256": "00222de83d5ae4b6ae63a0d4f9b1bc271e6ebfa68f0f95d47b41589d0ad469e6",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14944185673808852,
+        "speed": 31,
+        "target": {
+          "x": 0.27854993378897513,
+          "y": 0.17786238928659345
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "9197c85293c31984",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "9197c85293c31984",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 169
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "9bb3a553bcc7d85f94462502bb3fb1f5821596058773eae104cbd4950c159226",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "00222de83d5ae4b6ae63a0d4f9b1bc271e6ebfa68f0f95d47b41589d0ad469e6",
+      "presentedSourcePoseSha256": "00222de83d5ae4b6ae63a0d4f9b1bc271e6ebfa68f0f95d47b41589d0ad469e6",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14944185673808852,
+        "speed": 31,
+        "target": {
+          "x": 0.27854993378897513,
+          "y": 1.1578623892865934
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "74f9b51a1ed42a89",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "74f9b51a1ed42a89",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 175
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "2fc92db95c45bef47894dd314b656f5ed6a2bcc356f479a3bb6f0c0b62e291de",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "00222de83d5ae4b6ae63a0d4f9b1bc271e6ebfa68f0f95d47b41589d0ad469e6",
+      "presentedSourcePoseSha256": "00222de83d5ae4b6ae63a0d4f9b1bc271e6ebfa68f0f95d47b41589d0ad469e6",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14944185673808852,
+        "speed": 31,
+        "target": {
+          "x": 0.27854993378897513,
+          "y": 2.237862389286594
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "fe2a323a0c4482ab",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "fe2a323a0c4482ab",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 181
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "c068c1a62e2dd8c9f18cf093cb2e4d58d6d034f2b52e48b0530f3bd7bcedd654",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "14a6c0519aa87954fe63508c3ada1f18379f517c8338a8b05ae50764fa8bb732",
+      "presentedSourcePoseSha256": "14a6c0519aa87954fe63508c3ada1f18379f517c8338a8b05ae50764fa8bb732",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14944185673808852,
+        "speed": 31,
+        "target": {
+          "x": 1.378549933788975,
+          "y": 0.17786238928659345
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "1a3045fd5931b856",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "1a3045fd5931b856",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 187
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "18cf03afde7c5d94b17aa473bd415315b244a8387b4cb28928093076a5bdac10",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "14a6c0519aa87954fe63508c3ada1f18379f517c8338a8b05ae50764fa8bb732",
+      "presentedSourcePoseSha256": "14a6c0519aa87954fe63508c3ada1f18379f517c8338a8b05ae50764fa8bb732",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14944185673808852,
+        "speed": 31,
+        "target": {
+          "x": 1.378549933788975,
+          "y": 1.1578623892865934
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "3775f01f542faa9b",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "3775f01f542faa9b",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 193
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "6ca5707d2fda81a388789e94f9a24ec77951458728f0d5d49e222122da02665f",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "14a6c0519aa87954fe63508c3ada1f18379f517c8338a8b05ae50764fa8bb732",
+      "presentedSourcePoseSha256": "14a6c0519aa87954fe63508c3ada1f18379f517c8338a8b05ae50764fa8bb732",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14944185673808852,
+        "speed": 31,
+        "target": {
+          "x": 1.378549933788975,
+          "y": 2.237862389286594
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "9c1f18e7d5d7583a",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "9c1f18e7d5d7583a",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 9
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "3c9a4189caf5904b888d56c0ef9876fbd8fb835e94b2d05ca5b5d4ad57d96b92",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "2c8a56255fa446888d57d85798f3ed27133f416fbb3d861f32222f69257a13e6",
+      "presentedSourcePoseSha256": "2c8a56255fa446888d57d85798f3ed27133f416fbb3d861f32222f69257a13e6",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1356050207038893,
+        "speed": 30,
+        "target": {
+          "x": -1.3825149023340773,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "a47695be93631f55",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "a47695be93631f55",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 10
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "86666b440209c2928aaee2114c27264ca20ce8a1c93b4970dd29d8288fc4cb45",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "c383e9a59998eb8955fbd45d38c2a8d1d59603b3a93de4ee87e748d86d7309fe",
+      "presentedSourcePoseSha256": "c383e9a59998eb8955fbd45d38c2a8d1d59603b3a93de4ee87e748d86d7309fe",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1356050207038893,
+        "speed": 30,
+        "target": {
+          "x": -1.3825149023340773,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "a562bb8f28e0c920",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "a562bb8f28e0c920",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 11
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "0acbc200d1fbbbaffd3198f761d48080a31dbe00cc64ace24c8ff996cabcabf6",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "d2fb291e7e3ffe92f7f7e413ae359c77668b04a1a3b7ed87b6c1626922823bea",
+      "presentedSourcePoseSha256": "d2fb291e7e3ffe92f7f7e413ae359c77668b04a1a3b7ed87b6c1626922823bea",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1356050207038893,
+        "speed": 30,
+        "target": {
+          "x": -1.3825149023340773,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "31c9c44d10cf705a",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "31c9c44d10cf705a",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 12
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "b49690ba47e69dc0c381845e554213b627f22f3ce512a3fa91f093e35f0f9075",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "47ac82ef9520a644c38a57a30fc0d9cb56d42f89988704932615a594ece2164b",
+      "presentedSourcePoseSha256": "47ac82ef9520a644c38a57a30fc0d9cb56d42f89988704932615a594ece2164b",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": -1.3825149023340773,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "ce54b4c329ab03d8",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "ce54b4c329ab03d8",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 14
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "2221287ef479c5199864547e1e57546ff665cc7bce576f4b7dd0b2dcca29453e",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "d6357baba3854696e94fbe3f58666d8188cc3b84b561b4f861c3355630cc0dd3",
+      "presentedSourcePoseSha256": "d6357baba3854696e94fbe3f58666d8188cc3b84b561b4f861c3355630cc0dd3",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": -1.3825149023340773,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "2fc1a7164d3470cb",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "2fc1a7164d3470cb",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 15
+          }
+        ],
+        "expectedCaught": false
+      },
+      "liveTrajectorySha256": "7a6e23a24c678597920ffb3394cf91248e87a19d25b1418dae998a688e3760c9",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "38c266368a8e23ee8558a63d66e7dc43f9eef32e52243e6f06fc39186601ad39",
+      "presentedSourcePoseSha256": "38c266368a8e23ee8558a63d66e7dc43f9eef32e52243e6f06fc39186601ad39",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.1556050207038893,
+        "speed": 32,
+        "target": {
+          "x": -1.3825149023340773,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "7a75b8211400abeb",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "7a75b8211400abeb",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 16
+          }
+        ],
+        "expectedCaught": false
+      },
+      "liveTrajectorySha256": "59dd272471abe87c687253c8ff0c91ca42d963f2ae62ff8004ffb6d241bd17f0",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "b20a59eab22ac5ade8f6fc516c7d8b201267a5de8c56b61cbb1ba4af775c609d",
+      "presentedSourcePoseSha256": "b20a59eab22ac5ade8f6fc516c7d8b201267a5de8c56b61cbb1ba4af775c609d",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.1556050207038893,
+        "speed": 32,
+        "target": {
+          "x": -1.3825149023340773,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "71ed678f1c8894c6",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "71ed678f1c8894c6",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 17
+          }
+        ],
+        "expectedCaught": false
+      },
+      "liveTrajectorySha256": "205cb3327e21a581bc337ebb6011615656024194496e054ab68226cd677c499e",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "c877ce6cf7fc311cb3e772cb94a1384868c25c023f151cbb3f228559bd9d3f7c",
+      "presentedSourcePoseSha256": "c877ce6cf7fc311cb3e772cb94a1384868c25c023f151cbb3f228559bd9d3f7c",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.1556050207038893,
+        "speed": 32,
+        "target": {
+          "x": -1.3825149023340773,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "30d71b56828e4e33",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "30d71b56828e4e33",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 27
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "ff87f037ee3ca90092b173cac515f3bff803606b144a6db42fc7ca673db76706",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "58c9e0b37b6b972bb19e460638a844690a81f6f6998a7cd804ca638b4f7dd5a9",
+      "presentedSourcePoseSha256": "58c9e0b37b6b972bb19e460638a844690a81f6f6998a7cd804ca638b4f7dd5a9",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1356050207038893,
+        "speed": 30,
+        "target": {
+          "x": -0.2825149023340772,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "8392c4d4135a5068",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "8392c4d4135a5068",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 28
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "c10b5c59f641aa3fb525b21a1bf469861ff5650a89a5430a93b9f847a4d04644",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "01f3e96be6af3984bcc71aec8ea5c315f0c5a54dd27e9af92a768b160dd18cc8",
+      "presentedSourcePoseSha256": "01f3e96be6af3984bcc71aec8ea5c315f0c5a54dd27e9af92a768b160dd18cc8",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1356050207038893,
+        "speed": 30,
+        "target": {
+          "x": -0.2825149023340772,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "2ed9a96e101bd054",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "2ed9a96e101bd054",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 29
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "d77ee6d0a5e1b08057b037a537bf9bd6d9672eb83799c275d43ba8d980c28b61",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "196f3027c3b3dc25152b73d40b38c3f67e9a9f6ae012af7c42a34108d5ec7078",
+      "presentedSourcePoseSha256": "196f3027c3b3dc25152b73d40b38c3f67e9a9f6ae012af7c42a34108d5ec7078",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1356050207038893,
+        "speed": 30,
+        "target": {
+          "x": -0.2825149023340772,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "7b8c9af5f355b8dc",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "7b8c9af5f355b8dc",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 30
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "b34700d1a2dd3f2ce41b084497d307bf31baf5dfc96db368d3d977cd715f2111",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "dbb63101dffd9ab36804560f8844a6683e416689a81ff9dd03cecbb04a35d3ab",
+      "presentedSourcePoseSha256": "dbb63101dffd9ab36804560f8844a6683e416689a81ff9dd03cecbb04a35d3ab",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": -0.2825149023340772,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "ca9b2337706b565d",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "ca9b2337706b565d",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 32
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "b7bd8f57ee64dddd7ed02940ff08d911ab81329e1be016a70b09cf327619234f",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "5a599ca39095fa6f197ce253291a1d2a62bd22c114f39cdcda1e6836c252d638",
+      "presentedSourcePoseSha256": "5a599ca39095fa6f197ce253291a1d2a62bd22c114f39cdcda1e6836c252d638",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": -0.2825149023340772,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "5a9a18b8cf312784",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "5a9a18b8cf312784",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 33
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "542820a91f746e617364c0948ebb6b115ff39fa901c64d4b50ad801bfab0d76d",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "fd91184fa8a0c7408a8f18b33280b1de38ad8410c034916f87019ec5c080573b",
+      "presentedSourcePoseSha256": "fd91184fa8a0c7408a8f18b33280b1de38ad8410c034916f87019ec5c080573b",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1556050207038893,
+        "speed": 32,
+        "target": {
+          "x": -0.2825149023340772,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "65647ba90fb7cc4d",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "65647ba90fb7cc4d",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 34
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "93c9e1abc165ff3430bcc33afeaa089eb94ea03e6dcc3b683b713112d40244eb",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "e166b72d3e77c34f1778a6ed378495ab09671f5d3f53e4646c508abb3aea3266",
+      "presentedSourcePoseSha256": "e166b72d3e77c34f1778a6ed378495ab09671f5d3f53e4646c508abb3aea3266",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1556050207038893,
+        "speed": 32,
+        "target": {
+          "x": -0.2825149023340772,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "1d6f13891de703c5",
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "1d6f13891de703c5",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 35
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "0bba73c41b4f268fec46643d55fdd1ac1316eb1234ed82061075b26ea1a182ab",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "18ffdc4a20f0b5e8dbff08b5ca73d07288b0034eadfd0a0b60d287d78a90379d",
+      "presentedSourcePoseSha256": "18ffdc4a20f0b5e8dbff08b5ca73d07288b0034eadfd0a0b60d287d78a90379d",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1556050207038893,
+        "speed": 32,
+        "target": {
+          "x": -0.2825149023340772,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "5177dbd1913d92f5",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "5177dbd1913d92f5",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 45
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "1b0800678872b26336950f0da9d09f98c99123910a5d4091b5dbd5b003eea5ad",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "5bb03f609c6e432288f3e04f60b946e06e9a99b705806e00f70889c4a7a7d903",
+      "presentedSourcePoseSha256": "5bb03f609c6e432288f3e04f60b946e06e9a99b705806e00f70889c4a7a7d903",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1356050207038893,
+        "speed": 30,
+        "target": {
+          "x": 0.31748509766592276,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "1c2404ad70664297",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "1c2404ad70664297",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 46
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "7141bfb3688e948bb8e6bfb759312d9599ec40b0a731b6b77bba503b11771780",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "2a8f83364078af6840e00a2f436b1874bafcc003ccabd0894f4cb04474808d3c",
+      "presentedSourcePoseSha256": "2a8f83364078af6840e00a2f436b1874bafcc003ccabd0894f4cb04474808d3c",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1356050207038893,
+        "speed": 30,
+        "target": {
+          "x": 0.31748509766592276,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "85acdd59a732a7e2",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "85acdd59a732a7e2",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 47
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "c62a09a04acacb27e337ee92d39ab0d4abb4e14ae2f0b29f346ced7fbf0f923d",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "a12456cc3acdbe466e04be3ebbacacbd4740ce43c3adfa0960bac328eb019176",
+      "presentedSourcePoseSha256": "a12456cc3acdbe466e04be3ebbacacbd4740ce43c3adfa0960bac328eb019176",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1356050207038893,
+        "speed": 30,
+        "target": {
+          "x": 0.31748509766592276,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "1089ebd963acc046",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "1089ebd963acc046",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 48
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "5239da365e3bb9084331c1b5a62bc8c1b2a01631a48f0e6be80ceacaf065d9e0",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "10cac435575076e4e0a434bee9b7ebd41c91439ef132c81356563be1c85dc103",
+      "presentedSourcePoseSha256": "10cac435575076e4e0a434bee9b7ebd41c91439ef132c81356563be1c85dc103",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": 0.31748509766592276,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "5536547993364746",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "5536547993364746",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 50
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "e0352b7a1f1dd04561f580142865f6a0285a5ad95d67ee4f69614e334e0fdcb1",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "5fe3fc1172be01ee957670c6015e4b4f55042837cb17efabbc51844920727383",
+      "presentedSourcePoseSha256": "5fe3fc1172be01ee957670c6015e4b4f55042837cb17efabbc51844920727383",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": 0.31748509766592276,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "d645e11701cf05f2",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "d645e11701cf05f2",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 51
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "8e943a982cce8a9fe3e17390a9714de4ea1f97a8501537598e8b7b1016c72eb7",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "b086f1e5496a6010b952c8c7dd5f6370ab47c1949ae5bfffca6762bcfbcf49e4",
+      "presentedSourcePoseSha256": "b086f1e5496a6010b952c8c7dd5f6370ab47c1949ae5bfffca6762bcfbcf49e4",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1556050207038893,
+        "speed": 32,
+        "target": {
+          "x": 0.31748509766592276,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "25bc9afe250825c8",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "25bc9afe250825c8",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 52
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "4f829f7da1b0b5eeb49a86e1e606b23cac3e6f5bc061d5a00903d5319e505c0e",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "85268fbacafea04d5681ddf63009ebc267b4de072f4f5ba95bc68c587db31bb2",
+      "presentedSourcePoseSha256": "85268fbacafea04d5681ddf63009ebc267b4de072f4f5ba95bc68c587db31bb2",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1556050207038893,
+        "speed": 32,
+        "target": {
+          "x": 0.31748509766592276,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "2df83b3cf0c49e6e",
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "2df83b3cf0c49e6e",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 53
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "39747472592d157157773a56ecd8503484406c7287995ddd34f357b898fca5d0",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "e4a41ae1fa4170a6195c99f2b19947a23f4f857e99e1cfba0934661f64327dfd",
+      "presentedSourcePoseSha256": "e4a41ae1fa4170a6195c99f2b19947a23f4f857e99e1cfba0934661f64327dfd",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1556050207038893,
+        "speed": 32,
+        "target": {
+          "x": 0.31748509766592276,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "b1fddbd8209e0e76",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "b1fddbd8209e0e76",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 63
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "00c4a499178723865af23b8706f3e733e9300aa7dbe6aff5a637493e89f9d8f6",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "4effd20c445fbaea11927e89d6315a91ce7fb829d239ca68adb804869c1744b8",
+      "presentedSourcePoseSha256": "4effd20c445fbaea11927e89d6315a91ce7fb829d239ca68adb804869c1744b8",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1356050207038893,
+        "speed": 30,
+        "target": {
+          "x": 1.4174850976659226,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "210de4d911c4ee66",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "210de4d911c4ee66",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 64
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "236c078398caaba9063b4b941ff4445031529d5fcf70721ad78ac0074fb8f8d2",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "b8d38659767578f991960fdf9fa1793d732afd2ba6c2968d2c76acc3cae0545c",
+      "presentedSourcePoseSha256": "b8d38659767578f991960fdf9fa1793d732afd2ba6c2968d2c76acc3cae0545c",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1356050207038893,
+        "speed": 30,
+        "target": {
+          "x": 1.4174850976659226,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "bcf22002e5140682",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "bcf22002e5140682",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 65
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "f45d03b0b03a0fb925d8395fd76c992d725a8f6400d40254ac22083042a6a884",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "b04c6eefed92dff0f80b4551fb0e7cd2f48764d96b5b46ead27f7ca781c434e1",
+      "presentedSourcePoseSha256": "b04c6eefed92dff0f80b4551fb0e7cd2f48764d96b5b46ead27f7ca781c434e1",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.1356050207038893,
+        "speed": 30,
+        "target": {
+          "x": 1.4174850976659226,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "bf840c7de40baa54",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "bf840c7de40baa54",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 66
+          }
+        ],
+        "expectedCaught": true
+      },
+      "liveTrajectorySha256": "93c6773ea04a18a448991e93fa76932047a2b5ad41d99bb81a9bc08fa86dc250",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "4443da1aa5088bc968b1fd418bd98ed94e1cdda7d6226fc02349306e9b3f4376",
+      "presentedSourcePoseSha256": "4443da1aa5088bc968b1fd418bd98ed94e1cdda7d6226fc02349306e9b3f4376",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": 1.4174850976659226,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "d025107ed9c0e839",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "d025107ed9c0e839",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 68
+          }
+        ],
+        "expectedCaught": false
+      },
+      "liveTrajectorySha256": "f5a4f361b320bfe83f12419b511889f1f283144a8b7ab96e36d0ab95d7ce9408",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "80051422bf5ac833880090e2fc7ec13ce1a9ca412f15ffecd51e75500333022e",
+      "presentedSourcePoseSha256": "80051422bf5ac833880090e2fc7ec13ce1a9ca412f15ffecd51e75500333022e",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.14560502070388928,
+        "speed": 31,
+        "target": {
+          "x": 1.4174850976659226,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "04c7b4c9f843237d",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "04c7b4c9f843237d",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 69
+          }
+        ],
+        "expectedCaught": false
+      },
+      "liveTrajectorySha256": "c3b662ff8f9d4feb0486045ac92497da9a5e390f9bccef3788d275d5cf10c2e7",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "4ae9156ef1c8b3b3ad07e3d5fa5aa7d9904c950fb319652aed172c0e0d9645f2",
+      "presentedSourcePoseSha256": "4ae9156ef1c8b3b3ad07e3d5fa5aa7d9904c950fb319652aed172c0e0d9645f2",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.1556050207038893,
+        "speed": 32,
+        "target": {
+          "x": 1.4174850976659226,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "f812f66ba14b4edf",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "f812f66ba14b4edf",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 70
+          }
+        ],
+        "expectedCaught": false
+      },
+      "liveTrajectorySha256": "da4e87e4a3bfd1311d827d00b77c9c5f2b23ca17e406229c3f0597fe928f79fb",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "48f628160c3afc392bd00862b5f4ec7b56b71714f6efa5395175f5b6f3061c35",
+      "presentedSourcePoseSha256": "48f628160c3afc392bd00862b5f4ec7b56b71714f6efa5395175f5b6f3061c35",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.1556050207038893,
+        "speed": 32,
+        "target": {
+          "x": 1.4174850976659226,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "c6b0b4a44bb69797",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "c6b0b4a44bb69797",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 71
+          }
+        ],
+        "expectedCaught": false
+      },
+      "liveTrajectorySha256": "991920065b55e1918e32fad478b57b39e69bb2457cb82365346d0190e40146c1",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "b515cd9044c57884eb7a8e225c31eadcd29045e250c825ce9a60a2579582f20b",
+      "presentedSourcePoseSha256": "b515cd9044c57884eb7a8e225c31eadcd29045e250c825ce9a60a2579582f20b",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.1556050207038893,
+        "speed": 32,
+        "target": {
+          "x": 1.4174850976659226,
+          "y": 2.2450026941317005
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "e2b3a4ee3baf23ea",
+      "recipe": {
+        "aim": {
+          "x": 3.3,
+          "y": 0.18,
+          "power": 0.5
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 65,
+          "reach": 65
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "e2b3a4ee3baf23ea",
+        "origins": [
+          {
+            "cohort": "wide-neighbors54",
+            "index": 46
+          }
+        ],
+        "expectedCaught": false
+      },
+      "liveTrajectorySha256": "e607e72816fbee783c4443a78e81cb079ec691a37c56684134ec2b7a39e08227",
+      "caught": false,
+      "compressed": true,
+      "terminalPhysicsPoseSha256": "d129bdfab70cbe3252b8e3ec58f6b7cc15a53e0dd8b6b845eafed0953f5b746e",
+      "presentedSourcePoseSha256": "f2866d6a669bae0b502d25cf0bf7f86bdca5b08f5069337946e82028637d739b",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将将球挡出底线",
+        "power": 0.4956050207038893,
+        "speed": 64,
+        "target": {
+          "x": 3.3174850976659225,
+          "y": 0.18500269413170017
+        }
+      },
+      "sourceHipY": 0.83,
+      "sourceSoles": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "240d3fe97a8ef68f",
+      "recipe": {
+        "aim": {
+          "x": 3.3,
+          "y": 0.18,
+          "power": 0.5
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "240d3fe97a8ef68f",
+        "origins": [
+          {
+            "cohort": "wide-neighbors54",
+            "index": 47
+          }
+        ],
+        "expectedCaught": false
+      },
+      "liveTrajectorySha256": "2f4a5c354de1969a5f2664eeb4638e676ea29814359ddb4404846e82527d20b2",
+      "caught": false,
+      "compressed": true,
+      "terminalPhysicsPoseSha256": "61b9bf43d1b805037e5eea2c2c10827cc964734521a29c64d31a28c28719a32e",
+      "presentedSourcePoseSha256": "76b41976ee2b546da45cf2b529d735aa3cef2fff4d1ba14752caa6e8b97a04ef",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将将球挡出",
+        "power": 0.4956050207038893,
+        "speed": 64,
+        "target": {
+          "x": 3.3174850976659225,
+          "y": 0.18500269413170017
+        }
+      },
+      "sourceHipY": 0.83,
+      "sourceSoles": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "60c2168f2b9d582d",
+      "recipe": {
+        "aim": {
+          "x": -1.2,
+          "y": 0.2,
+          "power": 0.05
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "60c2168f2b9d582d",
+        "expectedCaught": false,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 0
+          }
+        ]
+      },
+      "liveTrajectorySha256": "68b3726359f2b64fd7d5f3094c0e23d6d1ef7bbc7962c3ac31acc36b50324d56",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "65939db818c30f5ce6f523c1d2f6d6937cc8b27e072141d2f99da1811618c143",
+      "presentedSourcePoseSha256": "65939db818c30f5ce6f523c1d2f6d6937cc8b27e072141d2f99da1811618c143",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.05106748224229625,
+        "speed": 22,
+        "target": {
+          "x": -1.1665795970585746,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "b689af42a98d8a6b",
+      "recipe": {
+        "aim": {
+          "x": -1.2,
+          "y": 0.2,
+          "power": 0.05
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "b689af42a98d8a6b",
+        "expectedCaught": false,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 1
+          }
+        ]
+      },
+      "liveTrajectorySha256": "6993aa092f4389df6408509edb521972012a4527d7ef968e87fa6fab78fcffc2",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "d0c2a3882a9b464e675e004d485def6eff0e6a5e405a32f9791ad929187dee38",
+      "presentedSourcePoseSha256": "d0c2a3882a9b464e675e004d485def6eff0e6a5e405a32f9791ad929187dee38",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.05106748224229625,
+        "speed": 22,
+        "target": {
+          "x": -1.1665795970585746,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "fc691ef13c755156",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.05
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "fc691ef13c755156",
+        "expectedCaught": false,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 2
+          }
+        ]
+      },
+      "liveTrajectorySha256": "0c9607a96fbc96d000c6f845ef36beb18f73806efdcdf4564a7a29661352318b",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "ad96e4b8f9c437cca7ba3c8e7eedbeb861daf5634819150872010d93bb77e5e2",
+      "presentedSourcePoseSha256": "ad96e4b8f9c437cca7ba3c8e7eedbeb861daf5634819150872010d93bb77e5e2",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.05106748224229625,
+        "speed": 22,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "edb6bbbc3415c368",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.05
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "edb6bbbc3415c368",
+        "expectedCaught": false,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 3
+          }
+        ]
+      },
+      "liveTrajectorySha256": "05dd1d34d382bba2a480c92a962be33377c93e31f70515b830ca60a115344c8f",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "5977a5d9a078fb9422bc0aaf14298622fde98ed93a6d7574a46e6a98813943d3",
+      "presentedSourcePoseSha256": "5977a5d9a078fb9422bc0aaf14298622fde98ed93a6d7574a46e6a98813943d3",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.05106748224229625,
+        "speed": 22,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "058f94bc49a59c0c",
+      "recipe": {
+        "aim": {
+          "x": 1.2,
+          "y": 0.2,
+          "power": 0.05
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "058f94bc49a59c0c",
+        "expectedCaught": false,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 4
+          }
+        ]
+      },
+      "liveTrajectorySha256": "3e8bb602504eb6ab4c7835d28aaf9dfb795c2a96e5ed5fd4ea8cdfc64f04771e",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "53ebb788014c303135f0450fa462f4647fc261b483f6ec525ef8ff42a5227fd2",
+      "presentedSourcePoseSha256": "53ebb788014c303135f0450fa462f4647fc261b483f6ec525ef8ff42a5227fd2",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.05106748224229625,
+        "speed": 22,
+        "target": {
+          "x": 1.2334204029414253,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "d423b53e4b8b358b",
+      "recipe": {
+        "aim": {
+          "x": 1.2,
+          "y": 0.2,
+          "power": 0.05
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "d423b53e4b8b358b",
+        "expectedCaught": false,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 5
+          }
+        ]
+      },
+      "liveTrajectorySha256": "bf86bf306c4d64501aa49654df8e1c11f580c25679c1003024308df05ad50ce7",
+      "caught": false,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "b8a9931cce1e488d60c726655e362ff62edc11823163d1e76dab07ccec10757b",
+      "presentedSourcePoseSha256": "b8a9931cce1e488d60c726655e362ff62edc11823163d1e76dab07ccec10757b",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将挡出，足球停止运动",
+        "power": 0.05106748224229625,
+        "speed": 22,
+        "target": {
+          "x": 1.2334204029414253,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "4a47f4a2ae455b3a",
+      "recipe": {
+        "aim": {
+          "x": -0.8,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "4a47f4a2ae455b3a",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 6
+          }
+        ]
+      },
+      "liveTrajectorySha256": "1dbaefd2427c0ae4441426b04a58321930647f4418b62fd3086e9361de084c07",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "7720a5632d35768a8953af326fe0644a3e447567671834fa483187a556e7584c",
+      "presentedSourcePoseSha256": "7720a5632d35768a8953af326fe0644a3e447567671834fa483187a556e7584c",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": -0.7665795970585747,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "dc55d5c14961c68b",
+      "recipe": {
+        "aim": {
+          "x": -0.8,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "dc55d5c14961c68b",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 7
+          }
+        ]
+      },
+      "liveTrajectorySha256": "8f84ef3d7052045d649ee97d9c549e550c3bcf320a82f6b83875548eb6b09f6d",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "4833b76972403b05826e4a9f8efaf2a7a909bce81e941e6428b1a9cff945bdba",
+      "presentedSourcePoseSha256": "4833b76972403b05826e4a9f8efaf2a7a909bce81e941e6428b1a9cff945bdba",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": -0.7665795970585747,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "464eff16c6eea874",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "464eff16c6eea874",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 8
+          }
+        ]
+      },
+      "liveTrajectorySha256": "668aedbcb81469756a3e92dbf7c0533a0255738e681c6a31e660f5c9ed8df2eb",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "a4de1162de2793ed91c7f73c6f020254841a4b54a3c585e40170093412d2be39",
+      "presentedSourcePoseSha256": "a4de1162de2793ed91c7f73c6f020254841a4b54a3c585e40170093412d2be39",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "c7e58cb70fce6efc",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "c7e58cb70fce6efc",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 9
+          }
+        ]
+      },
+      "liveTrajectorySha256": "ac065c87861b4a2a28bf2ff7591aa8e65084fc79f57a4d0f7162a4b7ec4fcb3f",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "0a984556bad6accdfc58304f9e978d39479c70d913a1e25c8c7eea3cc90a6846",
+      "presentedSourcePoseSha256": "0a984556bad6accdfc58304f9e978d39479c70d913a1e25c8c7eea3cc90a6846",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "cb47f714966761a0",
+      "recipe": {
+        "aim": {
+          "x": 0.8,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "cb47f714966761a0",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 10
+          }
+        ]
+      },
+      "liveTrajectorySha256": "6ef00000ece63b4a49883c7d5d2f4b598bb185480711fca322d0940ea174db45",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "15f1f8f04fe4b55a0fdd3e20bb257b2b295bd94e2322b441200531f3d06ece73",
+      "presentedSourcePoseSha256": "15f1f8f04fe4b55a0fdd3e20bb257b2b295bd94e2322b441200531f3d06ece73",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 0.8334204029414254,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "5bd5334575d6fa65",
+      "recipe": {
+        "aim": {
+          "x": 0.8,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "5bd5334575d6fa65",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 11
+          }
+        ]
+      },
+      "liveTrajectorySha256": "d9fe8607d3e99fb7ac9cf619f88778d18635dc52b4f06afa32a2cb304fe700e6",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "2f1b62461e3ed9c7d301073530c84fa6103990069538b9526a41add5527a39e3",
+      "presentedSourcePoseSha256": "2f1b62461e3ed9c7d301073530c84fa6103990069538b9526a41add5527a39e3",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.12106748224229624,
+        "speed": 29,
+        "target": {
+          "x": 0.8334204029414254,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "47eba5d0c3d7b6b9",
+      "recipe": {
+        "aim": {
+          "x": -0.8,
+          "y": 0.2,
+          "power": 0.2
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "47eba5d0c3d7b6b9",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 12
+          }
+        ]
+      },
+      "liveTrajectorySha256": "d0a711d7692d36f67d7362f99c9df7effa46d8c80c9726282a41af2c05a2ef78",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "8759d3e224192fec5d08d9c77afa9e7b8075a2b9729abdcf9bbf5f828a8d16c8",
+      "presentedSourcePoseSha256": "8759d3e224192fec5d08d9c77afa9e7b8075a2b9729abdcf9bbf5f828a8d16c8",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.20106748224229626,
+        "speed": 36,
+        "target": {
+          "x": -0.7665795970585747,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "539bde4722377b76",
+      "recipe": {
+        "aim": {
+          "x": -0.8,
+          "y": 0.2,
+          "power": 0.2
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "539bde4722377b76",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 13
+          }
+        ]
+      },
+      "liveTrajectorySha256": "31a3cca65149b16a1dddf37b2c745c6c36858573323ce18687a67c22a145277f",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "41b4aff6f4814afba67adbf22624bba89c732ea7a126831698706a54ce0d5fe7",
+      "presentedSourcePoseSha256": "41b4aff6f4814afba67adbf22624bba89c732ea7a126831698706a54ce0d5fe7",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.20106748224229626,
+        "speed": 36,
+        "target": {
+          "x": -0.7665795970585747,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "b9a0cef8a685d5a5",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.2
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "b9a0cef8a685d5a5",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 14
+          }
+        ]
+      },
+      "liveTrajectorySha256": "c0ce04d28ea61fae6b1cb9e8bbf8bd5863e99a92cbf5117117d5dc4b549c2337",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "cc310e8b97528c85af1071ffa310d6eea19f98f1ca06fd894c2042eb664231ed",
+      "presentedSourcePoseSha256": "cc310e8b97528c85af1071ffa310d6eea19f98f1ca06fd894c2042eb664231ed",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.20106748224229626,
+        "speed": 36,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "75659e513c3ff221",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.2
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "75659e513c3ff221",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 15
+          }
+        ]
+      },
+      "liveTrajectorySha256": "acff4b112c2db0befa5d9a7184645c5041b375525d0758fef8269506880b7b59",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "ac145eaacaa0e0608be2e1a273ee471c6a07877e57b471129464bb090929ba68",
+      "presentedSourcePoseSha256": "ac145eaacaa0e0608be2e1a273ee471c6a07877e57b471129464bb090929ba68",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.20106748224229626,
+        "speed": 36,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "35aab009c4bfcb0b",
+      "recipe": {
+        "aim": {
+          "x": 0.8,
+          "y": 0.2,
+          "power": 0.2
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "35aab009c4bfcb0b",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 16
+          }
+        ]
+      },
+      "liveTrajectorySha256": "f3d43c21661a9fb2d735b157dd6ec4eaa35188f26edf83109ea5602d61f1686b",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "0f636f42705330cbc6b5a6d753ef6d3f5e596393829a995d3ae80a741e606089",
+      "presentedSourcePoseSha256": "0f636f42705330cbc6b5a6d753ef6d3f5e596393829a995d3ae80a741e606089",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.20106748224229626,
+        "speed": 36,
+        "target": {
+          "x": 0.8334204029414254,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "da17124ad6450453",
+      "recipe": {
+        "aim": {
+          "x": 0.8,
+          "y": 0.2,
+          "power": 0.2
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "da17124ad6450453",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 17
+          }
+        ]
+      },
+      "liveTrajectorySha256": "a494cfe20fd648b3a9995c76a2a387bcd478c7e80ad7231b20e0f93a501da99e",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "f6290fbe87837773a669227b0bcc5ee8007fb77fb926c437129f844a7f327f2e",
+      "presentedSourcePoseSha256": "f6290fbe87837773a669227b0bcc5ee8007fb77fb926c437129f844a7f327f2e",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.20106748224229626,
+        "speed": 36,
+        "target": {
+          "x": 0.8334204029414254,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "588a1949d2c4efea",
+      "recipe": {
+        "aim": {
+          "x": -0.8,
+          "y": 0.2,
+          "power": 0.3
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "588a1949d2c4efea",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 18
+          }
+        ]
+      },
+      "liveTrajectorySha256": "ed02966e65b8e173656048e55a45b6fd1fd9ccf8dab35fc75531de4a4f4127c2",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "068bdfb0c07e71ff5cdf7af4cacf308fe62ddbc5f22a35433a6b5d3b8c181c6e",
+      "presentedSourcePoseSha256": "068bdfb0c07e71ff5cdf7af4cacf308fe62ddbc5f22a35433a6b5d3b8c181c6e",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.30106748224229624,
+        "speed": 46,
+        "target": {
+          "x": -0.7665795970585747,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "955cb043bbf804c3",
+      "recipe": {
+        "aim": {
+          "x": -0.8,
+          "y": 0.2,
+          "power": 0.3
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "955cb043bbf804c3",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 19
+          }
+        ]
+      },
+      "liveTrajectorySha256": "e6ef555c199ed45701fbbf3e82f9e7a116da104bceecc5897a47e478b7f7343b",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "f93c8cbafdde0f1c6b0d6f29124221785d0a2644b6d6c81cc3ff1e1bb8688484",
+      "presentedSourcePoseSha256": "f93c8cbafdde0f1c6b0d6f29124221785d0a2644b6d6c81cc3ff1e1bb8688484",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.30106748224229624,
+        "speed": 46,
+        "target": {
+          "x": -0.7665795970585747,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "b95a3aaa6854f196",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.3
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "b95a3aaa6854f196",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 20
+          }
+        ]
+      },
+      "liveTrajectorySha256": "3ee7cfabeb18e34e331ce37931eb00a5c5a5745fcc22dae8ab0e068c121c8507",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "f9c5b3e9eca0ebb69b05dcfec9fe09ef165f9f48c6afb3bbff2948ee603bd86d",
+      "presentedSourcePoseSha256": "f9c5b3e9eca0ebb69b05dcfec9fe09ef165f9f48c6afb3bbff2948ee603bd86d",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.30106748224229624,
+        "speed": 46,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "7f51d51ef63efa9c",
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.3
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "7f51d51ef63efa9c",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 21
+          }
+        ]
+      },
+      "liveTrajectorySha256": "aa29734a4c0af143f89e728880aafa9dd556e850754ec4c99ef0003a81c03022",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "0a542672dab80a9e12e969373336fc16d17f4ea00daa9ca1688060e01cec7870",
+      "presentedSourcePoseSha256": "0a542672dab80a9e12e969373336fc16d17f4ea00daa9ca1688060e01cec7870",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.30106748224229624,
+        "speed": 46,
+        "target": {
+          "x": 0.03342040294142535,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "a9d9611ea1365ffe",
+      "recipe": {
+        "aim": {
+          "x": 0.8,
+          "y": 0.2,
+          "power": 0.3
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "a9d9611ea1365ffe",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 22
+          }
+        ]
+      },
+      "liveTrajectorySha256": "6f5146f3d346c2594f88b9d5140a4b98cb5a415d1a9e895cdd5a2ceb112df319",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "4f666e9fed438d7d8c7ba9f37e5fe652c7eb18df7aaa6555c18f1b7787acad0e",
+      "presentedSourcePoseSha256": "4f666e9fed438d7d8c7ba9f37e5fe652c7eb18df7aaa6555c18f1b7787acad0e",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.30106748224229624,
+        "speed": 46,
+        "target": {
+          "x": 0.8334204029414254,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    },
+    {
+      "id": "4d60f2e9a88552fc",
+      "recipe": {
+        "aim": {
+          "x": 0.8,
+          "y": 0.2,
+          "power": 0.3
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "4d60f2e9a88552fc",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "model-motion-round7-recovery-origin",
+            "index": 23
+          }
+        ]
+      },
+      "liveTrajectorySha256": "367b8894fd1ec952cefceaf1f8fe696a6e2377a3d6fc0cf708ecd02bd901b9e7",
+      "caught": true,
+      "compressed": false,
+      "terminalPhysicsPoseSha256": "219484093fccb831885aafd6dad211b8af9f5707d8eee5e17731463ed86fee8f",
+      "presentedSourcePoseSha256": "219484093fccb831885aafd6dad211b8af9f5707d8eee5e17731463ed86fee8f",
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.30106748224229624,
+        "speed": 46,
+        "target": {
+          "x": 0.8334204029414254,
+          "y": 0.21197623855839923
+        }
+      },
+      "sourceHipY": 0.29999999999999993,
+      "sourceSoles": null
+    }
+  ],
+  "controls": [
+    {
+      "recipe": {
+        "kind": "hesitation",
+        "aim": {
+          "x": 3,
+          "y": 1.4,
+          "power": 0.9
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42
+      },
+      "direction": -1,
+      "hesitation": true,
+      "caught": false,
+      "result": {
+        "goal": true,
+        "saved": false,
+        "post": false,
+        "reason": "足球越过门线",
+        "power": 0.9010674822422963,
+        "speed": 103,
+        "target": {
+          "x": 3.0418646928934576,
+          "y": 1.4150022592529754
+        }
+      },
+      "samples": [
+        {
+          "elapsed": 0,
+          "poseSha256": "c723b379fc1dd735a458b373eb3ce8188a3dd747369948f0d495469dc3d716fa"
+        },
+        {
+          "elapsed": 0.12,
+          "poseSha256": "c723b379fc1dd735a458b373eb3ce8188a3dd747369948f0d495469dc3d716fa"
+        },
+        {
+          "elapsed": 0.44,
+          "poseSha256": "9b36ffe01640285f5a5879218ac66d8c9d41f53eec09a1ea18441da9ccbe8963"
+        },
+        {
+          "elapsed": 1,
+          "poseSha256": "4b0c485740b6bfc5b30fcf56302dfd6c19465a5ccdb588b0f162562df60d9990"
+        },
+        {
+          "elapsed": 2,
+          "poseSha256": "4b0c485740b6bfc5b30fcf56302dfd6c19465a5ccdb588b0f162562df60d9990"
+        },
+        {
+          "elapsed": 4,
+          "poseSha256": "4b0c485740b6bfc5b30fcf56302dfd6c19465a5ccdb588b0f162562df60d9990"
+        }
+      ]
+    },
+    {
+      "recipe": {
+        "kind": "hesitation",
+        "aim": {
+          "x": -3,
+          "y": 1.4,
+          "power": 0.9
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42
+      },
+      "direction": 1,
+      "hesitation": true,
+      "caught": false,
+      "result": {
+        "goal": true,
+        "saved": false,
+        "post": false,
+        "reason": "足球越过门线",
+        "power": 0.9010674822422963,
+        "speed": 103,
+        "target": {
+          "x": -2.9581353071065424,
+          "y": 1.4150022592529754
+        }
+      },
+      "samples": [
+        {
+          "elapsed": 0,
+          "poseSha256": "55d2e7b1412cb87997921bd8799931f59837c6f2ab6fc524a243ecaf86dfb011"
+        },
+        {
+          "elapsed": 0.12,
+          "poseSha256": "55d2e7b1412cb87997921bd8799931f59837c6f2ab6fc524a243ecaf86dfb011"
+        },
+        {
+          "elapsed": 0.44,
+          "poseSha256": "3b2d50387c1272b321dae95b6443178c3a4cd54b394a95ba48599ea84d6a5eaa"
+        },
+        {
+          "elapsed": 1,
+          "poseSha256": "c58e9c23b3138c7990c238b69aaa32774c054cd0155926992afab6f5bd91478e"
+        },
+        {
+          "elapsed": 2,
+          "poseSha256": "c58e9c23b3138c7990c238b69aaa32774c054cd0155926992afab6f5bd91478e"
+        },
+        {
+          "elapsed": 4,
+          "poseSha256": "c58e9c23b3138c7990c238b69aaa32774c054cd0155926992afab6f5bd91478e"
+        }
+      ]
+    },
+    {
+      "recipe": {
+        "kind": "lateral",
+        "aim": {
+          "x": -2,
+          "y": 0.3,
+          "power": 0.55
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 3
+      },
+      "direction": -1,
+      "hesitation": false,
+      "caught": true,
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.5547610950232075,
+        "speed": 70,
+        "target": {
+          "x": -2.046463704579536,
+          "y": 0.29973769800762
+        }
+      },
+      "samples": [
+        {
+          "elapsed": 0,
+          "poseSha256": "46dcc550536f5d5604c0adaec8520e6448b70c3d9a3607720068c1bc50045354"
+        },
+        {
+          "elapsed": 0.12,
+          "poseSha256": "a679f8c32f6d1aafa5eb0eefd34119921465e179a442db69c3b6a48f950a3372"
+        },
+        {
+          "elapsed": 0.44,
+          "poseSha256": "13c80741b1f02efd04ad04eacf797c70f927aaa7a5195860f73abce98799e980"
+        },
+        {
+          "elapsed": 1,
+          "poseSha256": "2bc8f2b5045302c5c3faf1057f419511f9c9383c3f0df53d498a75eebdcfe173"
+        },
+        {
+          "elapsed": 2,
+          "poseSha256": "234f65d3dc69693e6ba770689b940cfc579bb7a5ef596f8f180604a7bc563e20"
+        },
+        {
+          "elapsed": 4,
+          "poseSha256": "3a3ffe298a3515440dc8257307253fb27b698a3e7db11fbf356803c26ea965a5"
+        }
+      ]
+    },
+    {
+      "recipe": {
+        "kind": "lateral",
+        "aim": {
+          "x": -2,
+          "y": 2.1,
+          "power": 0.55
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 3
+      },
+      "direction": -1,
+      "hesitation": false,
+      "caught": true,
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.5547610950232075,
+        "speed": 70,
+        "target": {
+          "x": -2.046463704579536,
+          "y": 2.09973769800762
+        }
+      },
+      "samples": [
+        {
+          "elapsed": 0,
+          "poseSha256": "8a6572842b1fa89e2f0a4fc5be59fb3d76c1df45d2da6be4347b9c41aa4b5f24"
+        },
+        {
+          "elapsed": 0.12,
+          "poseSha256": "349447f4c5b235ed75522346f6f4d450f74bfaa52eac859d2f67343564e29f22"
+        },
+        {
+          "elapsed": 0.44,
+          "poseSha256": "f7818b602c834159bd60f83fcc88b7cdc715171c2ef710de1b61aaf227f9a97e"
+        },
+        {
+          "elapsed": 1,
+          "poseSha256": "202ec57e1ace266b6274401b2f7e188f633f8852ced6db97e1857b00416df0ae"
+        },
+        {
+          "elapsed": 2,
+          "poseSha256": "abd71a32c9b023e67096bdd562194090a09c16e58581f0abafa7c53d8770a6da"
+        },
+        {
+          "elapsed": 4,
+          "poseSha256": "fe42e4edfc9e3c44173b0134bef02a2d7a5029c48cb886a8467dca8bc54f409f"
+        }
+      ]
+    },
+    {
+      "recipe": {
+        "kind": "lateral",
+        "aim": {
+          "x": 2,
+          "y": 0.3,
+          "power": 0.55
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 3
+      },
+      "direction": 1,
+      "hesitation": false,
+      "caught": true,
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.5547610950232075,
+        "speed": 70,
+        "target": {
+          "x": 1.9535362954204638,
+          "y": 0.29973769800762
+        }
+      },
+      "samples": [
+        {
+          "elapsed": 0,
+          "poseSha256": "fbe89e3867805027c105d0e4ad6a69ddd8bb2a59c374f53b1724c15ea954b49b"
+        },
+        {
+          "elapsed": 0.12,
+          "poseSha256": "b974fb352f61e9be558858dc4fd2ecc24c78785470b4d54267514cd5c4e15478"
+        },
+        {
+          "elapsed": 0.44,
+          "poseSha256": "3f9ff186e52fb03d9df6682cec02d3159f5cfebb25409a9ec27110f02e55f619"
+        },
+        {
+          "elapsed": 1,
+          "poseSha256": "8117cc626a282ea4d17077c80ea6bf46c868131f66ed06f1dc8e71e473b5da28"
+        },
+        {
+          "elapsed": 2,
+          "poseSha256": "78c3cb5fb7629fc8300730c82867cfe550b7d6cbbf1bf7103e7dbf79eeb94963"
+        },
+        {
+          "elapsed": 4,
+          "poseSha256": "438d264734a3d7d70c41052409f77a2061c4489174e13f57674dafc1ef753b15"
+        }
+      ]
+    },
+    {
+      "recipe": {
+        "kind": "lateral",
+        "aim": {
+          "x": 2,
+          "y": 2.1,
+          "power": 0.55
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 90,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 3
+      },
+      "direction": 1,
+      "hesitation": false,
+      "caught": true,
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "门将稳稳抱住了球",
+        "power": 0.5547610950232075,
+        "speed": 70,
+        "target": {
+          "x": 1.9535362954204638,
+          "y": 2.09973769800762
+        }
+      },
+      "samples": [
+        {
+          "elapsed": 0,
+          "poseSha256": "f2f61c3377462084ceeb215e5de0a9faa63e3949782931f5bff2c482572c1c27"
+        },
+        {
+          "elapsed": 0.12,
+          "poseSha256": "0e618e65361ab8fda56f60742472e83eb621fed5deab50ddf2732cd4222143e9"
+        },
+        {
+          "elapsed": 0.44,
+          "poseSha256": "173ea3c35fe045d0692b8c1776e10c5cb2824392c3b623dbfb720a6f8f3d8562"
+        },
+        {
+          "elapsed": 1,
+          "poseSha256": "f2a73708185dc0b42d24be8ff41867df4902579621528769bf7f303c8b539bea"
+        },
+        {
+          "elapsed": 2,
+          "poseSha256": "2d27dd00580fc674160c2083d0cb0dcdf079849883e062c382b2040b56486a4f"
+        },
+        {
+          "elapsed": 4,
+          "poseSha256": "0c2feefb2a2bbdf33661d799356856eaf212e3b2ce0204b46a71271d1b4386e8"
+        }
+      ]
+    }
+  ]
+}

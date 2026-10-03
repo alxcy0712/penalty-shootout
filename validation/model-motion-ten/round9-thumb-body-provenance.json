@@ -1,0 +1,1962 @@
+{
+  "method": "Identical final integrated poses with frozen four-finger-only baseline vs current thumb controller. All actual thumb-incident triangles against every real CPU-skinned face; refitted BVH uses union bounds from both versions. Same1um bind-position weld excludes shared-vertex/seam neighbors; one additional topology edge is classified local and reported separately. Coplanar/tangent contacts and zero-area faces excluded. Strict transverse segments>10um. finiteTriangleSeparation is minimum11-axis SAT translation for the finite convex triangle pair, not whole-body penetration or minimum mesh clearance. Baseline pairs are matched at the identical pose, not globally exempted. Sampled evidence, not continuous-time proof; sphere guard does not prove whole-body clearance.",
+  "controls": {
+    "crossing": {
+      "length": 1,
+      "finiteTriangleSeparation": 0.6708203932499369,
+      "infinitePlaneStraddle": 1,
+      "center": [
+        0,
+        0,
+        0
+      ]
+    },
+    "disjoint": true,
+    "coplanarExcluded": true,
+    "tangentExcluded": true,
+    "degenerateExcluded": true
+  },
+  "hashesBefore": {
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+    "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+    "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+    "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+    "src/engine.js": "6dd7c2a974c616c65331fd634fd7aeb06119b0ced1f800087daba029dd82c1ed",
+    "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+    "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+    "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+    "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+    "src/keeper-finger-grip.js": "64d8528fc10df5f4490b10817bb461efc54565f30c18ccad5acda0e7ff63a450",
+    "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+    "src/keeper-result-recovery.js": "825707fadd77f7fed8046e68e43f946c96795b9cf72f6baf6cde4f3c82c6bae1",
+    "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+    "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+    "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+    "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+    "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+    "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+    "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+    "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+    "tests/helpers/keeper-finger-grip-baseline.js": "ffc53350771db644a36c4c07e52a5e1af1a7c58ce77b112b6038c949aef62e98",
+    "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644",
+    "tools/qa/audit-thumb-body-differential.mjs": "04c86e003b136b9db403ee52de35a07e0d51e2420cad65e3900037fc682a98c9",
+    "tools/qa/read-audit-fixtures.mjs": "f6d47fcac1325d43931195b03c76d157d20a29358d7147c9aaaadd9bd4464c17",
+    "fixtures:/workspace/scratch/da56d19312e0/penalty-model-motion-ten-rounds/validation/model-motion-ten/union-fixtures.json": "69ac2f1c4dc587dbaef9217533e0af973d5f5bd6d806173e3feb777ea2e1fbe1"
+  },
+  "hashesAfter": {
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+    "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+    "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+    "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+    "src/engine.js": "6dd7c2a974c616c65331fd634fd7aeb06119b0ced1f800087daba029dd82c1ed",
+    "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+    "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+    "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+    "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+    "src/keeper-finger-grip.js": "64d8528fc10df5f4490b10817bb461efc54565f30c18ccad5acda0e7ff63a450",
+    "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+    "src/keeper-result-recovery.js": "825707fadd77f7fed8046e68e43f946c96795b9cf72f6baf6cde4f3c82c6bae1",
+    "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+    "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+    "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+    "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+    "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+    "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+    "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+    "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+    "tests/helpers/keeper-finger-grip-baseline.js": "ffc53350771db644a36c4c07e52a5e1af1a7c58ce77b112b6038c949aef62e98",
+    "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644",
+    "tools/qa/audit-thumb-body-differential.mjs": "04c86e003b136b9db403ee52de35a07e0d51e2420cad65e3900037fc682a98c9",
+    "tools/qa/read-audit-fixtures.mjs": "f6d47fcac1325d43931195b03c76d157d20a29358d7147c9aaaadd9bd4464c17",
+    "fixtures:/workspace/scratch/da56d19312e0/penalty-model-motion-ten-rounds/validation/model-motion-ten/union-fixtures.json": "69ac2f1c4dc587dbaef9217533e0af973d5f5bd6d806173e3feb777ea2e1fbe1"
+  },
+  "summary": {
+    "mode": "full-caught-manifest",
+    "matchPlayback": true,
+    "fixture": {
+      "path": "/workspace/scratch/da56d19312e0/penalty-model-motion-ten-rounds/validation/model-motion-ten/union-fixtures.json",
+      "sha256": "69ac2f1c4dc587dbaef9217533e0af973d5f5bd6d806173e3feb777ea2e1fbe1",
+      "shots": 669,
+      "expectedCaptures": 223
+    },
+    "caught": 223,
+    "thumbVertices": 230,
+    "thumbFaces": 376,
+    "totalSkinFaces": 17954,
+    "totalSkinVertices": 11352,
+    "measuredChangedVertices": 230,
+    "measuredChangedFaces": 376,
+    "setupMs": 410.165939,
+    "scanMs": 113426.26077699977,
+    "meanScanMs": 13.385208965895654,
+    "smokeBruteMs": 0,
+    "initialTimes": [
+      0,
+      1e-05,
+      0.116666667,
+      0.233333333,
+      0.35,
+      0.39599,
+      0.396,
+      0.39601000000000003,
+      0.43999,
+      0.44,
+      0.44001,
+      0.466666667,
+      0.5499900000000001,
+      0.55,
+      0.55001,
+      0.583333333,
+      0.7,
+      0.70399,
+      0.704,
+      0.7040099999999999,
+      0.816666667,
+      0.933333333,
+      1.05,
+      1.166666667,
+      1.283333333,
+      1.4,
+      1.516666667,
+      1.633333333,
+      1.75,
+      1.866666667,
+      1.983333333,
+      2.1,
+      2.216666667,
+      2.333333333,
+      2.45,
+      2.566666667,
+      2.683333333,
+      2.8
+    ],
+    "samples": 8474,
+    "denseSamples": 0,
+    "trianglePairTests": 10574682,
+    "baselineUniquePairs": 260,
+    "candidateUniquePairs": 260,
+    "newUniquePairs": 0,
+    "newNonLocalUniquePairs": 0,
+    "newLocalUniquePairs": 0,
+    "removedUniquePairs": 0,
+    "bvhCandidateMismatches": 0,
+    "nonFinite": 0,
+    "geometryOutsideThumbDifferences": 0,
+    "fingerAmountDifferences": 0,
+    "cohortChanges": [],
+    "runtimeMs": 121329.405555,
+    "failures": []
+  },
+  "captures": [
+    {
+      "id": "04f3d1730fe23385",
+      "caseIndex": 12,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "81add4ff03156b93",
+      "caseIndex": 27,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "5bf1bef4f99c73b0",
+      "caseIndex": 28,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "23afc06db8420b97",
+      "caseIndex": 29,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "67c211e050883fa1",
+      "caseIndex": 36,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "e422f436b1d3fad1",
+      "caseIndex": 37,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "2e719b1718e6bf68",
+      "caseIndex": 38,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "edeeb32fb70a29eb",
+      "caseIndex": 40,
+      "requestedDirection": 0,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "a3abda1dddc48bcb",
+      "caseIndex": 45,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "b50df29ceab4dd17",
+      "caseIndex": 46,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "2daabadeadc1fb82",
+      "caseIndex": 47,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "7044422678976841",
+      "caseIndex": 54,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "5c5fbdb7beb09eef",
+      "caseIndex": 55,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "a0f774305e42befe",
+      "caseIndex": 56,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "5f3a40b0e4cb9b06",
+      "caseIndex": 58,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "335d9198e80bef1b",
+      "caseIndex": 61,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "5205591176eb4058",
+      "caseIndex": 63,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "8f824ccf84693fba",
+      "caseIndex": 64,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "e1766dabf6982ad0",
+      "caseIndex": 65,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "fe671f29d3f7c531",
+      "caseIndex": 67,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "f3dcf0f5b02d56a6",
+      "caseIndex": 70,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "9999e786b8cd06d6",
+      "caseIndex": 72,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "c67ff7512560656e",
+      "caseIndex": 73,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "3a55f9c192ae7265",
+      "caseIndex": 74,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "582706506dbf23b9",
+      "caseIndex": 81,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "7c42da2c2df61ad6",
+      "caseIndex": 82,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "60879e808fe1c641",
+      "caseIndex": 83,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "4a53f940dc9c14e5",
+      "caseIndex": 90,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "0b084ccdc0c80d78",
+      "caseIndex": 91,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "4a9bdbeab9d855d0",
+      "caseIndex": 92,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "9942775a9c48288b",
+      "caseIndex": 94,
+      "requestedDirection": 0,
+      "actualDirection": 1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "2598526d3a39ec83",
+      "caseIndex": 99,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "d641e0f1c0641db3",
+      "caseIndex": 100,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "ad0952927ce5917b",
+      "caseIndex": 101,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "216d259e5dc99516",
+      "caseIndex": 113,
+      "requestedDirection": 1,
+      "actualDirection": 1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "54004de0147a2a53",
+      "caseIndex": 122,
+      "requestedDirection": 1,
+      "actualDirection": 1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "f81677b0c8c4369c",
+      "caseIndex": 135,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "b2bc4f096b16426c",
+      "caseIndex": 136,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "f11f7eb25426cf67",
+      "caseIndex": 137,
+      "requestedDirection": 1,
+      "actualDirection": 1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "c61c848c1caea687",
+      "caseIndex": 138,
+      "requestedDirection": 1,
+      "actualDirection": 1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "aadc534e7670841d",
+      "caseIndex": 139,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "6559df0fba1665be",
+      "caseIndex": 140,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "4a8a9d24b00889ae",
+      "caseIndex": 141,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "7904be66073d973f",
+      "caseIndex": 146,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "97b6e71715ed146c",
+      "caseIndex": 152,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "b53b7d753a7e7a73",
+      "caseIndex": 157,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "8f0fc015e27d27d7",
+      "caseIndex": 158,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "6379b5b0f27b6133",
+      "caseIndex": 159,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "a945e64eb968e378",
+      "caseIndex": 160,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "049f5f4cd029c2ce",
+      "caseIndex": 161,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "5e6e9cd6618ab234",
+      "caseIndex": 162,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "0ddbe4551c88347d",
+      "caseIndex": 164,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "8338425174a887ab",
+      "caseIndex": 165,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "4a3df2a543bd5571",
+      "caseIndex": 166,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "8673fb45961d26c9",
+      "caseIndex": 167,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "8f26ba62676617f8",
+      "caseIndex": 168,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "e2508070b8bba80a",
+      "caseIndex": 170,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "eae1a786a0bf021f",
+      "caseIndex": 175,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "0e09e0ecb6166fb7",
+      "caseIndex": 176,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "160af8cec0f1465d",
+      "caseIndex": 182,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "06fdc056adea1bc6",
+      "caseIndex": 211,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "bacae84b7af9d845",
+      "caseIndex": 212,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "3f04e790d24534e4",
+      "caseIndex": 217,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "67b1a70f67b0b97c",
+      "caseIndex": 218,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "f23ff7abef718f64",
+      "caseIndex": 223,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "bf8cb97d69ea96bc",
+      "caseIndex": 224,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "68f6a32aa2c8e17e",
+      "caseIndex": 229,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "4f27810d5a154291",
+      "caseIndex": 230,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "88ed37b558a96e29",
+      "caseIndex": 235,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "88d204798faf05ba",
+      "caseIndex": 236,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "3ecc896e15bd6137",
+      "caseIndex": 237,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "ce94f5df2b2d3d81",
+      "caseIndex": 241,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "72f6bc19cf037f49",
+      "caseIndex": 242,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "58a2ccf12ae58283",
+      "caseIndex": 247,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "e46a60c4f5c51b54",
+      "caseIndex": 248,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "6d1260d096edae91",
+      "caseIndex": 249,
+      "requestedDirection": 0,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "01873d7dd64a7077",
+      "caseIndex": 253,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "47151fb4e591e4b2",
+      "caseIndex": 254,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "8e4740fdf934bbd2",
+      "caseIndex": 259,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "249ebf3270952723",
+      "caseIndex": 260,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "d597921cbcc79b71",
+      "caseIndex": 265,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "2c8228fd6cf2fda2",
+      "caseIndex": 266,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "95cf5f4652d0d1f5",
+      "caseIndex": 271,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "06589b32fee665b5",
+      "caseIndex": 272,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "bd00424c1a3aeea4",
+      "caseIndex": 277,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "6f13c7d169448e3e",
+      "caseIndex": 278,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "02435f0123ecb775",
+      "caseIndex": 304,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "54d96deab7bae59c",
+      "caseIndex": 310,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "f9e1ef54f5c7a702",
+      "caseIndex": 319,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "1ee430f1c0d59ed9",
+      "caseIndex": 320,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "e51f87f9789c1821",
+      "caseIndex": 325,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "53b941d5376981d8",
+      "caseIndex": 326,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "158f87e076093552",
+      "caseIndex": 327,
+      "requestedDirection": 0,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "f163d70600a4832c",
+      "caseIndex": 331,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "45e64b8eb2767ab1",
+      "caseIndex": 332,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "08950bc3d6dce489",
+      "caseIndex": 337,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "a5f5f95a067b8522",
+      "caseIndex": 338,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "acbfd8b439e79601",
+      "caseIndex": 339,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "197a0ef26a85ee8a",
+      "caseIndex": 341,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "ceb106721a0758c3",
+      "caseIndex": 343,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "006e134584f1c0b7",
+      "caseIndex": 344,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "bb8c2bca7d179bf4",
+      "caseIndex": 345,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "ce6ff10623b29996",
+      "caseIndex": 347,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "fdb146a8c8b6a2a9",
+      "caseIndex": 349,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "0b99b8c3d7c3acd4",
+      "caseIndex": 350,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "7855c97b1fdfcf50",
+      "caseIndex": 355,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "7b2614b4dc542b54",
+      "caseIndex": 356,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "ea4f70f44537c134",
+      "caseIndex": 357,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "c04e18e301c53643",
+      "caseIndex": 359,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "b0af4a18ffa08f4b",
+      "caseIndex": 361,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "9197c85293c31984",
+      "caseIndex": 362,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "837c8b3e926c733e",
+      "caseIndex": 363,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "85d8afca5311ddef",
+      "caseIndex": 365,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "43676c4b2552b0a9",
+      "caseIndex": 367,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "74f9b51a1ed42a89",
+      "caseIndex": 368,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "fdd5b5fc34908867",
+      "caseIndex": 373,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "fe2a323a0c4482ab",
+      "caseIndex": 374,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "6d75c5215a5a629b",
+      "caseIndex": 379,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "1a3045fd5931b856",
+      "caseIndex": 380,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "cead333701881bfa",
+      "caseIndex": 381,
+      "requestedDirection": 0,
+      "actualDirection": 1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "305f66cd4e919524",
+      "caseIndex": 385,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "3775f01f542faa9b",
+      "caseIndex": 386,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "1e1150055111d071",
+      "caseIndex": 394,
+      "requestedDirection": 1,
+      "actualDirection": 1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "1522d475d6ceaf3e",
+      "caseIndex": 400,
+      "requestedDirection": 1,
+      "actualDirection": 1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "2c8fa63a1024b677",
+      "caseIndex": 409,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "740b64718b6eaa8c",
+      "caseIndex": 410,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "c5dda0783e0e969f",
+      "caseIndex": 411,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "5d248971a1455add",
+      "caseIndex": 412,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "2b28522925b401df",
+      "caseIndex": 413,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "9bc862188fa9a305",
+      "caseIndex": 414,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "92b3df51e62d903b",
+      "caseIndex": 415,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "2ca8a51f9b40cd0a",
+      "caseIndex": 416,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "9c1f18e7d5d7583a",
+      "caseIndex": 417,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "a47695be93631f55",
+      "caseIndex": 418,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "a562bb8f28e0c920",
+      "caseIndex": 419,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "31c9c44d10cf705a",
+      "caseIndex": 420,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "ce54b4c329ab03d8",
+      "caseIndex": 421,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "1c6bfc38b5ce3f6e",
+      "caseIndex": 425,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "a93a288d85c6acb5",
+      "caseIndex": 426,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "a9cc3605dfb36a0a",
+      "caseIndex": 427,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "b10390268cb86f09",
+      "caseIndex": 428,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "0c05e52d2108dea1",
+      "caseIndex": 429,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "ffa73c56b504eb26",
+      "caseIndex": 430,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "7a53dfeaf4f57a37",
+      "caseIndex": 431,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "26a5cfffb37378f4",
+      "caseIndex": 432,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "30d71b56828e4e33",
+      "caseIndex": 433,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "8392c4d4135a5068",
+      "caseIndex": 434,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "2ed9a96e101bd054",
+      "caseIndex": 435,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "7b8c9af5f355b8dc",
+      "caseIndex": 436,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "ca9b2337706b565d",
+      "caseIndex": 437,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "5a9a18b8cf312784",
+      "caseIndex": 438,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "65647ba90fb7cc4d",
+      "caseIndex": 439,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "1d6f13891de703c5",
+      "caseIndex": 440,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "513e37207df12878",
+      "caseIndex": 441,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "39e140c18dbafda4",
+      "caseIndex": 442,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "fd2f2542487e5126",
+      "caseIndex": 443,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "28f9613afd880fd3",
+      "caseIndex": 444,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "343696343d6450f1",
+      "caseIndex": 445,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "4fc57bf152a77bde",
+      "caseIndex": 446,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "ef0e30d2178a40ee",
+      "caseIndex": 447,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "1af890f750018b97",
+      "caseIndex": 448,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "5177dbd1913d92f5",
+      "caseIndex": 449,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "1c2404ad70664297",
+      "caseIndex": 450,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "85acdd59a732a7e2",
+      "caseIndex": 451,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "1089ebd963acc046",
+      "caseIndex": 452,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "5536547993364746",
+      "caseIndex": 453,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "d645e11701cf05f2",
+      "caseIndex": 454,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "25bc9afe250825c8",
+      "caseIndex": 455,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "2df83b3cf0c49e6e",
+      "caseIndex": 456,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "e0a9295340e8d01a",
+      "caseIndex": 457,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "ded5ec2cb06c9f4c",
+      "caseIndex": 458,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "f5efc1c577ff1bf6",
+      "caseIndex": 459,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "63ac8862d1582879",
+      "caseIndex": 460,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "2809922a1b0b805f",
+      "caseIndex": 461,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "8d2e39e162e9f7c4",
+      "caseIndex": 462,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "d8aeaf0900424cd4",
+      "caseIndex": 463,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "3f59e6e4209d2a13",
+      "caseIndex": 464,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "b1fddbd8209e0e76",
+      "caseIndex": 465,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "210de4d911c4ee66",
+      "caseIndex": 466,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "bcf22002e5140682",
+      "caseIndex": 467,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "bf840c7de40baa54",
+      "caseIndex": 468,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "b2b1eb40555d0b52",
+      "caseIndex": 496,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "a54721463a0fe250",
+      "caseIndex": 497,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "638721e7a8a50bc9",
+      "caseIndex": 498,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "727364a72c79fbf1",
+      "caseIndex": 526,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "93b2012fc3ce78fc",
+      "caseIndex": 529,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "0be31ed1cace0020",
+      "caseIndex": 532,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "e3d05f1e0c6821a5",
+      "caseIndex": 538,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "897b1accf1eb2b5d",
+      "caseIndex": 541,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "4049011c86d39d17",
+      "caseIndex": 544,
+      "requestedDirection": 1,
+      "actualDirection": 1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "590bb6b7c8dc17a3",
+      "caseIndex": 549,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "dab254f35af145a8",
+      "caseIndex": 552,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "9ee4ad309694c898",
+      "caseIndex": 556,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "f9e4ee267ae05dac",
+      "caseIndex": 559,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "3b45911be13d73d1",
+      "caseIndex": 561,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "391d4c440255e99f",
+      "caseIndex": 564,
+      "requestedDirection": 0,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "662bf77b10a0f10b",
+      "caseIndex": 568,
+      "requestedDirection": 1,
+      "actualDirection": 1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "4ab276a037a37cc5",
+      "caseIndex": 573,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "101a9dcfd4994c84",
+      "caseIndex": 574,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "9534f683f4e24412",
+      "caseIndex": 579,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "2225b8def512dc40",
+      "caseIndex": 580,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "6b321514f9374d1e",
+      "caseIndex": 585,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "1faf072bd65d4941",
+      "caseIndex": 586,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "8d6b8440311c4976",
+      "caseIndex": 591,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "428d421e0b485e92",
+      "caseIndex": 592,
+      "requestedDirection": -1,
+      "actualDirection": -1,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "4a47f4a2ae455b3a",
+      "caseIndex": 651,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "dc55d5c14961c68b",
+      "caseIndex": 652,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "464eff16c6eea874",
+      "caseIndex": 653,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "c7e58cb70fce6efc",
+      "caseIndex": 654,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "cb47f714966761a0",
+      "caseIndex": 655,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "5bd5334575d6fa65",
+      "caseIndex": 656,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "47eba5d0c3d7b6b9",
+      "caseIndex": 657,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "539bde4722377b76",
+      "caseIndex": 658,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "b9a0cef8a685d5a5",
+      "caseIndex": 659,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "75659e513c3ff221",
+      "caseIndex": 660,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "35aab009c4bfcb0b",
+      "caseIndex": 661,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "da17124ad6450453",
+      "caseIndex": 662,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "588a1949d2c4efea",
+      "caseIndex": 663,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "955cb043bbf804c3",
+      "caseIndex": 664,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "b95a3aaa6854f196",
+      "caseIndex": 665,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "7f51d51ef63efa9c",
+      "caseIndex": 666,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "a9d9611ea1365ffe",
+      "caseIndex": 667,
+      "requestedDirection": -1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    },
+    {
+      "id": "4d60f2e9a88552fc",
+      "caseIndex": 668,
+      "requestedDirection": 1,
+      "actualDirection": 0,
+      "initialSamples": 38,
+      "denseSamples": 0
+    }
+  ],
+  "newPairs": [],
+  "removedPairs": []
+}

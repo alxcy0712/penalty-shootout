@@ -1,8 +1,8 @@
+// Frozen thumb candidate before swept-box floor optimization; QA only.
 import * as THREE from 'three';
 
 // Authored bend for the production keeper glove. These are local hand metres.
-// The four fingers retain their knuckle bend. A separately limited authored
-// distal thumb-tip cup leaves the calibrated palm, thumb base and cuff exact.
+// Distal four fingers bend from their knuckles; the palm and cuff never move.
 // Geometry is cloned per actor so replay actors cannot change each other's grip.
 const START=.105, CURVATURE=18, AXIS_Z=.002, RADIUS=.11, SKIN_GAP=.00035;
 const ease=t=>{t=Math.max(0,Math.min(1,t));return t*t*t*(10+t*(-15+6*t));};
@@ -52,15 +52,9 @@ export function createKeeperFingerGrip(root){
       for(let i=0;i<idx.length;i+=3){const face=[idx[i],idx[i+1],idx[i+2]];if(face.some(i=>thumbChanged.has(i))){if(!face.every(i=>local.has(i)))throw new Error('Thumb grip requires exact single-hand weights on every touched triangle');thumbFaces.push(face.map(i=>local.get(i)));}}
       let thumbSupport=Infinity;
       for(const face of thumbFaces)for(const vertex of face)thumbSupport=Math.min(thumbSupport,thumbPlane.dot(vertex.p),thumbPlane.dot(vertex.p)+thumbPlane.dot(vertex.d));
-      const fingerBox=new THREE.Box3();
-      for(const entry of entries){fingerBox.expandByPoint(entry.handBase);fingerBox.expandByPoint(entry.handBase.clone().add(entry.handDelta));}
-      const fingerCenter=fingerBox.getCenter(new THREE.Vector3()),fingerExtent=fingerBox.getSize(new THREE.Vector3()).multiplyScalar(.5);
-      const thumbBox=new THREE.Box3();
-      for(const entry of thumbEntries){thumbBox.expandByPoint(entry.handBase);thumbBox.expandByPoint(entry.handBase.clone().add(entry.handDelta));}
-      const thumbCenter=thumbBox.getCenter(new THREE.Vector3()),thumbExtent=thumbBox.getSize(new THREE.Vector3()).multiplyScalar(.5);
       const minimum=Math.min(...entries.map(e=>e.i),...thumbEntries.map(e=>e.i)),maximum=Math.max(...entries.map(e=>e.i),...thumbEntries.map(e=>e.i));
       const guards=makeGuards(faces);
-      states.push({fingerCenter,fingerExtent,thumbCenter,thumbExtent,thumbEntries,thumbPlane,thumbSupport,thumbTriangleCount:thumbFaces.length,thumbAmount:-1,guards,rangeStart:minimum*3,rangeCount:(maximum-minimum+1)*3,mesh,position,normal,bone:mesh.skeleton.bones[boneIndex],entries,triangleCount:faces.length,amount:-1, inverse:new THREE.Matrix4(),handRoot:new THREE.Matrix4()});
+      states.push({thumbEntries,thumbPlane,thumbSupport,thumbTriangleCount:thumbFaces.length,thumbAmount:-1,guards,rangeStart:minimum*3,rangeCount:(maximum-minimum+1)*3,mesh,position,normal,bone:mesh.skeleton.bones[boneIndex],entries,triangleCount:faces.length,amount:-1, inverse:new THREE.Matrix4(),handRoot:new THREE.Matrix4()});
     }
   });
   const ballLocal=new THREE.Vector3();
@@ -88,24 +82,16 @@ export function createKeeperFingerGrip(root){
         // convexity covers the entire linear morph, including face interiors.
         // It never contributes a limit to the existing four-finger amount.
         thumbAmount=desired*ease((state.thumbSupport-state.thumbPlane.dot(ballLocal)-RADIUS-SKIN_GAP)/.001);
-        // Swept endpoint boxes skip provably inactive floor work. The unchanged
-        // exact vertex halfspaces handle every uncertain case. Each moved vertex
+        // Linear vertex halfspaces also protect the turf. Each moved vertex
         // and every triangle interior stay above the existing 5mm target;
         // an already lower source point may never move lower through curl.
         state.handRoot.copy(state.inverse).invert();const e=state.handRoot.elements;
-        const fc=state.fingerCenter,fe=state.fingerExtent;
-        const fingerFloor=e[1]*fc.x+e[5]*fc.y+e[9]*fc.z+e[13]-Math.abs(e[1])*fe.x-Math.abs(e[5])*fe.y-Math.abs(e[9])*fe.z;
-        if(fingerFloor<.0050001)for(const entry of state.entries){const p=entry.handBase,d=entry.handDelta,height=e[1]*p.x+e[5]*p.y+e[9]*p.z+e[13],down=e[1]*d.x+e[5]*d.y+e[9]*d.z;if(down<0)amount=Math.min(amount,Math.max(0,(height-Math.min(.005,height))/-down));}
-        const tc=state.thumbCenter,te=state.thumbExtent;
-        const thumbFloor=e[1]*tc.x+e[5]*tc.y+e[9]*tc.z+e[13]-Math.abs(e[1])*te.x-Math.abs(e[5])*te.y-Math.abs(e[9])*te.z;
-        // A box around both endpoint sets encloses every linear thumb morph.
-        // Scan exact vertex halfspaces only when that conservative box cannot
-        // prove the existing 5mm floor target for the whole morph.
-        if(thumbFloor<.0050001)for(const entry of state.thumbEntries){const p=entry.handBase,d=entry.handDelta,height=e[1]*p.x+e[5]*p.y+e[9]*p.z+e[13],down=e[1]*d.x+e[5]*d.y+e[9]*d.z;if(down<0)thumbAmount=Math.min(thumbAmount,Math.max(0,(height-Math.min(.005,height))/-down));}
+        for(const entry of state.entries){const p=entry.handBase,d=entry.handDelta,height=e[1]*p.x+e[5]*p.y+e[9]*p.z+e[13],down=e[1]*d.x+e[5]*d.y+e[9]*d.z;if(down<0)amount=Math.min(amount,Math.max(0,(height-Math.min(.005,height))/-down));}
+        for(const entry of state.thumbEntries){const p=entry.handBase,d=entry.handDelta,height=e[1]*p.x+e[5]*p.y+e[9]*p.z+e[13],down=e[1]*d.x+e[5]*d.y+e[9]*d.z;if(down<0)thumbAmount=Math.min(thumbAmount,Math.max(0,(height-Math.min(.005,height))/-down));}
       }
       if(amount===state.amount&&thumbAmount===state.thumbAmount)continue;
-      if(amount!==state.amount)for(const e of state.entries){v.copy(e.base).addScaledVector(e.delta,amount);state.position.setXYZ(e.i,v.x,v.y,v.z);n.copy(e.normal);if(amount)n.lerp(e.targetNormal,amount).normalize();state.normal.setXYZ(e.i,n.x,n.y,n.z);}
-      if(thumbAmount!==state.thumbAmount)for(const e of state.thumbEntries){v.copy(e.base).addScaledVector(e.delta,thumbAmount);state.position.setXYZ(e.i,v.x,v.y,v.z);n.copy(e.normal);if(thumbAmount)n.lerp(e.targetNormal,thumbAmount).normalize();state.normal.setXYZ(e.i,n.x,n.y,n.z);}
+      for(const e of state.entries){v.copy(e.base).addScaledVector(e.delta,amount);state.position.setXYZ(e.i,v.x,v.y,v.z);n.copy(e.normal);if(amount)n.lerp(e.targetNormal,amount).normalize();state.normal.setXYZ(e.i,n.x,n.y,n.z);}
+      for(const e of state.thumbEntries){v.copy(e.base).addScaledVector(e.delta,thumbAmount);state.position.setXYZ(e.i,v.x,v.y,v.z);n.copy(e.normal);if(thumbAmount)n.lerp(e.targetNormal,thumbAmount).normalize();state.normal.setXYZ(e.i,n.x,n.y,n.z);}
       state.thumbAmount=thumbAmount;
       dirty(state.position,state.rangeStart,state.rangeCount);dirty(state.normal,state.rangeStart,state.rangeCount);state.amount=amount;
     }

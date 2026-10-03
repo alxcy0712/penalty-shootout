@@ -1,3 +1,5 @@
+> Latest ten model/motion rounds: [2026-10-03 ledger](validation/MODEL_MOTION_TEN_ROUNDS_2026-10-03.md) — 394 tests, uniform 669-shot / 223-catch acceptance, bounded thumb cup, cancelled-dive recovery and inspector metadata repairs, with measured CPU and retained visual limits.
+
 > Latest grip and recovery refinement: [2026-10-02 validation](validation/GRIP_RECOVERY_2026-10-02.md) — 379 tests, unchanged 645-shot / 205-catch acceptance, cupped fingers, coupled wrist refinement, staged boot support, and measured CPU/upload tradeoffs.
 
 > Latest ten additional rounds: [2026-10-02 ten-round audit](validation/TEN_ROUNDS_2026-10-02.md) — 369 tests, 645 shots / 205 catches, corrected frame-contact ordering and endpoint entry, exact-output reduction of handling-quality work, and explicit CPU/visual limits.

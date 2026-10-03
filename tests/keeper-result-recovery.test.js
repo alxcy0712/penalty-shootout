@@ -39,13 +39,12 @@ test('central result recovery does not change live physics, capture, clearance o
   runs.forEach((run,i)=>assert.equal(run.hash,recipes[i][5]));
   const side=runs[3].shot,live=Shot.restore(JSON.parse(JSON.stringify(side)));live.result=null;
   for(const time of[0,.2,.44,.8,1.5,4])assert.deepEqual(sample(side,time),sample(live,time));
-  for(const branch of['hesitation','recoveryOrigin']){
-    const shot=Shot.restore(JSON.parse(JSON.stringify(shots[0])));
-    if(branch==='hesitation')shot.hesitation={pose:shot.pose,direction:-1,at:shot.t,previous:shot.pose};
-    else {shot.recoveryOrigin=shot.pose;shot.recoveryAt=shot.t;}
-    const before=Shot.restore(JSON.parse(JSON.stringify(shot)));before.result=null;
-    for(const time of[0,.2,1,4])assert.deepEqual(sample(shot,time),sample(before,time));
-  }
+  const hesitation=Shot.restore(JSON.parse(JSON.stringify(shots[0])));
+  hesitation.hesitation={pose:hesitation.pose,direction:-1,at:hesitation.t,previous:hesitation.pose};
+  const before=Shot.restore(JSON.parse(JSON.stringify(hesitation)));before.result=null;
+  for(const time of[0,.2,1,4])assert.deepEqual(sample(hesitation,time),sample(before,time));
+  // Real terminal recoveryOrigin paths are covered separately, including
+  // exact physical catches and compressed presentation-clock origins.
 });
 
 test('the exact capture pose persists until the grasp is secure, then the low keeper rises with planted boots',()=>{

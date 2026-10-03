@@ -1,0 +1,417 @@
+{
+  "baselineCommit": "42f54ba3a48647cd0a529e612b0c6f3fb3d0e6c1",
+  "baselineTree": "6fef4db83767ab32b1ac37e051e80ba7c50aa366",
+  "createdAt": "2026-10-03T07:18:26.461395+00:00",
+  "sources": {
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "assets/characters/mocap-variants/cmu-10_03-kick.glb": "19d2dc23fbc6df84ebb6a4e706a0701f0c16b17daa4ce3b6366dac108e8bdeeb",
+    "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+    "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+    "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+    "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+    "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+    "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+    "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+    "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+    "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+    "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+    "src/keeper-finger-grip.js": "75abbe4c1b87c805c0e366fd95b051b416ed2ba587780a9782aaa656cd825dec",
+    "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+    "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+    "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+    "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+    "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+    "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+    "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+    "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+    "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+    "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222"
+  },
+  "scope": "Exact published runtime/model baseline before candidates; installed Three.js is 0.180.0. Offline QA only.",
+  "fullTests": {
+    "tests": 379,
+    "pass": 379,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 126646.716697,
+    "logSha256": "bdeca1f7518f08ab87614398cbc54f43cbc0eaf89137ee64e8025cfa2c81eda9"
+  },
+  "renderBudget": {
+    "scope": "CPU scene candidates before camera/shadow frustum culling; initial visibility includes aim, arc and trail. Not renderer.info, GPU timings or mobile FPS. Transparent double-sided extra passes not modeled.",
+    "sceneRef": "working-tree",
+    "sceneSha256": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "counts": {
+      "meshCandidates": 30,
+      "lineCandidates": 4,
+      "spriteCandidates": 2,
+      "meshTriangles": 63562,
+      "shadowMeshCandidates": 20,
+      "shadowMeshTriangles": 36742
+    },
+    "omittedJerseyNumbers": {
+      "mainCandidates": 2,
+      "shadowCandidates": 2,
+      "mainTriangles": 4,
+      "shadowTriangles": 4
+    },
+    "totals": {
+      "mainCandidates": 38,
+      "shadowCandidates": 22,
+      "mainMeshTriangles": 63566,
+      "shadowMeshTriangles": 36746
+    },
+    "uniqueMaterialsExcludingNumbers": 34,
+    "generatedTextures": [
+      {
+        "width": 1024,
+        "height": 1024,
+        "mipmaps": true,
+        "logicalRGBABytes": 5592404
+      },
+      {
+        "width": 256,
+        "height": 256,
+        "mipmaps": true,
+        "logicalRGBABytes": 349524
+      },
+      {
+        "width": 64,
+        "height": 64,
+        "mipmaps": true,
+        "logicalRGBABytes": 21844
+      }
+    ],
+    "generatedTextureLogicalBytes": 5963772,
+    "textureScope": "Generated scene CanvasTextures only; excludes GLB maps, number maps, hidden fallback resources, shadow/depth targets and driver/MSAA allocations. RGBA8 logical mip size, not measured GPU memory.",
+    "rows": [
+      {
+        "name": "Mesh",
+        "material": "MeshStandardMaterial",
+        "triangles": 5280,
+        "castShadow": false
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshStandardMaterial",
+        "triangles": 21120,
+        "castShadow": false
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshStandardMaterial",
+        "triangles": 2,
+        "castShadow": false
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshBasicMaterial",
+        "triangles": 142,
+        "castShadow": false
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshStandardMaterial",
+        "triangles": 24,
+        "castShadow": false
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshStandardMaterial",
+        "triangles": 400,
+        "castShadow": true
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshStandardMaterial",
+        "triangles": 24,
+        "castShadow": true
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshStandardMaterial",
+        "triangles": 116,
+        "castShadow": true
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshStandardMaterial",
+        "triangles": 24,
+        "castShadow": true
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshStandardMaterial",
+        "triangles": 12,
+        "castShadow": true
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshStandardMaterial",
+        "triangles": 84,
+        "castShadow": true
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshStandardMaterial",
+        "triangles": 24,
+        "castShadow": true
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshBasicMaterial",
+        "triangles": 144,
+        "castShadow": false
+      },
+      {
+        "name": "Sphere005_Retopology004",
+        "material": "Skin.001",
+        "triangles": 5001,
+        "castShadow": true
+      },
+      {
+        "name": "Sphere005_Retopology004_1",
+        "material": "Kit",
+        "triangles": 2959,
+        "castShadow": true
+      },
+      {
+        "name": "Sphere005_Retopology004_2",
+        "material": "Shorts",
+        "triangles": 1188,
+        "castShadow": true
+      },
+      {
+        "name": "Sphere005_Retopology004_3",
+        "material": "Socks",
+        "triangles": 4902,
+        "castShadow": true
+      },
+      {
+        "name": "Sphere005_Retopology004_4",
+        "material": "Boots",
+        "triangles": 3136,
+        "castShadow": true
+      },
+      {
+        "name": "Sphere005_Retopology004_5",
+        "material": "Eyes",
+        "triangles": 768,
+        "castShadow": true
+      },
+      {
+        "name": "Sphere005_Retopology004",
+        "material": "Skin.001",
+        "triangles": 8491,
+        "castShadow": true
+      },
+      {
+        "name": "Sphere005_Retopology004_1",
+        "material": "Kit",
+        "triangles": 2959,
+        "castShadow": true
+      },
+      {
+        "name": "Sphere005_Retopology004_2",
+        "material": "Shorts",
+        "triangles": 1188,
+        "castShadow": true
+      },
+      {
+        "name": "Sphere005_Retopology004_3",
+        "material": "Socks",
+        "triangles": 1412,
+        "castShadow": true
+      },
+      {
+        "name": "Sphere005_Retopology004_4",
+        "material": "Boots",
+        "triangles": 3106,
+        "castShadow": true
+      },
+      {
+        "name": "Sphere005_Retopology004_5",
+        "material": "Eyes",
+        "triangles": 768,
+        "castShadow": true
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshStandardMaterial",
+        "triangles": 180,
+        "castShadow": true
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshBasicMaterial",
+        "triangles": 80,
+        "castShadow": false
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshBasicMaterial",
+        "triangles": 2,
+        "castShadow": false
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshBasicMaterial",
+        "triangles": 2,
+        "castShadow": false
+      },
+      {
+        "name": "Mesh",
+        "material": "MeshBasicMaterial",
+        "triangles": 24,
+        "castShadow": false
+      }
+    ],
+    "rigidArchitecture": {
+      "triangles": 996,
+      "sha256": "efb7da8417d16d5f67079a7835ee8a40fee1347d493fb52070a065b0bc810387",
+      "scope": "Triangle multiset with winding, world positions/normals, UV/colors at1e-5 precision and material parameters; excludes UUID, batching boundaries, cast/receive shadow flags; Canvas image dimensions only, not rendered texels"
+    },
+    "gates": {
+      "mainCandidates": true,
+      "shadowCandidates": true,
+      "triangles": true,
+      "generatedTextureBytes": true
+    }
+  },
+  "visualReview": {
+    "views": [
+      {
+        "name": "baseline-dive-015",
+        "recipe": {
+          "actor": "keeper",
+          "motion": "dive",
+          "start": 0.15,
+          "duration": 0,
+          "fps": 24,
+          "direction": 1,
+          "height": 2.1,
+          "speed": 85,
+          "reach": 85,
+          "power": 0.7,
+          "targetX": 0,
+          "shotType": "normal",
+          "seed": 42,
+          "showBall": false,
+          "style": null,
+          "kickContact": 1.8467
+        },
+        "sources": {
+          "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+          "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+          "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+          "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+          "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+          "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+          "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+          "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+          "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+          "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+          "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+          "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+          "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+          "src/keeper-finger-grip.js": "75abbe4c1b87c805c0e366fd95b051b416ed2ba587780a9782aaa656cd825dec",
+          "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+          "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+          "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+          "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+          "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+          "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+          "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+          "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+          "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+          "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+          "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+          "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+          "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+          "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+          "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+          "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+          "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+          "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+          "tools/qa/export-character-poses.mjs": "44c9336153a34a38ab12e1a2fd47c32455374ffe9c82d638ba7b68f27605fb27",
+          "tools/qa/render-character-poses.py": "1e130ecd98097411aa7109b833ba155f11ed3b12454434eac3e75afda3031ab5"
+        },
+        "imageSha256": "3234b90c8740b13e2805e8beeb22f422bdb1c1ec770eff707c0aa037e895e699"
+      },
+      {
+        "name": "baseline-gather-1",
+        "recipe": {
+          "actor": "keeper",
+          "motion": "gather",
+          "start": 1,
+          "duration": 0,
+          "fps": 24,
+          "direction": 1,
+          "height": 2.1,
+          "speed": 95,
+          "reach": 95,
+          "power": 0.55,
+          "targetX": 1.5,
+          "shotType": "normal",
+          "seed": 1,
+          "showBall": true,
+          "style": null,
+          "kickContact": 1.8467
+        },
+        "sources": {
+          "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+          "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+          "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+          "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+          "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+          "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+          "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+          "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+          "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+          "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+          "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+          "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+          "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+          "src/keeper-finger-grip.js": "75abbe4c1b87c805c0e366fd95b051b416ed2ba587780a9782aaa656cd825dec",
+          "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+          "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+          "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+          "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+          "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+          "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+          "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+          "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+          "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+          "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+          "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+          "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+          "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+          "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+          "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+          "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+          "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+          "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+          "tools/qa/export-character-poses.mjs": "44c9336153a34a38ab12e1a2fd47c32455374ffe9c82d638ba7b68f27605fb27",
+          "tools/qa/render-character-poses.py": "1e130ecd98097411aa7109b833ba155f11ed3b12454434eac3e75afda3031ab5"
+        },
+        "imageSha256": "f1e1efec6444d4e6dfd404e691355827581dbecea2e1eabd47f6010c74f290e1"
+      }
+    ],
+    "findings": [
+      "V-shaped wrist cuff edge remains visible in early save and secured grip",
+      "Bent elbow apex and inner elbow crease remain angular",
+      "Existing finger cup and ball attachment are visible in held pose"
+    ],
+    "qualification": "CPU-skinned production geometry in Blender with simplified materials, not browser output"
+  }
+}

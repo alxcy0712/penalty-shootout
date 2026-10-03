@@ -167,9 +167,19 @@ export class Shot {
     this.diveDelay=this.launchSpeed>=23||(this.launchSpeed>=15&&Math.abs(ball.x)<.8)?0:Math.max(0,arrival-bestTime);this.diveVelocity=bestSpeed;
   }
   poseAt(time,height=this.reactionHeight??this.target.y){
+    // Hesitation owns its complete brake/stand sequence, including results.
+    if(this.hesitation)return this.livePoseAt(time,height);
+    if(this.result&&!this.direction&&this.pose?.shoulders){
+      const origin=this.animationTime??this.t;
+      // A compressed free result continues from the exact presented pose.
+      // Physical catches retain their authoritative contact frame.
+      const source=this.caught||!this.recoveryOrigin?this.pose:this.livePoseAt(origin,height);
+      return keeperResultRecovery(source,time-origin,this.caught);
+    }
+    return this.livePoseAt(time,height);
+  }
+  livePoseAt(time,height=this.reactionHeight??this.target.y){
     if(this.hesitation)return keeperHesitationPose(this.hesitation.pose,this.hesitation.direction,time-this.hesitation.at,this.hesitation.previous);
-    if(this.result&&!this.direction&&!this.recoveryOrigin&&this.pose?.shoulders)
-      return keeperResultRecovery(this.pose,time-(this.animationTime??this.t),this.caught);
     const stats={...this.keeper,speed:this.keeper.speed*this.keeperPressure,reach:this.keeper.reach*this.keeperPressure,diveVelocity:this.diveVelocity,stretch:this.stretch};
     const elapsed=this.diveAt===null?time:time-this.diveAt,delay=this.direction?(this.diveDelay??0):0;
     let targetHeight=clamp(this.direction?(this.diveHeight??height):height,.3,2.3);

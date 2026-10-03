@@ -1,6 +1,7 @@
 import {body,HOLD_DURATION,goalkeeperPose,supportedKeeperPose,blendKeeperPose} from './anatomy.js';
 
 const smooth=value=>{const q=Math.max(0,Math.min(1,value));return q*q*q*(q*(q*6-15)+10);};
+const quietTorsoChannels=['curl','twist','sideBend','headCurl','armRelax','braceL','braceR'];
 // At elapsed zero the set stance is independent of player statistics. This is
 // an immutable authored reference, not a previous-frame or cross-rig cache.
 const ready=goalkeeperPose({speed:99},0,0,1);
@@ -32,6 +33,12 @@ function risePose(from,to,q){
 // finish any interrupted support step, then extend the knees under the torso.
 // Sampling depends only on the captured pose and clock, never earlier frames.
 export function keeperResultRecovery(source,elapsed,caught){
+  // Both sole phases finish before the body rise. Only the fully released
+  // torso/arm channels together identify the authored free-recovery endpoint.
+  // Retain its calibrated low ankles, flat soles and supported final frame.
+  const torso=source.torso;
+  if(torso?.soleL===1&&torso.soleR===1&&
+    quietTorsoChannels.every(key=>torso[key]===0))return source;
   const after=elapsed-(caught?HOLD_DURATION:.12);
   if(after<=0)return source;
   const feet=source.feet.map(foot=>({...foot,y:.075}));

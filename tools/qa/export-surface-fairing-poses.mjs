@@ -28,7 +28,6 @@ Arguments are --name value pairs:
   --target X --power 0..1 --type normal|low|chip --seed N
   --style 0|1|2|3              explicit striker run-up; omitted keeps legacy clip
   --ball true|false          default true for striker, hold and gather
-  --playback physics|match   shot simulation clock, default physics for historical recipes
 Gather requires a real physics catch and exports its actual anchored ball.
 Example: --motion gather --direction 1 --height .3 --duration .8 --fps 120 --out /tmp/gather`);process.exit(0);
 }
@@ -38,8 +37,6 @@ const keeper=(args.actor??'keeper')==='keeper',motion=args.motion??(keeper?'dive
 const fps=Number(args.fps??24),start=Number(args.time??0),duration=Number(args.duration??0),direction=Number(args.direction??-1),height=Number(args.height??1.2),speed=Number(args.speed??(gather?95:85)),reach=Number(args.reach??(gather?95:85)),power=Number(args.power??(gather?.55:.7)),targetX=Number(args.target??(gather?direction*(height>1.2?1.5:2):0)),shotType=args.type??'normal',seed=Number(args.seed??(gather?(height>1.2?(direction<0?2:1):3):42));
 let showBall=args.ball===undefined?(!keeper||motion==='hold'||gather):args.ball==='true';
 if(!['keeper','striker'].includes(args.actor??'keeper')||!(keeper?['dive','warmup','hold','gather','result','set']:['kick']).includes(motion)||![fps,start,duration,direction,height,speed,reach,power,targetX,seed].every(Number.isFinite)||fps<=0||duration<0||![-1,0,1].includes(direction))throw Error('Invalid actor, motion, direction or numeric arguments');
-const playback=args.playback??'physics';
-if(!['physics','match'].includes(playback))throw Error('Playback must be physics or match');
 const style=args.style===undefined?undefined:penaltyStyles[Number(args.style)];
 if(args.style!==undefined&&!style)throw Error('Invalid run-up style');
 if(args.center!==undefined&&!['0','1'].includes(args.center))throw Error('Center must be0 or1');
@@ -48,7 +45,7 @@ const stats={accuracy:90,power:90,touch:90,composure:90,speed,reach,handling:95}
 let capture=null,ballFrames=null;
 if(gather||resultMotion){
   capture=new Shot({x:targetX,y:height,power},stats,stats,direction,seed);
-  for(let i=0;i<3600&&!capture.result;i++)capture.step(1/120,playback==='match'?capture.playbackRate():1);
+  for(let i=0;i<3600&&!capture.result;i++)capture.step(1/120);
   if(!capture.result)throw Error('This recipe did not finish within the export window');
   if(resultMotion&&capture.caught&&args.ball===undefined)showBall=true;
   if(gather&&!capture.caught)throw Error('This recipe did not produce a catch; choose a caught seed/target instead of fabricating a gather');
@@ -56,7 +53,7 @@ if(gather||resultMotion){
   const shot=new Shot({x:targetX,power,low:shotType==='low',chip:shotType==='chip'},stats,stats,0,seed);ballFrames=[{...shot.ball}];
   for(let i=0;i<720&&!shot.result;i++){shot.step(1/120);ballFrames.push({...shot.ball});}
 }
-const asset=`assets/characters/${keeper?'keeper-prototype':'striker-mocap'}.glb`,sourceBytes=await readFile(join(root,asset)),bytes=Buffer.from(sourceBytes),length=bytes.readUInt32LE(12),manifest=JSON.parse(bytes.subarray(20,20+length));
+const asset=args.asset??`assets/characters/${keeper?'keeper-prototype':'striker-mocap'}.glb`,sourceBytes=await readFile(resolve(root,asset)),bytes=Buffer.from(sourceBytes),length=bytes.readUInt32LE(12),manifest=JSON.parse(bytes.subarray(20,20+length));
 // These are geometry QA renders. Browser texture decoding, shader output and
 // real-device performance remain separate checks; no screenshot claim is made.
 for(const m of manifest.materials){delete m.pbrMetallicRoughness?.baseColorTexture;delete m.pbrMetallicRoughness?.metallicRoughnessTexture;delete m.normalTexture;}
@@ -67,11 +64,11 @@ const actor=Object.create(GameCharacter.prototype);actor.root=gltf.scene;actor.k
 const meshes=[];actor.root.traverse(m=>{if(m.isSkinnedMesh)meshes.push(m)});
 const sphere=showBall?new THREE.SphereGeometry(.11,20,12):null;
 if(sphere){const ball=new THREE.Mesh(sphere,new THREE.MeshStandardMaterial({color:'#f0f2e9'}));ball.name='MatchBall';ball.material.name='Ball';meshes.push(ball);}
-const frameCount=duration?Math.round(duration*fps)+1:1,meta={format:'penalty-character-cpu-skin-v1',createdAt:new Date().toISOString(),note:'Offline CPU-skinned geometry with simplified materials; not a browser screenshot or real-device test. Keeper x translation is '+(Number(args.center??1)?'centered as in motion-lab':'preserved in world space')+'.',recipe:{actor:keeper?'keeper':'striker',motion,playback,start,duration,fps,direction,height,speed,reach,power,targetX,shotType,seed,showBall,style:args.style??null,kickContact},frames:frameCount,fps,components:0,meshes:[],sha256:{}};
+const frameCount=duration?Math.round(duration*fps)+1:1,meta={format:'penalty-character-cpu-skin-v1',createdAt:new Date().toISOString(),note:'Offline CPU-skinned geometry with simplified materials; not a browser screenshot or real-device test. Keeper x translation is '+(Number(args.center??1)?'centered as in motion-lab':'preserved in world space')+'.',recipe:{actor:keeper?'keeper':'striker',motion,start,duration,fps,direction,height,speed,reach,power,targetX,shotType,seed,showBall,style:args.style??null,kickContact},frames:frameCount,fps,components:0,meshes:[],sha256:{}};
 if(capture)meta.capture={time:capture.t,animationTime:capture.animationTime,point:capture.ball,contactPart:capture.contactPart,seed,result:capture.result,caught:capture.caught,direction:capture.direction,trackingFeet:capture.trackingFeet,footStep:capture.footStep};
 meta.ballCenters=[];meta.joints=[];
 for(const m of meshes){const faces=[];for(let i=0;i<m.geometry.index.count;i+=3)faces.push([m.geometry.index.getX(i),m.geometry.index.getX(i+1),m.geometry.index.getX(i+2)]);meta.meshes.push({name:m.name,role:m.isSkinnedMesh?'character':'ball',material:m.material.name,color:m.material.color.toArray(),vertexColors:m.geometry.attributes.color?Array.from({length:m.geometry.attributes.color.count},(_,i)=>{const a=m.geometry.attributes.color;return[a.getX(i),a.getY(i),a.getZ(i),a.itemSize===4?a.getW(i):1];}):undefined,count:m.geometry.attributes.position.count,offset:meta.components,faces});meta.components+=m.geometry.attributes.position.count*3;}
-for(const file of[asset,...(!keeper?['assets/characters/mocap-variants/cmu-10_03-kick.glb']:[]),...(await readdir(join(root,'src'))).filter(name=>name.endsWith('.js')).sort().map(name=>'src/'+name),'tools/qa/export-character-poses.mjs','tools/qa/render-character-poses.py'])meta.sha256[file]=createHash('sha256').update(await readFile(join(root,file))).digest('hex');
+for(const file of[asset,...(!keeper?['assets/characters/mocap-variants/cmu-10_03-kick.glb']:[]),...(await readdir(join(root,'src'))).filter(name=>name.endsWith('.js')).sort().map(name=>'src/'+name),'tools/qa/export-surface-fairing-poses.mjs','tools/qa/render-character-poses.py'])meta.sha256[file]=createHash('sha256').update(await readFile(resolve(root,file))).digest('hex');
 const binary=join(out,'poses.bin');await writeFile(binary,'');const frame=new Float32Array(meta.components),point=new THREE.Vector3();
 for(let f=0;f<frameCount;f++){
   const time=start+f/fps;let pose,shiftX=0,shiftZ=0,ball=null;
@@ -98,6 +95,6 @@ for(let f=0;f<frameCount;f++){
   meta.ballCenters.push(ball?[ball.x-shiftX,ball.z-shiftZ,ball.y]:null);
   await appendFile(binary,new Uint8Array(frame.buffer));
 }
-for(const [file,hash] of Object.entries(meta.sha256))if(createHash('sha256').update(await readFile(join(root,file))).digest('hex')!==hash)throw Error('Source changed during export; retry on a frozen checkout: '+file);
+for(const [file,hash] of Object.entries(meta.sha256))if(createHash('sha256').update(await readFile(resolve(root,file))).digest('hex')!==hash)throw Error('Source changed during export; retry on a frozen checkout: '+file);
 meta.endTime=start+(frameCount-1)/fps;
 await writeFile(join(out,'poses.json'),JSON.stringify(meta,null,2));console.log(JSON.stringify({output:out,frames:frameCount,binaryBytes:frameCount*meta.components*4,metadata:relative(process.cwd(),join(out,'poses.json'))}));

@@ -1,0 +1,146 @@
+{
+  "completedAt": "2026-10-03T09:03:00Z",
+  "baselineCommit": "42f54ba3a48647cd0a529e612b0c6f3fb3d0e6c1",
+  "rounds": [
+    {
+      "round": 1,
+      "status": "complete"
+    },
+    {
+      "round": 2,
+      "status": "complete"
+    },
+    {
+      "round": 3,
+      "status": "complete"
+    },
+    {
+      "round": 4,
+      "status": "complete"
+    },
+    {
+      "round": 5,
+      "status": "complete"
+    },
+    {
+      "round": 6,
+      "status": "complete"
+    },
+    {
+      "round": 7,
+      "status": "complete"
+    },
+    {
+      "round": 8,
+      "status": "complete"
+    },
+    {
+      "round": 9,
+      "status": "complete"
+    },
+    {
+      "round": 10,
+      "status": "complete"
+    }
+  ],
+  "tests": {
+    "passed": 394,
+    "failed": 0,
+    "skipped": 0,
+    "independent": true,
+    "seconds": 132.87
+  },
+  "build": {
+    "passed": true,
+    "seconds": 1.88,
+    "renderingKB": 1277.42,
+    "renderingGzipKB": 352.87,
+    "existingChunkWarning": true
+  },
+  "coverage": {
+    "shots": 669,
+    "catches": 223,
+    "bodyPoses": 39694,
+    "heldSphereSkinSamples": 37687,
+    "fingerPoses": 33450,
+    "thumbBodyPoses": 8474
+  },
+  "originalManifestSha256": "5949a1c7f718e096868039d0037c3d064a130ae15bcd4deb244c453902ffa6ec",
+  "finalManifestSha256": "69ac2f1c4dc587dbaef9217533e0af973d5f5bd6d806173e3feb777ea2e1fbe1",
+  "changedRuntime": {
+    "src/engine.js": "6dd7c2a974c616c65331fd634fd7aeb06119b0ced1f800087daba029dd82c1ed",
+    "src/keeper-finger-grip.js": "64d8528fc10df5f4490b10817bb461efc54565f30c18ccad5acda0e7ff63a450",
+    "src/keeper-result-recovery.js": "825707fadd77f7fed8046e68e43f946c96795b9cf72f6baf6cde4f3c82c6bae1",
+    "src/motion-lab-runtime.js": "34a17af03ba240a95cc8b17adaff37e4fb7711049e59867d2bb50585c202da67"
+  },
+  "testedAssetHashes": {
+    "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772"
+  },
+  "changedSourceAndTests": {
+    "src/engine.js": "6dd7c2a974c616c65331fd634fd7aeb06119b0ced1f800087daba029dd82c1ed",
+    "src/keeper-finger-grip.js": "64d8528fc10df5f4490b10817bb461efc54565f30c18ccad5acda0e7ff63a450",
+    "src/keeper-result-recovery.js": "825707fadd77f7fed8046e68e43f946c96795b9cf72f6baf6cde4f3c82c6bae1",
+    "src/motion-lab-runtime.js": "34a17af03ba240a95cc8b17adaff37e4fb7711049e59867d2bb50585c202da67",
+    "tests/helpers/keeper-finger-grip-baseline.js": "ffc53350771db644a36c4c07e52a5e1af1a7c58ce77b112b6038c949aef62e98",
+    "tests/helpers/keeper-thumb-floor-reference.js": "512ef10da90d340c31be07c2d36aa1a8412698fa560af93e866102631176c955",
+    "tests/keeper-finger-grip.test.js": "669aa7d84f3d787d1f554490f6c4bf9eafc8df8418124cea70fe2608c4aaead1",
+    "tests/keeper-result-recovery.test.js": "d26d17a2959d24be60f24fe5211f0143828f90936511528346ca31a01bc5fc78",
+    "tests/motion-lab-ui.test.js": "7e8f66a4c0d2543b7f5df223179b3cfbec09ecff638fd1af86dbaff6282cea81",
+    "tests/recovery-grip-lifecycle.test.js": "3d925b4a66e5765c8b63c388375779c17c9754b69621e04abdec20033f721b89",
+    "tests/recovery-origin-result.test.js": "0f94d352dbd4e5897cfb5f06e323f7f6d324b01f4b02617460edf76fa13cab71",
+    "tools/blender/audit_cuff_seams.py": "091580a65fd0ce9698a6f204e720941c848a1c7090839435aaae7ed2f5f7c122",
+    "tools/blender/fair_elbow_weights.py": "6829fe57abeb9cbf59444631c991624b96e54036a8dfbef9e014a53896de74aa",
+    "tools/blender/pack_elbow_weight_candidate.mjs": "5582f45b423e57126954cb78f35e3d1fbf1b3c0070b58505394f9c93215d8f92",
+    "tools/blender/pack_surface_fairing.mjs": "32907332ecf64defd907b0624a1960c96630ffefac5e6a2995cc691520888741",
+    "tools/blender/sculpt_elbow_fairing.py": "59efc187962d004803c4c9c775df8f9fb809fab0597e25cc625eb38f284eff30",
+    "tools/qa/audit-finger-grip.mjs": "79542e76ad2f5f172141be8d22422b0b846efb6225d929a26851d74570375ca8",
+    "tools/qa/audit-held-body.mjs": "2631a35b9ebdb46ba564edd284385f8300dc7611b6b5685e39814eaa7ce3d78d",
+    "tools/qa/audit-model-candidate-integrity.mjs": "132dd3d6f8e1081a711edd2f34d7d979d0c451a54b069dd06230f2d19bb56ec4",
+    "tools/qa/audit-model-motion-handoffs.mjs": "43b0d5ba82ec6ac7b5afd468f05f6595f238ff6b322f319a18c85b4aab653130",
+    "tools/qa/audit-thumb-body-differential.mjs": "04c86e003b136b9db403ee52de35a07e0d51e2420cad65e3900037fc682a98c9",
+    "tools/qa/benchmark-result-pipeline.mjs": "e72243feb889a37a559eaa2d0cadf9c5a93578a441993fd2704d4cc56d102a23",
+    "tools/qa/compare-finger-floor-fastpath.mjs": "786e7519eeeaedce3fba01af09b08b7ad26ed63e91855e5cbe4245dcdab880f0",
+    "tools/qa/compare-model-contact-outcomes.mjs": "2aadd7ea5395d5013326ef87d7de683f85c7a47a2fb5a0b193e879c4e3d9d704",
+    "tools/qa/export-character-poses.mjs": "0789c115ae7fd907c28d054d2a9f9697523cf596a912fe13727a1f95cbd04912",
+    "tools/qa/export-surface-fairing-poses.mjs": "e57505cfe2be0051fe73650e21094ab242c7a5df139b44a594681419e7797b02",
+    "tools/qa/merge-audit-fixtures.mjs": "6cacdf7c08041ac3de80a5fe39165cc269332a7c7db8b0e6cecdd675619a5532",
+    "tools/qa/verify-lab-isolation.mjs": "308f75f1d8f52310d49f43702a567c968103978934e35695a04d95737d789c0c"
+  },
+  "receipts": {
+    "validation/model-motion-ten/baseline.json": "adcdddd563744019cb4850710e7d963623eba0160b3dd6645cf4c1bb5a25bdec",
+    "validation/model-motion-ten/elbow-candidates.json": "9b8e39f74851de61f65108aa9fb3d30400e165d32abac67a30f03be2a1c8bbba",
+    "validation/model-motion-ten/recovery-origin-all100.json": "1ebc468898f1b98b568271d299dfb272209aa5d5e4861359068f3d4132e2ff1d",
+    "validation/model-motion-ten/recovery-origin-baseline.json": "f221f76187f8309f839861261dac46eac73550063add5f7889f2ded7b591f99f",
+    "validation/model-motion-ten/recovery-origin-fixtures.json": "e1eeac4de5da8fdc3d6d04305d87d31e84a710d1e93f3a3ddc30cc3980973bd0",
+    "validation/model-motion-ten/round10-media.json": "1cd12f7f31c997ecfea98450c68519d01cb56aeca2d09961224360274034b96b",
+    "validation/model-motion-ten/round10-physics-cpu.json": "a4e98608b3473d0fa069c78c45450a275dfa2ae3c3aa09a737fbe85019156480",
+    "validation/model-motion-ten/round10-render-budget.json": "49c16e609615f882fd116a12881c45ae01b2bb79c4c8b0ccbc435aa6828e466e",
+    "validation/model-motion-ten/round10-result-cpu.json": "015925dae90acf58fcf1606e8cb2a040c5f0ecf382565c3680b2420dbf41a9ae",
+    "validation/model-motion-ten/round10-visual-cpu.json": "2ec924eea2c68f55fd5802399ec4d0c51f74c8598aca954944da8907ac585b6d",
+    "validation/model-motion-ten/round2-model-candidates.json": "2a749892a955791e16d72463fd3ed3a001b38472cf47a3540d7e29b16674089e",
+    "validation/model-motion-ten/round3-thumb.json": "dcad4e885925d0a425987d986758fe8f6000b7425ec734c93b4f4f1dd6623c27",
+    "validation/model-motion-ten/round4-runup.json": "6ec980c26f02c1314a4877818041ef8fd21b3f04631e498d6daf859b6f8736a7",
+    "validation/model-motion-ten/round5-finish.json": "5a082f10efb6dd413e486f44d63f08712f19cca927742cd34933b5db04a6bc6c",
+    "validation/model-motion-ten/round6-free-saves.json": "930f5169c6a85515f0f9ce407c26c3ef49b4b597a5aa84db2aad1ad20551fbfe",
+    "validation/model-motion-ten/round7-recovery.json": "90b27e33d7b94fb03abf2976b366414f9c4eb63701941214aefc4db819cf0ffb",
+    "validation/model-motion-ten/round8-lifecycle.json": "1d0c70e0c36ac0e27deb8a7bacf64be7190b2759ae5b259a189f85cdc412fca6",
+    "validation/model-motion-ten/round9-existing-glove-contact.json": "83c5f96e1baca6a8359a5f4cae42019073335c81229b7e2b2b94a165f1c6f861",
+    "validation/model-motion-ten/round9-fingers.json": "102e0ea93c2abcacff02fe273ee04dbee8be6f8cddc16adeb6b5086474456dde",
+    "validation/model-motion-ten/round9-inspector-isolation.json": "8e2d9c8f9c63b39bfe1a5f520d050ee9495a3e7fdaf9d50e9db957ed6f3100cc",
+    "validation/model-motion-ten/round9-thumb-body-provenance.json": "996f3416199e3b0cac88030e3f9022a4a1e20ed213eabf8bd8ac5b2cbd387a05",
+    "validation/model-motion-ten/round9-thumb-body.json": "e017b539a5f7af17caf5ea73911575a36fdf65dfbed27160ad05e6dde124a4db",
+    "validation/model-motion-ten/round9-union.json": "bf879ab10ba07a7d29fc7cc3092822354bd3eadb415221bc8243772a45d326b5",
+    "validation/model-motion-ten/union-fixtures.json": "69ac2f1c4dc587dbaef9217533e0af973d5f5bd6d806173e3feb777ea2e1fbe1"
+  },
+  "independentLogs": {
+    "/workspace/scratch/da56d19312e0/oct3-root-tests.log": "47de71938f2b67602b095f6098213b23d3309fe2f1c2355017e3241afe15eb0a",
+    "/workspace/scratch/da56d19312e0/oct3-root-build.log": "3a1b5837043c5eac8fae0e13598b22ba78643dcac87dfecc6d42d6e74134ec1e"
+  },
+  "limits": [
+    "Offline CPU/Blender evidence; no physical-phone or GPU claim.",
+    "Historical uniform receipts retain old inspector hash; final isolation receipt proves the sole unrelated change.",
+    "Adjacent sleeve and early glove contacts remain; no global intersection-free claim.",
+    "Rejected model candidates are reproducible but no production model bytes changed."
+  ]
+}

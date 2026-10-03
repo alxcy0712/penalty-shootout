@@ -95,7 +95,15 @@ function trackingFrame(time,direction){
       if(held)Object.assign(ball,held.ball);
       frames.push({pose,ball});
     }
-    trackingReplay={direction,frames};
+    trackingReplay={direction,frames,shot};
+  }
+  // Sample the actual solved result instead of rebuilding a grasp from
+  // interpolated wrists and dropping its palm/finger calibration metadata.
+  const shot=trackingReplay.shot;
+  if(shot.result&&time>=shot.t){
+    const after=time-shot.t,raw=shot.poseAt((shot.animationTime??shot.t)+after);
+    if(shot.caught){const held=keeperGather(shot.pose,raw,shot.ball,shot.contactPart,after/HOLD_DURATION);return {pose:held.pose,ball:held.ball};}
+    return {pose:raw,ball:{...shot.ball}};
   }
   const cursor=Math.min(720,time*120),index=Math.floor(cursor),weight=cursor-index,a=trackingReplay.frames[index],b=trackingReplay.frames[Math.min(720,index+1)];
   const mix=(a,b)=>({x:a.x+(b.x-a.x)*weight,y:a.y+(b.y-a.y)*weight,z:a.z+(b.z-a.z)*weight});
@@ -103,6 +111,20 @@ function trackingFrame(time,direction){
   for(let i=0;i<2;i++){const arm=limb(pose.shoulders[i],mix(a.pose.hands[i],b.pose.hands[i]),mix(a.pose.elbows[i],b.pose.elbows[i]),body.upperArm,body.forearm);pose.hands[i]=arm.end;pose.elbows[i]=arm.joint;}
   if(a.pose.grip&&b.pose.grip)pose.grip={center:mix(a.pose.grip.center,b.pose.grip.center),weight:a.pose.grip.weight+(b.pose.grip.weight-a.pose.grip.weight)*weight};
   return {pose,ball:mix(a.ball,b.ball)};
+}
+
+// Presentation translation must move every position-valued grip field once.
+// Return fresh coordinates: cached replay/source poses remain authoritative.
+function centerKeeperPresentation(pose,ball,moveBall){
+  const shift=pose.hip.x,point=value=>({...value,x:value.x-shift}),centered={...pose};
+  for(const key of ['hip','shoulder','head','shoulders','hips','hands','elbows','feet','knees'])
+    centered[key]=Array.isArray(pose[key])?pose[key].map(point):point(pose[key]);
+  if(pose.grip){
+    centered.grip={...pose.grip};
+    if(pose.grip.center)centered.grip.center=point(pose.grip.center);
+    if(pose.grip.ball)centered.grip.ball=point(pose.grip.ball);
+  }
+  return {pose:centered,ball:moveBall?point(ball):{...ball}};
 }
 
 function requestFrame() {
@@ -269,7 +291,7 @@ function frame(now) {
     if(select.value==='tracking'){const replay=trackingFrame(t,direction);p=replay.pose;ballPosition=replay.ball;phaseText='实际来球 · 交替步伐 · 接球收势';}
     if(select.value==='hesitate'){const origin=goalkeeperPose({speed:85,reach:85},direction,.10,1.2),previous=goalkeeperPose({speed:85,reach:85},direction,.099,1.2);p=t<.10?goalkeeperPose({speed:85,reach:85},direction,t,1.2):keeperHesitationPose(origin,direction,t-.10,previous);}
     if(select.value==='hold'){phaseText='双手包球 · 随身体起身';const hold=holdingPose(p);p=hold.pose;ballPosition=hold.center;}
-    if(select.value==='gather'){phaseText=t<HOLD_DURATION?'缓冲收球 · 手腕合拢':'抱球保持';const raw=catchReplay.poseAt(catchReplay.t+t),hold=keeperGather(catchReplay.pose,raw,catchReplay.ball,catchReplay.contactPart,t/HOLD_DURATION);p=hold.pose;ballPosition=hold.ball;}const shift=p.hip.x;if(['hold','gather','tracking'].includes(select.value))ballPosition.x-=shift;if(p.grip&&p.grip.center!==ballPosition)p.grip.center.x-=shift;for(const key of ['hip','shoulder','head','shoulders','hips','hands','elbows','feet','knees']){if(Array.isArray(p[key]))p[key].forEach(v=>v.x-=shift);else p[key].x-=shift;}}
+    if(select.value==='gather'){phaseText=t<HOLD_DURATION?'缓冲收球 · 手腕合拢':'抱球保持';const raw=catchReplay.poseAt(catchReplay.t+t),hold=keeperGather(catchReplay.pose,raw,catchReplay.ball,catchReplay.contactPart,t/HOLD_DURATION);p=hold.pose;ballPosition=hold.ball;}const centered=centerKeeperPresentation(p,ballPosition,['hold','gather','tracking'].includes(select.value));p=centered.pose;ballPosition=centered.ball;}
   const type = info.striker ? 'kick' : 'keeper';
   for (const player of pairs[type]) {
     if (type === 'kick') player.kick(Math.min(1, t / kickContact), t >= kickContact ? t - kickContact : null, {

@@ -1,3 +1,5 @@
+> This records the original four-finger design. The 2026-10-03 distal thumb extension and exact floor fast path are documented in [the ten-round ledger](../validation/MODEL_MOTION_TEN_ROUNDS_2026-10-03.md#round-3--complete-thumb-tip-shape-and-bounded-cost). Historical counts/costs below describe that original pass.
+
 # Goalkeeper finger grip
 
 The production goalkeeper previously rotated each rigid glove without bending its fingers. The current four-finger deformation visibly cups a held ball while retaining the existing palm attachment and 24-bone runtime budget.

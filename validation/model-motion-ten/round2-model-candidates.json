@@ -1,0 +1,624 @@
+{
+  "round": 2,
+  "baseline": "42f54ba3a48647cd0a529e612b0c6f3fb3d0e6c1",
+  "decision": "retain published model; reject both isolated elbow candidates",
+  "findings": {
+    "geometryOnly": "Modestly rounder held elbow, cuff unchanged;5 discrete result/contact-part differences after honest contact regeneration",
+    "weightsOnly": "Flattened/cut early elbow silhouette; no useful cuff improvement",
+    "seamHypothesis": "42 coincident Skin/Socks rest points already have exactly matching weights; equality repair would be a no-op"
+  },
+  "evidence": {
+    "elbow-v1/keeper-prototype-edits-receipt.json": {
+      "sha256": "cfc900c4297c0ee75dbc33fc846c279ecf6e73e4499d256005d374a7c0fb49fc",
+      "receipt": {
+        "inputSha256": "6225e6b89712b6eac1e8193c7c39454bfb8e2255f6084b33e4da16d5a593faa0",
+        "rigSha256": "42f7e3466ee6b03e3f44bddbdb952aee1f0df074fd7197a92a3d2504f8da16f2",
+        "authoringScriptSha256": "59efc187962d004803c4c9c775df8f9fb809fab0597e25cc625eb38f284eff30",
+        "parameters": {
+          "input": "/workspace/scratch/da56d19312e0/model-motion-ten-evidence/model-candidates/base-mesh/keeper-prototype-mesh.json",
+          "rig": "/workspace/scratch/da56d19312e0/model-motion-ten-evidence/model-candidates/base-mesh/keeper-prototype-rig.json",
+          "output": "/workspace/scratch/da56d19312e0/model-motion-ten-evidence/model-candidates/elbow-v1/keeper-prototype-edits.json",
+          "strength": 1,
+          "normals": "update",
+          "blend": null
+        },
+        "weldedVertices": 9261,
+        "changedWeldedVertices": 297,
+        "maximumDisplacementMm": 3.5000460993510223,
+        "maskVertices": 297,
+        "protectedMoved": 0
+      },
+      "rawReceiptScope": "Complete raw receipt retained with the stated digest; reproducible from the pinned baseline using the model authoring/audit scripts"
+    },
+    "elbow-v1/contact-and-physics-summary.json": {
+      "sha256": "601e038480a2b341432b9f7eeb7eaf68c3f083a454bae5c8cf09b46b4ebe6b11",
+      "receipt": {
+        "fixtureSha256": "5949a1c7f718e096868039d0037c3d064a130ae15bcd4deb244c453902ffa6ec",
+        "scriptSha256": "2aadd7ea5395d5013326ef87d7de683f85c7a47a2fb5a0b193e879c4e3d9d704",
+        "contactDifference": {
+          "source": {
+            "equal": false
+          },
+          "hulls": {
+            "torso": {
+              "equal": true,
+              "beforeVertices": 80,
+              "afterVertices": 80,
+              "beforeTriangles": 156,
+              "afterTriangles": 156,
+              "surfaceEqual": true
+            },
+            "head": {
+              "equal": true,
+              "beforeVertices": 285,
+              "afterVertices": 285,
+              "beforeTriangles": 566,
+              "afterTriangles": 566,
+              "surfaceEqual": true
+            },
+            "handL": {
+              "equal": true,
+              "beforeVertices": 138,
+              "afterVertices": 138,
+              "beforeTriangles": 272,
+              "afterTriangles": 272,
+              "surfaceEqual": true
+            },
+            "handR": {
+              "equal": true,
+              "beforeVertices": 137,
+              "afterVertices": 137,
+              "beforeTriangles": 270,
+              "afterTriangles": 270,
+              "surfaceEqual": true
+            },
+            "forearmL": {
+              "equal": false,
+              "beforeVertices": 63,
+              "afterVertices": 65,
+              "beforeTriangles": 122,
+              "afterTriangles": 126,
+              "surfaceEqual": true
+            },
+            "forearmR": {
+              "equal": false,
+              "beforeVertices": 62,
+              "afterVertices": 63,
+              "beforeTriangles": 120,
+              "afterTriangles": 122,
+              "surfaceEqual": true
+            },
+            "upper_armL": {
+              "equal": true,
+              "beforeVertices": 20,
+              "afterVertices": 20,
+              "beforeTriangles": 36,
+              "afterTriangles": 36,
+              "surfaceEqual": true
+            },
+            "upper_armR": {
+              "equal": true,
+              "beforeVertices": 16,
+              "afterVertices": 16,
+              "beforeTriangles": 28,
+              "afterTriangles": 28,
+              "surfaceEqual": true
+            },
+            "thighL": {
+              "equal": true,
+              "beforeVertices": 134,
+              "afterVertices": 134,
+              "beforeTriangles": 264,
+              "afterTriangles": 264,
+              "surfaceEqual": true
+            },
+            "thighR": {
+              "equal": true,
+              "beforeVertices": 134,
+              "afterVertices": 134,
+              "beforeTriangles": 264,
+              "afterTriangles": 264,
+              "surfaceEqual": true
+            },
+            "shinL": {
+              "equal": true,
+              "beforeVertices": 86,
+              "afterVertices": 86,
+              "beforeTriangles": 168,
+              "afterTriangles": 168,
+              "surfaceEqual": true
+            },
+            "shinR": {
+              "equal": true,
+              "beforeVertices": 86,
+              "afterVertices": 86,
+              "beforeTriangles": 168,
+              "afterTriangles": 168,
+              "surfaceEqual": true
+            },
+            "footL": {
+              "equal": true,
+              "beforeVertices": 158,
+              "afterVertices": 158,
+              "beforeTriangles": 312,
+              "afterTriangles": 312,
+              "surfaceEqual": true
+            },
+            "footR": {
+              "equal": true,
+              "beforeVertices": 158,
+              "afterVertices": 158,
+              "beforeTriangles": 312,
+              "afterTriangles": 312,
+              "surfaceEqual": true
+            }
+          },
+          "binds": {
+            "equal": true
+          },
+          "patch": {
+            "equal": false,
+            "verticesEqual": false,
+            "weightsEqual": false,
+            "indicesEqual": true,
+            "inverseBindsEqual": true,
+            "beforeVertices": 2514,
+            "afterVertices": 2514,
+            "changedVertices": 285,
+            "maxVertexDisplacementMm": 3.46656775499917
+          },
+          "torsoPatch": {
+            "equal": true,
+            "verticesEqual": true,
+            "weightsEqual": true,
+            "indicesEqual": true,
+            "inverseBindsEqual": true,
+            "beforeVertices": 675,
+            "afterVertices": 675,
+            "changedVertices": 0,
+            "maxVertexDisplacementMm": 0
+          }
+        },
+        "before": {
+          "shots": 645,
+          "caught": 205,
+          "touched": 417,
+          "goals": 240,
+          "reboundGoals": 12,
+          "unfinished": 0
+        },
+        "after": {
+          "shots": 645,
+          "caught": 205,
+          "touched": 417,
+          "goals": 239,
+          "reboundGoals": 11,
+          "unfinished": 0
+        },
+        "beforeSteps": 152036,
+        "afterSteps": 152745,
+        "differingRecords": 44,
+        "discreteDifferences": 5,
+        "maxBallDifferenceMm": 12904.742966021004,
+        "differences": [
+          {
+            "id": "eaef5d962df80db9",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "f13172414c2922d9",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "5762604d40bdaed9",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "d512ee5153805339",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "ball",
+              "velocity",
+              "pose"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "0601a88946b9cd16",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "4a59820d436e2019",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "fd6071c35c366d84",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "f40fb4c2bca552bb",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "ball",
+              "pose"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "99cc3985cdc2d7e1",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "ball",
+              "velocity",
+              "pose"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "8c5e2b448914ecec",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "result",
+              "ball",
+              "velocity",
+              "pose"
+            ],
+            "discreteDifference": true
+          },
+          {
+            "id": "4b8aed703151fefc",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "result",
+              "ball",
+              "velocity",
+              "pose"
+            ],
+            "discreteDifference": true
+          },
+          {
+            "id": "a4f3ed3b4a861bbb",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "ball",
+              "pose"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "43a9ce3c5d8b7164",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "result",
+              "ball",
+              "velocity",
+              "pose"
+            ],
+            "discreteDifference": true
+          },
+          {
+            "id": "4124e31209db21e3",
+            "fields": [
+              "ball",
+              "velocity"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "b02815e7117d3451",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "ball",
+              "pose"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "bf2a5c422aa11c24",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "ball",
+              "pose"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "14c8b493e7fdccac",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "ball",
+              "pose"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "69fa3765090acf70",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "b6b45084acea4917",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "0ab9fdc9970a7bf0",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "7bac778be6c35bb5",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "86f99800c948bf42",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "ff1a4ba5d4dcd2ff",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "5fe16eedf4f2d4cc",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "ball",
+              "pose"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "9267c57668eb6ec5",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "2d3ff18e1ad6a77b",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "ball",
+              "pose"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "78667b8a9163a0d7",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "1ce5db21619a0cd2",
+            "fields": [
+              "steps",
+              "time",
+              "animationTime",
+              "ball",
+              "pose"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "41ccd934b616bd87",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "c0c073ef70960246",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "1f2e7f4c2c31220b",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "c5f8da9b21eae522",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "fb7c1dfc1f140e7e",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "ef20578fd45fbb76",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "033e7666da79315c",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "1851d4628c594231",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "5ed0a93fbe707394",
+            "fields": [
+              "contactPart",
+              "steps",
+              "time",
+              "animationTime",
+              "ball",
+              "pose"
+            ],
+            "discreteDifference": true
+          },
+          {
+            "id": "cbabeb33af8ebce8",
+            "fields": [
+              "contactPart",
+              "steps",
+              "time",
+              "animationTime",
+              "ball",
+              "pose"
+            ],
+            "discreteDifference": true
+          },
+          {
+            "id": "2cf4fd70879e771a",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "ad4f5fc288088555",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "a3faa0fbd86984aa",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "b2ce25850109e2c3",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "6e7d3493f05a3227",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          },
+          {
+            "id": "26cc0f75ca2aaa26",
+            "fields": [
+              "ball"
+            ],
+            "discreteDifference": false
+          }
+        ]
+      },
+      "rawReceiptScope": "Complete raw receipt retained with the stated digest; reproducible from the pinned baseline using the model authoring/audit scripts"
+    },
+    "elbow-weights-v1/keeper-prototype-edits-receipt.json": {
+      "sha256": "cacda7e93c3b7ba45b00291b3f7c752ce7b613fd767fe40c6291f18d96230ae7",
+      "receipt": {
+        "inputSha256": "6225e6b89712b6eac1e8193c7c39454bfb8e2255f6084b33e4da16d5a593faa0",
+        "rigSha256": "42f7e3466ee6b03e3f44bddbdb952aee1f0df074fd7197a92a3d2504f8da16f2",
+        "authoringScriptSha256": "6829fe57abeb9cbf59444631c991624b96e54036a8dfbef9e014a53896de74aa",
+        "parameters": {
+          "input": "/workspace/scratch/da56d19312e0/model-motion-ten-evidence/model-candidates/base-mesh/keeper-prototype-mesh.json",
+          "rig": "/workspace/scratch/da56d19312e0/model-motion-ten-evidence/model-candidates/base-mesh/keeper-prototype-rig.json",
+          "output": "/workspace/scratch/da56d19312e0/model-motion-ten-evidence/model-candidates/elbow-weights-v1/keeper-prototype-edits.json",
+          "strength": 0.35
+        },
+        "changedVertices": 286,
+        "maxWeightChange": 0.15000000000000002,
+        "changesCount": 286
+      },
+      "rawReceiptScope": "Complete raw receipt retained with the stated digest; reproducible from the pinned baseline using the model authoring/audit scripts"
+    },
+    "cuff-seam-weight-audit.json": {
+      "sha256": "269abbf78b7c5c26c16bdeeeba3fcf9207cee7ce08e9082e22e3bb70065b8065",
+      "receipt": {
+        "coincidentSkinGloveSeamPoints": 42,
+        "mismatchedPoints": 0,
+        "maxDifference": 0.0,
+        "recordsCount": 42
+      },
+      "rawReceiptScope": "Complete raw receipt retained with the stated digest; reproducible from the pinned baseline using the model authoring/audit scripts"
+    }
+  },
+  "images": {
+    "baseline-dive-015": "3234b90c8740b13e2805e8beeb22f422bdb1c1ec770eff707c0aa037e895e699",
+    "baseline-gather-1": "f1e1efec6444d4e6dfd404e691355827581dbecea2e1eabd47f6010c74f290e1",
+    "elbow-v1/dive-015": "bf4e9ff848e57fcd5c8f188b1a46ed8d8ba974c702e3e6320b81bdaf40307147",
+    "elbow-v1/gather-1": "ebca01ee79b2d688e50bee7ce22b7b4832306ecc5c1b39eb0938854a00ee10c6",
+    "elbow-weights-v1/dive-015": "4f99068b748cf873fd1549ae6fbb7bde5134b8c7cbde3771f16cfee8bc9c844a",
+    "elbow-weights-v1/gather-1": "71a9e0f70e752669b59ffabf21ec32a1e68ecccfa3b1186f14af99ab52e293dd"
+  }
+}
