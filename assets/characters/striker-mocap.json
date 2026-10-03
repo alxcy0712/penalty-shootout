@@ -1,5 +1,5 @@
 {
-  "blender": "5.2.2 LTS",
+  "blender": "4.3 (GLB-derived editable reconstruction)",
   "source": "CMU 10_01 via cgspeed Daz-friendly conversion; Quaternius character",
   "license": "CC0 character; CMU motion data terms (see mocap/cmu-soccer/README.md)",
   "framesPerSecond": 60,
@@ -9,8 +9,8 @@
   "materials": 6,
   "textures": 2,
   "meshes": 6,
-  "triangles": 17518,
-  "glbBytes": 405592,
+  "triangles": 17924,
+  "glbBytes": 446784,
   "budgets": {
     "triangles": 18000,
     "bones": 24,
@@ -24,5 +24,8 @@
   ],
   "sourceStartSeconds": 3.15,
   "kickingSide": "L",
-  "runupDistanceScale": 1.4
+  "originalAuthoringBlender": "5.2.2 LTS",
+  "refinementRecord": "model-refinement.json",
+  "bodyClothRefinement": "body-cloth-refinement.json",
+  "productionRefinement": "../../validation/summary-production-models-2026-10-02.json"
 }

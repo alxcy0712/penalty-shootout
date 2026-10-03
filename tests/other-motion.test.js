@@ -2,6 +2,8 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {strikerPose,goalkeeperPose,keeperWarmupPose,holdingPose,HOLD_DURATION} from '../src/anatomy.js';
 import {homeAnimation} from '../src/home-animation.js';
+import {Vector3} from 'three';
+import {loadCharacter} from './helpers/load-character.js';
 const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z);
 
 test('home warmup keeps moving forward through the shot and camera return',()=>{
@@ -51,15 +53,31 @@ test('central blocks plant both feet, load the legs and converge on the ball hei
  }
 });
 
-test('get-up transfers weight continuously while the first planted foot supports the rise',()=>{
- const stats={speed:85,reach:85},height=1.2,vy=.7+(height-.35)/1.7*2.1;
- const start=.13+(vy+Math.sqrt(vy*vy+2*9.81*(.83-.27)))/9.81+.45;
+test('get-up transfers weight continuously while the real boot supports the rise',async()=>{
+  const stats={speed:85,reach:85},height=1.2,vy=.7+(height-.35)/1.7*2.1;
+  const actor=await loadCharacter(true),boots=[],point=new Vector3();
+  actor.root.traverse(mesh=>{
+    if(!mesh.isSkinnedMesh)return;
+    const {position,skinIndex,skinWeight}=mesh.geometry.attributes;
+    for(let vertex=0;vertex<position.count;vertex++){
+      let weight=0;for(let k=0;k<4;k++)if(/^(foot|toe)[LR]$/.test(mesh.skeleton.bones[skinIndex.getComponent(vertex,k)].name))weight+=skinWeight.getComponent(vertex,k);
+      if(weight>.5)boots.push({mesh,vertex});
+    }
+  });
+  assert.ok(boots.length>500,'inspect actual boot vertices, including toe and stud skin');
+ // Follow the authored landing height and support-first recovery clock.
+ const start=.13+(vy+Math.sqrt(vy*vy+2*9.81*(.83-.305)))/9.81+.28;
  for(const direction of[-1,1]){
   for(let t=.45;t<=1.45;t+=.01){
    const a=goalkeeperPose(stats,direction,start+t,height),b=goalkeeperPose(stats,direction,start+t+.001,height);
    assert.ok((b.hip.y-a.hip.y)/.001>.015,`rise pauses at ${t}`);
-   assert.ok(a.feet.some(foot=>Math.abs(foot.y-.075)<1e-8));
+   actor.pose(a);actor.root.updateMatrixWorld(true);
+   const skeletons=new Set(boots.map(({mesh})=>mesh.skeleton));for(const skeleton of skeletons)skeleton.update();
+   let minimum=Infinity;
+   for(const {mesh,vertex}of boots){point.fromBufferAttribute(mesh.geometry.attributes.position,vertex);mesh.applyBoneTransform(vertex,point).applyMatrix4(mesh.matrixWorld);minimum=Math.min(minimum,point.y);}
+   assert.ok(minimum>=-.005&&minimum<.009,`real boot support at ${direction}/${t}: ${minimum}`);
   }
+  assert.ok(Math.abs(goalkeeperPose(stats,direction,start+1.75,height).hip.y-.83)<1e-9,'rise ends in the authored standing height rather than drifting forever');
  }
 });
 

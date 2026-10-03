@@ -1,0 +1,1788 @@
+{
+  "method": "Both gather kernels receive identical current-engine captures and raw input poses. Full recovery at 240Hz; speed is hip-relative elbow interval distance/dt, angle is upper-arm per-step change. Protected skin clearance is a separate audit. No mobile performance claim.",
+  "baselineModule": "/tmp/penalty-motion-baseline2314/src/keeper-contact.js",
+  "candidateRoot": "/workspace/scratch/da56d19312e0/penalty-production-refinement/",
+  "sources": {
+    "candidate": {
+      "anatomy.js": "40a841de7cd387afa12ecab537bd686b6923f742421307037db7b0940a711a8a",
+      "ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+      "batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+      "character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+      "contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+      "engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+      "game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+      "home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+      "keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+      "keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+      "keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c",
+      "keeper-contact.js": "fb920605a23bad79cacbe7c1a9cd4e156268bd43ed63124d0580d818bed07c02",
+      "keeper-hand-contact.js": "ba5ddf77b02b82c37d1117941ad126b0c57eb3270525454403c8c8e1ded1eb6b",
+      "keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+      "keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+      "keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+      "main.js": "eda22fbe41a2ab245a518f920c8e5d77c6535bd9e7c8c93c6d1c1134ca35d8c9",
+      "motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+      "motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+      "net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+      "pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+      "rendering.js": "d640860ddbd5faae96c1b3c6c34e486f5c9e1a7bf1327bf35f422de76ab785ec",
+      "scene.js": "2396a6553e98285ce9b7c0885d77bc6a374c3901093c6d35dc4c45255bfa26d8",
+      "shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+      "striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+      "striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+      "striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+      "striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+      "striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222"
+    },
+    "baseline": {
+      "anatomy.js": "40a841de7cd387afa12ecab537bd686b6923f742421307037db7b0940a711a8a",
+      "ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+      "batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+      "character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+      "contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+      "engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+      "game-character.js": "43d8456e06f3374cda695f392afcd4f415ca17b742b2c5e72e4c3ce4875cbe22",
+      "home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+      "keeper-arm-roll.js": "1c4ead6fa33655945b0cd84af97285898311ed5fced5d1686059018b0c9d4a30",
+      "keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+      "keeper-contact-data.js": "6f091bb2bfaa3b38fddaefcee01e822f7faffe6cf8617927ae652a8eea896bc4",
+      "keeper-contact.js": "1c8ccc440c07643b455f1c0300fe5b17ec243c37f2b0584b1d34e47f9f2f260a",
+      "keeper-hand-contact.js": "65e1370bb0feafa2c345fe1f05b31379a2af272f788477507672fe5871146d03",
+      "keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+      "keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+      "keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+      "main.js": "eda22fbe41a2ab245a518f920c8e5d77c6535bd9e7c8c93c6d1c1134ca35d8c9",
+      "motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+      "motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+      "net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+      "pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+      "rendering.js": "d640860ddbd5faae96c1b3c6c34e486f5c9e1a7bf1327bf35f422de76ab785ec",
+      "scene.js": "2396a6553e98285ce9b7c0885d77bc6a374c3901093c6d35dc4c45255bfa26d8",
+      "shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+      "striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+      "striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+      "striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+      "striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222"
+    }
+  },
+  "sourcesAfter": {
+    "candidate": {
+      "anatomy.js": "40a841de7cd387afa12ecab537bd686b6923f742421307037db7b0940a711a8a",
+      "ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+      "batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+      "character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+      "contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+      "engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+      "game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+      "home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+      "keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+      "keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+      "keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c",
+      "keeper-contact.js": "fb920605a23bad79cacbe7c1a9cd4e156268bd43ed63124d0580d818bed07c02",
+      "keeper-hand-contact.js": "ba5ddf77b02b82c37d1117941ad126b0c57eb3270525454403c8c8e1ded1eb6b",
+      "keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+      "keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+      "keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+      "main.js": "eda22fbe41a2ab245a518f920c8e5d77c6535bd9e7c8c93c6d1c1134ca35d8c9",
+      "motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+      "motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+      "net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+      "pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+      "rendering.js": "d640860ddbd5faae96c1b3c6c34e486f5c9e1a7bf1327bf35f422de76ab785ec",
+      "scene.js": "2396a6553e98285ce9b7c0885d77bc6a374c3901093c6d35dc4c45255bfa26d8",
+      "shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+      "striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+      "striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+      "striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+      "striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+      "striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222"
+    },
+    "baseline": {
+      "anatomy.js": "40a841de7cd387afa12ecab537bd686b6923f742421307037db7b0940a711a8a",
+      "ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+      "batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+      "character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+      "contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+      "engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+      "game-character.js": "43d8456e06f3374cda695f392afcd4f415ca17b742b2c5e72e4c3ce4875cbe22",
+      "home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+      "keeper-arm-roll.js": "1c4ead6fa33655945b0cd84af97285898311ed5fced5d1686059018b0c9d4a30",
+      "keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+      "keeper-contact-data.js": "6f091bb2bfaa3b38fddaefcee01e822f7faffe6cf8617927ae652a8eea896bc4",
+      "keeper-contact.js": "1c8ccc440c07643b455f1c0300fe5b17ec243c37f2b0584b1d34e47f9f2f260a",
+      "keeper-hand-contact.js": "65e1370bb0feafa2c345fe1f05b31379a2af272f788477507672fe5871146d03",
+      "keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+      "keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+      "keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+      "main.js": "eda22fbe41a2ab245a518f920c8e5d77c6535bd9e7c8c93c6d1c1134ca35d8c9",
+      "motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+      "motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+      "net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+      "pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+      "rendering.js": "d640860ddbd5faae96c1b3c6c34e486f5c9e1a7bf1327bf35f422de76ab785ec",
+      "scene.js": "2396a6553e98285ce9b7c0885d77bc6a374c3901093c6d35dc4c45255bfa26d8",
+      "shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+      "striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+      "striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+      "striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+      "striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222"
+    }
+  },
+  "hz": 240,
+  "duration": 2.8,
+  "captures": 40,
+  "samples": 26920,
+  "changedElbowSamples": 289,
+  "worst": {
+    "ball": 2.482534153247273e-16,
+    "wrist": 8.899114524108741e-16,
+    "handRotation": 0,
+    "limbLength": 1.2212453270876722e-15,
+    "captureOrSecuredPose": 1.887379141862766e-15,
+    "randomAccess": 0,
+    "elbowChange": 0.06980559120805731
+  },
+  "records": [
+    {
+      "caseIndex": 12,
+      "recipe": {
+        "aim": {
+          "x": -3.3,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5750000000000004,
+      "animationTime": 0.5750000000000004,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 8.381118320246456,
+          "degrees": 6.903639594951736,
+          "worldStep": 0.03138265172223403,
+          "time": 0.20416666666666666,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 8.381118320246456,
+          "degrees": 6.903639594951736,
+          "worldStep": 0.03138265172223403,
+          "time": 0.20416666666666666,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 0.04440611390541277
+    },
+    {
+      "caseIndex": 27,
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 3.188872858294072e-16
+    },
+    {
+      "caseIndex": 28,
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 3.188872858294072e-16
+    },
+    {
+      "caseIndex": 29,
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 3.188872858294072e-16
+    },
+    {
+      "caseIndex": 36,
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 3.188872858294072e-16
+    },
+    {
+      "caseIndex": 37,
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 3.188872858294072e-16
+    },
+    {
+      "caseIndex": 38,
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 3.188872858294072e-16
+    },
+    {
+      "caseIndex": 40,
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5750000000000004,
+      "animationTime": 0.5750000000000004,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 8.685471618847753,
+          "degrees": 5.782880764563326,
+          "worldStep": 0.03626430387764775,
+          "time": 0.175,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 6.492515472644019,
+          "degrees": 4.823969888231484,
+          "worldStep": 0.03462273404352061,
+          "time": 0.225,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 0.06980559120805731
+    },
+    {
+      "caseIndex": 45,
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 3.188872858294072e-16
+    },
+    {
+      "caseIndex": 46,
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 3.188872858294072e-16
+    },
+    {
+      "caseIndex": 47,
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 1.458908193959391,
+          "degrees": 1.2010174222321606,
+          "worldStep": 0.0060787841414974625,
+          "time": 0.3458333333333333,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 3.188872858294072e-16
+    },
+    {
+      "caseIndex": 54,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 2.3551386880256624e-16
+    },
+    {
+      "caseIndex": 55,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 2.3551386880256624e-16
+    },
+    {
+      "caseIndex": 56,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 2.3551386880256624e-16
+    },
+    {
+      "caseIndex": 58,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.5
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5833333333333337,
+      "animationTime": 0.5833333333333337,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 3.368158762196267,
+          "degrees": 2.772990196049302,
+          "worldStep": 0.014033994842484446,
+          "time": 0.2875,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 3.368158762196267,
+          "degrees": 2.772990196049302,
+          "worldStep": 0.014033994842484446,
+          "time": 0.2875,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 0.020789513373221755
+    },
+    {
+      "caseIndex": 61,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.9
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.366666666666667,
+      "animationTime": 0.366666666666667,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 3.3429544293625746,
+          "degrees": 2.752235574420502,
+          "worldStep": 0.013928976789010727,
+          "time": 0.2375,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 3.3429544293625746,
+          "degrees": 2.752235574420502,
+          "worldStep": 0.013928976789010727,
+          "time": 0.2375,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0.005384339155301288
+    },
+    {
+      "caseIndex": 63,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 2.3551386880256624e-16
+    },
+    {
+      "caseIndex": 64,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 2.3551386880256624e-16
+    },
+    {
+      "caseIndex": 65,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 2.3551386880256624e-16
+    },
+    {
+      "caseIndex": 67,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.591666666666667,
+      "animationTime": 0.591666666666667,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 0.4963320673076066,
+          "degrees": 0.40858897918710285,
+          "worldStep": 0.002068050280448361,
+          "time": 0.30416666666666664,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 0.4963320673076066,
+          "degrees": 0.40858897918710285,
+          "worldStep": 0.002068050280448361,
+          "time": 0.30416666666666664,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 0
+    },
+    {
+      "caseIndex": 70,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.9
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.37500000000000033,
+      "animationTime": 0.37500000000000033,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 0.4707366299203721,
+          "degrees": 0.3875182983389895,
+          "worldStep": 0.001961402624668217,
+          "time": 0.125,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 0.4707366299203721,
+          "degrees": 0.3875182983389895,
+          "worldStep": 0.001961402624668217,
+          "time": 0.125,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 2.2887833992611187e-16
+    },
+    {
+      "caseIndex": 72,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 2.3551386880256624e-16
+    },
+    {
+      "caseIndex": 73,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 2.3551386880256624e-16
+    },
+    {
+      "caseIndex": 74,
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.5891483985840413,
+          "degrees": 1.3082395717328976,
+          "worldStep": 0.006621451660766839,
+          "time": 0.21666666666666667,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 2.3551386880256624e-16
+    },
+    {
+      "caseIndex": 81,
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0
+    },
+    {
+      "caseIndex": 82,
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0
+    },
+    {
+      "caseIndex": 83,
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0
+    },
+    {
+      "caseIndex": 90,
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0
+    },
+    {
+      "caseIndex": 91,
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0
+    },
+    {
+      "caseIndex": 92,
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0
+    },
+    {
+      "caseIndex": 94,
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5833333333333337,
+      "animationTime": 0.5833333333333337,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 8.357573534409745,
+          "degrees": 6.286718220853638,
+          "worldStep": 0.036584672460087675,
+          "time": 0.21666666666666667,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 7.206582786908783,
+          "degrees": 6.0066516421064415,
+          "worldStep": 0.036584672460087675,
+          "time": 0.2125,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0.06107665932755248
+    },
+    {
+      "caseIndex": 99,
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": -1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0
+    },
+    {
+      "caseIndex": 100,
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": 0,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0
+    },
+    {
+      "caseIndex": 101,
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 1.4633706795863481,
+          "degrees": 1.204691210727805,
+          "worldStep": 0.006097377831609785,
+          "time": 0.3458333333333333,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0
+    },
+    {
+      "caseIndex": 113,
+      "recipe": {
+        "aim": {
+          "x": 3.3,
+          "y": 0.2,
+          "power": 0.5
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5666666666666671,
+      "animationTime": 0.5666666666666671,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 4.736205709216117,
+          "degrees": 3.6557564284627206,
+          "worldStep": 0.024205638869875652,
+          "time": 0.15833333333333333,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 4.736205709216117,
+          "degrees": 3.6557564284627206,
+          "worldStep": 0.024205638869875652,
+          "time": 0.15833333333333333,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 0.00018634808772079688
+    },
+    {
+      "caseIndex": 122,
+      "recipe": {
+        "aim": {
+          "x": 3.3,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "direction": 1,
+        "seed": 42,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5750000000000004,
+      "animationTime": 0.5750000000000004,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 8.417533714867035,
+          "degrees": 6.933672024838568,
+          "worldStep": 0.03223324085212034,
+          "time": 0.2,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 8.417533714867035,
+          "degrees": 6.933672024838568,
+          "worldStep": 0.03223324085212034,
+          "time": 0.2,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0.04705598847101046
+    },
+    {
+      "caseIndex": 135,
+      "recipe": {
+        "aim": {
+          "x": -2,
+          "y": 0.3,
+          "power": 0.55
+        },
+        "direction": -1,
+        "seed": 3,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5250000000000006,
+      "animationTime": 0.5250000000000006,
+      "contactPart": "handL",
+      "peaks": {
+        "baseline": {
+          "speed": 7.540183916922333,
+          "degrees": 7.1282347248257745,
+          "worldStep": 0.03299219815350601,
+          "time": 0.03333333333333333,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 7.540183916922333,
+          "degrees": 7.1282347248257745,
+          "worldStep": 0.03299219815350601,
+          "time": 0.03333333333333333,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0.009147924843328365
+    },
+    {
+      "caseIndex": 136,
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.1,
+          "power": 0.55
+        },
+        "direction": -1,
+        "seed": 2,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5333333333333339,
+      "animationTime": 0.5333333333333339,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 6.886600152841877,
+          "degrees": 5.6156727208771935,
+          "worldStep": 0.0325403773890731,
+          "time": 0.19583333333333333,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 5.982818317402939,
+          "degrees": 4.926664732361855,
+          "worldStep": 0.0325403773890731,
+          "time": 0.22916666666666666,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0.06420548875836235
+    },
+    {
+      "caseIndex": 137,
+      "recipe": {
+        "aim": {
+          "x": 2,
+          "y": 0.3,
+          "power": 0.55
+        },
+        "direction": 1,
+        "seed": 3,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5333333333333339,
+      "animationTime": 0.5333333333333339,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 10.190816641306023,
+          "degrees": 9.244686174478371,
+          "worldStep": 0.03249793575915667,
+          "time": 0.029166666666666667,
+          "arm": 0
+        },
+        "candidate": {
+          "speed": 10.190816641306023,
+          "degrees": 9.244686174478371,
+          "worldStep": 0.03249793575915667,
+          "time": 0.029166666666666667,
+          "arm": 0
+        }
+      },
+      "maxElbowChange": 1.8038988979531736e-15
+    },
+    {
+      "caseIndex": 138,
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.1,
+          "power": 0.55
+        },
+        "direction": 1,
+        "seed": 1,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        }
+      },
+      "captureTime": 0.5416666666666672,
+      "animationTime": 0.5416666666666672,
+      "contactPart": "handR",
+      "peaks": {
+        "baseline": {
+          "speed": 6.2748960926735275,
+          "degrees": 4.676108841987975,
+          "worldStep": 0.030584579179082427,
+          "time": 0.2375,
+          "arm": 1
+        },
+        "candidate": {
+          "speed": 5.433308580962251,
+          "degrees": 4.463143743528896,
+          "worldStep": 0.030584579179082427,
+          "time": 0.10833333333333334,
+          "arm": 1
+        }
+      },
+      "maxElbowChange": 0.06787106644966735
+    }
+  ],
+  "failures": []
+}

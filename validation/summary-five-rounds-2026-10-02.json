@@ -1,0 +1,310 @@
+{
+  "status": "passed with measured correctness cost",
+  "completedAt": "2026-10-02T11:51:35Z",
+  "baseline": "aeb5e884555f277435443155407ed962d6065901",
+  "rounds": [
+    {
+      "round": 1,
+      "status": "passed"
+    },
+    {
+      "round": 2,
+      "status": "passed"
+    },
+    {
+      "round": 3,
+      "status": "passed"
+    },
+    {
+      "round": 4,
+      "status": "passed"
+    },
+    {
+      "round": 5,
+      "status": "passed"
+    }
+  ],
+  "ledger": "FIVE_ROUNDS_2026-10-02.md",
+  "tests": {
+    "passed": 332,
+    "failed": 0,
+    "skipped": 0,
+    "independentRepeat": true
+  },
+  "build": {
+    "passed": true,
+    "independentRepeat": true,
+    "gameRawKB": 53.91,
+    "gameGzipKB": 20.79,
+    "renderingRawKB": 1267.02,
+    "renderingGzipKB": 349.01,
+    "largeChunkWarning": true
+  },
+  "uniformAcceptance": {
+    "shots": 525,
+    "captures": 184,
+    "manifestSha256": "8679f32f39a7fa6c27b96b29f0190cfc5cb5db762776e5548f784391b5a413bd",
+    "counts": {
+      "bodyPoses": 32752,
+      "jointSamples": 123832,
+      "skinSphereSamples": 31096,
+      "trajectoryPoses": 5688
+    },
+    "protectedCounts": {
+      "forearmTorso": 0,
+      "calfTorso": 0,
+      "oppositeFootCalf": 0
+    },
+    "minimumSkin": -0.001924012419518617,
+    "minimumSphereGap": -0.0037178844706977493,
+    "minimumTrajectoryGap": -0.0009374409709539816,
+    "maximumResolutionsPerStep": 3,
+    "adjacentMaxima": {
+      "upperAndSupportTorso": 0.010631174696507983,
+      "innerElbow": 0.00626628436438359
+    }
+  },
+  "runtimeHashes": {
+    "engine.js": "ab4ac54571278ec294ca494c909a4f40ab1ab1a0f3ab23c5a38e647c9792a4d0",
+    "keeper-contact.js": "eb688db73553a3c4d9d15b117aaf7824a3667ae631a58fa9be9826675497c55c",
+    "main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a"
+  },
+  "cpuComparisons": {
+    "cpu-physics-canonical": {
+      "path": "five-rounds/cpu-physics-canonical.json",
+      "sha256": "59da888d07dee9dc4e41ed9a743f1ddb9c94c408fa3a55a8005a1fbe244be6b6",
+      "timing": {
+        "before": {
+          "medianTotalMs": 711.930754,
+          "medianNearKeeperP99Ms": 0.9067350000004808,
+          "minTotalMs": 702.0536080000002,
+          "maxTotalMs": 726.3500910000002,
+          "outcome": {
+            "shots": 135,
+            "steps": 21620,
+            "caught": 36,
+            "touched": 58,
+            "goals": 80,
+            "reboundGoals": 3,
+            "unfinished": 0
+          }
+        },
+        "after": {
+          "medianTotalMs": 830.7088060000005,
+          "medianNearKeeperP99Ms": 1.1240410000000338,
+          "minTotalMs": 824.5062420000004,
+          "maxTotalMs": 832.3687140000002,
+          "outcome": {
+            "shots": 135,
+            "steps": 22084,
+            "caught": 36,
+            "touched": 58,
+            "goals": 78,
+            "reboundGoals": 1,
+            "unfinished": 0
+          }
+        }
+      }
+    },
+    "cpu-physics-union": {
+      "path": "five-rounds/cpu-physics-union.json",
+      "sha256": "842ef4196f7544a801cae32f0ea4c49cc24aeb3bd72b19a5ebaa930c5014cad1",
+      "timing": {
+        "before": {
+          "medianTotalMs": 3021.1676229999994,
+          "medianNearKeeperP99Ms": 0.895157000000836,
+          "minTotalMs": 2921.758541000003,
+          "maxTotalMs": 3306.214380999998,
+          "outcome": {
+            "shots": 525,
+            "steps": 110842,
+            "caught": 182,
+            "touched": 329,
+            "goals": 214,
+            "reboundGoals": 18,
+            "unfinished": 0
+          }
+        },
+        "after": {
+          "medianTotalMs": 3710.002386,
+          "medianNearKeeperP99Ms": 1.064542000000074,
+          "minTotalMs": 3615.8216120000034,
+          "maxTotalMs": 3898.1489440000005,
+          "outcome": {
+            "shots": 525,
+            "steps": 108628,
+            "caught": 184,
+            "touched": 329,
+            "goals": 203,
+            "reboundGoals": 7,
+            "unfinished": 0
+          }
+        }
+      }
+    },
+    "cpu-gather-canonical": {
+      "path": "five-rounds/cpu-gather-canonical.json",
+      "sha256": "f6736b8187d1c1144c23e8f7a8cdc6d318b320a32461824ddd98486a5114d514",
+      "timing": {
+        "all": {
+          "samples": 6760,
+          "rounds": 5,
+          "runs": {
+            "before": [
+              410.4404400000003,
+              402.0420530000001,
+              396.45943200000056,
+              397.54732799999965,
+              399.4891600000001
+            ],
+            "after": [
+              404.77335300000004,
+              415.7406259999998,
+              389.724056,
+              393.05782199999976,
+              393.5966639999997
+            ]
+          },
+          "medianMs": {
+            "before": 399.4891600000001,
+            "after": 393.5966639999997
+          }
+        },
+        "transition": {
+          "samples": 1040,
+          "rounds": 5,
+          "runs": {
+            "before": [
+              276.1916799999999,
+              279.52304300000014,
+              284.20914300000004,
+              278.7697479999988,
+              287.2691670000004
+            ],
+            "after": [
+              271.00448400000005,
+              288.5053790000002,
+              274.75730900000053,
+              285.3866940000007,
+              285.1920719999998
+            ]
+          },
+          "medianMs": {
+            "before": 279.52304300000014,
+            "after": 285.1920719999998
+          }
+        },
+        "secured": {
+          "samples": 5680,
+          "rounds": 5,
+          "runs": {
+            "before": [
+              118.7591510000002,
+              119.46799699999974,
+              128.7884529999992,
+              124.07690300000104,
+              130.63836699999956
+            ],
+            "after": [
+              132.9417429999994,
+              127.17432800000097,
+              131.36338799999976,
+              124.39286800000082,
+              123.95907599999919
+            ]
+          },
+          "medianMs": {
+            "before": 124.07690300000104,
+            "after": 127.17432800000097
+          }
+        }
+      }
+    },
+    "cpu-gather-union": {
+      "path": "five-rounds/cpu-gather-union.json",
+      "sha256": "b9b4a4b851d9ee7ea5d3f2966e4667e8ff2408c32340b0d2fe8a9ef690de1ec9",
+      "timing": {
+        "all": {
+          "samples": 31096,
+          "rounds": 5,
+          "runs": {
+            "before": [
+              2027.2465869999996,
+              1949.5406770000009,
+              1824.530322999999,
+              1940.4074389999987,
+              1811.0781530000022
+            ],
+            "after": [
+              1945.9009770000011,
+              1935.433223,
+              1816.1754359999977,
+              1910.202437,
+              1806.3781430000017
+            ]
+          },
+          "medianMs": {
+            "before": 1940.4074389999987,
+            "after": 1910.202437
+          }
+        },
+        "transition": {
+          "samples": 4784,
+          "rounds": 5,
+          "runs": {
+            "before": [
+              1285.089095999996,
+              1272.5296549999985,
+              1326.430852999998,
+              1356.2581340000033,
+              1308.3104600000006
+            ],
+            "after": [
+              1300.2183829999994,
+              1247.952631,
+              1263.8122369999983,
+              1370.2077960000024,
+              1350.1578130000053
+            ]
+          },
+          "medianMs": {
+            "before": 1308.3104600000006,
+            "after": 1300.2183829999994
+          }
+        },
+        "secured": {
+          "samples": 26128,
+          "rounds": 5,
+          "runs": {
+            "before": [
+              541.0511830000032,
+              548.4096749999953,
+              575.9807779999974,
+              529.2873430000036,
+              533.2283830000015
+            ],
+            "after": [
+              538.2401020000034,
+              554.4840569999942,
+              578.178528000004,
+              537.4943829999975,
+              536.2585429999963
+            ]
+          },
+          "medianMs": {
+            "before": 541.0511830000032,
+            "after": 538.2401020000034
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Sampled offline CPU geometry and controlled input events, not continuous proof or real-device validation",
+    "Physics CPU median increases 16.7% canonical and 22.8% union; no phone FPS guarantee",
+    "Adjacent sleeve-root pinch/open seam and inherited inner-elbow folds remain",
+    "Conservative shin hull first-contact gap up to 10.04 mm",
+    "Existing large rendering chunk warning remains"
+  ],
+  "publication": "Local review only; parent publishes feature branch"
+}

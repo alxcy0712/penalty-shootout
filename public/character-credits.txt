@@ -5,7 +5,7 @@ https://quaternius.com/packs/universalbasecharacters.html
 CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/
 Adaptations: proportions, clothing, 22-bone rig, weights and reduced textures.
 
-Striker motion: CMU Graphics Lab motion capture database, subject 10, take 01.
+Striker motion: CMU Graphics Lab motion capture database, subject 10, takes 01 and 03.
 https://mocap.cs.cmu.edu/
 The data used in this project was obtained from mocap.cs.cmu.edu.
 The database was created with funding from NSF EIA-0196217.
@@ -21,3 +21,41 @@ CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
 Adaptations: filtered, aligned, scaled, fixed-length retargeted, baked and compressed.
 No endorsement is implied. Captured dive clips remain embedded in the source asset.
 The game and motion-lab goalkeeper share the procedural physical rig.
+
+Runtime refinements (2026): target-relative orientation, low/chip follow-through
+IK and trailing-step completion are procedural adaptations of the existing CMU
+clip, not new motion-capture recordings. Goalkeeper shoulder support bones,
+ground-contact wrist correction and recovery poses are procedural. Original
+source assets, licenses and attribution remain unchanged.
+
+Further runtime refinements (2026-10-01): explicit approach cadence and spatial
+path variants are procedural adaptations, not additional capture sessions.
+The goalkeeper's pre-shot set steps are mocap-informed procedural animation;
+recorded N05D/O05E source-comparison modes are labelled separately in motion-lab.
+See docs/MOTION_SOURCES.md for source selection, licenses and coverage limits.
+
+Separate CMU take 10_03 is supplied as animation-only cmu-10_03-kick.glb.
+Adaptations: source crop, fixed-length IK, support-foot stabilization,
+rotation-minimizing foot frames, chest-referenced arm roll, boot-surface
+contact calibration and a fixed gameplay heading. It is a different recorded
+performance from 10_01, not a renamed cadence preset. Sources, SHA-256 and
+reconstruction commands: assets/characters/mocap-variants/README.md.
+
+Final refined runtime: two shoulder-support bones are used for each player,
+with root-local helper evaluation and source-specific arm clearance. The
+10_01 shoulder-flexion and 10_03 clavicle-protraction corrections are runtime
+adaptations, not new recorded capture. Modeled collars, garment hems, glove
+cuffs and cleat studs remain derivatives of the attributed CC0 character.
+
+Body/clothing refinement uses offline Blender shoulder smoothing and a separated
+football-shorts hem on the same attributed CC0 mesh. Existing source capture
+tracks, bind transforms, textures, palm and boot surfaces are preserved.
+The 20 ms striker source-clock onset is an authored timing adaptation of the
+same two CMU takes. Articulated keeper absorption, support-hand placement and
+get-up are authored procedural adaptations, not an additional captured take.
+
+2026-10-02 offline limb fairing preserves the existing CC0 model topology,
+weights, original bindings, protected palm/boot surfaces and captured tracks.
+Styled kick finishes now decelerate the final recorded quarter-second without
+changing the contact event or final pose. Early keeper elbow absorption remains
+an authored procedural adaptation; it is not a new motion-capture performance.

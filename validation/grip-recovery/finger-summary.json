@@ -1,0 +1,711 @@
+{
+  "status": "passed",
+  "method": "205 pinned actual catches.120Hz through1s, phase boundaries\u00b110\u00b5s, recovery through2.8s, reverse-order replay. Exact triangle/sphere distance in rigid hand coordinates; all touched faces require exact single-hand skinning.41 authored morph fractions per hand use strict transverse triangle intersections, excluding welded shared vertices, coplanar and tangent contacts. CPU-only evidence; no continuous-time or GPU claim.",
+  "sourceHashes": {
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+    "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+    "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+    "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+    "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+    "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+    "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+    "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+    "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+    "src/keeper-finger-grip.js": "75abbe4c1b87c805c0e366fd95b051b416ed2ba587780a9782aaa656cd825dec",
+    "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+    "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+    "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+    "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+    "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+    "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+    "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+    "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+    "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+    "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+    "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644",
+    "tools/qa/audit-finger-grip.mjs": "c4ac3bcbf3c200bb11979f4acb169a4744262392092b70810a8a2455feeb16c0",
+    "validation/ten-rounds/union-fixtures.json": "5949a1c7f718e096868039d0037c3d064a130ae15bcd4deb244c453902ffa6ec"
+  },
+  "hashesAfter": {
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+    "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+    "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+    "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+    "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+    "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+    "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+    "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+    "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+    "src/keeper-finger-grip.js": "75abbe4c1b87c805c0e366fd95b051b416ed2ba587780a9782aaa656cd825dec",
+    "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+    "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+    "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+    "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+    "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+    "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+    "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+    "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+    "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+    "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+    "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644",
+    "tools/qa/audit-finger-grip.mjs": "c4ac3bcbf3c200bb11979f4acb169a4744262392092b70810a8a2455feeb16c0",
+    "validation/ten-rounds/union-fixtures.json": "5949a1c7f718e096868039d0037c3d064a130ae15bcd4deb244c453902ffa6ec"
+  },
+  "summary": {
+    "coverage": [
+      {
+        "side": "L",
+        "changedVertices": 626,
+        "incidentTriangles": 952,
+        "coveredTriangles": 952
+      },
+      {
+        "side": "R",
+        "changedVertices": 627,
+        "incidentTriangles": 952,
+        "coveredTriangles": 952
+      }
+    ],
+    "captures": 205,
+    "samples": 30750,
+    "closedFinal": 205,
+    "minDistance": -6.918778126668856e-07,
+    "floorMinimum": 0.03676302709591119,
+    "exactSourceChanges": 0,
+    "determinismFailures": 0,
+    "nonFinite": 0,
+    "maxDeltaAmount": 0.050570698178562856,
+    "maxClosureRate": 6.087662320591829,
+    "setupMs": 44.215147,
+    "meanChangedApplyMs": 0.034067563284552134,
+    "maxUpdateMs": 3.270310999998401,
+    "diagnostics": [
+      {
+        "side": "handL",
+        "vertices": 626,
+        "triangles": 952,
+        "guards": 68,
+        "amount": 0,
+        "uploadSpanBytes": 24912
+      },
+      {
+        "side": "handR",
+        "vertices": 627,
+        "triangles": 952,
+        "guards": 80,
+        "amount": 0,
+        "uploadSpanBytes": 25008
+      }
+    ],
+    "maximumPositionAndNormalUploadBytes": 50376,
+    "selfSamples": 82,
+    "selfNewCrossings": 0,
+    "minimumAreaRatio": 0.5052658885717392,
+    "failures": []
+  },
+  "selfRecords": [
+    {
+      "side": "L",
+      "amount": 0,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 1
+    },
+    {
+      "side": "L",
+      "amount": 0.025,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.9509955713376305
+    },
+    {
+      "side": "L",
+      "amount": 0.05,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.9045456398427617
+    },
+    {
+      "side": "L",
+      "amount": 0.075,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.8606502055153283
+    },
+    {
+      "side": "L",
+      "amount": 0.1,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.8193092683553629
+    },
+    {
+      "side": "L",
+      "amount": 0.125,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.7805228283628822
+    },
+    {
+      "side": "L",
+      "amount": 0.15,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.7442908855378694
+    },
+    {
+      "side": "L",
+      "amount": 0.175,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.7106134398803081
+    },
+    {
+      "side": "L",
+      "amount": 0.2,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6794904913902315
+    },
+    {
+      "side": "L",
+      "amount": 0.225,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6509220400676066
+    },
+    {
+      "side": "L",
+      "amount": 0.25,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.624908085912466
+    },
+    {
+      "side": "L",
+      "amount": 0.275,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6014486289247936
+    },
+    {
+      "side": "L",
+      "amount": 0.3,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.580543669104573
+    },
+    {
+      "side": "L",
+      "amount": 0.325,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5621932064518362
+    },
+    {
+      "side": "L",
+      "amount": 0.35,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5463972409665518
+    },
+    {
+      "side": "L",
+      "amount": 0.375,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5331557726487517
+    },
+    {
+      "side": "L",
+      "amount": 0.4,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5224688014984032
+    },
+    {
+      "side": "L",
+      "amount": 0.425,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5143363275155558
+    },
+    {
+      "side": "L",
+      "amount": 0.45,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.508758350700143
+    },
+    {
+      "side": "L",
+      "amount": 0.475,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5057348710521992
+    },
+    {
+      "side": "L",
+      "amount": 0.5,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5052658885717392
+    },
+    {
+      "side": "L",
+      "amount": 0.525,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5073514032587472
+    },
+    {
+      "side": "L",
+      "amount": 0.55,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5119914151132071
+    },
+    {
+      "side": "L",
+      "amount": 0.575,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5191859241351359
+    },
+    {
+      "side": "L",
+      "amount": 0.6,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5289349303245652
+    },
+    {
+      "side": "L",
+      "amount": 0.625,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5412384336814284
+    },
+    {
+      "side": "L",
+      "amount": 0.65,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5560964342057597
+    },
+    {
+      "side": "L",
+      "amount": 0.675,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5735089318975769
+    },
+    {
+      "side": "L",
+      "amount": 0.7,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5818549758809717
+    },
+    {
+      "side": "L",
+      "amount": 0.725,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5895555952215581
+    },
+    {
+      "side": "L",
+      "amount": 0.75,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5988347921926654
+    },
+    {
+      "side": "L",
+      "amount": 0.775,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6096959224758209
+    },
+    {
+      "side": "L",
+      "amount": 0.8,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.622142131609487
+    },
+    {
+      "side": "L",
+      "amount": 0.825,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6299521196064898
+    },
+    {
+      "side": "L",
+      "amount": 0.85,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6251357240401191
+    },
+    {
+      "side": "L",
+      "amount": 0.875,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6208110003289568
+    },
+    {
+      "side": "L",
+      "amount": 0.9,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6169883024642122
+    },
+    {
+      "side": "L",
+      "amount": 0.925,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6136775171805575
+    },
+    {
+      "side": "L",
+      "amount": 0.95,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6108879673254829
+    },
+    {
+      "side": "L",
+      "amount": 0.975,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6079947999998333
+    },
+    {
+      "side": "L",
+      "amount": 1,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.604444255056128
+    },
+    {
+      "side": "R",
+      "amount": 0,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 1
+    },
+    {
+      "side": "R",
+      "amount": 0.025,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.9509955713376305
+    },
+    {
+      "side": "R",
+      "amount": 0.05,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.9045456398427617
+    },
+    {
+      "side": "R",
+      "amount": 0.075,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.8606502055153283
+    },
+    {
+      "side": "R",
+      "amount": 0.1,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.8193092683553629
+    },
+    {
+      "side": "R",
+      "amount": 0.125,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.7805228283628822
+    },
+    {
+      "side": "R",
+      "amount": 0.15,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.7442908855378694
+    },
+    {
+      "side": "R",
+      "amount": 0.175,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.7106134398803081
+    },
+    {
+      "side": "R",
+      "amount": 0.2,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6794904913902315
+    },
+    {
+      "side": "R",
+      "amount": 0.225,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6509220400676066
+    },
+    {
+      "side": "R",
+      "amount": 0.25,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.624908085912466
+    },
+    {
+      "side": "R",
+      "amount": 0.275,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6014486289247936
+    },
+    {
+      "side": "R",
+      "amount": 0.3,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.580543669104573
+    },
+    {
+      "side": "R",
+      "amount": 0.325,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5621932064518362
+    },
+    {
+      "side": "R",
+      "amount": 0.35,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5463972409665518
+    },
+    {
+      "side": "R",
+      "amount": 0.375,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5331557726487517
+    },
+    {
+      "side": "R",
+      "amount": 0.4,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5224688014984032
+    },
+    {
+      "side": "R",
+      "amount": 0.425,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5143363275155558
+    },
+    {
+      "side": "R",
+      "amount": 0.45,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.508758350700143
+    },
+    {
+      "side": "R",
+      "amount": 0.475,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5057348710521992
+    },
+    {
+      "side": "R",
+      "amount": 0.5,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5052658885717392
+    },
+    {
+      "side": "R",
+      "amount": 0.525,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5073514032587472
+    },
+    {
+      "side": "R",
+      "amount": 0.55,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5119914151132071
+    },
+    {
+      "side": "R",
+      "amount": 0.575,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5191859241351359
+    },
+    {
+      "side": "R",
+      "amount": 0.6,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5289349303245652
+    },
+    {
+      "side": "R",
+      "amount": 0.625,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5412384336814284
+    },
+    {
+      "side": "R",
+      "amount": 0.65,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5560964342057597
+    },
+    {
+      "side": "R",
+      "amount": 0.675,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5735089318975769
+    },
+    {
+      "side": "R",
+      "amount": 0.7,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5818549758809717
+    },
+    {
+      "side": "R",
+      "amount": 0.725,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5895555952215581
+    },
+    {
+      "side": "R",
+      "amount": 0.75,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.5988347921926654
+    },
+    {
+      "side": "R",
+      "amount": 0.775,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6096959224758209
+    },
+    {
+      "side": "R",
+      "amount": 0.8,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.622142131609487
+    },
+    {
+      "side": "R",
+      "amount": 0.825,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6299521196064898
+    },
+    {
+      "side": "R",
+      "amount": 0.85,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6251357240401191
+    },
+    {
+      "side": "R",
+      "amount": 0.875,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6208110003289568
+    },
+    {
+      "side": "R",
+      "amount": 0.9,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6169883024642122
+    },
+    {
+      "side": "R",
+      "amount": 0.925,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6136775171805575
+    },
+    {
+      "side": "R",
+      "amount": 0.95,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6108879673254829
+    },
+    {
+      "side": "R",
+      "amount": 0.975,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.6079947999998333
+    },
+    {
+      "side": "R",
+      "amount": 1,
+      "crossings": 0,
+      "newCrossings": [],
+      "minimumAreaRatio": 0.604444255056128
+    }
+  ],
+  "rawReceipt": {
+    "path": "/tmp/penalty-grip-refinement/finger-combined/finger-grip-audit.json",
+    "sha256": "d6894b974004db449306f19890da028183a86366e4c5b4e6170b39eeb75910cc"
+  },
+  "timingLimit": "Embedded per-call timings were collected during validation workload; final paired performance is reported separately."
+}

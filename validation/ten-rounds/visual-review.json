@@ -1,0 +1,71 @@
+{
+  "round": 10,
+  "kind": "offline actual CPU-skinned geometry visual spot-check",
+  "status": "completed with residual stylization",
+  "sourceVerified": true,
+  "caseCount": 3,
+  "newFixtures": [
+    "0be31ed1cace0020",
+    "4049011c86d39d17",
+    "727364a72c79fbf1"
+  ],
+  "captureVerified": true,
+  "frameCountPerCase": 69,
+  "fps": 24,
+  "poseTimeRangeAfterCapture": [
+    0,
+    2.8333333333333335
+  ],
+  "encodedDurationSeconds": 2.875,
+  "reviewed": "Every rendered 24Hz frame inspected in chronological image sheets, all 27 larger keyframe images represented in sheets, and 12 full-resolution three-quarter closeups inspected. Videos encoded at normal speed and ffprobe verified; no claim of real-time browser playback.",
+  "camera": "Full sequences: fixed one-view camera from unchanged renderer, world translation preserved. Static closeups: centered rigid display transform with 45-degree yaw, labeled separately; two contact camera bounds include the sphere to prevent cropping.",
+  "findings": [
+    "The mirrored low-wide catches remain left/right counterparts through transfer, chest hold, leg tuck, rise, and final standing hold.",
+    "The sphere remains visibly associated with the catching/gathering hands through the reviewed sequence; no gross detachment or teleport is visible. Early transfer uses an open palm/edge contact and the other hand approaches.",
+    "Front and three-quarter views show the forearms routing around the held sphere. No gross sphere-through-forearm or sphere-through-torso event is visible at the rendered resolution.",
+    "The low-wide motions descend from an aerial catch, fold legs toward support, and lift into a planted standing hold. The central catch rises from its low squat. No gross shoe/limb breach of the rendered floor is visible.",
+    "Final standing hold remains stable through the last sample at +2.833333s."
+  ],
+  "residualStylization": [
+    "Sharp elbow and wrist folds remain visible, especially during +0.167s transfer and the side-lying tuck.",
+    "Fingers remain quite open and do not wrap the ball like a detailed closed grasp; from oblique angles some contact is an edge or is occluded.",
+    "Knees compress into angular folds; the side-lying pose and toe/edge-supported rise still look stylized rather than fully natural biomechanics.",
+    "Low-sample simplified CPU materials show noise and seam/crease artifacts. These images do not test textures or browser shader appearance."
+  ],
+  "limits": [
+    "Three selected fresh catches are visual spot checks, not exhaustive fixture coverage.",
+    "No WebGL, GPU, browser texture, or real-device performance validation.",
+    "Image review cannot certify sub-pixel triangle clearance; quantitative gates remain separate."
+  ],
+  "artifacts": {
+    "recipes": "recipe-verification.json",
+    "videos": [
+      "left-low-wide/recovery-24fps.mp4",
+      "right-low-wide/recovery-24fps.mp4",
+      "central-low/recovery-24fps.mp4"
+    ],
+    "keyframeSheets": [
+      "left-low-wide-keyframes/contact-sheet.png",
+      "right-low-wide-keyframes/contact-sheet.png",
+      "central-low-keyframes/contact-sheet.png"
+    ],
+    "closeupSheets": [
+      "closeups/left-low-wide/contact-sheet.png",
+      "closeups/right-low-wide/contact-sheet.png",
+      "closeups/central-low/contact-sheet.png"
+    ],
+    "allFrameSheets": [
+      "left-low-wide/sequence-00-23.png",
+      "left-low-wide/sequence-24-47.png",
+      "left-low-wide/sequence-48-68.png",
+      "right-low-wide/sequence-00-23.png",
+      "right-low-wide/sequence-24-47.png",
+      "right-low-wide/sequence-48-68.png",
+      "central-low/sequence-00-23.png",
+      "central-low/sequence-24-47.png",
+      "central-low/sequence-48-68.png"
+    ],
+    "videoVerification": "video-verification.json",
+    "sourceVerification": "source-verification.json"
+  }
+}

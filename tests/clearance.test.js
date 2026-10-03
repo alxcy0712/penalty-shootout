@@ -1,9 +1,20 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Shot} from '../src/engine.js';
+import {loadCharacter,skinMinimum} from './helpers/load-character.js';
 const stats={accuracy:90,power:90,touch:90,composure:90,speed:85,reach:90,handling:95};
-const make=()=>new Shot({x:2.5,power:.65,y:1.3},stats,stats,1,4);
+// Seed4 now correctly reaches the second glove during rebound cooldown.
+// Seed23 remains a real long parry; retain all clearance/clock assertions.
+const make=()=>new Shot({x:2.5,power:.65,y:1.3},stats,stats,1,23);
 function finish(shot,accelerated){let displayTime=0;for(let n=0;n<6000&&!shot.result;n++){const rate=accelerated?shot.playbackRate():1;shot.step(1/120,rate);displayTime+=1/120/rate;}assert.ok(shot.result);return displayTime;}
+
+test('the former long-parry recipe can be secured by the other palm during cooldown',()=>{
+  const shot=new Shot({x:2.5,power:.65,y:1.3},stats,stats,1,4),parts=[],reflect=shot.reflect.bind(shot);
+  shot.reflect=(...args)=>{parts.push({part:shot.contactPart,time:shot.t});return reflect(...args);};
+  finish(shot,false);assert.ok(shot.caught);assert.ok(shot.t<1);assert.ok(parts.length>0);
+  assert.notEqual(shot.contactPart,parts[0].part,'the other palm stays physically active');
+  assert.ok(shot.t-parts[0].time<.09,'the valid recatch occurs inside the previous global cooldown');
+});
 
 test('a long parry settles quickly on screen while retaining the full physical outcome',()=>{
   const normal=make(),fast=make(),normalTime=finish(normal,false),fastTime=finish(fast,true);
@@ -39,7 +50,11 @@ test('post-save visual recovery stays continuous while the distant ball runs ahe
   for(let ms=1;ms<=3500;ms++){
     const pose=shot.poseAt(shot.animationTime+ms/1000);
     for(const part of['hands','elbows','knees','feet'])for(let i=0;i<2;i++){
-      const p=pose[part][i],q=previous[part][i];assert.ok(Math.hypot(p.x-q.x,p.y-q.y,p.z-q.z)<.022);assert.ok(p.y>=.065);
+      const p=pose[part][i],q=previous[part][i];assert.ok(Math.hypot(p.x-q.x,p.y-q.y,p.z-q.z)<.022);
+      // Match the existing keeper support rule: a tagged palm brace has a
+      // lower wrist centre, while actual glove/turf checks remain separate.
+      const braced=part==='hands'&&(pose.torso?.[i?'braceR':'braceL']??0)>.5;
+      assert.ok(p.y>=(braced?.03:.065));
     }
     previous=pose;
   }
@@ -89,4 +104,23 @@ test('a standing keeper rises in place after the ball rebounds away from a post'
   const offset={...shot.keeperOffset};
   for(let n=0;n<100;n++)shot.step(1/120);
   assert.deepEqual(shot.keeperOffset,offset);assert.ok(shot.pose.hip.y>.78);
+});
+
+
+test('earlier parry endings retain the existing tagged palm brace and actual skin floor',async()=>{
+  const actor=await loadCharacter(true);let bracedSamples=0;
+  for(const seed of [6,20]){
+    const shot=new Shot({x:2.5,power:.65,y:1.3},stats,stats,1,seed);finish(shot,true);
+    assert.ok(shot.touched&&!shot.caught,'these fixtures remain physical parries');
+    for(let frame=0;frame<=210;frame++){
+      const pose=shot.poseAt(shot.animationTime+frame/60);
+      for(const part of ['hands','elbows','knees','feet'])for(let i=0;i<2;i++){
+        const braced=part==='hands'&&(pose.torso?.[i?'braceR':'braceL']??0)>.5;
+        if(braced)bracedSamples++;
+        assert.ok(pose[part][i].y>=(braced?.03:.065),'only the existing explicitly braced wrist uses its joint-center exception');
+      }
+      actor.pose(pose);assert.ok(skinMinimum(actor.root)>=-.005,'real glove/boot/body skin stays above the unchanged turf gate');
+    }
+  }
+  assert.ok(bracedSamples>0,'the earlier-end support interval is actually covered');
 });

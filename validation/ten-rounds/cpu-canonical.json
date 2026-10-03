@@ -1,0 +1,269 @@
+{
+  "createdAt": "2026-10-02T12:50:36.319Z",
+  "baseline": "a9b5be0a57c5bc1a8a512caf140ad7e5c043a560",
+  "sourceHashes": {
+    "anatomy.js": "a74e5b65d96305fd4e081b2677ad1b475bd9718ce7f3daea6355d67f9e67af2d",
+    "ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+    "batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+    "contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+    "engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+    "game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+    "home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+    "keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c",
+    "keeper-contact.js": "6dd93bdfee091168b6bb85c263b58578fbb1fbec031374361fd415c2b454007a",
+    "keeper-hand-contact.js": "ba5ddf77b02b82c37d1117941ad126b0c57eb3270525454403c8c8e1ded1eb6b",
+    "keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+    "keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+    "keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+    "motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+    "motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+    "net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+    "pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+    "rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+    "scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222"
+  },
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "node": "v24.19.0",
+  "scope": "Warmed alternating complete-shot batches on this cloud CPU. Includes physical construction and120Hz simulation through each actual result, so changed rebound durations are included. Near-step timing is CPU only. No rendering/GPU/phone-FPS claim.",
+  "rounds": 5,
+  "fixture": null,
+  "timing": {
+    "before": {
+      "medianTotalMs": 937.229374999999,
+      "medianNearKeeperP99Ms": 1.2974130000002333,
+      "minTotalMs": 867.6473639999986,
+      "maxTotalMs": 986.6982279999993,
+      "outcome": {
+        "shots": 135,
+        "steps": 22084,
+        "caught": 36,
+        "touched": 58,
+        "goals": 78,
+        "reboundGoals": 1,
+        "unfinished": 0
+      }
+    },
+    "after": {
+      "medianTotalMs": 885.9588949999998,
+      "medianNearKeeperP99Ms": 1.1874969999998939,
+      "minTotalMs": 874.5290609999993,
+      "maxTotalMs": 996.1786670000001,
+      "outcome": {
+        "shots": 135,
+        "steps": 22084,
+        "caught": 36,
+        "touched": 58,
+        "goals": 78,
+        "reboundGoals": 1,
+        "unfinished": 0
+      }
+    }
+  },
+  "runs": {
+    "before": [
+      {
+        "totalMs": 895.0266649999994,
+        "outcome": {
+          "shots": 135,
+          "steps": 22084,
+          "caught": 36,
+          "touched": 58,
+          "goals": 78,
+          "reboundGoals": 1,
+          "unfinished": 0
+        },
+        "nearKeeperStepMs": {
+          "n": 4113,
+          "p50": 0.01029500000004191,
+          "p95": 0.6501779999998689,
+          "p99": 1.1662350000001425,
+          "max": 6.7376289999997425
+        }
+      },
+      {
+        "totalMs": 986.6982279999993,
+        "outcome": {
+          "shots": 135,
+          "steps": 22084,
+          "caught": 36,
+          "touched": 58,
+          "goals": 78,
+          "reboundGoals": 1,
+          "unfinished": 0
+        },
+        "nearKeeperStepMs": {
+          "n": 4113,
+          "p50": 0.010064999999485735,
+          "p95": 0.6813550000006217,
+          "p99": 1.3083090000000084,
+          "max": 9.180292999999438
+        }
+      },
+      {
+        "totalMs": 977.9053109999995,
+        "outcome": {
+          "shots": 135,
+          "steps": 22084,
+          "caught": 36,
+          "touched": 58,
+          "goals": 78,
+          "reboundGoals": 1,
+          "unfinished": 0
+        },
+        "nearKeeperStepMs": {
+          "n": 4113,
+          "p50": 0.010635999999976775,
+          "p95": 0.7073239999999714,
+          "p99": 1.3924350000006598,
+          "max": 9.23018300000058
+        }
+      },
+      {
+        "totalMs": 937.229374999999,
+        "outcome": {
+          "shots": 135,
+          "steps": 22084,
+          "caught": 36,
+          "touched": 58,
+          "goals": 78,
+          "reboundGoals": 1,
+          "unfinished": 0
+        },
+        "nearKeeperStepMs": {
+          "n": 4113,
+          "p50": 0.010284999998475541,
+          "p95": 0.6718509999991511,
+          "p99": 1.2974130000002333,
+          "max": 7.072801999998774
+        }
+      },
+      {
+        "totalMs": 867.6473639999986,
+        "outcome": {
+          "shots": 135,
+          "steps": 22084,
+          "caught": 36,
+          "touched": 58,
+          "goals": 78,
+          "reboundGoals": 1,
+          "unfinished": 0
+        },
+        "nearKeeperStepMs": {
+          "n": 4113,
+          "p50": 0.010005000000091968,
+          "p95": 0.6489559999990888,
+          "p99": 1.1517430000003515,
+          "max": 6.314942000000883
+        }
+      }
+    ],
+    "after": [
+      {
+        "totalMs": 885.9588949999998,
+        "outcome": {
+          "shots": 135,
+          "steps": 22084,
+          "caught": 36,
+          "touched": 58,
+          "goals": 78,
+          "reboundGoals": 1,
+          "unfinished": 0
+        },
+        "nearKeeperStepMs": {
+          "n": 4113,
+          "p50": 0.01029500000004191,
+          "p95": 0.6954060000002755,
+          "p99": 1.1874969999998939,
+          "max": 5.850644000000102
+        }
+      },
+      {
+        "totalMs": 966.706545,
+        "outcome": {
+          "shots": 135,
+          "steps": 22084,
+          "caught": 36,
+          "touched": 58,
+          "goals": 78,
+          "reboundGoals": 1,
+          "unfinished": 0
+        },
+        "nearKeeperStepMs": {
+          "n": 4113,
+          "p50": 0.010194999999839638,
+          "p95": 0.7338840000002165,
+          "p99": 1.3625600000004852,
+          "max": 6.6350839999995515
+        }
+      },
+      {
+        "totalMs": 996.1786670000001,
+        "outcome": {
+          "shots": 135,
+          "steps": 22084,
+          "caught": 36,
+          "touched": 58,
+          "goals": 78,
+          "reboundGoals": 1,
+          "unfinished": 0
+        },
+        "nearKeeperStepMs": {
+          "n": 4113,
+          "p50": 0.010355999999774212,
+          "p95": 0.7395630000000892,
+          "p99": 1.2955190000002403,
+          "max": 7.703862000000299
+        }
+      },
+      {
+        "totalMs": 878.2619179999983,
+        "outcome": {
+          "shots": 135,
+          "steps": 22084,
+          "caught": 36,
+          "touched": 58,
+          "goals": 78,
+          "reboundGoals": 1,
+          "unfinished": 0
+        },
+        "nearKeeperStepMs": {
+          "n": 4113,
+          "p50": 0.010384999999587308,
+          "p95": 0.6882860000005167,
+          "p99": 1.1268359999994573,
+          "max": 5.696330999999191
+        }
+      },
+      {
+        "totalMs": 874.5290609999993,
+        "outcome": {
+          "shots": 135,
+          "steps": 22084,
+          "caught": 36,
+          "touched": 58,
+          "goals": 78,
+          "reboundGoals": 1,
+          "unfinished": 0
+        },
+        "nearKeeperStepMs": {
+          "n": 4113,
+          "p50": 0.010094999999637366,
+          "p95": 0.6972289999994246,
+          "p99": 1.1257839999998396,
+          "max": 6.217149999998583
+        }
+      }
+    ]
+  }
+}

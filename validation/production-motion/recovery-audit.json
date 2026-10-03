@@ -1,0 +1,361 @@
+{
+  "baselineCommit": "2314f3c8c94b5f213d3c5fbf397a0dc529b19428",
+  "baselineMethod": "Independent frozen clock and kick adapter from published 2314f3c, on the current decoded skin with shared deformation helpers. The adapter never calls current GameCharacter.kick or gameKickTime. Source fingerprints are frozen independently.",
+  "scope": "Offline actual CPU-skinned geometry, not browser screenshots or mobile/GPU timings.",
+  "tailSourceSeconds": 0.25,
+  "clipFingerprints": {
+    "CMU_10_01_Runup_Kick_Recovery": "b7a07805c45e4c94f9e4d605e787918891adf024d2e23fd471829bc3b4596e5d",
+    "CMU_10_03_Kick": "c4f028ab75c87a1f2541d4d02af7223f5ea565d56d6f8d0f5b40e1935d62dabc"
+  },
+  "expectedClipFingerprints": {
+    "CMU_10_01_Runup_Kick_Recovery": "b7a07805c45e4c94f9e4d605e787918891adf024d2e23fd471829bc3b4596e5d",
+    "CMU_10_03_Kick": "c4f028ab75c87a1f2541d4d02af7223f5ea565d56d6f8d0f5b40e1935d62dabc"
+  },
+  "records": [
+    {
+      "styleIndex": 0,
+      "name": "短步直线",
+      "sourceContact": 1.8467,
+      "sourceDuration": 3.5,
+      "startAfter": 1.4033,
+      "baselineEndAfter": 1.6533,
+      "candidateEndAfter": 1.9033,
+      "earlySkinError": 0,
+      "tailSkinError": 0,
+      "endpointSkinError": 0,
+      "minimumSkinY": 0.0007942611932522103,
+      "contactError": 0.000051207031834935024,
+      "minClockSpeed": 0,
+      "maxClockSpeed": 0.9999985676681433,
+      "finishSpeeds": {
+        "30": {
+          "pelvis": {
+            "baseline": 0.715397465084959,
+            "candidate": 0.00045282824883760347
+          },
+          "bootL": {
+            "baseline": 0.1546692948807135,
+            "candidate": 0.00015797004771822063
+          },
+          "bootR": {
+            "baseline": 0.6925144412568537,
+            "candidate": 0.0004532530955169001
+          },
+          "handL": {
+            "baseline": 0.8010777568633617,
+            "candidate": 0.0005278333612961835
+          },
+          "handR": {
+            "baseline": 1.9502197974541504,
+            "candidate": 0.0012183724154605823
+          }
+        },
+        "60": {
+          "pelvis": {
+            "baseline": 0.6637310935529535,
+            "candidate": 0.00005897793186657827
+          },
+          "bootL": {
+            "baseline": 0.22456949720019292,
+            "candidate": 0.000020575361116798785
+          },
+          "bootR": {
+            "baseline": 0.670799234696096,
+            "candidate": 0.0000590322994988179
+          },
+          "handL": {
+            "baseline": 0.7500439206558479,
+            "candidate": 0.00011443530814439376
+          },
+          "handR": {
+            "baseline": 1.6885693212747273,
+            "candidate": 0.0004728980508881905
+          }
+        },
+        "120": {
+          "pelvis": {
+            "baseline": 0.6633307990130901,
+            "candidate": 0.000007523200243729082
+          },
+          "bootL": {
+            "baseline": 0.22792468480509373,
+            "candidate": 0.0000026245905989047576
+          },
+          "bootR": {
+            "baseline": 0.6676608586157997,
+            "candidate": 0.0000075301250616459375
+          },
+          "handL": {
+            "baseline": 0.7486730206717818,
+            "candidate": 0.0001325763281279748
+          },
+          "handR": {
+            "baseline": 1.7020603785679995,
+            "candidate": 0.0008567089368129674
+          }
+        }
+      }
+    },
+    {
+      "styleIndex": 1,
+      "name": "斜向助跑",
+      "sourceContact": 1.8467,
+      "sourceDuration": 3.5,
+      "startAfter": 1.4033,
+      "baselineEndAfter": 1.6533,
+      "candidateEndAfter": 1.9033,
+      "earlySkinError": 0,
+      "tailSkinError": 0,
+      "endpointSkinError": 0,
+      "minimumSkinY": 0.0007942611932522103,
+      "contactError": 0.00005120703183256192,
+      "minClockSpeed": 0,
+      "maxClockSpeed": 0.9999985676681433,
+      "finishSpeeds": {
+        "30": {
+          "pelvis": {
+            "baseline": 0.7153974650849766,
+            "candidate": 0.0004528282488158294
+          },
+          "bootL": {
+            "baseline": 0.15466929488099487,
+            "candidate": 0.00015797004783949724
+          },
+          "bootR": {
+            "baseline": 0.6925144412572236,
+            "candidate": 0.0004532530961021347
+          },
+          "handL": {
+            "baseline": 0.8010777568633725,
+            "candidate": 0.0005278333613517146
+          },
+          "handR": {
+            "baseline": 1.950219797454159,
+            "candidate": 0.0012183724154662594
+          }
+        },
+        "60": {
+          "pelvis": {
+            "baseline": 0.6637310935529515,
+            "candidate": 0.00005897793194717745
+          },
+          "bootL": {
+            "baseline": 0.2245694972007277,
+            "candidate": 0.000020575362246023856
+          },
+          "bootR": {
+            "baseline": 0.670799234696924,
+            "candidate": 0.000059032299698602496
+          },
+          "handL": {
+            "baseline": 0.750043920655916,
+            "candidate": 0.0001144353085136274
+          },
+          "handR": {
+            "baseline": 1.6885693212747837,
+            "candidate": 0.0004728980510421191
+          }
+        },
+        "120": {
+          "pelvis": {
+            "baseline": 0.663330799013278,
+            "candidate": 0.00000752320017239494
+          },
+          "bootL": {
+            "baseline": 0.22792468480602035,
+            "candidate": 0.0000026245919130876277
+          },
+          "bootR": {
+            "baseline": 0.6676608586207704,
+            "candidate": 0.000007530128146973835
+          },
+          "handL": {
+            "baseline": 0.7486730206721965,
+            "candidate": 0.00013257632831479595
+          },
+          "handR": {
+            "baseline": 1.7020603785682842,
+            "candidate": 0.0008567089367693648
+          }
+        }
+      }
+    },
+    {
+      "styleIndex": 2,
+      "name": "碎步调整",
+      "sourceContact": 1.8467,
+      "sourceDuration": 3.5,
+      "startAfter": 1.4033,
+      "baselineEndAfter": 1.6533,
+      "candidateEndAfter": 1.9033,
+      "earlySkinError": 0,
+      "tailSkinError": 0,
+      "endpointSkinError": 0,
+      "minimumSkinY": 0.0007942611932522103,
+      "contactError": 0.00005120703183214559,
+      "minClockSpeed": 0,
+      "maxClockSpeed": 0.9999985676681433,
+      "finishSpeeds": {
+        "30": {
+          "pelvis": {
+            "baseline": 0.7153974650849656,
+            "candidate": 0.00045282824879137407
+          },
+          "bootL": {
+            "baseline": 0.1546692948808285,
+            "candidate": 0.00015797004743262766
+          },
+          "bootR": {
+            "baseline": 0.6925144412568031,
+            "candidate": 0.0004532530958141494
+          },
+          "handL": {
+            "baseline": 0.8010777568633428,
+            "candidate": 0.0005278333613003798
+          },
+          "handR": {
+            "baseline": 1.9502197974541062,
+            "candidate": 0.001218372415433866
+          }
+        },
+        "60": {
+          "pelvis": {
+            "baseline": 0.6637310935528385,
+            "candidate": 0.00005897793189491614
+          },
+          "bootL": {
+            "baseline": 0.22456949720151823,
+            "candidate": 0.000020575361352380898
+          },
+          "bootR": {
+            "baseline": 0.6707992346949373,
+            "candidate": 0.00005903230199591773
+          },
+          "handL": {
+            "baseline": 0.7500439206557479,
+            "candidate": 0.00011443530834310436
+          },
+          "handR": {
+            "baseline": 1.6885693212745465,
+            "candidate": 0.0004728980509298639
+          }
+        },
+        "120": {
+          "pelvis": {
+            "baseline": 0.6633307990130785,
+            "candidate": 0.000007523200051795424
+          },
+          "bootL": {
+            "baseline": 0.22792468480575578,
+            "candidate": 0.0000026245915058234916
+          },
+          "bootR": {
+            "baseline": 0.667660858618926,
+            "candidate": 0.0000075301269275360635
+          },
+          "handL": {
+            "baseline": 0.7486730206720619,
+            "candidate": 0.00013257632794083491
+          },
+          "handR": {
+            "baseline": 1.702060378567865,
+            "candidate": 0.0008567089367022318
+          }
+        }
+      }
+    },
+    {
+      "styleIndex": 3,
+      "name": "紧凑一步 · 独立动捕",
+      "sourceContact": 1.125,
+      "sourceDuration": 2.5,
+      "startAfter": 1.125,
+      "baselineEndAfter": 1.375,
+      "candidateEndAfter": 1.625,
+      "earlySkinError": 0,
+      "tailSkinError": 0,
+      "endpointSkinError": 0,
+      "minimumSkinY": 0.000560607639689497,
+      "contactError": 1.1213509565344282e-9,
+      "minClockSpeed": 0,
+      "maxClockSpeed": 0.9999985676681433,
+      "finishSpeeds": {
+        "30": {
+          "pelvis": {
+            "baseline": 0.23369980788928704,
+            "candidate": 0.00018398422291564262
+          },
+          "bootL": {
+            "baseline": 0.20951842982929889,
+            "candidate": 0.0002284074350065663
+          },
+          "bootR": {
+            "baseline": 0.1440125442237204,
+            "candidate": 0.00022866861291455338
+          },
+          "handL": {
+            "baseline": 0.3103836759086146,
+            "candidate": 0.0002479372631662113
+          },
+          "handR": {
+            "baseline": 1.4206742851264926,
+            "candidate": 0.0009805560673242255
+          }
+        },
+        "60": {
+          "pelvis": {
+            "baseline": 0.2739434406278586,
+            "candidate": 0.00002396274745667116
+          },
+          "bootL": {
+            "baseline": 0.2646309157221373,
+            "candidate": 0.000027652391229796605
+          },
+          "bootR": {
+            "baseline": 0.23174614738887822,
+            "candidate": 0.00003100876701076955
+          },
+          "handL": {
+            "baseline": 0.3389997958346176,
+            "candidate": 0.00003507587846569887
+          },
+          "handR": {
+            "baseline": 1.478567195203032,
+            "candidate": 0.0001293789448594961
+          }
+        },
+        "120": {
+          "pelvis": {
+            "baseline": 0.2694561606053062,
+            "candidate": 0.0000030566779749541604
+          },
+          "bootL": {
+            "baseline": 0.33660491846669227,
+            "candidate": 0.000004243358835741829
+          },
+          "bootR": {
+            "baseline": 0.3336750591686975,
+            "candidate": 0.000006421476997089989
+          },
+          "handL": {
+            "baseline": 0.3609860083925766,
+            "candidate": 0.000010341126896625711
+          },
+          "handR": {
+            "baseline": 1.4348605680552298,
+            "candidate": 0.00002443652791116694
+          }
+        }
+      }
+    }
+  ],
+  "hashes": {
+    "src/game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+    "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "tests/helpers/recovery-baseline.js": "d6a55fd48f84d49eba9ea1ce3bb924c424e8383747de4597c1447d509e884251",
+    "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+    "assets/characters/mocap-variants/cmu-10_03-kick.glb": "19d2dc23fbc6df84ebb6a4e706a0701f0c16b17daa4ce3b6366dac108e8bdeeb"
+  }
+}

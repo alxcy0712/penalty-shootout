@@ -1,5 +1,5 @@
 {
-  "blender": "5.2.2 LTS",
+  "blender": "4.3 (GLB-derived editable reconstruction)",
   "source": "Monteiro et al. 2024, Figshare 23507793; markerless goalkeeper trials N05D and O05E",
   "license": "CC BY 4.0 motion data; CC0 Quaternius model",
   "framesPerSecond": 120,
@@ -7,8 +7,8 @@
   "materials": 6,
   "textures": 2,
   "meshes": 6,
-  "triangles": 15520,
-  "glbBytes": 343768,
+  "triangles": 17954,
+  "glbBytes": 449480,
   "budgets": {
     "triangles": 18000,
     "bones": 24,
@@ -29,5 +29,9 @@
       "name": "Keeper_O05E",
       "durationSeconds": 0.975
     }
-  ]
+  ],
+  "originalAuthoringBlender": "5.2.2 LTS",
+  "refinementRecord": "model-refinement.json",
+  "bodyClothRefinement": "body-cloth-refinement.json",
+  "productionRefinement": "../../validation/summary-production-models-2026-10-02.json"
 }

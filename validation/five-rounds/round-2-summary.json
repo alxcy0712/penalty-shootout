@@ -1,0 +1,153 @@
+{
+  "completedAt": "2026-10-02T09:17:56.010527+00:00",
+  "held": {
+    "explicitFixtures": null,
+    "mode": "held",
+    "candidateFixtures": 139,
+    "excluded": [],
+    "captures": 40,
+    "samples": 1400,
+    "baseHz": 10,
+    "denseHz": 120,
+    "runtimeMs": 30056.100045,
+    "floorMinimum": -0.0019239528366559733,
+    "protected": {
+      "forearmTorso": {
+        "count": 0,
+        "maxSeparation": 0
+      },
+      "calfTorso": {
+        "count": 0,
+        "maxSeparation": 0
+      },
+      "oppositeFootCalf": {
+        "count": 0,
+        "maxSeparation": 0
+      }
+    },
+    "adjacent": {
+      "upperAndSupportTorso": {
+        "count": 8152,
+        "maxSeparation": 0.006216948400624311
+      },
+      "innerElbow": {
+        "count": 68,
+        "maxSeparation": 0.0014614011703322771
+      }
+    },
+    "failures": []
+  },
+  "central": {
+    "explicitFixtures": null,
+    "mode": "central-results",
+    "candidateFixtures": 54,
+    "excluded": [
+      {
+        "caseIndex": 2,
+        "recipe": {
+          "aim": {
+            "x": -0.7,
+            "y": 0.2,
+            "power": 0.6
+          },
+          "direction": 0,
+          "seed": 1,
+          "stats": {
+            "accuracy": 90,
+            "power": 90,
+            "touch": 90,
+            "composure": 90,
+            "speed": 85,
+            "reach": 85,
+            "handling": 99
+          }
+        },
+        "reason": "Existing side-dive, hesitation or recovery path",
+        "direction": 1
+      },
+      {
+        "caseIndex": 22,
+        "recipe": {
+          "aim": {
+            "x": 0,
+            "y": 0.2,
+            "power": 0.8
+          },
+          "direction": 0,
+          "seed": 1,
+          "stats": {
+            "accuracy": 90,
+            "power": 90,
+            "touch": 90,
+            "composure": 90,
+            "speed": 85,
+            "reach": 85,
+            "handling": 99
+          }
+        },
+        "reason": "Existing side-dive, hesitation or recovery path",
+        "direction": -1
+      },
+      {
+        "caseIndex": 44,
+        "recipe": {
+          "aim": {
+            "x": 0.7,
+            "y": 1,
+            "power": 0.6
+          },
+          "direction": 0,
+          "seed": 1,
+          "stats": {
+            "accuracy": 90,
+            "power": 90,
+            "touch": 90,
+            "composure": 90,
+            "speed": 85,
+            "reach": 85,
+            "handling": 99
+          }
+        },
+        "reason": "Existing side-dive, hesitation or recovery path",
+        "direction": 1
+      }
+    ],
+    "captures": 51,
+    "samples": 2295,
+    "baseHz": 10,
+    "denseHz": 120,
+    "runtimeMs": 46744.622041,
+    "floorMinimum": 0.003051753534704238,
+    "protected": {
+      "forearmTorso": {
+        "count": 0,
+        "maxSeparation": 0
+      },
+      "calfTorso": {
+        "count": 0,
+        "maxSeparation": 0
+      },
+      "oppositeFootCalf": {
+        "count": 0,
+        "maxSeparation": 0
+      }
+    },
+    "adjacent": {
+      "upperAndSupportTorso": {
+        "count": 47,
+        "maxSeparation": 0.0008985119024584876
+      },
+      "innerElbow": {
+        "count": 0,
+        "maxSeparation": 0
+      }
+    },
+    "failures": []
+  },
+  "ground": {
+    "paths": 28,
+    "samples": 7228,
+    "minimumY": -0.0019240124015147408
+  },
+  "runtimeChanged": false
+}

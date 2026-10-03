@@ -29,3 +29,7 @@
 需在 Blender 预览、选片并重定向到现有角色。保留采集中的根位移、骨盆与肩膀配合、手臂反向平衡及随摆；根据片段标记支撑脚接地与触球帧，再对接现有物理事件。先按原速比较，不将所有片段强制压成旧的 3.55 秒。
 
 转换说明明确提示可能有脚底滑动、关节翻转；手指并非真实采集。需检查比例、朝向、肩部映射、脚锁定和噪声，不能直接宣布动作质量达标。原始 BVH 只用于制作；浏览器继续加载筛选、烘焙和压缩后的 GLB。
+
+## Inventory verification (2026-10-01)
+
+The byte sizes and SHA-256 values in `inventory.json` were recomputed from the checked-in BVH files. The previous inventory values did not match these files (the same mismatch existed in commit `e8ce600`); no BVH data was modified as part of this correction. New retargeted-take metadata uses the checked-in source hashes.

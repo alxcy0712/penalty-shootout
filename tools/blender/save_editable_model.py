@@ -1,0 +1,2 @@
+import bpy,sys,argparse
+p=argparse.ArgumentParser();p.add_argument('--input');p.add_argument('--output');a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False);bpy.ops.import_scene.gltf(filepath=a.input);bpy.ops.wm.save_as_mainfile(filepath=a.output);print('EDITABLE',[(o.name,len(o.data.bones)) for o in bpy.data.objects if o.type=='ARMATURE'],[x.name for x in bpy.data.actions])

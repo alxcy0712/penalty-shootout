@@ -1,0 +1,1436 @@
+{
+  "date": "2026-10-01",
+  "baseCommit": "1b1230ec27125ad020e0688b080c977c7b02f76c",
+  "models": {
+    "keeper-prototype": {
+      "sourceSha256": "af13951cda7f7655e98eed9fa5cdb0b903b73379f9e7260f5d8e67089fafbf19",
+      "role": "keeper",
+      "hemBoundaryMap": [
+        {
+          "sourceVertex": 436,
+          "innerVertex": 658,
+          "outerVertex": 660,
+          "skinVertex": 2332
+        },
+        {
+          "sourceVertex": 499,
+          "innerVertex": 659,
+          "outerVertex": 661,
+          "skinVertex": 2395
+        },
+        {
+          "sourceVertex": 468,
+          "innerVertex": 662,
+          "outerVertex": 663,
+          "skinVertex": 2382
+        },
+        {
+          "sourceVertex": 437,
+          "innerVertex": 664,
+          "outerVertex": 666,
+          "skinVertex": 2333
+        },
+        {
+          "sourceVertex": 500,
+          "innerVertex": 665,
+          "outerVertex": 667,
+          "skinVertex": 2396
+        },
+        {
+          "sourceVertex": 424,
+          "innerVertex": 668,
+          "outerVertex": 669,
+          "skinVertex": 2320
+        },
+        {
+          "sourceVertex": 483,
+          "innerVertex": 670,
+          "outerVertex": 672,
+          "skinVertex": 2379
+        },
+        {
+          "sourceVertex": 454,
+          "innerVertex": 671,
+          "outerVertex": 673,
+          "skinVertex": 2350
+        },
+        {
+          "sourceVertex": 425,
+          "innerVertex": 674,
+          "outerVertex": 675,
+          "skinVertex": 2321
+        },
+        {
+          "sourceVertex": 484,
+          "innerVertex": 676,
+          "outerVertex": 678,
+          "skinVertex": 2380
+        },
+        {
+          "sourceVertex": 455,
+          "innerVertex": 677,
+          "outerVertex": 679,
+          "skinVertex": 2351
+        },
+        {
+          "sourceVertex": 448,
+          "innerVertex": 680,
+          "outerVertex": 681,
+          "skinVertex": 2344
+        },
+        {
+          "sourceVertex": 469,
+          "innerVertex": 682,
+          "outerVertex": 683,
+          "skinVertex": 2365
+        },
+        {
+          "sourceVertex": 470,
+          "innerVertex": 684,
+          "outerVertex": 685,
+          "skinVertex": 2366
+        },
+        {
+          "sourceVertex": 449,
+          "innerVertex": 686,
+          "outerVertex": 688,
+          "skinVertex": 2345
+        },
+        {
+          "sourceVertex": 426,
+          "innerVertex": 687,
+          "outerVertex": 689,
+          "skinVertex": 2322
+        },
+        {
+          "sourceVertex": 503,
+          "innerVertex": 690,
+          "outerVertex": 691,
+          "skinVertex": 2399
+        },
+        {
+          "sourceVertex": 485,
+          "innerVertex": 692,
+          "outerVertex": 694,
+          "skinVertex": 2381
+        },
+        {
+          "sourceVertex": 458,
+          "innerVertex": 693,
+          "outerVertex": 695,
+          "skinVertex": 2354
+        },
+        {
+          "sourceVertex": 471,
+          "innerVertex": 696,
+          "outerVertex": 697,
+          "skinVertex": 2367
+        },
+        {
+          "sourceVertex": 427,
+          "innerVertex": 698,
+          "outerVertex": 700,
+          "skinVertex": 2323
+        },
+        {
+          "sourceVertex": 428,
+          "innerVertex": 699,
+          "outerVertex": 701,
+          "skinVertex": 2324
+        },
+        {
+          "sourceVertex": 429,
+          "innerVertex": 702,
+          "outerVertex": 703,
+          "skinVertex": 2325
+        },
+        {
+          "sourceVertex": 450,
+          "innerVertex": 704,
+          "outerVertex": 705,
+          "skinVertex": 2346
+        },
+        {
+          "sourceVertex": 460,
+          "innerVertex": 706,
+          "outerVertex": 707,
+          "skinVertex": 2356
+        },
+        {
+          "sourceVertex": 461,
+          "innerVertex": 708,
+          "outerVertex": 710,
+          "skinVertex": 2357
+        },
+        {
+          "sourceVertex": 472,
+          "innerVertex": 709,
+          "outerVertex": 711,
+          "skinVertex": 2368
+        },
+        {
+          "sourceVertex": 462,
+          "innerVertex": 712,
+          "outerVertex": 713,
+          "skinVertex": 2358
+        },
+        {
+          "sourceVertex": 430,
+          "innerVertex": 714,
+          "outerVertex": 716,
+          "skinVertex": 2326
+        },
+        {
+          "sourceVertex": 486,
+          "innerVertex": 715,
+          "outerVertex": 717,
+          "skinVertex": 2382
+        },
+        {
+          "sourceVertex": 655,
+          "innerVertex": 718,
+          "outerVertex": 719,
+          "skinVertex": 2982
+        },
+        {
+          "sourceVertex": 463,
+          "innerVertex": 720,
+          "outerVertex": 721,
+          "skinVertex": 2359
+        },
+        {
+          "sourceVertex": 473,
+          "innerVertex": 722,
+          "outerVertex": 723,
+          "skinVertex": 2369
+        },
+        {
+          "sourceVertex": 452,
+          "innerVertex": 724,
+          "outerVertex": 726,
+          "skinVertex": 2348
+        },
+        {
+          "sourceVertex": 487,
+          "innerVertex": 725,
+          "outerVertex": 727,
+          "skinVertex": 2394
+        },
+        {
+          "sourceVertex": 432,
+          "innerVertex": 728,
+          "outerVertex": 729,
+          "skinVertex": 2328
+        },
+        {
+          "sourceVertex": 453,
+          "innerVertex": 730,
+          "outerVertex": 732,
+          "skinVertex": 2349
+        },
+        {
+          "sourceVertex": 439,
+          "innerVertex": 731,
+          "outerVertex": 733,
+          "skinVertex": 2335
+        },
+        {
+          "sourceVertex": 433,
+          "innerVertex": 734,
+          "outerVertex": 735,
+          "skinVertex": 2329
+        },
+        {
+          "sourceVertex": 495,
+          "innerVertex": 736,
+          "outerVertex": 738,
+          "skinVertex": 2391
+        },
+        {
+          "sourceVertex": 440,
+          "innerVertex": 737,
+          "outerVertex": 739,
+          "skinVertex": 2336
+        },
+        {
+          "sourceVertex": 474,
+          "innerVertex": 740,
+          "outerVertex": 741,
+          "skinVertex": 2370
+        },
+        {
+          "sourceVertex": 496,
+          "innerVertex": 742,
+          "outerVertex": 744,
+          "skinVertex": 2392
+        },
+        {
+          "sourceVertex": 441,
+          "innerVertex": 743,
+          "outerVertex": 745,
+          "skinVertex": 2337
+        },
+        {
+          "sourceVertex": 475,
+          "innerVertex": 746,
+          "outerVertex": 747,
+          "skinVertex": 2371
+        },
+        {
+          "sourceVertex": 488,
+          "innerVertex": 748,
+          "outerVertex": 750,
+          "skinVertex": 2384
+        },
+        {
+          "sourceVertex": 489,
+          "innerVertex": 749,
+          "outerVertex": 751,
+          "skinVertex": 2385
+        },
+        {
+          "sourceVertex": 464,
+          "innerVertex": 752,
+          "outerVertex": 754,
+          "skinVertex": 2360
+        },
+        {
+          "sourceVertex": 465,
+          "innerVertex": 753,
+          "outerVertex": 755,
+          "skinVertex": 2361
+        },
+        {
+          "sourceVertex": 442,
+          "innerVertex": 756,
+          "outerVertex": 757,
+          "skinVertex": 2338
+        },
+        {
+          "sourceVertex": 497,
+          "innerVertex": 758,
+          "outerVertex": 760,
+          "skinVertex": 2393
+        },
+        {
+          "sourceVertex": 490,
+          "innerVertex": 759,
+          "outerVertex": 761,
+          "skinVertex": 2386
+        },
+        {
+          "sourceVertex": 478,
+          "innerVertex": 762,
+          "outerVertex": 763,
+          "skinVertex": 2374
+        },
+        {
+          "sourceVertex": 443,
+          "innerVertex": 764,
+          "outerVertex": 766,
+          "skinVertex": 2339
+        },
+        {
+          "sourceVertex": 444,
+          "innerVertex": 765,
+          "outerVertex": 767,
+          "skinVertex": 2340
+        },
+        {
+          "sourceVertex": 445,
+          "innerVertex": 768,
+          "outerVertex": 769,
+          "skinVertex": 2341
+        },
+        {
+          "sourceVertex": 466,
+          "innerVertex": 770,
+          "outerVertex": 772,
+          "skinVertex": 2362
+        },
+        {
+          "sourceVertex": 505,
+          "innerVertex": 771,
+          "outerVertex": 773,
+          "skinVertex": 2401
+        },
+        {
+          "sourceVertex": 480,
+          "innerVertex": 774,
+          "outerVertex": 775,
+          "skinVertex": 2376
+        },
+        {
+          "sourceVertex": 492,
+          "innerVertex": 776,
+          "outerVertex": 777,
+          "skinVertex": 2388
+        },
+        {
+          "sourceVertex": 481,
+          "innerVertex": 778,
+          "outerVertex": 779,
+          "skinVertex": 2377
+        },
+        {
+          "sourceVertex": 446,
+          "innerVertex": 780,
+          "outerVertex": 781,
+          "skinVertex": 2342
+        },
+        {
+          "sourceVertex": 498,
+          "innerVertex": 782,
+          "outerVertex": 783,
+          "skinVertex": 2394
+        },
+        {
+          "sourceVertex": 613,
+          "innerVertex": 784,
+          "outerVertex": 785,
+          "skinVertex": 2852
+        },
+        {
+          "sourceVertex": 482,
+          "innerVertex": 786,
+          "outerVertex": 787,
+          "skinVertex": 2378
+        },
+        {
+          "sourceVertex": 493,
+          "innerVertex": 788,
+          "outerVertex": 789,
+          "skinVertex": 2389
+        },
+        {
+          "sourceVertex": 502,
+          "innerVertex": 790,
+          "outerVertex": 791,
+          "skinVertex": 2398
+        },
+        {
+          "sourceVertex": 654,
+          "innerVertex": 792,
+          "outerVertex": 793,
+          "skinVertex": 2981
+        },
+        {
+          "sourceVertex": 504,
+          "innerVertex": 794,
+          "outerVertex": 795,
+          "skinVertex": 2400
+        },
+        {
+          "sourceVertex": 491,
+          "innerVertex": 796,
+          "outerVertex": 798,
+          "skinVertex": 2387
+        },
+        {
+          "sourceVertex": 479,
+          "innerVertex": 797,
+          "outerVertex": 799,
+          "skinVertex": 2375
+        },
+        {
+          "sourceVertex": 477,
+          "innerVertex": 800,
+          "outerVertex": 801,
+          "skinVertex": 2373
+        },
+        {
+          "sourceVertex": 476,
+          "innerVertex": 802,
+          "outerVertex": 803,
+          "skinVertex": 2372
+        },
+        {
+          "sourceVertex": 494,
+          "innerVertex": 804,
+          "outerVertex": 805,
+          "skinVertex": 2390
+        },
+        {
+          "sourceVertex": 467,
+          "innerVertex": 806,
+          "outerVertex": 807,
+          "skinVertex": 2363
+        },
+        {
+          "sourceVertex": 457,
+          "innerVertex": 808,
+          "outerVertex": 809,
+          "skinVertex": 2353
+        },
+        {
+          "sourceVertex": 459,
+          "innerVertex": 810,
+          "outerVertex": 811,
+          "skinVertex": 2355
+        },
+        {
+          "sourceVertex": 501,
+          "innerVertex": 812,
+          "outerVertex": 814,
+          "skinVertex": 2397
+        },
+        {
+          "sourceVertex": 456,
+          "innerVertex": 813,
+          "outerVertex": 815,
+          "skinVertex": 2352
+        },
+        {
+          "sourceVertex": 438,
+          "innerVertex": 816,
+          "outerVertex": 817,
+          "skinVertex": 2334
+        },
+        {
+          "sourceVertex": 451,
+          "innerVertex": 818,
+          "outerVertex": 819,
+          "skinVertex": 2347
+        },
+        {
+          "sourceVertex": 435,
+          "innerVertex": 820,
+          "outerVertex": 821,
+          "skinVertex": 2331
+        },
+        {
+          "sourceVertex": 434,
+          "innerVertex": 822,
+          "outerVertex": 823,
+          "skinVertex": 2330
+        },
+        {
+          "sourceVertex": 614,
+          "innerVertex": 824,
+          "outerVertex": 825,
+          "skinVertex": 2853
+        },
+        {
+          "sourceVertex": 447,
+          "innerVertex": 826,
+          "outerVertex": 827,
+          "skinVertex": 2343
+        },
+        {
+          "sourceVertex": 431,
+          "innerVertex": 828,
+          "outerVertex": 829,
+          "skinVertex": 2327
+        }
+      ],
+      "hemTrianglesAdded": 104,
+      "obsoleteTrimTrianglesRemoved": 126,
+      "encodingMaxPositionErrorMm": 0.00762939453125,
+      "encodingMaxNormalComponentError": 0.00048828125,
+      "bytes": 449080,
+      "triangles": 17954,
+      "sha256": "29b228bb40af114dd6cb427312102bd772fd1951c8754a27d87d718377e5e31a",
+      "materials": 6,
+      "textures": 2,
+      "sourceBones": 22,
+      "runtimeBones": 24,
+      "maxWeights": 4,
+      "bbox": {
+        "Skin.001": {
+          "before": {
+            "min": [
+              -0.41845703125,
+              0.4072265625,
+              -0.1103515625
+            ],
+            "max": [
+              0.41845703125,
+              1.69378662109375,
+              0.22998046875
+            ]
+          },
+          "after": {
+            "min": [
+              -0.41845703125,
+              0.4072265625,
+              -0.1103515625
+            ],
+            "max": [
+              0.41845703125,
+              1.69378662109375,
+              0.22998046875
+            ]
+          },
+          "beforeVertices": 3037,
+          "afterVertices": 3037
+        },
+        "Kit": {
+          "before": {
+            "min": [
+              -0.291015625,
+              0.95947265625,
+              -0.1171875
+            ],
+            "max": [
+              0.291015625,
+              1.533203125,
+              0.143280029296875
+            ]
+          },
+          "after": {
+            "min": [
+              -0.29108646512031555,
+              0.95947265625,
+              -0.1171875
+            ],
+            "max": [
+              0.29112929105758667,
+              1.533203125,
+              0.14163589477539062
+            ]
+          },
+          "beforeVertices": 1828,
+          "afterVertices": 1828
+        },
+        "Shorts": {
+          "before": {
+            "min": [
+              -0.2115631103515625,
+              0.61865234375,
+              -0.10675239562988281
+            ],
+            "max": [
+              0.2115631103515625,
+              0.9599609375,
+              0.1316814422607422
+            ]
+          },
+          "after": {
+            "min": [
+              -0.21460849046707153,
+              0.6635336875915527,
+              -0.10675239562988281
+            ],
+            "max": [
+              0.21460849046707153,
+              0.9599609375,
+              0.13645191490650177
+            ]
+          },
+          "beforeVertices": 658,
+          "afterVertices": 830
+        },
+        "Socks": {
+          "before": {
+            "min": [
+              -0.43701171875,
+              0.04669189453125,
+              -0.10595703125
+            ],
+            "max": [
+              0.43701171875,
+              0.97265625,
+              0.41064453125
+            ]
+          },
+          "after": {
+            "min": [
+              -0.43701171875,
+              0.04669189453125,
+              -0.10595703125
+            ],
+            "max": [
+              0.43701171875,
+              0.97265625,
+              0.41064453125
+            ]
+          },
+          "beforeVertices": 3051,
+          "afterVertices": 3051
+        },
+        "Boots": {
+          "before": {
+            "min": [
+              -0.423553466796875,
+              0.0030517578125,
+              -0.09757232666015625
+            ],
+            "max": [
+              0.42557525634765625,
+              1.7568206787109375,
+              0.23888206481933594
+            ]
+          },
+          "after": {
+            "min": [
+              -0.423553466796875,
+              0.0030517578125,
+              -0.09757232666015625
+            ],
+            "max": [
+              0.42557525634765625,
+              1.7568206787109375,
+              0.23888206481933594
+            ]
+          },
+          "beforeVertices": 2050,
+          "afterVertices": 2050
+        },
+        "Eyes": {
+          "before": {
+            "min": [
+              -0.051513671875,
+              1.630035400390625,
+              0.06719207763671875
+            ],
+            "max": [
+              0.051513671875,
+              1.6591033935546875,
+              0.09590339660644531
+            ]
+          },
+          "after": {
+            "min": [
+              -0.051513671875,
+              1.6300375,
+              0.0671921875
+            ],
+            "max": [
+              0.051513671875,
+              1.6591,
+              0.09590312499999999
+            ]
+          },
+          "beforeVertices": 556,
+          "afterVertices": 556
+        }
+      },
+      "sourceCommit": "1b1230e",
+      "sourceAnimationsUnchanged": true,
+      "modelCalibrationNote": "Original motion calibration stays on its historical source mesh. This is compatibility verification of new mesh with unchanged motion assets."
+    },
+    "striker-mocap": {
+      "sourceSha256": "e0b3eb06d09d80135827c5f5e7e58ab26778a5dc0b8c3333be48a704603bfc3d",
+      "role": "striker",
+      "hemBoundaryMap": [
+        {
+          "sourceVertex": 436,
+          "innerVertex": 658,
+          "outerVertex": 660,
+          "skinVertex": 4433
+        },
+        {
+          "sourceVertex": 499,
+          "innerVertex": 659,
+          "outerVertex": 661,
+          "skinVertex": 4496
+        },
+        {
+          "sourceVertex": 468,
+          "innerVertex": 662,
+          "outerVertex": 663,
+          "skinVertex": 4483
+        },
+        {
+          "sourceVertex": 437,
+          "innerVertex": 664,
+          "outerVertex": 666,
+          "skinVertex": 4434
+        },
+        {
+          "sourceVertex": 500,
+          "innerVertex": 665,
+          "outerVertex": 667,
+          "skinVertex": 4497
+        },
+        {
+          "sourceVertex": 424,
+          "innerVertex": 668,
+          "outerVertex": 669,
+          "skinVertex": 4421
+        },
+        {
+          "sourceVertex": 483,
+          "innerVertex": 670,
+          "outerVertex": 672,
+          "skinVertex": 4480
+        },
+        {
+          "sourceVertex": 454,
+          "innerVertex": 671,
+          "outerVertex": 673,
+          "skinVertex": 4451
+        },
+        {
+          "sourceVertex": 425,
+          "innerVertex": 674,
+          "outerVertex": 675,
+          "skinVertex": 4422
+        },
+        {
+          "sourceVertex": 484,
+          "innerVertex": 676,
+          "outerVertex": 678,
+          "skinVertex": 4481
+        },
+        {
+          "sourceVertex": 455,
+          "innerVertex": 677,
+          "outerVertex": 679,
+          "skinVertex": 4452
+        },
+        {
+          "sourceVertex": 448,
+          "innerVertex": 680,
+          "outerVertex": 681,
+          "skinVertex": 4445
+        },
+        {
+          "sourceVertex": 469,
+          "innerVertex": 682,
+          "outerVertex": 683,
+          "skinVertex": 4466
+        },
+        {
+          "sourceVertex": 470,
+          "innerVertex": 684,
+          "outerVertex": 685,
+          "skinVertex": 4467
+        },
+        {
+          "sourceVertex": 449,
+          "innerVertex": 686,
+          "outerVertex": 688,
+          "skinVertex": 4446
+        },
+        {
+          "sourceVertex": 426,
+          "innerVertex": 687,
+          "outerVertex": 689,
+          "skinVertex": 4423
+        },
+        {
+          "sourceVertex": 503,
+          "innerVertex": 690,
+          "outerVertex": 691,
+          "skinVertex": 4500
+        },
+        {
+          "sourceVertex": 485,
+          "innerVertex": 692,
+          "outerVertex": 694,
+          "skinVertex": 4482
+        },
+        {
+          "sourceVertex": 458,
+          "innerVertex": 693,
+          "outerVertex": 695,
+          "skinVertex": 4455
+        },
+        {
+          "sourceVertex": 471,
+          "innerVertex": 696,
+          "outerVertex": 697,
+          "skinVertex": 4468
+        },
+        {
+          "sourceVertex": 427,
+          "innerVertex": 698,
+          "outerVertex": 700,
+          "skinVertex": 4424
+        },
+        {
+          "sourceVertex": 428,
+          "innerVertex": 699,
+          "outerVertex": 701,
+          "skinVertex": 4425
+        },
+        {
+          "sourceVertex": 429,
+          "innerVertex": 702,
+          "outerVertex": 703,
+          "skinVertex": 4426
+        },
+        {
+          "sourceVertex": 450,
+          "innerVertex": 704,
+          "outerVertex": 705,
+          "skinVertex": 4447
+        },
+        {
+          "sourceVertex": 460,
+          "innerVertex": 706,
+          "outerVertex": 707,
+          "skinVertex": 4457
+        },
+        {
+          "sourceVertex": 461,
+          "innerVertex": 708,
+          "outerVertex": 710,
+          "skinVertex": 4458
+        },
+        {
+          "sourceVertex": 472,
+          "innerVertex": 709,
+          "outerVertex": 711,
+          "skinVertex": 4469
+        },
+        {
+          "sourceVertex": 462,
+          "innerVertex": 712,
+          "outerVertex": 713,
+          "skinVertex": 4459
+        },
+        {
+          "sourceVertex": 430,
+          "innerVertex": 714,
+          "outerVertex": 716,
+          "skinVertex": 4427
+        },
+        {
+          "sourceVertex": 486,
+          "innerVertex": 715,
+          "outerVertex": 717,
+          "skinVertex": 4483
+        },
+        {
+          "sourceVertex": 655,
+          "innerVertex": 718,
+          "outerVertex": 719,
+          "skinVertex": 5165
+        },
+        {
+          "sourceVertex": 463,
+          "innerVertex": 720,
+          "outerVertex": 721,
+          "skinVertex": 4460
+        },
+        {
+          "sourceVertex": 473,
+          "innerVertex": 722,
+          "outerVertex": 723,
+          "skinVertex": 4470
+        },
+        {
+          "sourceVertex": 452,
+          "innerVertex": 724,
+          "outerVertex": 726,
+          "skinVertex": 4449
+        },
+        {
+          "sourceVertex": 487,
+          "innerVertex": 725,
+          "outerVertex": 727,
+          "skinVertex": 4495
+        },
+        {
+          "sourceVertex": 432,
+          "innerVertex": 728,
+          "outerVertex": 729,
+          "skinVertex": 4429
+        },
+        {
+          "sourceVertex": 453,
+          "innerVertex": 730,
+          "outerVertex": 732,
+          "skinVertex": 4450
+        },
+        {
+          "sourceVertex": 439,
+          "innerVertex": 731,
+          "outerVertex": 733,
+          "skinVertex": 4436
+        },
+        {
+          "sourceVertex": 433,
+          "innerVertex": 734,
+          "outerVertex": 735,
+          "skinVertex": 4430
+        },
+        {
+          "sourceVertex": 495,
+          "innerVertex": 736,
+          "outerVertex": 738,
+          "skinVertex": 4492
+        },
+        {
+          "sourceVertex": 440,
+          "innerVertex": 737,
+          "outerVertex": 739,
+          "skinVertex": 4437
+        },
+        {
+          "sourceVertex": 474,
+          "innerVertex": 740,
+          "outerVertex": 741,
+          "skinVertex": 4471
+        },
+        {
+          "sourceVertex": 496,
+          "innerVertex": 742,
+          "outerVertex": 744,
+          "skinVertex": 4493
+        },
+        {
+          "sourceVertex": 441,
+          "innerVertex": 743,
+          "outerVertex": 745,
+          "skinVertex": 4438
+        },
+        {
+          "sourceVertex": 475,
+          "innerVertex": 746,
+          "outerVertex": 747,
+          "skinVertex": 4472
+        },
+        {
+          "sourceVertex": 488,
+          "innerVertex": 748,
+          "outerVertex": 750,
+          "skinVertex": 4485
+        },
+        {
+          "sourceVertex": 489,
+          "innerVertex": 749,
+          "outerVertex": 751,
+          "skinVertex": 4486
+        },
+        {
+          "sourceVertex": 464,
+          "innerVertex": 752,
+          "outerVertex": 754,
+          "skinVertex": 4461
+        },
+        {
+          "sourceVertex": 465,
+          "innerVertex": 753,
+          "outerVertex": 755,
+          "skinVertex": 4462
+        },
+        {
+          "sourceVertex": 442,
+          "innerVertex": 756,
+          "outerVertex": 757,
+          "skinVertex": 4439
+        },
+        {
+          "sourceVertex": 497,
+          "innerVertex": 758,
+          "outerVertex": 760,
+          "skinVertex": 4494
+        },
+        {
+          "sourceVertex": 490,
+          "innerVertex": 759,
+          "outerVertex": 761,
+          "skinVertex": 4487
+        },
+        {
+          "sourceVertex": 478,
+          "innerVertex": 762,
+          "outerVertex": 763,
+          "skinVertex": 4475
+        },
+        {
+          "sourceVertex": 443,
+          "innerVertex": 764,
+          "outerVertex": 766,
+          "skinVertex": 4440
+        },
+        {
+          "sourceVertex": 444,
+          "innerVertex": 765,
+          "outerVertex": 767,
+          "skinVertex": 4441
+        },
+        {
+          "sourceVertex": 445,
+          "innerVertex": 768,
+          "outerVertex": 769,
+          "skinVertex": 4442
+        },
+        {
+          "sourceVertex": 466,
+          "innerVertex": 770,
+          "outerVertex": 772,
+          "skinVertex": 4463
+        },
+        {
+          "sourceVertex": 505,
+          "innerVertex": 771,
+          "outerVertex": 773,
+          "skinVertex": 4502
+        },
+        {
+          "sourceVertex": 480,
+          "innerVertex": 774,
+          "outerVertex": 775,
+          "skinVertex": 4477
+        },
+        {
+          "sourceVertex": 492,
+          "innerVertex": 776,
+          "outerVertex": 777,
+          "skinVertex": 4489
+        },
+        {
+          "sourceVertex": 481,
+          "innerVertex": 778,
+          "outerVertex": 779,
+          "skinVertex": 4478
+        },
+        {
+          "sourceVertex": 446,
+          "innerVertex": 780,
+          "outerVertex": 781,
+          "skinVertex": 4443
+        },
+        {
+          "sourceVertex": 498,
+          "innerVertex": 782,
+          "outerVertex": 783,
+          "skinVertex": 4495
+        },
+        {
+          "sourceVertex": 613,
+          "innerVertex": 784,
+          "outerVertex": 785,
+          "skinVertex": 5035
+        },
+        {
+          "sourceVertex": 482,
+          "innerVertex": 786,
+          "outerVertex": 787,
+          "skinVertex": 4479
+        },
+        {
+          "sourceVertex": 493,
+          "innerVertex": 788,
+          "outerVertex": 789,
+          "skinVertex": 4490
+        },
+        {
+          "sourceVertex": 502,
+          "innerVertex": 790,
+          "outerVertex": 791,
+          "skinVertex": 4499
+        },
+        {
+          "sourceVertex": 654,
+          "innerVertex": 792,
+          "outerVertex": 793,
+          "skinVertex": 5164
+        },
+        {
+          "sourceVertex": 504,
+          "innerVertex": 794,
+          "outerVertex": 795,
+          "skinVertex": 4501
+        },
+        {
+          "sourceVertex": 491,
+          "innerVertex": 796,
+          "outerVertex": 798,
+          "skinVertex": 4488
+        },
+        {
+          "sourceVertex": 479,
+          "innerVertex": 797,
+          "outerVertex": 799,
+          "skinVertex": 4476
+        },
+        {
+          "sourceVertex": 477,
+          "innerVertex": 800,
+          "outerVertex": 801,
+          "skinVertex": 4474
+        },
+        {
+          "sourceVertex": 476,
+          "innerVertex": 802,
+          "outerVertex": 803,
+          "skinVertex": 4473
+        },
+        {
+          "sourceVertex": 494,
+          "innerVertex": 804,
+          "outerVertex": 805,
+          "skinVertex": 4491
+        },
+        {
+          "sourceVertex": 467,
+          "innerVertex": 806,
+          "outerVertex": 807,
+          "skinVertex": 4464
+        },
+        {
+          "sourceVertex": 457,
+          "innerVertex": 808,
+          "outerVertex": 809,
+          "skinVertex": 4454
+        },
+        {
+          "sourceVertex": 459,
+          "innerVertex": 810,
+          "outerVertex": 811,
+          "skinVertex": 4456
+        },
+        {
+          "sourceVertex": 501,
+          "innerVertex": 812,
+          "outerVertex": 814,
+          "skinVertex": 4498
+        },
+        {
+          "sourceVertex": 456,
+          "innerVertex": 813,
+          "outerVertex": 815,
+          "skinVertex": 4453
+        },
+        {
+          "sourceVertex": 438,
+          "innerVertex": 816,
+          "outerVertex": 817,
+          "skinVertex": 4435
+        },
+        {
+          "sourceVertex": 451,
+          "innerVertex": 818,
+          "outerVertex": 819,
+          "skinVertex": 4448
+        },
+        {
+          "sourceVertex": 435,
+          "innerVertex": 820,
+          "outerVertex": 821,
+          "skinVertex": 4432
+        },
+        {
+          "sourceVertex": 434,
+          "innerVertex": 822,
+          "outerVertex": 823,
+          "skinVertex": 4431
+        },
+        {
+          "sourceVertex": 614,
+          "innerVertex": 824,
+          "outerVertex": 825,
+          "skinVertex": 5036
+        },
+        {
+          "sourceVertex": 447,
+          "innerVertex": 826,
+          "outerVertex": 827,
+          "skinVertex": 4444
+        },
+        {
+          "sourceVertex": 431,
+          "innerVertex": 828,
+          "outerVertex": 829,
+          "skinVertex": 4428
+        }
+      ],
+      "hemTrianglesAdded": 104,
+      "obsoleteTrimTrianglesRemoved": 126,
+      "encodingMaxPositionErrorMm": 0.00762939453125,
+      "encodingMaxNormalComponentError": 0.00048828125,
+      "bytes": 446308,
+      "triangles": 17924,
+      "sha256": "aad3a3782a1e806b8fd596e6b9eeb62e47ebe4d729bb421d0ec4631a6fb76996",
+      "materials": 6,
+      "textures": 2,
+      "sourceBones": 22,
+      "runtimeBones": 24,
+      "maxWeights": 4,
+      "bbox": {
+        "Skin.001": {
+          "before": {
+            "min": [
+              -0.43701171875,
+              0.4072265625,
+              -0.1103515625
+            ],
+            "max": [
+              0.43701171875,
+              1.69378662109375,
+              0.41064453125
+            ]
+          },
+          "after": {
+            "min": [
+              -0.43701171875,
+              0.4072265625,
+              -0.1103515625
+            ],
+            "max": [
+              0.43701171875,
+              1.69378662109375,
+              0.41064453125
+            ]
+          },
+          "beforeVertices": 5220,
+          "afterVertices": 5220
+        },
+        "Kit": {
+          "before": {
+            "min": [
+              -0.291015625,
+              0.95947265625,
+              -0.1171875
+            ],
+            "max": [
+              0.291015625,
+              1.533203125,
+              0.15625
+            ]
+          },
+          "after": {
+            "min": [
+              -0.29108646512031555,
+              0.95947265625,
+              -0.1171875
+            ],
+            "max": [
+              0.29112929105758667,
+              1.533203125,
+              0.15386417508125305
+            ]
+          },
+          "beforeVertices": 1828,
+          "afterVertices": 1828
+        },
+        "Shorts": {
+          "before": {
+            "min": [
+              -0.2115631103515625,
+              0.61865234375,
+              -0.10675239562988281
+            ],
+            "max": [
+              0.2115631103515625,
+              0.9599609375,
+              0.1316814422607422
+            ]
+          },
+          "after": {
+            "min": [
+              -0.21460849046707153,
+              0.6635336875915527,
+              -0.10675239562988281
+            ],
+            "max": [
+              0.21460849046707153,
+              0.9599609375,
+              0.13645191490650177
+            ]
+          },
+          "beforeVertices": 658,
+          "afterVertices": 830
+        },
+        "Socks": {
+          "before": {
+            "min": [
+              -0.20166015625,
+              0.04669189453125,
+              -0.10595703125
+            ],
+            "max": [
+              0.20166015625,
+              0.42236328125,
+              0.123291015625
+            ]
+          },
+          "after": {
+            "min": [
+              -0.20166015625,
+              0.04669189453125,
+              -0.10595703125
+            ],
+            "max": [
+              0.20166015625,
+              0.42236328125,
+              0.123291015625
+            ]
+          },
+          "beforeVertices": 832,
+          "afterVertices": 832
+        },
+        "Boots": {
+          "before": {
+            "min": [
+              -0.29524993896484375,
+              0.0030517578125,
+              -0.09757232666015625
+            ],
+            "max": [
+              0.29524993896484375,
+              1.7568206787109375,
+              0.232666015625
+            ]
+          },
+          "after": {
+            "min": [
+              -0.2948964238166809,
+              0.0030517578125,
+              -0.09757232666015625
+            ],
+            "max": [
+              0.2949349284172058,
+              1.7568206787109375,
+              0.232666015625
+            ]
+          },
+          "beforeVertices": 2020,
+          "afterVertices": 2020
+        },
+        "Eyes": {
+          "before": {
+            "min": [
+              -0.051513671875,
+              1.630035400390625,
+              0.06719207763671875
+            ],
+            "max": [
+              0.051513671875,
+              1.6591033935546875,
+              0.09590339660644531
+            ]
+          },
+          "after": {
+            "min": [
+              -0.051513671875,
+              1.6300375,
+              0.0671921875
+            ],
+            "max": [
+              0.051513671875,
+              1.6591,
+              0.09590312499999999
+            ]
+          },
+          "beforeVertices": 556,
+          "afterVertices": 556
+        }
+      },
+      "sourceCommit": "1b1230e",
+      "sourceAnimationsUnchanged": true,
+      "modelCalibrationNote": "Original motion calibration stays on its historical source mesh. This is compatibility verification of new mesh with unchanged motion assets."
+    }
+  },
+  "editable": {
+    "striker-mocap": {
+      "blendBytes": 1384060,
+      "decodedBlendBytes": 6117048,
+      "blendSha256": "ef8d10bd814f77a520795b40a9f6962b65d7379bf0499f5f95903438c24a3b57",
+      "decodedBlendSha256": "35bdc95c2de220872548f3fa0c5c09c60932b1834df301bc9ee1e080515f5d20",
+      "glbSha256": "aad3a3782a1e806b8fd596e6b9eeb62e47ebe4d729bb421d0ec4631a6fb76996"
+    },
+    "keeper-prototype": {
+      "blendBytes": 1073730,
+      "decodedBlendBytes": 4388484,
+      "blendSha256": "dc5f706cd03e93a6787ae955a1d69542bdc405ef388b2bfb7713ce26d3147e38",
+      "decodedBlendSha256": "d5ecc71615d8b1883f298f48d5323a3e954609645c81546bc07b48ca1aa7945d",
+      "glbSha256": "29b228bb40af114dd6cb427312102bd772fd1951c8754a27d87d718377e5e31a"
+    }
+  }
+}

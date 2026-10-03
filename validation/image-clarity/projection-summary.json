@@ -1,0 +1,28 @@
+{
+  "scope": "CPU camera projection at unchangedDPR; no WebGL/MSAA/AF quality or performance claim",
+  "width": 390,
+  "height": 844,
+  "dpr": 1.7,
+  "widths": [
+    {
+      "z": 0,
+      "acrossPitchBufferPixels": 6.472439209822565,
+      "alongPitchBufferPixels": 1.37813212494205
+    },
+    {
+      "z": 5.5,
+      "acrossPitchBufferPixels": 8.488665913216565,
+      "alongPitchBufferPixels": 2.3704713582121597
+    },
+    {
+      "z": 11,
+      "acrossPitchBufferPixels": 12.329388245404797,
+      "alongPitchBufferPixels": 5.000821576066232
+    },
+    {
+      "z": 16.5,
+      "acrossPitchBufferPixels": 22.517497449146735,
+      "alongPitchBufferPixels": 16.680517873073597
+    }
+  ]
+}

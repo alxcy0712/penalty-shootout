@@ -1,0 +1,130 @@
+{
+  "checkedAt": "2026-10-02T09:14:29.775Z",
+  "scope": "actual CPU-skinned production geometry, no browser/GPU claim",
+  "onset": {
+    "styles": 4,
+    "pairedDenseSamples": 196,
+    "trajectorySamples": 752,
+    "lateClockSamples": 20,
+    "actualContacts": 4,
+    "bootVertices": {
+      "bootL": 436,
+      "bootR": 436
+    },
+    "maxFirstFrameRatio60Hz": 0.7937150873967507,
+    "maxEarlyPeakRatio240Hz": 1.0638297872342115,
+    "maxContactError": 0.000051207031834935024,
+    "maxLateClockDifference": 0,
+    "epsilonProbeSamples": 16,
+    "pairedDenseSkinPoses": 392
+  },
+  "recovery": {
+    "styles": 4,
+    "finishSpeedMeasurements": 60,
+    "maxResidualSpeed": 0.0012183724154662594,
+    "maxResidualSpeedRatio": 0.001587838157760213,
+    "maxEarlySkinError": 0,
+    "maxTailSkinError": 0,
+    "maxEndpointSkinError": 0,
+    "minimumSkinY": 0.000560607639689497,
+    "maxContactError": 0.000051207031834935024,
+    "clipFingerprints": {
+      "CMU_10_01_Runup_Kick_Recovery": "b7a07805c45e4c94f9e4d605e787918891adf024d2e23fd471829bc3b4596e5d",
+      "CMU_10_03_Kick": "c4f028ab75c87a1f2541d4d02af7223f5ea565d56d6f8d0f5b40e1935d62dabc"
+    },
+    "tailClockSamples": 532,
+    "tailSkinComparisons": 136,
+    "earlySkinComparisons": 60,
+    "endpointSkinComparisons": 4,
+    "actualContacts": 4
+  },
+  "hashes": {
+    "src/game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+    "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+    "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "tools/qa/audit-runup-onset.mjs": "6bab4378e9ed116d302ba0f91bb213421e86acb8dbdf7f55c05f019a22c07554",
+    "tools/qa/export-runup-onset.mjs": "34c2b3f224b21a8b629bbf8381efc9c228402537f1a11e81eb768db41188a55a",
+    "tests/runup-onset.test.js": "e170af29409e88fec11ae5958da694b718b20f8edd4e793e4267040699957ec4",
+    "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+    "assets/characters/mocap-variants/cmu-10_03-kick.glb": "19d2dc23fbc6df84ebb6a4e706a0701f0c16b17daa4ce3b6366dac108e8bdeeb",
+    "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "tests/helpers/recovery-baseline.js": "d6a55fd48f84d49eba9ea1ce3bb924c424e8383747de4597c1447d509e884251",
+    "src/anatomy.js": "a74e5b65d96305fd4e081b2677ad1b475bd9718ce7f3daea6355d67f9e67af2d",
+    "src/keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+    "src/keeper-hand-contact.js": "ba5ddf77b02b82c37d1117941ad126b0c57eb3270525454403c8c8e1ded1eb6b",
+    "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "tests/motion-boundary-round.test.js": "2529479bbb232dfbe6a0465ff0a91f9a567facf3d57b6da6c03e2b2ead74fe1d"
+  },
+  "closedAt": "2026-10-02T09:15:40.000Z",
+  "baseCommit": "aeb5e884555f277435443155407ed962d6065901",
+  "checks": [
+    {
+      "file": "focused.tap",
+      "tests": 34,
+      "pass": 34,
+      "fail": 0
+    },
+    {
+      "file": "boundaries-final.tap",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0
+    }
+  ],
+  "boundaryMetrics": [
+    {
+      "round": 1,
+      "gate": "contact",
+      "combinations": 72,
+      "skinSamples": 648,
+      "maxSeam": 0,
+      "maxRepeat": 0,
+      "maxContactError": 0.000051207031834935024,
+      "maxNeighbourStep": 0.000012203869173470669
+    },
+    {
+      "round": 1,
+      "gate": "contact-clock",
+      "boundarySamples": 24,
+      "clampAssertions": 48,
+      "maxVelocityDifference": 2.220446049250313e-10
+    },
+    {
+      "round": 1,
+      "gate": "keeper-preparation",
+      "boundaries": 9,
+      "poseSamples": 72,
+      "skinSamples": 54,
+      "maxMirrorError": 0,
+      "maxStep": 2.984873773858297e-7,
+      "maxSupportVelocitySeam": 0.0000020630374702128227,
+      "maxTransferVelocitySeam": 0.005261589345084965,
+      "minimumSkinY": 0.017967537681258486
+    },
+    {
+      "round": 1,
+      "gate": "keeper-phase",
+      "boundaries": 90,
+      "skinSamples": 360,
+      "maxSkinStep": 0.000009156407660804707,
+      "maxRepeatError": 0,
+      "maxBoneLengthError": 7.216449660063518e-16,
+      "minimumSkinY": -0.0016221968942754447
+    }
+  ],
+  "findings": [
+    {
+      "status": "measured existing bound; runtime unchanged",
+      "detail": "Keeper preparation phase .08/.90 has a maximum derivative seam 0.005261589345 m per normalized phase from the clamped sinusoidal transfer. No position pop. The test limits only those two boundaries to 0.006 m/phase, while exact support swaps remain below the strict 0.003 m/phase continuity tolerance. At 1.55 s run-up this is 0.003394574 m/s, or 0.056576 mm/frame at 60 Hz."
+    }
+  ],
+  "limitations": [
+    "Actual CPU-skinned geometry and deterministic clocks only; no rendered browser, GPU or mobile timing claim."
+  ],
+  "reportWrittenAt": "2026-10-02T09:15:54.746Z",
+  "gateFinishedAt": "2026-10-02T09:15:12.095Z",
+  "startedAt": "2026-10-02T09:09:33.000Z"
+}

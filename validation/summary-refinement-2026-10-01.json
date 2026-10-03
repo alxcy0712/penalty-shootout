@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-01",
+  "testCommand": "npm test",
+  "tests": {
+    "passed": 198,
+    "failed": 0,
+    "skipped": 0
+  },
+  "build": {
+    "passed": true,
+    "renderingChunkBytesApprox": 1171010,
+    "gzipBytesApprox": 317630,
+    "chunkWarningRetained": true
+  },
+  "assets": {
+    "keeper-prototype": {
+      "sha256": "af13951cda7f7655e98eed9fa5cdb0b903b73379f9e7260f5d8e67089fafbf19",
+      "bytes": 441536,
+      "triangles": 17976,
+      "runtimeBones": 24,
+      "maxInfluences": 4
+    },
+    "striker-mocap": {
+      "sha256": "e0b3eb06d09d80135827c5f5e7e58ab26778a5dc0b8c3333be48a704603bfc3d",
+      "bytes": 441568,
+      "triangles": 17946,
+      "runtimeBones": 24,
+      "maxInfluences": 4
+    }
+  },
+  "strikerClearance": {
+    "samples": 182,
+    "hz": 100,
+    "summary": {
+      "10_01": {
+        "samples": 121,
+        "categories": {
+          "forearm": {
+            "beforeCount": 2493,
+            "afterCount": 0,
+            "beforeMax": 0.007734399807187264,
+            "afterMax": 0,
+            "maxAddedSeparation": 0,
+            "maxPerFrameIncrease": 0
+          },
+          "upper": {
+            "beforeCount": 10331,
+            "afterCount": 8664,
+            "beforeMax": 0.011945811541746953,
+            "afterMax": 0.011945811541746953,
+            "maxAddedSeparation": 0.010127554010010087,
+            "maxPerFrameIncrease": 0.00153607492460206
+          }
+        }
+      },
+      "10_03": {
+        "samples": 61,
+        "categories": {
+          "forearm": {
+            "beforeCount": 935,
+            "afterCount": 0,
+            "beforeMax": 0.007341504770559504,
+            "afterMax": 0,
+            "maxAddedSeparation": 0,
+            "maxPerFrameIncrease": 0
+          },
+          "upper": {
+            "beforeCount": 7642,
+            "afterCount": 7301,
+            "beforeMax": 0.012047857971795847,
+            "afterMax": 0.012047857971795847,
+            "maxAddedSeparation": 0.009900454181226759,
+            "maxPerFrameIncrease": 0.000801423112686217
+          }
+        }
+      }
+    },
+    "method": "Paired raw/corrected CPU-skinned triangle audit with final root-local shoulder helpers refreshed after correction. Forearm includes either forearm versus spine/chest; upper includes upper_arm and shoulder_support versus spine/chest. Strict transverse crossings exclude shared-vertex and one-ring neighbours; finite-triangle SAT separation is not whole-body penetration depth. Internal garment intersections remain and are reported explicitly."
+  },
+  "keeperGround": {
+    "cases": 28,
+    "hz": 60,
+    "minimumY": -0.0019236151973104354,
+    "visibleGrassY": -0.014
+  },
+  "validationLimits": [
+    "Node pointer handlers plus production GLB, not physical touchscreen input",
+    "Actual CPU-skinned offline geometry, not WebGL screenshots",
+    "No mobile GPU, thermal or battery certification",
+    "Internal upper-arm/garment seams and knee folds remain; finite-triangle SAT is not full-body penetration depth"
+  ],
+  "keeperCollision": {
+    "cases": 135,
+    "contacts": 58,
+    "caught": 36,
+    "unsettled": 0,
+    "maxContactGap": 3.383755039530756e-05,
+    "minContactGap": -7.900500270607846e-06,
+    "maxPostGap": 0.00503237162224994,
+    "minPostGap": -0.0029064672425933163
+  },
+  "keeperCollisionSnapshotSha256": "19d9cd906d81efec8706748b2f23cc2831ea770f8a69448cbf1394ac848d1078"
+}

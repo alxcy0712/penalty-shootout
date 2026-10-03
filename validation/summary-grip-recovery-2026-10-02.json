@@ -1,0 +1,357 @@
+{
+  "status": "passed; ready for parent publication review",
+  "completedAt": "2026-10-02T15:04:52.108581+00:00",
+  "baseline": {
+    "commit": "f2db0191fa438ff111593831cd4613f696ed2a96",
+    "tree": "0045fa6eb44fd5c4ab6df15f508b5abf811b10dc"
+  },
+  "sourceHashes": {
+    "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+    "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+    "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+    "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+    "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+    "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+    "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+    "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+    "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+    "src/keeper-finger-grip.js": "75abbe4c1b87c805c0e366fd95b051b416ed2ba587780a9782aaa656cd825dec",
+    "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+    "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+    "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+    "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+    "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+    "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+    "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+    "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+    "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+    "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+    "assets/characters/mocap-variants/cmu-10_03-kick.glb": "19d2dc23fbc6df84ebb6a4e706a0701f0c16b17daa4ce3b6366dac108e8bdeeb"
+  },
+  "tests": {
+    "own": {
+      "passed": 379,
+      "failed": 0,
+      "skipped": 0,
+      "concurrency": 4
+    },
+    "independent": {
+      "passed": 379,
+      "failed": 0,
+      "skipped": 0,
+      "concurrency": 1
+    },
+    "logs": {
+      "ownTests": {
+        "path": "/tmp/penalty-grip-refinement/final-tests.log",
+        "sha256": "d112b553152577abff854187fb45f9a940fc714ca61356338e62f7d49052dcf6"
+      },
+      "ownBuild": {
+        "path": "/tmp/penalty-grip-refinement/build.log",
+        "sha256": "b24d0f52e6e67d5856d56dcb2e5b760755a390b573fd6b00cc24fb0bffd41114"
+      },
+      "independentTests": {
+        "path": "/workspace/scratch/da56d19312e0/grip-root-tests.log",
+        "sha256": "8f2eacfc6a3a5394cb271f2ea123e563a851cd643c0b2a75324409cde325be34"
+      },
+      "independentBuild": {
+        "path": "/workspace/scratch/da56d19312e0/grip-root-build.log",
+        "sha256": "328487248892b1daa7037935ed776d5db09b629306079415cab0181647d3992d"
+      }
+    }
+  },
+  "build": {
+    "passed": true,
+    "gameKb": 53.91,
+    "gameGzipKb": 20.79,
+    "renderingKb": 1274.53,
+    "renderingGzipKb": 352.0,
+    "baselineRenderingGzipKb": 349.26,
+    "warning": "Existing chunk over500kB warning remains"
+  },
+  "uniformGate": {
+    "shots": 645,
+    "captures": 205,
+    "manifestSha256": "5949a1c7f718e096868039d0037c3d064a130ae15bcd4deb244c453902ffa6ec",
+    "counts": {
+      "bodyPoses": 36490,
+      "jointSamples": 137965,
+      "skinSphereSamples": 34645,
+      "trajectoryPoses": 7500
+    },
+    "protectedCounts": {
+      "forearmTorso": 0,
+      "calfTorso": 0,
+      "oppositeFootCalf": 0
+    },
+    "minimumSkin": -0.0019240100580969755,
+    "minimumSphereGap": -0.0037178844706977493,
+    "minimumTrajectoryGap": -0.0024590030530546314,
+    "adjacentMaxima": {
+      "upperAndSupportTorso": 0.010970835602884255,
+      "innerElbow": 0.0055973681772406025
+    },
+    "maximumResolutionsPerStep": 3
+  },
+  "performance": {
+    "physics": {
+      "before": {
+        "medianTotalMs": 5458.649548000001,
+        "medianNearKeeperP99Ms": 1.1525439999968512,
+        "minTotalMs": 5403.123360999998,
+        "maxTotalMs": 5502.933498999999,
+        "outcome": {
+          "shots": 645,
+          "steps": 152036,
+          "caught": 205,
+          "touched": 417,
+          "goals": 240,
+          "reboundGoals": 12,
+          "unfinished": 0
+        }
+      },
+      "after": {
+        "medianTotalMs": 5372.798637,
+        "medianNearKeeperP99Ms": 1.1612669999994978,
+        "minTotalMs": 5310.317072999998,
+        "maxTotalMs": 5672.974395999998,
+        "outcome": {
+          "shots": 645,
+          "steps": 152036,
+          "caught": 205,
+          "touched": 417,
+          "goals": 240,
+          "reboundGoals": 12,
+          "unfinished": 0
+        }
+      }
+    },
+    "gather": {
+      "all": {
+        "samples": 34645,
+        "beforeMedianMs": 2266.9173990000018,
+        "afterMedianMs": 2340.8290380000035,
+        "relativeChangePercent": 3.260446941410655,
+        "beforeMicrosecondsPerSample": 65.43274351277245,
+        "afterMicrosecondsPerSample": 67.56614339731573,
+        "addedMicrosecondsPerSample": 2.1333998845432744
+      },
+      "transition": {
+        "samples": 5330,
+        "beforeMedianMs": 1472.808831000002,
+        "afterMedianMs": 1619.4613800000006,
+        "relativeChangePercent": 9.957337701487369,
+        "beforeMicrosecondsPerSample": 276.32435853658575,
+        "afterMicrosecondsPerSample": 303.8389080675423,
+        "addedMicrosecondsPerSample": 27.514549530956575
+      },
+      "secured": {
+        "samples": 29110,
+        "beforeMedianMs": 620.5336339999994,
+        "afterMedianMs": 656.9845420000056,
+        "relativeChangePercent": 5.874122852139574,
+        "beforeMicrosecondsPerSample": 21.316854482995513,
+        "afterMicrosecondsPerSample": 22.569032703538497,
+        "addedMicrosecondsPerSample": 1.2521782205429806
+      }
+    },
+    "visual": {
+      "free": {
+        "samples": 1089,
+        "beforeMedianMs": 31.11266499999965,
+        "afterMedianMs": 29.52201100000002,
+        "relativeChangePercent": -5.112561074403777,
+        "beforeMicrosecondsPerSample": 28.56994031221272,
+        "afterMicrosecondsPerSample": 27.109284664830138,
+        "addedMicrosecondsPerSample": -1.4606556473825814
+      },
+      "held": {
+        "samples": 3075,
+        "beforeMedianMs": 69.27711500000078,
+        "afterMedianMs": 129.44105499999932,
+        "relativeChangePercent": 86.84533124683075,
+        "beforeMicrosecondsPerSample": 22.529143089431148,
+        "afterMicrosecondsPerSample": 42.0946520325201,
+        "addedMicrosecondsPerSample": 19.565508943088957
+      }
+    },
+    "freePoseGeneration": {
+      "samples": 1089,
+      "beforeMedianMs": 5.459396000000197,
+      "afterMedianMs": 4.892853999999716,
+      "relativeChangePercent": -10.377375079596007,
+      "beforeMicrosecondsPerSample": 5.013219467401466,
+      "afterMicrosecondsPerSample": 4.492978879705891,
+      "addedMicrosecondsPerSample": -0.5202405876955752
+    },
+    "interpretation": "Five warm alternating pairs on one cloud CPU after all validation/render jobs exited. Physics/free small changes have overlapping ranges and are not claimed as speedups. Held visual work increases materially as a percentage of a small stage. Separate stage medians cannot be summed into a frame rate. GPU uploads, phones, frame pacing and thermal behavior are unmeasured."
+  },
+  "assetBudget": {
+    "keeper": {
+      "bytes": 449480,
+      "triangles": 17954
+    },
+    "striker": {
+      "bytes": 446784,
+      "triangles": 17924
+    },
+    "runtimeBones": 24,
+    "maxWeights": 4,
+    "newDraws": 0,
+    "newTextures": 0,
+    "newMaterials": 0,
+    "changedPoseUploadBytesAtMost": 50376,
+    "note": "Same GLB bytes and buffer dimensions; new per-actor numerical finger data and changing-position/normal uploads are not free. Static scene counts exclude actual camera culling and GPU timing."
+  },
+  "receipts": {
+    "adjacent-cloth-review.json": {
+      "path": "validation/grip-recovery/adjacent-cloth-review.json",
+      "sha256": "286f6d975df5b0e0aef3e9901010657ca927a33a082aba59228767c8ffbe552e"
+    },
+    "cpu-gather.json": {
+      "path": "validation/grip-recovery/cpu-gather.json",
+      "sha256": "6e6e28b4e7307e13947ab302ed1675b69a5a83b44612fd3a04058a7abb5227b9"
+    },
+    "cpu-physics.json": {
+      "path": "validation/grip-recovery/cpu-physics.json",
+      "sha256": "a5d26cbd384a5a9690dfa6b648c91100d03ec56ed7513696b914a4b4664229e0"
+    },
+    "cpu-visual.json": {
+      "path": "validation/grip-recovery/cpu-visual.json",
+      "sha256": "00605ded68fedc29b53277bc813446152ef8633a94e45057d7971fb67c5df94d"
+    },
+    "finger-summary.json": {
+      "path": "validation/grip-recovery/finger-summary.json",
+      "sha256": "2666f72485383707a36b07b071d6f2af02d661878b1a2b14732110bcc7212693"
+    },
+    "free-support-summary.json": {
+      "path": "validation/grip-recovery/free-support-summary.json",
+      "sha256": "14e5e2d0d96e3fe7dc78ffca43341cef4ed18eb99ce17c3d203d707be219aa9d"
+    },
+    "recovery-summary.json": {
+      "path": "validation/grip-recovery/recovery-summary.json",
+      "sha256": "f1e3a42ec742187ca26b75437ec183dbd9c709804966563661a4c518d8bbd3ce"
+    },
+    "render-budget.json": {
+      "path": "validation/grip-recovery/render-budget.json",
+      "sha256": "49c16e609615f882fd116a12881c45ae01b2bb79c4c8b0ccbc435aa6828e466e"
+    },
+    "union-summary.json": {
+      "path": "validation/grip-recovery/union-summary.json",
+      "sha256": "58b5a0b103ac7a0dfa5493b5415f71c2311294d628c8d8998c8861f816f8ab8f"
+    }
+  },
+  "mediaReceipt": {
+    "path": "validation/grip-recovery-media.json",
+    "sha256": "53f6a42a3e8a152a9299262bcdd6f1f7aa51e7d75056c79650ef6e3895a55e2a"
+  },
+  "limitations": [
+    "Only sampled geometric constraints and critical-interval refinement are established, not global continuous collision or force balance.",
+    "Thumbs remain unarticulated; wrist cuffs, elbows and adjacent cloth seams retain stylized angularity.",
+    "Adjacent cloth maximum10.9708mm is a finite-triangle SAT measure, not whole-body penetration depth; exact same-pair increase0.3397mm was visually reviewed.",
+    "Reference-inspired procedural refinement, not newly captured goalkeeper/finger motion.",
+    "Offline Blender/CPU evidence; actual browser, phone GPU, upload cost, FPS, thermal and battery behavior were not measured."
+  ],
+  "interruptedRuns": {
+    "path": "/tmp/penalty-grip-refinement/union-initial",
+    "event": "SIGKILL and renderer exit137 during overlapping QA; kernel OOM not confirmed because cgroup counters unavailable and kernel log access denied. Completed artifacts moved from RAM-backedtmpfs to workspace disk with original symlink paths preserved. Full checks restarted and passed."
+  },
+  "testFileHashes": {
+    "tests/anatomy.test.js": "07cfa35808339468dcaa439dee170f2377f1fd375de5421862fe12bd90820d4d",
+    "tests/ball-motion.test.js": "764ba5debc5fad10bf76a8650d6f880be07f444157687bd87ccdba94d274d16b",
+    "tests/batching.test.js": "ce95109a4ccbc21e8d06dc39daf984d9d21387ff19c066eadcaaae202842cce9",
+    "tests/character-motion-quality.test.js": "a898aa5f93cf6f978b7fcc580bbcd11001cd8511a9eeddc59965474e1d6608b2",
+    "tests/character.test.js": "4458303662b1e2966359faaabfaa1fd202019b843c8e977aa0d6a61208b09dae",
+    "tests/clearance.test.js": "1c812f9001ab9ebb2509eb5beaeef95c0a9d2a4d80b4eed9403486b19bd7aff7",
+    "tests/cmu-variant.test.js": "2840bbca655c9e8a60367e2a366afa6c40459c0ee1347436516e3c107d34e44f",
+    "tests/compact-kick-integration.test.js": "490741fbf76ffa682985d1ef1d1c3eb875c377b82f1882b2db58ff3516b1dda6",
+    "tests/contact-quality-work.test.js": "82d4ca8a721ea1d77d5bee5a0862fad35b5b11df3efc7c812b0fcaecb7d36359",
+    "tests/contact-shadow.test.js": "ca45e47a51650a23861eb46a2339e8d1a9fd2c8bde7c5202110b1ac738015e1b",
+    "tests/engine.test.js": "5574e00536820558aa38f310cefd9d02a661b72cac1b2f71c0ffe466d882d5c3",
+    "tests/fixtures/keeper-gather-before-absorption.json": "3c5b3c6d88ccf05da4366ef7e07f41fed2fe42eeb928cf7cd5ac5a34787d7899",
+    "tests/fixtures/keeper-holding-contact.json": "0ce9597378b3af33d4120ca148e4a830df334d130525664116904dc769222f25",
+    "tests/fixtures/keeper-leg-crossings.json": "2559d5825e04ced92953d20919d737296c3995605c77d360c4a5f9907f6ad77a",
+    "tests/fixtures/keeper-reach-before-softening.json": "7f8bc1a295238e8c59affecc87c90c7d85904538ae0d68a1f9c8753e4b59174e",
+    "tests/fixtures/keeper-shoulder-crossings.json": "1fbc5791da24bb46d0b1b2589569e4422f16bdf2b3668b28dbbcad467bd3bb51",
+    "tests/game-character-loading.test.js": "b624efec7834292b352f1aa7a555a3763ba8150b78409b06d7225780e151a826",
+    "tests/game-character.test.js": "a8da5721bf01766f4ebb31082e52a0d9fd9ef3fdb4dd8e46639afcb8a3e20662",
+    "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644",
+    "tests/helpers/main-harness.js": "c359c50e45fa1f694ba65f32b5c62e534a36273f0b678ecda3a215b779905537",
+    "tests/helpers/recovery-baseline.js": "d6a55fd48f84d49eba9ea1ce3bb924c424e8383747de4597c1447d509e884251",
+    "tests/home-animation.test.js": "a360bb5e13a6655e7d02f89e2eeb376e053e878dcad840e1b3902b063f938dd3",
+    "tests/keeper-capture-preview.test.js": "554b0f83b25cd1175fdc30e5c11e890f646a9d84f50a392454e6a61715d00a35",
+    "tests/keeper-contact.test.js": "019bd6610b865f76291913de095d9c4871c90fd0ce59e9235a7bc4628d9eb399",
+    "tests/keeper-finger-grip.test.js": "f602bddd339deff1207d0c5b76910cc486c14c18d0dc1633d49ae444419b9480",
+    "tests/keeper-gather-softening.test.js": "ff101987cf700c23f169221e7e43fae1353e3e2eadd25ca232f5e0f01185a127",
+    "tests/keeper-gather.test.js": "b098772e18455a210210df10b30718e4b233e0d609ddff2a199c5b6fafd1dd53",
+    "tests/keeper-grip-metadata.test.js": "30f345a975eafde2d566ee86141e67c5f07581367707f2e14ea60c304e102fd1",
+    "tests/keeper-hand-frame-covariance.test.js": "55d0d5f14e84899f2fa42bb834e332a555f47e99326f9ed1908935a96f228f32",
+    "tests/keeper-prototype.test.js": "77fcf60c3dfde1887a8ed50d52f714824d0ca118d47601b78103b0fe1a00b8f2",
+    "tests/keeper-recovery-transfer.test.js": "6f88c840b18c9543d2c19c03e8f681611dca479219c591b9133d7d372292da78",
+    "tests/keeper-result-recovery.test.js": "7750900a01660e6fd850edcc7db61198173698f28995e8a121307862383e590c",
+    "tests/keeper-runtime-reuse.test.js": "007a730f813756b6f3359b40f4e42219fe6c6ac3fa1ffda9a9755f616bd32366",
+    "tests/keeper-runup-preparation.test.js": "b4f813f50164c13f3e2bf643b1f371c015eb59b3b37bb0eb6a98140b1ef65a32",
+    "tests/keeper-shoulder.test.js": "4db280f6079ce881c87fa0a9f121e7fd2b441663de610bfa8c4872cc9c3ef168",
+    "tests/keeper-side-grasp.test.js": "6852eeefcb1847332757ed7b166c049d9feefd12f751477dfc069e4a1afe81a5",
+    "tests/keeper-soft-motion.test.js": "81a42df28e6ce69b24832b70daa55ee2e3b71a28da049f04471b24f2081d225c",
+    "tests/keeper-torso.test.js": "132d9eb2d722134b37ea3ef734a69ac7e1c3102825d608b9b25dc69f1bef6cc3",
+    "tests/keeper.test.js": "68faf969664122c00ca92ea99352791fd67ed6e233cb89eaba7f898f7011c46d",
+    "tests/mobile-lifecycle-round.test.js": "52ed64b89ebe3a5399eecf73ae1858cc3eec3bcadacc647922a5465037f52799",
+    "tests/mocap-inventory.test.js": "a0ae2d56195c335f50867bf00cc61dfebacee10ba15ec50fcbe151f22527ae6e",
+    "tests/mocap-prototype.test.js": "11e083a61861b77ec0cf15d2d7349c0c11eb5f6b646a6fdb2418f3053e2e1c70",
+    "tests/model-refinement.test.js": "acb04b3deaabe85953907efd2e746d0a7e6edcb2b12e74d2087f7af97b929c90",
+    "tests/motion-boundary-round.test.js": "2529479bbb232dfbe6a0465ff0a91f9a567facf3d57b6da6c03e2b2ead74fe1d",
+    "tests/motion-lab-state.test.js": "4c3066b16ce6ed20346270c6663165ed457452e759258c35bdc858953cd464c9",
+    "tests/motion-lab-ui.test.js": "84a2a228bb2015d613b87a6e44b995ed4ca584e60a6042dfd31b4c54f84e9034",
+    "tests/net-motion.test.js": "96550f00750a24876e06fa99b6b5b52ae15c8fdfbca67a75465caebf002dee7b",
+    "tests/other-motion.test.js": "6faedbe08a4b12129c41fc0e095e98d5f9c403e37b60f48184b28391466fcf3a",
+    "tests/physics-invariants.test.js": "80165770e37f212592bc5765321cf32eb2d6a1a384450fe6cf4909d405f5f658",
+    "tests/pitch-clarity.test.js": "b86f436396efafc7c7756b3b41baa1fd547e5612c49ad2f83039b25d32cff2a6",
+    "tests/portrait-ready-framing.test.js": "829a6a7fb6a89e9121e9420e10c7c64b796ec9d09936c64c9ba5861cb5e88616",
+    "tests/qa-export.test.js": "23267d4acd0847b36cb0985f7a59c65984094b01fa56b815871f49aed0f9a482",
+    "tests/rebound-contact-order.test.js": "b3297ef92cb0d4ab76936c3e78c44e409ac74d63a0e73b9824fb40891e8a9316",
+    "tests/result-clock-handover.test.js": "01ffbab54e29b20578b6107060e0e88fca1e2e819d0e8c239f0e77899a429003",
+    "tests/round-camera-handover.test.js": "bc67a9220698d1ba14de8abb874370e34f657049f1c5f24b4c5f18fe8cffc8b5",
+    "tests/rules-audit.test.js": "24754d4d4289d9652f08d903dbd80ed403cafb4fa815b64effd3ecc57cd6b6e1",
+    "tests/runup-onset.test.js": "e170af29409e88fec11ae5958da694b718b20f8edd4e793e4267040699957ec4",
+    "tests/scene-result-recovery.test.js": "e477bc0ebbaf3c0b75521ea9a1780ed5dc39643640656bfeb45ec50bdd3ea6ef",
+    "tests/shot-input-state.test.js": "76a8a60eed351b4cee99bd434af93f2ee429fe3e66383911dcda6334b8d9c7bb",
+    "tests/shot-types-audit.test.js": "f2cf7c0d3370e330d79ed902fb1c82df8f0df6c0fb614249336cf22927c9f6b8",
+    "tests/shoulder-root-frame.test.js": "5b023f2a5a3c287cf0b92016df9f644d339c0a6e4a55aeae78584e5c9de73ce6",
+    "tests/stadium-feedback.test.js": "7506e3e7c28d4d92fec12e535f70c40ed17053b5e7795692dc78033ab8b1549e",
+    "tests/striker-arm-clearance.test.js": "20e741e23b2c489828fb486571b948793ace355ccafbf07c17282e4df4ba7426",
+    "tests/striker-clearance-audit.test.js": "b214680964092cf4a0e391bd94970ad79c7844ac7a4a96c13ce40632a5bbb5b0",
+    "tests/striker-recovery.test.js": "d1f8e189d51d7d853f8cce458c01bf538002a6565169a9c629ac9e472c17d4c2",
+    "tests/striker-runtime-cost.test.js": "94f8b886414c8ba0a5c05b419e880ff51590453a9cebf87c6b0dccd09e9f26d0",
+    "tests/striker-runup-style.test.js": "967900a1649023ff97a7588376c84491311d52b0f9d55d7183ae389e6c589cea",
+    "tests/striker-shoulder-support.test.js": "27c18ba2dc5998f43959d0d2d5f373ef60575297fb9cc64210023fe8059ff5c8",
+    "tests/ten-round-input.test.js": "323fa9733ead926ee76854c2984656645134bc2af7069788a18784e84ede824a",
+    "tests/ten-round-match-restore.test.js": "1c3402b34434808c46f27c7456332315a204a92e55b711d341fa979bfd0f2b8c",
+    "tests/ten-round-striker-cycle.test.js": "b722d0e7c01549038cb186af05eb1813a8b05301012b99f05f8e5ac9014dbda2"
+  },
+  "finalQaToolHashes": {
+    "tools/qa/benchmark-grip-runtime.mjs": "26d9236577747230619f82bd6d9f6924109a6572af628c99055e6ab117faf1fc",
+    "tools/qa/audit-finger-grip.mjs": "c4ac3bcbf3c200bb11979f4acb169a4744262392092b70810a8a2455feeb16c0",
+    "tools/qa/audit-recovery-transfer.mjs": "d816234fea22022a11be40f878096a14c956d191812d5ec35a0730bc4dd2d23b",
+    "tools/qa/run-union-gates.mjs": "3bd1e5fc7c3886a522e65bc3a4feb86e6a92fd37f08dc0628079e78f97b57c2e"
+  },
+  "residualReview": {
+    "accepted": "Parent reviewed matched clean front/rear/oblique images and accepted the bounded adjacent-cloth residual",
+    "samePairBeforeMm": 10.631174803586552,
+    "samePairAfterMm": 10.970835602884256,
+    "protectedCategoriesRemainZero": true
+  }
+}

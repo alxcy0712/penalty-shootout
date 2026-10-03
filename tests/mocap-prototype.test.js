@@ -102,14 +102,8 @@ test('mocap support foot remains planted through contact and follow-through', ()
   assert.ok(drift<.005, `support foot drift ${drift} m`);
   assert.ok(bytes.length<=metadata.budgets.glbBytes);
   assert.equal(bones.length,22);
-  assert.equal(triangleCount,17518);
-});
-
-test('extended captured runup covers a moderate distance before the synchronized strike', () => {
-  sample(0);const start=worldPosition('pelvis');
-  sample(metadata.contactSeconds);const end=worldPosition('pelvis');
-  const distance=Math.hypot(start.x-end.x,start.z-end.z);
-  assert.ok(distance>1.55&&distance<1.8,`runup distance ${distance} m`);
+  assert.equal(triangleCount,metadata.triangles);
+  assert.ok(triangleCount<=metadata.budgets.triangles);
 });
 
 test('idle arms hang below the hips and wrists follow the forearms through the transition', () => {

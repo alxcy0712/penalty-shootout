@@ -79,7 +79,12 @@ function bendLimb(object,root,joint,end,pose,sign){
     if(!leg){const inset=(1-THREE.MathUtils.smoothstep(d,0,.13))*(1-shoulderSupport);limbCenter.addScaledVector(pose.right,-sign*.075*inset).addScaledVector(pose.up,-.022*inset);}
     limbAcross.copy(bendPlane);limbNormal.crossVectors(limbTangent,limbAcross).normalize();
     const radius=profile[row]+.046*shoulderSupport*(1-THREE.MathUtils.smoothstep(d,0,.12));
-    for(let side=0;side<=sides;side++){const c=ringCos[side]*radius,s=ringSin[side]*(ringSin[side]<0?Math.min(radius*.92,innerRadius):radius*.92),i=(row*(sides+1)+side)*3;positions[i]=limbCenter.x+limbAcross.x*c+limbNormal.x*s;positions[i+1]=Math.max(-.014,limbCenter.y+limbAcross.y*c+limbNormal.y*s);positions[i+2]=limbCenter.z+limbAcross.z*c+limbNormal.z*s;}
+    // The fallback has a slimmer shoulder than the shipped skin. Let only the
+    // lower sleeve pad meet the turf at a side-lying contact; keep its width,
+    // joint positions and upper silhouette instead of enlarging the whole arm.
+    const verticalRadius=Math.hypot(limbAcross.y*radius,limbNormal.y*radius*.92);
+    const pad=Math.max(0,Math.min(.060*shoulderSupport*(1-THREE.MathUtils.smoothstep(d,0,.12)),limbCenter.y-verticalRadius+.018));
+    for(let side=0;side<=sides;side++){const c=ringCos[side]*radius,s=ringSin[side]*(ringSin[side]<0?Math.min(radius*.92,innerRadius):radius*.92),i=(row*(sides+1)+side)*3,vertical=limbAcross.y*c+limbNormal.y*s;positions[i]=limbCenter.x+limbAcross.x*c+limbNormal.x*s;positions[i+1]=Math.max(-.014,limbCenter.y+vertical-pad*Math.max(0,-vertical/Math.max(.001,verticalRadius)));positions[i+2]=limbCenter.z+limbAcross.z*c+limbNormal.z*s;}
   }
   attr.needsUpdate=true;updateLimbNormals(object.geometry);
 }
@@ -193,7 +198,8 @@ export class Player {
       // Wrist dorsiflexion flattens the palm as it becomes a ground support.
       const support=1-THREE.MathUtils.smoothstep(p.hands[i].y,.10,.24);
       if(support>0){const fingers=set(this.tempA,p.forward).setY(0).normalize(),normal=this.yAxis,across=this.tempB.crossVectors(fingers,normal);const planted=this.tempRotation.setFromRotationMatrix(this.tempMatrix.makeBasis(across,fingers,normal));this.hands[i].quaternion.slerp(planted,support);}
-      set(this.feet[i].position,p.feet[i]);const tilt=THREE.MathUtils.smoothstep(p.feet[i].y,.085,.19)*THREE.MathUtils.clamp(Math.atan2(p.feet[i].z-p.knees[i].z,p.knees[i].y-p.feet[i].y)*.45,-.65,.65);this.feet[i].rotation.set(tilt,p.feetYaw?.[i]??(this.gloves?Math.PI:0),-(p.roll||0)*.7);
+      const sole=THREE.MathUtils.clamp(p.torso?.[i?'soleR':'soleL']??0,0,1);
+      set(this.feet[i].position,p.feet[i]);const tilt=THREE.MathUtils.smoothstep(p.feet[i].y,.085,.19)*THREE.MathUtils.clamp(Math.atan2(p.feet[i].z-p.knees[i].z,p.knees[i].y-p.feet[i].y)*.45,-.65,.65);this.feet[i].rotation.set(tilt,p.feetYaw?.[i]??(this.gloves?Math.PI:0),-(p.roll||0)*.7*(1-sole));
       const soleOffset=supportedSoleOffset(p.feet[i].y,this.feet[i].quaternion,.025*(1-THREE.MathUtils.smoothstep(Math.abs(p.roll||0),0,.35)));this.tempA.set(0,-soleOffset,0).applyQuaternion(this.feet[i].quaternion);this.feet[i].position.add(this.tempA);
     }
   }

@@ -1,0 +1,9 @@
+{
+  "candidateSha256": "5594cc6b14fe73fe9f0afa55c4c76a85f17c44516aed1048b54d2e17bbf39172",
+  "finalSha256": "1c8ccc440c07643b455f1c0300fe5b17ec243c37f2b0584b1d34e47f9f2f260a",
+  "captures": 40,
+  "hz": 240,
+  "samples": 26920,
+  "equal": true,
+  "method": "Strict deep equality of complete keeperGather outputs at every sample, using identical source/current poses and physical capture point."
+}

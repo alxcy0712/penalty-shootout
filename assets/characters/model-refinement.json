@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-01",
+  "baseCommit": "e8ce60085eb6d3f000f729dfe80db7d1cd8ea4d3",
+  "models": {
+    "keeper-prototype": {
+      "source": "keeper-prototype.glb",
+      "sourceSha256": "02a7b6d6f6d368bba8913814e4639f3343e77d981222414f9c97b7db54e107f1",
+      "changedVertices": {
+        "Skin.001": 1435,
+        "Kit": 772,
+        "Shorts": 470,
+        "Socks": 0,
+        "Boots": 882,
+        "Eyes": 556
+      },
+      "maximumDisplacementMm": {
+        "Skin.001": 7.574696351565546,
+        "Kit": 35.37430507615402,
+        "Shorts": 10.615991700503367,
+        "Socks": 0,
+        "Boots": 7.934016002131516,
+        "Eyes": 5.56669352328891
+      },
+      "preserved": "Original bone nodes, inverse-bind matrices, animations, material names and texture bytes preserved. Face proportions refined consistently with eyes. Palms and shoe-upper positions protected and checked separately. Neck material reassignment changes Skin/Kit triangle indexing; trim and studs appended.",
+      "refinements": [
+        "Athletic jersey silhouette: filled waist hollow and softened breastplate; topology-preserving shirt-front fairing: softer abdominal/pectoral grooves, protected shoulder/arm/hem boundaries",
+        "Looser shorts mid-panel volume, tapered to unchanged leg/waist seams",
+        "Head and crown proportions refined together with eye geometry; original facial detail and texture layout retained",
+        "Modeled jersey/sleeve/shorts hems and keeper glove cuffs; vertex-colored cleat panels and glove backhand/finger segments, with no new textures or materials",
+        "Shallow crew-neck cut and raised dark binding, reusing existing kit/shorts material palette",
+        "Twelve low-profile modeled cleat studs; original shoe upper/contact vertices retained and animated floor clearance audited"
+      ],
+      "addedGarmentTrimTriangles": 220,
+      "materialMovedTriangles": 197,
+      "addedNeckCutVertices": 52,
+      "materialMovedVertices": 174,
+      "addedCollarTriangles": 60,
+      "addedStudTriangles": 84,
+      "encodingMaxPositionErrorMm": 0.00762939453125,
+      "encodingMaxNormalComponentError": 0.00048828125,
+      "glbBytes": 441536,
+      "sourceBytes": 396944,
+      "triangles": 17954,
+      "bones": 22,
+      "maxSkinInfluences": 4,
+      "sha256": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+      "previousSha256": "29b228bb40af114dd6cb427312102bd772fd1951c8754a27d87d718377e5e31a",
+      "bytes": 449480
+    },
+    "striker-mocap": {
+      "source": "striker-mocap.glb",
+      "sourceSha256": "6f8e7edba2644c3e42976d1f9cc6b76bb3015f7856aba94755cba03b392e2a24",
+      "changedVertices": {
+        "Skin.001": 1435,
+        "Kit": 144,
+        "Shorts": 470,
+        "Socks": 0,
+        "Boots": 882,
+        "Eyes": 556
+      },
+      "maximumDisplacementMm": {
+        "Skin.001": 7.574696351565546,
+        "Kit": 3.8706229680350033,
+        "Shorts": 10.615991700503367,
+        "Socks": 0,
+        "Boots": 7.934016002131516,
+        "Eyes": 5.56669352328891
+      },
+      "preserved": "Original bone nodes, inverse-bind matrices, animations, material names and texture bytes preserved. Face proportions refined consistently with eyes. Palms and shoe-upper positions protected and checked separately. Neck material reassignment changes Skin/Kit triangle indexing; trim and studs appended.",
+      "refinements": [
+        "Athletic jersey silhouette: filled waist hollow and softened breastplate; topology-preserving shirt-front fairing: softer abdominal/pectoral grooves, protected shoulder/arm/hem boundaries",
+        "Looser shorts mid-panel volume, tapered to unchanged leg/waist seams",
+        "Head and crown proportions refined together with eye geometry; original facial detail and texture layout retained",
+        "Modeled jersey/sleeve/shorts hems and keeper glove cuffs; vertex-colored cleat panels and glove backhand/finger segments, with no new textures or materials",
+        "Shallow crew-neck cut and raised dark binding, reusing existing kit/shorts material palette",
+        "Twelve low-profile modeled cleat studs; original shoe upper/contact vertices retained and animated floor clearance audited"
+      ],
+      "addedGarmentTrimTriangles": 190,
+      "materialMovedTriangles": 197,
+      "addedNeckCutVertices": 52,
+      "materialMovedVertices": 174,
+      "addedCollarTriangles": 60,
+      "addedStudTriangles": 84,
+      "encodingMaxPositionErrorMm": 0.00762939453125,
+      "encodingMaxNormalComponentError": 0.00048828125,
+      "glbBytes": 441568,
+      "sourceBytes": 407288,
+      "triangles": 17924,
+      "bones": 22,
+      "maxSkinInfluences": 4,
+      "sha256": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+      "previousSha256": "aad3a3782a1e806b8fd596e6b9eeb62e47ebe4d729bb421d0ec4631a6fb76996",
+      "bytes": 446784
+    }
+  },
+  "latestRefinement": "../../validation/summary-production-models-2026-10-02.json",
+  "historicalGeometryStatisticsNote": "Displacement and original glbBytes statistics describe v17. The v18 body/cloth follow-up is in body-cloth-refinement.json; current asset identities and v19 refinement are in latestRefinement."
+}

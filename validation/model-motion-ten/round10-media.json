@@ -1,0 +1,1771 @@
+{
+  "status": "complete",
+  "scope": {
+    "cases": 4,
+    "pairedExports": 8,
+    "sourceFrames": 584,
+    "timeSeconds": [
+      0,
+      3
+    ],
+    "fps": 24,
+    "normalVideoFrames": 73,
+    "quarterVideoFrames": 292
+  },
+  "baselineCommit": "42f54ba3a48647cd0a529e612b0c6f3fb3d0e6c1",
+  "sourceTreeHashes": {
+    "before": "91cbb4a6d05b2ff38390066a01439c467a999762bf6459ddc53b25d7ec5e2952",
+    "after": "176d81601dcd07a4c9e345709c1238f4d5da56dd1c6e294c8112332fb296370c"
+  },
+  "sourceHashes": {
+    "before": {
+      "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+      "package.json": "c688a6b25afdcaa31049d816079eef086fcfceaa2fdae176a606817fb62038e3",
+      "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+      "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+      "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+      "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+      "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+      "src/engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+      "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+      "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+      "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+      "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+      "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+      "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+      "src/keeper-finger-grip.js": "75abbe4c1b87c805c0e366fd95b051b416ed2ba587780a9782aaa656cd825dec",
+      "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+      "src/keeper-result-recovery.js": "3d038559765b4f6570786fd8202fee69c9c031a5cc741127c6704eff41d0b177",
+      "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+      "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+      "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+      "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+      "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+      "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+      "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+      "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+      "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+      "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+      "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+      "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+      "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+      "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+      "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+      "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+      "tools/qa/export-character-poses.mjs": "0789c115ae7fd907c28d054d2a9f9697523cf596a912fe13727a1f95cbd04912",
+      "tools/qa/render-character-poses.py": "1e130ecd98097411aa7109b833ba155f11ed3b12454434eac3e75afda3031ab5",
+      "tools/qa/render-refined-poses.py": "0a5f86a76ece19ff71ebcd32365f92f92bb5ac5fe5189a88ecf7170a5e2d2a3f"
+    },
+    "after": {
+      "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+      "package.json": "c688a6b25afdcaa31049d816079eef086fcfceaa2fdae176a606817fb62038e3",
+      "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+      "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+      "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+      "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+      "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+      "src/engine.js": "6dd7c2a974c616c65331fd634fd7aeb06119b0ced1f800087daba029dd82c1ed",
+      "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+      "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+      "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+      "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+      "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+      "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+      "src/keeper-finger-grip.js": "64d8528fc10df5f4490b10817bb461efc54565f30c18ccad5acda0e7ff63a450",
+      "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+      "src/keeper-result-recovery.js": "825707fadd77f7fed8046e68e43f946c96795b9cf72f6baf6cde4f3c82c6bae1",
+      "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+      "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+      "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+      "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+      "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+      "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+      "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+      "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+      "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+      "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+      "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+      "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+      "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+      "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+      "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+      "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+      "tools/qa/export-character-poses.mjs": "0789c115ae7fd907c28d054d2a9f9697523cf596a912fe13727a1f95cbd04912",
+      "tools/qa/render-character-poses.py": "1e130ecd98097411aa7109b833ba155f11ed3b12454434eac3e75afda3031ab5",
+      "tools/qa/render-refined-poses.py": "0a5f86a76ece19ff71ebcd32365f92f92bb5ac5fe5189a88ecf7170a5e2d2a3f"
+    }
+  },
+  "cameras": {
+    "b9a0cef8a685d5a5-full": {
+      "path": "cameras/b9a0cef8a685d5a5-full.json",
+      "sha256": "be02c79721dd7c4c8581908cff6ad425034a9adc4cce6bea987de0bdfbcfd264",
+      "bounds": {
+        "min": [
+          -0.5684293294692699,
+          -0.05591599915430816,
+          5.9604643443123e-10
+        ],
+        "max": [
+          0.29607375382401596,
+          0.7768997946324351,
+          1.6632298231124878
+        ]
+      },
+      "width": 640,
+      "height": 720,
+      "angle": 25.0,
+      "views": 1
+    },
+    "b9a0cef8a685d5a5-hands-00": {
+      "path": "cameras/b9a0cef8a685d5a5-hands-00.json",
+      "sha256": "33950a4f260618685104b9864ad68bc6934c820851f10d90860569f56fb2190f",
+      "bounds": {
+        "min": [
+          -0.5517268342145504,
+          0.11124608017093415,
+          -0.028647700629526734
+        ],
+        "max": [
+          0.20893476054763258,
+          0.840480084534355,
+          0.41137072541704645
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "b9a0cef8a685d5a5-hands-11": {
+      "path": "cameras/b9a0cef8a685d5a5-hands-11.json",
+      "sha256": "de3e6236ef95512d4e0bf39d17784a4fe9147a68a4f4297544779e87293e0cf0",
+      "bounds": {
+        "min": [
+          -0.6008845179321564,
+          0.10773027192435855,
+          0.16495891835848667
+        ],
+        "max": [
+          0.24341153025079712,
+          0.812526529860793,
+          0.6050101809863185
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "b9a0cef8a685d5a5-hands-24": {
+      "path": "cameras/b9a0cef8a685d5a5-hands-24.json",
+      "sha256": "6dfb272ba2688ab69fa8a6ed3fb4b300d8a5b3b2a6d3a3aeeebd01def9eeb897",
+      "bounds": {
+        "min": [
+          -0.6199274653177408,
+          0.08820965992740816,
+          0.19834065622164623
+        ],
+        "max": [
+          0.25739752447803393,
+          0.833896487548482,
+          0.9873995521668657
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "b9a0cef8a685d5a5-hands-36": {
+      "path": "cameras/b9a0cef8a685d5a5-hands-36.json",
+      "sha256": "d6ff3ee946df751ade6f8a5ad0f3d5ef7e582ca99ed3d324cc82d74d2080c91e",
+      "bounds": {
+        "min": [
+          -0.6199274653177408,
+          0.05229522205173705,
+          0.19834065622164623
+        ],
+        "max": [
+          0.26977382395261895,
+          0.833896487548482,
+          1.2990840448534684
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "b9a0cef8a685d5a5-hands-72": {
+      "path": "cameras/b9a0cef8a685d5a5-hands-72.json",
+      "sha256": "7bbb8d4bed419dcf50e83d84efda8a2883d5aa13225fb718311faa4a8eac2742",
+      "bounds": {
+        "min": [
+          -0.6199274653177408,
+          0.05225900696810076,
+          0.19834065622164623
+        ],
+        "max": [
+          0.26978363241963993,
+          0.833896487548482,
+          1.2993593577377975
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "b9a0cef8a685d5a5-feet-00": {
+      "path": "cameras/b9a0cef8a685d5a5-feet-00.json",
+      "sha256": "6d614dfe146b83d81ced3b497e095a1766af76faec375c66aaffc3edfaffbf08",
+      "bounds": {
+        "min": [
+          -0.5723838212819743,
+          -0.2473212166896889,
+          -0.12500000000000003
+        ],
+        "max": [
+          0.5056942431886006,
+          0.5234097552502002,
+          0.275
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "b9a0cef8a685d5a5-feet-11": {
+      "path": "cameras/b9a0cef8a685d5a5-feet-11.json",
+      "sha256": "6d614dfe146b83d81ced3b497e095a1766af76faec375c66aaffc3edfaffbf08",
+      "bounds": {
+        "min": [
+          -0.5723838212819743,
+          -0.2473212166896889,
+          -0.12500000000000006
+        ],
+        "max": [
+          0.5056942431886006,
+          0.5234097552502002,
+          0.275
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "b9a0cef8a685d5a5-feet-24": {
+      "path": "cameras/b9a0cef8a685d5a5-feet-24.json",
+      "sha256": "6d614dfe146b83d81ced3b497e095a1766af76faec375c66aaffc3edfaffbf08",
+      "bounds": {
+        "min": [
+          -0.5723838212819743,
+          -0.2473212166896889,
+          -0.1250000000000001
+        ],
+        "max": [
+          0.5056942431886006,
+          0.5234097552502002,
+          0.275
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "b9a0cef8a685d5a5-feet-36": {
+      "path": "cameras/b9a0cef8a685d5a5-feet-36.json",
+      "sha256": "6d614dfe146b83d81ced3b497e095a1766af76faec375c66aaffc3edfaffbf08",
+      "bounds": {
+        "min": [
+          -0.5723838212819743,
+          -0.2473212166896889,
+          -0.12500000000000006
+        ],
+        "max": [
+          0.5056942431886006,
+          0.5234097552502002,
+          0.275
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "b9a0cef8a685d5a5-feet-72": {
+      "path": "cameras/b9a0cef8a685d5a5-feet-72.json",
+      "sha256": "6d614dfe146b83d81ced3b497e095a1766af76faec375c66aaffc3edfaffbf08",
+      "bounds": {
+        "min": [
+          -0.5723838212819743,
+          -0.2473212166896889,
+          -0.12500000000000006
+        ],
+        "max": [
+          0.5056942431886006,
+          0.5234097552502002,
+          0.275
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "75659e513c3ff221-full": {
+      "path": "cameras/75659e513c3ff221-full.json",
+      "sha256": "a3fe939f24f752b98b53102c904bc3d12ac2152cd34b4a9c646ab96517a1fca7",
+      "bounds": {
+        "min": [
+          -0.5684293294692699,
+          -0.07032639416380652,
+          5.9604643443123e-10
+        ],
+        "max": [
+          0.293350796151003,
+          0.7768997946324351,
+          1.6632298231124878
+        ]
+      },
+      "width": 640,
+      "height": 720,
+      "angle": 25.0,
+      "views": 1
+    },
+    "75659e513c3ff221-hands-00": {
+      "path": "cameras/75659e513c3ff221-hands-00.json",
+      "sha256": "33950a4f260618685104b9864ad68bc6934c820851f10d90860569f56fb2190f",
+      "bounds": {
+        "min": [
+          -0.5517268342145504,
+          0.11124608017093415,
+          -0.028647700629526734
+        ],
+        "max": [
+          0.20893476054763258,
+          0.840480084534355,
+          0.41137072541704645
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "75659e513c3ff221-hands-11": {
+      "path": "cameras/75659e513c3ff221-hands-11.json",
+      "sha256": "de3e6236ef95512d4e0bf39d17784a4fe9147a68a4f4297544779e87293e0cf0",
+      "bounds": {
+        "min": [
+          -0.6008845179321564,
+          0.10773027192435855,
+          0.16495891835848667
+        ],
+        "max": [
+          0.24341153025079712,
+          0.812526529860793,
+          0.6050101809863185
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "75659e513c3ff221-hands-24": {
+      "path": "cameras/75659e513c3ff221-hands-24.json",
+      "sha256": "6dfb272ba2688ab69fa8a6ed3fb4b300d8a5b3b2a6d3a3aeeebd01def9eeb897",
+      "bounds": {
+        "min": [
+          -0.6199274653177408,
+          0.08820965992740816,
+          0.19834065622164623
+        ],
+        "max": [
+          0.25739752447803393,
+          0.833896487548482,
+          0.9873995521668657
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "75659e513c3ff221-hands-36": {
+      "path": "cameras/75659e513c3ff221-hands-36.json",
+      "sha256": "d6ff3ee946df751ade6f8a5ad0f3d5ef7e582ca99ed3d324cc82d74d2080c91e",
+      "bounds": {
+        "min": [
+          -0.6199274653177408,
+          0.05229522205173705,
+          0.19834065622164623
+        ],
+        "max": [
+          0.26977382395261895,
+          0.833896487548482,
+          1.2990840448534684
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "75659e513c3ff221-hands-72": {
+      "path": "cameras/75659e513c3ff221-hands-72.json",
+      "sha256": "7bbb8d4bed419dcf50e83d84efda8a2883d5aa13225fb718311faa4a8eac2742",
+      "bounds": {
+        "min": [
+          -0.6199274653177408,
+          0.05225900696810076,
+          0.19834065622164623
+        ],
+        "max": [
+          0.26978363241963993,
+          0.833896487548482,
+          1.2993593577377975
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "75659e513c3ff221-feet-00": {
+      "path": "cameras/75659e513c3ff221-feet-00.json",
+      "sha256": "aa10f90cc016208bbf7add6326faa5bcc34175a1c0189957c9fb9d18352a200c",
+      "bounds": {
+        "min": [
+          -0.5696608485443292,
+          -0.2617316213051592,
+          -0.125
+        ],
+        "max": [
+          0.5029712704509554,
+          0.5378201598656706,
+          0.275
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "75659e513c3ff221-feet-11": {
+      "path": "cameras/75659e513c3ff221-feet-11.json",
+      "sha256": "aa10f90cc016208bbf7add6326faa5bcc34175a1c0189957c9fb9d18352a200c",
+      "bounds": {
+        "min": [
+          -0.5696608485443292,
+          -0.2617316213051592,
+          -0.125
+        ],
+        "max": [
+          0.5029712704509554,
+          0.5378201598656706,
+          0.275
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "75659e513c3ff221-feet-24": {
+      "path": "cameras/75659e513c3ff221-feet-24.json",
+      "sha256": "aa10f90cc016208bbf7add6326faa5bcc34175a1c0189957c9fb9d18352a200c",
+      "bounds": {
+        "min": [
+          -0.5696608485443292,
+          -0.2617316213051592,
+          -0.125
+        ],
+        "max": [
+          0.5029712704509554,
+          0.5378201598656706,
+          0.27500000000000013
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "75659e513c3ff221-feet-36": {
+      "path": "cameras/75659e513c3ff221-feet-36.json",
+      "sha256": "aa10f90cc016208bbf7add6326faa5bcc34175a1c0189957c9fb9d18352a200c",
+      "bounds": {
+        "min": [
+          -0.5696608485443292,
+          -0.2617316213051592,
+          -0.125
+        ],
+        "max": [
+          0.5029712704509554,
+          0.5378201598656706,
+          0.2750000000000001
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "75659e513c3ff221-feet-72": {
+      "path": "cameras/75659e513c3ff221-feet-72.json",
+      "sha256": "aa10f90cc016208bbf7add6326faa5bcc34175a1c0189957c9fb9d18352a200c",
+      "bounds": {
+        "min": [
+          -0.5696608485443292,
+          -0.2617316213051592,
+          -0.125
+        ],
+        "max": [
+          0.5029712704509554,
+          0.5378201598656706,
+          0.2750000000000001
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "e2b3a4ee3baf23ea-full": {
+      "path": "cameras/e2b3a4ee3baf23ea-full.json",
+      "sha256": "11f47d36096dbff6d2285d7f002b9c0f4e1863fed8ab87e1767f29062b2d042f",
+      "bounds": {
+        "min": [
+          1.5848499381890782,
+          1.5195222500662076,
+          0.008551756851375103
+        ],
+        "max": [
+          2.4776776270652565,
+          2.2326918370070477,
+          1.681229829788208
+        ]
+      },
+      "width": 640,
+      "height": 720,
+      "angle": 25.0,
+      "views": 1
+    },
+    "e2b3a4ee3baf23ea-hands-00": {
+      "path": "cameras/e2b3a4ee3baf23ea-hands-00.json",
+      "sha256": "ded26c5febc88e6ca18e611d768bdc3ffa4e3aa4c1fa9c10a3d02abac11f1486",
+      "bounds": {
+        "min": [
+          1.3447548143747443,
+          1.5082124279841114,
+          0.8300000000000001
+        ],
+        "max": [
+          2.5638977267624337,
+          2.388772672664635,
+          1.27
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "e2b3a4ee3baf23ea-hands-11": {
+      "path": "cameras/e2b3a4ee3baf23ea-hands-11.json",
+      "sha256": "ded26c5febc88e6ca18e611d768bdc3ffa4e3aa4c1fa9c10a3d02abac11f1486",
+      "bounds": {
+        "min": [
+          1.3447548143747443,
+          1.5082124279841114,
+          0.8300000000000001
+        ],
+        "max": [
+          2.5638977267624337,
+          2.388772672664635,
+          1.27
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "e2b3a4ee3baf23ea-hands-24": {
+      "path": "cameras/e2b3a4ee3baf23ea-hands-24.json",
+      "sha256": "ded26c5febc88e6ca18e611d768bdc3ffa4e3aa4c1fa9c10a3d02abac11f1486",
+      "bounds": {
+        "min": [
+          1.3447548143747443,
+          1.5082124279841114,
+          0.8300000000000001
+        ],
+        "max": [
+          2.5638977267624337,
+          2.388772672664635,
+          1.27
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "e2b3a4ee3baf23ea-hands-36": {
+      "path": "cameras/e2b3a4ee3baf23ea-hands-36.json",
+      "sha256": "ded26c5febc88e6ca18e611d768bdc3ffa4e3aa4c1fa9c10a3d02abac11f1486",
+      "bounds": {
+        "min": [
+          1.3447548143747443,
+          1.5082124279841114,
+          0.8300000000000001
+        ],
+        "max": [
+          2.5638977267624337,
+          2.388772672664635,
+          1.27
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "e2b3a4ee3baf23ea-hands-72": {
+      "path": "cameras/e2b3a4ee3baf23ea-hands-72.json",
+      "sha256": "1ab528386f7e4e049a59dd14ef0c3f093212a136093ea5729458bbd26475cd6d",
+      "bounds": {
+        "min": [
+          1.3447548143747443,
+          1.5082124279841114,
+          0.78
+        ],
+        "max": [
+          2.5638977267624337,
+          2.388772672664635,
+          1.27
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "e2b3a4ee3baf23ea-feet-00": {
+      "path": "cameras/e2b3a4ee3baf23ea-feet-00.json",
+      "sha256": "fc6e2d203d90e2f561d1ad2531c927363a62a48408e7ac5f417e5a7fcdf0cd1f",
+      "bounds": {
+        "min": [
+          1.510846167556183,
+          1.4012388256149104,
+          -0.13450000000000012
+        ],
+        "max": [
+          2.5499489478076467,
+          2.169475471700642,
+          0.2655
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "e2b3a4ee3baf23ea-feet-11": {
+      "path": "cameras/e2b3a4ee3baf23ea-feet-11.json",
+      "sha256": "fc6e2d203d90e2f561d1ad2531c927363a62a48408e7ac5f417e5a7fcdf0cd1f",
+      "bounds": {
+        "min": [
+          1.510846167556183,
+          1.4012388256149104,
+          -0.13450000000000012
+        ],
+        "max": [
+          2.5499489478076467,
+          2.169475471700642,
+          0.2655
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "e2b3a4ee3baf23ea-feet-24": {
+      "path": "cameras/e2b3a4ee3baf23ea-feet-24.json",
+      "sha256": "fc6e2d203d90e2f561d1ad2531c927363a62a48408e7ac5f417e5a7fcdf0cd1f",
+      "bounds": {
+        "min": [
+          1.510846167556183,
+          1.4012388256149104,
+          -0.13450000000000012
+        ],
+        "max": [
+          2.5499489478076467,
+          2.169475471700642,
+          0.2655
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "e2b3a4ee3baf23ea-feet-36": {
+      "path": "cameras/e2b3a4ee3baf23ea-feet-36.json",
+      "sha256": "fc6e2d203d90e2f561d1ad2531c927363a62a48408e7ac5f417e5a7fcdf0cd1f",
+      "bounds": {
+        "min": [
+          1.510846167556183,
+          1.4012388256149104,
+          -0.13450000000000012
+        ],
+        "max": [
+          2.5499489478076467,
+          2.169475471700642,
+          0.2655
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "e2b3a4ee3baf23ea-feet-72": {
+      "path": "cameras/e2b3a4ee3baf23ea-feet-72.json",
+      "sha256": "fc6e2d203d90e2f561d1ad2531c927363a62a48408e7ac5f417e5a7fcdf0cd1f",
+      "bounds": {
+        "min": [
+          1.510846167556183,
+          1.4012388256149104,
+          -0.13450000000000012
+        ],
+        "max": [
+          2.5499489478076467,
+          2.169475471700642,
+          0.2655
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "240d3fe97a8ef68f-full": {
+      "path": "cameras/240d3fe97a8ef68f-full.json",
+      "sha256": "e217adc5206a44e7fe1ee574b06b43a1f3498b7ef4eaf97def55839293da3251",
+      "bounds": {
+        "min": [
+          1.5848499381890782,
+          1.5195222500662076,
+          0.008551756851375103
+        ],
+        "max": [
+          2.4776776270652565,
+          2.2326918370070477,
+          1.681229829788208
+        ]
+      },
+      "width": 640,
+      "height": 720,
+      "angle": 25.0,
+      "views": 1
+    },
+    "240d3fe97a8ef68f-hands-00": {
+      "path": "cameras/240d3fe97a8ef68f-hands-00.json",
+      "sha256": "ded26c5febc88e6ca18e611d768bdc3ffa4e3aa4c1fa9c10a3d02abac11f1486",
+      "bounds": {
+        "min": [
+          1.3447548143747443,
+          1.5082124279841114,
+          0.8300000000000001
+        ],
+        "max": [
+          2.5638977267624337,
+          2.388772672664635,
+          1.27
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "240d3fe97a8ef68f-hands-11": {
+      "path": "cameras/240d3fe97a8ef68f-hands-11.json",
+      "sha256": "ded26c5febc88e6ca18e611d768bdc3ffa4e3aa4c1fa9c10a3d02abac11f1486",
+      "bounds": {
+        "min": [
+          1.3447548143747443,
+          1.5082124279841114,
+          0.8300000000000001
+        ],
+        "max": [
+          2.5638977267624337,
+          2.388772672664635,
+          1.27
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "240d3fe97a8ef68f-hands-24": {
+      "path": "cameras/240d3fe97a8ef68f-hands-24.json",
+      "sha256": "ded26c5febc88e6ca18e611d768bdc3ffa4e3aa4c1fa9c10a3d02abac11f1486",
+      "bounds": {
+        "min": [
+          1.3447548143747443,
+          1.5082124279841114,
+          0.8300000000000001
+        ],
+        "max": [
+          2.5638977267624337,
+          2.388772672664635,
+          1.27
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "240d3fe97a8ef68f-hands-36": {
+      "path": "cameras/240d3fe97a8ef68f-hands-36.json",
+      "sha256": "ded26c5febc88e6ca18e611d768bdc3ffa4e3aa4c1fa9c10a3d02abac11f1486",
+      "bounds": {
+        "min": [
+          1.3447548143747443,
+          1.5082124279841114,
+          0.8300000000000001
+        ],
+        "max": [
+          2.5638977267624337,
+          2.388772672664635,
+          1.27
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "240d3fe97a8ef68f-hands-72": {
+      "path": "cameras/240d3fe97a8ef68f-hands-72.json",
+      "sha256": "1ab528386f7e4e049a59dd14ef0c3f093212a136093ea5729458bbd26475cd6d",
+      "bounds": {
+        "min": [
+          1.3447548143747443,
+          1.5082124279841114,
+          0.78
+        ],
+        "max": [
+          2.5638977267624337,
+          2.388772672664635,
+          1.27
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "240d3fe97a8ef68f-feet-00": {
+      "path": "cameras/240d3fe97a8ef68f-feet-00.json",
+      "sha256": "fc6e2d203d90e2f561d1ad2531c927363a62a48408e7ac5f417e5a7fcdf0cd1f",
+      "bounds": {
+        "min": [
+          1.510846167556183,
+          1.4012388256149104,
+          -0.1345
+        ],
+        "max": [
+          2.5499489478076467,
+          2.169475471700642,
+          0.2655
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "240d3fe97a8ef68f-feet-11": {
+      "path": "cameras/240d3fe97a8ef68f-feet-11.json",
+      "sha256": "fc6e2d203d90e2f561d1ad2531c927363a62a48408e7ac5f417e5a7fcdf0cd1f",
+      "bounds": {
+        "min": [
+          1.510846167556183,
+          1.4012388256149104,
+          -0.1345
+        ],
+        "max": [
+          2.5499489478076467,
+          2.169475471700642,
+          0.2655
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "240d3fe97a8ef68f-feet-24": {
+      "path": "cameras/240d3fe97a8ef68f-feet-24.json",
+      "sha256": "fc6e2d203d90e2f561d1ad2531c927363a62a48408e7ac5f417e5a7fcdf0cd1f",
+      "bounds": {
+        "min": [
+          1.510846167556183,
+          1.4012388256149104,
+          -0.1345
+        ],
+        "max": [
+          2.5499489478076467,
+          2.169475471700642,
+          0.2655
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "240d3fe97a8ef68f-feet-36": {
+      "path": "cameras/240d3fe97a8ef68f-feet-36.json",
+      "sha256": "fc6e2d203d90e2f561d1ad2531c927363a62a48408e7ac5f417e5a7fcdf0cd1f",
+      "bounds": {
+        "min": [
+          1.510846167556183,
+          1.4012388256149104,
+          -0.1345
+        ],
+        "max": [
+          2.5499489478076467,
+          2.169475471700642,
+          0.2655
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    },
+    "240d3fe97a8ef68f-feet-72": {
+      "path": "cameras/240d3fe97a8ef68f-feet-72.json",
+      "sha256": "fc6e2d203d90e2f561d1ad2531c927363a62a48408e7ac5f417e5a7fcdf0cd1f",
+      "bounds": {
+        "min": [
+          1.510846167556183,
+          1.4012388256149104,
+          -0.1345
+        ],
+        "max": [
+          2.5499489478076467,
+          2.169475471700642,
+          0.2655
+        ]
+      },
+      "width": 640,
+      "height": 480,
+      "angle": 25.0,
+      "views": 1
+    }
+  },
+  "artifacts": {
+    "deliverables/240d3fe97a8ef68f-chronological-keys.jpg": {
+      "sha256": "a2703b78aed3a79f675a75a48d17202ae0e1171e6ad18211e70ed58f732c7b8d",
+      "bytes": 276685
+    },
+    "deliverables/240d3fe97a8ef68f-feet-details.jpg": {
+      "sha256": "10690fec40c5682e2c33e9198f436541ff83236788a70c0bc30a66c7e5ade9ba",
+      "bytes": 185434
+    },
+    "deliverables/240d3fe97a8ef68f-hands-details.jpg": {
+      "sha256": "76bfb90fd8ab28ef0f315fe0ef0c65097d2ecff388dd2120bd8ec1a6677f6447",
+      "bytes": 216574
+    },
+    "deliverables/240d3fe97a8ef68f-normal.mp4": {
+      "sha256": "2f7d52adbcae1b48cd8fdf36def7ab474d263d02a39fc8301494b30be7e58e92",
+      "bytes": 482222
+    },
+    "deliverables/240d3fe97a8ef68f-quarter-speed.mp4": {
+      "sha256": "37dfa9dcf5d0a34347ed7a4458878d94b9f3b55851a80538a0d3599f8cb686e6",
+      "bytes": 1008413
+    },
+    "deliverables/75659e513c3ff221-chronological-keys.jpg": {
+      "sha256": "0376c4a3281ff591fb8a85a493c175878e63fcdde4577634eb8b1af0b6901a61",
+      "bytes": 250877
+    },
+    "deliverables/75659e513c3ff221-feet-details.jpg": {
+      "sha256": "e4337117d029fe415b5abb862f3a5c3619e1abb2ab5c8e75a97b2a333c131b12",
+      "bytes": 220070
+    },
+    "deliverables/75659e513c3ff221-hands-details.jpg": {
+      "sha256": "6abe0429886b034c117c77d38f518f53c174006a84191c8d91f9b91591ce4cab",
+      "bytes": 233031
+    },
+    "deliverables/75659e513c3ff221-normal.mp4": {
+      "sha256": "52fd1dfc35a49092a54ece612292138ecd74f70f0749465ca8e17b8d0c6706e5",
+      "bytes": 1125101
+    },
+    "deliverables/75659e513c3ff221-quarter-speed.mp4": {
+      "sha256": "3de7efcd6625670f60086156ab326cfa7762061d9502f4523cb534875c4c1849",
+      "bytes": 2145119
+    },
+    "deliverables/b9a0cef8a685d5a5-chronological-keys.jpg": {
+      "sha256": "8b8cf13d6ad1a0c6293d0f9b6b632250c6317e87363dbb5b1b277bac44b46c79",
+      "bytes": 250936
+    },
+    "deliverables/b9a0cef8a685d5a5-feet-details.jpg": {
+      "sha256": "e5d8d7830c0b0d2db1e47ebb95a68ee3c7001d79f3a4a8958f355370ea712e62",
+      "bytes": 220159
+    },
+    "deliverables/b9a0cef8a685d5a5-hands-details.jpg": {
+      "sha256": "3f39cd695cb6e45d8356d63bf2aeea6482b7ca2c2f90f51f5b9b28a85b79011c",
+      "bytes": 232807
+    },
+    "deliverables/b9a0cef8a685d5a5-normal.mp4": {
+      "sha256": "3cdb0cc7f8733a615cf49741f26572a095ca888a6b5b822485f1343d25806afc",
+      "bytes": 1131311
+    },
+    "deliverables/b9a0cef8a685d5a5-quarter-speed.mp4": {
+      "sha256": "b5d684139dbe70ac31866c2979c600d2a8f87ce4feeaa6f269b35b05af726cd9",
+      "bytes": 2154754
+    },
+    "deliverables/e2b3a4ee3baf23ea-chronological-keys.jpg": {
+      "sha256": "033c79f041d5ec41d7f405b43030130799e44396fc4801bc851f81cd7ce57cbe",
+      "bytes": 276312
+    },
+    "deliverables/e2b3a4ee3baf23ea-feet-details.jpg": {
+      "sha256": "36be71d4f4c0efaa0b55d256dabcd1afd7fe2a5b77c168a730ec18af40d0df24",
+      "bytes": 185366
+    },
+    "deliverables/e2b3a4ee3baf23ea-hands-details.jpg": {
+      "sha256": "f4df190bd86772775385be36c50bd9a252503fedb4203f72854ca32a15504632",
+      "bytes": 216615
+    },
+    "deliverables/e2b3a4ee3baf23ea-normal.mp4": {
+      "sha256": "60c61027ef160e4a59ff524efe8b2c67347b1d80b9f86dd95287cb7ab4d8df8c",
+      "bytes": 497357
+    },
+    "deliverables/e2b3a4ee3baf23ea-quarter-speed.mp4": {
+      "sha256": "da1f80e517378219ca43b23c2e03f721d1a09e32920efb8f047a19f425277105",
+      "bytes": 1013401
+    },
+    "deliverables/f11f7eb25426cf67-glove-contact.jpg": {
+      "sha256": "a92811f9b6f2f90952a6208d35d7c42d92eb4cbb8bbd79b94de62a2a309863b4",
+      "bytes": 445507
+    }
+  },
+  "videos": [
+    {
+      "file": "deliverables/b9a0cef8a685d5a5-normal.mp4",
+      "sha256": "3cdb0cc7f8733a615cf49741f26572a095ca888a6b5b822485f1343d25806afc",
+      "bytes": 1131311,
+      "playback": "normal",
+      "width": 1280,
+      "height": 820,
+      "r_frame_rate": "24/1",
+      "duration": "3.041667",
+      "nb_frames": "73"
+    },
+    {
+      "file": "deliverables/b9a0cef8a685d5a5-quarter-speed.mp4",
+      "sha256": "b5d684139dbe70ac31866c2979c600d2a8f87ce4feeaa6f269b35b05af726cd9",
+      "bytes": 2154754,
+      "playback": "quarter-speed",
+      "width": 1280,
+      "height": 820,
+      "r_frame_rate": "24/1",
+      "duration": "12.166667",
+      "nb_frames": "292"
+    },
+    {
+      "file": "deliverables/75659e513c3ff221-normal.mp4",
+      "sha256": "52fd1dfc35a49092a54ece612292138ecd74f70f0749465ca8e17b8d0c6706e5",
+      "bytes": 1125101,
+      "playback": "normal",
+      "width": 1280,
+      "height": 820,
+      "r_frame_rate": "24/1",
+      "duration": "3.041667",
+      "nb_frames": "73"
+    },
+    {
+      "file": "deliverables/75659e513c3ff221-quarter-speed.mp4",
+      "sha256": "3de7efcd6625670f60086156ab326cfa7762061d9502f4523cb534875c4c1849",
+      "bytes": 2145119,
+      "playback": "quarter-speed",
+      "width": 1280,
+      "height": 820,
+      "r_frame_rate": "24/1",
+      "duration": "12.166667",
+      "nb_frames": "292"
+    },
+    {
+      "file": "deliverables/e2b3a4ee3baf23ea-normal.mp4",
+      "sha256": "60c61027ef160e4a59ff524efe8b2c67347b1d80b9f86dd95287cb7ab4d8df8c",
+      "bytes": 497357,
+      "playback": "normal",
+      "width": 1280,
+      "height": 820,
+      "r_frame_rate": "24/1",
+      "duration": "3.041667",
+      "nb_frames": "73"
+    },
+    {
+      "file": "deliverables/e2b3a4ee3baf23ea-quarter-speed.mp4",
+      "sha256": "da1f80e517378219ca43b23c2e03f721d1a09e32920efb8f047a19f425277105",
+      "bytes": 1013401,
+      "playback": "quarter-speed",
+      "width": 1280,
+      "height": 820,
+      "r_frame_rate": "24/1",
+      "duration": "12.166667",
+      "nb_frames": "292"
+    },
+    {
+      "file": "deliverables/240d3fe97a8ef68f-normal.mp4",
+      "sha256": "2f7d52adbcae1b48cd8fdf36def7ab474d263d02a39fc8301494b30be7e58e92",
+      "bytes": 482222,
+      "playback": "normal",
+      "width": 1280,
+      "height": 820,
+      "r_frame_rate": "24/1",
+      "duration": "3.041667",
+      "nb_frames": "73"
+    },
+    {
+      "file": "deliverables/240d3fe97a8ef68f-quarter-speed.mp4",
+      "sha256": "37dfa9dcf5d0a34347ed7a4458878d94b9f3b55851a80538a0d3599f8cb686e6",
+      "bytes": 1008413,
+      "playback": "quarter-speed",
+      "width": 1280,
+      "height": 820,
+      "r_frame_rate": "24/1",
+      "duration": "12.166667",
+      "nb_frames": "292"
+    }
+  ],
+  "fixturePins": "verified-fixture-pins.json",
+  "measurements": "export-measurements.json",
+  "baselineProvenance": "baseline-provenance.json",
+  "environment": "environment.json",
+  "visualVerdict": {
+    "lowCatches": "Both mirrored cancelled-dive catches preserve their exact initial deformed mesh, gather the solved ball and rise from hip 0.300 to 0.830 m. The rise finishes by the 1.542 s sample, then remains settled; baseline remains squatting. Fixed ankle x/z anchors do not slide.",
+    "compressedControls": "Both candidates remain byte-identical to their completed authored source throughout 0\u20133 s, retaining low ankles and flat-sole metadata. Baseline re-enters later stance/arm changes, finishing by 1.958 and 2.542 s. Candidate intentionally preserves the asymmetric low-hand end stance rather than introducing a new centered ready-hands idle.",
+    "handsAndFeet": "Matched enlarged crops show actual fingers and distal thumb cup around the solved caught ball, and retained foot anchors through the rise. Angular cuff/inner-elbow silhouettes remain; no remesh improvement is claimed.",
+    "framing": "Same frozen camera is used before/after each whole sequence. Every extended 0\u20133 s vertex is verified to fit. Enlarged crops use same paired per-time cameras and do not re-pose or reshape geometry."
+  },
+  "interpretation": {
+    "normalSpeed": "All exports contain result elapsed 0 through 3.0 s at 24 fps. Normal playback assigns one frame per 1/24 s, including the displayed endpoint; encoded duration 73/24=3.041667 s.",
+    "quarterSpeed": "Same ordered source frames at 6 source frames/s (4x longer), encoded at 24 fps by repeating each source frame four times. Repetition is exact; there is no invented motion interpolation. The source was not resampled at 96 Hz. Slowed playback exposes these sampled states but provides no continuous-time smoothness or collision proof; normal-speed ordered-frame review and the separate dense numeric gates remain the motion evidence.",
+    "deduplication": "Only byte-identical full mesh buffers share offline render images; all 73 chronological frames remain in each final clip."
+  },
+  "limitations": [
+    "Offline CPU-skinned geometry with simplified materials; not gameplay, browser/WebGL, phone, or GPU proof.",
+    "Angular cuff edges remain; pose and contact evidence is not force-balance or full physical dynamics validation.",
+    "24 fps visual sampling does not establish continuous collision freedom. Separate geometry/lifecycle tests belong to the integration receipt.",
+    "Inherited actual-skin minima are +18.05 mm for the caught cases and +8.55 mm for the compressed controls; fixed ankle anchors do not prove weight-bearing sole contact.",
+    "The two free-control balls finish far outside the character view (x=29.34 m and 34.12 m) and are omitted from the close geometry render. Exact terminal points remain in metadata; caught balls use the actual keeperGather solution in every frame.",
+    "Four-sample whole-body views retain visible offline noise; enlarged hand/foot views use sixteen samples. No browser textures, shaders, WebGL, phone GPU, or device-frame-time validation is implied."
+  ],
+  "additionalGloveReview": {
+    "id": "f11f7eb25426cf67",
+    "recipe": {
+      "actor": "keeper",
+      "motion": "gather",
+      "playback": "match",
+      "start": 0.116666667,
+      "duration": 0,
+      "fps": 24,
+      "direction": 1,
+      "height": 0.3,
+      "speed": 95,
+      "reach": 95,
+      "power": 0.55,
+      "targetX": 2,
+      "shotType": "normal",
+      "seed": 3,
+      "showBall": true,
+      "style": null,
+      "kickContact": 1.8467
+    },
+    "actualBall": [
+      1.8280628083599901,
+      0.9391580436504996,
+      0.2827374129515999
+    ],
+    "capture": {
+      "time": 0.5333333333333339,
+      "animationTime": 0.5333333333333339,
+      "point": {
+        "x": 1.8132326611477387,
+        "y": 0.36959412772086253,
+        "z": 0.7900237024609797
+      },
+      "contactPart": "handR",
+      "seed": 3,
+      "result": {
+        "goal": false,
+        "saved": true,
+        "post": false,
+        "reason": "\u95e8\u5c06\u7a33\u7a33\u62b1\u4f4f\u4e86\u7403",
+        "power": 0.5547610950232075,
+        "speed": 70,
+        "target": {
+          "x": 1.9535362954204638,
+          "y": 0.29973769800762
+        }
+      },
+      "caught": true,
+      "direction": 1,
+      "trackingFeet": [
+        {
+          "x": -0.3,
+          "y": 0.075,
+          "z": 0.04
+        },
+        {
+          "x": 0.3,
+          "y": 0.075,
+          "z": 0.04
+        }
+      ]
+    },
+    "mesh": "Sphere005_Retopology004_3",
+    "material": "Socks",
+    "faceIndices": [
+      2694,
+      2061
+    ],
+    "reportedFiniteTriangleSATmm": 2.309,
+    "entireBeforeAfterMeshByteIdentical": true,
+    "sha256": {
+      "glove-overlap/before/poses.bin": "444a7b33169833b4a1bd39c89eba94e86c93075f2d7280405db32e66da0e5ff5",
+      "glove-overlap/after/poses.bin": "444a7b33169833b4a1bd39c89eba94e86c93075f2d7280405db32e66da0e5ff5",
+      "glove-overlap/after/poses.json": "af4ecf2e3027aec175d3304b497b4b785d2b6d5fe4a3d3f5f885f12f29444620",
+      "deliverables/f11f7eb25426cf67-glove-contact.jpg": "a92811f9b6f2f90952a6208d35d7c42d92eb4cbb8bbd79b94de62a2a309863b4",
+      "glove-overlap/clean-25/frames/frame-0000.png": "5a0d33a922bd5f0ea2417e533c4f0fb7cb889e602dcf53c368929c6d397573d7",
+      "glove-overlap/highlighted-25/frames/frame-0000.png": "8af707c179e10c58899fb9e788d373e5cd34eaed21c9884bddb7262757b88b91",
+      "glove-overlap/camera-25.json": "7c22ef436d3df56ef7803e6ca57ba446ff4f61cf5311d7bc0ecc7a22c83d8d2c",
+      "glove-overlap/clean-205/frames/frame-0000.png": "5aa12c5fa7a821a486ef3a9877b34168e6f0663add6a39ba54e206e47bdc86b7",
+      "glove-overlap/highlighted-205/frames/frame-0000.png": "7528bc675a8b2141a393d60f966c8158b3021b885e2146f0fea583da851fea4c",
+      "glove-overlap/camera-205.json": "8a7eb55a8a8d8923ec9b3d2fde51daa17b833e2cf6c8ae901e2527de406fe4c1"
+    },
+    "jobs": [
+      {
+        "input": "glove-overlap/clean-25",
+        "camera": "glove-overlap/camera-25.json",
+        "angle": 25,
+        "kind": "glove",
+        "width": 640,
+        "height": 640,
+        "originalFrameIndices": [
+          0
+        ]
+      },
+      {
+        "input": "glove-overlap/highlighted-25",
+        "camera": "glove-overlap/camera-25.json",
+        "angle": 25,
+        "kind": "glove",
+        "width": 640,
+        "height": 640,
+        "originalFrameIndices": [
+          0
+        ]
+      },
+      {
+        "input": "glove-overlap/clean-205",
+        "camera": "glove-overlap/camera-205.json",
+        "angle": 205,
+        "kind": "glove",
+        "width": 640,
+        "height": 640,
+        "originalFrameIndices": [
+          0
+        ]
+      },
+      {
+        "input": "glove-overlap/highlighted-205",
+        "camera": "glove-overlap/camera-205.json",
+        "angle": 205,
+        "kind": "glove",
+        "width": 640,
+        "height": 640,
+        "originalFrameIndices": [
+          0
+        ]
+      }
+    ],
+    "visualClassification": "Localized glove compression with a small pre-existing surface intersection; no obvious finger passing through the opposite palm in these views. A tiny highlighted sliver is visible from the ball-facing side. The faces are hidden behind the glove surface from the opposite side. This is not a zero-intersection claim.",
+    "comparisonSheet": "deliverables/f11f7eb25426cf67-glove-contact.jpg"
+  },
+  "encodedFrameVerification": {
+    "ok": true,
+    "decodedCheckpoints": 48,
+    "checks": [
+      {
+        "id": "b9a0cef8a685d5a5",
+        "mode": "normal",
+        "sourceFrame": 0,
+        "videoFrame": 0,
+        "bodyPixelMeanAbsoluteError": 1.8603703703703705
+      },
+      {
+        "id": "b9a0cef8a685d5a5",
+        "mode": "normal",
+        "sourceFrame": 11,
+        "videoFrame": 11,
+        "bodyPixelMeanAbsoluteError": 1.9583011429398147
+      },
+      {
+        "id": "b9a0cef8a685d5a5",
+        "mode": "normal",
+        "sourceFrame": 24,
+        "videoFrame": 24,
+        "bodyPixelMeanAbsoluteError": 1.9005454282407408
+      },
+      {
+        "id": "b9a0cef8a685d5a5",
+        "mode": "normal",
+        "sourceFrame": 37,
+        "videoFrame": 37,
+        "bodyPixelMeanAbsoluteError": 1.682496021412037
+      },
+      {
+        "id": "b9a0cef8a685d5a5",
+        "mode": "normal",
+        "sourceFrame": 60,
+        "videoFrame": 60,
+        "bodyPixelMeanAbsoluteError": 1.6684798177083333
+      },
+      {
+        "id": "b9a0cef8a685d5a5",
+        "mode": "normal",
+        "sourceFrame": 72,
+        "videoFrame": 72,
+        "bodyPixelMeanAbsoluteError": 1.667269241898148
+      },
+      {
+        "id": "b9a0cef8a685d5a5",
+        "mode": "quarter-speed",
+        "sourceFrame": 0,
+        "videoFrame": 0,
+        "bodyPixelMeanAbsoluteError": 1.687269241898148
+      },
+      {
+        "id": "b9a0cef8a685d5a5",
+        "mode": "quarter-speed",
+        "sourceFrame": 11,
+        "videoFrame": 44,
+        "bodyPixelMeanAbsoluteError": 1.739254195601852
+      },
+      {
+        "id": "b9a0cef8a685d5a5",
+        "mode": "quarter-speed",
+        "sourceFrame": 24,
+        "videoFrame": 96,
+        "bodyPixelMeanAbsoluteError": 1.771175853587963
+      },
+      {
+        "id": "b9a0cef8a685d5a5",
+        "mode": "quarter-speed",
+        "sourceFrame": 37,
+        "videoFrame": 148,
+        "bodyPixelMeanAbsoluteError": 1.6788335503472223
+      },
+      {
+        "id": "b9a0cef8a685d5a5",
+        "mode": "quarter-speed",
+        "sourceFrame": 60,
+        "videoFrame": 240,
+        "bodyPixelMeanAbsoluteError": 1.6731691261574073
+      },
+      {
+        "id": "b9a0cef8a685d5a5",
+        "mode": "quarter-speed",
+        "sourceFrame": 72,
+        "videoFrame": 288,
+        "bodyPixelMeanAbsoluteError": 1.476585648148148
+      },
+      {
+        "id": "75659e513c3ff221",
+        "mode": "normal",
+        "sourceFrame": 0,
+        "videoFrame": 0,
+        "bodyPixelMeanAbsoluteError": 1.855310329861111
+      },
+      {
+        "id": "75659e513c3ff221",
+        "mode": "normal",
+        "sourceFrame": 11,
+        "videoFrame": 11,
+        "bodyPixelMeanAbsoluteError": 1.963132957175926
+      },
+      {
+        "id": "75659e513c3ff221",
+        "mode": "normal",
+        "sourceFrame": 24,
+        "videoFrame": 24,
+        "bodyPixelMeanAbsoluteError": 1.9025759548611112
+      },
+      {
+        "id": "75659e513c3ff221",
+        "mode": "normal",
+        "sourceFrame": 37,
+        "videoFrame": 37,
+        "bodyPixelMeanAbsoluteError": 1.6855855758101852
+      },
+      {
+        "id": "75659e513c3ff221",
+        "mode": "normal",
+        "sourceFrame": 60,
+        "videoFrame": 60,
+        "bodyPixelMeanAbsoluteError": 1.6699945746527778
+      },
+      {
+        "id": "75659e513c3ff221",
+        "mode": "normal",
+        "sourceFrame": 72,
+        "videoFrame": 72,
+        "bodyPixelMeanAbsoluteError": 1.6667212818287036
+      },
+      {
+        "id": "75659e513c3ff221",
+        "mode": "quarter-speed",
+        "sourceFrame": 0,
+        "videoFrame": 0,
+        "bodyPixelMeanAbsoluteError": 1.6842498553240741
+      },
+      {
+        "id": "75659e513c3ff221",
+        "mode": "quarter-speed",
+        "sourceFrame": 11,
+        "videoFrame": 44,
+        "bodyPixelMeanAbsoluteError": 1.7446473524305555
+      },
+      {
+        "id": "75659e513c3ff221",
+        "mode": "quarter-speed",
+        "sourceFrame": 24,
+        "videoFrame": 96,
+        "bodyPixelMeanAbsoluteError": 1.7746068431712962
+      },
+      {
+        "id": "75659e513c3ff221",
+        "mode": "quarter-speed",
+        "sourceFrame": 37,
+        "videoFrame": 148,
+        "bodyPixelMeanAbsoluteError": 1.6781709346064815
+      },
+      {
+        "id": "75659e513c3ff221",
+        "mode": "quarter-speed",
+        "sourceFrame": 60,
+        "videoFrame": 240,
+        "bodyPixelMeanAbsoluteError": 1.6720131655092592
+      },
+      {
+        "id": "75659e513c3ff221",
+        "mode": "quarter-speed",
+        "sourceFrame": 72,
+        "videoFrame": 288,
+        "bodyPixelMeanAbsoluteError": 1.473654152199074
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "mode": "normal",
+        "sourceFrame": 0,
+        "videoFrame": 0,
+        "bodyPixelMeanAbsoluteError": 1.5862865306712963
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "mode": "normal",
+        "sourceFrame": 11,
+        "videoFrame": 11,
+        "bodyPixelMeanAbsoluteError": 1.5869364872685185
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "mode": "normal",
+        "sourceFrame": 24,
+        "videoFrame": 24,
+        "bodyPixelMeanAbsoluteError": 1.5864279513888888
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "mode": "normal",
+        "sourceFrame": 37,
+        "videoFrame": 37,
+        "bodyPixelMeanAbsoluteError": 1.5866149450231481
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "mode": "normal",
+        "sourceFrame": 60,
+        "videoFrame": 60,
+        "bodyPixelMeanAbsoluteError": 1.6205783420138888
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "mode": "normal",
+        "sourceFrame": 72,
+        "videoFrame": 72,
+        "bodyPixelMeanAbsoluteError": 1.6205834056712962
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "mode": "quarter-speed",
+        "sourceFrame": 0,
+        "videoFrame": 0,
+        "bodyPixelMeanAbsoluteError": 1.5877459490740742
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "mode": "quarter-speed",
+        "sourceFrame": 11,
+        "videoFrame": 44,
+        "bodyPixelMeanAbsoluteError": 1.589509548611111
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "mode": "quarter-speed",
+        "sourceFrame": 24,
+        "videoFrame": 96,
+        "bodyPixelMeanAbsoluteError": 1.5890617766203703
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "mode": "quarter-speed",
+        "sourceFrame": 37,
+        "videoFrame": 148,
+        "bodyPixelMeanAbsoluteError": 1.588492115162037
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "mode": "quarter-speed",
+        "sourceFrame": 60,
+        "videoFrame": 240,
+        "bodyPixelMeanAbsoluteError": 1.622142650462963
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "mode": "quarter-speed",
+        "sourceFrame": 72,
+        "videoFrame": 288,
+        "bodyPixelMeanAbsoluteError": 1.455939670138889
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "mode": "normal",
+        "sourceFrame": 0,
+        "videoFrame": 0,
+        "bodyPixelMeanAbsoluteError": 1.5877625868055556
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "mode": "normal",
+        "sourceFrame": 11,
+        "videoFrame": 11,
+        "bodyPixelMeanAbsoluteError": 1.5878819444444445
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "mode": "normal",
+        "sourceFrame": 24,
+        "videoFrame": 24,
+        "bodyPixelMeanAbsoluteError": 1.5878765190972222
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "mode": "normal",
+        "sourceFrame": 37,
+        "videoFrame": 37,
+        "bodyPixelMeanAbsoluteError": 1.5877300347222223
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "mode": "normal",
+        "sourceFrame": 60,
+        "videoFrame": 60,
+        "bodyPixelMeanAbsoluteError": 1.6788642939814815
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "mode": "normal",
+        "sourceFrame": 72,
+        "videoFrame": 72,
+        "bodyPixelMeanAbsoluteError": 1.692486255787037
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "mode": "quarter-speed",
+        "sourceFrame": 0,
+        "videoFrame": 0,
+        "bodyPixelMeanAbsoluteError": 1.588026982060185
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "mode": "quarter-speed",
+        "sourceFrame": 11,
+        "videoFrame": 44,
+        "bodyPixelMeanAbsoluteError": 1.5885814525462962
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "mode": "quarter-speed",
+        "sourceFrame": 24,
+        "videoFrame": 96,
+        "bodyPixelMeanAbsoluteError": 1.5885174334490741
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "mode": "quarter-speed",
+        "sourceFrame": 37,
+        "videoFrame": 148,
+        "bodyPixelMeanAbsoluteError": 1.5884913917824075
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "mode": "quarter-speed",
+        "sourceFrame": 60,
+        "videoFrame": 240,
+        "bodyPixelMeanAbsoluteError": 1.6358619068287037
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "mode": "quarter-speed",
+        "sourceFrame": 72,
+        "videoFrame": 288,
+        "bodyPixelMeanAbsoluteError": 1.4553074363425926
+      }
+    ]
+  },
+  "finalSourceCompatibility": {
+    "ok": true,
+    "sourceFrames": 584,
+    "note": "Original rendered evidence and hashes remain unchanged. The only final source change is inspector-only motion-lab-runtime.js. Re-exporting the final candidate plus frozen baseline reproduces all original 584 skin buffers, joints, ball points, recipes and captures exactly.",
+    "changedSources": [
+      {
+        "path": "src/motion-lab-runtime.js",
+        "originalSha256": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+        "finalSha256": "34a17af03ba240a95cc8b17adaff37e4fb7711049e59867d2bb50585c202da67"
+      }
+    ],
+    "originalSourceSetHash": "176d81601dcd07a4c9e345709c1238f4d5da56dd1c6e294c8112332fb296370c",
+    "finalSourceSetHash": "415052b05e79724718121c72ab1d5a6b1d9de40fbf06fd56d439b73745f67137",
+    "finalSourceHashes": {
+      "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+      "package.json": "c688a6b25afdcaa31049d816079eef086fcfceaa2fdae176a606817fb62038e3",
+      "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+      "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+      "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+      "src/character.js": "a5941f24835e49fc49bb1c0d5dd475c451821b3b3ac28f75ee05dde5db18ae57",
+      "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+      "src/engine.js": "6dd7c2a974c616c65331fd634fd7aeb06119b0ced1f800087daba029dd82c1ed",
+      "src/game-character.js": "1298f9c911d2f5d1e5eb7b5a4874b58d2e1a7f64255874b24ac26ae6124dbd93",
+      "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+      "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+      "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+      "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+      "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+      "src/keeper-finger-grip.js": "64d8528fc10df5f4490b10817bb461efc54565f30c18ccad5acda0e7ff63a450",
+      "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+      "src/keeper-result-recovery.js": "825707fadd77f7fed8046e68e43f946c96795b9cf72f6baf6cde4f3c82c6bae1",
+      "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+      "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+      "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+      "src/main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+      "src/motion-lab-runtime.js": "34a17af03ba240a95cc8b17adaff37e4fb7711049e59867d2bb50585c202da67",
+      "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+      "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+      "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+      "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+      "src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+      "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+      "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+      "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+      "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+      "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+      "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+      "tools/qa/export-character-poses.mjs": "0789c115ae7fd907c28d054d2a9f9697523cf596a912fe13727a1f95cbd04912",
+      "tools/qa/render-character-poses.py": "1e130ecd98097411aa7109b833ba155f11ed3b12454434eac3e75afda3031ab5",
+      "tools/qa/render-refined-poses.py": "0a5f86a76ece19ff71ebcd32365f92f92bb5ac5fe5189a88ecf7170a5e2d2a3f"
+    },
+    "exports": [
+      {
+        "id": "b9a0cef8a685d5a5",
+        "variant": "before",
+        "frames": 73,
+        "binarySha256": "4fd17b101bf1a9277ff78fbbe45305b97cedfe9cee3a09663c34b18d0fc3c96d",
+        "matchesOriginalBinary": true,
+        "jointsBallRecipeCaptureEqual": true
+      },
+      {
+        "id": "75659e513c3ff221",
+        "variant": "before",
+        "frames": 73,
+        "binarySha256": "d603eba3514cb041cbf975592cd62e709ba17b697d7df1d4f4035c0572799bbd",
+        "matchesOriginalBinary": true,
+        "jointsBallRecipeCaptureEqual": true
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "variant": "before",
+        "frames": 73,
+        "binarySha256": "129c3fa3342fb69b61b031a8ca9338fab5b43224e59a288d6a747caa0b34069a",
+        "matchesOriginalBinary": true,
+        "jointsBallRecipeCaptureEqual": true
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "variant": "before",
+        "frames": 73,
+        "binarySha256": "4319963b904e9512e4ed1a04fabd330b7a788e078d9327bd13ec9a418308a380",
+        "matchesOriginalBinary": true,
+        "jointsBallRecipeCaptureEqual": true
+      },
+      {
+        "id": "b9a0cef8a685d5a5",
+        "variant": "after",
+        "frames": 73,
+        "binarySha256": "12cdb972e9c3ac8217180cb74aa2a5414704b188cda8a5fc055951641c14b544",
+        "matchesOriginalBinary": true,
+        "jointsBallRecipeCaptureEqual": true
+      },
+      {
+        "id": "75659e513c3ff221",
+        "variant": "after",
+        "frames": 73,
+        "binarySha256": "a063957f8be74a1efe5b100bb89371fe351f9c53337d0edf0ea1da5838ca6050",
+        "matchesOriginalBinary": true,
+        "jointsBallRecipeCaptureEqual": true
+      },
+      {
+        "id": "e2b3a4ee3baf23ea",
+        "variant": "after",
+        "frames": 73,
+        "binarySha256": "66f33281d83d7d3b820850891cdca7106126393881a6224c05655453db22a3d8",
+        "matchesOriginalBinary": true,
+        "jointsBallRecipeCaptureEqual": true
+      },
+      {
+        "id": "240d3fe97a8ef68f",
+        "variant": "after",
+        "frames": 73,
+        "binarySha256": "b0c23267ca56fa3ce2cc482ed2260ed364d1331f6a6656ae1b8c1cb81322a2d1",
+        "matchesOriginalBinary": true,
+        "jointsBallRecipeCaptureEqual": true
+      }
+    ]
+  }
+}

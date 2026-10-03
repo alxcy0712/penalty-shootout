@@ -1,0 +1,6491 @@
+{
+  "baseline": "f2db0191fa438ff111593831cd4613f696ed2a96",
+  "explicitFixtures": {
+    "path": "validation/ten-rounds/union-fixtures.json",
+    "sha256": "5949a1c7f718e096868039d0037c3d064a130ae15bcd4deb244c453902ffa6ec"
+  },
+  "generatedAt": "2026-10-02T14:46:52.804Z",
+  "sourceHashes": {
+    "anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+    "engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+    "keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+    "keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+    "keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4"
+  },
+  "scope": "Milliseconds on this Node/cloud CPU only. Both gather kernels consume identical precomputed current-revision physical capture/current poses. Includes analytic glove ray, hand rotation and elbow constraints; excludes pose generation, asset loading, renderer, GPU and device measurements. Equivalence reports any intentional choreography differences too. Interleaved warmed rounds.",
+  "captures": [
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.3,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "04f3d1730fe23385",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 12
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5750000000000004,
+      "animationTime": 0.5750000000000004,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "81add4ff03156b93",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 27
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "5bf1bef4f99c73b0",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 28
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "23afc06db8420b97",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 29
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "67c211e050883fa1",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 36
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "e422f436b1d3fad1",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 37
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "2e719b1718e6bf68",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 38
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "edeeb32fb70a29eb",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 40
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5750000000000004,
+      "animationTime": 0.5750000000000004,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "a3abda1dddc48bcb",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 45
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "b50df29ceab4dd17",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 46
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "2daabadeadc1fb82",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 47
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "7044422678976841",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 54
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "5c5fbdb7beb09eef",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 55
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "a0f774305e42befe",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 56
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.5
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "5f3a40b0e4cb9b06",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 58
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5833333333333337,
+      "animationTime": 0.5833333333333337,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.9
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "335d9198e80bef1b",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 61
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.366666666666667,
+      "animationTime": 0.366666666666667,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "5205591176eb4058",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 63
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "8f824ccf84693fba",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 64
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "e1766dabf6982ad0",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 65
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "fe671f29d3f7c531",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 67
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.591666666666667,
+      "animationTime": 0.591666666666667,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1.2,
+          "power": 0.9
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "f3dcf0f5b02d56a6",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 70
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.37500000000000033,
+      "animationTime": 0.37500000000000033,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "9999e786b8cd06d6",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 72
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "c67ff7512560656e",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 73
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "3a55f9c192ae7265",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 74
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "582706506dbf23b9",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 81
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "7c42da2c2df61ad6",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 82
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 0.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "60879e808fe1c641",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 83
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "4a53f940dc9c14e5",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 90
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "0b084ccdc0c80d78",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 91
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "4a9bdbeab9d855d0",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 92
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "9942775a9c48288b",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 94
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5833333333333337,
+      "animationTime": 0.5833333333333337,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 42,
+        "id": "2598526d3a39ec83",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 99
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "d641e0f1c0641db3",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 100
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.2,
+          "power": 0.12
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "ad0952927ce5917b",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 101
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3833333333333309,
+      "animationTime": 1.3833333333333309,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 3.3,
+          "y": 0.2,
+          "power": 0.5
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "216d259e5dc99516",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 113
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5666666666666671,
+      "animationTime": 0.5666666666666671,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 3.3,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 42,
+        "id": "54004de0147a2a53",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 122
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5750000000000004,
+      "animationTime": 0.5750000000000004,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -2,
+          "y": 0.3,
+          "power": 0.55
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 3,
+        "id": "f81677b0c8c4369c",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 135
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5250000000000006,
+      "animationTime": 0.5250000000000006,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.5,
+          "y": 2.1,
+          "power": 0.55
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 2,
+        "id": "b2bc4f096b16426c",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 136
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5333333333333339,
+      "animationTime": 0.5333333333333339,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 2,
+          "y": 0.3,
+          "power": 0.55
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 3,
+        "id": "f11f7eb25426cf67",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 137
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5333333333333339,
+      "animationTime": 0.5333333333333339,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 2.1,
+          "power": 0.55
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 1,
+        "id": "c61c848c1caea687",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 138
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5416666666666672,
+      "animationTime": 0.5416666666666672,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.7,
+          "y": 0.2,
+          "power": 0.4
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 1,
+        "id": "aadc534e7670841d",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 0
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.675,
+      "animationTime": 0.675,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.7,
+          "y": 0.2,
+          "power": 0.4
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 3,
+        "id": "6559df0fba1665be",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 1
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.675,
+      "animationTime": 0.675,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.7,
+          "y": 0.2,
+          "power": 0.6
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 1,
+        "id": "4a8a9d24b00889ae",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 2
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5250000000000006,
+      "animationTime": 0.5250000000000006,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.7,
+          "y": 1,
+          "power": 0.4
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 3,
+        "id": "7904be66073d973f",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 7
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.6833333333333333,
+      "animationTime": 0.6833333333333333,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.7,
+          "y": 2.25,
+          "power": 0.4
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 3,
+        "id": "97b6e71715ed146c",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 13
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.6916666666666667,
+      "animationTime": 0.6916666666666667,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.4
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 1,
+        "id": "b53b7d753a7e7a73",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 18
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.6833333333333333,
+      "animationTime": 0.6833333333333333,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.4
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 3,
+        "id": "8f0fc015e27d27d7",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 19
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.675,
+      "animationTime": 0.675,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.6
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 1,
+        "id": "6379b5b0f27b6133",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 20
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.508333333333334,
+      "animationTime": 0.508333333333334,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.6
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 3,
+        "id": "a945e64eb968e378",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 21
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.508333333333334,
+      "animationTime": 0.508333333333334,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.8
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 1,
+        "id": "049f5f4cd029c2ce",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 22
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.40833333333333377,
+      "animationTime": 0.40833333333333377,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 0.2,
+          "power": 0.8
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 3,
+        "id": "5e6e9cd6618ab234",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 23
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.4000000000000004,
+      "animationTime": 0.4000000000000004,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1,
+          "power": 0.4
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 3,
+        "id": "0ddbe4551c88347d",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 25
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.6833333333333333,
+      "animationTime": 0.6833333333333333,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1,
+          "power": 0.6
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 1,
+        "id": "8338425174a887ab",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 26
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.508333333333334,
+      "animationTime": 0.508333333333334,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1,
+          "power": 0.6
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 3,
+        "id": "4a3df2a543bd5571",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 27
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.508333333333334,
+      "animationTime": 0.508333333333334,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1,
+          "power": 0.8
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 1,
+        "id": "8673fb45961d26c9",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 28
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.40833333333333377,
+      "animationTime": 0.40833333333333377,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 1,
+          "power": 0.8
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 3,
+        "id": "8f26ba62676617f8",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 29
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.40833333333333377,
+      "animationTime": 0.40833333333333377,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0,
+          "y": 2.25,
+          "power": 0.4
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 3,
+        "id": "e2508070b8bba80a",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 31
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.6833333333333333,
+      "animationTime": 0.6833333333333333,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.7,
+          "y": 0.2,
+          "power": 0.4
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 1,
+        "id": "eae1a786a0bf021f",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 36
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.675,
+      "animationTime": 0.675,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.7,
+          "y": 0.2,
+          "power": 0.4
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 3,
+        "id": "0e09e0ecb6166fb7",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 37
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.675,
+      "animationTime": 0.675,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.7,
+          "y": 1,
+          "power": 0.4
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 99
+        },
+        "direction": 0,
+        "seed": 3,
+        "id": "160af8cec0f1465d",
+        "origins": [
+          {
+            "cohort": "central54",
+            "index": 43
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.675,
+      "animationTime": 0.675,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "06fdc056adea1bc6",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 18
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3083333333333311,
+      "animationTime": 1.3083333333333311,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "bacae84b7af9d845",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 19
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3249999999999977,
+      "animationTime": 1.3249999999999977,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "3f04e790d24534e4",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 24
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3083333333333311,
+      "animationTime": 1.3083333333333311,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "67b1a70f67b0b97c",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 25
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3249999999999977,
+      "animationTime": 1.3249999999999977,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "f23ff7abef718f64",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 30
+          },
+          {
+            "cohort": "low-neighbors72",
+            "index": 4
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3083333333333311,
+      "animationTime": 1.3083333333333311,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "bf8cb97d69ea96bc",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 31
+          },
+          {
+            "cohort": "low-neighbors72",
+            "index": 13
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3249999999999977,
+      "animationTime": 1.3249999999999977,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "68f6a32aa2c8e17e",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 36
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "4f27810d5a154291",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 37
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "88ed37b558a96e29",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 42
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "88d204798faf05ba",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 43
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 1.16,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 99,
+          "reach": 99,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "3ecc896e15bd6137",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 44
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.591666666666667,
+      "animationTime": 0.591666666666667,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "ce94f5df2b2d3d81",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 48
+          },
+          {
+            "cohort": "low-neighbors72",
+            "index": 22
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "72f6bc19cf037f49",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 49
+          },
+          {
+            "cohort": "low-neighbors72",
+            "index": 31
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "58a2ccf12ae58283",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 54
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "e46a60c4f5c51b54",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 55
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 0.18,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 99,
+          "reach": 99,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "6d1260d096edae91",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 56
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "01873d7dd64a7077",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 60
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "47151fb4e591e4b2",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 61
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "8e4740fdf934bbd2",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 66
+          },
+          {
+            "cohort": "low-neighbors72",
+            "index": 40
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "249ebf3270952723",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 67
+          },
+          {
+            "cohort": "low-neighbors72",
+            "index": 49
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "d597921cbcc79b71",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 72
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3083333333333311,
+      "animationTime": 1.3083333333333311,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "2c8228fd6cf2fda2",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 73
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3249999999999977,
+      "animationTime": 1.3249999999999977,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "95cf5f4652d0d1f5",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 78
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3083333333333311,
+      "animationTime": 1.3083333333333311,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "06589b32fee665b5",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 79
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3249999999999977,
+      "animationTime": 1.3249999999999977,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "bd00424c1a3aeea4",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 84
+          },
+          {
+            "cohort": "low-neighbors72",
+            "index": 58
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3083333333333311,
+      "animationTime": 1.3083333333333311,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "6f13c7d169448e3e",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 85
+          },
+          {
+            "cohort": "low-neighbors72",
+            "index": 67
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3249999999999977,
+      "animationTime": 1.3249999999999977,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.25,
+          "y": 0.18,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "02435f0123ecb775",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 111
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.25,
+          "y": 1.16,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "54d96deab7bae59c",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 117
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "f9e1ef54f5c7a702",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 126
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "1ee430f1c0d59ed9",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 127
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "e51f87f9789c1821",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 132
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "53b941d5376981d8",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 133
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 1.16,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 99,
+          "reach": 99,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "158f87e076093552",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 134
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "f163d70600a4832c",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 138
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "45e64b8eb2767ab1",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 139
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "08950bc3d6dce489",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 144
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "a5f5f95a067b8522",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 145
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 0.18,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 99,
+          "reach": 99,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "acbfd8b439e79601",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 146
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5666666666666671,
+      "animationTime": 0.5666666666666671,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 0.18,
+          "power": 0.86
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "197a0ef26a85ee8a",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 148
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.3833333333333337,
+      "animationTime": 0.3833333333333337,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "ceb106721a0758c3",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 150
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "006e134584f1c0b7",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 151
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 1.16,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 99,
+          "reach": 99,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "bb8c2bca7d179bf4",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 152
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5750000000000004,
+      "animationTime": 0.5750000000000004,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 1.16,
+          "power": 0.86
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "ce6ff10623b29996",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 154
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.4000000000000004,
+      "animationTime": 0.4000000000000004,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "fdb146a8c8b6a2a9",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 156
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 907,
+        "id": "0b99b8c3d7c3acd4",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 157
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "7855c97b1fdfcf50",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 162
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "7b2614b4dc542b54",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 163
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 0.18,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 99,
+          "reach": 99,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "ea4f70f44537c134",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 164
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5666666666666671,
+      "animationTime": 0.5666666666666671,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 0.18,
+          "power": 0.86
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "c04e18e301c53643",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 166
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.3833333333333337,
+      "animationTime": 0.3833333333333337,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "b0af4a18ffa08f4b",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 168
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "9197c85293c31984",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 169
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 1.16,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 99,
+          "reach": 99,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "837c8b3e926c733e",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 170
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5750000000000004,
+      "animationTime": 0.5750000000000004,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 1.16,
+          "power": 0.86
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "85d8afca5311ddef",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 172
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.4000000000000004,
+      "animationTime": 0.4000000000000004,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "43676c4b2552b0a9",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 174
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "74f9b51a1ed42a89",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 175
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "fdd5b5fc34908867",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 180
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 0.18,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "fe2a323a0c4482ab",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 181
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "6d75c5215a5a629b",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 186
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 1.16,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "1a3045fd5931b856",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 187
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 1.16,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 99,
+          "reach": 99,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "cead333701881bfa",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 188
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5666666666666671,
+      "animationTime": 0.5666666666666671,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "305f66cd4e919524",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 192
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "3775f01f542faa9b",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 193
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.249999999999998,
+      "animationTime": 1.249999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 3.25,
+          "y": 0.18,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "1e1150055111d071",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 201
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5500000000000005,
+      "animationTime": 0.5500000000000005,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 3.25,
+          "y": 1.16,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 65,
+          "reach": 65,
+          "handling": 95
+        },
+        "direction": 1,
+        "seed": 907,
+        "id": "1522d475d6ceaf3e",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 207
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "2c8fa63a1024b677",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 0
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3499999999999976,
+      "animationTime": 1.3499999999999976,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 65,
+          "reach": 65
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "740b64718b6eaa8c",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 1
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3499999999999976,
+      "animationTime": 1.3499999999999976,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "c5dda0783e0e969f",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 2
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3499999999999976,
+      "animationTime": 1.3499999999999976,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "5d248971a1455add",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 3
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3083333333333311,
+      "animationTime": 1.3083333333333311,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "2b28522925b401df",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 5
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "9bc862188fa9a305",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 6
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2416666666666647,
+      "animationTime": 1.2416666666666647,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 65,
+          "reach": 65
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "92b3df51e62d903b",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 7
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2416666666666647,
+      "animationTime": 1.2416666666666647,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "2ca8a51f9b40cd0a",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 8
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2416666666666647,
+      "animationTime": 1.2416666666666647,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "9c1f18e7d5d7583a",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 9
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.358333333333331,
+      "animationTime": 1.358333333333331,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "a47695be93631f55",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 10
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.358333333333331,
+      "animationTime": 1.358333333333331,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "a562bb8f28e0c920",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 11
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3499999999999976,
+      "animationTime": 1.3499999999999976,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "31c9c44d10cf705a",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 12
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3249999999999977,
+      "animationTime": 1.3249999999999977,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "ce54b4c329ab03d8",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 14
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3249999999999977,
+      "animationTime": 1.3249999999999977,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "1c6bfc38b5ce3f6e",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 18
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 65,
+          "reach": 65
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "a93a288d85c6acb5",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 19
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "a9cc3605dfb36a0a",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 20
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "b10390268cb86f09",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 21
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "0c05e52d2108dea1",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 23
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "ffa73c56b504eb26",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 24
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 65,
+          "reach": 65
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "7a53dfeaf4f57a37",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 25
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "26a5cfffb37378f4",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 26
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "30d71b56828e4e33",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 27
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "8392c4d4135a5068",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 28
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "2ed9a96e101bd054",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 29
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "7b8c9af5f355b8dc",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 30
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "ca9b2337706b565d",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 32
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "5a9a18b8cf312784",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 33
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "65647ba90fb7cc4d",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 34
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "1d6f13891de703c5",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 35
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "513e37207df12878",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 36
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 65,
+          "reach": 65
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "39e140c18dbafda4",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 37
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "fd2f2542487e5126",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 38
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "28f9613afd880fd3",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 39
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "343696343d6450f1",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 41
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "4fc57bf152a77bde",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 42
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 65,
+          "reach": 65
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "ef0e30d2178a40ee",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 43
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "1af890f750018b97",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 44
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "5177dbd1913d92f5",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 45
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "1c2404ad70664297",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 46
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "85acdd59a732a7e2",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 47
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "1089ebd963acc046",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 48
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "5536547993364746",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 50
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.274999999999998,
+      "animationTime": 1.274999999999998,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "d645e11701cf05f2",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 51
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "25bc9afe250825c8",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 52
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.3,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "2df83b3cf0c49e6e",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 53
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "e0a9295340e8d01a",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 54
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3499999999999976,
+      "animationTime": 1.3499999999999976,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 65,
+          "reach": 65
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "ded5ec2cb06c9f4c",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 55
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3499999999999976,
+      "animationTime": 1.3499999999999976,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "f5efc1c577ff1bf6",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 56
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3499999999999976,
+      "animationTime": 1.3499999999999976,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "63ac8862d1582879",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 57
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2999999999999978,
+      "animationTime": 1.2999999999999978,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "2809922a1b0b805f",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 59
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3083333333333311,
+      "animationTime": 1.3083333333333311,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "8d2e39e162e9f7c4",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 60
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2416666666666647,
+      "animationTime": 1.2416666666666647,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 65,
+          "reach": 65
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "d8aeaf0900424cd4",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 61
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2416666666666647,
+      "animationTime": 1.2416666666666647,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.16
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": 0,
+        "seed": 101,
+        "id": "3f59e6e4209d2a13",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 62
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.2416666666666647,
+      "animationTime": 1.2416666666666647,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "b1fddbd8209e0e76",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 63
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.358333333333331,
+      "animationTime": 1.358333333333331,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 85,
+          "reach": 85
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "210de4d911c4ee66",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 64
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.358333333333331,
+      "animationTime": 1.358333333333331,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.14
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 86,
+          "reach": 86
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "bcf22002e5140682",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 65
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.358333333333331,
+      "animationTime": 1.358333333333331,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 2.24,
+          "power": 0.15
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 84,
+          "reach": 84
+        },
+        "direction": 1,
+        "seed": 101,
+        "id": "bf840c7de40baa54",
+        "origins": [
+          {
+            "cohort": "low-neighbors72",
+            "index": 66
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 1.3166666666666644,
+      "animationTime": 1.3166666666666644,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.3,
+          "y": 0.18,
+          "power": 0.54
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 64,
+          "reach": 64
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "b2b1eb40555d0b52",
+        "origins": [
+          {
+            "cohort": "wide-neighbors54",
+            "index": 24
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.3,
+          "y": 0.18,
+          "power": 0.54
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 65,
+          "reach": 65
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "a54721463a0fe250",
+        "origins": [
+          {
+            "cohort": "wide-neighbors54",
+            "index": 25
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.3,
+          "y": 0.18,
+          "power": 0.54
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "handling": 95,
+          "speed": 66,
+          "reach": 66
+        },
+        "direction": -1,
+        "seed": 101,
+        "id": "638721e7a8a50bc9",
+        "origins": [
+          {
+            "cohort": "wide-neighbors54",
+            "index": 26
+          }
+        ],
+        "expectedCaught": true
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.31,
+          "y": 0.16,
+          "power": 0.53
+        },
+        "direction": 0,
+        "seed": 2027,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "727364a72c79fbf1",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 1
+          }
+        ]
+      },
+      "captureTime": 0.5500000000000005,
+      "animationTime": 0.5500000000000005,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.31,
+          "y": 1.18,
+          "power": 0.53
+        },
+        "direction": 0,
+        "seed": 2027,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "93b2012fc3ce78fc",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 4
+          }
+        ]
+      },
+      "captureTime": 0.5666666666666671,
+      "animationTime": 0.5666666666666671,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.28,
+          "y": 0.16,
+          "power": 0.53
+        },
+        "direction": -1,
+        "seed": 2027,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "0be31ed1cace0020",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 7
+          }
+        ]
+      },
+      "captureTime": 0.5416666666666672,
+      "animationTime": 0.5416666666666672,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.31,
+          "y": 0.16,
+          "power": 0.53
+        },
+        "direction": 0,
+        "seed": 2027,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "e3d05f1e0c6821a5",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 13
+          }
+        ]
+      },
+      "captureTime": 0.5500000000000005,
+      "animationTime": 0.5500000000000005,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.31,
+          "y": 1.18,
+          "power": 0.53
+        },
+        "direction": 0,
+        "seed": 2027,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "897b1accf1eb2b5d",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 16
+          }
+        ]
+      },
+      "captureTime": 0.5666666666666671,
+      "animationTime": 0.5666666666666671,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 3.28,
+          "y": 0.16,
+          "power": 0.53
+        },
+        "direction": 1,
+        "seed": 2027,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "4049011c86d39d17",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 19
+          }
+        ]
+      },
+      "captureTime": 0.5416666666666672,
+      "animationTime": 0.5416666666666672,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.31,
+          "y": 0.16,
+          "power": 0.16
+        },
+        "direction": 0,
+        "seed": 4099,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "590bb6b7c8dc17a3",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 24
+          }
+        ]
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -0.31,
+          "y": 1.18,
+          "power": 0.16
+        },
+        "direction": 0,
+        "seed": 4099,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "dab254f35af145a8",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 27
+          }
+        ]
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.28,
+          "y": 0.16,
+          "power": 0.53
+        },
+        "direction": -1,
+        "seed": 4099,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "9ee4ad309694c898",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 31
+          }
+        ]
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.28,
+          "y": 1.18,
+          "power": 0.53
+        },
+        "direction": -1,
+        "seed": 4099,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "f9e4ee267ae05dac",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 34
+          }
+        ]
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.31,
+          "y": 0.16,
+          "power": 0.16
+        },
+        "direction": 0,
+        "seed": 4099,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "3b45911be13d73d1",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 36
+          }
+        ]
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 0.31,
+          "y": 1.18,
+          "power": 0.16
+        },
+        "direction": 0,
+        "seed": 4099,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "391d4c440255e99f",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 39
+          }
+        ]
+      },
+      "captureTime": 1.2333333333333314,
+      "animationTime": 1.2333333333333314,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": 3.28,
+          "y": 0.16,
+          "power": 0.53
+        },
+        "direction": 1,
+        "seed": 4099,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "id": "662bf77b10a0f10b",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-2",
+            "index": 43
+          }
+        ]
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handR"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 63,
+          "reach": 56,
+          "handling": 99
+        },
+        "id": "4ab276a037a37cc5",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 0
+          }
+        ]
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 63,
+          "reach": 63,
+          "handling": 90
+        },
+        "id": "101a9dcfd4994c84",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 1
+          }
+        ]
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 67,
+          "reach": 60,
+          "handling": 99
+        },
+        "id": "9534f683f4e24412",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 6
+          }
+        ]
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 67,
+          "reach": 67,
+          "handling": 90
+        },
+        "id": "2225b8def512dc40",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 7
+          }
+        ]
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 84,
+          "reach": 77,
+          "handling": 99
+        },
+        "id": "6b321514f9374d1e",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 12
+          }
+        ]
+      },
+      "captureTime": 0.5500000000000005,
+      "animationTime": 0.5500000000000005,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 84,
+          "reach": 84,
+          "handling": 90
+        },
+        "id": "1faf072bd65d4941",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 13
+          }
+        ]
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 86,
+          "reach": 79,
+          "handling": 99
+        },
+        "id": "8d6b8440311c4976",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 18
+          }
+        ]
+      },
+      "captureTime": 0.5500000000000005,
+      "animationTime": 0.5500000000000005,
+      "contactPart": "handL"
+    },
+    {
+      "recipe": {
+        "aim": {
+          "x": -3.29,
+          "y": 0.19,
+          "power": 0.535
+        },
+        "direction": -1,
+        "seed": 2029,
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 86,
+          "reach": 86,
+          "handling": 90
+        },
+        "id": "428d421e0b485e92",
+        "expectedCaught": true,
+        "origins": [
+          {
+            "cohort": "ten-round-3",
+            "index": 19
+          }
+        ]
+      },
+      "captureTime": 0.5583333333333338,
+      "animationTime": 0.5583333333333338,
+      "contactPart": "handL"
+    }
+  ],
+  "equivalence": {
+    "samples": 34645,
+    "exact": 205,
+    "maxAbsoluteScalarDelta": 0.29097117625037655,
+    "path": ".pose.grip.handRotations.0.0",
+    "worst": {
+      "caseIndex": 56,
+      "t": 1.1166666666666667
+    },
+    "randomAccess": true
+  },
+  "timing": {
+    "all": {
+      "samples": 34645,
+      "rounds": 5,
+      "runs": {
+        "before": [
+          2249.154873000003,
+          2375.8003549999994,
+          2347.524110000002,
+          2266.9173990000018,
+          2232.3238220000057
+        ],
+        "after": [
+          2311.2438669999974,
+          2383.0339270000004,
+          2378.0562339999997,
+          2340.8290380000035,
+          2328.458762999995
+        ]
+      },
+      "medianMs": {
+        "before": 2266.9173990000018,
+        "after": 2340.8290380000035
+      }
+    },
+    "transition": {
+      "samples": 5330,
+      "rounds": 5,
+      "runs": {
+        "before": [
+          1447.9684479999996,
+          1472.808831000002,
+          1683.0229650000038,
+          1598.3780929999994,
+          1402.2220920000036
+        ],
+        "after": [
+          1659.0088370000012,
+          1538.4781010000006,
+          1575.1487689999994,
+          1619.4613800000006,
+          1667.6658719999978
+        ]
+      },
+      "medianMs": {
+        "before": 1472.808831000002,
+        "after": 1619.4613800000006
+      }
+    },
+    "secured": {
+      "samples": 29110,
+      "rounds": 5,
+      "runs": {
+        "before": [
+          612.2721059999967,
+          624.0239900000015,
+          619.5676359999998,
+          620.5336339999994,
+          631.9548250000007
+        ],
+        "after": [
+          644.7084679999971,
+          663.113314999995,
+          656.9845420000056,
+          656.5376350000006,
+          669.1751470000017
+        ]
+      },
+      "medianMs": {
+        "before": 620.5336339999994,
+        "after": 656.9845420000056
+      }
+    }
+  }
+}

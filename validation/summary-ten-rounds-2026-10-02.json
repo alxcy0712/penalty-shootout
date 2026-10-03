@@ -1,0 +1,174 @@
+{
+  "status": "passed",
+  "completedAt": "2026-10-02T13:10:09.262290+00:00",
+  "baseline": "2caec2cfa693bb7f8d88271a2bff792fbe213159",
+  "baselineTree": "e7d99fcdc814dbefa326b78c77fc3560c227c4e5",
+  "additionalSequentialRounds": 10,
+  "previousFiveCounted": false,
+  "ledger": "TEN_ROUNDS_2026-10-02.md",
+  "rounds": [
+    {
+      "round": 1,
+      "status": "passed",
+      "receipt": "ten-rounds/round-1-summary.json"
+    },
+    {
+      "round": 2,
+      "status": "passed",
+      "receipt": "ten-rounds/round-2-summary.json"
+    },
+    {
+      "round": 3,
+      "status": "passed",
+      "receipt": "ten-rounds/round-3-summary.json"
+    },
+    {
+      "round": 4,
+      "status": "passed",
+      "receipt": "ten-rounds/round-4-summary.json"
+    },
+    {
+      "round": 5,
+      "status": "passed",
+      "receipt": "ten-rounds/round-5-summary.json"
+    },
+    {
+      "round": 6,
+      "status": "passed",
+      "receipt": "ten-rounds/round-6-summary.json"
+    },
+    {
+      "round": 7,
+      "status": "passed",
+      "receipt": "ten-rounds/round-7-summary.json"
+    },
+    {
+      "round": 8,
+      "status": "passed",
+      "receipt": "ten-rounds/round-8-summary.json"
+    },
+    {
+      "round": 9,
+      "status": "passed",
+      "receipt": "ten-rounds/round-9-summary.json"
+    },
+    {
+      "round": 10,
+      "status": "passed",
+      "receipt": "ten-rounds/round-10-union-summary.json"
+    }
+  ],
+  "repairs": [
+    "Earliest keeper/post event shares one collision timeline",
+    "Exact segment endpoints participate in post-distance minimum",
+    "Unused handling quality skipped or deferred without changing physical outputs"
+  ],
+  "tests": {
+    "passed": 369,
+    "failed": 0,
+    "skipped": 0,
+    "independentRepeat": true
+  },
+  "build": {
+    "passed": true,
+    "independentRepeat": true,
+    "gameRawKB": 53.91,
+    "gameGzipKB": 20.78,
+    "renderingRawKB": 1267.66,
+    "renderingGzipKB": 349.26,
+    "largeChunkWarning": true
+  },
+  "uniformAcceptance": {
+    "shots": 645,
+    "captures": 205,
+    "manifestSha256": "5949a1c7f718e096868039d0037c3d064a130ae15bcd4deb244c453902ffa6ec",
+    "counts": {
+      "bodyPoses": 36490,
+      "jointSamples": 137965,
+      "skinSphereSamples": 34645,
+      "trajectoryPoses": 7500
+    },
+    "protectedCounts": {
+      "forearmTorso": 0,
+      "calfTorso": 0,
+      "oppositeFootCalf": 0
+    },
+    "minimumSkin": -0.001924012419518617,
+    "minimumSphereGap": -0.0037178844706977493,
+    "minimumTrajectoryGap": -0.0024590030530546314,
+    "maximumResolutionsPerStep": 3,
+    "adjacentMaxima": {
+      "upperAndSupportTorso": 0.010631174803586552,
+      "innerElbow": 0.00626628436438359
+    }
+  },
+  "optimization": {
+    "baseline": "a9b5be0a57c5bc1a8a512caf140ad7e5c043a560",
+    "reconstructionPatch": "ten-rounds/pre-optimization-runtime.patch",
+    "exactStatesCompared": 291137,
+    "physicalWork": {
+      "before": {
+        "queries": 17596,
+        "geometryOnlyQueries": 0,
+        "deferredQueries": 0,
+        "handHits": 815,
+        "qualityScans": 4075,
+        "qualityFaceVisits": 6540375
+      },
+      "after": {
+        "queries": 17596,
+        "geometryOnlyQueries": 33,
+        "deferredQueries": 17563,
+        "handHits": 815,
+        "qualityScans": 2260,
+        "qualityFaceVisits": 3627300
+      }
+    },
+    "causalUnionMedianChangePercent": 0.15,
+    "generalSpeedupEstablished": false,
+    "publishedUnionMedianChangePercent": -4.16
+  },
+  "runtimeHashes": {
+    "engine.js": "feadc39af577d2ceca1a6fea3c5405db472ccda215a172921b4cfa9c8d65b307",
+    "keeper-contact.js": "6dd93bdfee091168b6bb85c263b58578fbb1fbec031374361fd415c2b454007a",
+    "main.js": "a08b68e83675eccb4c4f90af0f0ea4769ad6900562dd572e9777cfe8f464d82a",
+    "scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172"
+  },
+  "assetsChanged": false,
+  "visual": {
+    "cases": 3,
+    "inspectedFrames": 207,
+    "fps": 24,
+    "largerViews": 12,
+    "lastSampleAfterCapture": 2.8333333333333335,
+    "scope": "Chronological actual-skin frame inspection and verified normal-speed export, not browser playback or gameplay materials",
+    "receipt": "ten-rounds/visual-review.json"
+  },
+  "logs": {
+    "tests": {
+      "path": "/tmp/penalty-ten-rounds/round-10/tests.log",
+      "sha256": "4f0166d8cec17d6daf669795fd399893e9b19634cc8c4ca374204e5c3cec4560"
+    },
+    "build": {
+      "path": "/tmp/penalty-ten-rounds/round-10/build.log",
+      "sha256": "9b2b0572919fd2452bb522cf77a2e1dabfc39e6643dec8e11c94dbca85fce982"
+    },
+    "independentTests": {
+      "path": "/tmp/penalty-ten-root-tests.log",
+      "sha256": "56a99d551d4fca5022f8a4497f396654b76439de80f039512b84a043e4dea24d"
+    },
+    "independentBuild": {
+      "path": "/tmp/penalty-ten-root-build.log",
+      "sha256": "686e436dde30e242f71962741faf4042f902bb2b5556fe44e2a2cd9f6d6ecc05"
+    }
+  },
+  "limitations": [
+    "Sampled CPU geometry and controlled event tests, not continuous geometric proof",
+    "No established general CPU speedup; timing ranges overlap",
+    "No actual phone/WebGL/GPU/thermal validation",
+    "Adjacent sleeve/elbow folds, open fingers, compressed knees and mechanical toe-supported rise remain",
+    "Conservative shin collision hull approximation retained",
+    "Existing large rendering chunk warning retained"
+  ],
+  "publication": "Local tested commit for parent publication on existing feature branch; no deployment"
+}

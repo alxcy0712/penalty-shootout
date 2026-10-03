@@ -1,0 +1,361 @@
+{
+  "note": "Actual CPU-skinned Blender renders. Published 2314f3c model/runtime at left, final merged model/runtime at right. Simplified materials; not WebGL, sustained device performance, or world-space foot-plant proof.",
+  "sequences": {
+    "long-kick": {
+      "recipe": {
+        "actor": "striker",
+        "motion": "kick",
+        "start": 0,
+        "duration": 3.8,
+        "fps": 24,
+        "direction": -1,
+        "height": 1.2,
+        "speed": 85,
+        "reach": 85,
+        "power": 0.7,
+        "targetX": 0,
+        "shotType": "normal",
+        "seed": 42,
+        "showBall": true,
+        "style": "0",
+        "kickContact": 1.55
+      },
+      "frames": 92,
+      "fps": 24,
+      "models": [
+        "aad3a3782a1e806b8fd596e6b9eeb62e47ebe4d729bb421d0ec4631a6fb76996",
+        "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f"
+      ],
+      "runtimeSha256": {
+        "src/game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+        "src/keeper-contact.js": "fb920605a23bad79cacbe7c1a9cd4e156268bd43ed63124d0580d818bed07c02",
+        "src/keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c"
+      },
+      "poseDataSha256": "69faad87189d0fb165c03bced2380d10d9221ab9863b62c8dbca7c29b4496b85",
+      "metadataSha256": "6ebae3a49cf00c9bfb31e8919251e34a642482acef67953f2a68da5190ce3cf5",
+      "video": "final-long-kick-comparison.mp4",
+      "videoSha256": "a9ff5485a47ab08cd2315e54eca5eaf14f6cdbd1479a64588003981e5ba59911",
+      "videoBytes": 1934602,
+      "videoProbe": {
+        "width": 1152,
+        "height": 648,
+        "r_frame_rate": "24/1",
+        "nb_frames": "92"
+      }
+    },
+    "compact-kick": {
+      "recipe": {
+        "actor": "striker",
+        "motion": "kick",
+        "start": 0,
+        "duration": 3,
+        "fps": 24,
+        "direction": -1,
+        "height": 1.2,
+        "speed": 85,
+        "reach": 85,
+        "power": 0.7,
+        "targetX": 0,
+        "shotType": "normal",
+        "seed": 42,
+        "showBall": true,
+        "style": "3",
+        "kickContact": 1.125
+      },
+      "frames": 73,
+      "fps": 24,
+      "models": [
+        "aad3a3782a1e806b8fd596e6b9eeb62e47ebe4d729bb421d0ec4631a6fb76996",
+        "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f"
+      ],
+      "runtimeSha256": {
+        "src/game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+        "src/keeper-contact.js": "fb920605a23bad79cacbe7c1a9cd4e156268bd43ed63124d0580d818bed07c02",
+        "src/keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c"
+      },
+      "poseDataSha256": "590161fa9b87bb672a123d85fbc2007ac0b90d5eebafdcb9dea7b39374ce4708",
+      "metadataSha256": "51760c20a2e2a9461f9c3a08313349e27d56d2c723f088822fdb084185f535e9",
+      "video": "final-compact-kick-comparison.mp4",
+      "videoSha256": "479197eb6b9f957d23cf5522f2a83a8855abb5bc7d6c370504715f5a7253b0e5",
+      "videoBytes": 1534074,
+      "videoProbe": {
+        "width": 1152,
+        "height": 648,
+        "r_frame_rate": "24/1",
+        "nb_frames": "73"
+      }
+    },
+    "central--1": {
+      "recipe": {
+        "actor": "keeper",
+        "motion": "gather",
+        "start": 0,
+        "duration": 0.7,
+        "fps": 60,
+        "direction": 0,
+        "height": 1.2,
+        "speed": 85,
+        "reach": 85,
+        "power": 0.5,
+        "targetX": -1.5,
+        "shotType": "normal",
+        "seed": 42,
+        "showBall": true,
+        "style": null,
+        "kickContact": 1.8467
+      },
+      "frames": 43,
+      "fps": 60,
+      "models": [
+        "29b228bb40af114dd6cb427312102bd772fd1951c8754a27d87d718377e5e31a",
+        "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772"
+      ],
+      "runtimeSha256": {
+        "src/game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+        "src/keeper-contact.js": "fb920605a23bad79cacbe7c1a9cd4e156268bd43ed63124d0580d818bed07c02",
+        "src/keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c"
+      },
+      "poseDataSha256": "2e13594eab45f1dd9d097cea5db545fc9554a0cae1f685702d3f408c1d2679e6",
+      "metadataSha256": "b0d477b7cb9b209f999cac2fb613fd435c39391a99da6f1c76820d6551246989",
+      "video": "final-central--1-comparison.mp4",
+      "videoSha256": "a7681fa287b511a6125dff512a1ac16d9eafa0872794e7fb0351fc6c3ffa3b33",
+      "videoBytes": 406238,
+      "videoProbe": {
+        "width": 1152,
+        "height": 648,
+        "r_frame_rate": "60/1",
+        "nb_frames": "43"
+      },
+      "quarterSpeed": {
+        "file": "final-central--1-quarter-speed.mp4",
+        "sha256": "70267f57ead1df80b8ee96bbe4484ad7fe966950b78f71574d8d37c9de2283dd"
+      },
+      "sheet": {
+        "file": "final-central--1-pose-sheet.jpg",
+        "sha256": "10735aa3289504ee66b97d2ce9d905392fd68e44fab6c8332a6e6129fd535b70"
+      },
+      "camera": {
+        "location": [
+          -0.14274555444717407,
+          6.594233512878418,
+          2.5672483444213867
+        ],
+        "rotation": [
+          1.2946994304656982,
+          8.411178242795359e-08,
+          3.1415927410125732
+        ],
+        "ortho_scale": 4.661350250244141
+      }
+    },
+    "central-1": {
+      "recipe": {
+        "actor": "keeper",
+        "motion": "gather",
+        "start": 0,
+        "duration": 0.7,
+        "fps": 60,
+        "direction": 0,
+        "height": 1.2,
+        "speed": 85,
+        "reach": 85,
+        "power": 0.5,
+        "targetX": 1.5,
+        "shotType": "normal",
+        "seed": 42,
+        "showBall": true,
+        "style": null,
+        "kickContact": 1.8467
+      },
+      "frames": 43,
+      "fps": 60,
+      "models": [
+        "29b228bb40af114dd6cb427312102bd772fd1951c8754a27d87d718377e5e31a",
+        "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772"
+      ],
+      "runtimeSha256": {
+        "src/game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+        "src/keeper-contact.js": "fb920605a23bad79cacbe7c1a9cd4e156268bd43ed63124d0580d818bed07c02",
+        "src/keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c"
+      },
+      "poseDataSha256": "636685dbefd12b276b115b3375dbbd696362c28699f65dfca01c7cabddfae6b8",
+      "metadataSha256": "49546a8f441a0307eedba78846fcb7fffd8a68cf44b5b7bb069f0a6683c8ea9a",
+      "video": "final-central-1-comparison.mp4",
+      "videoSha256": "62034134f243572946648e7df53c0237a4df05ae72aa6808dc46545144ab2779",
+      "videoBytes": 412376,
+      "videoProbe": {
+        "width": 1152,
+        "height": 648,
+        "r_frame_rate": "60/1",
+        "nb_frames": "43"
+      },
+      "quarterSpeed": {
+        "file": "final-central-1-quarter-speed.mp4",
+        "sha256": "f52c2fe81617f8c5dc267c573443e9f182e0e3858dcdd8b362cc6d6c3025c619"
+      },
+      "sheet": {
+        "file": "final-central-1-pose-sheet.jpg",
+        "sha256": "90321a61da7088e4774052d509dac13ec882ba580111f328e244aa98c2e582f0"
+      },
+      "camera": {
+        "location": [
+          0.1502476930618286,
+          6.62088680267334,
+          2.5639400482177734
+        ],
+        "rotation": [
+          1.2946994304656982,
+          8.411178242795359e-08,
+          3.1415927410125732
+        ],
+        "ortho_scale": 4.67802095413208
+      }
+    }
+  },
+  "reused": [
+    {
+      "pose": "high-save",
+      "byteEqual": true,
+      "sha256": "7571d666e7162dd7142e1e015b37b023b826d6fa9e9c737e3d8ee66831580b71",
+      "candidateMetadata": {
+        "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+        "src/anatomy.js": "40a841de7cd387afa12ecab537bd686b6923f742421307037db7b0940a711a8a",
+        "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+        "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+        "src/character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+        "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+        "src/engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+        "src/game-character.js": "43d8456e06f3374cda695f392afcd4f415ca17b742b2c5e72e4c3ce4875cbe22",
+        "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+        "src/keeper-arm-roll.js": "1c4ead6fa33655945b0cd84af97285898311ed5fced5d1686059018b0c9d4a30",
+        "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+        "src/keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c",
+        "src/keeper-contact.js": "1c8ccc440c07643b455f1c0300fe5b17ec243c37f2b0584b1d34e47f9f2f260a",
+        "src/keeper-hand-contact.js": "65e1370bb0feafa2c345fe1f05b31379a2af272f788477507672fe5871146d03",
+        "src/keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+        "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+        "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+        "src/main.js": "eda22fbe41a2ab245a518f920c8e5d77c6535bd9e7c8c93c6d1c1134ca35d8c9",
+        "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+        "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+        "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+        "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+        "src/rendering.js": "d640860ddbd5faae96c1b3c6c34e486f5c9e1a7bf1327bf35f422de76ab785ec",
+        "src/scene.js": "2396a6553e98285ce9b7c0885d77bc6a374c3901093c6d35dc4c45255bfa26d8",
+        "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+        "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+        "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+        "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+        "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+        "tools/qa/export-character-poses.mjs": "749477f60d3b128737fa2087035dfe1fbce21ff3a785cb252a86abad0915bbfd",
+        "tools/qa/render-character-poses.py": "1e130ecd98097411aa7109b833ba155f11ed3b12454434eac3e75afda3031ab5"
+      },
+      "finalMetadata": {
+        "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+        "src/anatomy.js": "40a841de7cd387afa12ecab537bd686b6923f742421307037db7b0940a711a8a",
+        "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+        "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+        "src/character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+        "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+        "src/engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+        "src/game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+        "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+        "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+        "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+        "src/keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c",
+        "src/keeper-contact.js": "fb920605a23bad79cacbe7c1a9cd4e156268bd43ed63124d0580d818bed07c02",
+        "src/keeper-hand-contact.js": "ba5ddf77b02b82c37d1117941ad126b0c57eb3270525454403c8c8e1ded1eb6b",
+        "src/keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+        "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+        "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+        "src/main.js": "eda22fbe41a2ab245a518f920c8e5d77c6535bd9e7c8c93c6d1c1134ca35d8c9",
+        "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+        "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+        "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+        "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+        "src/rendering.js": "d640860ddbd5faae96c1b3c6c34e486f5c9e1a7bf1327bf35f422de76ab785ec",
+        "src/scene.js": "2396a6553e98285ce9b7c0885d77bc6a374c3901093c6d35dc4c45255bfa26d8",
+        "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+        "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+        "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+        "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+        "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+        "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+        "tools/qa/export-character-poses.mjs": "749477f60d3b128737fa2087035dfe1fbce21ff3a785cb252a86abad0915bbfd",
+        "tools/qa/render-character-poses.py": "1e130ecd98097411aa7109b833ba155f11ed3b12454434eac3e75afda3031ab5"
+      }
+    },
+    {
+      "pose": "elbow-fold",
+      "byteEqual": true,
+      "sha256": "a6545c9a292b34ed9887e88679d5535afb3a9e4e7026aab9892f125f76be4e95",
+      "candidateMetadata": {
+        "assets/characters/keeper-prototype.glb": "29b228bb40af114dd6cb427312102bd772fd1951c8754a27d87d718377e5e31a",
+        "src/anatomy.js": "40a841de7cd387afa12ecab537bd686b6923f742421307037db7b0940a711a8a",
+        "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+        "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+        "src/character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+        "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+        "src/engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+        "src/game-character.js": "43d8456e06f3374cda695f392afcd4f415ca17b742b2c5e72e4c3ce4875cbe22",
+        "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+        "src/keeper-arm-roll.js": "1c4ead6fa33655945b0cd84af97285898311ed5fced5d1686059018b0c9d4a30",
+        "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+        "src/keeper-contact-data.js": "6f091bb2bfaa3b38fddaefcee01e822f7faffe6cf8617927ae652a8eea896bc4",
+        "src/keeper-contact.js": "1c8ccc440c07643b455f1c0300fe5b17ec243c37f2b0584b1d34e47f9f2f260a",
+        "src/keeper-hand-contact.js": "65e1370bb0feafa2c345fe1f05b31379a2af272f788477507672fe5871146d03",
+        "src/keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+        "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+        "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+        "src/main.js": "eda22fbe41a2ab245a518f920c8e5d77c6535bd9e7c8c93c6d1c1134ca35d8c9",
+        "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+        "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+        "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+        "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+        "src/rendering.js": "d640860ddbd5faae96c1b3c6c34e486f5c9e1a7bf1327bf35f422de76ab785ec",
+        "src/scene.js": "2396a6553e98285ce9b7c0885d77bc6a374c3901093c6d35dc4c45255bfa26d8",
+        "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+        "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+        "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+        "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+        "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+        "tools/qa/export-character-poses.mjs": "749477f60d3b128737fa2087035dfe1fbce21ff3a785cb252a86abad0915bbfd",
+        "tools/qa/render-character-poses.py": "1e130ecd98097411aa7109b833ba155f11ed3b12454434eac3e75afda3031ab5"
+      },
+      "finalMetadata": {
+        "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+        "src/anatomy.js": "40a841de7cd387afa12ecab537bd686b6923f742421307037db7b0940a711a8a",
+        "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+        "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+        "src/character.js": "2d5209fe07ef6c410e11c7c8926085571b614a3a196c59f62ed0123612b4ca49",
+        "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+        "src/engine.js": "575c22f890f2ef2737101b4ff5213ec80dc433d228660067aebd5b64f019a306",
+        "src/game-character.js": "d8b5d443949511a77cd8d48c76367cd958c8e5592578c58054ef82ec8d0d69a5",
+        "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+        "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+        "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+        "src/keeper-contact-data.js": "5d1d5dea792345ccdc223eca146709b231b2e1a3b4f3cac6cf9a80b97684e40c",
+        "src/keeper-contact.js": "fb920605a23bad79cacbe7c1a9cd4e156268bd43ed63124d0580d818bed07c02",
+        "src/keeper-hand-contact.js": "ba5ddf77b02b82c37d1117941ad126b0c57eb3270525454403c8c8e1ded1eb6b",
+        "src/keeper-skin-pose.js": "4b8e342155e8eb37b14c1479233d871874ca2d14922d9bf32ce1565cfbf31492",
+        "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+        "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+        "src/main.js": "eda22fbe41a2ab245a518f920c8e5d77c6535bd9e7c8c93c6d1c1134ca35d8c9",
+        "src/motion-lab-runtime.js": "ac68837a11ed012f760e76251eb87fbc27dc87fedbe9151bf44cbac5eb74ef58",
+        "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+        "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+        "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+        "src/rendering.js": "d640860ddbd5faae96c1b3c6c34e486f5c9e1a7bf1327bf35f422de76ab785ec",
+        "src/scene.js": "2396a6553e98285ce9b7c0885d77bc6a374c3901093c6d35dc4c45255bfa26d8",
+        "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+        "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+        "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+        "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+        "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+        "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+        "tools/qa/export-character-poses.mjs": "749477f60d3b128737fa2087035dfe1fbce21ff3a785cb252a86abad0915bbfd",
+        "tools/qa/render-character-poses.py": "1e130ecd98097411aa7109b833ba155f11ed3b12454434eac3e75afda3031ab5"
+      }
+    }
+  ]
+}

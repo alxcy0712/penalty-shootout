@@ -1,3 +1,5 @@
+import {keeperTorsoFrames} from './keeper-torso.js';
+import {COMPACT_KICK} from './striker-captures.js';
 // Metres, right-handed coordinates. Both rendering and collisions consume this rig.
 export const body = { thigh:.43, shin:.43, upperArm:.29, forearm:.27, torso:.49, shoulderWidth:.39, hipWidth:.25 };
 export const HOLD_DURATION=.44;
@@ -6,6 +8,7 @@ const add=(a,b)=>v(a.x+b.x,a.y+b.y,a.z+b.z);
 const sub=(a,b)=>v(a.x-b.x,a.y-b.y,a.z-b.z);
 const mul=(a,s)=>v(a.x*s,a.y*s,a.z*s);
 const dot=(a,b)=>a.x*b.x+a.y*b.y+a.z*b.z;
+const cross=(a,b)=>v(a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x);
 const len=a=>Math.hypot(a.x,a.y,a.z);
 const unit=a=>mul(a,1/(len(a)||1));
 const clip=(x,a,b)=>Math.max(a,Math.min(b,x));
@@ -33,41 +36,55 @@ export function limb(root,target,pole,a,b) {
   }
   return {joint,end};
 }
-function keeperBendPole(root,target,up,right,side){
-  const cross=(a,b)=>v(a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x);
-  const direction=unit(sub(target,root)),forward=unit(cross(right,up));
-  const reference=add(mul(right,side*.8),mul(up,-.6));
-  // Transport a lateral/downward bend from the forward reach plane. Its
-  // perpendicular stays continuous as the hand passes across the shoulder.
-  const axis=cross(forward,direction),first=cross(axis,reference);
-  const bend=add(reference,add(first,mul(cross(axis,first),1/(1+dot(forward,direction)))));
-  return add(root,bend);
+function keeperElbowPole(root,target,right,up,forward,sign,sideLying){
+  const direction=unit(sub(target,root)),axis=cross(forward,direction);
+  const groundedBend=sign*up.x>0?sideLying:0;
+  const bend=unit(add(mul(right,sign*(1-groundedBend)),mul(unit(sub(up,mul(forward,dot(up,forward)))),groundedBend)));
+  const swing=cross(axis,bend),transport=add(add(bend,swing),mul(cross(axis,swing),1/Math.max(.05,1+dot(forward,direction))));
+  return add(root,transport);
 }
-function keeperArm(root,target,pole,up,right,side){
-  const delta=sub(target,root),raised=smooth((dot(delta,up)+.25)/.50);
-  // Raised arms stay beside the head. Relax adduction as the hands lower into
-  // the chest, keeping the limit continuous and repeated IK solves idempotent.
-  const inward=-.02-.45*(1-raised),across=dot(delta,right)*side;
-  const wanted=add(target,mul(right,side*Math.max(0,inward-across)));
-  return limb(root,wanted,pole??keeperBendPole(root,wanted,up,right,side),body.upperArm,body.forearm);
+function relaxedElbowPole(root,target,legacy,right,up,forward,sign,sideLying,weight){
+  if(!weight)return legacy;
+  const relaxed=keeperElbowPole(root,target,right,up,forward,sign,sideLying);
+  if(weight>=1-1e-10)return relaxed;
+  const direction=unit(sub(target,root));
+  const project=p=>unit(sub(sub(p,root),mul(direction,dot(sub(p,root),direction))));
+  const a=project(legacy),b=project(relaxed),angle=Math.atan2(dot(direction,cross(a,b)),dot(a,b))*weight;
+  return add(root,add(mul(a,Math.cos(angle)),mul(cross(direction,a),Math.sin(angle))));
 }
-function rig(hip,up,feet,hands,facing=-1,roll=0,yaw=0,armTuck=0) {
+function rig(hip,up,feet,hands,facing=-1,roll=0,yaw=0,armTuck=0,torso=null) {
   up=unit(up);let right=unit(v(up.y,-up.x,0));
   const rotate=p=>v(p.x*Math.cos(yaw)+p.z*Math.sin(yaw),p.y,-p.x*Math.sin(yaw)+p.z*Math.cos(yaw));
   up=rotate(up);right=rotate(right);const forward=rotate(v(0,0,facing));
-  const shoulder=add(hip,mul(up,body.torso));
-  const p={hip,shoulder,head:add(shoulder,mul(up,.245)),up,right,forward,roll,shoulders:[],hips:[],elbows:[],knees:[],hands:[],feet:[]};
+  const frames=facing>0?keeperTorsoFrames({hip,up,right,torso}):null;
+  const shoulder=frames?.shoulder??add(hip,mul(up,body.torso)),armRight=frames?.chest.right??right,armUp=frames?.chest.up??up,armForward=frames?unit(lerp(forward,frames.chest.back,torso?.armRelax??0)):forward;
+  const articulation=torso?{...torso}:null;if(articulation)for(const key in articulation)if(articulation[key]===0)articulation[key]=0;
+  const p={hip,shoulder,head:frames?.headPoint??add(shoulder,mul(up,.245)),up,right,forward,roll,...(articulation?{torso:articulation}:{}),shoulders:[],hips:[],elbows:[],knees:[],hands:[],feet:[]};
   for(let i=0;i<2;i++){
     const sign=i?1:-1;
-    const sr=add(shoulder,mul(right,sign*body.shoulderWidth/2)),hr=add(hip,mul(right,sign*body.hipWidth/2));
-    const kneePole=add(hr,add(mul(forward,.65),mul(right,sign*.07)));
+    const sr=add(shoulder,mul(armRight,sign*body.shoulderWidth/2)),hr=add(hip,mul(right,sign*body.hipWidth/2));
+    // Keep the knees on their own side while the horizontal torso recovers;
+    // a purely forward pole folds both calves into the same channel.
+    const sideLying=facing>0?(1-smooth(up.y/.95))*(1-smooth((hip.y-.5)/.3)):0;
+    const kneePole=add(hr,add(mul(forward,.65),mul(right,sign*(.07+.45*sideLying))));
     // As the hip approaches the turf, fold the knee above it to avoid a ground-side IK flip.
     kneePole.y+=.60*(1-smooth((hr.y-.15)/.40));
     const leg=limb(hr,feet[i],kneePole,body.thigh,body.shin);
-    const armPole=add(sr,add(mul(right,sign*(.45-.33*armTuck)),mul(forward,-.35)));
-    armPole.y+=.15*(1-smooth((sr.y-.25)/.65));
-    armPole.y-=.45*smooth((hands[i].y-sr.y)/.35)*smooth((up.y-.55)/.35);
-    const arm=facing>0?keeperArm(sr,hands[i],null,up,right,sign):limb(sr,hands[i],armPole,body.upperArm,body.forearm);
+    // A keeper's trailing arm reaches across the body during a two-hand dive.
+    // Carry that elbow in front of the ribcage instead of using the rear-facing
+    // resting pole, which can fold the upper arm through the chest.
+    const crossing=-sign*dot(sub(hands[i],sr),armRight);
+    const crossBody=facing>0?smooth((crossing+.04)/.45):0;
+    // Scapular protraction gives the upper-arm surface room when reaching
+    // across the ribs. A fixed flat shoulder line makes even a safe elbow
+    // centre drag the sleeve through the chest.
+    const protraction=facing>0?.10*smooth((crossing+.10)/.35):0;
+    sr.x+=armForward.x*protraction;sr.y+=armForward.y*protraction;sr.z+=armForward.z*protraction;
+    const legacyPole=add(sr,add(mul(right,sign*(.45-.33*armTuck)),mul(forward,-.35+.95*crossBody)));
+    legacyPole.y+=.15*(1-smooth((sr.y-.25)/.65));
+    legacyPole.y-=.45*smooth((hands[i].y-sr.y)/.35)*smooth((up.y-.55)/.35);
+    const armPole=facing>0?relaxedElbowPole(sr,hands[i],legacyPole,armRight,armUp,armForward,sign,sideLying,torso?.armRelax??0):legacyPole;
+    const arm=limb(sr,hands[i],armPole,body.upperArm,body.forearm);
     p.shoulders.push(sr);p.hips.push(hr);p.knees.push(leg.joint);p.feet.push(leg.end);p.elbows.push(arm.joint);p.hands.push(arm.end);
   }
   return p;
@@ -77,9 +94,11 @@ export const penaltyStyles=[
   {name:'短步直线',duration:1.55,distance:1.15,side:0,steps:4},
   {name:'斜向助跑',duration:1.75,distance:1.35,side:.4,steps:4},
   {name:'碎步调整',duration:1.8,distance:1.3,side:.15,steps:6},
+  {name:'紧凑一步 · 独立动捕',duration:COMPACT_KICK.contactSeconds,distance:.32,side:0,steps:2,capture:COMPACT_KICK},
 ];
 export function penaltyStyle(player){return penaltyStyles[(player?.number??0)%penaltyStyles.length];}
 export function strikerRunupPose(time,phase,after,power,targetX,style=penaltyStyles[0],shotType='normal'){
+  const compact=!!style.capture;
   const elapsed=clip(phase,0,1)*style.duration,approach=style.duration-.55;
   if(after>=0||elapsed>=approach)return strikerPose(time,clip((elapsed-approach)/.55,0,1),after,power,targetX,.7,shotType);
   const clock=elapsed/approach,q=.7*clock+.3*clock*clock,step=Math.min(style.steps-1,Math.floor(q*style.steps)),u=q*style.steps-step;
@@ -93,7 +112,7 @@ export function strikerRunupPose(time,phase,after,power,targetX,style=penaltySty
     if(step%2!==i)return from;
     const to=add(foot,offset(Math.min(1,(step+1)/(style.steps-1))));
     const ease=u*u*u*(u*(u*6-15)+10);
-    const result=lerp(from,to,ease);result.y+=Math.pow(Math.sin(Math.PI*u),3)*.09;return result;
+    const result=lerp(from,to,ease);result.y+=Math.pow(Math.sin(Math.PI*u),3)*(compact?.055:.09);return result;
   });
   // Both feet finish at the original gather stance; alternate fixed supports.
   const centerAt=n=>mul(add(planted(0,n),planted(1,n)),.5);
@@ -103,11 +122,11 @@ export function strikerRunupPose(time,phase,after,power,targetX,style=penaltySty
   const incoming=step===0?v():mul(sub(to,centerAt(step-1)),.5);
   const outgoing=step===style.steps-1?v(0,0,-.7*approach/(style.steps*1.3)):mul(sub(centerAt(step+2),from),.5);
   const center=add(lerp(from,to,smoother(u)),add(mul(incoming,u-6*u**3+8*u**4-3*u**5),mul(outgoing,-4*u**3+7*u**4-3*u**5)));
-  const activity=Math.pow(Math.sin(Math.PI*q),2),stride=Math.sin(q*style.steps*Math.PI)*activity,sway=.025*stride;
+  const activity=Math.pow(Math.sin(Math.PI*q),2),stride=Math.sin(q*style.steps*Math.PI)*activity,sway=(compact?.012:.025)*stride;
   // Load the legs before the stride extends. Carry a slight crouch into the
   // plant instead of standing upright between the runup and the strike.
   const load=smoother(q/.25)*(1-smoother((q-.75)/.25));
-  const hip=v(center.x-.035+sway,.85-.09*load-.05*smoother((q-.65)/.35)-.008*Math.pow(Math.sin(Math.PI*u),2)*activity+Math.sin(time*1.8)*.008,center.z+.015);
+  const hip=v(center.x-.035+sway,(compact?.81:.85)-(compact?.025:.09)*load-(compact?.01:.05)*smoother((q-.65)/.35)-(compact?.004:.008)*Math.pow(Math.sin(Math.PI*u),2)*activity+Math.sin(time*1.8)*.008,center.z+.015);
   for(let i=0;i<2;i++){
     const horizontal=Math.hypot(feet[i].x-hip.x-(i?1:-1)*body.hipWidth/2,feet[i].z-hip.z);
     const ceiling=feet[i].y+Math.sqrt(Math.max(.1,Math.pow(.84-.035*activity,2)-horizontal*horizontal));
@@ -186,7 +205,8 @@ export function goalkeeperPose(stats,direction=0,elapsed=0,height=1) {
     return rig(hip,up,[v(-.30,.075,.04),v(.30,.075,.04)],[v(-width,y,.30+.06*low*reach),v(width,y,.30+.06*low*reach)],1);
   }
   const stretch=clip(stats.stretch??0,0,1),push=.13,air=Math.max(0,t-push),high=clip((height-.35)/1.7,0,1),vy=.7+high*(2.1+1.1*stretch);
-  const launchY=.83,landY=.30;
+  // Include the shoulder/sleeve radius in side-lying body clearance.
+  const launchY=.83,landY=.305;
   const landing=(vy+Math.sqrt(vy*vy+2*9.81*(launchY-landY)))/9.81;
   const velocity=stats.diveVelocity??(3.2+clip(stats.speed/99,0,1)*1.1+.9*stretch);
   const launchX=.16;
@@ -216,42 +236,118 @@ export function goalkeeperPose(stats,direction=0,elapsed=0,height=1) {
     const target=add(shoulder,v(sign*armReach,clip(height-shoulder.y,-.34,.40)+(i? .08:-.04),.21));
     const root=add(shoulder,mul(right,s*body.shoulderWidth/2));
     const extended=add(root,mul(unit(v(sign,clip(height-root.y,-.8,1.1),.16)),body.upperArm+body.forearm-.01));
-    // Carry the ready stance with the torso before committing the reach.
-    const carried=add(add(hip,mul(right,s*.35)),add(mul(unit(up),.22),v(0,0,.2512)));
-    return lerp(carried,lerp(target,extended,reachCommit),smooth(t/.30));
+    const reachPhase=smooth(t/.30);
+    return lerp(v(s*.35,1.05,.30+forwardTravel),lerp(target,extended,reachCommit),reachPhase);
+  });
+  // Give a crossing trailing forearm surface clearance in front of the chest.
+  // Apply to authored dive targets only; rig() also consumes already-solved
+  // poses during interpolation and must never accumulate a positional offset.
+  hands.forEach((hand,i)=>{
+    const side=i?1:-1,root=add(shoulder,mul(right,side*body.shoulderWidth/2));
+    const crossing=-side*dot(sub(hand,root),right),crossBody=smooth((crossing+.04)/.45);
+    hand.z+=.26*crossBody;
+    // The secondary hand must bend around the chest, not stretch through it.
+    // Ease into a cross-body limit; the leading hand retains the full save reach.
+    const excess=Math.max(0,crossing-.24),release=excess<.08?excess*excess/.16:excess-.04;
+    hand.x+=side*right.x*release;hand.y+=side*right.y*release;
   });
   const feet=[-1,1].map(s=>{
     if(t<push)return v(s*.30,.075,.04);
     const scissor=smooth(air/.18)*(1-smooth((air-landing+.20)/.20)),leading=s===sign;
     const airborne=add(add(hip,mul(unit(up),-.67+(leading?-.07:.15)*scissor)),add(mul(right,s*.16),v(0,.06,.10+s*.07+(leading?0:.14)*scissor)));
-    if(leading)airborne.y+=(.075-airborne.y)*smooth((air-landing+.20)/.20);
-    // Keep the ankles moving with the pelvis through takeoff, then settle the lower foot.
-    const carried=v(s*.30+hip.x-sign*launchX,.075+hip.y-launchY,.04+forwardTravel-.42*smooth(push/.42));
-    return lerp(carried,airborne,smooth(air/.17));
+    return lerp(v(s*.30,.075,.04),airborne,smooth(air/.17));
   });
-  // At ground contact use the side of the thigh and forearm as support, feet clear turf.
-  feet.forEach(f=>f.y=Math.max(.075,f.y));
-  const recoveryTime=t-push-landing-.45;
+  // Free-save arms absorb after the reach instead of holding the same fully
+  // extended silhouette while the legs land and tuck. The lower arm bends
+  // toward a brace; the upper arm settles in front of its own shoulder. This
+  // shared physical pose is also used by collision and held-ball gathering.
+  const armAbsorb=smoother((air-landing+.015)/.22);
+  hands.forEach((hand,i)=>{
+    const lower=(i?1:-1)===sign;
+    const braceX=sign*(launchX+velocity*landing+velocity*.16+.49);
+    const resting=lower?v(braceX,.035,hip.z+.38):add(shoulder,v(sign*.08,.20,.35));
+    const absorption=lower?armAbsorb:smoother((air-landing-.02)/.22);
+    const bent=lerp(hand,resting,absorption);hand.x=bent.x;hand.y=bent.y;hand.z=bent.z;
+  });
+  // After the torso absorbs impact, place the ground-side boot and then the
+  // upper boot. Keeping the flight targets here made both legs hover rigidly
+  // for the whole side-lying pause before recovery.
+  const legSettle=smoother((air-landing)/.20);
+  feet.forEach((foot,i)=>{const side=i?1:-1;foot.y=Math.max(.075,foot.y+((side===sign?.075:.15)-foot.y)*legSettle);
+    // Place the upper boot in front of the lower shin, not through it. The
+    // offset starts during impact absorption and fades into the planted stance.
+    const placement=smoother((air-landing+.05)/.20);
+    const landingZ=hip.z-unit(up).z*.67+.10+(side===sign?-.07:.27);
+    foot.z+=(landingZ-foot.z)*placement;
+    if(side!==sign)foot.x+=sign*.16*placement;
+  });
+  const recoveryTime=t-push-landing-.28;
+  const torso={curl:.12*armAbsorb,twist:sign*.035*armAbsorb,sideBend:sign*.075*armAbsorb,headCurl:-.04*armAbsorb,armRelax:armAbsorb,braceL:sign<0?armAbsorb:0,braceR:sign>0?armAbsorb:0};
   if(recoveryTime>0){
     // Keep the shoulder down while tucking the feet; transfer weight only after
     // the feet arrive. The curved ankle path avoids folding the heel into the hip.
     const bodyTuck=smoother((recoveryTime-.30)/.50),rise=smoother((recoveryTime-.70)/.90);
     const baseX=sign*(launchX+velocity*landing+velocity*.16);
     const crouchUp=unit(v(sign*.8,.6,.16));
-    const liftedHip=v(hip.x,landY+.10*bodyTuck+(.83-landY-.10)*rise,hip.z);
+    const supportTransfer=.10*smoother(recoveryTime/.30)*(1-smoother((recoveryTime-.70)/.30));
+    // Load the newly planted boots before extending the knees: the pelvis
+    // travels toward their depth while the chest stays folded over support.
+    const loadOverBoots=smoother((recoveryTime-.55)/.68);
+    const liftedHip=v(hip.x+sign*supportTransfer,landY+.10*bodyTuck+(.83-landY-.10)*rise,hip.z+.22*loadOverBoots);
     const recoveryUp=lerp(lerp(up,crouchUp,bodyTuck),v(0,1,.08),rise);
-    const planted=[v(baseX-.28,.075,hip.z),v(baseX+.28,.075,hip.z)];
-    const torsoUp=unit(recoveryUp),torsoRight=unit(v(torsoUp.y,-torsoUp.x,0));
-    const resting=[-1,1].map(side=>add(liftedHip,add(mul(torsoUp,.22),add(mul(torsoRight,side*.35),v(0,0,.26)))));
-    const support=v(baseX+sign*.26,.10,hip.z+.32),brace=smoother(recoveryTime/.35);
-    const handRelease=smoother((recoveryTime-.94)/.66);
-    const tuckedFeet=feet.map((f,i)=>{const tuck=smoother(recoveryTime/(i===(sign>0?1:0)?.30:.44)),target=lerp(f,planted[i],tuck);target.z+=.24*Math.sin(Math.PI*tuck);return target;});
-    const recoveryHands=hands.map((h,i)=>lerp(h,i===(sign>0?1:0)?lerp(support,resting[i],handRelease):resting[i],brace));
-    // Retract in front of the shoulder before loading the supporting palm.
-    recoveryHands.forEach(h=>h.z+=.14*Math.sin(Math.PI*brace));
-    return rig(liftedHip,recoveryUp,tuckedFeet,recoveryHands,1,sign*angle*(1-bodyTuck));
+    // Bring the ankles around the front of the torso, never through the
+    // still-horizontal chest, then transfer the hip over those fixed supports.
+    const planted=[v(baseX-.28,.075,hip.z+.30),v(baseX+.28,.075,hip.z+.30)];
+    // Brace with the ground-side palm. The upper arm balances in front of its
+    // own shoulder instead of reaching across (and disappearing into) the chest.
+    // Select by anatomical side so left/right recovery remains mirrored.
+    const recoveryAxis=unit(recoveryUp),recoveryRight=unit(v(recoveryAxis.y,-recoveryAxis.x,0));
+    const recoveryShoulder=add(liftedHip,mul(recoveryAxis,body.torso));
+    const support=[-1,1].map(side=>side===sign?v(baseX+sign*.49,.035,hip.z+.38):
+      add(add(recoveryShoulder,mul(recoveryRight,side*.24)),v(0,-.24,.40)));
+    // The pelvis advances as the boots take load. Keep the set hands in front
+    // of that moving body; anchoring them at landing depth pulls the elbows
+    // behind the ribs and gives the final rise a rigid, winged silhouette.
+    const resting=[v(baseX-.35,1.05,liftedHip.z+.26),v(baseX+.35,1.05,liftedHip.z+.26)];
+    const handRelease=smoother((recoveryTime-.84)/.76),freeHandRelease=smoother((recoveryTime-.66)/.94);
+    torso.soleL=smoother((recoveryTime-(sign<0?.30:.70))/.30);
+    torso.soleR=smoother((recoveryTime-(sign>0?.30:.70))/.30);
+    const tuckedFeet=feet.map((foot,i)=>{
+      const lower=i===(sign>0?1:0);
+      const tuck=smoother(lower?recoveryTime/.30:(recoveryTime-.28)/.42);
+      const target=lerp(foot,planted[i],tuck);
+      target.y-=.0095*smoother((torso[i?'soleR':'soleL']-.45)/.55);
+      target.z+=(lower?.24:.38)*Math.sin(Math.PI*tuck);
+      // Let the supporting boot pass underneath before the upper boot plants.
+      if(!lower)target.y+=.12*smoother(recoveryTime/.10)*(1-smoother((recoveryTime-.20)/.18));
+      return target;
+    });
+    const release=1-rise,drive=smoother((recoveryTime-.55)/.3)*(1-smoother((recoveryTime-1.0)/.60));torso.curl=torso.curl*release*(1-.6*bodyTuck)+.075*drive;torso.twist*=release;torso.sideBend*=1-bodyTuck;torso.headCurl=-torso.curl/3-.045*drive;torso.armRelax*=release;torso.braceL*=1-handRelease;torso.braceR*=1-handRelease;
+    return rig(liftedHip,recoveryUp,tuckedFeet,hands.map((h,i)=>lerp(lerp(h,support[i],bodyTuck),resting[i],(i?1:-1)===sign?handRelease:freeHandRelease)),1,sign*angle*(1-bodyTuck),0,0,torso);
   }
-  return rig(hip,up,feet,hands,1,sign*angle);
+  return rig(hip,up,feet,hands,1,sign*angle,0,0,torso);
+}
+
+// Source-informed pre-shot set step, not a replay of an entire capture.
+// Monteiro N05D/O05E show a same-side forward step, opposite-leg loading and
+// arm preparation before takeoff. Keep this neutral (no target knowledge),
+// and arrive at the exact physical initial pose before the ball is released.
+export function keeperRunupPreparation(stats,phase,leadSide=-1) {
+  const q=clip(phase,0,1),base=goalkeeperPose(stats,0,0,1);
+  if(q===0||q===1)return base;
+  const lead=leadSide<0?0:1;
+  const steps=[{foot:lead,z:.08},{foot:1-lead,z:.05},{foot:lead,z:0},{foot:1-lead,z:0}];
+  const start=.08,span=.82/steps.length,clock=clip((q-start)/span,0,steps.length),step=Math.min(steps.length-1,Math.floor(clock)),u=clock-step;
+  const feet=[v(-.30,.075,.04),v(.30,.075,.04)];
+  for(let i=0;i<step;i++)feet[steps[i].foot].z=.04+steps[i].z;
+  if(q>=start&&clock<steps.length){const move=steps[step],foot=feet[move.foot];foot.z+=(.04+move.z-foot.z)*smoother(u);foot.y+=.038*Math.sin(Math.PI*u)**3;}
+  else if(clock>=steps.length)for(const foot of feet)foot.z=.04;
+  const load=Math.sin(Math.PI*clip((q-.04)/.90,0,1))**2;
+  const transfer=Math.sin(2*Math.PI*clip((q-.08)/.82,0,1))*load;
+  const hip=v(.035*(leadSide<0?-1:1)*transfer,.83-.043*load,.04+.032*load);
+  const up=v(-.045*(leadSide<0?-1:1)*transfer,1,.08+.055*load);
+  const hands=[-1,1].map(side=>v(side*(.35+.018*load)+hip.x*.45,1.05-.025*load,.30+.045*load));
+  return rig(hip,up,feet,hands,1);
 }
 
 // A wrong-footed keeper brakes while the feet are still supporting the body.
@@ -274,7 +370,19 @@ export function placeKeeperPose(pose,offset,feet=null,velocity=null){
   const up=velocity?add(pose.up,v(clip(velocity.x/3,-1,1)*.065,0,0)):pose.up;
   const stride=feet?clip((feet[1].y-feet[0].y)/.035,-1,1):0,standing=smooth((pose.hip.y-.35)/.4);
   const hip=add(add(pose.hip,offset),v(0,-.012*stride*stride*standing,0));
-  return rig(hip,up,feet??pose.feet.map(p=>add(p,offset)),pose.hands.map((p,i)=>add(add(p,offset),v(0,0,(i?1:-1)*.025*stride*standing))),1,pose.roll);
+  return rig(hip,up,feet??pose.feet.map(p=>add(p,offset)),pose.hands.map((p,i)=>add(add(p,offset),v(0,0,(i?1:-1)*.025*stride*standing))),1,pose.roll,0,0,pose.torso);
+}
+
+// Re-solve an already posed keeper over explicit supports without repeating
+// the live tracking stride dip/swing encoded in the captured pose.
+export function supportedKeeperPose(pose,hip,feet){
+  const offset=sub(hip,pose.hip);
+  const supported=rig(hip,pose.up,feet,pose.hands.map(hand=>add(hand,offset)),1,pose.roll,0,0,pose.torso);
+  // Only the legs change support. Preserve the exact captured upper-body
+  // transforms; re-solving already constrained wrist targets shifts elbows.
+  for(const key of ['shoulder','head'])supported[key]=add(pose[key],offset);
+  for(const key of ['shoulders','hands','elbows'])supported[key]=pose[key].map(point=>add(point,offset));
+  return supported;
 }
 
 // A short side-step loads the legs while a slow ball is still approaching.
@@ -295,21 +403,45 @@ export function keeperPreparation(stats,direction,elapsed,delay,height=1){
 export function blendKeeperPose(from,to,weight,ease=true){
   if(weight<=0)return from;if(weight>=1)return to;
   const t=ease?smooth(weight):weight;
-  return rig(lerp(from.hip,to.hip,t),lerp(from.up,to.up,t),from.feet.map((p,i)=>lerp(p,to.feet[i],t)),from.hands.map((p,i)=>lerp(p,to.hands[i],t)),1,from.roll+(to.roll-from.roll)*t);
+  const torso=from.torso||to.torso?Object.fromEntries(['curl','twist','sideBend','headCurl','armRelax','braceL','braceR'].map(key=>[key,(from.torso?.[key]??0)+((to.torso?.[key]??0)-(from.torso?.[key]??0))*t])):null;
+  if(torso)for(const key of ['soleL','soleR'])if(from.torso?.[key]!==undefined||to.torso?.[key]!==undefined)torso[key]=(from.torso?.[key]??0)+((to.torso?.[key]??0)-(from.torso?.[key]??0))*t;
+  return rig(lerp(from.hip,to.hip,t),lerp(from.up,to.up,t),from.feet.map((p,i)=>lerp(p,to.feet[i],t)),from.hands.map((p,i)=>lerp(p,to.hands[i],t)),1,from.roll+(to.roll-from.roll)*t,0,0,torso);
 }
 
 // A secured ball is brought into the torso with both hands, keeping arm lengths.
 export function holdingPose(source,blend=1){
-  blend=smoother(blend);const p={...source,hands:[],elbows:[]};
-  const center=add(add(p.shoulder,mul(p.up,-.17)),mul(p.forward,.26));
-  center.y=Math.max(.11+.115*Math.abs(p.right.y)+.045*Math.max(0,p.up.y),center.y);
+  blend=smoother(blend);const p={...source,hands:[],elbows:[]},chest=keeperTorsoFrames(p).chest;
+  const center=add(add(p.shoulder,mul(chest.up,-.17)),mul(chest.back,.29));
+  // Keep the secured ball above the recovering calves while lying on the side.
+  center.y+=.06*(1-smooth((p.up.y-.1)/.7));center.y=Math.max(.15,center.y);
+  if(blend===0)return {pose:source,center,weight:0};
   for(let i=0;i<2;i++){
-    const sign=i?1:-1,target=add(add(center,mul(p.right,sign*.115)),mul(p.up,-.045));
-    const hand=lerp(source.hands[i],target,blend),holdPole=keeperBendPole(p.shoulders[i],target,p.up,p.right,sign);
-    const pole=lerp(source.elbows[i],holdPole,blend);
-    // Lift the elbow plane as the shoulder approaches the turf during the gather.
-    pole.y+=.9*Math.sin(Math.PI*blend)*(1-Math.max(0,p.up.y))*(1-smooth((p.shoulders[i].y-.15)/.55));
-    const arm=keeperArm(p.shoulders[i],hand,pole,p.up,p.right,sign);p.hands.push(arm.end);p.elbows.push(arm.joint);
+    const sign=i?1:-1,target=add(add(center,mul(chest.right,sign*.15)),mul(chest.up,-.045));
+    const root=p.shoulders[i],sideLying=(1-smooth(p.up.y/.95))*(1-smooth((p.hip.y-.5)/.3)),holdPole=keeperElbowPole(root,target,chest.right,chest.up,chest.back,sign,sideLying);
+    const finalArm=limb(root,target,holdPole,body.upperArm,body.forearm);
+    // Blend the two joint rotations, not a pole position that can cross the
+    // wrist axis. Each segment keeps its length throughout the gathering arc.
+    const direction=(a,b)=>unit(sub(b,a));
+    const rotate=(from,to)=>{
+      const cosine=clip(dot(from,to),-1,1),angle=Math.acos(cosine);
+      if(angle<1e-5)return from;
+      let tangent=sub(to,mul(from,cosine));
+      if(len(tangent)<1e-6)tangent=sub(p.forward,mul(from,dot(p.forward,from)));
+      if(len(tangent)<1e-6)tangent=sub(mul(p.right,sign),mul(from,dot(mul(p.right,sign),from)));
+      tangent=unit(tangent);return add(mul(from,Math.cos(angle*blend)),mul(tangent,Math.sin(angle*blend)));
+    };
+    const floorDirection=(axis,height,length,floor=.075)=>{
+      const minimum=clip((floor-height)/length,-1,1);
+      if(axis.y>=minimum)return axis;
+      const horizontal=Math.hypot(axis.x,axis.z),reach=Math.sqrt(Math.max(0,1-minimum*minimum));
+      if(horizontal<1e-8)return v(p.forward.x*reach,minimum,p.forward.z*reach);
+      const scale=reach/horizontal;return v(axis.x*scale,minimum,axis.z*scale);
+    };
+    const upper=floorDirection(rotate(direction(root,source.elbows[i]),direction(root,finalArm.joint)),root.y,body.upperArm);
+    const elbow=add(root,mul(upper,body.upperArm));
+    const sourceFloor=(source.torso?.[i?'braceR':'braceL']??0)>.5?Math.min(.075,Math.max(.03,source.hands[i].y)):.075;
+    const lower=floorDirection(rotate(direction(source.elbows[i],source.hands[i]),direction(finalArm.joint,finalArm.end)),elbow.y,body.forearm,sourceFloor+(.075-sourceFloor)*blend);
+    p.elbows.push(elbow);p.hands.push(add(elbow,mul(lower,body.forearm)));
   }
   p.grip={center,weight:blend};
   return {pose:p,center,weight:blend};

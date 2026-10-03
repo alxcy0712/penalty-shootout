@@ -1,4 +1,6 @@
+import {keeperSurfaceContacts,keeperPalmCenter,keeperContactQuality} from './keeper-contact.js';
 import {goalkeeperPose,blendKeeperPose,keeperPreparation,placeKeeperPose,keeperHesitationPose} from './anatomy.js';
+import {keeperResultRecovery} from './keeper-result-recovery.js';
 export const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
 export const GOAL = { half: 3.66, height: 2.44, distance: 11, radius: .11, postRadius: .06 };
 export class Random {
@@ -82,7 +84,10 @@ function sweptDistance(p0,p1,a,b,radius=0) {
     if(len(sub(p,nearest(p,a,b))) < len(sub(q,nearest(q,a,b)))) hi=t2; else lo=t1;
   }
   let time=(lo+hi)/2,p=add(p0,mul(sub(p1,p0),time)),q=nearest(p,a,b);
-  const distance=len(sub(p,q));
+  let distance=len(sub(p,q));
+  // The ternary interior sample does not include either endpoint. A short
+  // segment can first enter a post in its final fraction; retain that contact.
+  for(const [endpoint,t]of [[p0,0],[p1,1]]){const nearestPoint=nearest(endpoint,a,b),d=len(sub(endpoint,nearestPoint));if(d<distance){distance=d;time=t;p=endpoint;q=nearestPoint;}}
   if(radius && distance<radius){
     // Find first surface entry, before the ball crosses the capsule axis.
     let start=0,end=time;
@@ -92,13 +97,32 @@ function sweptDistance(p0,p1,a,b,radius=0) {
   }
   return { distance, p, q, time };
 }
+// A nearly downward plane has no stable intersection with the floor. Query
+// finite collision surfaces from four outside floor points instead of amplifying a tiny
+// horizontal normal into a long teleport. This fallback is used only when the
+// planar correction would exceed a ball radius.
+function keeperFloorEscape(pose,center,radius,padding=.005){
+  const points=[pose.hip,pose.shoulder,pose.head??pose.shoulder,...pose.hands,...pose.elbows,...pose.knees,...pose.feet];
+  const extent=Math.max(...points.flatMap(p=>[Math.abs(p.x-center.x),Math.abs(p.z-center.z)]))+radius+.30;
+  if(!keeperSurfaceContacts(pose,center,center,radius,false).length)return {point:center};
+  let best=null,distance=Infinity;
+  for(const axis of ['x','z'])for(const side of [-1,1]){
+    const start={...center,[axis]:center[axis]+side*extent};let first=null;
+    for(const contact of keeperSurfaceContacts(pose,start,center,radius,false))if(!first||contact.hit.time<first.hit.time)first=contact;
+    if(!first)continue;
+    if(first.hit.time<=0)continue;
+    const point={...first.hit.p,[axis]:first.hit.p[axis]+side*padding},offset=sub(point,center),squared=dot(offset,offset);
+    if(squared<distance){const normal=sub(first.hit.p,first.hit.q),length=len(normal);best={point,part:first.part,normal:length>1e-8?mul(normal,1/length):null};distance=squared;}
+  }
+  return best;
+}
 export const keeperPose = goalkeeperPose;
 export class Shot {
   constructor(aim, attacker, keeper, direction, seed, pressure=.3) {
     this.rng=new Random(seed); this.attacker=attacker; this.keeper=keeper;
     this.keeperPressure=1-pressure*(1-keeper.composure/99)*.12;
     this.direction=direction; this.diveAt=direction ? 0 : null; this.t=0; this.ball=v(0,.11,11); this.previous={...this.ball};
-    this.touched=false; this.post=false; this.contactUntil=0; this.postUntil=0; this.result=null; this.caught=false;
+    this.touched=false; this.post=false; this.contactUntil=0; this.handlingUntil={}; this.postUntil=0; this.result=null; this.caught=false;
     const stress=1+pressure*(1-attacker.composure/99)*.9;
     const power=aim.timeout ? 0 : clamp(aim.power+this.rng.spread(.075*(1-attacker.touch/99)*stress),0,1);
     const control=(attacker.accuracy+attacker.touch*2+attacker.composure+attacker.power)/5/99;
@@ -137,12 +161,24 @@ export class Shot {
     let best=Infinity,bestTime=0,bestSpeed=maxDiveSpeed;
     for(let time=.16;time<=Math.min(arrival,.85);time+=.025)for(let speed=1.5;speed<=maxDiveSpeed;speed+=.2){
       const pose=keeperPose({...this.keeper,diveVelocity:speed,stretch:this.stretch},this.direction,time,this.diveHeight);
-      const distance=Math.min(...pose.hands.map(hand=>len(sub(ball,hand))),len(sub(ball,nearest(ball,pose.hip,pose.shoulder))))+.015*(arrival-time);
+      const distance=Math.min(...pose.hands.map((hand,i)=>len(sub(ball,this.launchSpeed>=15?keeperPalmCenter(pose,i):hand))),len(sub(ball,nearest(ball,pose.hip,pose.shoulder))))+.015*(arrival-time);
       if(distance<best){best=distance;bestTime=time;bestSpeed=speed;}
     }
     this.diveDelay=this.launchSpeed>=23||(this.launchSpeed>=15&&Math.abs(ball.x)<.8)?0:Math.max(0,arrival-bestTime);this.diveVelocity=bestSpeed;
   }
   poseAt(time,height=this.reactionHeight??this.target.y){
+    // Hesitation owns its complete brake/stand sequence, including results.
+    if(this.hesitation)return this.livePoseAt(time,height);
+    if(this.result&&!this.direction&&this.pose?.shoulders){
+      const origin=this.animationTime??this.t;
+      // A compressed free result continues from the exact presented pose.
+      // Physical catches retain their authoritative contact frame.
+      const source=this.caught||!this.recoveryOrigin?this.pose:this.livePoseAt(origin,height);
+      return keeperResultRecovery(source,time-origin,this.caught);
+    }
+    return this.livePoseAt(time,height);
+  }
+  livePoseAt(time,height=this.reactionHeight??this.target.y){
     if(this.hesitation)return keeperHesitationPose(this.hesitation.pose,this.hesitation.direction,time-this.hesitation.at,this.hesitation.previous);
     const stats={...this.keeper,speed:this.keeper.speed*this.keeperPressure,reach:this.keeper.reach*this.keeperPressure,diveVelocity:this.diveVelocity,stretch:this.stretch};
     const elapsed=this.diveAt===null?time:time-this.diveAt,delay=this.direction?(this.diveDelay??0):0;
@@ -216,7 +252,9 @@ export class Shot {
       return;
     }
     const reaction=.14+.16*(1-this.keeper.speed/99);
-    if(this.t<reaction||this.t<this.contactUntil||this.ball.z<.4)return;
+    // Finish a committed stride while contact suspends new tracking decisions.
+    // Its clock keeps advancing, so skipping it would teleport the foot on resume.
+    if(this.t<reaction||this.t<this.contactUntil||this.ball.z<.4){this.stepFeet();return;}
     const flight=this.ball.z/Math.max(1,-this.velocity.z);
     const targetX=clamp(this.ball.x+this.velocity.x*flight,-3.05,3.05);
     const targetZ=this.launchSpeed<15?.12:0;
@@ -263,47 +301,86 @@ export class Shot {
     if(!this.touched&&!this.post&&this.ball.y>GOAL.radius+.01)this.velocity.x+=(this.spin??0)*dt;
     this.velocity.y-=9.81*dt;
     this.ball=add(this.ball,mul(this.velocity,dt));
+    // Simultaneous contact retries consume no extra time or ground friction.
+    let groundResolved=false;
     if(this.ball.y<GOAL.radius) {
+      groundResolved=true;
       this.ball.y=GOAL.radius;
       if(this.velocity.y<-.8) { this.velocity.y*=-.33; this.velocity.x*=.78; this.velocity.z*=.78; }
       else { this.velocity.y=0; const friction=Math.max(0,1-.8*dt/(Math.hypot(this.velocity.x,this.velocity.z)||1)); this.velocity.x*=friction;this.velocity.z*=friction; }
     }
-    if(this.t>this.postUntil && Math.min(Math.abs(this.ball.z),Math.abs(this.previous.z))<.5) {
-      const x=GOAL.half+GOAL.postRadius,y=GOAL.height+GOAL.postRadius,z=GOAL.postRadius;
-      const posts=[[v(-x,0,z),v(-x,y,z)],[v(x,0,z),v(x,y,z)],[v(-x,y,z),v(x,y,z)]];
-      for(const [a,b] of posts) {
-        const hit=sweptDistance(this.previous,this.ball,a,b,GOAL.radius+GOAL.postRadius);
-        if(hit.distance<GOAL.radius+GOAL.postRadius) { this.reflect(hit,GOAL.radius+GOAL.postRadius,.72); this.post=true; this.postUntil=this.t+.04; break; }
-      }
-    }
     const crossing=this.previous.z>=-GOAL.radius&&this.ball.z<-GOAL.radius?(-GOAL.radius-this.previous.z)/(this.ball.z-this.previous.z):Infinity;
-    const p=this.pose,keeperFront=Math.max(p.hip.z,p.shoulder.z,p.hands[0].z,p.hands[1].z)+.30;
-    if(this.t>this.contactUntil && Math.min(this.ball.z,this.previous.z)<keeperFront && Math.max(this.ball.z,this.previous.z)>-.4) {
-      const parts=[[p.hip,p.shoulder,.19,'body'],[p.head,p.head,.12,'body']];
-      for(let i=0;i<2;i++) {
-        const wristDirection=sub(p.hands[i],p.elbows[i]),fingers=add(p.hands[i],mul(wristDirection,.12/(len(wristDirection)||1)));
-        parts.push([p.shoulders[i],p.elbows[i],.08,'body'],[p.elbows[i],p.hands[i],.065,'body'],[p.hands[i],fingers,.058,'hand'],[p.hips[i],p.knees[i],.105,'body'],[p.knees[i],p.feet[i],.075,'body'],[v(p.feet[i].x,p.feet[i].y-.02,p.feet[i].z-.04),v(p.feet[i].x,p.feet[i].y-.02,p.feet[i].z+.14),.06,'body']);
-      }
-      // Resolve the first visible surface, not whichever body part is listed first.
-      let contact=null;
-      for(const [a,b,r,type] of parts){
-        const hit=sweptDistance(this.previous,this.ball,a,b,r+GOAL.radius);
-        if(hit.time<crossing && hit.distance<r+GOAL.radius && (!contact || hit.time<contact.hit.time))contact={hit,r,type};
-      }
-      if(contact){
-        const {hit,r,type}=contact;
-        {
-          this.touched=true; this.contactUntil=this.t+.09;
-          const quality=clamp(1-hit.distance/(r+.11),.05,1);
-          const secure=(this.keeper.handling/100)*(.64+.36*quality)*(1-Math.max(0,this.launchSpeed-23)*.013)*this.keeperPressure;
-          if(type==='hand' && this.rng.next()<secure) {this.caught=true;this.ball={...hit.p};this.velocity=v();this.finish(false,'门将稳稳抱住了球');}
-          else this.reflect(hit,r+.11, type==='hand'?.34:.5);
+    let crossingPoint=Number.isFinite(crossing)?add(this.previous,mul(sub(this.ball,this.previous),crossing)):null;
+    // Include every limb: a recovering boot may extend ahead of both palms.
+    // The shipped extremities extend less than .25 m beyond these rig points.
+    const p=this.pose,keeperFront=Math.max(p.hip.z,p.shoulder.z,p.head?.z??p.shoulder.z,p.hips[0].z,p.hips[1].z,p.shoulders[0].z,p.shoulders[1].z,p.hands[0].z,p.hands[1].z,p.elbows[0].z,p.elbows[1].z,p.knees[0].z,p.knees[1].z,p.feet[0].z,p.feet[1].z)+GOAL.radius+.25;
+    if((Math.min(this.ball.z,this.previous.z)<keeperFront && Math.max(this.ball.z,this.previous.z)>-.4)||Math.min(Math.abs(this.ball.z),Math.abs(this.previous.z))<.5) {
+      // Resolve calibrated skin surfaces in time order. A capsule extending
+      // beyond a wrist/elbow can otherwise block a ball before the glove does.
+      let sweepStart=this.previous;
+      // Initial overlap consumes no flight time. Re-sweep its remaining motion
+      // so tangential rebounds do not stick to a moving limb. Four resolutions
+      // bound simultaneous-contact work; a normal impact ends this fixed step.
+      for(let resolution=0;resolution<4;resolution++){
+        const currentCrossing=sweepStart.z>=-GOAL.radius&&this.ball.z<-GOAL.radius?(-GOAL.radius-sweepStart.z)/(this.ball.z-sweepStart.z):Infinity;
+        // Keep the last actual segment for goal-mouth edge classification.
+        crossingPoint=Number.isFinite(currentCrossing)?add(sweepStart,mul(sub(this.ball,sweepStart),currentCrossing)):null;
+        let contact=null;
+        if(Math.min(this.ball.z,sweepStart.z)<keeperFront&&Math.max(this.ball.z,sweepStart.z)>-.4)
+          for(const surface of keeperSurfaceContacts(p,sweepStart,this.ball,GOAL.radius,'deferred'))if(surface.hit.time<currentCrossing&&(!contact||surface.hit.time<contact.hit.time))contact=surface;
+        // Posts and keeper share one timeline: a later frame impact cannot
+        // reflect the velocity before a nearer glove or body surface is hit.
+        if(this.t>this.postUntil&&Math.min(Math.abs(this.ball.z),Math.abs(sweepStart.z))<.5){
+          const x=GOAL.half+GOAL.postRadius,y=GOAL.height+GOAL.postRadius,z=GOAL.postRadius;
+          for(const [a,b]of [[v(-x,0,z),v(-x,y,z)],[v(x,0,z),v(x,y,z)],[v(-x,y,z),v(x,y,z)]]){
+            const hit=sweptDistance(sweepStart,this.ball,a,b,GOAL.radius+GOAL.postRadius);
+            if(hit.distance<GOAL.radius+GOAL.postRadius&&hit.time<currentCrossing&&(!contact||hit.time<contact.hit.time))contact={hit,type:'post'};
+          }
+        }
+        if(contact){
+          crossingPoint=null;
+          const {hit,r,type}=contact;
+          if(type==='post'){
+            this.reflect(hit,GOAL.radius+GOAL.postRadius,.72);this.post=true;this.postUntil=this.t+.04;
+          }else{
+            // A parry's handling cooldown must never make the keeper transparent:
+            // the rebound can meet the same glove, the other palm or a leg before
+            // it expires. Resolve the earliest surface every step; only suppress
+            // another possession roll on a glove that just failed to secure it.
+            const canHandle=this.t>(this.handlingUntil[contact.part]??0);
+            this.contactPart=contact.part;this.touched=true; this.contactUntil=this.t+.09;
+            if(type==='hand'&&canHandle)this.handlingUntil[contact.part]=this.contactUntil;
+            const quality=clamp(type==='hand'&&canHandle?keeperContactQuality(contact):contact.quality,.05,1);
+            const secure=(this.keeper.handling/100)*(.64+.36*quality)*(1-Math.max(0,this.launchSpeed-23)*.013)*this.keeperPressure;
+            let capture=type==='hand'&&canHandle&&this.rng.next()<secure,capturePoint=hit.p;
+            if(capture&&capturePoint.y<GOAL.radius-1e-9){
+              // A moving glove's overlap correction can fall below the turf.
+              // Its true floor intersection must still touch that same palm.
+              const grounded=keeperFloorEscape(p,{...capturePoint,y:GOAL.radius},GOAL.radius,0);
+              capture=grounded?.part===contact.part;if(capture)capturePoint=grounded.point;
+            }
+            // A time-zero correction from one moving palm can enter another
+            // surface. Possession starts only after the shared sphere is clear.
+            if(capture&&hit.time===0)capture=!keeperSurfaceContacts(p,capturePoint,capturePoint,GOAL.radius,false).some(surface=>Math.hypot(surface.hit.p.x-capturePoint.x,surface.hit.p.y-capturePoint.y,surface.hit.p.z-capturePoint.z)>1e-6);
+            if(capture){this.caught=true;this.ball={...capturePoint,y:Math.max(GOAL.radius,capturePoint.y)};this.velocity=v();this.finish(false,'门将稳稳抱住了球');}
+            else this.reflect(hit,r+.11, type==='hand'?.34:.5);
+          }
+        }
+        if(!contact||this.caught||contact.hit.time>0||resolution===3)break;
+        sweepStart={...this.ball};
+        this.ball=add(this.ball,mul(this.velocity,dt));
+        if(this.ball.y<GOAL.radius){
+          this.ball.y=GOAL.radius;
+          if(groundResolved){this.velocity.y=Math.max(0,this.velocity.y);}
+          else if(this.velocity.y<-.8){this.velocity.y*=-.33;this.velocity.x*=.78;this.velocity.z*=.78;}
+          else{this.velocity.y=0;const friction=Math.max(0,1-.8*dt/(Math.hypot(this.velocity.x,this.velocity.z)||1));this.velocity.x*=friction;this.velocity.z*=friction;}
+          groundResolved=true;
         }
       }
     }
     if(this.result) return;
     if(this.ball.z < -GOAL.radius) {
-      const crossed=Number.isFinite(crossing)?add(this.previous,mul(sub(this.ball,this.previous),crossing)):this.ball;
+      const crossed=crossingPoint??this.ball;
       if(Math.abs(crossed.x)<=GOAL.half-GOAL.radius && crossed.y<=GOAL.height-GOAL.radius) this.finish(true,this.touched?'碰到门将后，足球仍滚入球门':this.post?'击中门框后入网':'足球越过门线');
       else this.finish(false,this.touched?'门将将球挡出底线':this.post?'击中门框后出界':crossed.y>GOAL.height-GOAL.radius?'射门高出横梁':'射门偏出球门');
     } else if(Math.abs(this.ball.x)>34+GOAL.radius || this.ball.z>105+GOAL.radius) this.finish(false,this.touched?'门将将球挡出':'足球出界');
@@ -312,12 +389,29 @@ export class Shot {
   reflect(hit,radius,restitution) {
     let normal=sub(hit.p,hit.q); const length=len(normal);
     normal=length>1e-5?mul(normal,1/length):v(0,0,1);
+    let resolved=add(hit.q,mul(normal,radius+.005));
+    const lift=GOAL.radius-resolved.y;
+    if(lift>0){
+      resolved.y=GOAL.radius;
+      const horizontal=normal.x*normal.x+normal.z*normal.z;
+      if(normal.y<0){
+        const distance=horizontal>1e-12?-lift*normal.y/Math.sqrt(horizontal):Infinity;
+        if(distance<=radius){
+          // Raising only Y re-enters a downward-facing surface. The horizontal
+          // shift keeps its separating plane while satisfying the floor.
+          const shift=-lift*normal.y/horizontal;
+          resolved.x+=normal.x*shift;resolved.z+=normal.z*shift;
+        }else{
+          const escape=keeperFloorEscape(this.pose,{...hit.p,y:GOAL.radius},radius);
+          if(escape){resolved=escape.point;if(escape.normal)normal=escape.normal;}
+        }
+      }
+    }
     const d=dot(this.velocity,normal);
     if(d<0) this.velocity=sub(this.velocity,mul(normal,(1+restitution)*d));
-    this.ball=add(hit.q,mul(normal,radius+.005));
-    this.ball.y=Math.max(GOAL.radius,this.ball.y);
+    this.ball=resolved;
   }
-  static restore(raw) {const s=Object.assign(Object.create(Shot.prototype),raw);s.rng=new Random(raw.rng.state);s.keeperPressure??=1;if(s.direction)s.diveHeight??=s.reactionHeight??s.target.y;if(!s.pose?.shoulders)s.pose=s.poseAt(s.t);return s;}
+  static restore(raw) {const s=Object.assign(Object.create(Shot.prototype),raw);s.rng=new Random(raw.rng.state);s.keeperPressure??=1;s.handlingUntil={...raw.handlingUntil};if(!raw.handlingUntil&&/^hand[LR]$/.test(s.contactPart))s.handlingUntil[s.contactPart]=s.contactUntil??0;if(s.direction)s.diveHeight??=s.reactionHeight??s.target.y;if(!s.pose?.shoulders)s.pose=s.poseAt(s.t);return s;}
 }
 export function gestureInput(points, width, height, threshold, adjustable=false) {
   if(points.length<2 || width<=0 || height<=0) return null;

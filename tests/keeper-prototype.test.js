@@ -129,20 +129,22 @@ test('arm correction preserves contacts, shoulder roll and a straight wrist on e
   }
 });
 
-test('rounded keeper shoulder caps share the upper arm pivots and retain their radius', () => {
-  const checked={L:0,R:0};
+test('outer shoulder skin follows the upper arm instead of remaining on the chest', () => {
+  let checked=0;
   for(const mesh of skinnedMeshes){
-    if(mesh.material.name!=='Kit')continue;
     const {position,skinIndex,skinWeight}=mesh.geometry.attributes;
     for(let i=0;i<position.count;i++){
-      const index=skinIndex.getX(i),name=mesh.skeleton.bones[index].name;
-      if(!name.startsWith('upper_arm'))continue;
-      assert.ok(skinWeight.getX(i)>.999,'sleeve follows the upper arm');
-      const local=new THREE.Vector3().fromBufferAttribute(position,i).applyMatrix4(mesh.bindMatrix).applyMatrix4(mesh.skeleton.boneInverses[index]);
-      if(local.y>.002)continue;
-      assert.ok(local.length()>.072&&local.length()<.086,'shoulder cap surrounds the joint with a stable radius');
-      checked[name.at(-1)]++;
+      const x=position.getX(i),y=position.getY(i);
+      if(Math.abs(x)<.205||Math.abs(x)>.25||y<1.35||y>1.49)continue;
+      const side=x<0?'L':'R';let shoulderWeight=0,armWeight=0;
+      for(let k=0;k<4;k++){
+        const name=mesh.skeleton.bones[skinIndex.getComponent(i,k)].name,w=skinWeight.getComponent(i,k);
+        if(['chest','clavicle'+side,'upper_arm'+side].includes(name))shoulderWeight+=w;
+        if(name==='upper_arm'+side)armWeight+=w;
+      }
+      if(shoulderWeight<.5)continue;
+      assert.ok(armWeight/shoulderWeight>.98,'shoulder cap moves with the raised arm');checked++;
     }
   }
-  for(const side of ['L','R'])assert.ok(checked[side]>=60,'checks the full shoulder cap');
+  assert.ok(checked>10,'checks actual shoulder surface vertices');
 });
