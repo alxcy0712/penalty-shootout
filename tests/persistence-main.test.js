@@ -21,11 +21,11 @@ test('settings and match failures remain independent through reads and successfu
   const h=mainHarness(),{context}=h,setItem=context.localStorage.setItem;
   context.localStorage.setItem=(key,value)=>key==='preferences'?fail():setItem(key,value);
   assert.equal(context.storeSettings().ok,false);assert.equal(context.save().ok,true);
-  context.read('preferences');context.updatePersistenceFeedback();
+  context.persistence.preferences.read();context.updatePersistenceFeedback();
   assert.match(h.element('#persistence-status').textContent,/设置未保存/);
   context.localStorage.setItem=(key,value)=>key==='match'?fail():setItem(key,value);
   assert.equal(context.save().ok,false);assert.equal(context.storeSettings().ok,true);
-  context.read('match');context.updatePersistenceFeedback();
+  context.persistence.match.read();context.updatePersistenceFeedback();
   assert.match(h.element('#persistence-status').textContent,/进度仅在本页/);
 });
 
@@ -83,7 +83,7 @@ test('future preferences are never overwritten by automatic mode/sound or calibr
 
 test('successful explicit replacement clears a prior corrupt-read banner',()=>{
   const h=mainHarness('advanced',0,{storage:[['match','{bad JSON']]});
-  h.context.read('match');h.context.updatePersistenceFeedback();assert.equal(h.element('#persistence-status').hidden,false);
+  h.context.persistence.match.read();h.context.updatePersistenceFeedback();assert.equal(h.element('#persistence-status').hidden,false);
   h.click('new');h.click('confirm-new');
   assert.equal(h.context.persistence.match.status.read.status,'corrupt','operation outcomes remain independent');
   assert.equal(h.context.persistence.match.status.write.ok,true);

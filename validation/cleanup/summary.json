@@ -1,0 +1,212 @@
+{
+  "baseline": "af5da73cda99e2032966bca369b5ec1f8517eaa0",
+  "testedCodeCommit": "ad9e41f13b1ae4d572d97cb24af056b1f816f1ee",
+  "roundsCompleted": 5,
+  "roundCommits": [
+    "730fe687fab53c34b44fc057bd42148ec465b562",
+    "efb2120329d66eed1fe0efad7e3c2eb413164307",
+    "900c54235858e45fa6e990f015477a215f479a33",
+    "96f28ae9fcf7aa4434c601f99a580ce4bb339443",
+    "ad77b7b5210357b537e6ab080252b03b86f528e5"
+  ],
+  "provenanceCorrection": "ad9e41f13b1ae4d572d97cb24af056b1f816f1ee",
+  "release": {
+    "status": "passed",
+    "acceptance": true,
+    "startedAt": "2026-10-04T09:23:52.635Z",
+    "completedAt": "2026-10-04T09:47:42.163Z",
+    "inputSnapshotSha256": "0f8eaeaa473f1f1c2eb96520cec69c7ab9e53025284a58f41b48af4d50589740",
+    "receiptSha256": "3e7d2f707b3c9d0d8e932c49171137049e7e4aed7812deb23f25b05eb5350fb4",
+    "gates": {
+      "tests": "passed",
+      "build": "passed",
+      "union": "passed",
+      "union-summary": "passed",
+      "finger-grip": "passed",
+      "thumb-body": "passed"
+    },
+    "tests": 578,
+    "failures": 0,
+    "skipped": 0,
+    "testDurationMs": 143959.628948,
+    "buildSeconds": 1.74,
+    "fixtureSha256": "69ac2f1c4dc587dbaef9217533e0af973d5f5bd6d806173e3feb777ea2e1fbe1",
+    "shots": 669,
+    "captures": 223,
+    "counts": {
+      "bodyPoses": 39694,
+      "jointSamples": 150079,
+      "skinSphereSamples": 37687,
+      "trajectoryPoses": 7877
+    },
+    "fingerPoses": 33450,
+    "thumbPoses": 8474
+  },
+  "equivalence": {
+    "saveVariants": 6021,
+    "loaderPoses": 36,
+    "semanticReports": 12,
+    "mainStatePairs": 18,
+    "assetsPhysicsAnimationsUnchanged": true,
+    "reportComparisonOmissions": [
+      "source/snapshot hashes",
+      "absolute fixture path",
+      "body runtimeMs"
+    ],
+    "fixtureDigestsAndCaptureLabelsCompared": true
+  },
+  "codeMetrics": {
+    "before": {
+      "production": {
+        "files": 38,
+        "bytes": 929956,
+        "lines": 4876
+      },
+      "tests": {
+        "files": 83,
+        "bytes": 547784,
+        "lines": 7669
+      },
+      "qa": {
+        "files": 50,
+        "bytes": 378891,
+        "lines": 3538
+      }
+    },
+    "after": {
+      "production": {
+        "files": 38,
+        "bytes": 929541,
+        "lines": 4872
+      },
+      "tests": {
+        "files": 84,
+        "bytes": 547861,
+        "lines": 7670
+      },
+      "qa": {
+        "files": 50,
+        "bytes": 377426,
+        "lines": 3523
+      }
+    },
+    "productionStaticImportEdgesBefore": 76,
+    "productionStaticImportEdgesAfter": 76,
+    "scope": "Physical source lines/bytes; production includes generated contact data. QA/test/helper changes reported separately; documentation excluded."
+  },
+  "bundles": {
+    "method": "Node zlib gzipSync default level; identical compressor for both builds, not CDN transfer measurement",
+    "before": {
+      "game.css": {
+        "raw": 25236,
+        "gzip": 6721
+      },
+      "game.js": {
+        "raw": 77644,
+        "gzip": 28889
+      },
+      "motion.css": {
+        "raw": 11351,
+        "gzip": 3104
+      },
+      "motion.js": {
+        "raw": 18620,
+        "gzip": 8089
+      },
+      "rendering.js": {
+        "raw": 1285979,
+        "gzip": 355613
+      }
+    },
+    "after": {
+      "game.js": {
+        "raw": 77506,
+        "gzip": 28872
+      },
+      "game.css": {
+        "raw": 25236,
+        "gzip": 6721
+      },
+      "motion.css": {
+        "raw": 11351,
+        "gzip": 3104
+      },
+      "motion.js": {
+        "raw": 18620,
+        "gzip": 8091
+      },
+      "rendering.js": {
+        "raw": 1285962,
+        "gzip": 355610
+      }
+    }
+  },
+  "cpu": {
+    "pairsPerMode": 9,
+    "callbacksPerBlock": 1200,
+    "warmupPairsPerMode": 3,
+    "modes": {
+      "ready": {
+        "beforeMs": 11.870181000000002,
+        "afterMs": 11.80171800000005,
+        "ratio": 0.9942323541654544
+      },
+      "shot": {
+        "beforeMs": 27.91967599999998,
+        "afterMs": 26.934604000000036,
+        "ratio": 0.964717642138829
+      }
+    },
+    "scope": "Same-machine alternating baseline/candidate real main + Stadium event/CPU harness; renderer and character uploads are stubs, profile disabled. State JSON exact equality. This excludes WebGL GPU, real DOM, loading and native Storage. Shared cloud timing is noisy.",
+    "receiptSha256": "cfcfb49a5ff51a1556a93086b3fcf2cdc139eed8d219fd71d5a9a956ed3760bc"
+  },
+  "removedResources": {
+    "unusedSphereTypedArrayBytes": 4752,
+    "unusedVector3PerPlayer": 1,
+    "scope": "CPU allocations only; the unused sphere was never drawn/uploaded."
+  },
+  "independentReview": {
+    "code": "No remaining blocker at ad9e41f; provenance corrections rechecked",
+    "parentAggregate": {
+      "status": "passed",
+      "verifiedDate": "2026-10-04",
+      "testedCodeCommit": "ad9e41f13b1ae4d572d97cb24af056b1f816f1ee",
+      "inputSnapshotSha256": "0f8eaeaa473f1f1c2eb96520cec69c7ab9e53025284a58f41b48af4d50589740",
+      "tests": 578,
+      "pass": 578,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "durationMs": 144139.612807,
+      "buildSeconds": 1.95,
+      "existingChunkWarning": true,
+      "logsSha256": {
+        "cleanup-root-tests.log": "915b2aec2db95ff44aac76385b95fc9c2a23ba65156c0a20851c45403b090ebc",
+        "cleanup-root-build.log": "6622add5451fc6858c0095c9735139710025f5dda5dc8cea41df3c949bed9dad"
+      },
+      "scope": "Independent full Node tests and Vite build; doc-only receipt update, no runtime or test changes; not another device or full geometry run."
+    }
+  },
+  "priorAttempt": {
+    "directory": "cleanup-evidence/release-final",
+    "interruption": "Intentional SIGINT/130 before provenance correction",
+    "receiptState": "running/acceptance=false; incomplete, not a terminal failed or passed receipt"
+  },
+  "evidenceRoot": "cleanup-evidence",
+  "evidenceSha256": {
+    "round1-tests.log": "c4e11396c6fb9b4cc383987ce6a548c5bf9008313c5bf1cc82d478c3d5bce4fa",
+    "round2-tests.log": "3d5935285f64628600b10ec24fec0b5762f76b8a5df2080350c0609cd6178f77",
+    "round3-tests.log": "bce36583a52c062b8122893ec19e9a554d67d66816b1c70e4b397d1a1d01b3f6",
+    "round3-equivalence.json": "d2bbeae12f38498a8cf48c0cbd8c52fcb927bec7c6cdcd8ba7ab91aba36ea6bf",
+    "round4-tests.log": "8a667df526047f56da95b3a4acaada7faf62a6ed690073b8d34ee6fd14716921",
+    "round4-equivalence.json": "3140a7bc07e9b78af4d2442e2cb65aaf8d7ad8ee1304413516c956f0ce988ad1",
+    "round5-targeted-tests.log": "16d75498968b519bda86da38b06ccd3d4b79ffe39c9d5d7055e1830eeb628d5a",
+    "release-equivalence.json": "0354ec4ae687222003e88a5f8d04a0b8bd9583b1b3a37bdd0a8fe1d4b6dd7202"
+  },
+  "limits": [
+    "No new browser/device/GPU validation; inherited cloud localhost ERR_BLOCKED_BY_CLIENT restriction",
+    "Sampled semantic/geometry evidence, not universal equivalence for arbitrary future inputs",
+    "Existing adjacent cloth/floor/sphere tolerances unchanged",
+    "Small measured code/bundle reduction; docs/receipts add repository bytes; no claim of whole-repository shrinkage or phone FPS gain"
+  ]
+}

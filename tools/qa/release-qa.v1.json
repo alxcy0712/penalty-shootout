@@ -32,7 +32,7 @@
     "tools/qa/audit-finger-grip.mjs": "79542e76ad2f5f172141be8d22422b0b846efb6225d929a26851d74570375ca8",
     "tools/qa/audit-thumb-body-differential.mjs": "04c86e003b136b9db403ee52de35a07e0d51e2420cad65e3900037fc682a98c9",
     "tools/qa/read-audit-fixtures.mjs": "f6d47fcac1325d43931195b03c76d157d20a29358d7147c9aaaadd9bd4464c17",
-    "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644",
+    "tests/helpers/load-character.js": "ed34f6004c7fdaec991be581f6834a065155c1baa62d3c08ce274619d1d27b9f",
     "tests/helpers/keeper-finger-grip-baseline.js": "ffc53350771db644a36c4c07e52a5e1af1a7c58ce77b112b6038c949aef62e98"
   }
 }

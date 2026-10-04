@@ -2,7 +2,7 @@ import {updateFrameProfile} from '../src/frame-profile.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
-import {readFile} from 'node:fs/promises';
+import {mainSource as main,mainFunction} from './helpers/main-source.js';
 import * as THREE from 'three';
 import {Stadium} from '../src/scene.js';
 import {Shot,clamp,keeperPose} from '../src/engine.js';
@@ -11,9 +11,8 @@ import {committedKickAim} from '../src/shot-input-state.js';
 import {gameKickTime} from '../src/game-character.js';
 
 const stats={accuracy:90,power:90,touch:90,composure:90,curve:90,speed:85,reach:85,handling:99,number:4};
-const main=await readFile(new URL('../src/main.js',import.meta.url),'utf8');
 const frameSource=main.slice(main.indexOf('function runupDuration('),main.indexOf("document.addEventListener('visibilitychange'"));
-const releaseSource=main.match(/function release[^\n]+/)[0];
+const releaseSource=mainFunction('release');
 
 // Keep the real main frame, fixed-step accumulator and Stadium presentation.
 // Only the renderer, DOM and character mesh upload are replaced.

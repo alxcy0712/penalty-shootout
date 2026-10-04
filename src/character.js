@@ -115,7 +115,7 @@ function supportedSoleOffset(height,q,requested){
 export class Player {
   constructor(scene,color,gloves=false){
     this.group=new THREE.Group();scene.add(this.group);this.gloves=gloves;
-    this.tempA=new THREE.Vector3();this.tempB=new THREE.Vector3();this.tempC=new THREE.Vector3();this.tempD=new THREE.Vector3();this.yAxis=new THREE.Vector3(0,1,0);this.tempMatrix=new THREE.Matrix4();this.tempRotation=new THREE.Quaternion();
+    this.tempA=new THREE.Vector3();this.tempB=new THREE.Vector3();this.tempC=new THREE.Vector3();this.yAxis=new THREE.Vector3(0,1,0);this.tempMatrix=new THREE.Matrix4();this.tempRotation=new THREE.Quaternion();
     this.skin=mat('#af7857',.65);this.shirt=mat(color);this.shorts=mat('#182b2c');this.sock=mat('#dce7dc');this.boot=mat('#172020',.45);this.trim=mat('#375b52');this.white=mat('#e8ece4');
     for(const cloth of [this.shirt,this.shorts,this.sock]){cloth.normalMap=clothNormal();cloth.normalScale.set(.22,.22);}
     this.trunk=new THREE.Group();this.group.add(this.trunk);

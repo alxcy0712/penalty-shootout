@@ -3,7 +3,7 @@ import './style.css';
 import {createGraphicsLifecycle} from './graphics-lifecycle.js';
 import {penaltyStyle} from './anatomy.js';
 import {committedKickAim} from './shot-input-state.js';
-import {Match, Shot, Random, clamp, gestureInput, directionMeter, powerMeter} from './engine.js';
+import {Match, Shot, clamp, directionMeter, powerMeter} from './engine.js';
 import {Stadium} from './scene.js';
 import {DEVICES, MIN_FULL_TRAVEL_PX, MAX_FULL_TRAVEL_PX, inputDevice, defaultCalibration, normalizePreferences, preferencesRequireNewerVersion, deviceCalibration, needsRecalibration, calibrationDraft, calibratedProfile, calibratedGestureInput, validCalibrationTravel, cssTravelPower} from './calibration.js';
 import {createGestureSession, appendGesturePoint} from './gesture-session.js';
@@ -15,7 +15,6 @@ const $=s=>document.querySelector(s);
 const STORAGE='penalty-night-v1', PREF='penalty-preferences-v1';
 let storageOk=true;
 const persistence=createPersistence({getStorage:()=>localStorage,matchKey:STORAGE,preferencesKey:PREF});
-function read(key){return (key===PREF?persistence.preferences:persistence.match).read().value??null;}
 const storedPreferences=persistence.preferences.read();
 const preferencesLocked=preferencesRequireNewerVersion(storedPreferences.value);
 const settings=normalizePreferences(storedPreferences.value);
@@ -29,7 +28,6 @@ function sound(kind){
 }
 function storeSettings(){const result=preferencesLocked?{ok:false,status:'unsupported'}:persistence.preferences.write(settings);updatePersistenceFeedback();return result;}
 function save(){if(!state.match||state.phase==='home')return {ok:false,status:'skipped'};const result=persistence.match.write(state,serializeMatchSave);storageOk=result.ok;updatePersistenceFeedback();return result;}
-function clearSave(){return persistence.match.remove();}
 function matchSaveMessage(result){return result?.ok?'进度已保存，可以稍后继续。':'进度仅在本页保留，关闭或刷新页面可能丢失。';}
 function updatePersistenceFeedback(){
   const el=$('#persistence-status');

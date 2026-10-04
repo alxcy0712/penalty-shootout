@@ -2,7 +2,7 @@ import {updateFrameProfile} from '../src/frame-profile.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
-import {readFile} from 'node:fs/promises';
+import {mainSource as source,mainFunction} from './helpers/main-source.js';
 import {committedKickAim} from '../src/shot-input-state.js';
 import {gestureInput,clamp} from '../src/engine.js';
 import {penaltyStyle} from '../src/anatomy.js';
@@ -10,7 +10,6 @@ import {loadCharacter} from './helpers/load-character.js';
 import * as calibrationApi from '../src/calibration.js';
 import * as gestureSessionApi from '../src/gesture-session.js';
 
-const source=await readFile(new URL('../src/main.js',import.meta.url),'utf8');
 class Element {
   listeners={};style={};captured=false;
   addEventListener(type,cb){this.listeners[type]=cb;}
@@ -30,7 +29,7 @@ function harness(){
     $:selector=>['#indicator','#timer'].includes(selector)?null:ui,
     stage:{update(...args){frames.push(args);}},transition:phase=>{context.state.phase=phase;},release(){throw Error('Unexpected release');}};
   vm.createContext(context);
-  vm.runInContext(source.match(/function shotInput[^\n]+/)[0]+'\n'+source.match(/function launch[^\n]+/)[0]+'\n'+source.slice(source.indexOf('function cancelGesture('),source.indexOf("document.addEventListener('visibilitychange'")),context);
+  vm.runInContext(mainFunction('shotInput')+'\n'+mainFunction('launch')+'\n'+source.slice(source.indexOf('function cancelGesture('),source.indexOf("document.addEventListener('visibilitychange'")),context);
   context.bindGesture(el,false);
   return {el,context,frames,tick(time){context.frame(time);return frames.at(-1);}};
 }

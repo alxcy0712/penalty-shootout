@@ -228,8 +228,7 @@ export function inspectMatchSave(value) {
     || !direction(match.aiDive) || !aim(match.aiAim) || typeof match.recorded !== 'boolean') {
     return {ok: false, status: 'invalid', reason: 'turn'};
   }
-  if ((state.phase === 'runup' && !aim(state.aim)) || (shotPhases.has(state.phase) && !shot(state.shot))
-    || (state.shot != null && !shot(state.shot))) return {ok: false, status: 'invalid', reason: 'shot'};
+  if ((state.phase === 'runup' && !aim(state.aim)) || ((shotPhases.has(state.phase) || state.shot != null) && !shot(state.shot))) return {ok: false, status: 'invalid', reason: 'shot'};
   if (['result', 'finish'].includes(state.phase) && (!result(state.shot?.result) || !match.recorded)
     || state.phase === 'finish' && !side(match.winner)) return {ok: false, status: 'invalid', reason: 'result'};
   return {ok: true, status: side(match.winner) ? 'finished' : 'resumable'};

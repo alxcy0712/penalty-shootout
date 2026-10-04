@@ -8,13 +8,12 @@ import {GameCharacter} from './game-character.js';
 import {keeperGather} from './keeper-contact.js';
 import {renderPixelRatio,configurePitchFiltering,resizeDrawingBuffer,advancedAttackRadius} from './rendering.js';
 import {pitchMarkingGeometry} from './pitch-markings.js';
-import {strikerRunupPose,penaltyStyle,holdingPose,HOLD_DURATION,blendKeeperPose,keeperWarmupPose,keeperRunupPreparation} from './anatomy.js';
+import {strikerRunupPose,penaltyStyle,HOLD_DURATION,blendKeeperPose,keeperWarmupPose,keeperRunupPreparation} from './anatomy.js';
 import * as THREE from 'three';
 import {keeperPose, clamp, GOAL} from './engine.js';
 
 const vec = p => new THREE.Vector3(p.x,p.y,p.z);
 const material = (color, roughness=.8) => new THREE.MeshStandardMaterial({color,roughness});
-const unitSphere = new THREE.SphereGeometry(1,12,8);
 const unitBone = new THREE.CylinderGeometry(1,1,1,10);
 function mesh(geo,mat,parent,x=0,y=0,z=0) {
   const m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;
@@ -148,7 +147,7 @@ export class Stadium {
     let strikerPose=home?home.striker:!shot?strikerRunupPose(time,runup,-1,kickAim?.power??.7,kickAim?.x??0,style,kickAim?.chip?'chip':kickAim?.low?'low':'normal'):null;
     let kickAfter=null;
     if(shot){
-      if(this.currentShot!==shot){this.resetNet();this.currentShot=shot;this.currentResult=null;this.resultElapsed=0;this.trailCount=0;this.aftermath=null;}
+      if(this.currentShot!==shot){this.resetPresentation();this.currentShot=shot;}
       // Physics already advanced to contact on the first result frame. Start
       // here exactly; adding this frame again skips the capture/gather seam.
       if(shot.result){if(this.currentResult===shot.result)this.resultElapsed+=dt;else this.currentResult=shot.result;}
@@ -165,7 +164,7 @@ export class Stadium {
       if(held)this.ball.position.copy(held.ball);
       if(this.aftermath&&!this.aftermath.sleeping){this.ball.rotation.x+=dt*this.aftermath.velocity.z/.11;this.ball.rotation.z-=dt*this.aftermath.velocity.x/.11;}else if(!shot.result){this.ball.rotation.x-=dt*shot.launchSpeed*2;this.ball.rotation.z+=dt*shot.velocity.x;}
       if(!shot.result){if(this.trailCount===7)this.trailBuffer.copyWithin(0,3);else this.trailCount++;this.ball.position.toArray(this.trailBuffer,(this.trailCount-1)*3);this.trail.geometry.attributes.position.needsUpdate=true;this.trail.geometry.setDrawRange(0,this.trailCount);}
-      strikerPose=strikerRunupPose(time,1,animationTime+(shot.result?this.resultElapsed:0),shot.aim.power,shot.aim.x,style,shot.aim.chip?'chip':shot.aim.low?'low':'normal');
+      strikerPose=strikerRunupPose(time,1,kickAfter,shot.aim.power,shot.aim.x,style,shot.aim.chip?'chip':shot.aim.low?'low':'normal');
     }else{this.keeper.pose(home?keeperWarmupPose(home.warmupTime):runup>0?keeperRunupPreparation(match?.teams[1-match.turn]?.players[0]??{reach:80,speed:80},runup,(match?.kicker??0)%2?1:-1):this.waitingKeeperPose);this.ball.position.copy(home?home.ball:{x:0,y:.11,z:11});if(home)this.ball.rotation.x-=dt*12;this.trail.visible=false;}
     if(home)this.striker.pose(strikerPose);
     else {const aim=shot?.aim??kickAim??{};this.striker.kick(runup,kickAfter,{pose:strikerPose,power:aim.power??.7,targetX:aim.x??0,shotType:aim.chip?'chip':aim.low?'low':'normal',style});}

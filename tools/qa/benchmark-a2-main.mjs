@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {readFile,writeFile} from 'node:fs/promises';
+import {existsSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {performance} from 'node:perf_hooks';
 const args=process.argv.slice(2),value=(key,otherwise)=>args.includes(key)?args[args.indexOf(key)+1]:otherwise;
@@ -10,7 +11,12 @@ const before=resolve(value('--before','')),after=resolve(value('--after','.')),o
 assert.ok(args.includes('--before'),'--before clean baseline checkout required');
 const modules=await Promise.all([before,after].map(path=>import(pathToFileURL(resolve(path,'tests/helpers/main-harness.js')))));
 const hash=data=>createHash('sha256').update(data).digest('hex');
-const sourceHashes=async()=>Object.fromEntries(await Promise.all([before,after].flatMap(root=>['src/main.js','src/scene.js','tests/helpers/main-harness.js'].map(async file=>[resolve(root,file),hash(await readFile(resolve(root,file)))]))));
+const sourceHashes=async()=>Object.fromEntries(await Promise.all([before,after].flatMap(root=>{
+  const files=['src/main.js','src/scene.js','tests/helpers/main-harness.js'];
+  // Historical baselines predate the shared extractor; pin it when present.
+  if(existsSync(resolve(root,'tests/helpers/main-source.js')))files.push('tests/helpers/main-source.js');
+  return files.map(async file=>[resolve(root,file),hash(await readFile(resolve(root,file)))]);
+})));
 const hashes=await sourceHashes(),pairs=9,frames=1200;
 function run(index,kind){
   const h=modules[index].mainHarness('advanced');

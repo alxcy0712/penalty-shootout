@@ -6,8 +6,8 @@ import {GameCharacter} from '../../src/game-character.js';
 import {createKeeperSkinPose} from '../../src/keeper-skin-pose.js';
 import {createKeeperArmRoll} from '../../src/keeper-arm-roll.js';
 
-export async function loadCharacter(keeper=false) {
-  const bytes=await readFile(new URL(`../../assets/characters/${keeper?'keeper-prototype':'striker-mocap'}.glb`,import.meta.url));
+export async function loadCharacter(keeper=false,assetOverride=null) {
+  const bytes=await readFile(assetOverride??new URL(`../../assets/characters/${keeper?'keeper-prototype':'striker-mocap'}.glb`,import.meta.url));
   const length=bytes.readUInt32LE(12),json=JSON.parse(bytes.subarray(20,20+length));
   // Exercise the real skin/animations in Node; texture decoding is a browser check.
   for(const material of json.materials){delete material.pbrMetallicRoughness?.baseColorTexture;delete material.pbrMetallicRoughness?.metallicRoughnessTexture;delete material.normalTexture;}

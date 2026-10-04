@@ -19,7 +19,7 @@ const {runupClipTime}=await import(new URL('src/striker-runup-style.js',repoURL)
 const {KICK_CONTACT}=await import(new URL('src/game-character.js',repoURL));
 import {readFile,writeFile,readdir,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-const files=[...(await readdir(new URL('src/',repoURL))).filter(f=>f.endsWith('.js')&&!f.startsWith('.')).sort().map(f=>'src/'+f),'assets/characters/striker-mocap.glb','assets/characters/mocap-variants/cmu-10_03-kick.glb','tools/qa/load-review-character.mjs','tools/qa/audit-striker-clearance.mjs'];
+const files=[...(await readdir(new URL('src/',repoURL))).filter(f=>f.endsWith('.js')&&!f.startsWith('.')).sort().map(f=>'src/'+f),'assets/characters/striker-mocap.glb','assets/characters/mocap-variants/cmu-10_03-kick.glb','tools/qa/load-review-character.mjs','tests/helpers/load-character.js','tools/qa/audit-striker-clearance.mjs'];
 const hashes=Object.fromEntries(await Promise.all(files.map(async f=>[f,createHash('sha256').update(await readFile(new URL(f,repoURL))).digest('hex')])));
 const c=await loadCharacter(false,process.env.MODEL_ASSET), meshes=[]; c.root.traverse(m=>{if(m.isSkinnedMesh)meshes.push(m)});c.root.updateMatrixWorld(true);
 const V=(x=0,y=0,z=0)=>new THREE.Vector3(x,y,z),tmp=V(),refs=[],triangles=[];let base=0;const weldMap=new Map(),adj=[];

@@ -2,7 +2,7 @@ import {updateFrameProfile} from '../../src/frame-profile.js';
 import {createGraphicsLifecycle} from '../../src/graphics-lifecycle.js';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
-import {readFile} from 'node:fs/promises';
+import {mainSource as main,mainFunction} from './main-source.js';
 import * as THREE from 'three';
 import {Stadium} from '../../src/scene.js';
 import {Match,Shot,clamp,gestureInput,directionMeter,powerMeter,keeperPose} from '../../src/engine.js';
@@ -12,15 +12,6 @@ import * as calibrationApi from '../../src/calibration.js';
 import * as gestureSessionApi from '../../src/gesture-session.js';
 import * as persistenceApi from '../../src/persistence.js';
 
-const main=await readFile(new URL('../../src/main.js',import.meta.url),'utf8');
-// Run the actual top-level application function, supporting both the original
-// one-line wrappers and readable multiline bodies without duplicating logic.
-const mainFunction=name=>{
-  const start=main.indexOf(`function ${name}(`),lineEnd=main.indexOf('\n',start);
-  assert.ok(start>=0,`Missing application function ${name}`);
-  const firstLine=main.slice(start,lineEnd);
-  return firstLine.endsWith('{')?main.slice(start,main.indexOf('\n}',lineEnd)+2):firstLine;
-};
 const actions=main.slice(main.indexOf('function resumeCandidate('),main.indexOf("document.addEventListener('visibilitychange'"));
 const calibration=main.slice(main.indexOf('function showCalibration('),main.indexOf('function showPlayer('));
 const visibility=main.split('\n').find(line=>line.startsWith("document.addEventListener('visibilitychange'"));
@@ -74,7 +65,7 @@ export function mainHarness(mode='advanced',turn=0,options={}){
   };
   context.persistence=persistenceApi.createPersistence({getStorage:()=>context.localStorage,matchKey:'match',preferencesKey:'preferences'});
   vm.createContext(context);
-  vm.runInContext(['runtimeBlocked','assetsLoading','runtimeStatusChanged','updateRuntimeFeedback','initializeRuntimeLifecycle','read','save','storeSettings','clearSave','matchSaveMessage','updatePersistenceFeedback','transition','closeModal','showPause','shotInput','updateCalibrationReachability'].map(mainFunction).join('\n')+'\n'+calibration+'\n'+actions+'\n'+visibility+'\n'+main.split('\n').filter(line=>line.startsWith("window.addEventListener('blur'")||line.startsWith("window.addEventListener('pagehide'")||line.startsWith("window.addEventListener('pageshow'")||line.startsWith("window.addEventListener('resize'")).join('\n'),context);
+  vm.runInContext(['runtimeBlocked','assetsLoading','runtimeStatusChanged','updateRuntimeFeedback','initializeRuntimeLifecycle','save','storeSettings','matchSaveMessage','updatePersistenceFeedback','transition','closeModal','showPause','shotInput','updateCalibrationReachability'].map(mainFunction).join('\n')+'\n'+calibration+'\n'+actions+'\n'+visibility+'\n'+main.split('\n').filter(line=>line.startsWith("window.addEventListener('blur'")||line.startsWith("window.addEventListener('pagehide'")||line.startsWith("window.addEventListener('pageshow'")||line.startsWith("window.addEventListener('resize'")).join('\n'),context);
   s.renderer.domElement=new Element();
   context.initializeRuntimeLifecycle();
   context.render();
@@ -84,7 +75,7 @@ export function mainHarness(mode='advanced',turn=0,options={}){
     tick(dt=1/60){clock+=dt*1000;context.frame(clock);},
     elapse(dt){clock+=dt*1000;},
     get now(){return clock;},
-    get saved(){return context.read(context.STORAGE);},
+    get saved(){return context.persistence.match.read().value??null;},
     emitWindow(type){windowListeners[type]?.();},
     hide(hidden){context.document.hidden=hidden;listeners.visibilitychange();},
     resize(width,height){

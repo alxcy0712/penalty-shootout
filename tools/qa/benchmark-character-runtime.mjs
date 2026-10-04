@@ -18,7 +18,7 @@ if(args.includes('--help')) {
 function option(name,fallback) { const i=args.indexOf(name);return i<0?fallback:args[i+1]; }
 const rounds=Number(option('--rounds',3)),out=resolve(option('--out','validation/artifacts'));
 if(!Number.isInteger(rounds)||rounds<1||rounds>20)throw new Error('--rounds must be an integer from 1 to 20');
-const sourceFiles=['src/game-character.js','src/character.js','src/batching.js','src/anatomy.js','src/engine.js','src/keeper-skin-pose.js','src/keeper-skin-weights.js','src/keeper-arm-roll.js','src/keeper-hand-contact.js','src/keeper-contact.js','src/keeper-contact-data.js','src/striker-kick-style.js','src/striker-runup-style.js','src/striker-arm-clearance.js','src/striker-captures.js','tools/qa/load-review-character.mjs','assets/characters/keeper-prototype.glb','assets/characters/striker-mocap.glb','assets/characters/mocap-variants/cmu-10_03-kick.glb'];
+const sourceFiles=['src/game-character.js','src/character.js','src/batching.js','src/anatomy.js','src/engine.js','src/keeper-skin-pose.js','src/keeper-skin-weights.js','src/keeper-arm-roll.js','src/keeper-hand-contact.js','src/keeper-contact.js','src/keeper-contact-data.js','src/striker-kick-style.js','src/striker-runup-style.js','src/striker-arm-clearance.js','src/striker-captures.js','tools/qa/load-review-character.mjs','tests/helpers/load-character.js','assets/characters/keeper-prototype.glb','assets/characters/striker-mocap.glb','assets/characters/mocap-variants/cmu-10_03-kick.glb'];
 const digest=value=>createHash('sha256').update(value).digest('hex');
 async function hashes(){return Object.fromEntries(await Promise.all(sourceFiles.map(async name=>[name,digest(await readFile(resolve(root,name)))])));}
 const sourceSha256=await hashes();
