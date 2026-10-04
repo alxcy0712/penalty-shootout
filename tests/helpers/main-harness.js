@@ -1,3 +1,5 @@
+import {updateFrameProfile} from '../../src/frame-profile.js';
+import {createGraphicsLifecycle} from '../../src/graphics-lifecycle.js';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
@@ -56,7 +58,7 @@ export function mainHarness(mode='advanced',turn=0,options={}){
   const listeners={},windowListeners={},ui=new Map(),storage=new Map(options.storage),toasts=[];let clock=0,seed=100;
   const rawPreferences=options.preferences??{mode,touch:2,mouse:2,pen:2};
   const context={state:{phase:'ready',match:m,shot:null,turnTime:0,runup:0,dir:0,aim:null},
-    paused:false,pointer:null,settings:calibrationApi.normalizePreferences(rawPreferences),activeDevice:'touch',calibration:null,pendingNewMatch:null,pageResumeState:null,
+    pageSuspended:false,renderError:null,graphics:null,createGraphicsLifecycle,updateFrameProfile,setTimeout,clearTimeout,paused:false,pointer:null,settings:calibrationApi.normalizePreferences(rawPreferences),activeDevice:'touch',calibration:null,pendingNewMatch:null,pageResumeState:null,
     preferencesLocked:calibrationApi.preferencesRequireNewerVersion(rawPreferences),
     frameTime:0,elapsed:0,accumulator:0,saveClock:0,modal:null,modalTrigger:null,STORAGE:'match',PREF:'preferences',storageOk:true,
     ...calibrationApi,...gestureSessionApi,...persistenceApi,
@@ -72,7 +74,9 @@ export function mainHarness(mode='advanced',turn=0,options={}){
   };
   context.persistence=persistenceApi.createPersistence({getStorage:()=>context.localStorage,matchKey:'match',preferencesKey:'preferences'});
   vm.createContext(context);
-  vm.runInContext(['read','save','storeSettings','clearSave','matchSaveMessage','updatePersistenceFeedback','transition','closeModal','showPause','shotInput','updateCalibrationReachability'].map(mainFunction).join('\n')+'\n'+calibration+'\n'+actions+'\n'+visibility+'\n'+main.split('\n').filter(line=>line.startsWith("window.addEventListener('blur'")||line.startsWith("window.addEventListener('pagehide'")||line.startsWith("window.addEventListener('resize'")).join('\n'),context);
+  vm.runInContext(['runtimeBlocked','assetsLoading','runtimeStatusChanged','updateRuntimeFeedback','initializeRuntimeLifecycle','read','save','storeSettings','clearSave','matchSaveMessage','updatePersistenceFeedback','transition','closeModal','showPause','shotInput','updateCalibrationReachability'].map(mainFunction).join('\n')+'\n'+calibration+'\n'+actions+'\n'+visibility+'\n'+main.split('\n').filter(line=>line.startsWith("window.addEventListener('blur'")||line.startsWith("window.addEventListener('pagehide'")||line.startsWith("window.addEventListener('pageshow'")||line.startsWith("window.addEventListener('resize'")).join('\n'),context);
+  s.renderer.domElement=new Element();
+  context.initializeRuntimeLifecycle();
   context.render();
   return {context,s,toasts,storage,element:selector=>context.$(selector),
     click(action,data={}){const button={disabled:false,dataset:{action,...data}};listeners.click({target:{closest:()=>button}});},

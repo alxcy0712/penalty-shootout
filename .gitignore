@@ -7,3 +7,6 @@ output/
 __pycache__/
 *.pyc
 *.blend1
+
+# Bulky generated QA evidence; commit compact reviewed summaries separately.
+validation/artifacts/

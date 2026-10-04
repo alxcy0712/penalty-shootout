@@ -9,10 +9,10 @@ import {fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
 const args=process.argv.slice(2),root=fileURLToPath(new URL('../../',import.meta.url));
 const option=(key,fallback)=>args.includes(key)?args[args.indexOf(key)+1]:fallback;
-const manifest=resolve(option('--fixtures','validation/five-rounds/union-fixtures.json')),out=resolve(option('--out','/tmp/penalty-union')),jobs=Number(option('--jobs',4));
+const manifest=resolve(option('--fixtures',resolve(root,'validation/model-motion-ten/union-fixtures.json'))),out=resolve(option('--out',resolve(root,'validation/artifacts/union'))),jobs=Number(option('--jobs',4));
 assert.ok(Number.isInteger(jobs)&&jobs>=1&&jobs<=8);
 // Keep fixed shard sizes while limiting concurrent memory-heavy skin audits.
-const concurrency=Number(option('--concurrency',jobs));
+const concurrency=Number(option('--concurrency',1));
 assert.ok(Number.isInteger(concurrency)&&concurrency>=1&&concurrency<=jobs);
 const bytes=await readFile(manifest),data=JSON.parse(bytes),digest=x=>createHash('sha256').update(x).digest('hex');
 const hashes=async()=>Object.fromEntries(await Promise.all((await readdir(resolve(root,'src'))).filter(f=>f.endsWith('.js')).sort().map(async f=>[f,digest(await readFile(resolve(root,'src',f)))])));

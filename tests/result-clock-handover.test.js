@@ -1,3 +1,4 @@
+import {updateFrameProfile} from '../src/frame-profile.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
@@ -35,7 +36,7 @@ function harness(){
     shoot(aim,direction){return new Shot(aim,stats,stats,direction,1);}};
   const aim={x:0,power:.8,low:true};
   const context={state:{phase:'flight',shot:match.shoot(aim,0),match,aim,turnTime:0,runup:0},
-    paused:false,pointer:null,frameTime:0,elapsed:0,accumulator:0,saveClock:0,
+    updateFrameProfile,graphics:null,runtimeBlocked:()=>false,paused:false,pointer:null,frameTime:0,elapsed:0,accumulator:0,saveClock:0,
     committedKickAim,clamp,penaltyStyle,document:{hidden:false},requestAnimationFrame(){},save(){},sound(){},$:()=>null,stage,
     active:()=>['runup','flight'].includes(context.state.phase),transition(phase){context.state.phase=phase;}};
   vm.createContext(context);vm.runInContext(releaseSource+'\n'+frameSource,context);

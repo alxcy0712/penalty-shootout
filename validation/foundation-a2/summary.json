@@ -1,0 +1,167 @@
+{
+  "baselineCommit": "884c0347ef5126c5f17df0d37197448c46163315",
+  "baselineTree": "50e56fcd926deab18b8752447c050587cf711d61",
+  "scope": "A2 resource loading, app graphics interruption, truthful diagnostics and authoritative QA; no asset/physics changes",
+  "finalRun": "release-final-r4",
+  "acceptance": true,
+  "sourceSnapshotSha256": "c9c269584353bec2aa9cc58b06d97bfb29c54480fa9534e115dc6a7591d8ac59",
+  "tests": {
+    "tests": 578,
+    "pass": 578,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "testDurationMs": 142669.207597,
+  "buildLog": "✓ built in 1.91s",
+  "gates": [
+    {
+      "id": "tests",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "id": "build",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "id": "union",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "id": "union-summary",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "id": "finger-grip",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "id": "thumb-body",
+      "status": "passed",
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "coverage": {
+    "shots": 669,
+    "catches": 223,
+    "bodyPoses": 39694,
+    "jointSamples": 150079,
+    "skinSphereSamples": 37687,
+    "trajectoryPoses": 7877,
+    "fingerPoses": 33450,
+    "thumbPoses": 8474
+  },
+  "protectedCounts": {
+    "forearmTorso": 0,
+    "calfTorso": 0,
+    "oppositeFootCalf": 0
+  },
+  "retainedGeometryLimits": {
+    "minimumSkinMetres": -0.0019240100580969755,
+    "minimumSphereGapMetres": -0.0037178844706977493,
+    "adjacentMaximaMetres": {
+      "upperAndSupportTorso": 0.010970835602884255,
+      "innerElbow": 0.0055973681772406025
+    },
+    "interpretation": "Sampled finite triangle/separation metrics; not a claim of globally zero intersections or continuous-time physical contact"
+  },
+  "historicalRuns": [
+    {
+      "run": "release-final",
+      "status": "failed",
+      "acceptance": false,
+      "receiptSha256": "d27b7dadacef7f4b67fac0f78586b5b0457d19a007282a351db1f576867cac18",
+      "inputSnapshotSha256": "dae3a351701bf5da0ab0760d40ddc8deb9629689d419864c69552ddc32a4e3ff",
+      "failures": [
+        "gate failed: tests\n\n1 !== 0\n"
+      ]
+    },
+    {
+      "run": "release-final-r2",
+      "status": "passed",
+      "acceptance": true,
+      "receiptSha256": "758c5ce48015795182a70fb70afe6b3caedced421f96c9865392f8b34e6fe828",
+      "inputSnapshotSha256": "c7e6cd918d4a78b3d9a1bad4f631bfffd0fbc32da68e61eacf30f5fdb541cffa",
+      "failures": []
+    },
+    {
+      "run": "release-final-r3",
+      "status": "running",
+      "acceptance": false,
+      "receiptSha256": "b9856520d5ce82818f7936d5b8d15d64fbb751b8238677b99b5c8f3746f84a5e",
+      "inputSnapshotSha256": "c9c269584353bec2aa9cc58b06d97bfb29c54480fa9534e115dc6a7591d8ac59",
+      "failures": []
+    }
+  ],
+  "historyExplanation": {
+    "release-final": "568/573 tests; legacy overridden load failure recovery plus four harness dependency failures; fixed without removing original assertions",
+    "release-final-r2": "All six gates passed before zero-size diagnostic DPR guard; historical valid source only",
+    "release-final-r3": "Final-source tests/build passed; exec transport disconnected during geometry, no exit/oom evidence, acceptance remains false",
+    "release-final-r4": "Fresh full run with identical frozen inputs to interrupted R3; all six gates passed"
+  },
+  "independentReview": {
+    "architecture": "No remaining blocker reported after scoped read-only review and exact repro rechecks",
+    "parentFinalAggregate": "Passed: 578/578, zero failures/cancellations/skips, 147519.821508 ms; Vite build passed in 2.15 s. See independent-final-review.json."
+  },
+  "limits": [
+    "Node DOM/event/renderer stubs do not prove real browser/phone behavior",
+    "Current cloud browser localhost access is ERR_BLOCKED_BY_CLIENT; no bypass",
+    "CPU benchmark excludes actual DOM, WebGL, native Storage and skin uploads",
+    "Existing adjacent cloth seams and geometric tolerances remain; source mocap/assets unchanged",
+    "A1 changed-model promotion remains blocked; current release success cannot authorize another candidate"
+  ],
+  "receipts": {
+    "browser-access.json": "e088b7569f5f780db818fa9efd74dabbbf62e7ee2103891a10c2a14378e33c75",
+    "execution-interruption-r3.json": "3f71ac5191cbab81cf22aa6df73db04a432dae6e008375f8bd713bb7fbb123b7",
+    "finger-summary.json": "400954ad9374ece6285480cbece7f10ad8771305683534b0eab8f0aea2e920ec",
+    "loop-repetition.json": "4196c6cec5776f56a542ea0a20fee2a278c875097fd9020348321d2fb44296bd",
+    "main-cpu.json": "ae930a49e38048e58093cc37039034a49d239c098e62370ac7477c0e2b32cedc",
+    "release-report.json": "98c05a74e06b5ae5f63ff9366672eb2ac0739abe0f60465b7196c7d5111baaf0",
+    "thumb-body-summary.json": "7ca6c0d161c0648148aa8fc1fdae69a9c0f923f428a441e855edcda5fe649818",
+    "union-summary.json": "4961ccacbe2e75bca3c84f836f631ab604ad54add0760a6db53f1c4f4eb85e8a",
+    "independent-final-review.json": "3b7db816e41d949a3db05a59bbb2f552838f333e84fe4206daeda33e077591a8"
+  },
+  "logs": {
+    "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/tests.log": "601fcc85b6fc12b74323e2055af0b36aefeb4bb7a28213bd1f85cfc50b34089d",
+    "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/build.log": "57b7f62ac2f5dd2bd34269afae961ffda40f65d4a5445c9967b84ee09badb6cf",
+    "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union.log": "f1a9fd8020b6da7f40403f5e43b7f16a392a4b63e8a039e896e33005c2024d29",
+    "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union-summary.log": "e1e5a61383bf8fecf538a15c8e4e3efd915eb8b5616c4624f211a20744702f5c",
+    "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/finger-grip.log": "c1036356d696ee273ed8c426f8eb9adbbecbb615b0576ddc9eb7230c388726cf",
+    "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/thumb-body.log": "b5ce7c1de6f529af4f026a77d199fc93a2d743977512b8fa99ae085beaa9e27e",
+    "/workspace/scratch/da56d19312e0/a2-root-tests.log": "24627d62356b057e97646574dee2d3bbd410552337a7b2dc8277559ce8b4609c",
+    "/workspace/scratch/da56d19312e0/a2-root-build.log": "53be4d4b7d60526197c74de515ca433d6ffc2dd22bb3b85744e8f9891ea3bacd"
+  },
+  "cost": {
+    "bundlesGzipKB": {
+      "before": {
+        "game": 26.16,
+        "rendering": 352.87,
+        "css": 6.65
+      },
+      "after": {
+        "game": 28.89,
+        "rendering": 355.61,
+        "css": 6.72
+      }
+    },
+    "cpuReceipt": "main-cpu.json",
+    "profileHistogramBytes": 16384,
+    "defaultProfileEnabled": false,
+    "scope": "Extra state/lifecycle/ownership work is not free; paired Node event/CPU harness is not device FPS or GPU timing"
+  },
+  "historicalSourceHashes": {
+    "r1-game-character.js": "205c8bbd1b44b215cff2585d3ac7ed6119e70ed96f9ccc0253b52b23c494ed96",
+    "r2-frame-profile.js": "1c1e21253226e2376b58f6704dcfe6cd2741c2d043bc4e9045abac0f8076f417"
+  }
+}

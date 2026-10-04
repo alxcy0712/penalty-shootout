@@ -1,3 +1,4 @@
+import {FrameProfile} from './frame-profile.js';
 import {ballContactShadow,drawContactShadow} from './contact-shadow.js';
 import {homeAnimation} from './home-animation.js';
 import {GoalBall} from './ball-motion.js';
@@ -59,7 +60,7 @@ export class Stadium {
     const geometrySet=new Set();this.scene.traverse(object=>{if(object.geometry)geometrySet.add(object.geometry.uuid);});this.geometryCount=geometrySet.size;
     if(new URLSearchParams(location.search).has('profile')){
       this.renderer.info.autoReset=false;this.profileAntialias=this.renderer.getContextAttributes?.()?.antialias??null;
-      this.profile=document.createElement('output');this.profile.id='render-profile';this.profile.style.cssText='position:fixed;bottom:8px;left:8px;z-index:10000;pointer-events:none;padding:10px;background:#071713;color:#d9ffe6;font:12px monospace;white-space:pre';document.body.appendChild(this.profile);this.profileFrames=[];this.profileCosts=[];this.profileUpdated=0;
+      this.profile=document.createElement('output');this.profile.id='render-profile';this.profile.style.cssText='position:fixed;bottom:8px;left:8px;z-index:10000;pointer-events:none;padding:10px;background:#071713;color:#d9ffe6;font:12px monospace;white-space:pre';document.body.appendChild(this.profile);this.frameProfile=new FrameProfile();
     }
     this.mode='hero';this.netTime=0;this.onNetImpact=impact=>this.netMotion.impact(impact,this.goalNetStartedAt+impact.time);this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(container);window.addEventListener?.('resize',()=>this.resize());this.resize();
   }
@@ -122,7 +123,7 @@ export class Stadium {
       this.resetPresentation();this.colorsKey=null;this.needsRender=true;
     }
     if(hero)this.presentedMatch=null;
-    if(dt===0&&!this.needsRender){this.profileLast=null;return;}
+    if(dt===0&&!this.needsRender){return;}
     this.netTime+=Math.max(0,dt);
     const w=this.viewWidth,h=this.viewHeight,viewKey=`${this.mode}:${match?.mode}:${w}:${h}`;
     if(this.viewKey!==viewKey){
@@ -184,10 +185,6 @@ export class Stadium {
     const reduced=this.reducedMotion.matches;this.rain.visible=!reduced;if(!reduced)this.rain.position.y=-(time*.8%3);
     // Include the existing shadow pass in profile counters, not only the main pass.
     if(this.profile)this.renderer.info.reset();this.renderer.render(this.scene,this.camera);this.needsRender=false;
-    if(this.profile){
-      const stamp=performance.now(),interval=stamp-(this.profileLast??stamp);this.profileLast=stamp;
-      if(interval>0&&interval<250){this.profileFrames.push(interval);this.profileCosts.push(stamp-cpuStart);}
-      if(stamp-this.profileUpdated>1000&&this.profileFrames.length){const mean=this.profileFrames.reduce((a,b)=>a+b,0)/this.profileFrames.length,cost=this.profileCosts.reduce((a,b)=>a+b,0)/this.profileCosts.length;this.profileFrames.sort((a,b)=>a-b);const p95=this.profileFrames[Math.ceil(this.profileFrames.length*.95)-1];this.profile.textContent=`${hero?`首页镜头 ${(this.homeTime%20).toFixed(1)} s\n`:''}画布 ${this.renderer.domElement.width}×${this.renderer.domElement.height} · DPR ${this.currentPixelRatio.toFixed(2)} · MSAA ${this.profileAntialias===null?'未知':this.profileAntialias?'开启':'未启用'}\nFPS ${(1000/mean).toFixed(1)} · CPU 提交 ${cost.toFixed(2)} ms\n帧耗时 均值 ${mean.toFixed(2)} / P95 ${p95.toFixed(2)} ms\n绘制含阴影 ${this.renderer.info.render.calls} · 三角形 ${this.renderer.info.render.triangles}\n几何体 ${this.renderer.info.memory.geometries}/${this.geometryCount} · 纹理 ${this.renderer.info.memory.textures}`;this.profileFrames.length=0;this.profileCosts.length=0;this.profileUpdated=stamp;}
-    }
+    if(this.frameProfile)this.frameProfile.recordRender(performance.now()-cpuStart);
   }
 }

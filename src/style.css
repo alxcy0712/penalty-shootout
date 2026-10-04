@@ -40,3 +40,7 @@
 #persistence-status{position:absolute;top:calc(56px + env(safe-area-inset-top,0px));left:20px;right:20px;z-index:6;font-size:11px;line-height:16px;color:#ffe1a3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none;text-align:center}
 #persistence-status[hidden],#persistence-status:empty{display:none}
 .calibration-reminder{padding:10px 12px;border:1px solid #baa36b66;border-radius:8px;background:#493f242e;color:#ffe1a3;font-size:12px;line-height:1.6}
+
+#runtime-status{position:absolute;z-index:35;top:72px;left:14px;right:14px;padding:10px 12px;border:1px solid #8db2a5;border-radius:10px;background:#102b2bf2;color:#e2f2ea;font-size:12px;line-height:1.5;box-shadow:0 3px 14px #0004}
+#runtime-status[hidden]{display:none}
+#runtime-status button{display:block;margin-top:8px;min-height:36px;width:100%}

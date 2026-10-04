@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-10-04T08:57:04Z",
+  "environment": "own cloud Linux Chromium/CDP",
+  "target": "http://127.0.0.1:5173/?profile",
+  "server": "R4 validated static build served on loopback only; stopped after check",
+  "result": "blocked",
+  "browserError": "net::ERR_BLOCKED_BY_CLIENT",
+  "scope": "No page, WebGL, context restoration, or device performance validation obtained. No alternate route or security setting bypass attempted; user Mac not used."
+}

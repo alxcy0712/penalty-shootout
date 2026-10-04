@@ -3,6 +3,15 @@ import {batchRigidGroup} from './batching.js';
 import * as THREE from 'three';
 const set=(target,p)=>target.set(p.x,p.y,p.z);
 const sphere=new THREE.SphereGeometry(1,24,16);
+// Inspection players borrow the source player's live limb buffers. Reference
+// counts preserve that cheap sharing when either view is disposed first.
+const geometryUsers=new WeakMap();
+const retainGeometry=geometry=>geometryUsers.set(geometry,(geometryUsers.get(geometry)??0)+1);
+function releaseGeometry(geometry){
+  const remaining=(geometryUsers.get(geometry)??1)-1;
+  if(remaining>0)geometryUsers.set(geometry,remaining);
+  else{geometryUsers.delete(geometry);geometry.dispose();}
+}
 const mat=(color,roughness=.78)=>new THREE.MeshStandardMaterial({color,roughness});
 function mesh(g,m,parent){const o=new THREE.Mesh(g,m);o.castShadow=true;o.receiveShadow=true;parent.add(o);return o;}
 function ellipsoid(parent,m,x,y,z,sx,sy,sz){const o=mesh(sphere,m,parent);o.position.set(x,y,z);o.scale.set(sx,sy,sz);return o;}
@@ -164,14 +173,34 @@ export class Player {
     this.number=mesh(new THREE.PlaneGeometry(.17,.20),new THREE.MeshStandardMaterial({map:this.numberTexture,transparent:true,roughness:.8,depthWrite:false}),this.trunk);this.number.position.set(0,.28,gloves?-.124:.124);if(gloves)this.number.rotation.y=Math.PI;
     batchRigidGroup(this.head);
     for(const group of [...this.hands,...this.feet])batchRigidGroup(group);
+    this.geometryResources=new Set();
+    this.group.traverse(object=>{if(object.geometry&&object.geometry!==sphere)this.geometryResources.add(object.geometry);});
+    for(const geometry of this.geometryResources)retainGeometry(geometry);
     this.setColor(color,11);
   }
   setColor(color,number=11){this.shirt.color.set(color);const c=this.numberTexture.image.getContext('2d');c.clearRect(0,0,256,256);c.fillStyle='#19352e';c.font='bold 185px sans-serif';c.textAlign='center';c.fillText(String(number),128,199);this.numberTexture.needsUpdate=true;}
+  dispose(){
+    if(this.disposed)return;this.disposed=true;
+    const materials=new Set();
+    this.group.traverse(object=>{
+      for(const material of [object.material].flat().filter(Boolean))materials.add(material);
+    });
+    // The module's sphere and fabric texture outlive each individual Player.
+    for(const geometry of this.geometryResources)releaseGeometry(geometry);
+    this.geometryResources.clear();
+    for(const material of materials)material.dispose();
+    this.numberTexture.dispose();this.group.removeFromParent();
+  }
   // A second inspection angle displays the exact same deformation. Share the
   // buffers so two views require one pose calculation and one GPU upload.
   copyPose(source){
+    if(this.disposed||source.disposed)return;
     this.trunk.position.copy(source.trunk.position);this.trunk.quaternion.copy(source.trunk.quaternion);this.head.quaternion.copy(source.head.quaternion);
-    for(let i=0;i<this.limbs.length;i++)if(this.limbs[i].geometry!==source.limbs[i].geometry){this.limbs[i].geometry.dispose();this.limbs[i].geometry=source.limbs[i].geometry;}
+    for(let i=0;i<this.limbs.length;i++)if(this.limbs[i].geometry!==source.limbs[i].geometry){
+      const previous=this.limbs[i].geometry,next=source.limbs[i].geometry;
+      this.geometryResources.delete(previous);releaseGeometry(previous);
+      this.limbs[i].geometry=next;this.geometryResources.add(next);retainGeometry(next);
+    }
     for(let i=0;i<2;i++)for(const part of['hands','feet']){this[part][i].position.copy(source[part][i].position);this[part][i].quaternion.copy(source[part][i].quaternion);}
   }
   lookAt(target,dt){

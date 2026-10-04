@@ -1,4 +1,6 @@
+import {updateFrameProfile} from './frame-profile.js';
 import './style.css';
+import {createGraphicsLifecycle} from './graphics-lifecycle.js';
 import {penaltyStyle} from './anatomy.js';
 import {committedKickAim} from './shot-input-state.js';
 import {Match, Shot, Random, clamp, gestureInput, directionMeter, powerMeter} from './engine.js';
@@ -19,6 +21,7 @@ const preferencesLocked=preferencesRequireNewerVersion(storedPreferences.value);
 const settings=normalizePreferences(storedPreferences.value);
 let state={phase:'home',match:null,shot:null,turnTime:0,lockedX:0,dir:0,runup:0,aim:null};
 let paused=false, modal=null, stage, renderError=null, frameTime=0, elapsed=0, accumulator=0, saveClock=0, pointer=null, activeDevice='ontouchstart' in window?'touch':'mouse', calibration=null, pendingNewMatch=null, pageResumeState=null;
+let graphics=null,pageSuspended=false;
 let audioCtx=null,modalTrigger=null;
 function sound(kind){
   if(!settings.sound)return;
@@ -48,8 +51,50 @@ const active=()=>['aim','power','guard','runup','flight'].includes(state.phase);
 function transition(phase){state.phase=phase;pointer=null;render();save();}
 function seed(){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0];}
 
-$('#app').innerHTML=`<div class="desktop-hint"><span class="tiny-line"></span> 十一码之夜 <span class="tiny-line"></span></div><div class="phone"><div id="stadium" aria-label="原创三维足球场"></div><div class="vignette"></div><header id="header"></header><div id="persistence-status" role="status" hidden></div><div id="screen"></div><div id="modal-root"></div><div id="toast" role="status"></div></div><p class="desktop-note">鼠标按住拖动，即可模拟手指滑动</p>`;
+$('#app').innerHTML=`<div class="desktop-hint"><span class="tiny-line"></span> 十一码之夜 <span class="tiny-line"></span></div><div class="phone"><div id="stadium" aria-label="原创三维足球场"></div><div class="vignette"></div><header id="header"></header><div id="runtime-status" role="status" hidden></div><div id="persistence-status" role="status" hidden></div><div id="screen"></div><div id="modal-root"></div><div id="toast" role="status"></div></div><p class="desktop-note">鼠标按住拖动，即可模拟手指滑动</p>`;
 try{stage=new Stadium($('#stadium'));}catch(err){renderError=err;$('#stadium').innerHTML='<div class="graphics-error">图形加载失败<br><small>请启用浏览器硬件加速后重试</small><button class="secondary" data-action="reload">重试加载</button></div>';}
+
+function runtimeBlocked(){return pageSuspended||!!renderError||!!graphics?.status.blocked||assetsLoading();}
+function assetsLoading(){return stage?.keeper?.assetStatus?.state==='loading'||stage?.striker?.assetStatus?.state==='loading';}
+function runtimeStatusChanged(){
+  frameTime=performance.now();
+  cancelGesture();
+  if(graphics?.status.state==='lost')save();
+  stage?.frameProfile?.setState({suspended:runtimeBlocked()},frameTime);
+  if(stage)stage.needsRender=true;
+  updateRuntimeFeedback();
+}
+function updateRuntimeFeedback(){
+  const el=$('#runtime-status');if(!el)return;
+  const status=graphics?.status.state;
+  let html='';
+  if(status==='lost')html='图形连接中断，比赛已冻结。正在等待浏览器恢复…';
+  else if(status==='failed')html='图形尚未恢复，比赛保持冻结。刷新前请留意进度保存提示。<button class="secondary" data-action="reload">刷新页面</button>';
+  else if(status==='restoring')html='图形连接已恢复，正在重建画面，比赛保持冻结…';
+  else if(status==='restored')html='图形连接已恢复，比赛尚未继续。<button class="secondary" data-action="graphics-resume">继续显示</button>';
+  else if(assetsLoading())html='正在加载人物与动作，下一脚暂未开始…';
+  else {
+    const actors=[stage?.keeper,stage?.striker];
+    const failed=actors.some(actor=>actor?.assetStatus?.state==='error');
+    const fallback=actors.some(actor=>actor?.assetStatus?.state==='error'&&actor.assetStatus.usingFallback!==false);
+    const degraded=actors.some(actor=>actor?.assetStatus?.state==='degraded');
+    if(failed||degraded){
+      html=fallback?'人物加载失败，当前使用简化模型。':failed?'资源重试失败，保留此前已加载的人物。':'部分动作加载失败，当前使用基础动作。';
+      if(actors.some(actor=>actor?.assetStatus?.error?.code==='busy'||actor?.assetStatus?.optionalFailures?.some(failure=>failure.code==='busy')))html+=' 上次资源仍在处理，请稍后重试。';
+      if(['home','ready','result','finish'].includes(state.phase))html+='<button class="secondary" data-action="retry-assets">重试资源</button>';
+      else html+=' 可在本球结束后重试。';
+    }
+  }
+  if(el.innerHTML!==html)el.innerHTML=html;
+  el.hidden=!html;
+  el.dataset.state=status&&status!=='ready'?status:assetsLoading()?'loading':html?'degraded':'ready';
+}
+function initializeRuntimeLifecycle(){
+  graphics=createGraphicsLifecycle({canvas:stage?.renderer?.domElement,onChange:runtimeStatusChanged});
+  for(const actor of [stage?.keeper,stage?.striker])actor?.subscribeAssets?.(runtimeStatusChanged);
+  updateRuntimeFeedback();
+}
+initializeRuntimeLifecycle();
 
 function header(){
   const home=state.phase==='home';
@@ -57,7 +102,7 @@ function header(){
 }
 function render(){
   header();stage?.setMode(state.phase==='home'?'hero':'game');
-  updatePersistenceFeedback();
+  updatePersistenceFeedback();updateRuntimeFeedback();
   const s=$('#screen');
   if(state.phase==='home'){
     const resume=resumeCandidate(),canResume=resume.kind==='resumable',finished=resume.kind==='finished';
@@ -156,9 +201,9 @@ function sheet(title,body,type='info'){
   $('#header').inert=true;$('#screen').inert=true;
   modal=type;const root=$('#modal-root');root.innerHTML=`<div class="modal-backdrop"><section class="sheet" role="dialog" aria-modal="true" aria-label="${title}"><div class="sheet-header"><h2>${title}</h2><button class="icon-btn" data-action="close" aria-label="关闭">${icon('close')}</button></div><div class="sheet-content">${body}</div></section></div>`;root.querySelector('button')?.focus();
 }
-function closeModal(){frameTime=performance.now();paused=false;modal=null;$('#modal-root').innerHTML='';$('#header').inert=false;$('#screen').inert=false;cancelGesture();calibration=null;pendingNewMatch=null;if(modalTrigger?.isConnected)modalTrigger.focus({preventScroll:true});modalTrigger=null;}
-function showRules(){if(active()){paused=true;}sheet('比赛规则',`<div class="rule-intro">五轮之间，攻守交替。<br>每一次选择都算数。</div><div class="rule"><b>01</b><p><strong>五轮决胜</strong>双方交替主罚，无法追平时提前结束。五轮平局后进入突然死亡，同轮一进一失决定胜负。</p></div><div class="rule"><b>02</b><p><strong>全员轮换</strong>11 人各罚一次后才能重复，包括门将。每脚仅一次射门，门框及门将反弹仍继续判定。</p></div><div class="rule"><b>03</b><p><strong>两种操作</strong>简洁版先选方向、再选力度，射门不限时。高级版滑动射门，10 秒超时自动中路轻射。</p></div><div class="rule"><b>04</b><p><strong>提前预判</strong>AI 在 3 秒后出脚。可提前选扑救方向，根据球速起扑；未预选可以在球飞行中作出一次侧扑。</p></div><p class="fine-print">操作时限、AI 节奏和专职门将限制为本游戏设定。模拟合法点球流程，全部球队及人物均为原创虚构。</p>`,active()?'pause':'info');}
-function showPause(){if(state.phase==='home')return;paused=true;cancelGesture('',false);const result=save();sheet('中场片刻',`<p class="sheet-lead">比赛已暂停。${matchSaveMessage(result)}</p><button class="primary full" data-action="close">继续比赛 ${icon('arrow')}</button>${['ready','result','lineup','coin','finish'].includes(state.phase)?'<button class="secondary full" data-action="calibration">力度校准</button>':''}<button class="secondary full" data-action="rules">比赛规则</button><button class="text-btn full" data-action="exit-confirm">返回首页</button>`,'pause');}
+function closeModal(){frameTime=performance.now();paused=false;stage?.frameProfile?.setState({idle:false},frameTime);modal=null;$('#modal-root').innerHTML='';$('#header').inert=false;$('#screen').inert=false;cancelGesture();calibration=null;pendingNewMatch=null;if(modalTrigger?.isConnected)modalTrigger.focus({preventScroll:true});modalTrigger=null;}
+function showRules(){if(active()){paused=true;stage?.frameProfile?.setState({idle:paused},performance.now());}sheet('比赛规则',`<div class="rule-intro">五轮之间，攻守交替。<br>每一次选择都算数。</div><div class="rule"><b>01</b><p><strong>五轮决胜</strong>双方交替主罚，无法追平时提前结束。五轮平局后进入突然死亡，同轮一进一失决定胜负。</p></div><div class="rule"><b>02</b><p><strong>全员轮换</strong>11 人各罚一次后才能重复，包括门将。每脚仅一次射门，门框及门将反弹仍继续判定。</p></div><div class="rule"><b>03</b><p><strong>两种操作</strong>简洁版先选方向、再选力度，射门不限时。高级版滑动射门，10 秒超时自动中路轻射。</p></div><div class="rule"><b>04</b><p><strong>提前预判</strong>AI 在 3 秒后出脚。可提前选扑救方向，根据球速起扑；未预选可以在球飞行中作出一次侧扑。</p></div><p class="fine-print">操作时限、AI 节奏和专职门将限制为本游戏设定。模拟合法点球流程，全部球队及人物均为原创虚构。</p>`,active()?'pause':'info');}
+function showPause(){if(state.phase==='home')return;paused=true;stage?.frameProfile?.setState({idle:paused},performance.now());cancelGesture('',false);const result=save();sheet('中场片刻',`<p class="sheet-lead">比赛已暂停。${matchSaveMessage(result)}</p><button class="primary full" data-action="close">继续比赛 ${icon('arrow')}</button>${['ready','result','lineup','coin','finish'].includes(state.phase)?'<button class="secondary full" data-action="calibration">力度校准</button>':''}<button class="secondary full" data-action="rules">比赛规则</button><button class="text-btn full" data-action="exit-confirm">返回首页</button>`,'pause');}
 function showCalibration(device=activeDevice){
   if(active()){toast('请在回合间隙调整力度');return;}
   cancelGesture();calibration=calibrationDraft(settings,device);
@@ -179,7 +224,7 @@ function renderCalibration(){
     $('#threshold-label').textContent=`${calibration.profile.fullTravelPx.toFixed(1)} 像素`;
   });
 }
-function showPlayer(team,index){const p=state.match.teams[team].players[index];if(active())paused=true;sheet(`${p.name} · ${p.position}`,`<div class="player-heading"><span class="jersey large">${p.number}</span><p>${state.match.teams[team].name}<small>原创球员 · ${penaltyStyle(p).name} · ${p.position==='门将'?'守门及主罚资格':'主罚资格'}</small></p></div>${[['射门精确度','accuracy'],['脚力','power'],['触球稳定性','touch'],...(state.match.mode==='advanced'?[['弧线能力','curve']]:[]),['心理承受能力','composure'],...(index===0?[['扑救速度','speed'],['扑救范围','reach'],['接球稳健性','handling']]:[])].map(([label,key])=>`<div class="attribute"><label>${label}<strong>${p[key]}</strong></label><div><span style="width:${p[key]}%"></span></div></div>`).join('')}<p class="fine-print">精确度控制落点误差，脚力影响球速，大力射门更依赖稳定性与综合能力，弧线能力影响旋转幅度。门将稳健性影响触球后的抱稳表现。</p>`,active()?'pause':'info');}
+function showPlayer(team,index){const p=state.match.teams[team].players[index];if(active())paused=true;stage?.frameProfile?.setState({idle:paused},performance.now());sheet(`${p.name} · ${p.position}`,`<div class="player-heading"><span class="jersey large">${p.number}</span><p>${state.match.teams[team].name}<small>原创球员 · ${penaltyStyle(p).name} · ${p.position==='门将'?'守门及主罚资格':'主罚资格'}</small></p></div>${[['射门精确度','accuracy'],['脚力','power'],['触球稳定性','touch'],...(state.match.mode==='advanced'?[['弧线能力','curve']]:[]),['心理承受能力','composure'],...(index===0?[['扑救速度','speed'],['扑救范围','reach'],['接球稳健性','handling']]:[])].map(([label,key])=>`<div class="attribute"><label>${label}<strong>${p[key]}</strong></label><div><span style="width:${p[key]}%"></span></div></div>`).join('')}<p class="fine-print">精确度控制落点误差，脚力影响球速，大力射门更依赖稳定性与综合能力，弧线能力影响旋转幅度。门将稳健性影响触球后的抱稳表现。</p>`,active()?'pause':'info');}
 function resumeCandidate(){
   const session=persistence.match.readSession();
   const latestWasUnserializable=pageResumeState&&persistence.match.status.write?.status==='serialize-failed';
@@ -244,7 +289,7 @@ function beginTurn(){state.lowShot=false;state.chipShot=false;state.turnTime=0;s
 function launch(aim){if(state.phase==='runup'||state.phase==='flight'||state.phase==='result')return;state.aim=aim;state.runup=0;transition('runup');}
 function release(){accumulator=0;const m=state.match;state.shot=m.shoot(state.aim,m.turn===0?m.aiDive:state.dir);sound('kick');transition('flight');}
 function chooseDive(dir){
-  if(!['guard','flight'].includes(state.phase)||state.match.turn!==1||paused)return;
+  if(!['guard','flight'].includes(state.phase)||state.match.turn!==1||paused||runtimeBlocked())return;
   if(state.phase==='flight'){if(state.shot.dive(dir)){state.dir=dir;sound('tap');save();}else return;}
   else state.dir=state.dir===dir?0:dir;
   $('#guard-choice').textContent=state.dir===0?'中路待命':`${state.phase==='flight'?'扑向':'预判'}${state.dir>0?'左':'右'}路`;
@@ -252,6 +297,9 @@ function chooseDive(dir){
 }
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-action]');if(!b||b.disabled)return;const a=b.dataset.action;
+  if(a==='graphics-resume'){graphics?.resume();return;}
+  if(a==='retry-assets'){if(!['home','ready','result','finish'].includes(state.phase)||graphics?.status.blocked)return;cancelGesture();for(const actor of [stage?.keeper,stage?.striker])if(['error','degraded'].includes(actor?.assetStatus?.state))actor.retryAssets();return;}
+  if(runtimeBlocked()&&!['reload','pause','close','home','exit-confirm','sound','rules'].includes(a)){toast('请等待人物或图形恢复后继续');return;}
   if(['new','ready','first','shoot','lock','next'].includes(a))sound('tap');
   if(a==='mode'){settings.mode=b.dataset.mode;storeSettings();render();$(`[data-action="mode"][data-mode="${settings.mode}"]`).focus({preventScroll:true});}
   if(a==='new')newMatch();
@@ -270,7 +318,7 @@ document.addEventListener('click',e=>{
   if(a==='pause')showPause();
   if(a==='close')closeModal();
   if(a==='player')showPlayer(Number(b.dataset.team),Number(b.dataset.player));
-  if(a==='roster'){if(active())paused=true;sheet('双方球队',`<h3>雾港弧光 · 主罚顺序</h3>${rosterRows(0)}<h3>暮原流星 · 主罚顺序</h3>${rosterRows(1)}`,active()?'pause':'info');}
+  if(a==='roster'){if(active())paused=true;stage?.frameProfile?.setState({idle:paused},performance.now());sheet('双方球队',`<h3>雾港弧光 · 主罚顺序</h3>${rosterRows(0)}<h3>暮原流星 · 主罚顺序</h3>${rosterRows(1)}`,active()?'pause':'info');}
   if(a==='calibration'){showCalibration();}
   if(a==='device'&&calibration){showCalibration(b.dataset.device);toast('已切换设备，未保存的试调已放弃');}
   if(a==='auto-calibrate'&&calibration){cancelGesture();calibration.samples=[];calibration.automatic=true;$('#calibration-note').textContent='请用舒适、有力的手势试滑 3 次（0/3）。';}
@@ -343,7 +391,7 @@ function recordCalibrationStroke(data,input){
 function bindGesture(el,calibrate){
   if(!el)return;
   el.addEventListener('pointerdown',e=>{
-    if((e.pointerType==='mouse'&&e.button!==0)||pointer)return;
+    if(runtimeBlocked()||(e.pointerType==='mouse'&&e.button!==0)||pointer)return;
     if(calibrate&&(!calibration||modal!=='calibration'))return;
     if(!calibrate&&(paused||state.match?.mode!=='advanced'||!['aim','guard','flight'].includes(state.phase)))return;
     if(!calibrate&&state.phase==='flight'&&state.match.turn===0)return;
@@ -427,9 +475,11 @@ function bindGesture(el,calibrate){
 }
 function runupDuration(){return penaltyStyle(state.match?.teams[state.match.turn]?.players[state.match.kicker]).duration;}
 function frame(now){
-  if(document.hidden){frameTime=now;requestAnimationFrame(frame);return;}
-  const realDt=Math.max(0,(now-frameTime)/1000||.016),dt=Math.min(.25,realDt);frameTime=now;if(!paused)elapsed+=dt;
-  if(!paused&&active()){
+  stage?.frameProfile?.setState({hidden:document.hidden,suspended:runtimeBlocked(),idle:paused},now);
+  stage?.frameProfile?.frame(now);
+  if(document.hidden){frameTime=now;updateFrameProfile(stage,now);requestAnimationFrame(frame);return;}
+  const realDt=Math.max(0,(now-frameTime)/1000||.016),dt=Math.min(.25,realDt);frameTime=now;const blocked=paused||runtimeBlocked();if(!blocked)elapsed+=dt;
+  if(!blocked&&active()){
     let flightDt=dt;
     const startedInRunup=state.phase==='runup';
     if(['aim','power','guard'].includes(state.phase))state.turnTime+=realDt;
@@ -452,16 +502,18 @@ function frame(now){
   let aim=null;
   if(state.phase==='aim')aim=state.match?.mode==='simple'?{x:directionValue(),y:1.2}:state.aim;
   if(state.phase==='power')aim={x:state.lockedX,y:state.lowShot?.11:.28+powerValue()*2,low:!!state.lowShot,chip:!!state.chipShot,power:powerValue()};
-  stage?.update(paused?0:dt,elapsed,state.shot,state.phase==='runup'?state.runup/runupDuration():state.phase==='guard'?clamp((state.turnTime-(3-runupDuration()))/runupDuration(),0,1):0,aim,state.match&&state.phase!=='home'?state.match:null,committedKickAim(state),clamp(accumulator*120,0,1));
+  try{if(!graphics||graphics.status.canRender){stage?.update(blocked?0:dt,elapsed,state.shot,state.phase==='runup'?state.runup/runupDuration():state.phase==='guard'?clamp((state.turnTime-(3-runupDuration()))/runupDuration(),0,1):0,aim,state.match&&state.phase!=='home'?state.match:null,committedKickAim(state),clamp(accumulator*120,0,1));graphics?.rendered();}}catch(error){if(graphics)graphics.fail();else throw error;}
+  updateFrameProfile(stage,now);
   requestAnimationFrame(frame);
 }
 function pauseForInterruption(){
   if(active()&&!paused){showPause();return;}
   cancelGesture(pointer?.calibrate?'试滑已中断，请重新划动':'');
 }
-document.addEventListener('visibilitychange',()=>{frameTime=performance.now();if(document.hidden)pauseForInterruption();});
+document.addEventListener('visibilitychange',()=>{frameTime=performance.now();stage?.frameProfile?.setState({hidden:document.hidden},frameTime);if(document.hidden)pauseForInterruption();});
 window.addEventListener('blur',pauseForInterruption);
-window.addEventListener('pagehide',save);
+window.addEventListener('pagehide',()=>{pageSuspended=true;pauseForInterruption();save();runtimeStatusChanged();});
+window.addEventListener('pageshow',()=>{pageSuspended=false;runtimeStatusChanged();});
 window.addEventListener('resize',()=>{cancelGesture('画面尺寸或位置已改变，请重新划动');updateCalibrationReachability();});
 window.visualViewport?.addEventListener('resize',()=>cancelGesture('画面尺寸或位置已改变，请重新划动'));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(modal)closeModal();else showPause();}if(e.key==='Tab'&&modal){const focusable=[...$('#modal-root').querySelectorAll('button:not(:disabled),input')];if(!focusable.length)return;const first=focusable[0],last=focusable.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});

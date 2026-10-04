@@ -1,5 +1,5 @@
 // Verify the completed receipts before making a compact, publishable summary.
-import {readFile,writeFile} from 'node:fs/promises';
+import {readFile,writeFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -9,15 +9,18 @@ const digest=bytes=>createHash('sha256').update(bytes).digest('hex'),json=async 
 const union=await json(resolve(directory,'union-report.json')),manifest=resolve(process.argv[4]??resolve(root,'validation/five-rounds/union-fixtures.json')),manifestBytes=await readFile(manifest),fixtures=JSON.parse(manifestBytes);
 assert.equal(digest(manifestBytes),union.manifestSha256);assert.deepEqual(union.failures,[]);
 const testedFiles={},receipts=[],records=[],trajectoryRecords=[];let bodySamples=0;
-async function verifyHashes(map){for(const [file,hash]of Object.entries(map)){assert.equal(digest(await readFile(resolve(root,file))),hash,`receipt differs from current ${file}`);if(testedFiles[file])assert.equal(testedFiles[file],hash);testedFiles[file]=hash;}}
-await verifyHashes(Object.fromEntries(Object.entries(union.sourceHashes).map(([f,h])=>['src/'+f,h])));
+const sourceKeys=(await readdir(resolve(root,'src'))).filter(f=>f.endsWith('.js')).sort().map(f=>'src/'+f);
+const bodyKeys=[...sourceKeys,'assets/characters/keeper-prototype.glb','tests/helpers/load-character.js','tools/qa/audit-held-body.mjs','tools/qa/read-audit-fixtures.mjs'];
+const characterKeys=[...sourceKeys,'assets/characters/keeper-prototype.glb','assets/characters/striker-mocap.glb','tests/helpers/load-character.js','tools/qa/audit-character.mjs','tools/qa/read-audit-fixtures.mjs'];
+async function verifyHashes(map,requiredKeys){assert.deepEqual(Object.keys(map).sort(),requiredKeys.toSorted(),'receipt omitted or added source hash keys');for(const [file,hash]of Object.entries(map)){assert.equal(digest(await readFile(resolve(root,file))),hash,`receipt differs from current ${file}`);if(testedFiles[file])assert.equal(testedFiles[file],hash);testedFiles[file]=hash;}}
+await verifyHashes(Object.fromEntries(Object.entries(union.sourceHashes).map(([f,h])=>['src/'+f,h])),sourceKeys);
 for(const shard of union.shards){
   for(const stage of ['body','hold','trajectory'])assert.equal(shard.results[stage].exitCode,0);
   const base=resolve(directory,'shard-'+shard.index),input=await json(resolve(base,'fixtures.json'));
   assert.deepEqual(input.fixtures.map(r=>r.id),shard.fixtureIds);
   const paths={body:resolve(base,'body/held-body-audit.json'),hold:resolve(base,'hold/actual-holding-240hz.json'),trajectory:resolve(base,'trajectory/near-keeper-trajectory.json')};
   const body=await json(paths.body),hold=await json(paths.hold),trajectory=await json(paths.trajectory);
-  await verifyHashes(body.hashes);assert.deepEqual(body.hashesAfter,body.hashes);await verifyHashes(hold.sourceSha256);await verifyHashes(trajectory.sourceSha256);
+  await verifyHashes(body.hashes,bodyKeys);assert.deepEqual(body.hashesAfter,body.hashes);await verifyHashes(hold.sourceSha256,characterKeys);await verifyHashes(trajectory.sourceSha256,characterKeys);
   assert.deepEqual(hold.gate.failures,[]);assert.deepEqual(trajectory.gate.failures,[]);
   const expected=input.fixtures.filter(r=>r.expectedCaught).map(r=>r.id).sort();
   assert.deepEqual(body.coverage.captures.map(r=>r.recipe.id).sort(),expected);

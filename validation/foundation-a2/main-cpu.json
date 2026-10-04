@@ -1,0 +1,247 @@
+{
+  "timestamp": "2026-10-04T08:55:42.603Z",
+  "pairs": 9,
+  "framesPerBlock": 1200,
+  "warmupPairs": 3,
+  "sourceHashes": {
+    "/workspace/scratch/da56d19312e0/penalty-foundation-a1/src/main.js": "2e74c6be031fde76d5ca9b2d9e2d2bee51a23f2315080eca6ed94a7f65725ed8",
+    "/workspace/scratch/da56d19312e0/penalty-foundation-a1/src/scene.js": "410bfcfe83c55297d46f50e1384dcbd2d50bf8254dedba89d3d8b3cf98481172",
+    "/workspace/scratch/da56d19312e0/penalty-foundation-a1/tests/helpers/main-harness.js": "d1ad147b72960096f565cd20663fae62666bfdd062c94b647f505f0351459b70",
+    "/workspace/scratch/da56d19312e0/penalty-foundation-a2/src/main.js": "8c546a4b45d94b3966e98999cff1eea3d72395c16244d6fd26ef5bd9d11dbf23",
+    "/workspace/scratch/da56d19312e0/penalty-foundation-a2/src/scene.js": "e3a1602fdd7f1a4d03aa384d92123a323d168f52feea40b46d88c7663bc2dd75",
+    "/workspace/scratch/da56d19312e0/penalty-foundation-a2/tests/helpers/main-harness.js": "5e58ca1f033220da6d1b82c993ea7aa559418ffce1533bcf88960822916e8460"
+  },
+  "scope": "Same-machine alternating baseline/candidate real main + Stadium event/CPU harness; renderer and character uploads are stubs, profile disabled. State JSON exact equality. This excludes WebGL GPU, real DOM, loading and native Storage. Shared cloud timing is noisy.",
+  "results": {
+    "ready": {
+      "records": [
+        {
+          "before": {
+            "ms": 10.454486000000031,
+            "microsecondsPerCallback": 8.712071666666693,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          },
+          "after": {
+            "ms": 11.663832000000014,
+            "microsecondsPerCallback": 9.719860000000011,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          }
+        },
+        {
+          "after": {
+            "ms": 11.47663,
+            "microsecondsPerCallback": 9.563858333333334,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          },
+          "before": {
+            "ms": 10.335868000000005,
+            "microsecondsPerCallback": 8.613223333333337,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          }
+        },
+        {
+          "before": {
+            "ms": 9.545133000000021,
+            "microsecondsPerCallback": 7.954277500000018,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          },
+          "after": {
+            "ms": 11.942243000000019,
+            "microsecondsPerCallback": 9.951869166666683,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          }
+        },
+        {
+          "after": {
+            "ms": 11.088033000000053,
+            "microsecondsPerCallback": 9.240027500000043,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          },
+          "before": {
+            "ms": 10.48501200000004,
+            "microsecondsPerCallback": 8.737510000000034,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          }
+        },
+        {
+          "before": {
+            "ms": 9.687387999999999,
+            "microsecondsPerCallback": 8.072823333333332,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          },
+          "after": {
+            "ms": 11.193191000000013,
+            "microsecondsPerCallback": 9.327659166666677,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          }
+        },
+        {
+          "after": {
+            "ms": 12.208505000000002,
+            "microsecondsPerCallback": 10.173754166666669,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          },
+          "before": {
+            "ms": 11.157267000000047,
+            "microsecondsPerCallback": 9.29772250000004,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          }
+        },
+        {
+          "before": {
+            "ms": 10.968461999999988,
+            "microsecondsPerCallback": 9.140384999999991,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          },
+          "after": {
+            "ms": 11.323137000000031,
+            "microsecondsPerCallback": 9.435947500000026,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          }
+        },
+        {
+          "after": {
+            "ms": 11.300714000000028,
+            "microsecondsPerCallback": 9.41726166666669,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          },
+          "before": {
+            "ms": 9.920909999999935,
+            "microsecondsPerCallback": 8.267424999999946,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          }
+        },
+        {
+          "before": {
+            "ms": 9.261083999999983,
+            "microsecondsPerCallback": 7.717569999999985,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          },
+          "after": {
+            "ms": 11.709951000000046,
+            "microsecondsPerCallback": 9.758292500000039,
+            "digest": "b8a5bb8f0581459eb2627c60c8c494c464b1955f4173e534d52a233e512349c4"
+          }
+        }
+      ],
+      "medianBeforeMs": 10.335868000000005,
+      "medianAfterMs": 11.47663,
+      "medianRatio": 1.1103692500716915
+    },
+    "shot": {
+      "records": [
+        {
+          "before": {
+            "ms": 26.923765000000003,
+            "microsecondsPerCallback": 22.436470833333335,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          },
+          "after": {
+            "ms": 29.98790100000008,
+            "microsecondsPerCallback": 24.989917500000065,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          }
+        },
+        {
+          "after": {
+            "ms": 28.070785,
+            "microsecondsPerCallback": 23.392320833333333,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          },
+          "before": {
+            "ms": 26.460685000000012,
+            "microsecondsPerCallback": 22.050570833333342,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          }
+        },
+        {
+          "before": {
+            "ms": 28.155425000000037,
+            "microsecondsPerCallback": 23.462854166666695,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          },
+          "after": {
+            "ms": 29.797932999999944,
+            "microsecondsPerCallback": 24.831610833333286,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          }
+        },
+        {
+          "after": {
+            "ms": 26.895602999999937,
+            "microsecondsPerCallback": 22.413002499999948,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          },
+          "before": {
+            "ms": 25.000441000000023,
+            "microsecondsPerCallback": 20.833700833333353,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          }
+        },
+        {
+          "before": {
+            "ms": 24.923735999999963,
+            "microsecondsPerCallback": 20.76977999999997,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          },
+          "after": {
+            "ms": 27.04719100000011,
+            "microsecondsPerCallback": 22.539325833333425,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          }
+        },
+        {
+          "after": {
+            "ms": 26.799005999999963,
+            "microsecondsPerCallback": 22.33250499999997,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          },
+          "before": {
+            "ms": 23.923696000000064,
+            "microsecondsPerCallback": 19.936413333333384,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          }
+        },
+        {
+          "before": {
+            "ms": 28.80969200000004,
+            "microsecondsPerCallback": 24.0080766666667,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          },
+          "after": {
+            "ms": 27.27018699999985,
+            "microsecondsPerCallback": 22.72515583333321,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          }
+        },
+        {
+          "after": {
+            "ms": 27.739651999999978,
+            "microsecondsPerCallback": 23.11637666666665,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          },
+          "before": {
+            "ms": 35.18485499999997,
+            "microsecondsPerCallback": 29.32071249999997,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          }
+        },
+        {
+          "before": {
+            "ms": 24.376694999999927,
+            "microsecondsPerCallback": 20.31391249999994,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          },
+          "after": {
+            "ms": 26.0179270000001,
+            "microsecondsPerCallback": 21.681605833333414,
+            "digest": "16a2301a47c0f1744b3f40b0a1b0c105ec38fd6a24e08a69fdbd258d0277217b"
+          }
+        }
+      ],
+      "medianBeforeMs": 26.460685000000012,
+      "medianAfterMs": 27.27018699999985,
+      "medianRatio": 1.0305926320501468
+    }
+  }
+}

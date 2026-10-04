@@ -1,0 +1,66 @@
+{
+  "fixtureInput": {
+    "path": "/workspace/scratch/da56d19312e0/penalty-foundation-a2/validation/model-motion-ten/union-fixtures.json",
+    "sha256": "69ac2f1c4dc587dbaef9217533e0af973d5f5bd6d806173e3feb777ea2e1fbe1",
+    "shots": 669,
+    "expectedCaptures": 223
+  },
+  "coverage": [
+    {
+      "side": "L",
+      "changedVertices": 741,
+      "incidentTriangles": 1140,
+      "coveredTriangles": 1140
+    },
+    {
+      "side": "R",
+      "changedVertices": 742,
+      "incidentTriangles": 1140,
+      "coveredTriangles": 1140
+    }
+  ],
+  "captures": 223,
+  "samples": 33450,
+  "closedFinal": 223,
+  "minDistance": -6.918778126668856e-07,
+  "floorMinimum": 0.03676302709591119,
+  "exactSourceChanges": 0,
+  "determinismFailures": 0,
+  "nonFinite": 0,
+  "maxDeltaAmount": 0.050570698178562856,
+  "maxClosureRate": 6.087662320591829,
+  "setupMs": 41.22577000000001,
+  "meanChangedApplyMs": 0.03533920284005489,
+  "maxUpdateMs": 3.11177800000587,
+  "diagnostics": [
+    {
+      "side": "handL",
+      "vertices": 626,
+      "triangles": 952,
+      "guards": 68,
+      "amount": 0,
+      "thumbVertices": 115,
+      "thumbTriangles": 188,
+      "thumbPlanes": 1,
+      "thumbAmount": 0,
+      "uploadSpanBytes": 24912
+    },
+    {
+      "side": "handR",
+      "vertices": 627,
+      "triangles": 952,
+      "guards": 80,
+      "amount": 0,
+      "thumbVertices": 115,
+      "thumbTriangles": 188,
+      "thumbPlanes": 1,
+      "thumbAmount": 0,
+      "uploadSpanBytes": 25008
+    }
+  ],
+  "maximumPositionAndNormalUploadBytes": 50376,
+  "selfSamples": 82,
+  "selfNewCrossings": 0,
+  "minimumAreaRatio": 0.5052658885717392,
+  "failures": []
+}

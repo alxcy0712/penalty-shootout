@@ -1,0 +1,404 @@
+{
+  "status": "passed",
+  "startedAt": "2026-10-04T08:33:26.288Z",
+  "completedAt": "2026-10-04T08:52:20.498Z",
+  "manifestSha256": "69ac2f1c4dc587dbaef9217533e0af973d5f5bd6d806173e3feb777ea2e1fbe1",
+  "shots": 669,
+  "captures": 223,
+  "cohorts": [
+    {
+      "label": "canonical139",
+      "shots": 139,
+      "inputSha256": "88d6835b6f4911508e7260357c0dcaa178c72531acf380e54398350a117afa6a"
+    },
+    {
+      "label": "central54",
+      "shots": 54,
+      "inputSha256": "074d355c9b519af0faae8da4235a37b7596fe6fdef45a35c8080ec661e6255d4"
+    },
+    {
+      "label": "fresh216",
+      "shots": 216,
+      "inputSha256": "aa3dde223bae9aed36db787fd0759fd64f3f1a81972eef30cb9f30f70188f277"
+    },
+    {
+      "label": "low-neighbors72",
+      "shots": 72,
+      "inputSha256": "fdb49f231f87fd90825dc14a987f68857c3c8f1c9d05751b6ac66fb7652974e5"
+    },
+    {
+      "label": "wide-neighbors54",
+      "shots": 54,
+      "inputSha256": "0ae55f63a1b15c55290b14ce1574030c0a51c50a321ee8935aafbc769bfb4985"
+    },
+    {
+      "label": "ten-round-2",
+      "shots": 48
+    },
+    {
+      "label": "ten-round-3",
+      "shots": 72
+    },
+    {
+      "label": "model-motion-round7-recovery-origin",
+      "shots": 24
+    }
+  ],
+  "testedFiles": {
+    "src/anatomy.js": "8f4dbf4a46689ce08944e5aeaa1bc08cf05a6ec4be2331b389425468bccba4ed",
+    "src/ball-motion.js": "cc09cdf26b4d4e675f2f27110a357b46c3d8a1bc8691ed896b8f48dd7d715c68",
+    "src/batching.js": "f38edda8bcd13f6ac38d748fc61dc7c01c8d80c2224f50cc3060699321e7e6de",
+    "src/calibration.js": "97a2f58b91505ea8883ca1051e1defa7cd124c2063a5e6aec172d3d086bab729",
+    "src/character-asset-cache.js": "108933fef268d2a495279deb9efa5ab79b081d9d991ea13031f6cf287d825df9",
+    "src/character-resources.js": "d3ff8b40a1068a52268571ec449421ee0145aafac41bf80455d8d1669594869f",
+    "src/character.js": "cfcd1fbbd2ae4b5a13dcf0fc8b56ab875dcb849bea9e0a92e5210064c6e923e7",
+    "src/contact-shadow.js": "9c27854d364c44eb7d56d62faffecdbbf4acdd3504244574a354c20f3f2c6cdf",
+    "src/engine.js": "6dd7c2a974c616c65331fd634fd7aeb06119b0ced1f800087daba029dd82c1ed",
+    "src/frame-profile.js": "eab9819201a2f21196e87ed3f6a43077839c9337859249c366d80d25f38b06d7",
+    "src/game-character.js": "c4a0a867e30e271393644cbba516fa5777c81f5937062d565ae1830c8ad963ca",
+    "src/gesture-session.js": "d8285ae58e37035fb74c496394a2c6234e7c8b1915a8ed103f9392124785dbdb",
+    "src/graphics-lifecycle.js": "d67a7694c2e799addca8c81446bcd3f51b9364d2b3355991d2317b93c56e6bc8",
+    "src/home-animation.js": "c77750daec82950402bf0c1253da292b834adee0c1a2d92311a73939908fdd2b",
+    "src/keeper-arm-roll.js": "87e4d4aeaa6e730d8d7447ce21799cde718ef1fcad1420032f874f291e5857ec",
+    "src/keeper-capture.js": "3ae00c53f28f0a477174c4f377478aecccf1322c14767cc6d2c4ca4887747d8e",
+    "src/keeper-contact-data.js": "a21fe3f4569fceaf0d84e5ba33291e091e936115fe6305e421b1aba919a8b6cb",
+    "src/keeper-contact.js": "d4bc521dd53ad21e283e4d62a92fe5e99d91fe69eeaa19a0f91e55eca96d1458",
+    "src/keeper-finger-grip.js": "64d8528fc10df5f4490b10817bb461efc54565f30c18ccad5acda0e7ff63a450",
+    "src/keeper-hand-contact.js": "28a26c08ab2d90699854040e4a60c82e09dc96446a4fd1cf3e8ac5ca4014221c",
+    "src/keeper-result-recovery.js": "825707fadd77f7fed8046e68e43f946c96795b9cf72f6baf6cde4f3c82c6bae1",
+    "src/keeper-skin-pose.js": "994c965899f937b8cbe91f95fbab380d8ce7952660bef33f0ccb6c3cade7d2d4",
+    "src/keeper-skin-weights.js": "df344919a6754d28980a6618a3c6e51c1af3c21728ce57d301be4982d3752b97",
+    "src/keeper-torso.js": "a56482f3d2a344af02dadea71298128c54939f604e668e7f81dbfb90b629d8d7",
+    "src/main.js": "8c546a4b45d94b3966e98999cff1eea3d72395c16244d6fd26ef5bd9d11dbf23",
+    "src/motion-lab-runtime.js": "34a17af03ba240a95cc8b17adaff37e4fb7711049e59867d2bb50585c202da67",
+    "src/motion-lab-state.js": "5e97e71b9aabd20144c5c3e6e95f29e1e0fd47d9bad8ef18f5a5f93391e8b600",
+    "src/net-motion.js": "6bd0054cd834fcda17f3fc0d9980939fbf01163dab0a48264fc95caff400925b",
+    "src/persistence.js": "d799c79959212a4559bbb8d92cc52175136e58a494bb21bbe3d530572131a6d1",
+    "src/pitch-markings.js": "729752d31e146e65b3ccbdf9ae091f0e63bb9adb94fcf32e06c9b2f608970b26",
+    "src/rendering.js": "fb2da3eefb717bf28bd83ab2ad93c47e6c8c9940f6f9f60b9fb6c29dda42ec64",
+    "src/scene.js": "e3a1602fdd7f1a4d03aa384d92123a323d168f52feea40b46d88c7663bc2dd75",
+    "src/shot-input-state.js": "8af1fbf08e0c7854ccf70a9456aa80e095d53d3ba475bddf4d6243ee9362b623",
+    "src/striker-arm-clearance.js": "3c0835b13aee0b86aa3f72331abd30163ec0d8fed5b05566e3b68007937e56ae",
+    "src/striker-captures.js": "8984a7269f08725be3d1ec619961a84d63958cc454514a8900f2ba5de5e8f4a6",
+    "src/striker-kick-style.js": "e8e526b52d5e7d16ec11ffe35fbcc2509f942d7aa1e0e7177a894087679bc087",
+    "src/striker-recovery-clock.js": "73bb71911dd86ae81e5f53b5bd6b45e1341a9745a3f41b47bcb7d7eeda80f1fb",
+    "src/striker-runup-style.js": "06ee5278accd75865ab9873fc517e3a16ac1963962980c2a62ba6c47e2497222",
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644",
+    "tools/qa/audit-held-body.mjs": "2631a35b9ebdb46ba564edd284385f8300dc7611b6b5685e39814eaa7ce3d78d",
+    "tools/qa/read-audit-fixtures.mjs": "f6d47fcac1325d43931195b03c76d157d20a29358d7147c9aaaadd9bd4464c17",
+    "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+    "tools/qa/audit-character.mjs": "2476e4fee80bd806c0136f1a7b6f5b85c89953e169c7ffd0ec8d87a4001a74f1"
+  },
+  "counts": {
+    "bodyPoses": 39694,
+    "jointSamples": 150079,
+    "skinSphereSamples": 37687,
+    "trajectoryPoses": 7877
+  },
+  "protectedCounts": {
+    "forearmTorso": 0,
+    "calfTorso": 0,
+    "oppositeFootCalf": 0
+  },
+  "minimumSkin": -0.0019240100580969755,
+  "minimumSphereGap": -0.0037178844706977493,
+  "minimumTrajectoryGap": -0.0024590030530546314,
+  "maximumResolutionsPerStep": 3,
+  "adjacentMaxima": {
+    "upperAndSupportTorso": 0.010970835602884255,
+    "innerElbow": 0.0055973681772406025
+  },
+  "worst": {
+    "ballStep": {
+      "id": "158f87e076093552",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 1.16,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 99,
+          "reach": 99,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "158f87e076093552",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 134
+          }
+        ],
+        "expectedCaught": true
+      },
+      "metric": {
+        "distance": 0.04557918771603932,
+        "after": 0.020833333333333332,
+        "previous": {
+          "x": -1.5060145202281194,
+          "y": 1.180847082358814,
+          "z": 0.7269945020754974
+        },
+        "current": {
+          "x": -1.551058774179563,
+          "y": 1.1859084072882191,
+          "z": 0.7317757706070481
+        }
+      }
+    },
+    "elbowStep": {
+      "id": "9942775a9c48288b",
+      "recipe": {
+        "aim": {
+          "x": 1.5,
+          "y": 1.2,
+          "power": 0.5
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 85,
+          "reach": 85,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 42,
+        "id": "9942775a9c48288b",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 94
+          }
+        ],
+        "expectedCaught": true
+      },
+      "metric": {
+        "distance": 0.036584672460087675,
+        "after": 0.175,
+        "index": 0
+      }
+    },
+    "handStep": {
+      "id": "cead333701881bfa",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 1.16,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 99,
+          "reach": 99,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "cead333701881bfa",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 188
+          }
+        ],
+        "expectedCaught": true
+      },
+      "metric": {
+        "angle": 0.07365348247210271,
+        "after": 0.004166666666666667,
+        "hand": 0
+      }
+    },
+    "ballMicro": {
+      "id": "158f87e076093552",
+      "recipe": {
+        "aim": {
+          "x": -1.4,
+          "y": 1.16,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 99,
+          "reach": 99,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "158f87e076093552",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 134
+          }
+        ],
+        "expectedCaught": true
+      },
+      "metric": {
+        "distance": 0.00011400110265688495,
+        "after": 0.01934375
+      }
+    },
+    "elbowMicro": {
+      "id": "f81677b0c8c4369c",
+      "recipe": {
+        "aim": {
+          "x": -2,
+          "y": 0.3,
+          "power": 0.55
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 95,
+          "reach": 95,
+          "handling": 95
+        },
+        "direction": -1,
+        "seed": 3,
+        "id": "f81677b0c8c4369c",
+        "origins": [
+          {
+            "cohort": "canonical139",
+            "index": 135
+          }
+        ],
+        "expectedCaught": true
+      },
+      "metric": {
+        "distance": 0.00015466041177085788,
+        "after": 0.10417708333333334
+      }
+    },
+    "handMicro": {
+      "id": "cead333701881bfa",
+      "recipe": {
+        "aim": {
+          "x": 1.4,
+          "y": 1.16,
+          "power": 0.52
+        },
+        "stats": {
+          "accuracy": 90,
+          "power": 90,
+          "touch": 90,
+          "composure": 90,
+          "speed": 99,
+          "reach": 99,
+          "handling": 95
+        },
+        "direction": 0,
+        "seed": 907,
+        "id": "cead333701881bfa",
+        "origins": [
+          {
+            "cohort": "fresh216",
+            "index": 188
+          }
+        ],
+        "expectedCaught": true
+      },
+      "metric": {
+        "angle": 0.00018435724343881453,
+        "after": 0.0028125
+      }
+    }
+  },
+  "scope": "All actual catches, regardless of central/lateral classification, use240Hz joint continuity,60Hz whole-skin sphere/floor and the same dense triangle-crossing windows. Every union shot also gets120Hz near-body displayed trajectory checks. Offline CPU geometry, not WebGL or device proof.",
+  "limits": "Sampled sphere/skin distance, selected nonadjacent triangle categories and worst-interval refinement. Adjacent cloth/joint folds are separately recorded. No global continuous-geometry, force-balance, WebGL or mobile-performance proof.",
+  "receipts": [
+    {
+      "shard": 0,
+      "shots": 168,
+      "captures": 58,
+      "files": {
+        "body": {
+          "path": "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union/shard-0/body/held-body-audit.json",
+          "sha256": "cc6f52ea4448bc541656f90a18a4d58f48597a39a4b0c6f169e5e4c2d242324b"
+        },
+        "hold": {
+          "path": "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union/shard-0/hold/actual-holding-240hz.json",
+          "sha256": "049c1d06b219697ae07a96aa5f214e901d27aacee2704179bd5131af29f7bdab"
+        },
+        "trajectory": {
+          "path": "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union/shard-0/trajectory/near-keeper-trajectory.json",
+          "sha256": "a7b52b4ac7a8392e8de41cb21d6fedb7b6ddf8f3482fbec6732806ef973ed3f0"
+        }
+      }
+    },
+    {
+      "shard": 1,
+      "shots": 167,
+      "captures": 59,
+      "files": {
+        "body": {
+          "path": "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union/shard-1/body/held-body-audit.json",
+          "sha256": "58569629985dd1f8cb63d8dfe20828091c331576c439fdc43ca4a66cd0c00776"
+        },
+        "hold": {
+          "path": "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union/shard-1/hold/actual-holding-240hz.json",
+          "sha256": "d504950c5ab6de1cb5a269d1aa817e26c2e0199559e6d7620bf48c9455bf62ba"
+        },
+        "trajectory": {
+          "path": "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union/shard-1/trajectory/near-keeper-trajectory.json",
+          "sha256": "fc8b96ee850b893bc28e675f47cd5e8e163d3d2c2fed750117dabbf389f5dd93"
+        }
+      }
+    },
+    {
+      "shard": 2,
+      "shots": 167,
+      "captures": 54,
+      "files": {
+        "body": {
+          "path": "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union/shard-2/body/held-body-audit.json",
+          "sha256": "05a6c5b14e2b73f469e25d3fddb5cc4a0052e65c149624efd6bc22e8a02786c3"
+        },
+        "hold": {
+          "path": "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union/shard-2/hold/actual-holding-240hz.json",
+          "sha256": "904131c4537ea4a3628c779e25860af687104d992592897b00294bd1747ca6de"
+        },
+        "trajectory": {
+          "path": "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union/shard-2/trajectory/near-keeper-trajectory.json",
+          "sha256": "70e7b441e29d5c10239971c6c06be95b5b89532870ed5cda4e9e5777cc109bac"
+        }
+      }
+    },
+    {
+      "shard": 3,
+      "shots": 167,
+      "captures": 52,
+      "files": {
+        "body": {
+          "path": "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union/shard-3/body/held-body-audit.json",
+          "sha256": "1636b42c4fb5931e619b4047666bda9518ee661b3ff6d047523becbb603ae197"
+        },
+        "hold": {
+          "path": "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union/shard-3/hold/actual-holding-240hz.json",
+          "sha256": "2b3df7e69eed59de947ee5bda2a772591e278cce39dc102961448cb4c9e3ee34"
+        },
+        "trajectory": {
+          "path": "/workspace/scratch/da56d19312e0/foundation-a2-evidence/release-final-r4/union/shard-3/trajectory/near-keeper-trajectory.json",
+          "sha256": "243d809cb5d91efef914d50aa053f968d34ae9c3a19cb12761bf28961c8cb291"
+        }
+      }
+    }
+  ]
+}

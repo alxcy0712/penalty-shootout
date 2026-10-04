@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-04",
+  "reviewer": "Independent parent review",
+  "reviewedCommit": "c9b70c7240eecedfd74206c77ff322055e7c0a7a",
+  "reviewedTree": "4905264cdeb3c123e931016c1bb5b0d55e2bd194",
+  "frozenReleaseInputSnapshotSha256": "c9c269584353bec2aa9cc58b06d97bfb29c54480fa9534e115dc6a7591d8ac59",
+  "tests": {
+    "total": 578,
+    "pass": 578,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 147519.821508
+  },
+  "build": {
+    "status": "passed",
+    "durationSeconds": 2.15,
+    "existingLargeChunkWarning": true
+  },
+  "logsSha256": {
+    "/workspace/scratch/da56d19312e0/a2-root-tests.log": "24627d62356b057e97646574dee2d3bbd410552337a7b2dc8277559ce8b4609c",
+    "/workspace/scratch/da56d19312e0/a2-root-build.log": "53be4d4b7d60526197c74de515ca433d6ffc2dd22bb3b85744e8f9891ea3bacd"
+  },
+  "scope": "Independent full Node tests and Vite build; not a separate union rerun or browser/device validation. This receipt and accompanying text only change documentation; runtime, tests and release inputs remain unchanged."
+}

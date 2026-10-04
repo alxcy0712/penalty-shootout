@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "model-motion-ten-669-v1",
+  "fixture": {
+    "path": "validation/model-motion-ten/union-fixtures.json",
+    "sha256": "69ac2f1c4dc587dbaef9217533e0af973d5f5bd6d806173e3feb777ea2e1fbe1",
+    "shots": 669,
+    "captures": 223
+  },
+  "union": {
+    "jobs": 4,
+    "concurrency": 1
+  },
+  "requiredGates": [
+    "tests",
+    "build",
+    "union",
+    "union-summary",
+    "finger-grip",
+    "thumb-body"
+  ],
+  "assets": {
+    "assets/characters/keeper-prototype.glb": "1865eb66beef6fe492c301779ed4da3fd7b4c771a43756a7bbdcd4bbb0e6b772",
+    "assets/characters/striker-mocap.glb": "bf3ec0d6e53766c6a8fd7e7a5775087a3886eed752921a906f36497491b3157f",
+    "assets/characters/mocap-variants/cmu-10_03-kick.glb": "19d2dc23fbc6df84ebb6a4e706a0701f0c16b17daa4ce3b6366dac108e8bdeeb"
+  },
+  "auditScripts": {
+    "tools/qa/run-union-gates.mjs": "1675bf14155c08b40c772ccece249fde35392995d5f32f2b47d95d2652d21249",
+    "tools/qa/summarize-union-results.mjs": "b771835f1297c18e8118d9c6565d3668defb4e5f582b29f9df4aea97c416fc87",
+    "tools/qa/audit-held-body.mjs": "2631a35b9ebdb46ba564edd284385f8300dc7611b6b5685e39814eaa7ce3d78d",
+    "tools/qa/audit-character.mjs": "2476e4fee80bd806c0136f1a7b6f5b85c89953e169c7ffd0ec8d87a4001a74f1",
+    "tools/qa/audit-finger-grip.mjs": "79542e76ad2f5f172141be8d22422b0b846efb6225d929a26851d74570375ca8",
+    "tools/qa/audit-thumb-body-differential.mjs": "04c86e003b136b9db403ee52de35a07e0d51e2420cad65e3900037fc682a98c9",
+    "tools/qa/read-audit-fixtures.mjs": "f6d47fcac1325d43931195b03c76d157d20a29358d7147c9aaaadd9bd4464c17",
+    "tests/helpers/load-character.js": "8620e3c7803dc35d5d7cca5e3218346a69e806c2549ab934e05492000c56b644",
+    "tests/helpers/keeper-finger-grip-baseline.js": "ffc53350771db644a36c4c07e52a5e1af1a7c58ce77b112b6038c949aef62e98"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "observedAt": "2026-10-04T08:30:29Z",
+  "error": "exec-server transport disconnected; failed to resume exec-server session: unknown session id",
+  "releaseStatus": "running",
+  "acceptance": false,
+  "receiptSha256": "b9856520d5ce82818f7936d5b8d15d64fbb751b8238677b99b5c8f3746f84a5e",
+  "scope": "Execution transport/session unavailable; last body log stopped progressing. No child exit code/signal or kernel OOM telemetry was available. Command-local process namespace does not inventory other sessions. Original report is retained unchanged, incomplete and not accepted."
+}

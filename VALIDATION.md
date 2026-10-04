@@ -1,3 +1,5 @@
+> 最新A2基础：[2026-10-04加载/图形恢复/测量与发布验收](validation/FOUNDATION_A2_2026-10-04.md) — 578测试和固定669球/223接球完整门禁通过，明确CPU成本、历史失败/传输中断及浏览器限制；父级最终独立578测试与构建也已通过并记录日志hash。
+
 > 最新A1基础施工：[2026-10-03输入/存档/候选工具验收](validation/FOUNDATION_A1_2026-10-03.md) — 502项测试，统一校准、手势坐标生命周期、真实保存反馈与受限安全候选工作流；正式物理/模型未改。
 
 > Latest ten model/motion rounds: [2026-10-03 ledger](validation/MODEL_MOTION_TEN_ROUNDS_2026-10-03.md) — 394 tests, uniform 669-shot / 223-catch acceptance, bounded thumb cup, cancelled-dive recovery and inspector metadata repairs, with measured CPU and retained visual limits.

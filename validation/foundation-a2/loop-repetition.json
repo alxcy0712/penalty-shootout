@@ -1,0 +1,14 @@
+{
+  "cycles": 50,
+  "ticks": 200,
+  "scheduled": 200,
+  "extraCallbacksFromLifecycleEvents": 0,
+  "state": "aim",
+  "hashes": {
+    "src/main.js": "8c546a4b45d94b3966e98999cff1eea3d72395c16244d6fd26ef5bd9d11dbf23",
+    "src/graphics-lifecycle.js": "d67a7694c2e799addca8c81446bcd3f51b9364d2b3355991d2317b93c56e6bc8",
+    "tests/helpers/main-harness.js": "5e58ca1f033220da6d1b82c993ea7aa559418ffce1533bcf88960822916e8460",
+    "docs/reproduce-a2-loop.mjs": "a0a52ed4b52cfacda40b7f2fcda3348d15acd7e2771236acc70b098facd7469c"
+  },
+  "scope": "Actual main handler/RAF functions in Node DOM/renderer harness; no native browser scheduler claim"
+}

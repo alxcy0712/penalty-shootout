@@ -1,3 +1,4 @@
+import {updateFrameProfile} from '../src/frame-profile.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
@@ -23,7 +24,7 @@ class Element {
 function harness(){
   const el=new Element(),ui=new Element(),frames=[];
   const context={state:{phase:'aim',match:{mode:'advanced',turn:0,kicker:0,teams:[{players:[{number:11}]}]},turnTime:0,runup:0,aim:null},
-    paused:false,pointer:null,settings:calibrationApi.normalizePreferences({touch:2}),activeDevice:'touch',calibration:null,frameTime:0,elapsed:0,accumulator:0,saveClock:0,
+    updateFrameProfile,graphics:null,runtimeBlocked:()=>false,paused:false,pointer:null,settings:calibrationApi.normalizePreferences({touch:2}),activeDevice:'touch',calibration:null,frameTime:0,elapsed:0,accumulator:0,saveClock:0,
     ...calibrationApi,...gestureSessionApi,
     committedKickAim,gestureInput,clamp,penaltyStyle,document:{hidden:false},requestAnimationFrame(){},active:()=>true,save(){},toast(){},
     $:selector=>['#indicator','#timer'].includes(selector)?null:ui,
